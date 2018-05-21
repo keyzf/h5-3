@@ -4,21 +4,12 @@ export const $$background_database = Map(
   {
     name: "background",
     customize: Map({
-      img: {
+      img:{
         upload: { value: "" }
       },
       img_config: {},
-      color: {
-        color: { value: "" }
-      }
+      color: ''
     }),
-    advance: Map({
-      padding: {
-        top: { value: 0 },
-        bottom: { value: 0 },
-        left: { value: 0 },
-        right: { value: 0 }
-      }
-    })
   }
 );
+

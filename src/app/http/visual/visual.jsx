@@ -6,7 +6,7 @@ import SiderVisualView from "./sider";
 // import HeaderVisualView from "./header";
 // import SiderVisualView from "./sider"; //动画
 // import ContentVisualView from "../../model/visual_content";
-// import EditorVisualView from "../../model/visual_editor";
+import EditorVisualView from "../../model/visual_editor";
 
 class VisualView extends React.Component {
   render() {
@@ -60,7 +60,7 @@ class VisualView extends React.Component {
             {/*<ContentVisualView/>*/}
           </Layout.Content>
           <Layout.Sider {...editorConfig}>
-            {/*<EditorVisualView/>*/}
+            <EditorVisualView/>
           </Layout.Sider>
         </Layout>
       </QueueAnim>
