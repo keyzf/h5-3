@@ -4,3 +4,6 @@
 1. 创建项目
 2. 配置antd 环境
 3. 创建目录结构
+4. 构建visual页面
+5. 插入react-thunk中间件
+6. 构建select，只完成了text，其他组件完成了部署
