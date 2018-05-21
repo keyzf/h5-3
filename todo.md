@@ -11,3 +11,8 @@
    TODO: Branch---->(visual-view)
 
     🔨  更新Logo 信息 
+    
+#### 完善select 其他项
+   待完成: Branch---->(react-thunk)
+
+     🔨 目前只完成了text    
