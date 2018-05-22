@@ -1,3 +1,31 @@
+/*part 图片上传model选择图片时显示的样式*/
+.part_choose {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #f5f5f5;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.part_choose:hover {
+    width: 100%;
+    height: 100%;
+    border: 1px #19a0fa solid;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+/*用户选中后的样式*/
+.part_active {
+    width: 100%;
+    height: 100%;
+    border: 1px #19a0fa solid;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
 
 /*定位图标*/
 .tab_one {
@@ -12,7 +40,6 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-
 }
 
 .tab_one:hover {
