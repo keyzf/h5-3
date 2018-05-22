@@ -5,6 +5,7 @@ export const select_reducer = (
   state = { data: List(), meta: "", error: "" },
   action
 ) => {
+
   switch (action.type) {
     case "SELECT_COMPONENTS":
       return {

@@ -1,26 +1,49 @@
 import React from "react";
-import { Card, Icon, Popover, Modal, Tabs, Button } from "antd";
+import { Card, Icon, Popover, Divider, Checkbox } from "antd";
 import { connect } from "react-redux";
 import QueueAnim from "rc-queue-anim";
 import { SketchPicker } from "react-color";
 import { bg_action } from "../../../redux/action";
-import { ImgForm } from "../../../components/form/img_form";
-
-const TabPane = Tabs.TabPane;
+import UpImgPart from "../part/up_img";
 
 
 class BgEditor extends React.Component {
-  state = { visible: false };
+  // 控制model 的显示与关闭
+  state = {
+    visible: false
+  };
+  // 展示model
   showModal = () => {
     this.setState({
       visible: true
     });
   };
-  handleCancel = (e) => {
+
+  delete = () => {
+    const $$bg_new = this.props.bg_value.data.setIn(["customize", "img"], "");
+    this.props.bg_upData($$bg_new, "".false);
+  };
+
+  bg_tiling = (e) => {
+    const $$bg_new = this.props.bg_value.data.setIn(["customize", "img_config", "tiling"], e.target.checked);
+    this.props.bg_upData($$bg_new, "".false);
+  };
+  bg_locking = (e) => {
+    const $$bg_new = this.props.bg_value.data.setIn(["customize", "img_config", "locking"], e.target.checked);
+    this.props.bg_upData($$bg_new, "".false);
+  };
+  // 关闭Model
+  closeModal = (tip, data) => {
     this.setState({
       visible: false
     });
+    if (tip) {
+
+      const $$bg_new = this.props.bg_value.data.setIn(["customize", "img"], data);
+      this.props.bg_upData($$bg_new, "".false);
+    }
   };
+  // 修改色值后插入数据中
   handleChangeComplete = (color) => {
     const $$bg_new = this.props.bg_value.data.setIn(["customize", "color"], color.hex);
     this.props.bg_upData($$bg_new, "".false);
@@ -29,6 +52,7 @@ class BgEditor extends React.Component {
   render() {
     const $$bg_color = this.props.bg_value.data.get("customize").get("color");
     const $$bg_img = this.props.bg_value.data.get("customize").get("img");
+    const $$bg_img_config = this.props.bg_value.data.get("customize").get("img_config");
     const gridStyle = {
       width: "40%",
       textAlign: "center"
@@ -36,51 +60,55 @@ class BgEditor extends React.Component {
     return (
       <QueueAnim type={"left"}>
         <Card title="背景图" style={{ width: "100%", height: "400px", cursor: "pointer" }} key={1}>
-          <div onClick={this.showModal} style={{
-            width: "70%",
-            height: "270px",
-            margin: "auto",
-            border: "1px solid #e7e7e7",
-            textAlign: "center",
-            padding: "80px",
-            color: "#e7e7e7"
-          }}>
-            <Icon type="plus" style={{ fontSize: "80px" }}/>
-            上传图片
-          </div>
-          <Modal width={800}
-                 title="素材库"
-                 visible={this.state.visible}
-                 onCancel={this.handleCancel}
-                 footer={null}
-          >
-            <Tabs tabBarExtraContent={<ImgForm {...$$bg_img}
-                                               child={<div style={{ color: "#19a0fa", cursor: "pointer" }}><Icon
-                                                 type="plus"/> &nbsp;添加素材</div>}/>}>
-              <TabPane tab="我的素材" key="1">
-                <div style={{ textAlign: "center", padding: "0 80px" }}>
-                  <img src={"http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"} alt={"img"}/><br/>
-                  <ImgForm {...$$bg_img} child={<Button type="dashed" style={{ width: "150px" }}>
-                    种植素材
-                  </Button>}/>
-
-
+          {
+            $$bg_img ?
+              <div style={{ width: "100%", height: "100%" }}>
+                <div style={{
+                  width: "70%",
+                  height: "240px",
+                  margin: "auto",
+                  border: "1px solid #e7e7e7",
+                  textAlign: "center",
+                  padding: " 0 40px",
+                  color: "#e7e7e7"
+                }} onClick={this.showModal}>
+                  <img style={{
+                    verticalAlign: "middle",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    margin: "auto"
+                  }}
+                       src={$$bg_img} alt={"img"}/>
                 </div>
-              </TabPane>
-              <TabPane tab="共享素材" key="2">
-                <Tabs tabPosition={"left"}>
-                  <TabPane tab="背景" key="1">Content of Tab 1</TabPane>
-                  <TabPane tab="文本背景" key="2">Content of Tab 2</TabPane>
-                  <TabPane tab="艺术字" key="3">Content of Tab 3</TabPane>
-                  <TabPane tab="电商" key="4">Content of Tab 3</TabPane>
-                  <TabPane tab="节日" key="5">Content of Tab 3</TabPane>
-                  <TabPane tab="文理" key="6">Content of Tab 3</TabPane>
-                  <TabPane tab="配饰" key="7">Content of Tab 3</TabPane>
-                  <TabPane tab="图形图标" key="8">Content of Tab 3</TabPane>
-                </Tabs>
-              </TabPane>
-            </Tabs>
-          </Modal>
+                <div style={{
+                  width: "70%",
+                  margin: "10px auto",
+                  textAlign: "center",
+                  color: "#e7e7e7"
+                }}>
+                  <div style={{ display: "inline-block", color: "#19a0fa" }} onClick={this.showModal}>更换</div>
+                  <Divider type="vertical"/>
+                  <div style={{ display: "inline-block", marginRight: "25px", color: "#19a0fa" }}
+                       onClick={this.delete}>删除
+                  </div>
+                  <Checkbox onChange={this.bg_tiling} defaultChecked={$$bg_img_config.get('tiling')}>平铺</Checkbox>
+                  <Checkbox onChange={this.bg_locking} defaultChecked={$$bg_img_config.get('locking')}>固定</Checkbox>
+                </div>
+              </div>
+              : <div onClick={this.showModal} style={{
+                width: "70%",
+                height: "270px",
+                margin: "auto",
+                border: "1px solid #e7e7e7",
+                textAlign: "center",
+                padding: "80px",
+                color: "#e7e7e7"
+              }}>
+                <Icon type="plus" style={{ fontSize: "80px" }}/>
+                上传图片
+              </div>
+          }
+          <UpImgPart visible={this.state.visible} unvisible={this.closeModal.bind(this)}/>
         </Card>
         <Card title="背景色配置" style={{ width: "100%", height: "350px", cursor: "pointer" }} key={2}>
           <Popover content={<SketchPicker color={$$bg_color} onChangeComplete={this.handleChangeComplete}/>}
