@@ -23,3 +23,5 @@
 4. 修复 bug->背景组件 <Popover> 的 'placement' 属性无法设置为right （修复失败）
 5. 背景实例组件布局至 visual-content 中
 6. visual-content,逻辑与布局完成
+7. text component 组件样式布置 
+8. 组件定位完成

@@ -52,3 +52,8 @@
    🐞  Branch---->(visual-content)  
               
         背景组件中的 色值选定中，透明色无法设置 
+        
+   待改正  Branch---->(text-component)  
+                 
+        组建位置定位中，必须点击组件两次才出现  
+        目测无法改正。。。

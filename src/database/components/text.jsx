@@ -12,12 +12,8 @@ export const $$text_database = (name, html) => {
       html_content: html
     }),
     advance: Map({
-      color: {
-        color: { value: "" }
-      },
-      img: {
-        upload: { value: "" }
-      },
+      color: "",
+      img: "",
       padding: {
         top: { value: 0 },
         bottom: { value: 0 },

@@ -21,7 +21,7 @@ class TextSelect extends React.Component {
     // 更新核心数组
     this.props.select_upData(select_up_data, "meta", false);
     // 更新选择组件
-    this.props.choose_upData(Map({ number: select_up_data.size, data: data }), Map({
+    this.props.choose_upData(Map({ number: select_up_data.size-1, data: data }), Map({
       content: true,
       choose: true
     }), false);
@@ -39,7 +39,7 @@ class TextSelect extends React.Component {
           <HorizontalTextTemplate/>
         </div>
         <div className={"components_hover"} key={2}
-             onClick={this.transfer.bind(this, option_data("horizontal_text", v_html_text))}
+             onClick={this.transfer.bind(this, option_data("vertical_text", v_html_text))}
         >
           <VerticalTextTemplate/>
         </div>
