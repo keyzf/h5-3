@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Map } from "immutable";
 import { choose_action } from "../../redux/action";
 import BgEditor from "./editor/bg_editor";
+import { render_form } from "./render/form";
 
 class EditorVisualView extends React.Component {
   // 点击背景按钮时，通过充值choose 数值来时editor界面返回到背景编辑界面
@@ -15,12 +16,12 @@ class EditorVisualView extends React.Component {
   };
 
   render() {
-    // const $$choose_data = this.props.choose_value.data;
+    const $$choose_data = this.props.choose_value.data;
     const editor_layout = {
       style: {
         width: "100%",
         height: "100%",
-        overflow: "auto",
+        overflow: "auto"
       }
     };
     return (
@@ -38,7 +39,7 @@ class EditorVisualView extends React.Component {
           客服
         </div>
         <div style={{ width: "100%", overflow: "auto" }}>
-          {this.props.choose_value.meta.get("choose") ? "放组件编辑界面" : <BgEditor/>}
+          {this.props.choose_value.meta.get("choose") ? render_form($$choose_data) : <BgEditor/>}
         </div>
       </div>
     );

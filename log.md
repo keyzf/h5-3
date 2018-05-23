@@ -25,3 +25,4 @@
 6. visual-content,逻辑与布局完成
 7. text component 组件样式布置 
 8. 组件定位完成
+9. text-component 功能结束

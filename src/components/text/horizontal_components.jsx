@@ -32,7 +32,7 @@ class HTextComponent extends React.Component {
       // 颜色
       bgColor: advance.get("color"),
       //背景
-      bgImg: advance.get("img")
+      img: advance.get("img")
     };
     return (
       <TextLayoutAtom {...advanced_settings}>

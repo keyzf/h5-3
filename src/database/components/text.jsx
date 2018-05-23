@@ -14,6 +14,10 @@ export const $$text_database = (name, html) => {
     advance: Map({
       color: "",
       img: "",
+      img_config: Map({
+        stretching: "",
+        tiling: ""
+      }),
       padding: {
         top: { value: 0 },
         bottom: { value: 0 },
