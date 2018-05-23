@@ -3,9 +3,7 @@ import { Layout } from "antd";
 import QueueAnim from "rc-queue-anim";
 import HeaderVisualView from "./header";
 import SiderVisualView from "./sider";
-// import HeaderVisualView from "./header";
-// import SiderVisualView from "./sider"; //动画
-// import ContentVisualView from "../../model/visual_content";
+import ContentVisualView from "../../model/visual_content";
 import EditorVisualView from "../../model/visual_editor";
 
 class VisualView extends React.Component {
@@ -57,7 +55,7 @@ class VisualView extends React.Component {
             <SiderVisualView/>
           </Layout.Sider>
           <Layout.Content style={{ height: "100%" }}>
-            {/*<ContentVisualView/>*/}
+            <ContentVisualView/>
           </Layout.Content>
           <Layout.Sider {...editorConfig}>
             <EditorVisualView/>
