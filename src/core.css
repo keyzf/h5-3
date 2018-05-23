@@ -11,7 +11,8 @@
 .part_choose:hover {
     width: 100%;
     height: 100%;
-    border: 1px #19a0fa solid;
+    border: 1px
+    solid;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

@@ -1,11 +1,12 @@
 # TODO 错误及待修补事项
 
 ### 2018年05月21日13:08:06
+
 #### 运行 yarn test 抛出错误    
    
-   错误出现git线： Branch---->(antd config)
+   待修复： Branch---->(antd config)
       
-    ❌ EMFILE: too many open files, watch
+    ❌ git错误 EMFILE: too many open files, watch
     
 #### logo 信息更换
    TODO: Branch---->(visual-view)
@@ -31,3 +32,15 @@
    待完成: Branch---->(background-component)
            
      🔨背景组件图片点击遮罩时，状态回退，明天优化组件界面时解决
+   
+   
+### 2018年05月23日10:43:05
+   疑似 bug  Branch---->(background-review)  
+  
+     🐞 背景组件 <Popover> 的 'placement' 属性无法设置为right
+      
+     🐜  怀疑 ant design bug 
+     
+   TODO ：Branch---->(background-review) 
+    
+     🔨  图片上传model模块待优化 

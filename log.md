@@ -15,3 +15,9 @@
 3. 完成背景组件上传功能
 4. 尝试加入图片裁剪功能 （未成功）
 5. 完成图片上传全部功能
+
+### 2018年05月23日10:39:33
+1. 重构background-component
+2. 重构modoel模块
+3. 修复background 阴影栏bug
+4. 修复 bug->背景组件 <Popover> 的 'placement' 属性无法设置为right （修复失败）
