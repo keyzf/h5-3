@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { choose_action, select_action } from "../../redux/action";
 import BgComponent from "../../components/background/bg_component";
+import { render_component } from "./render/components";
 
 
 class ContentVisualView extends React.Component {
@@ -9,7 +10,6 @@ class ContentVisualView extends React.Component {
     const choose_meta = this.props.choose_value.meta;
     const select_data = this.props.select_value.data;
     const customize = this.props.bg_value.data.get("customize");
-
     const choose_data = this.props.choose_value.data;
 
     // 默认模板
@@ -46,7 +46,8 @@ class ContentVisualView extends React.Component {
             choose_meta.get("content") ?
               select_data.map((ui_data, index) => {
                 return <div key={index}>
-                  {/*{render_component( ui_data, index === choose_data.get("number"), index)}*/}
+                  {/*通过循环select_data数组，ui_data:组件样式数据，第二个属性：为用户挑选的组件添加样式，index: 组件号*/}
+                  {render_component( ui_data, index === choose_data.get("number"), index)}
                 </div>;
               })
               : <div {...content_default}>请从左侧选择组件~</div>

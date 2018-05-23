@@ -8,6 +8,6 @@ export const BgLayoutAtom = styled.div`
   background-color:  ${props => props.color ? props.color : null};
   background-image: ${props => props.img ? "url(" + props.img + ")" : null};
   background-repeat:${props => props.repeat ? "repeat-y" : "no-repeat"};
-  position:${props => props.attachment ? "background-position:center;" : "scroll"};
+  ${props => props.attachment ? "background-position:top;" : "background-attachment:scroll"};
   background-size: 100%;
 `;
