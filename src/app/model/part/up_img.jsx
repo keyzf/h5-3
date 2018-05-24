@@ -1,48 +1,41 @@
 import React from 'react';
-import { List } from 'immutable';
 import { Button, Tabs, Modal, Icon, Divider } from 'antd';
 import ImgForm from '../../../components/form/img_form';
+import { connect } from "react-redux";
+import { up_img_action } from "../../../redux/action";
 
-/**
- * TODO 获取数据来源问题
- * 猜测隐藏bug： state 属性可能引起的问题 ，猜测解决办法： 重新生成model （antd 自带此属性）
- * 接收数据
- * 1 父组件选择的图片信息
- * 2. 选择图片后回掉给父组件的信息
- */
+
+
+
 class UpImgPart extends React.Component {
-  // 数据上传时使用的数据模型
+
   state = {
-    // 用户图库,后期通过ajax获取
-    user_img: List(),
-    // 图片地址
     img_url: this.props.img,
   };
-  // 用户选择组件时更新state
+
   choose = img_url => {
     this.setState({
       img_url: img_url, //技术图片信息
     });
   };
-  // 用户上传图片后，将图片信息更新进组件中
+
   ImgPartChange = changedFields => {
     if (
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      let $$user_img_new = this.state.user_img.push(
+      const  $$user_img_new = this.props.up_img_value.data.push(
         'http://p8afqcqwq.bkt.clouddn.com/' +
           changedFields.upload.value.file.response.key
       );
-      this.setState({
-        user_img: $$user_img_new,
-      });
+      this.props.up_img_upData($$user_img_new);
     }
   };
 
   render() {
     const TabPane = Tabs.TabPane;
     const { visible, unvisible } = this.props;
+    const $$up_img = this.props.up_img_value.data;
     return (
       <Modal
         width={800}
@@ -51,10 +44,7 @@ class UpImgPart extends React.Component {
         onCancel={unvisible}
         footer={null}
       >
-        {/*tabBarExtraContent 图片上传组件*/}
-        <Tabs
-          tabBarExtraContent={
-            <ImgForm
+        <Tabs tabBarExtraContent={<ImgForm
               upload={{ value: '' }}
               onChange={this.ImgPartChange}
               child={
@@ -63,18 +53,14 @@ class UpImgPart extends React.Component {
                   &nbsp;添加素材
                 </div>
               }
-            />
-          }
-        >
-          {/*用户自上传图片*/}
+            />}>
           <TabPane tab="我的素材" key="1">
-            {//  如果用户未上传数据则显示此默认模板，否则显示上传列表
-            this.state.user_img.size ? (
-              // true : 循环出用户的图片信息
-              <div style={{ width: '100%', minHeight: '400px' }}>
+            {
+              $$up_img.size ?
+                (<div style={{ width: '100%', minHeight: '400px' }}>
                 <div style={{ minHeight: '300px' }}>
                   {// 循环显示出用户的自上传图片
-                  this.state.user_img.map((data, index) => {
+                    $$up_img.map((data, index) => {
                     return (
                       <div
                         key={index}
@@ -121,7 +107,7 @@ class UpImgPart extends React.Component {
                     )}
                     style={{ width: '100px', marginRight: '10px' }}
                   >
-                    {' '}
+
                     取消
                   </Button>
                   <Button
@@ -132,14 +118,13 @@ class UpImgPart extends React.Component {
                     )}
                     style={{ width: '100px', marginRight: '10px' }}
                   >
-                    {' '}
+
                     确定
                   </Button>
                 </div>
-              </div>
-            ) : (
-              // false : 显示默认模板
-              <div style={{ textAlign: 'center', padding: '0 80px' }}>
+              </div>)
+                :
+                (<div style={{ textAlign: 'center', padding: '0 80px' }}>
                 <img
                   src={'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'}
                   alt={'img'}
@@ -155,10 +140,9 @@ class UpImgPart extends React.Component {
                   }
                   f
                 />
-              </div>
-            )}
+              </div>)
+            }
           </TabPane>
-          {/*公司提供的图片*/}
           <TabPane tab="共享素材" key="2">
             <Tabs tabPosition={'left'}>
               <TabPane tab="背景" key="1">
@@ -192,7 +176,6 @@ class UpImgPart extends React.Component {
                 onClick={this.props.unvisible.bind(this, true, this.props.img)}
                 style={{ width: '100px', marginRight: '10px' }}
               >
-                {' '}
                 取消
               </Button>
               <Button
@@ -203,7 +186,6 @@ class UpImgPart extends React.Component {
                 )}
                 style={{ width: '100px', marginRight: '10px' }}
               >
-                {' '}
                 确定
               </Button>
             </div>
@@ -214,4 +196,21 @@ class UpImgPart extends React.Component {
   }
 }
 
-export default UpImgPart;
+const mapStateToProps = (state) => {
+  return {
+    up_img_value: state.up_img_reducer
+  };
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    up_img_upData: (data,meta,error) => dispatch(up_img_action(data,meta,error))
+  };
+};
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UpImgPart);

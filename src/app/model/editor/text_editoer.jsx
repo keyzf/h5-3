@@ -42,32 +42,10 @@ class EditorText extends React.Component {
     this.setState({
       visible: false
     });
-    // 添加判断是为了控制电机model遮罩层时的图片显示问题
     if (state && data !== undefined) {
-      //  预定义函数
-      let $$new_select = "";
-      let $$new_choose = "";
-      // 获取核心组件数组
       const $$select_data = this.props.select_value.data;
-      // 获取选择组件
       const $$choose_data = this.props.choose_value.data;
-
-      $$new_select = $$select_data.setIn(
-        [$$choose_data.get("number"), "advance", "img"],
-        data
-      );
-      const $$new_choose_item = $$select_data
-        .get($$choose_data.get("number"))
-        .setIn(["advance", "img"], data);
-      $$new_choose = $$choose_data.set("data", $$new_choose_item);
-
-      // 发送数据
-      this.props.select_upData($$new_select, "", false);
-      this.props.choose_upData(
-        $$new_choose,
-        Map({ content: true, choose: true }),
-        false
-      );
+      this.sendAction($$select_data.get($$choose_data.get("number")).setIn(["advance", "img"], data));
     }
   };
 

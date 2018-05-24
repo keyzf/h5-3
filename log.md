@@ -26,3 +26,11 @@
 7. text component 组件样式布置 
 8. 组件定位完成
 9. text-component 功能结束
+
+## 2018年05月24日15:42:18
+1. 重构text-component 代码
+2. 重新设计 text-component editor 页面
+3. 修改 text-component 逻辑结构，让结构更加合理
+4. 重构up_img 组件
+5. 重构 rich text editor 结构
+6. 功能测试

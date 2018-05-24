@@ -58,3 +58,26 @@ export const bg_reducer = (
       return state;
   }
 };
+
+/**
+ * TODO data:list() future with ajax 
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+export const up_img_reducer = (
+  state = { data: List(), meta: '', error: false },
+  action
+) => {
+  switch (action.type) {
+    case 'UP_IMG_COMPONENTS':
+      return {
+        // 将信息传递给处理函数
+        data: action.payload,
+        meta: action.meta,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
