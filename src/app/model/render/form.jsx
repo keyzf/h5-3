@@ -1,13 +1,20 @@
-import React from "react";
-import EditorText from "../editor/text_editoer";
+import React from 'react';
+import EditorText from '../editor/text_editoer';
 // import EditorImg from "../editor/img_editoer";
 
 export const render_form = data => {
-  switch (data ? data.get("data").get("customize").get("name") : "") {
-    case "vertical_text":
-      return <EditorText data={data}/>;
-    case "horizontal_text":
-      return <EditorText data={data}/>;
+  switch (
+    data
+      ? data
+          .get('data')
+          .get('customize')
+          .get('name')
+      : ''
+  ) {
+    case 'vertical_text':
+      return <EditorText data={data} />;
+    case 'horizontal_text':
+      return <EditorText data={data} />;
     // case "one_text":
     //   return <EditorText data={data}/>;
     // case "two_text":
@@ -45,6 +52,6 @@ export const render_form = data => {
     //   case "button":
     //     return <EditorButton data={data}/>;
     default:
-      return "";
+      return '';
   }
 };

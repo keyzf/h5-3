@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "beaut": "prettier --single-quote --trailing-comma es5 --write 'src/**/*.js'",
+    "beaut": "prettier --single-quote --trailing-comma es5 --write 'src/**/*.jsx'",
     "build": "react-app-rewired build",
     "doc": "jsdoc src -r -d doc",
     "test": "react-app-rewired test --env=jsdom",

@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { VisualLoadable } from "./routers/page_router";
 import { store } from "./redux/store";
 import "./core.css";
+
 
 class App extends Component {
   render() {
@@ -12,7 +18,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact={true} path={"/"}>
-              <Redirect to='visual'/>
+              <Redirect to="visual"/>
             </Route>
             <Route path={"/visual"} component={VisualLoadable}/>
           </Switch>

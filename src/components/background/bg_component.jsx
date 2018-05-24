@@ -1,5 +1,5 @@
-import React from "react";
-import { BgLayoutAtom } from "./layout_atom";
+import React from 'react';
+import { BgLayoutAtom } from './layout_atom';
 
 /**
  * 背景组件
@@ -10,7 +10,7 @@ class BgComponent extends React.Component {
       color: this.props.color,
       img: this.props.img,
       repeat: this.props.repeat,
-      attachment: this.props.attachment
+      attachment: this.props.attachment,
     };
     return (
       //背景样式组件

@@ -1,6 +1,6 @@
-import React from "react";
-import VTextComponent from "../../../components/text/vertical_components";
-import HTextComponent from "../../../components/text/horizontal_components";
+import React from 'react';
+import VTextComponent from '../../../components/text/vertical_components';
+import HTextComponent from '../../../components/text/horizontal_components';
 // import OneTextComponent from "../../components/operating_ui/text/one";
 // import TwoTextComponent from "../../components/operating_ui/text/two";
 // import ThreeTextComponent from "../../components/operating_ui/text/three";
@@ -16,12 +16,12 @@ import HTextComponent from "../../../components/text/horizontal_components";
 
 export const render_component = (data, choose, index) => {
   // 获取组件名称，通过组件名称进行匹配
-  switch (data.get("customize").get("name")) {
+  switch (data.get('customize').get('name')) {
     /**==============文本类============**/
-    case "vertical_text":
-      return <VTextComponent data={data} choose={choose} index={index}/>;
-    case "horizontal_text":
-      return <HTextComponent data={data} choose={choose} index={index}/>;
+    case 'vertical_text':
+      return <VTextComponent data={data} choose={choose} index={index} />;
+    case 'horizontal_text':
+      return <HTextComponent data={data} choose={choose} index={index} />;
     // case "one_text":
     //   return <OneTextComponent data={data} choose={choose} index={index}/>;
     // case "two_text":
@@ -48,6 +48,6 @@ export const render_component = (data, choose, index) => {
     //   return <CarouselImgComponent data={data} choose={choose} index={index}/>;
 
     default:
-      return "";
+      return '';
   }
 };

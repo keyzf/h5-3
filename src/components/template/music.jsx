@@ -21,7 +21,7 @@ const icon_center = {
 // 默认模板
 export const MusicTemplate = () => {
   return (
-    <Row  type={'flex'} gutter={16}>
+    <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
           src={'http://marketing.xiuzan.com/src/images/form/music.png'}
