@@ -22,7 +22,7 @@
       
    待商议: Branch---->(background-component)
      
-    👨 文件上传后，到底是由前端做，还是后端做。
+    👨 文件上传，到底是由前端做，还是后端做。
     
     
     
@@ -41,7 +41,7 @@
       
      🐜  怀疑 ant design bug 
      
-   TODO ：Branch---->(background-review) 
+   TODO ：Branch---->(background-review) ✅已修补
     
      🔨  图片上传model模块待优化 
      
@@ -58,7 +58,7 @@
         组建位置定位中，必须点击组件两次才出现  
         目测无法改正。。。
    
-   待修复    Branch---->(text-component)  
+   待修复    Branch---->(text-component)    ✅已修补
    
        设置图片后，如果切换为背景，在切换为组件，则model会重置，
        并且组件内部的图片显示也需要设置   

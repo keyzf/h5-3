@@ -12,4 +12,3 @@ const options = {
 };
 const putPolicy = new qiniu.rs.PutPolicy(options);
 export const uploadToken = putPolicy.uploadToken(mac);
-
