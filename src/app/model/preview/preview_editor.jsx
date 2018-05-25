@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Col, Row } from 'antd';
 import FormPreviewView from '../../http/preview/form';
 import { connect } from 'react-redux';
-import { fromJS } from 'immutable';
 import { html5_action } from '../../../redux/action';
 import UpImgPart from '../part/up_img';
 
