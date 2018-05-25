@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Icon, Popover, Divider, Checkbox } from 'antd';
 import { connect } from 'react-redux';
 import { SketchPicker } from 'react-color';
-import { bg_action } from '../../../redux/action';
-import UpImgPart from '../part/up_img';
+import { bg_action } from '../../../../redux/action';
+import UpImgPart from '../../part/up_img';
 
 class BgEditor extends React.Component {
   // 控制model 的显示与关闭
@@ -185,7 +185,13 @@ class BgEditor extends React.Component {
             trigger="click"
           >
             <div>
-              <Card.Grid style={{ width: '40%', textAlign: 'center' }}>
+              <Card.Grid
+                style={{
+                  width: '40%',
+                  textAlign: 'center',
+                  background: $$bg_color,
+                }}
+              >
                 <Icon type="plus" />&nbsp;&nbsp;自定义
               </Card.Grid>
             </div>

@@ -16,9 +16,14 @@
     brew install node
        
    3.  检查是否完成安装，适用windows于mac，若控制台中出现版本号则安装成功。        
-         
+    
+    // 在控制台中输入如下命令     
     node -v   
     npm -v    
+   
+   4.  安装yarn 安装步骤 参考如下链接
+   
+    https://yarnpkg.com/zh-Hans/docs/install#windows-stable 
 
 ###  第二步：下载包，并安装包依赖
    选择自己日常的工作文件，通过命令行将包克隆下来    
@@ -26,38 +31,38 @@
     cd <你的工作文件夹>       
     git clone https://github.com/AntoninSorrento/e7wei.git   
     cd e7wei   
-    npm install   
+    yarn install   
   
   
 ###  第三步：查看运行效果
    至此，文件与包以来已全部下载完成 ，可以通过以下命令查看效果     
 
-     npm run start     
+     yarn run start     
  
 ## 常用指令
 1.   运行包    
     
-    npm run start
+    yarn run start
 2.   生成 API 文档    
     
-    npm run doc
+    yarn run doc
    
 3.   美化文件代码   
     
-    npm run beaut
+    yarn run beaut
     
 4.   测试代码   
     
-    npm run test
+    yarn run test
     
 5.   文件打包   
 
-    npm run build
+    yarn run build
      
 6.   显示隐藏配置            
    
     //⚠️不推荐使用此命令，不可逆操作，仅在学习配置使用时使用    
-    npm run eject    
+    yarn run eject    
 
 ## 更新日志
 
@@ -71,7 +76,7 @@
 | author | Anotnin Sorrento|
 | ------|------ |
 | e-mail | antonin.chenying@gmail.com |
-| phone | 15050580821 |
+| phone | 15050580821(请发短信) |
 | wechat| 15050580821 |
 | weibo| AnotninSorrento_陈迎 |
 

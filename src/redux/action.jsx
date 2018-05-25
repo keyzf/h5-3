@@ -25,6 +25,14 @@ export const bg_action = (data, meta, error) => {
   };
 };
 
+export const html5_action = (data, meta, error) => {
+  return {
+    type: 'Html5_message',
+    payload: data,
+    meta: meta,
+    error: error,
+  };
+};
 
 export const up_img_action = (data, meta, error) => {
   return {

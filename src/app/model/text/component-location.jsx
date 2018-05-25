@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { Tooltip, Divider, message } from 'antd';
-import { choose_action, select_action } from '../../redux/action';
+import { choose_action, select_action } from '../../../redux/action';
 
 class ComponentLocation extends React.Component {
   // 位置移动

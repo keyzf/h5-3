@@ -1,12 +1,20 @@
 import React from 'react';
-import { Divider } from 'antd';
-import QueueAnim from 'rc-queue-anim';
-import { VideoTemplate } from '../../../components/template/video';
 import { Map } from 'immutable';
+import { Divider } from 'antd';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
+import QueueAnim from 'rc-queue-anim';
+import {
+  HorizontalTextTemplate,
+  VerticalTextTemplate,
+} from '../../../../components/template/text';
+import { choose_action, select_action } from '../../../../redux/action';
+import {
+  $$text_database,
+  h_html_text,
+  v_html_text,
+} from '../../../../database/components/text';
 
-class VideoSelect extends React.Component {
+class TextSelect extends React.Component {
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -20,7 +28,7 @@ class VideoSelect extends React.Component {
     this.props.select_upData(select_up_data, 'meta', false);
     // 更新选择组件
     this.props.choose_upData(
-      Map({ number: select_up_data.size, data: data }),
+      Map({ number: select_up_data.size - 1, data: data }),
       Map({
         content: true,
         choose: true,
@@ -30,14 +38,30 @@ class VideoSelect extends React.Component {
   };
 
   render() {
+    const option_data = (name, html) => {
+      return Map($$text_database(name, html));
+    };
     return (
       <QueueAnim delay={200}>
         <div
           className={'components_hover'}
           key={1}
-          onClick={this.transfer.bind(this)}
+          onClick={this.transfer.bind(
+            this,
+            option_data('horizontal_text', h_html_text)
+          )}
         >
-          <VideoTemplate />
+          <HorizontalTextTemplate />
+        </div>
+        <div
+          className={'components_hover'}
+          key={2}
+          onClick={this.transfer.bind(
+            this,
+            option_data('vertical_text', v_html_text)
+          )}
+        >
+          <VerticalTextTemplate />
         </div>
         <Divider orientation="left">设计师推荐</Divider>
       </QueueAnim>
@@ -60,4 +84,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(TextSelect);

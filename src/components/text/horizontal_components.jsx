@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { choose_action, select_action } from '../../redux/action';
 import { TextLayoutAtom } from './layout_atom';
-import ComponentLocation from '../../app/model/component-location';
+import ComponentLocation from '../../app/model/text/component-location';
 class HTextComponent extends React.Component {
   choose = (number, data) => {
     this.props.choose_upData(

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../redux/action';
-import BgComponent from '../../components/background/bg_component';
-import { render_component } from './render/components';
+import { choose_action, select_action } from '../../../redux/action';
+import BgComponent from '../../../components/background/bg_component';
+import { render_component } from '../render/components';
 
 class ContentVisualView extends React.Component {
   render() {

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Form, Slider, Row, Col } from "antd";
+import React, { Component } from 'react';
+import { Form, Slider, Row, Col } from 'antd';
 
 /**
  * 内边距
@@ -19,31 +19,31 @@ class PaddingForm extends Component {
         labelCol: { xl: { span: 5, offset: 1 }, lg: { span: 5, offset: 1 } },
         wrapperCol: {
           xl: { span: 17, offset: 1 },
-          lg: { span: 18, offset: 1 }
-        }
+          lg: { span: 18, offset: 1 },
+        },
       };
     };
     return (
       <Row gutter={16}>
         <Form hideRequiredMark>
           <Col span={12}>
-            <FormItem {...form_item_style("上")}>
-              {getFieldDecorator("top")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('上')}>
+              {getFieldDecorator('top')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("下")}>
-              {getFieldDecorator("bottom")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('下')}>
+              {getFieldDecorator('bottom')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("左")}>
-              {getFieldDecorator("left")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('左')}>
+              {getFieldDecorator('left')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("右")}>
-              {getFieldDecorator("right")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('右')}>
+              {getFieldDecorator('right')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
         </Form>
@@ -60,20 +60,20 @@ export default Form.create({
     return {
       top: Form.createFormField({
         ...props.top,
-        value: props.top.value
+        value: props.top.value,
       }),
       left: Form.createFormField({
         ...props.left,
-        value: props.left.value
+        value: props.left.value,
       }),
       bottom: Form.createFormField({
         ...props.bottom,
-        value: props.bottom.value
+        value: props.bottom.value,
       }),
       right: Form.createFormField({
         ...props.right,
-        value: props.right.value
-      })
+        value: props.right.value,
+      }),
     };
-  }
+  },
 })(PaddingForm);
