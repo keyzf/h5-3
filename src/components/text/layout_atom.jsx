@@ -25,7 +25,7 @@ export const TextLayoutAtom = styled.div`
   padding-top: ${props => props.pt + 'px'};
   // 单背景色
   background: ${props => props.bgColor};
-  background-repeat: ${props => (props.repeat ? 'repeat-y' : 'no-repeat')};
+  background-repeat: ${props => (props.repeat ? 'repeat' : 'no-repeat')};
   background-image: ${props => (props.img ? 'url(' + props.img + ')' : null)};
   background-size: 100%;
 `;

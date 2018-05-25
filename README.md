@@ -2,13 +2,14 @@
 [![Build Status](https://travis-ci.org/AntoninSorrento/e7wei-company.svg?branch=master)](https://travis-ci.org/AntoninSorrento/e7wei-company)
 > 使用react编写，采用ant design 样式组件。    
 > 此包为公司项目，未经许可，不可使用。    
-> 如有疑问请提issues,或者通过下方的联系方式找我    
+> 如有疑问请提issues,或者通过下方的联系方式找我   
+> log.md 文件为工作日志，todo.md 文件为待办事项 
 
 ## 使用方法
 文件已经上传到npm，但是由于此包交互太多，推荐直接下载整个包进行使用       
 
 ### 第一步：安装node
-  由于node 与 npm 是捆绑在一起的，所以在你安装完 node 后，npm 也会自动安装在你的电脑中  
+   由于node 与 npm 是捆绑在一起的，所以在你安装完 node 后，npm 也会自动安装在你的电脑中  
    1. 通过源码安装，访问以下地址：https://nodejs.org/en/download/
        
    2.  针对 Mac 用户 ，安装HomeBrew ，安装完成后请在控制台中输入以下指令         

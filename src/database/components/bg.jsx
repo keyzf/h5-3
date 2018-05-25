@@ -1,13 +1,13 @@
-import { Map } from 'immutable';
+import { fromJS } from "immutable";
 
-export const $$background_database = Map({
-  name: 'background',
-  customize: Map({
-    color: '',
-    img: '',
-    img_config: Map({
-      tiling: '',
-      locking: '',
-    }),
-  }),
+export const $$background_database = fromJS({
+  name: "background",
+  customize: {
+    color: "",
+    img: "",
+    img_config: {
+      tiling: "",
+      locking: ""
+    }
+  }
 });

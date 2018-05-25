@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: toolkit/qiniu_upload.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,32 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: toolkit/qiniu_upload.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import qiniu from 'qiniu';
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * 通过配置七牛云数据，实现上传
+ * @type {string}
+ */
+const accessKey = 'HWKT9-xKIYPCH7skpgjDAff_md01u5_cqMH7EyIt';
+const secretKey = 'ww5mVtlXP1pu1P4-PfQy0OXIbEa-6bMipevEhCUW';
+const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+const options = {
+  scope: 'e7wei-test',
+};
+const putPolicy = new qiniu.rs.PutPolicy(options);
+export const uploadToken = putPolicy.uploadToken(mac);
+</code></pre>
+        </article>
+    </section>
 
 
 

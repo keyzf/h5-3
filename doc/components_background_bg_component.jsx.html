@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/background/bg_component.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,43 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/background/bg_component.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { BgLayoutAtom } from './layout_atom';
 
+/**
+ * 背景组件
+ */
+class BgComponent extends React.Component {
+  render() {
+    const bg_config = {
+      color: this.props.color,
+      img: this.props.img,
+      repeat: this.props.repeat,
+      attachment: this.props.attachment,
+    };
+    return (
+      //背景样式组件
+      &lt;BgLayoutAtom {...bg_config}>
+        {/*显示背景子元素*/}
+        {this.props.children}
+      &lt;/BgLayoutAtom>
+    );
+  }
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default BgComponent;
+</code></pre>
+        </article>
+    </section>
 
 
 
