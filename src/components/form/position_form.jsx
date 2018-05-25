@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Form, Slider, Row, Col } from "antd";
+import React, { Component } from 'react';
+import { Form, Slider, Row, Col } from 'antd';
 
 /**
  * 定位
@@ -25,41 +25,40 @@ class PositionForm extends Component {
         labelCol: { xl: { span: 6 }, lg: { span: 5 } },
         wrapperCol: {
           xl: { span: 17, offset: 1 },
-          lg: { span: 18, offset: 1 }
-        }
+          lg: { span: 18, offset: 1 },
+        },
       };
     };
     return (
       <Row gutter={16}>
         <Form hideRequiredMark>
-
           <Col span={12}>
-            <FormItem {...form_item_style("下移")}>
-              {getFieldDecorator("top")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('下移')}>
+              {getFieldDecorator('top')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("上移")}>
-              {getFieldDecorator("bottom")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('上移')}>
+              {getFieldDecorator('bottom')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("右移")}>
-              {getFieldDecorator("left")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('右移')}>
+              {getFieldDecorator('left')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
           <Col span={12}>
-            <FormItem {...form_item_style("左移")}>
-              {getFieldDecorator("right")(<Slider min={0} max={1000}/>)}
+            <FormItem {...form_item_style('左移')}>
+              {getFieldDecorator('right')(<Slider min={0} max={1000} />)}
             </FormItem>
           </Col>
-          <Col span={20} >
-            <FormItem {...form_item_style("图层设置")}>
-              {getFieldDecorator("depth")(
+          <Col span={20}>
+            <FormItem {...form_item_style('图层设置')}>
+              {getFieldDecorator('depth')(
                 <Slider
                   min={0}
                   max={360}
-                  marks={{ 0: "置下", 180: "置中", 360: "置上" }}
+                  marks={{ 0: '置下', 180: '置中', 360: '置上' }}
                 />
               )}
             </FormItem>
@@ -78,24 +77,24 @@ export default Form.create({
     return {
       top: Form.createFormField({
         ...props.top,
-        value: props.top.value
+        value: props.top.value,
       }),
       depth: Form.createFormField({
         ...props.depth,
-        value: props.depth.value
+        value: props.depth.value,
       }),
       left: Form.createFormField({
         ...props.left,
-        value: props.left.value
+        value: props.left.value,
       }),
       bottom: Form.createFormField({
         ...props.bottom,
-        value: props.bottom.value
+        value: props.bottom.value,
       }),
       right: Form.createFormField({
         ...props.right,
-        value: props.right.value
-      })
+        value: props.right.value,
+      }),
     };
-  }
+  },
 })(PositionForm);

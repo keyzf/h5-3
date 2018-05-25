@@ -1,14 +1,10 @@
 import React from 'react';
 import { Button, Tabs, Modal, Icon, Divider } from 'antd';
 import ImgForm from '../../../components/form/img_form';
-import { connect } from "react-redux";
-import { up_img_action } from "../../../redux/action";
-
-
-
+import { connect } from 'react-redux';
+import { up_img_action } from '../../../redux/action';
 
 class UpImgPart extends React.Component {
-
   state = {
     img_url: this.props.img,
   };
@@ -24,18 +20,22 @@ class UpImgPart extends React.Component {
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      const  $$user_img_new = this.props.up_img_value.data.push(
-        'http://p8afqcqwq.bkt.clouddn.com/' +
-          changedFields.upload.value.file.response.key
+      const $$user_img_new = this.props.up_img_value.data
+        .get('self')
+        .push(
+          'http://p8afqcqwq.bkt.clouddn.com/' +
+            changedFields.upload.value.file.response.key
+        );
+      this.props.up_img_upData(
+        this.props.up_img_value.data.set('self', $$user_img_new)
       );
-      this.props.up_img_upData($$user_img_new);
     }
   };
 
   render() {
     const TabPane = Tabs.TabPane;
     const { visible, unvisible } = this.props;
-    const $$up_img = this.props.up_img_value.data;
+    const $$up_img = this.props.up_img_value.data.get('self');
     return (
       <Modal
         width={800}
@@ -44,7 +44,9 @@ class UpImgPart extends React.Component {
         onCancel={unvisible}
         footer={null}
       >
-        <Tabs tabBarExtraContent={<ImgForm
+        <Tabs
+          tabBarExtraContent={
+            <ImgForm
               upload={{ value: '' }}
               onChange={this.ImgPartChange}
               child={
@@ -53,14 +55,15 @@ class UpImgPart extends React.Component {
                   &nbsp;添加素材
                 </div>
               }
-            />}>
+            />
+          }
+        >
           <TabPane tab="我的素材" key="1">
-            {
-              $$up_img.size ?
-                (<div style={{ width: '100%', minHeight: '400px' }}>
+            {$$up_img.size ? (
+              <div style={{ width: '100%', minHeight: '400px' }}>
                 <div style={{ minHeight: '300px' }}>
                   {// 循环显示出用户的自上传图片
-                    $$up_img.map((data, index) => {
+                  $$up_img.map((data, index) => {
                     return (
                       <div
                         key={index}
@@ -107,7 +110,6 @@ class UpImgPart extends React.Component {
                     )}
                     style={{ width: '100px', marginRight: '10px' }}
                   >
-
                     取消
                   </Button>
                   <Button
@@ -118,13 +120,12 @@ class UpImgPart extends React.Component {
                     )}
                     style={{ width: '100px', marginRight: '10px' }}
                   >
-
                     确定
                   </Button>
                 </div>
-              </div>)
-                :
-                (<div style={{ textAlign: 'center', padding: '0 80px' }}>
+              </div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '0 80px' }}>
                 <img
                   src={'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'}
                   alt={'img'}
@@ -140,8 +141,8 @@ class UpImgPart extends React.Component {
                   }
                   f
                 />
-              </div>)
-            }
+              </div>
+            )}
           </TabPane>
           <TabPane tab="共享素材" key="2">
             <Tabs tabPosition={'left'}>
@@ -196,21 +197,17 @@ class UpImgPart extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    up_img_value: state.up_img_reducer
+    up_img_value: state.up_img_reducer,
   };
 };
 
-
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    up_img_upData: (data,meta,error) => dispatch(up_img_action(data,meta,error))
+    up_img_upData: (data, meta, error) =>
+      dispatch(up_img_action(data, meta, error)),
   };
 };
 
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UpImgPart);
+export default connect(mapStateToProps, mapDispatchToProps)(UpImgPart);

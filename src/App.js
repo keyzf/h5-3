@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import { VisualLoadable } from "./routers/page_router";
+import { PreviewLoadable, VisualLoadable } from "./routers/page_router";
 import { store } from "./redux/store";
 import "./core.css";
 
@@ -21,6 +21,7 @@ class App extends Component {
               <Redirect to="visual"/>
             </Route>
             <Route path={"/visual"} component={VisualLoadable}/>
+            <Route path={"/preview"} component={PreviewLoadable}/>
           </Switch>
         </Router>
       </Provider>

@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 
 const default_text = {
   alignItems: 'center',

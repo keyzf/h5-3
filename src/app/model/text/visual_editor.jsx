@@ -2,9 +2,9 @@ import React from 'react';
 import { Icon } from 'antd';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
-import { choose_action } from '../../redux/action';
+import { choose_action } from '../../../redux/action';
 import BgEditor from './editor/bg_editor';
-import { render_form } from './render/form';
+import { render_form } from '../render/form';
 
 class EditorVisualView extends React.Component {
   // 点击背景按钮时，通过充值choose 数值来时editor界面返回到背景编辑界面

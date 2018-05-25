@@ -1,15 +1,12 @@
 import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import {
-  GridMallTemplate,
-  ListMallTemplate,
-} from '../../../components/template/mall';
+import { MusicTemplate } from '../../../../components/template/music';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 
-class MallSelect extends React.Component {
+class MusicSelect extends React.Component {
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -39,14 +36,7 @@ class MallSelect extends React.Component {
           key={1}
           onClick={this.transfer.bind(this)}
         >
-          <GridMallTemplate />
-        </div>
-        <div
-          className={'components_hover'}
-          key={2}
-          onClick={this.transfer.bind(this)}
-        >
-          <ListMallTemplate />
+          <MusicTemplate />
         </div>
         <Divider orientation="left">设计师推荐</Divider>
       </QueueAnim>
@@ -69,4 +59,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MallSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(MusicSelect);

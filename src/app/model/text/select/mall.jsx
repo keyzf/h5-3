@@ -2,17 +2,14 @@ import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import {
-  CarouselImgTemplate,
-  GridImgTemplate,
-  ListImgTemplate,
-  SliderImgTemplate,
-  UpImgTemplate,
-} from '../../../components/template/img';
+  GridMallTemplate,
+  ListMallTemplate,
+} from '../../../../components/template/mall';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 
-class ImgSelect extends React.Component {
+class MallSelect extends React.Component {
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -34,7 +31,6 @@ class ImgSelect extends React.Component {
       false
     );
   };
-
   render() {
     return (
       <QueueAnim delay={200}>
@@ -43,35 +39,14 @@ class ImgSelect extends React.Component {
           key={1}
           onClick={this.transfer.bind(this)}
         >
-          <UpImgTemplate />
+          <GridMallTemplate />
         </div>
         <div
           className={'components_hover'}
           key={2}
           onClick={this.transfer.bind(this)}
         >
-          <GridImgTemplate />
-        </div>
-        <div
-          className={'components_hover'}
-          key={3}
-          onClick={this.transfer.bind(this)}
-        >
-          <ListImgTemplate />
-        </div>
-        <div
-          className={'components_hover'}
-          key={4}
-          onClick={this.transfer.bind(this)}
-        >
-          <SliderImgTemplate />
-        </div>
-        <div
-          className={'components_hover'}
-          key={5}
-          onClick={this.transfer.bind(this)}
-        >
-          <CarouselImgTemplate />
+          <ListMallTemplate />
         </div>
         <Divider orientation="left">设计师推荐</Divider>
       </QueueAnim>
@@ -94,4 +69,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImgSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(MallSelect);

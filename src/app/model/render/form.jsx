@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorText from '../editor/text_editoer';
+import EditorText from '../text/editor/text_editoer';
 // import EditorImg from "../editor/img_editoer";
 
 export const render_form = data => {

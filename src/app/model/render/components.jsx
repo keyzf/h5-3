@@ -1,6 +1,7 @@
 import React from 'react';
 import VTextComponent from '../../../components/text/vertical_components';
 import HTextComponent from '../../../components/text/horizontal_components';
+
 // import OneTextComponent from "../../components/operating_ui/text/one";
 // import TwoTextComponent from "../../components/operating_ui/text/two";
 // import ThreeTextComponent from "../../components/operating_ui/text/three";
