@@ -1,5 +1,5 @@
 # E7wei(部分单页应用)
-[![Build Status](https://travis-ci.org/AntoninSorrento/e7wei.svg?branch=master)](https://travis-ci.org/AntoninSorrento/e7wei)
+[![Build Status](https://travis-ci.org/AntoninSorrento/e7wei-company.svg?branch=master)](https://travis-ci.org/AntoninSorrento/e7wei-company)
 > 使用react编写，采用ant design 样式组件。    
 > 此包为公司项目，未经许可，不可使用。    
 > 如有疑问请提issues,或者通过下方的联系方式找我    
