@@ -15,15 +15,15 @@
    打开控制台，依次运行一下命令
    
     cd desktop  // 将控制台调至桌面
-    git clone https://github.com/AntoninSorrento/e7wei-company.git  // 文件克隆至桌面
+    git clone https://github.com/AntoninSorrento/e7wei-company.git  // 文件克隆至桌面，⚠️请将包名改成e7wei-company
     cd e7wei-company // 进入文件夹
     npm install  // 安装包依赖
     npm start // 运行（浏览器会自动打开，需要等待片刻）
     
 #### 二、下载文件
-   1. 点击下面链接，找到绿色按钮将文件下载，请下载至桌面
+   1. 点击下面链接，找到绿色按钮将文件下载，请下载至桌面，下至桌面后 ⚠️请将包名改成e7wei-company
    
-    https://github.com/AntoninSorrento/e7wei-company   
+    https://github.com/AntoninSorrento/e7wei-company    
    
    2. 下载完成后，打开控制台，运行以下命令
        
