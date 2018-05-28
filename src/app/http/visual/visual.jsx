@@ -3,8 +3,8 @@ import { Layout } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import HeaderVisualView from './header';
 import SiderVisualView from './sider';
-import ContentVisualView from '../../model/text/visual_content';
-import EditorVisualView from '../../model/text/visual_editor';
+import ContentVisualView from '../../model/visual/visual_content';
+import EditorVisualView from '../../model/visual/visual_editor';
 
 class VisualView extends React.Component {
   render() {

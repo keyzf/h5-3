@@ -84,4 +84,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 // hoc 包装组件
-export default connect('', mapDispatchToProps)(HTextComponent);
+export default
+connect('', mapDispatchToProps)(HTextComponent);
