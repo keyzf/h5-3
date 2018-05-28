@@ -7,17 +7,16 @@ class HTextPreview extends React.Component {
     const customize = this.props.data.get('customize');
     // 可编辑属性 data:为文本
     const advanced_settings = {
-      // 绝对定位
-      top: advance.get('position').top.value,
-      left: advance.get('position').left.value,
-      right: advance.get('position').right.value,
-      bottom: advance.get('position').bottom.value,
-      depth: advance.get('position').depth.value,
+      top: advance.get('position').get('top').get('value'),
+      left: advance.get('position').get('left').get('value'),
+      right: advance.get('position').get('right').get('value'),
+      bottom: advance.get('position').get('bottom').get('value'),
+      depth: advance.get('position').get('depth').get('value'),
       // 内边距
-      pb: advance.get('padding').bottom.value,
-      pl: advance.get('padding').left.value,
-      pr: advance.get('padding').right.value,
-      pt: advance.get('padding').top.value,
+      pb: advance.get('padding').get('bottom').get('value'),
+      pl: advance.get('padding').get('left').get('value'),
+      pr: advance.get('padding').get('right').get('value'),
+      pt: advance.get('padding').get('top').get('value'),
       // 颜色
       bgColor: advance.get('color'),
       //背景
