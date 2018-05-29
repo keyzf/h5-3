@@ -5,9 +5,10 @@ import {
   GridMallTemplate,
   ListMallTemplate,
 } from '../../../../components/visual/template/mall';
-import { Map } from 'immutable';
+import { fromJS, Map } from "immutable";
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';
+import { $$mall_database } from "../../../../database/components/mall";
 
 class MallSelect extends React.Component {
   /**
@@ -23,7 +24,7 @@ class MallSelect extends React.Component {
     this.props.select_upData(select_up_data, 'meta', false);
     // 更新选择组件
     this.props.choose_upData(
-      Map({ number: select_up_data.size, data: data }),
+      Map({ number: select_up_data.size-1, data: data }),
       Map({
         content: true,
         choose: true,
@@ -32,19 +33,23 @@ class MallSelect extends React.Component {
     );
   };
   render() {
+    const option_data = name => {
+      return fromJS($$mall_database(name));
+    };
+
     return (
       <QueueAnim delay={200}>
         <div
           className={'components_hover'}
           key={1}
-          onClick={this.transfer.bind(this)}
+          onClick={this.transfer.bind(this,option_data('grid_mall'))}
         >
           <GridMallTemplate />
         </div>
         <div
           className={'components_hover'}
           key={2}
-          onClick={this.transfer.bind(this)}
+          onClick={this.transfer.bind(this,option_data('list_mall'))}
         >
           <ListMallTemplate />
         </div>
