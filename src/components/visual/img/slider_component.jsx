@@ -1,18 +1,17 @@
 import React from "react";
 import { Map } from "immutable";
 import { connect } from "react-redux";
-import { Row, Col } from "antd";
-import ComponentLocation from "../../app/model/visual/component-location";
+import ComponentLocation from "../../../app/model/visual/component-location";
 import { ImgLayoutAtom } from "./layout_atom";
-import { choose_action, select_action } from "../../redux/action";
+import { choose_action, select_action } from "../../../redux/action";
 
-class GridImgComponent extends React.Component {
+class SliderImgComponent extends React.Component {
   choose = (number, data) => {
     this.props.choose_upData(
       Map({ number: number, data: data }),
       Map({
         content: true,
-        choose: true
+        choose: true,
       }),
       false
     );
@@ -39,25 +38,6 @@ class GridImgComponent extends React.Component {
       //背景
       img: advance.get("img")
     };
-
-    const col = (number) => {
-      console.log(number);
-      if (number === 1) {
-        return 24;
-      }
-      if (number === 2) {
-        return 12;
-      }
-      if (number === 3) {
-        return 8;
-      }
-      if (number === 4) {
-        return 6;
-      } else {
-        return null;
-      }
-    };
-
     const $$show_element = customize.get("base").get("show_element").get("value");
     const $$show_element_title = $$show_element !== undefined ? $$show_element[0] : "";
     const $$show_element_content = $$show_element !== undefined && $$show_element[1] ? $$show_element[1] : "";
@@ -67,15 +47,18 @@ class GridImgComponent extends React.Component {
           this.props.choose ?
             <div style={{ border: "1px grey solid" }}>
               <ComponentLocation visible={this.props.choose}>
-                <Row gutter={16} onClick={this.choose.bind(this, this.props.index, this.props.data)}>
+                <div onClick={this.choose.bind(this, this.props.index, this.props.data)}
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      overflowX: "auto",
+                    }}>
                   {
                     customize.get("item").map((data, index) => {
                         return (
-                          <Col key={index}
-                               span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 12}>
-                            <img width={data.get("width").get("value") ? data.get("width").get("value") : "100%"}
-                                 height={data.get("height").get("value") ? data.get("height").get("value") : "auto"}
-                                 src={data.get("img") ? data.get("img") : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
+                          <div key={index} style={{ flex:'0 0 120px' ,marginRight: "2px" }}>
+                            <img width={data.get('width').get('value')?data.get('width').get('value'):"100%"} height={data.get('height').get('value')?data.get('height').get('value'):"auto"}
+                                 src={data.get('img')? data.get('img')  : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
                                  alt={"img"}/>
                             {
                               $$show_element_title ? "" : <div style={{
@@ -90,46 +73,48 @@ class GridImgComponent extends React.Component {
                                 alignItems: "center"
                               }}>{data.get("content").get("value")}</div>
                             }
-
-                          </Col>
+                          </div>
                         );
                       }
                     )
                   }
-                </Row>
+                </div>
               </ComponentLocation>
             </div> :
-            <ComponentLocation>
-              <Row gutter={16} onClick={this.choose.bind(this, this.props.index, this.props.data)}>
+            <ComponentLocation visible={this.props.choose}>
+              <div onClick={this.choose.bind(this, this.props.index, this.props.data)}
+                   style={{
+                     display: "flex",
+                     width: "100%",
+                     overflowX: "auto",
+                   }}>
                 {
                   customize.get("item").map((data, index) => {
                       return (
-                        <Col key={index}
-                             span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 12}>
-                          <img width={data.get("width").get("value") ? data.get("width").get("value") : "100%"}
-                               height={data.get("height").get("value") ? data.get("height").get("value") : "auto"}
-                               src={data.get("img") ? data.get("img") : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
+                        <div key={index} style={{ flex:'0 0 120px' ,marginRight: "2px" }}>
+                          <img width={data.get('width').get('value')?data.get('width').get('value'):"100%"} height={data.get('height').get('value')?data.get('height').get('value'):"auto"}
+                               src={data.get('img')? data.get('img')  : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
                                alt={"img"}/>
                           {
-                            $$show_element_title ? "" : <div style={{
+                            customize.get('base').get('show_element').get('value') ==='title'||customize.get('base').get('show_element').get('value') ==='both'?'':<div style={{
                               display: "flex",
                               justifyContent: "center",
                               alignItems: "center"
-                            }}>{data.get("title").get("value")}</div>}
-                          {
-                            $$show_element_content ? "" : <div style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center"
-                            }}>{data.get("content").get("value")}</div>
+                            }}>{data.get('title').get('value')}</div>
                           }
-
-                        </Col>
+                          {
+                            customize.get('base').get('show_element').get('value') ==='content'||customize.get('base').get('show_element').get('value') ==='both'?'':      <div style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center"
+                            }}>{data.get('content').get('value')}</div>
+                          }
+                        </div>
                       );
                     }
                   )
                 }
-              </Row>
+              </div>
             </ComponentLocation>
         }
       </ImgLayoutAtom>
@@ -148,5 +133,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 // hoc 包装组件
-export default connect("", mapDispatchToProps)(GridImgComponent);
+export default connect("", mapDispatchToProps)(SliderImgComponent);
 

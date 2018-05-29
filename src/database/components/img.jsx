@@ -4,7 +4,11 @@ export const $$img_add_item = {
   content: { value: "内容" },
   link: { value: "" },
   width: { value: "" },
-  height: { value: "" }
+  height: { value: "" },
+  img_config: {
+    stretching: { value: "" },
+    tiling: { value: "" }
+  }
 };
 
 export const $$img_database = (number, name) => {

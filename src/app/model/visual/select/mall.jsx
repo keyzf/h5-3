@@ -4,7 +4,7 @@ import QueueAnim from 'rc-queue-anim';
 import {
   GridMallTemplate,
   ListMallTemplate,
-} from '../../../../components/template/mall';
+} from '../../../../components/visual/template/mall';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';

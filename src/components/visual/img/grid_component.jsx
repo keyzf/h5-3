@@ -2,17 +2,17 @@ import React from "react";
 import { Map } from "immutable";
 import { connect } from "react-redux";
 import { Row, Col } from "antd";
-import ComponentLocation from "../../app/model/visual/component-location";
+import ComponentLocation from "../../../app/model/visual/component-location";
 import { ImgLayoutAtom } from "./layout_atom";
-import { choose_action, select_action } from "../../redux/action";
+import { choose_action, select_action } from "../../../redux/action";
 
-class ListImgComponent extends React.Component {
+class GridImgComponent extends React.Component {
   choose = (number, data) => {
     this.props.choose_upData(
       Map({ number: number, data: data }),
       Map({
         content: true,
-        choose: true,
+        choose: true
       }),
       false
     );
@@ -39,6 +39,7 @@ class ListImgComponent extends React.Component {
       //背景
       img: advance.get("img")
     };
+
     const col = (number) => {
       console.log(number);
       if (number === 1) {
@@ -56,6 +57,7 @@ class ListImgComponent extends React.Component {
         return null;
       }
     };
+
     const $$show_element = customize.get("base").get("show_element").get("value");
     const $$show_element_title = $$show_element !== undefined ? $$show_element[0] : "";
     const $$show_element_content = $$show_element !== undefined && $$show_element[1] ? $$show_element[1] : "";
@@ -69,51 +71,12 @@ class ListImgComponent extends React.Component {
                   {
                     customize.get("item").map((data, index) => {
                         return (
-                          <Col   key={index}  span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 24}>
-                            <Col span={12}>
-                              <img width={data.get('width').get('value')?data.get('width').get('value'):"100%"} height={data.get('height').get('value')?data.get('height').get('value'):"auto"}
-                                   src={data.get('img')? data.get('img')  : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
-                                   alt={"img"}/>
-                              <br/>
-                            </Col>
-                            <Col span={12}>
-                              {
-                                $$show_element_title ? "" : <div style={{
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  alignItems: "center"
-                                }}>{data.get("title").get("value")}</div>}
-                              {
-                                $$show_element_content ? "" : <div style={{
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  alignItems: "center"
-                                }}>{data.get("content").get("value")}</div>
-                              }
-                              <br/>
-                            </Col>
-                          </Col>
-                        );
-                      }
-                    )
-                  }
-                </Row>
-              </ComponentLocation>
-            </div>
-            :
-            <ComponentLocation visible={this.props.choose}>
-              <Row gutter={16} onClick={this.choose.bind(this, this.props.index, this.props.data)}>
-                {
-                  customize.get("item").map((data, index) => {
-                      return (
-                        <Col   key={index}  span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 24}>
-                          <Col span={12}>
-                            <img width={data.get('width').get('value')?data.get('width').get('value'):"100%"} height={data.get('height').get('value')?data.get('height').get('value'):"auto"}
-                                 src={data.get('img')? data.get('img')  : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
+                          <Col key={index}
+                               span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 12}>
+                            <img width={data.get("width").get("value") ? data.get("width").get("value") : "100%"}
+                                 height={data.get("height").get("value") ? data.get("height").get("value") : "auto"}
+                                 src={data.get("img") ? data.get("img") : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
                                  alt={"img"}/>
-                            <br/>
-                          </Col>
-                          <Col span={12}>
                             {
                               $$show_element_title ? "" : <div style={{
                                 display: "flex",
@@ -127,8 +90,40 @@ class ListImgComponent extends React.Component {
                                 alignItems: "center"
                               }}>{data.get("content").get("value")}</div>
                             }
-                            <br/>
+
                           </Col>
+                        );
+                      }
+                    )
+                  }
+                </Row>
+              </ComponentLocation>
+            </div> :
+            <ComponentLocation>
+              <Row gutter={16} onClick={this.choose.bind(this, this.props.index, this.props.data)}>
+                {
+                  customize.get("item").map((data, index) => {
+                      return (
+                        <Col key={index}
+                             span={col(customize.get("base").get("layout").get("value")) ? col(customize.get("base").get("layout").get("value")) : 12}>
+                          <img width={data.get("width").get("value") ? data.get("width").get("value") : "100%"}
+                               height={data.get("height").get("value") ? data.get("height").get("value") : "auto"}
+                               src={data.get("img") ? data.get("img") : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"}
+                               alt={"img"}/>
+                          {
+                            $$show_element_title ? "" : <div style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center"
+                            }}>{data.get("title").get("value")}</div>}
+                          {
+                            $$show_element_content ? "" : <div style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center"
+                            }}>{data.get("content").get("value")}</div>
+                          }
+
                         </Col>
                       );
                     }
@@ -153,5 +148,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 // hoc 包装组件
-export default connect("", mapDispatchToProps)(ListImgComponent);
+export default connect("", mapDispatchToProps)(GridImgComponent);
 

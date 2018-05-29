@@ -1,10 +1,11 @@
 import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { MusicTemplate } from '../../../../components/template/music';
-import { Map } from 'immutable';
+import { MusicTemplate } from '../../../../components/visual/template/music';
+import { Map,fromJS } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';
+import { $$music_database } from "../../../../database/components/music";
 
 class MusicSelect extends React.Component {
   /**
@@ -20,7 +21,7 @@ class MusicSelect extends React.Component {
     this.props.select_upData(select_up_data, 'meta', false);
     // 更新选择组件
     this.props.choose_upData(
-      Map({ number: select_up_data.size, data: data }),
+      Map({ number: select_up_data.size-1, data: data }),
       Map({
         content: true,
         choose: true,
@@ -29,12 +30,15 @@ class MusicSelect extends React.Component {
     );
   };
   render() {
+    const option_data = (name) => {
+      return fromJS($$music_database(name));
+    };
     return (
       <QueueAnim delay={200}>
         <div
           className={'components_hover'}
           key={1}
-          onClick={this.transfer.bind(this)}
+          onClick={this.transfer.bind(this,option_data('music'))}
         >
           <MusicTemplate />
         </div>

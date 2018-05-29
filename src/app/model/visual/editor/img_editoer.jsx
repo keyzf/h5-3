@@ -4,12 +4,12 @@ import { Map, fromJS } from "immutable";
 import { Tabs, Button, Collapse, Row, Col, Icon, Card, Checkbox, Popover, Tooltip, Divider } from "antd";
 import { SketchPicker } from "react-color";
 import { choose_action, select_action } from "../../../../redux/action";
-import PaddingForm from "../../../../components/form/padding_form";
-import PositionForm from "../../../../components/form/position_form";
+import PaddingForm from "../../../../components/visual/form/padding_form";
+import PositionForm from "../../../../components/visual/form/position_form";
 import UpImgPart from "../../part/up_img";
-import ImgBaseForm from "../../../../components/form/img_base_form";
+import ImgBaseForm from "../../../../components/visual/form/img_base_form";
 import { $$img_add_item, $$img_database } from "../../../../database/components/img";
-import ImgItemForm from "../../../../components/form/img_item_form";
+import ImgItemForm from "../../../../components/visual/form/img_item_form";
 
 class EditorImg extends React.Component {
   /**
@@ -360,7 +360,7 @@ class EditorImg extends React.Component {
                 </Col>
               </Row>
               <Divider/>
-              <ImgItemForm {...$$ui_text_data.get("customize").get("item").toJS()[this.state.number]}
+              <ImgItemForm name={$$customize.get("name")} {...$$ui_text_data.get("customize").get("item").toJS()[this.state.number]}
                            onChange={this.editorFeatures.bind(this, "item_change")}/>
             </Card>
             :
