@@ -1,18 +1,18 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Map, fromJS } from "immutable";
-import { SketchPicker } from "react-color";
-import { Tabs, Button, Checkbox, Popover, Icon, Card, Row, Col } from "antd";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Map, fromJS } from 'immutable';
+import { SketchPicker } from 'react-color';
+import { Tabs, Button, Checkbox, Popover, Icon, Card, Row, Col } from 'antd';
 import {
   $$text_database,
   h_html_text,
-  v_html_text
-} from "../../../../database/components/text";
-import { choose_action, select_action } from "../../../../redux/action";
-import PaddingForm from "../../../../components/visual/form/padding_form";
-import PositionForm from "../../../../components/visual/form/position_form";
-import RichTextEditor from "../../../../components/visual/form/editor_form";
-import UpImgPart from "../../part/up_img";
+  v_html_text,
+} from '../../../../database/components/text';
+import { choose_action, select_action } from '../../../../redux/action';
+import PaddingForm from '../../../../components/visual/form/padding_form';
+import PositionForm from '../../../../components/visual/form/position_form';
+import RichTextEditor from '../../../../components/visual/form/editor_form';
+import UpImgPart from '../../part/up_img';
 
 /**
  * editor for text
@@ -28,7 +28,7 @@ class EditorText extends React.Component {
    * @type {{visible: boolean}}
    */
   state = {
-    visible: false
+    visible: false,
   };
 
   /**
@@ -36,22 +36,22 @@ class EditorText extends React.Component {
    */
   showModal = () => {
     this.setState({
-      visible: true
+      visible: true,
     });
   };
 
   // close Model
   closeModal = (state, data) => {
     this.setState({
-      visible: false
+      visible: false,
     });
     if (state && data !== undefined) {
       const $$select_data = this.props.select_value.data;
       const $$choose_data = this.props.choose_value.data;
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "img"], data)
+          .get($$choose_data.get('number'))
+          .setIn(['advance', 'img'], data)
       );
     }
   };
@@ -67,11 +67,11 @@ class EditorText extends React.Component {
     const $$select_data = this.props.select_value.data;
     // create new data
     const $$new_select_data = $$select_data.setIn(
-      [$$choose_data.get("number"), "customize", "html_content"],
+      [$$choose_data.get('number'), 'customize', 'html_content'],
       html_callback
     );
     // send action  -> to change select_render's data
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
   };
 
   /**
@@ -87,74 +87,83 @@ class EditorText extends React.Component {
     const $$choose_data = this.props.choose_value.data;
     // Current component name
     const name = $$select_data
-      .get($$choose_data.get("number"))
-      .get("customize")
-      .get("name");
+      .get($$choose_data.get('number'))
+      .get('customize')
+      .get('name');
     // features
-    if (opt_name === "color") {
+    if (opt_name === 'color') {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "color"], data.hex)
+          .get($$choose_data.get('number'))
+          .setIn(['advance', 'color'], data.hex)
       );
     }
-    if (opt_name === "delete") {
+    if (opt_name === 'delete') {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "img"], "")
+          .get($$choose_data.get('number'))
+          .setIn(['advance', 'img'], '')
       );
     }
-    if (opt_name === "tiling") {
+    if (opt_name === 'tiling') {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "img_config", "tiling", "value"], data.target.checked)
+          .get($$choose_data.get('number'))
+          .setIn(
+            ['advance', 'img_config', 'tiling', 'value'],
+            data.target.checked
+          )
       );
     }
-    if (opt_name === "stretching") {
+    if (opt_name === 'stretching') {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "img_config", "stretching", "value"], data.target.checked)
+          .get($$choose_data.get('number'))
+          .setIn(
+            ['advance', 'img_config', 'stretching', 'value'],
+            data.target.checked
+          )
       );
     }
-    if (opt_name === "position") {
+    if (opt_name === 'position') {
       // update position
       const $$position = {
         ...$$select_data
-          .get($$choose_data.get("number"))
-          .get("advance")
-          .get("position").toJS(),
-        ...data
+          .get($$choose_data.get('number'))
+          .get('advance')
+          .get('position')
+          .toJS(),
+        ...data,
       };
       // new data
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "position"], fromJS($$position))
+          .get($$choose_data.get('number'))
+          .setIn(['advance', 'position'], fromJS($$position))
       );
     }
-    if (opt_name === "padding") {
+    if (opt_name === 'padding') {
       // update position
       const $$padding = {
         ...$$select_data
-          .get($$choose_data.get("number"))
-          .get("advance")
-          .get("padding").toJS(),
-        ...data
+          .get($$choose_data.get('number'))
+          .get('advance')
+          .get('padding')
+          .toJS(),
+        ...data,
       };
       // new data
       this.sendAction(
         $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "padding"], fromJS(($$padding))));
+          .get($$choose_data.get('number'))
+          .setIn(['advance', 'padding'], fromJS($$padding))
+      );
     }
-    if (opt_name === "reset") {
-      if (name === "horizontal_text") {
+    if (opt_name === 'reset') {
+      if (name === 'horizontal_text') {
         this.sendAction(Map($$text_database(name, h_html_text)));
       }
-      if (name === "vertical_text") {
+      if (name === 'vertical_text') {
         this.sendAction(Map($$text_database(name, v_html_text)));
       }
     }
@@ -171,12 +180,12 @@ class EditorText extends React.Component {
     const $$choose_data = this.props.choose_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
+      $$choose_data.get('number'),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
+    const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
     this.props.choose_upData(
       $$new_choose_data,
       Map({ content: true, choose: true }),
@@ -186,23 +195,23 @@ class EditorText extends React.Component {
 
   render() {
     // resolve props data
-    const $$ui_text_data = this.props.data.get("data");
-    const $$customize = $$ui_text_data.get("customize");
-    const $$advance = $$ui_text_data.get("advance");
+    const $$ui_text_data = this.props.data.get('data');
+    const $$customize = $$ui_text_data.get('customize');
+    const $$advance = $$ui_text_data.get('advance');
     /**
      * reset data
      */
     const operations = (
-      <Button onClick={this.editorFeatures.bind(this, "reset")}>
+      <Button onClick={this.editorFeatures.bind(this, 'reset')}>
         恢复默认
       </Button>
     );
     return (
-      <Tabs defaultActiveKey={"1"} tabBarExtraContent={operations}>
+      <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
         <Tabs.TabPane tab="内容设置" key="1">
           <Card
             title="富文本编辑器"
-            style={{ width: "100%", marginTop: "-18px" }}
+            style={{ width: '100%', marginTop: '-18px' }}
           >
             <RichTextEditor
               data={$$customize}
@@ -211,24 +220,24 @@ class EditorText extends React.Component {
           </Card>
         </Tabs.TabPane>
         <Tabs.TabPane tab="高级设置" key="2">
-          <Card title="背景色" style={{ marginTop: "-18px" }}>
+          <Card title="背景色" style={{ marginTop: '-18px' }}>
             <Popover
               content={
                 <SketchPicker
-                  color={$$advance.get("color")}
-                  onChangeComplete={this.editorFeatures.bind(this, "color")}
+                  color={$$advance.get('color')}
+                  onChangeComplete={this.editorFeatures.bind(this, 'color')}
                 />
               }
               trigger="click"
             >
               <Card.Grid
                 style={{
-                  textAlign: "center",
-                  width: "45%",
-                  background: $$advance.get("color")
+                  textAlign: 'center',
+                  width: '45%',
+                  background: $$advance.get('color'),
                 }}
               >
-                <Icon type="plus"/>&nbsp;&nbsp;自定义
+                <Icon type="plus" />&nbsp;&nbsp;自定义
               </Card.Grid>
             </Popover>
           </Card>
@@ -237,55 +246,59 @@ class EditorText extends React.Component {
               <Col
                 span={7}
                 style={{
-                  margin: "auto",
-                  height: "100px",
-                  border: "1px solid #e7e7e7",
-                  textAlign: "center",
-                  color: "#e7e7e7",
-                  display: "flex",
-                  alignItems: "center"
+                  margin: 'auto',
+                  height: '100px',
+                  border: '1px solid #e7e7e7',
+                  textAlign: 'center',
+                  color: '#e7e7e7',
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
                 onClick={this.showModal}
               >
                 <img
                   style={{
-                    verticalAlign: "middle",
-                    maxWidth: "100%",
-                    maxHeight: "100%",
-                    margin: "auto"
+                    verticalAlign: 'middle',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    margin: 'auto',
                   }}
                   src={
-                    $$advance.get("img")
-                      ? $$advance.get("img")
-                      : "http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"
+                    $$advance.get('img')
+                      ? $$advance.get('img')
+                      : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
                   }
-                  alt={"img"}
+                  alt={'img'}
                 />
               </Col>
               <Col span={12}>
                 <Button.Group>
                   <Button onClick={this.showModal}>更换</Button>
-                  <Button onClick={this.editorFeatures.bind(this, "delete")}>
+                  <Button onClick={this.editorFeatures.bind(this, 'delete')}>
                     删除
                   </Button>
                 </Button.Group>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <Row gutter={16}>
                   <Col span={10}>
                     <Checkbox
-                      onChange={this.editorFeatures.bind(this, "tiling")}
-                      defaultValue={$$advance.get("img_config").get("tiling").get("value")}
+                      onChange={this.editorFeatures.bind(this, 'tiling')}
+                      defaultValue={$$advance
+                        .get('img_config')
+                        .get('tiling')
+                        .get('value')}
                     >
                       平铺
                     </Checkbox>
                   </Col>
                   <Col span={12}>
                     <Checkbox
-                      onChange={this.editorFeatures.bind(this, "stretching")}
+                      onChange={this.editorFeatures.bind(this, 'stretching')}
                       defaultValue={$$advance
-                        .get("img_config")
-                        .get("stretching").get("value")}
+                        .get('img_config')
+                        .get('stretching')
+                        .get('value')}
                     >
                       拉伸
                     </Checkbox>
@@ -294,21 +307,21 @@ class EditorText extends React.Component {
                 <UpImgPart
                   visible={this.state.visible}
                   unvisible={this.closeModal.bind(this)}
-                  img={$$advance.get("img")}
+                  img={$$advance.get('img')}
                 />
               </Col>
             </Row>
           </Card>
-          <Card title="内边距" style={{ width: "100%" }}>
+          <Card title="内边距" style={{ width: '100%' }}>
             <PaddingForm
-              {...$$advance.get("padding").toJS()}
-              onChange={this.editorFeatures.bind(this, "padding")}
+              {...$$advance.get('padding').toJS()}
+              onChange={this.editorFeatures.bind(this, 'padding')}
             />
           </Card>
-          <Card title="定位" style={{ width: "100%" }}>
+          <Card title="定位" style={{ width: '100%' }}>
             <PositionForm
-              {...$$advance.get("position").toJS()}
-              onChange={this.editorFeatures.bind(this, "position")}
+              {...$$advance.get('position').toJS()}
+              onChange={this.editorFeatures.bind(this, 'position')}
             />
           </Card>
         </Tabs.TabPane>
@@ -320,7 +333,7 @@ class EditorText extends React.Component {
 const mapStateToProps = state => {
   return {
     select_value: state.select_reducer,
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
@@ -329,7 +342,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 

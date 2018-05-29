@@ -1,4 +1,4 @@
-import { Map,fromJS } from 'immutable';
+import { Map, fromJS } from 'immutable';
 
 export const h_html_text =
   '<h2 style="text-align:center;">横排文本</h2><p style="text-align:center;"> 在这里填充内容<br/>在这里填充内容<br/>在这里填充内容<br/>在这里填充内容<br/>在这里填充内容</p>';
@@ -16,8 +16,8 @@ export const $$text_database = (name, html) => {
       color: '',
       img: '',
       img_config: {
-        stretching: {value:''},
-        tiling: {value:''},
+        stretching: { value: '' },
+        tiling: { value: '' },
       },
       padding: {
         top: { value: 0 },

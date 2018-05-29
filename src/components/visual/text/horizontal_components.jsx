@@ -22,16 +22,43 @@ class HTextComponent extends React.Component {
     // 可编辑属性 data:为文本
     const advanced_settings = {
       // 绝对定位
-      top: advance.get('position').get('top').get('value'),
-      left: advance.get('position').get('left').get('value'),
-      right: advance.get('position').get('right').get('value'),
-      bottom: advance.get('position').get('bottom').get('value'),
-      depth: advance.get('position').get('depth').get('value'),
+      top: advance
+        .get('position')
+        .get('top')
+        .get('value'),
+      left: advance
+        .get('position')
+        .get('left')
+        .get('value'),
+      right: advance
+        .get('position')
+        .get('right')
+        .get('value'),
+      bottom: advance
+        .get('position')
+        .get('bottom')
+        .get('value'),
+      depth: advance
+        .get('position')
+        .get('depth')
+        .get('value'),
       // 内边距
-      pb: advance.get('padding').get('bottom').get('value'),
-      pl: advance.get('padding').get('left').get('value'),
-      pr: advance.get('padding').get('right').get('value'),
-      pt: advance.get('padding').get('top').get('value'),
+      pb: advance
+        .get('padding')
+        .get('bottom')
+        .get('value'),
+      pl: advance
+        .get('padding')
+        .get('left')
+        .get('value'),
+      pr: advance
+        .get('padding')
+        .get('right')
+        .get('value'),
+      pt: advance
+        .get('padding')
+        .get('top')
+        .get('value'),
       // 颜色
       bgColor: advance.get('color'),
       //背景

@@ -1,13 +1,13 @@
-import { fromJS } from "immutable";
+import { fromJS } from 'immutable';
 
 export const $$background_database = fromJS({
-  name: "background",
+  name: 'background',
   customize: {
-    color: "",
-    img: "",
+    color: '',
+    img: '',
     img_config: {
-      tiling: "",
-      locking: ""
-    }
-  }
+      tiling: '',
+      locking: '',
+    },
+  },
 });
