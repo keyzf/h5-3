@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
-import { choose_action, select_action } from '../../redux/action';
+import { choose_action, select_action } from '../../../redux/action';
 import { TextLayoutAtom } from './layout_atom';
-import ComponentLocation from '../../app/model/visual/component-location';
-class HTextComponent extends React.Component {
+import ComponentLocation from '../../../app/model/visual/component-location';
+
+class VTextComponent extends React.Component {
   choose = (number, data) => {
     this.props.choose_upData(
       Map({ number: number, data: data }),
@@ -39,35 +40,48 @@ class HTextComponent extends React.Component {
     };
     return (
       <TextLayoutAtom {...advanced_settings}>
-        {// 判断用户选择的组件，主要用来甄别用户当前选择的组件
-        this.props.choose ? (
+        {this.props.choose ? (
           <div style={{ border: '1px grey solid' }}>
             <ComponentLocation>
+              <span>
+                <div
+                  onClick={this.choose.bind(
+                    this,
+                    this.props.index,
+                    this.props.data
+                  )}
+                  style={{
+                    writingMode: 'vertical-rl',
+                    textAlign: 'center',
+                    margin: '0 auto',
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: customize.get('html_content'),
+                  }}
+                />
+              </span>
+            </ComponentLocation>
+          </div>
+        ) : (
+          <span>
+            <ComponentLocation>
               <div
-                dangerouslySetInnerHTML={{
-                  __html: customize.get('html_content'),
-                }}
                 onClick={this.choose.bind(
                   this,
                   this.props.index,
                   this.props.data
                 )}
+                style={{
+                  writingMode: 'vertical-rl',
+                  textAlign: 'center',
+                  margin: '0 auto',
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: this.props.data.get('customize').get('html_content'),
+                }}
               />
             </ComponentLocation>
-          </div>
-        ) : (
-          <ComponentLocation>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: customize.get('html_content'),
-              }}
-              onClick={this.choose.bind(
-                this,
-                this.props.index,
-                this.props.data
-              )}
-            />
-          </ComponentLocation>
+          </span>
         )}
       </TextLayoutAtom>
     );
@@ -84,4 +98,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 // hoc 包装组件
-export default connect('', mapDispatchToProps)(HTextComponent);
+export default connect('', mapDispatchToProps)(VTextComponent);

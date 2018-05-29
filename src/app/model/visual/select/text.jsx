@@ -6,7 +6,7 @@ import QueueAnim from 'rc-queue-anim';
 import {
   HorizontalTextTemplate,
   VerticalTextTemplate,
-} from '../../../../components/template/text';
+} from '../../../../components/visual/template/text';
 import { choose_action, select_action } from '../../../../redux/action';
 import {
   $$text_database,

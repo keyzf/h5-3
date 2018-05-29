@@ -1,6 +1,8 @@
 import React from "react";
 import EditorText from "../visual/editor/text_editoer";
 import EditorImg from "../visual/editor/img_editoer";
+import EditorMusic from "../visual/editor/music_editor";
+import EditorVideo from "../visual/editor/video_editor";
 
 export const render_form = data => {
   switch (
@@ -25,10 +27,10 @@ export const render_form = data => {
       return <EditorImg data={data}/>;
     case "carousel_img":
       return <EditorImg data={data}/>;
-    //   case "music":
-    //     return <EditorMusic data={data}/>;
-    //   case "video":
-    //     return <EditorVideo data={data}/>;
+    case "music":
+      return <EditorMusic data={data}/>;
+    case "video":
+      return <EditorVideo data={data}/>;
     //   case "grid_mall":
     //     return <EditorMall data={data}/>;
     //   case "list_mall":

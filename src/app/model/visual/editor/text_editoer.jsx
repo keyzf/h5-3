@@ -9,9 +9,9 @@ import {
   v_html_text
 } from "../../../../database/components/text";
 import { choose_action, select_action } from "../../../../redux/action";
-import PaddingForm from "../../../../components/form/padding_form";
-import PositionForm from "../../../../components/form/position_form";
-import RichTextEditor from "../../../../components/form/editor_form";
+import PaddingForm from "../../../../components/visual/form/padding_form";
+import PositionForm from "../../../../components/visual/form/position_form";
+import RichTextEditor from "../../../../components/visual/form/editor_form";
 import UpImgPart from "../../part/up_img";
 
 /**

@@ -9,7 +9,7 @@ import {
   ListImgTemplate,
   SliderImgTemplate,
   UpImgTemplate
-} from "../../../../components/template/img";
+} from "../../../../components/visual/template/img";
 
 import { choose_action, select_action } from "../../../../redux/action";
 import { $$img_database } from "../../../../database/components/img";

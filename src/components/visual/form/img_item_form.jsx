@@ -26,14 +26,20 @@ class ImgItemForm extends React.Component {
           {getFieldDecorator("width")(
             <Input/>)}
         </Form.Item>
-        <Form.Item {...form_item_style("标题")}>
-          {getFieldDecorator("title")(
-            <Input/>)}
-        </Form.Item>
-        <Form.Item {...form_item_style("内容")}>
-          {getFieldDecorator("content")(
-            <Input/>)}
-        </Form.Item>
+        {
+          this.props.name === "up_img" ? "" :
+            <Form.Item {...form_item_style("标题")}>
+              {getFieldDecorator("title")(
+                <Input/>)}
+            </Form.Item>
+        }
+        {
+          this.props.name === "up_img" ? "" :
+            <Form.Item {...form_item_style("内容")}>
+              {getFieldDecorator("content")(
+                <Input/>)}
+            </Form.Item>
+        }
         <Form.Item {...form_item_style("图片链接")}>
           {getFieldDecorator("link")(
             <Input/>)}

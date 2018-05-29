@@ -1,10 +1,11 @@
 import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { VideoTemplate } from '../../../../components/template/video';
-import { Map } from 'immutable';
+import { VideoTemplate } from '../../../../components/visual/template/video';
+import { fromJS, Map } from "immutable";
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';
+import { $$video_database } from "../../../../database/components/video";
 
 class VideoSelect extends React.Component {
   /**
@@ -20,7 +21,7 @@ class VideoSelect extends React.Component {
     this.props.select_upData(select_up_data, 'meta', false);
     // 更新选择组件
     this.props.choose_upData(
-      Map({ number: select_up_data.size, data: data }),
+      Map({ number: select_up_data.size-1, data: data }),
       Map({
         content: true,
         choose: true,
@@ -30,12 +31,15 @@ class VideoSelect extends React.Component {
   };
 
   render() {
+    const option_data = (name) => {
+      return fromJS($$video_database(name));
+    };
     return (
       <QueueAnim delay={200}>
         <div
           className={'components_hover'}
           key={1}
-          onClick={this.transfer.bind(this)}
+          onClick={this.transfer.bind(this,option_data('video'))}
         >
           <VideoTemplate />
         </div>

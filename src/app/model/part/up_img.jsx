@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Tabs, Modal, Icon, Divider } from 'antd';
-import ImgForm from '../../../components/form/img_form';
+import ImgForm from '../../../components/visual/form/img_form';
 import { connect } from 'react-redux';
 import { up_img_action } from '../../../redux/action';
 
