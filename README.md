@@ -1,27 +1,25 @@
 # E7wei(部分单页应用)
-[![Build Status](https://travis-ci.org/AntoninSorrento/e7wei-company.svg?branch=master)](https://travis-ci.org/AntoninSorrento/e7wei-company)
-
-🍎
-> 使用react编写，采用ant design 样式组件，技术栈及选用包，请参考标签卡       
-> 🦀log.md 文件为工作日志  ⚠️请针对开发日志进行测试       
-> 🐡todo.md 文件为待办事项     ⚠️如测试时发现bug，请先在此文件中查看是否已列出    
+> **导读**
+> log.md 文件为开发日志,请针对开发日志进行测试 
+> 使用react编写，采用ant design 样式组件，技术栈及选用包，请参考标签卡        
 > 如有 Bug ，最好在 issues 中提出，方便以后追溯问题    
 
- 
+
+
 ## 使用方法
-通过命令行克隆包，或者通过下载选项将文件下载运行
+一共有三种使用方法：通过命令行克隆包、通过下载选项将文件下载、使用github Desktop
 
 #### 一、克隆包
    打开控制台，依次运行一下命令
    
     cd desktop  // 将控制台调至桌面
-    git clone https://github.com/AntoninSorrento/e7wei-company.git  // 文件克隆至桌面，⚠️请将包名改成e7wei-company
+    git clone https://github.com/AntoninSorrento/e7wei-company.git  // 文件克隆至桌面，️请将包名改成e7wei-company
     cd e7wei-company // 进入文件夹
     npm install  // 安装包依赖
     npm start // 运行（浏览器会自动打开，需要等待片刻）
     
 #### 二、下载文件
-   1. 点击下面链接，找到绿色按钮将文件下载，请下载至桌面，下至桌面后 ⚠️请将包名改成e7wei-company
+   1. 点击下面链接，找到绿色按钮将文件下载，请下载至桌面，下至桌面后，️请将包名改成e7wei-company
    
     https://github.com/AntoninSorrento/e7wei-company    
    
@@ -29,6 +27,14 @@
        
     cd desktop  // 将控制台调至桌面
     cd e7wei-company // 进入文件夹
+    npm install  // 安装包依赖
+    npm start // 运行（浏览器会自动打开，需要等待片刻）
+   
+#### 三、github Desktop
+   1. 点击同步按钮，将最新文件同步至项目目录中
+   2. 打开控制台运行以下代码
+   
+    cd <文件夹名称>
     npm install  // 安装包依赖
     npm start // 运行（浏览器会自动打开，需要等待片刻）
    

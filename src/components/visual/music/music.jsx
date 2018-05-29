@@ -1,9 +1,9 @@
-import React from "react";
-import { RotateAtom } from "./rotat_animation";
-import { Map } from "immutable";
-import ComponentLocation from "../../../app/model/visual/component-location";
-import { choose_action, select_action } from "../../../redux/action";
-import { connect } from "react-redux";
+import React from 'react';
+import { RotateAtom } from './rotat_animation';
+import { Map } from 'immutable';
+import ComponentLocation from '../../../app/model/visual/component-location';
+import { choose_action, select_action } from '../../../redux/action';
+import { connect } from 'react-redux';
 
 /**
  * 音乐组件
@@ -14,26 +14,28 @@ class MusicComponent extends React.Component {
       Map({ number: number, data: data }),
       Map({
         content: true,
-        choose: true
+        choose: true,
       }),
       false
     );
   };
 
   render() {
-    // 解构数据
-    const $$customize = this.props.data.get("customize");
     return (
       <RotateAtom>
         {this.props.choose ? (
-          <div style={{ border: "1px grey solid" }}>
+          <div style={{ border: '1px grey solid' }}>
             <ComponentLocation>
               <span>
-                        <i className={"iconfont icon-yinlemusic214"} style={{ color: "red" }} onClick={this.choose.bind(
-                          this,
-                          this.props.index,
-                          this.props.data
-                        )}/>
+                <i
+                  className={'iconfont icon-yinlemusic214'}
+                  style={{ color: 'red' }}
+                  onClick={this.choose.bind(
+                    this,
+                    this.props.index,
+                    this.props.data
+                  )}
+                />
               </span>
             </ComponentLocation>
           </div>
@@ -41,16 +43,19 @@ class MusicComponent extends React.Component {
           <span>
             <ComponentLocation>
               <span>
-                        <i className={"iconfont icon-yinlemusic214"} style={{ color: "red" }} onClick={this.choose.bind(
-                          this,
-                          this.props.index,
-                          this.props.data
-                        )}/>
+                <i
+                  className={'iconfont icon-yinlemusic214'}
+                  style={{ color: 'red' }}
+                  onClick={this.choose.bind(
+                    this,
+                    this.props.index,
+                    this.props.data
+                  )}
+                />
               </span>
             </ComponentLocation>
           </span>
         )}
-
       </RotateAtom>
     );
   }
@@ -61,9 +66,9 @@ const mapDispatchToProps = dispatch => {
     choose_upData: (data, meta, error) =>
       dispatch(choose_action(data, meta, error)),
     select_upData: (data, meta, error) =>
-      dispatch(select_action(data, meta, error))
+      dispatch(select_action(data, meta, error)),
   };
 };
 
 // hoc 包装组件
-export default connect("", mapDispatchToProps)(MusicComponent);
+export default connect('', mapDispatchToProps)(MusicComponent);

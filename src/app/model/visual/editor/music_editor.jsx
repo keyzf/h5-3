@@ -1,9 +1,9 @@
-import React from "react";
-import { Tabs, Radio, Card } from "antd";
-import { connect } from "react-redux";
-import { choose_action, select_action } from "../../../../redux/action";
-import ImgForm from "../../../../components/visual/form/img_form";
-import { Map } from "immutable";
+import React from 'react';
+import { Tabs, Radio, Card } from 'antd';
+import { connect } from 'react-redux';
+import { choose_action, select_action } from '../../../../redux/action';
+import ImgForm from '../../../../components/visual/form/img_form';
+import { Map } from 'immutable';
 
 class EditorMusic extends React.Component {
   ImgPartChange = changedFields => {
@@ -11,12 +11,19 @@ class EditorMusic extends React.Component {
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      const $$new_data = this.props.data.get("data").get("customize").get("history");
+      const $$new_data = this.props.data
+        .get('data')
+        .get('customize')
+        .get('history');
       const cs = $$new_data.push({
         name: changedFields.upload.value.file.name,
-        url: `http://p8afqcqwq.bkt.clouddn.com/${changedFields.upload.value.file.response.key}`
+        url: `http://p8afqcqwq.bkt.clouddn.com/${
+          changedFields.upload.value.file.response.key
+        }`,
       });
-      this.sendAction(this.props.data.get("data").setIn(["customize", "history"], cs));
+      this.sendAction(
+        this.props.data.get('data').setIn(['customize', 'history'], cs)
+      );
     }
   };
   sendAction = up_data => {
@@ -25,51 +32,80 @@ class EditorMusic extends React.Component {
     const $$choose_data = this.props.choose_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
+      $$choose_data.get('number'),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
+    const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
     this.props.choose_upData(
       $$new_choose_data,
       Map({ content: true, choose: true }),
       false
     );
   };
-  onChange = (e) => {
-    this.sendAction(this.props.data.get("data").setIn(["customize", "music"], e.target.value));
+  onChange = e => {
+    this.sendAction(
+      this.props.data.get('data').setIn(['customize', 'music'], e.target.value)
+    );
   };
 
   render() {
-    const $$customize = this.props.data.get("data").get("customize");
+    const $$customize = this.props.data.get('data').get('customize');
     const tab_config = {
-      defaultActiveKey: "1",
-      style: { height: "100%" }
+      defaultActiveKey: '1',
+      style: { height: '100%' },
     };
     const radioStyle = {
-      display: "block",
-      height: "30px",
-      lineHeight: "30px"
+      display: 'block',
+      height: '30px',
+      lineHeight: '30px',
     };
     return (
-      <Tabs {...tab_config} >
+      <Tabs {...tab_config}>
         <Tabs.TabPane tab="内容设置" key="1">
-          <Card title="当前使用" style={{ marginTop: "-18px" }}>
-            <audio src={$$customize.get("music")} controls style={{ width: "100%" }}/>
+          <Card title="当前使用" style={{ marginTop: '-18px' }}>
+            <audio
+              src={$$customize.get('music')}
+              controls
+              style={{ width: '100%' }}
+            />
             <span>
-            <ImgForm upload={{ value: "" }} onChange={this.ImgPartChange}
-                     child={<div style={{ color: "#19a0fa", cursor: "pointer", marginTop: "-20px" }}>
-                       &nbsp;添加素材
-                     </div>}/>
+              <ImgForm
+                upload={{ value: '' }}
+                onChange={this.ImgPartChange}
+                child={
+                  <div
+                    style={{
+                      color: '#19a0fa',
+                      cursor: 'pointer',
+                      marginTop: '-20px',
+                    }}
+                  >
+                    &nbsp;添加素材
+                  </div>
+                }
+              />
             </span>
           </Card>
           <Card title="上传记录">
-            <Radio.Group onChange={this.onChange} value={$$customize.get("music")}>
-              <Radio style={radioStyle} value={'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3'}>默认</Radio>
-              {$$customize.get("history").map((data, index) => {
+            <Radio.Group
+              onChange={this.onChange}
+              value={$$customize.get('music')}
+            >
+              <Radio
+                style={radioStyle}
+                value={
+                  'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3'
+                }
+              >
+                默认
+              </Radio>
+              {$$customize.get('history').map((data, index) => {
                 return (
-                  <Radio key={index} style={radioStyle} value={data.url}>{data.name}</Radio>
+                  <Radio key={index} style={radioStyle} value={data.url}>
+                    {data.name}
+                  </Radio>
                 );
               })}
             </Radio.Group>
@@ -83,7 +119,7 @@ class EditorMusic extends React.Component {
 const mapStateToProps = state => {
   return {
     select_value: state.select_reducer,
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
@@ -92,7 +128,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 
