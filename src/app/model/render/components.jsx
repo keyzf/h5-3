@@ -10,6 +10,7 @@ import MusicComponent from "../../../components/visual/music/music";
 import VideoComponent from "../../../components/visual/video/video";
 import GridMallComponent from "../../../components/visual/mall/grid_component";
 import ListMallComponent from "../../../components/visual/mall/list_component";
+import ButtonComponent from "../../../components/visual/button/button";
 
 export const render_component = (data, choose, index) => {
   // 获取组件名称，通过组件名称进行匹配
@@ -37,6 +38,8 @@ export const render_component = (data, choose, index) => {
       return <ListMallComponent data={data} choose={choose} index={index}/>;
     case "grid_mall":
       return <GridMallComponent data={data} choose={choose} index={index}/>;
+    case "button":
+      return <ButtonComponent data={data} choose={choose} index={index}/>;
     default:
       return "";
   }

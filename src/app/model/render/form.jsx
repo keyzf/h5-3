@@ -4,6 +4,7 @@ import EditorImg from "../visual/editor/img_editoer";
 import EditorMusic from "../visual/editor/music_editor";
 import EditorVideo from "../visual/editor/video_editor";
 import EditorMall from "../visual/editor/mall_editoer";
+import EditorButton from "../visual/editor/button_editor";
 
 export const render_form = data => {
   switch (
@@ -38,8 +39,8 @@ export const render_form = data => {
       return <EditorMall data={data}/>;
     //   case "form":
     //     return <EditorForm data={data}/>;
-    //   case "button":
-    //     return <EditorButton data={data}/>;
+    case "button":
+      return <EditorButton data={data}/>;
     default:
       return "";
   }
