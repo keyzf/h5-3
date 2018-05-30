@@ -3,94 +3,84 @@ export const $$mall_database = (name) => {
     customize: {
       name: name,
       base: {
+        // 可隐藏元素包括：标题，描述，图片，按钮，现价，原价
         show_element: { value: undefined },
+        // 一行显示个数
         layout: { value: 0 }
       },
       item: [{
-        img: "",
+        img: "", //图片
         img_config: {
           stretching: { value: "" },
           tiling: { value: "" }
-        },
-        title: { value: "标题" },
-        content: { value: "内容" },
-        link: { value: "" },
-        width: { value: "" },
-        height: { value: "" },
-        img_url: { value: "" },
-        //商品描述
-        name: { value: "" },
-        description: { value: "" },
+        }, //图片配置
+        img_url: { value: "" }, // 图片地址
+        //基础内容
+        width: { value: "" }, // 图片宽度
+        height: { value: "" }, //图片高度
+        title: { value: "标题" }, //标题
+        content: { value: "内容" }, //内容
         //商品价格
-        current: { value: "" },
-        original: { value: "" },
+        current: { value: "" }, //现价
+        original: { value: "" }, //原价
         //按钮
-        btn_content: { value: "" },
-        btn_url: { value: "" }
+        btn_content: { value: "" }, //按钮内容
+        btn_url: { value: "" } // 按钮链接
       }, {
-        img: "",
-        img_config: {
-          stretching: { value: "" },
-          tiling: { value: "" }
-        },
-        title: { value: "标题" },
-        content: { value: "内容" },
-        link: { value: "" },
-        width: { value: "" },
-        height: { value: "" },
-        img_url: { value: "" },
-        //商品描述
-        name: { value: "" },
-        description: { value: "" },
-        //商品价格
-        current: { value: "" },
-        original: { value: "" },
-        //按钮
-        btn_content: { value: "" },
-        btn_url: { value: "" }
-      }, {
-        img: "",
-        img_config: {
-          stretching: { value: "" },
-          tiling: { value: "" }
-        },
-        title: { value: "标题" },
-        content: { value: "内容" },
-        link: { value: "" },
-        width: { value: "" },
-        height: { value: "" },
-        img_url: { value: "" },
-        //商品描述
-        name: { value: "" },
-        description: { value: "" },
-        //商品价格
-        current: { value: "" },
-        original: { value: "" },
-        //按钮
-        btn_content: { value: "" },
-        btn_url: { value: "" }
-      }, {
-        img: "",
-        img_config: {
-          stretching: { value: "" },
-          tiling: { value: "" }
-        },
-        title: { value: "标题" },
-        content: { value: "内容" },
-        link: { value: "" },
-        width: { value: "" },
-        height: { value: "" },
-        img_url: { value: "" },
-        //商品描述
-        name: { value: "" },
-        description: { value: "" },
-        //商品价格
-        current: { value: "" },
-        original: { value: "" },
-        //按钮
-        btn_content: { value: "" },
-        btn_url: { value: "" }
-      }]
+          img: "", //图片
+          img_config: {
+            stretching: { value: "" },
+            tiling: { value: "" }
+          }, //图片配置
+          img_url: { value: "" }, // 图片地址
+          //基础内容
+          width: { value: "" }, // 图片宽度
+          height: { value: "" }, //图片高度
+          title: { value: "标题" }, //标题
+          content: { value: "内容" }, //内容
+          //商品价格
+          current: { value: "" }, //现价
+          original: { value: "" }, //原价
+          //按钮
+          btn_content: { value: "" }, //按钮内容
+          btn_url: { value: "" } // 按钮链接
+        }, {
+          img: "", //图片
+          img_config: {
+            stretching: { value: "" },
+            tiling: { value: "" }
+          }, //图片配置
+          img_url: { value: "" }, // 图片地址
+          //基础内容
+          width: { value: "" }, // 图片宽度
+          height: { value: "" }, //图片高度
+          title: { value: "标题" }, //标题
+          content: { value: "内容" }, //内容
+          //商品价格
+          current: { value: "" }, //现价
+          original: { value: "" }, //原价
+          //按钮
+          btn_content: { value: "" }, //按钮内容
+          btn_url: { value: "" } // 按钮链接
+        }, {
+          img: "", //图片
+          img_config: {
+            stretching: { value: "" },
+            tiling: { value: "" }
+          }, //图片配置
+          img_url: { value: "" }, // 图片地址
+          //基础内容
+          width: { value: "" }, // 图片宽度
+          height: { value: "" }, //图片高度
+          title: { value: "标题" }, //标题
+          content: { value: "内容" }, //内容
+          //商品价格
+          current: { value: "" }, //现价
+          original: { value: "" }, //原价
+          //按钮
+          btn_content: { value: "" }, //按钮内容
+          btn_url: { value: "" } // 按钮链接
+        }]
     },
     advance: {
       position: {
@@ -116,31 +106,22 @@ export const $$mall_database = (name) => {
   };
 };
 
-/**
- * img组件，各项
- * @returns {*[]}
- */
-export const $$mall_item_database = () => {
-  return {
-    img: "",
-    img_config: {
-      stretching: { value: "" },
-      tiling: { value: "" }
-    },
-    title: { value: "标题" },
-    content: { value: "内容" },
-    link: { value: "" },
-    width: { value: "" },
-    height: { value: "" },
-    img_url: { value: "" },
-    //商品描述
-    name: { value: "" },
-    description: { value: "" },
-    //商品价格
-    current: { value: "" },
-    original: { value: "" },
-    //按钮
-    btn_content: { value: "" },
-    btn_url: { value: "" }
-  };
+export const $$mall_item_database = {
+  img: "", //图片
+  img_config: {
+    stretching: { value: "" },
+    tiling: { value: "" }
+  }, //图片配置
+  img_url: { value: "" }, // 图片地址
+  //基础内容
+  width: { value: "" }, // 图片宽度
+  height: { value: "" }, //图片高度
+  title: { value: "标题" }, //标题
+  content: { value: "内容" }, //内容
+  //商品价格
+  current: { value: "" }, //现价
+  original: { value: "" }, //原价
+  //按钮
+  btn_content: { value: "" }, //按钮内容
+  btn_url: { value: "" } // 按钮链接
 };
