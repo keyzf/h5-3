@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
+import { notification } from "antd";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,11 +18,26 @@ import "./core.css";
  * 2. 如果用户不进行选择则默认进入模板页
  */
 class App extends Component {
+  /**
+   * 查询用户屏幕显示比例
+   * 如果屏幕分辨率宽度低于1300则显示提示信息
+   */
+  componentDidMount = () => {
+    if (window.screen.width < 1300) {
+      notification.open({
+        message: "通知",
+        description: `屏幕分辨率过低,请调整视窗缩放比例。`,
+        duration: 0,
+      });
+    }
+  };
+
   render() {
     return (
       <Provider store={store}>
         <Router>
           <Switch>
+            {/*重定向，由此导入相应页面*/}
             <Route exact={true} path={"/"}>
               <Redirect to="visual"/>
             </Route>
