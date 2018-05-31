@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Divider, Icon } from "antd";
 import QueueAnim from "rc-queue-anim";
 import ButtonSelect from "./button";
-
+import FormSelect from './form';
 const default_text = {
   alignItems: "center",
   display: "flex",
@@ -28,6 +28,9 @@ class InterActiveSelect extends React.Component {
   select = (name) => {
     if (name === "button") {
       return <div><div onClick={this.back} style={{marginTop:'25px',paddingLeft:'15px'}}><Icon type="left"/>返回</div><Divider/><ButtonSelect/></div>;
+    }
+    if (name === "form") {
+      return <div><div onClick={this.back} style={{marginTop:'25px',paddingLeft:'15px'}}><Icon type="left"/>返回</div><Divider/><FormSelect/></div>;
     }
   };
 
@@ -64,7 +67,6 @@ class InterActiveSelect extends React.Component {
             <Col span={6} style={default_text}/>
           </Row>
         }
-
       </QueueAnim>
     );
   }

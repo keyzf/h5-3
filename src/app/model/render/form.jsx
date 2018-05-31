@@ -5,6 +5,7 @@ import EditorMusic from "../visual/editor/music_editor";
 import EditorVideo from "../visual/editor/video_editor";
 import EditorMall from "../visual/editor/mall_editoer";
 import EditorButton from "../visual/editor/button_editor";
+import EditorForm from "../visual/editor/form";
 
 export const render_form = data => {
   switch (
@@ -37,8 +38,8 @@ export const render_form = data => {
       return <EditorMall data={data}/>;
     case "list_mall":
       return <EditorMall data={data}/>;
-    //   case "form":
-    //     return <EditorForm data={data}/>;
+    case "form":
+      return <EditorForm data={data}/>;
     case "button":
       return <EditorButton data={data}/>;
     default:
