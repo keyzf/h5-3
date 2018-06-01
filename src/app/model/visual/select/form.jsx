@@ -1,14 +1,15 @@
 import React from 'react';
 import { Divider } from 'antd';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from "../../../../redux/action";
-import { Map,fromJS } from "immutable";
-import { FormTemplate } from "../../../../components/visual/template/form";
-import { $$form_database, $$form_item_database } from "../../../../database/components/form";
-
+import { choose_action, select_action } from '../../../../redux/action';
+import { Map, fromJS } from 'immutable';
+import { FormTemplate } from '../../../../components/visual/template/form';
+import {
+  $$form_database,
+  $$form_item_database,
+} from '../../../../database/components/form';
 
 class FormSelect extends React.Component {
-
   transfer = data => {
     let img_data = $$form_database(data.name);
     // 给数据修改值
@@ -36,7 +37,6 @@ class FormSelect extends React.Component {
     );
   };
 
-
   render() {
     const form_data = {
       name: 'form',
@@ -50,8 +50,11 @@ class FormSelect extends React.Component {
     };
     return (
       <div>
-        <div className={'components_hover'} onClick={this.transfer.bind(this, form_data)}>
-          <FormTemplate/>
+        <div
+          className={'components_hover'}
+          onClick={this.transfer.bind(this, form_data)}
+        >
+          <FormTemplate />
         </div>
         <Divider orientation="left">设计师推荐</Divider>
       </div>

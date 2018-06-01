@@ -51,7 +51,6 @@ class VideoSelect extends React.Component {
 
 const mapStateToProps = state => {
   return {
-
     select_value: state.select_reducer,
   };
 };
