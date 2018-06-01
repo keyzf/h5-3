@@ -14,7 +14,7 @@ class MallBaseForm extends React.Component {
         },
       };
     };
-    const plainOptions = ['标题', '内容','现价','原价','图片','按钮'];
+    const plainOptions = ['标题', '内容', '现价', '原价', '图片', '按钮'];
     return (
       <Form hideRequiredMark>
         <Form.Item {...form_item_style('组件元素')}>
@@ -22,9 +22,9 @@ class MallBaseForm extends React.Component {
             <Checkbox.Group options={plainOptions} />
           )}
         </Form.Item>
-          <Form.Item {...form_item_style('组件布局')}>
-            {getFieldDecorator('layout')(<InputNumber min={1} max={4} />)}
-          </Form.Item>
+        <Form.Item {...form_item_style('组件布局')}>
+          {getFieldDecorator('layout')(<InputNumber min={1} max={4} />)}
+        </Form.Item>
       </Form>
     );
   }

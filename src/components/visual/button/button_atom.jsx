@@ -13,12 +13,12 @@ export const ButtonAtom = styled.button`
     props.shadow ? props.shadow : '0 0 15px rgba(0, 0, 0, 0.15)'};
   // 定位
   position: ${props =>
-  props.top !== 0 ||
-  props.left !== 0 ||
-  props.right !== 0 ||
-  props.bottom !== 0
-    ? 'relative'
-    : ''};
+    props.top !== 0 ||
+    props.left !== 0 ||
+    props.right !== 0 ||
+    props.bottom !== 0
+      ? 'relative'
+      : ''};
   // 层级
   z-index: ${props => props.depth};
   // 定位位置

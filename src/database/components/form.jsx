@@ -1,8 +1,8 @@
-export const $$form_database = (name) => {
+export const $$form_database = name => {
   return {
     customize: {
       name: name,
-      item: []
+      item: [],
     },
     advance: {
       position: {
@@ -10,29 +10,28 @@ export const $$form_database = (name) => {
         top: { value: 0 },
         left: { value: 0 },
         right: { value: 0 },
-        bottom: { value: 0 }
+        bottom: { value: 0 },
       },
-      color: "",
-      img: "",
+      color: '',
+      img: '',
       img_config: {
-        stretching: { value: "" },
-        tiling: { value: "" }
+        stretching: { value: '' },
+        tiling: { value: '' },
       },
       padding: {
         top: { value: 0 },
         bottom: { value: 0 },
         left: { value: 0 },
-        right: { value: 0 }
-      }
-    }
+        right: { value: 0 },
+      },
+    },
   };
 };
-
 
 export const $$form_item_database = (decorator, title, option) => {
   return {
     title: title,
     decorator: decorator,
-    option: option
+    option: option,
   };
 };

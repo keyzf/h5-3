@@ -1,14 +1,12 @@
 import React from 'react';
 import { Divider } from 'antd';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from "../../../../redux/action";
-import { Map,fromJS } from "immutable";
-import { ButtonTemplate } from "../../../../components/visual/template/button";
-import { $$button_database } from "../../../../database/components/button";
-
+import { choose_action, select_action } from '../../../../redux/action';
+import { Map, fromJS } from 'immutable';
+import { ButtonTemplate } from '../../../../components/visual/template/button';
+import { $$button_database } from '../../../../database/components/button';
 
 class ButtonSelect extends React.Component {
-
   transfer = data => {
     // 将选择的组件塞进老数组中，从而得到新数组
     const select_up_data = this.props.select_value.data.push(data);
@@ -25,15 +23,17 @@ class ButtonSelect extends React.Component {
     );
   };
 
-
   render() {
-    const option_data = (name) => {
+    const option_data = name => {
       return fromJS($$button_database(name));
     };
     return (
       <div>
-        <div className={'components_hover'} onClick={this.transfer.bind(this, option_data('button'))}>
-          <ButtonTemplate/>
+        <div
+          className={'components_hover'}
+          onClick={this.transfer.bind(this, option_data('button'))}
+        >
+          <ButtonTemplate />
         </div>
         <Divider orientation="left">设计师推荐</Divider>
       </div>

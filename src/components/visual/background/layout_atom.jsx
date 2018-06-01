@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const BgLayoutAtom = styled.div`
   // 宽度
   width: 100%;
-  height: auto;
+  height:${props => props.attachment ? ' 100%' : 'auto'};
   // 背景图片 如果不附加判断，则无法显示渐变
   background-color: ${props => (props.color ? props.color : null)};
   background-image: ${props => (props.img ? 'url(' + props.img + ')' : null)};
   background-repeat: ${props => (props.repeat ? 'repeat-y' : 'no-repeat')};
-  ${props =>
-    props.attachment
-      ? 'background-attachment: fixed;'
-      : 'background-attachment:scroll;  background-size: 100%;'};
+  background-attachment: local;
+  background-size: 100%;
+  margin: auto;
 `;
+
