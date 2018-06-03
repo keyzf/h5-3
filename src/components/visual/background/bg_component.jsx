@@ -10,7 +10,7 @@ class BgComponent extends React.Component {
       color: this.props.color,
       img: this.props.img,
       repeat: this.props.repeat,
-      attachment: this.props.attachment,
+      fixed: this.props.fixed,
     };
     return (
       //背景样式组件

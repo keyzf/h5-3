@@ -10,7 +10,6 @@ module.exports = function override(config, env) {
       "@menu-dark-color": "white",
       "@menu-dark-highlight-color": "#97D2FB",
       "@primary-color": "#19a0fa", // 主题色
-      "@popover-bg": "transparent"
     }
   })(config, env);
   return config;
