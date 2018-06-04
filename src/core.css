@@ -30,10 +30,10 @@
 /*定位图标*/
 .tab_one {
     position: absolute;
-    left: -80px;
-    top: 200px;
-    width: 60px;
-    height: 80px;
+
+    left: -85px;
+    width: 80px;
+    height: 43px;
     border-radius: 5px;
     background: white;
     display: flex;
@@ -43,76 +43,10 @@
 }
 
 .tab_one:hover {
-    position: absolute;
-    left: -80px;
-    top: 200px;
-    width: 60px;
-    height: 80px;
-    border-radius: 5px;
+
     color: #19a0fa;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
 }
 
-.tab_two {
-    position: absolute;
-    left: -80px;
-    top: 270px;
-    width: 60px;
-    height: 80px;
-    border-radius: 5px;
-    background: white;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.tab_two:hover {
-    position: absolute;
-    left: -80px;
-    top: 270px;
-    width: 60px;
-    height: 80px;
-    color: #19a0fa;
-    border-radius: 5px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.tab_three {
-    position: absolute;
-    left: -80px;
-    top: 340px;
-    width: 60px;
-    height: 80px;
-    border-radius: 5px;
-    background: white;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.tab_three:hover {
-    position: absolute;
-    left: -80px;
-    top: 340px;
-    width: 60px;
-    height: 80px;
-    border-radius: 5px;
-    color: #19a0fa;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
-}
 
 /*sider 侧边栏选择组件时使用的样式*/
 .components_hover {

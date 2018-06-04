@@ -17,9 +17,9 @@ class VisualView extends React.Component {
    * 如果屏幕分辨率宽度低于1300则显示提示信息
    */
   componentDidMount = () => {
-    if (window.screen.width < 1300) {
+    if (window.screen.width < 1119) {
       notification.open({
-        message: "通知",
+        message: "提醒",
         description: "屏幕分辨率过低,请调整视窗缩放比例。",
         duration: 0
       });
@@ -60,7 +60,7 @@ class VisualView extends React.Component {
         boxShadow: " 0 13px 24px -11px rgba(33, 33, 33, 0.6)",
         height: "100%"
       },
-      collapsible: true,
+      collapsible: false,
       collapsedWidth: 0,
       width: 400,
       breakpoint: "md"
