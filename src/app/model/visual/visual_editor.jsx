@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "antd";
 import { connect } from "react-redux";
 import { Map } from "immutable";
 import { choose_action } from "../../../redux/action";

@@ -1,14 +1,14 @@
-import React from "react";
-import { Col, Menu, Row } from "antd";
+import React, { PureComponent } from "react";
+import { Col, Menu, Row, Dropdown, Icon} from "antd";
 import { Link } from "react-router-dom";
 import { $$logo_database } from "../../../database/layout/logo_database";
 
-class HeaderVisualView extends React.Component {
+class HeaderVisualView extends PureComponent {
   render() {
+    // 整体布局
     const LayoutRow = {
       gutter: 16,
       type: "flex",
-      justify: "center",
       align: "center",
       style: {
         alignItems: "center",
@@ -16,62 +16,39 @@ class HeaderVisualView extends React.Component {
         overflow: "hidden"
       }
     };
+    //选项布局
     const LogoCol = {
       xs: 5,
       sm: 5,
       md: 5,
       lg: 5,
-
       xl: 3,
       style: {
         display: "flex",
-        justifyContent: "center",
         alignCenter: "center",
         margin: "auto"
       }
     };
     const chooseCol = {
-      xs: 15,
-      sm: 15,
-      md: 15,
+      xs: 0,
+      sm: 0,
+      md: 0,
       lg: { span: 9, offset: 2 },
       xl: { span: 8, offset: 6 }
     };
+    const closeCol = {
+      xs: 0,
+      sm: 0,
+      md: 0,
+      lg: { span: 7 },
+      xl: { span: 5, offset: 2 }
+    };
+    // 项目样式
     const chooseMenu = {
       theme: "dark",
       style: { background: "transparent", lineHeight: "50px" },
       selectable: false,
       mode: "horizontal"
-    };
-    const chooseData = [
-      {
-        name: "preview",
-        link: "./preview",
-        icon: "icon iconfont icon-yulan",
-        style: { marginRight: "10px" },
-        content: "预览/设置"
-      },
-      {
-        name: "save",
-        link: "",
-        icon: "icon iconfont icon-baocun",
-        style: { marginRight: "10px" },
-        content: "保存"
-      },
-      {
-        name: "release",
-        link: "./release",
-        icon: "icon iconfont icon-fabu",
-        style: { marginRight: "10px" },
-        content: "发布"
-      }
-    ];
-    const closeCol = {
-      xs: 4,
-      sm: 4,
-      md: 4,
-      lg: { span: 6,offset:1},
-      xl: { span: 6,offset:1}
     };
     const closeMenu = {
       selectable: false,
@@ -79,42 +56,45 @@ class HeaderVisualView extends React.Component {
       style: { lineHeight: "50px" },
       mode: "horizontal"
     };
-    const closeData = [
-      {
-        name: "help",
-        link: "" /**TODO 退出链接(可编辑属性)**/,
-        icon: "icon iconfont icon-icon",
-        style: { marginRight: "10px" },
-        content: "使用指南"
-      },
-      {
-        name: "customer",
-        link: "" /**TODO 退出链接(可编辑属性)**/,
-        icon: "icon iconfont icon-kefu",
-        style: { marginRight: "10px" },
-        content: "客服"
-      },
-      {
-        name: "quite",
-        link: "" /**TODO 退出链接(可编辑属性)**/,
-        icon: "icon iconfont icon-iconfonticon2",
-        style: { marginRight: "10px" },
-        content: "关闭"
-      }
-    ];
-    const MenuItem = data => {
-      return (
-        <Menu.Item
-          key={data.name}
-          onClick={data.name === "save" ? data.onClick : ""}
-        >
-          <Link to={data.link}>
-            <i className={data.icon} style={data.style}/>
-            {data.content}
+    const Menus = {
+      xs: { span: 4, offset: 15 },
+      sm: { span: 4, offset: 15 },
+      md: { span: 4, offset: 15 },
+      lg: 0,
+      xl: 0
+    };
+    const menu = (
+      <Menu>
+        <Menu.Item>
+          <Link to={"./preview"}>
+            <i className={"icon iconfont icon-yulan"} style={{ marginRight: "10px" }}/>
+            预览/设置
           </Link>
         </Menu.Item>
-      );
-    };
+        <Menu.Item>
+          <i className={"icon iconfont icon-baocun"} style={{ marginRight: "10px" }}/>
+          保存
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={"./release"}>
+            <i className={"icon iconfont icon-fabu"} style={{ marginRight: "10px" }}/>
+            发布
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <i className={"icon iconfont icon-icon"} style={{ marginRight: "10px" }}/>
+          使用指南
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={"/"}>
+            <i className={"icon iconfont icon-iconfonticon2"} style={{ marginRight: "10px" }}/>
+            关闭
+          </Link>
+        </Menu.Item>
+      </Menu>
+    );
+
+
     return (
       <Row {...LayoutRow}>
         <Col {...LogoCol}>
@@ -127,17 +107,47 @@ class HeaderVisualView extends React.Component {
         </Col>
         <Col {...chooseCol}>
           <Menu {...chooseMenu}>
-            {chooseData.map(data => {
-              return MenuItem(data);
-            })}
+            <Menu.Item key={"preview"}>
+              <Link to={"./preview"}>
+                <i className={"icon iconfont icon-yulan"} style={{ marginRight: "10px" }}/>
+                预览/设置
+              </Link>
+            </Menu.Item>
+            <Menu.Item key={"save"}>
+              <i className={"icon iconfont icon-baocun"} style={{ marginRight: "10px" }}/>
+              保存
+            </Menu.Item>
+            <Menu.Item key={"release"}>
+              <Link to={"./release"}>
+                <i className={"icon iconfont icon-fabu"} style={{ marginRight: "10px" }}/>
+                发布
+              </Link>
+            </Menu.Item>
           </Menu>
         </Col>
         <Col {...closeCol}>
           <Menu {...closeMenu}>
-            {closeData.map(data => {
-              return MenuItem(data);
-            })}
+            <Menu.Item key={"help"}>
+              <Link to={"/help"}>
+                <i className={"icon iconfont icon-icon"} style={{ marginRight: "10px" }}/>
+                使用指南
+              </Link>
+            </Menu.Item>
+            <Menu.Item key={"quite"}>
+              <Link to={"/"}>
+                <i className={"icon iconfont icon-iconfonticon2"} style={{ marginRight: "10px" }}/>
+                关闭
+              </Link>
+            </Menu.Item>
           </Menu>
+        </Col>
+        {/*小屏幕下显示的组件*/}
+        <Col {...Menus}>
+          <Dropdown overlay={menu}>
+            <div>
+              <Icon type="bars" style={{ color: "white", fontSize: "20px" }}/>
+            </div>
+          </Dropdown>
         </Col>
       </Row>
     );

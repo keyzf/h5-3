@@ -20,7 +20,7 @@ class VisualView extends React.Component {
     if (window.screen.width < 1119) {
       notification.open({
         message: "提醒",
-        description: "屏幕分辨率过低,请调整视窗缩放比例。",
+        description: `屏幕分辨率过低,请调整视窗缩放比例`,
         duration: 0
       });
     }
@@ -28,7 +28,6 @@ class VisualView extends React.Component {
 
   render() {
     const { Header, Sider, Content } = Layout;
-
     //style
     const layout = {
       style: {
@@ -49,10 +48,9 @@ class VisualView extends React.Component {
     const content = {
       style: {
         boxSizing: "border-box",
-        height: "95%"
+        height: "94%"
       }
     };
-
     // 侧边栏样式及属性
     const siderConfig = {
       style: {
@@ -62,15 +60,15 @@ class VisualView extends React.Component {
       },
       collapsible: false,
       collapsedWidth: 0,
-      width: 400,
-      breakpoint: "md"
+      width: 380,
+      breakpoint: "lg"
     };
     const editorConfig = {
       style: { background: "white" },
       collapsible: true,
       collapsedWidth: 0,
       trigger: null,
-      width: 400,
+      width: 380,
       breakpoint: "md"
     };
 
@@ -81,7 +79,7 @@ class VisualView extends React.Component {
           <HeaderVisualView/>
         </Header>
         <Layout {...content} key={"animation_two"}>
-          <Sider {...siderConfig}>
+          <Sider  {...siderConfig}>
             <SiderVisualView/>
           </Sider>
           <Content>
