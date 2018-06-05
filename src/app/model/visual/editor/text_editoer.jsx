@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map, fromJS } from 'immutable';
 import { SketchPicker } from 'react-color';
-import { Tabs, Button, Checkbox, Popover, Icon, Card, Row, Col } from 'antd';
+import { Tabs, Button, Checkbox, Popover, Icon, Card, Row, Col ,Popconfirm} from 'antd';
 import {
   $$text_database,
   h_html_text,
   v_html_text,
-} from '../../../../database/components/text';
+} from '../../../../database/components/text_database';
 import { choose_action, select_action } from '../../../../redux/action';
 import PaddingForm from '../../../../components/visual/form/padding_form';
 import PositionForm from '../../../../components/visual/form/position_form';
@@ -202,9 +202,17 @@ class EditorText extends React.Component {
      * reset data
      */
     const operations = (
-      <Button onClick={this.editorFeatures.bind(this, 'reset')}>
+      <Popconfirm
+        placement="bottom"
+        title={'重置为默认设置？'}
+        onConfirm={this.editorFeatures.bind(this, 'reset')}
+        okText="确认"
+        cancelText="取消"
+      >
+      <Button>
         恢复默认
       </Button>
+      </Popconfirm>
     );
     return (
       <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
@@ -274,14 +282,22 @@ class EditorText extends React.Component {
               <Col span={12}>
                 <Button.Group>
                   <Button onClick={this.showModal}>更换</Button>
-                  <Button onClick={this.editorFeatures.bind(this, 'delete')}>
+                  <Popconfirm
+                    placement="bottom"
+                    title={'确定删除此图片？'}
+                    onConfirm={this.editorFeatures.bind(this, 'delete')}
+                    okText="确认"
+                    cancelText="取消"
+                  >
+                  <Button>
                     删除
                   </Button>
+                  </Popconfirm>
                 </Button.Group>
                 <br />
                 <br />
                 <Row gutter={16}>
-                  <Col span={10}>
+                  <Col span={12}>
                     <Checkbox
                       onChange={this.editorFeatures.bind(this, 'tiling')}
                       defaultValue={$$advance

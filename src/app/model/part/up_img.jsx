@@ -4,7 +4,6 @@ import { Button, Tabs, Modal, Icon, Divider, Progress ,message} from "antd";
 import ImgForm from "../../../components/visual/form/img_form";
 import { up_img_action } from "../../../redux/action";
 
-
 /**
  * 功能：
  * 1. 获取数据：
@@ -47,7 +46,14 @@ class UpImgPart extends React.Component {
 
   render() {
     const TabPane = Tabs.TabPane;
+    /**
+     * visible: 控制model是否显示
+     * unvisible: 控制model关闭，并向上传递数据
+     */
     const { visible, unvisible } = this.props;
+    /**
+     * 获取自己上传的图片库
+     */
     const $$up_img = this.props.up_img_value.data.get("self");
     return (
       <Modal
@@ -57,9 +63,8 @@ class UpImgPart extends React.Component {
         onCancel={unvisible}
         footer={null}
       >
-        {
-          this.state.progress ? <Progress percent={60} status="active"/> : ""
-        }
+        {/*是否显示进度条*/}
+        {this.state.progress ? <Progress percent={60} status="active"/> : ""}
         <Tabs
           tabBarExtraContent={
             <ImgForm

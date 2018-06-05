@@ -13,15 +13,24 @@ import ListMallComponent from '../../../components/visual/mall/list_component';
 import ButtonComponent from '../../../components/visual/button/button';
 import FormComponent from '../../../components/visual/form_component/form';
 
+/**
+ * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
+ * @param data 数据
+ * @param choose 是否选中此组件
+ * @param index 此组件号
+ * @returns {*}
+ */
 export const render_component = (data, choose, index) => {
   // 获取组件名称，通过组件名称进行匹配
-  switch (data.get('customize').get('name')) {
+  switch (data.getIn(['customize','name'])) {
+
     /**==============文本类============**/
     case 'vertical_text':
       return <VTextComponent data={data} choose={choose} index={index} />;
     case 'horizontal_text':
       return <HTextComponent data={data} choose={choose} index={index} />;
-    case 'up_img':
+
+    case 'single_img':
       return <UpImgComponent data={data} choose={choose} index={index} />;
     case 'grid_img':
       return <GridImgComponent data={data} choose={choose} index={index} />;
@@ -31,6 +40,7 @@ export const render_component = (data, choose, index) => {
       return <SliderImgComponent data={data} choose={choose} index={index} />;
     case 'carousel_img':
       return <CarouselImgComponent data={data} choose={choose} index={index} />;
+
     case 'video':
       return <VideoComponent data={data} choose={choose} index={index} />;
     case 'music':

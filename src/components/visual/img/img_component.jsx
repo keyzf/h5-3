@@ -23,47 +23,22 @@ class UpImgComponent extends React.Component {
     // 可编辑属性 data:为文本
     const advanced_settings = {
       // 绝对定位
-      top: advance
-        .get('position')
-        .get('top')
-        .get('value'),
-      left: advance
-        .get('position')
-        .get('left')
-        .get('value'),
-      right: advance
-        .get('position')
-        .get('right')
-        .get('value'),
-      bottom: advance
-        .get('position')
-        .get('bottom')
-        .get('value'),
-      depth: advance
-        .get('position')
-        .get('depth')
-        .get('value'),
+      top: advance.getIn(["position", "top", "value"]),
+      left: advance.getIn(["position", "left", "value"]),
+      right: advance.getIn(["position", "right", "value"]),
+      bottom: advance.getIn(["position", "bottom", "value"]),
+      depth: advance.getIn(["position", "depth", "value"]),
       // 内边距
-      pb: advance
-        .get('padding')
-        .get('bottom')
-        .get('value'),
-      pl: advance
-        .get('padding')
-        .get('left')
-        .get('value'),
-      pr: advance
-        .get('padding')
-        .get('right')
-        .get('value'),
-      pt: advance
-        .get('padding')
-        .get('top')
-        .get('value'),
+      pb: advance.getIn(["padding", "bottom", "value"]),
+      pl: advance.getIn(["padding", "left", "value"]),
+      pr: advance.getIn(["padding", "right", "value"]),
+      pt: advance.getIn(["padding", "top", "value"]),
       // 颜色
-      bgColor: advance.get('color'),
+      bgColor: advance.get("color"),
       //背景
-      img: advance.get('img'),
+      img: advance.get("img"),
+      stretching: advance.getIn(["img_config", "stretching", "value"]),
+      tiling: advance.getIn(["img_config", "tiling", "value"])
     };
     return (
       <ImgLayoutAtom {...advanced_settings}>
@@ -83,19 +58,17 @@ class UpImgComponent extends React.Component {
                     >
                       <img
                         width={
-                          data.get('width').get('value')
-                            ? data.get('width').get('value')
+                          data.getIn(['width','value'])
+                            ?  data.getIn(['width','value'])
                             : '100%'
                         }
                         height={
-                          data.get('height').get('value')
-                            ? data.get('height').get('value')
+                          data.getIn(['height','value'])
+                            ?   data.getIn(['height','value'])
                             : 'auto'
                         }
                         src={
                           data.get('img')
-                            ? data.get('img')
-                            : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
                         }
                         alt={'img'}
                       />
@@ -120,20 +93,16 @@ class UpImgComponent extends React.Component {
                   >
                     <img
                       width={
-                        data.get('width').get('value')
-                          ? data.get('width').get('value')
+                        data.getIn(['width','value'])
+                          ? data.getIn(['width','value'])
                           : '100%'
                       }
                       height={
-                        data.get('height').get('value')
-                          ? data.get('height').get('value')
+                        data.getIn(['height','value'])
+                          ? data.getIn(['height','value'])
                           : 'auto'
                       }
-                      src={
-                        data.get('img')
-                          ? data.get('img')
-                          : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                      }
+                      src={data.get('img')}
                       alt={'img'}
                     />
                   </div>

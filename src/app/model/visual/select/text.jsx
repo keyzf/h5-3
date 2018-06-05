@@ -12,7 +12,7 @@ import {
   $$text_database,
   h_html_text,
   v_html_text,
-} from '../../../../database/components/text';
+} from '../../../../database/components/text_database';
 
 class TextSelect extends React.Component {
   /**

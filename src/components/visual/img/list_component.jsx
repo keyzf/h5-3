@@ -67,7 +67,6 @@ class ListImgComponent extends React.Component {
       img: advance.get('img'),
     };
     const col = number => {
-      console.log(number);
       if (number === 1) {
         return 24;
       }
@@ -83,10 +82,7 @@ class ListImgComponent extends React.Component {
         return null;
       }
     };
-    const $$show_element = customize
-      .get('base')
-      .get('show_element')
-      .get('value');
+    const $$show_element = customize.getIn(['base','show_element','value'])
     const $$show_element_title =
       $$show_element !== undefined ? $$show_element[0] : '';
     const $$show_element_content =
@@ -108,24 +104,7 @@ class ListImgComponent extends React.Component {
               >
                 {customize.get('item').map((data, index) => {
                   return (
-                    <Col
-                      key={index}
-                      span={
-                        col(
-                          customize
-                            .get('base')
-                            .get('layout')
-                            .get('value')
-                        )
-                          ? col(
-                              customize
-                                .get('base')
-                                .get('layout')
-                                .get('value')
-                            )
-                          : 24
-                      }
-                    >
+                    <Col style={{margin:'5px 0'}} key={index} span={col( customize.getIn(['base','layout','value']))}>
                       <Col span={12}>
                         <img
                           width={
@@ -169,12 +148,12 @@ class ListImgComponent extends React.Component {
                               display: 'flex',
                               justifyContent: 'center',
                               alignItems: 'center',
+                              overflow: "hidden",
                             }}
                           >
-                            {data.get('content').get('value')}
+                            {data.getIn(['content','value'])}
                           </div>
                         )}
-                        <br />
                       </Col>
                     </Col>
                   );
@@ -194,24 +173,7 @@ class ListImgComponent extends React.Component {
             >
               {customize.get('item').map((data, index) => {
                 return (
-                  <Col
-                    key={index}
-                    span={
-                      col(
-                        customize
-                          .get('base')
-                          .get('layout')
-                          .get('value')
-                      )
-                        ? col(
-                            customize
-                              .get('base')
-                              .get('layout')
-                              .get('value')
-                          )
-                        : 24
-                    }
-                  >
+                  <Col style={{margin:'5px 0'}} key={index} span={col( customize.getIn(['base','layout','value']))}>
                     <Col span={12}>
                       <img
                         width={
@@ -255,12 +217,12 @@ class ListImgComponent extends React.Component {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
+                            overflow: "hidden",
                           }}
                         >
-                          {data.get('content').get('value')}
+                          {data.getIn(['content','value'])}
                         </div>
                       )}
-                      <br />
                     </Col>
                   </Col>
                 );

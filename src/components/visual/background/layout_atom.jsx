@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const BgLayoutAtom = styled.div`
+
   // 宽度
   width: 100%;
   height: ${props => (props.fixed ? ' 100%' : 'auto')};
@@ -11,4 +12,5 @@ export const BgLayoutAtom = styled.div`
   background-attachment: local;
   background-size: 100%;
   margin: auto;
+  overflow: hidden;
 `;

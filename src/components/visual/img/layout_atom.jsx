@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const ImgLayoutAtom = styled.div`
-  width: 100%;
-  height: 100%;
   // 定位
   position: ${props =>
     props.top !== 0 ||
@@ -25,7 +23,7 @@ export const ImgLayoutAtom = styled.div`
   padding-top: ${props => props.pt + 'px'};
   // 单背景色
   background: ${props => props.bgColor};
-  background-repeat: ${props => (props.repeat ? 'repeat' : 'no-repeat')};
-  background-image: ${props => (props.img ? 'url(' + props.img + ')' : null)};
-  background-size: 100%;
+  background-repeat: ${props => (props.stretching ? "repeat" : "no-repeat")};
+  background-image: ${props => (props.img ? "url(" + props.img + ")" : null)};
+  background-size: ${props => (props.tiling ? "100%" : "contain")};
 `;
