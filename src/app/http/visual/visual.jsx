@@ -1,10 +1,10 @@
-import React from "react";
-import { Layout, notification } from "antd";
-import QueueAnim from "rc-queue-anim";
-import HeaderVisualView from "./header";
-import SiderVisualView from "./sider";
-import ContentVisualView from "../../model/visual/visual_content";
-import EditorVisualView from "../../model/visual/visual_editor";
+import React from 'react';
+import { Layout, notification } from 'antd';
+import QueueAnim from 'rc-queue-anim';
+import HeaderVisualView from './header';
+import SiderVisualView from './sider';
+import ContentVisualView from '../../model/visual/visual_content';
+import EditorVisualView from '../../model/visual/visual_editor';
 
 /**
  * 实现目标：
@@ -19,9 +19,9 @@ class VisualView extends React.Component {
   componentDidMount = () => {
     if (window.screen.width < 1119) {
       notification.open({
-        message: "提醒",
+        message: '提醒',
         description: `屏幕分辨率过低,请调整视窗缩放比例`,
-        duration: 0
+        duration: 0,
       });
     }
   };
@@ -31,62 +31,62 @@ class VisualView extends React.Component {
     //style
     const layout = {
       style: {
-        height: "100vh",
-        width: "100%",
-        overflow: "hidden",
-        boxSizing: "border-box"
-      }
+        height: '100vh',
+        width: '100%',
+        overflow: 'hidden',
+        boxSizing: 'border-box',
+      },
     };
     const header = {
       style: {
-        boxSizing: "border-box",
-        height: "6%",
+        boxSizing: 'border-box',
+        height: '6%',
         background:
-          "linear-gradient(to bottom right, #5ea2ff, #00b9ff, #00caff)"
-      }
+          'linear-gradient(to bottom right, #5ea2ff, #00b9ff, #00caff)',
+      },
     };
     const content = {
       style: {
-        boxSizing: "border-box",
-        height: "94%"
-      }
+        boxSizing: 'border-box',
+        height: '94%',
+      },
     };
     // 侧边栏样式及属性
     const siderConfig = {
       style: {
-        background: "white",
-        boxShadow: " 0 13px 24px -11px rgba(33, 33, 33, 0.6)",
-        height: "100%"
+        background: 'white',
+        boxShadow: ' 0 13px 24px -11px rgba(33, 33, 33, 0.6)',
+        height: '100%',
       },
       collapsible: false,
       collapsedWidth: 0,
       width: 380,
-      breakpoint: "lg"
+      breakpoint: 'lg',
     };
     const editorConfig = {
-      style: { background: "white" },
+      style: { background: 'white' },
       collapsible: true,
       collapsedWidth: 0,
       trigger: null,
       width: 380,
-      breakpoint: "md"
+      breakpoint: 'md',
     };
 
     return (
       // 入场动画
-      <QueueAnim type={"bottom"} {...layout}>
-        <Header {...header} key={"animation_one"}>
-          <HeaderVisualView/>
+      <QueueAnim type={'bottom'} {...layout}>
+        <Header {...header} key={'animation_one'}>
+          <HeaderVisualView />
         </Header>
-        <Layout {...content} key={"animation_two"}>
-          <Sider  {...siderConfig}>
-            <SiderVisualView/>
+        <Layout {...content} key={'animation_two'}>
+          <Sider {...siderConfig}>
+            <SiderVisualView />
           </Sider>
           <Content>
-            <ContentVisualView/>
+            <ContentVisualView />
           </Content>
           <Sider {...editorConfig}>
-            <EditorVisualView/>
+            <EditorVisualView />
           </Sider>
         </Layout>
       </QueueAnim>
