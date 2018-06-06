@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Tabs, Modal, Icon, Divider, Progress ,message} from "antd";
+import LazyLoad from "react-lazyload";
+import { Button, Tabs, Modal, Icon, Divider, Progress, message, Row, Col } from "antd";
 import ImgForm from "../../../components/visual/form/img_form";
 import { up_img_action } from "../../../redux/action";
+import axios from "axios";
+
 
 /**
  * 功能：
@@ -14,7 +17,9 @@ class UpImgPart extends React.Component {
   state = {
     //获取传递过来的图片
     img_url: this.props.img,
-    progress: false
+    progress: false,
+    test: []
+
   };
 
   choose = img_url => {
@@ -37,7 +42,7 @@ class UpImgPart extends React.Component {
       this.props.up_img_upData(
         this.props.up_img_value.data.set("self", $$user_img_new)
       );
-      message.success('上传成功');
+      message.success("上传成功");
       this.setState({
         progress: false
       });
@@ -55,6 +60,88 @@ class UpImgPart extends React.Component {
      * 获取自己上传的图片库
      */
     const $$up_img = this.props.up_img_value.data.get("self");
+
+    const ShowImg = (props) => {
+      let ajaxData = [];
+      if (props.index === 0) {
+        axios({
+          method: "get",
+          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_0.json"
+        })
+          .then((response) => {
+            this.setState({
+              test: response.data
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+      if (props.index === 1) {
+        axios({
+          method: "get",
+          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_1.json"
+        })
+          .then((response) => {
+            this.setState({
+              test: response.data
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+      if (props.index === 2) {
+        axios({
+          method: "get",
+          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json"
+        })
+          .then((response) => {
+            this.setState({
+              test: response.data
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+      if (ajaxData !== []) {
+        return (
+          <Row gutter={16}>
+            {
+              this.state.test.map((data, index) => {
+                return (
+                  <Col span={4} style={{ margin: "0 0 5px 0" }} key={index}>
+                    {
+                      data.type === 1 ?
+                        <LazyLoad height={50} offset={100} once overflow key={index}>
+                          <div style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "inline-block",
+                            verticalAlign: "top",
+                            marginBottom: "10px",
+                            marginRight: "13px",
+                            boxSizing: "border-box"
+                          }}>
+                            <img style={{
+                              verticalAlign: "middle",
+                              maxWidth: "100%",
+                              maxHeight: "100%",
+                              margin: "auto"
+                            }} src={data.url} alt={"img"}/>
+                          </div>
+                        </LazyLoad> : ""
+                    }
+                  </Col>
+                );
+              })
+            }
+          </Row>
+        );
+      }
+
+    };
     return (
       <Modal
         width={800}
@@ -148,7 +235,7 @@ class UpImgPart extends React.Component {
             ) : (
               <div style={{ textAlign: "center", padding: "0 80px" }}>
                 <img
-                  src={"http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"}
+                  src={"https://e7wei-img.oss-cn-beijing.aliyuncs.com/img/%E7%BC%BA%E7%9C%81.png"}
                   alt={"img"}
                 />
                 <br/>
@@ -166,29 +253,20 @@ class UpImgPart extends React.Component {
           </TabPane>
           <TabPane tab="共享素材" key="2">
             <Tabs tabPosition={"left"}>
-              <TabPane tab="背景" key="1">
-                Content of Tab 1
-              </TabPane>
-              <TabPane tab="文本背景" key="2">
-                Content of Tab 2
-              </TabPane>
-              <TabPane tab="艺术字" key="3">
-                Content of Tab 3
-              </TabPane>
-              <TabPane tab="电商" key="4">
-                Content of Tab 3
-              </TabPane>
-              <TabPane tab="节日" key="5">
-                Content of Tab 3
-              </TabPane>
-              <TabPane tab="文理" key="6">
-                Content of Tab 3
-              </TabPane>
-              <TabPane tab="配饰" key="7">
-                Content of Tab 3
-              </TabPane>
-              <TabPane tab="图形图标" key="8">
-                Content of Tab 3
+              <TabPane tab="背景" key="1" style={{ maxHeight: "400px", overflow: "auto" }}>
+                {/**
+                 *总页数,以及第一页数据
+                 **/}
+                {
+                  [1, 2, 3, 4, 5].map((data, index) => {
+                    return (
+                      //对要显示的界面进行懒加载处理
+                      <LazyLoad once height={600} throttle={100} overflow key={index}>
+                        <ShowImg index={index}/>
+                      </LazyLoad>
+                    );
+                  })
+                }
               </TabPane>
             </Tabs>
             <Divider/>

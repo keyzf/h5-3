@@ -23,7 +23,7 @@ export const VideoTemplate = () => {
   return (
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
-        <img src={''} alt={'img'} />
+        <img src={'https://e7wei-img.oss-cn-beijing.aliyuncs.com/img/%E8%A7%86%E9%A2%91%402x.png'} alt={'img'} />
       </Col>
       <Col span={16}>
         视频<br />

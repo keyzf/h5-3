@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from "antd";
 import { Map } from "immutable";
+import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from "antd";
 import { FormLayoutAtom } from "./layout_atom";
 import ComponentLocation from "../../../app/model/visual/component-location";
 import { choose_action, select_action } from "../../../redux/action";
@@ -102,7 +102,12 @@ class NormalLoginForm extends React.Component {
               <ComponentLocation visible={this.props.choose}>
                 {customize.get("item").map((data, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index}
+                         onClick={this.choose.bind(
+                           this,
+                           this.props.index,
+                           this.props.data
+                         )}>
                       {
                         data.get("type") === "radio" ? <FormItem
                           {...form_item_style(`${data.get("title").get("value")}`)}
@@ -143,8 +148,8 @@ class NormalLoginForm extends React.Component {
                           {...form_item_style(`${data.get("title").get("value")}`)}
                         >
                           {getFieldDecorator(`${data.get("decorator")}`)(
-                            <Checkbox.Group options={data.get("option").toJS()} />
-                            )}
+                            <Checkbox.Group options={data.get("option").toJS()}/>
+                          )}
                         </FormItem> : ""
                       }
                       {
@@ -176,7 +181,12 @@ class NormalLoginForm extends React.Component {
             <ComponentLocation>
               {customize.get("item").map((data, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index}
+                       onClick={this.choose.bind(
+                         this,
+                         this.props.index,
+                         this.props.data
+                       )}>
                     <FormItem
                       {...form_item_style(`${data.get("title").get("value")}`)}
                     >

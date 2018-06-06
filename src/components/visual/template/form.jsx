@@ -23,7 +23,7 @@ export const FormTemplate = () => {
   return (
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
-        <img src={''} alt={'img'} />
+        <img src={'https://e7wei-img.oss-cn-beijing.aliyuncs.com/img/%E8%A1%A8%E5%8D%95%402x.png'} alt={'img'} />
       </Col>
       <Col span={16}>
         表单<br />
