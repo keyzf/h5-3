@@ -5,25 +5,7 @@ import { Row, Col, Button } from 'antd';
 import ComponentLocation from '../../../app/model/visual/component-location';
 import { MallLayoutAtom } from './layout_atom';
 import { choose_action, select_action } from '../../../redux/action';
-//{
-//         img: "", //图片
-//         img_config: {
-//           stretching: { value: "" },
-//           tiling: { value: "" }
-//         }, //图片配置
-//         img_url: { value: "" }, // 图片地址
-//         //基础内容
-//         width: { value: "" }, // 图片宽度
-//         height: { value: "" }, //图片高度
-//         title: { value: "标题" }, //标题
-//         content: { value: "内容" }, //内容
-//         //商品价格
-//         current: { value: "" }, //现价
-//         original: { value: "" }, //原价
-//         //按钮
-//         btn_content: { value: "" }, //按钮内容
-//         btn_url: { value: "" } // 按钮链接
-//       }
+
 class GridMallComponent extends React.Component {
   choose = (number, data) => {
     this.props.choose_upData(
@@ -157,7 +139,7 @@ class GridMallComponent extends React.Component {
               >
                 {customize.get('item').map((data, index) => {
                   return (
-                    <Col key={index} span={col($$layout) ? col($$layout) : 12}>
+                    <Col key={index} span={col($$layout) ? col($$layout) : 12} style={{margin:'5px 0'}}>
                       {/*图片显示*/}
                       {$$img ? (
                         <img
@@ -207,10 +189,10 @@ class GridMallComponent extends React.Component {
                       ) : (
                         ''
                       )}
-                      {$$current ? data.get('current').get('value') : ''}
-                      {$$original ? data.get('original').get('value') : ''}
+                         {$$current ? <span style={{marginRight:"5px",color:"red"}}>现价{data.get('current').get('value')}</span> : ''}
+                      {$$original ? <span style={{textDecoration:'line-through'}}>原价{data.get('original').get('value')}</span> : ''}
                       {$$button ? (
-                        <Button>{data.get('btn_content').get('value')}</Button>
+                        <Button style={{width:'100%'}}>{data.get('btn_content').get('value')}</Button>
                       ) : (
                         ''
                       )}
@@ -232,7 +214,7 @@ class GridMallComponent extends React.Component {
             >
               {customize.get('item').map((data, index) => {
                 return (
-                  <Col key={index} span={col($$layout) ? col($$layout) : 12}>
+                  <Col key={index} span={col($$layout) ? col($$layout) : 12} style={{margin:'5px 0'}}>
                     {/*图片显示*/}
                     {$$img ? (
                       <img
@@ -282,10 +264,10 @@ class GridMallComponent extends React.Component {
                     ) : (
                       ''
                     )}
-                    {$$current ? data.get('current').get('value') : ''}
-                    {$$original ? data.get('original').get('value') : ''}
+                       {$$current ? <span style={{marginRight:"5px",color:"red"}}>现价{data.get('current').get('value')}</span> : ''}
+                    {$$original ? <span style={{textDecoration:'line-through'}}>原价{data.get('original').get('value')}</span> : ''}
                     {$$button ? (
-                      <Button>{data.get('btn_content').get('value')}</Button>
+                      <Button style={{width:'100%'}}>{data.get('btn_content').get('value')}</Button>
                     ) : (
                       ''
                     )}

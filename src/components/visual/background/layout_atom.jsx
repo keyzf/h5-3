@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BgLayoutAtom = styled.div`
-
+  position: relative;
   // 宽度
   width: 100%;
   height: ${props => (props.fixed ? ' 100%' : 'auto')};

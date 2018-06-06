@@ -5,7 +5,7 @@ import { VideoTemplate } from '../../../../components/visual/template/video';
 import { fromJS, Map } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';
-import { $$video_database } from '../../../../database/components/video';
+import { $$video_database } from '../../../../database/components/video_database';
 
 class VideoSelect extends React.Component {
   /**

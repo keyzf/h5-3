@@ -3,6 +3,7 @@ export const $$video_database = name => {
     customize: {
       name: name,
       video: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
+      share:'',
       history: [],
     },
     advance: {

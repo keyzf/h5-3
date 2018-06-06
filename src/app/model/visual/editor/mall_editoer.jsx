@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Map, fromJS } from 'immutable';
+import React from "react";
+import { connect } from "react-redux";
+import { Map, fromJS } from "immutable";
 import {
   Tabs,
   Button,
@@ -12,40 +12,41 @@ import {
   Checkbox,
   Popover,
   Tooltip,
-  Divider,
-} from 'antd';
-import { SketchPicker } from 'react-color';
-import { choose_action, select_action } from '../../../../redux/action';
-import PaddingForm from '../../../../components/visual/form/padding_form';
-import PositionForm from '../../../../components/visual/form/position_form';
-import UpImgPart from '../../part/up_img';
-import MallBaseForm from '../../../../components/visual/form/mall_base_form';
+  Divider
+} from "antd";
+import { SketchPicker } from "react-color";
+import { choose_action, select_action } from "../../../../redux/action";
+import PaddingForm from "../../../../components/visual/form/padding_form";
+import PositionForm from "../../../../components/visual/form/position_form";
+import UpImgPart from "../../part/up_img";
+import MallBaseForm from "../../../../components/visual/form/mall_base_form";
 
-import ImgItemForm from '../../../../components/visual/form/mall_item_form';
+import ImgItemForm from "../../../../components/visual/form/mall_item_form";
 import {
-  $$mall_database,
-  $$mall_item_database,
-} from '../../../../database/components/mall';
+  $$grid_mall_database,
+  $$list_mall_database,
+  $$mall_item_database
+} from "../../../../database/components/mall_database";
 
 class EditorMall extends React.Component {
   state = {
     visible: false,
     item: false,
-    number: '',
+    number: ""
   };
 
   // 修改单个选项值
   changeItem = number => {
     this.setState({
       item: true,
-      number: number,
+      number: number
     });
   };
 
   // 回到原页面
   backItem = () => {
     this.setState({
-      item: false,
+      item: false
     });
   };
 
@@ -54,13 +55,13 @@ class EditorMall extends React.Component {
    */
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
 
   itemCloseModal = (state, data) => {
     this.setState({
-      visible: false,
+      visible: false
     });
     if (state && data !== undefined) {
       const $$select_data = this.props.select_value.data;
@@ -68,23 +69,23 @@ class EditorMall extends React.Component {
 
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['customize', 'item', this.state.number, 'img'], data)
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item", this.state.number, "img"], data)
       );
     }
   };
   // close Model
   closeModal = (state, data) => {
     this.setState({
-      visible: false,
+      visible: false
     });
     if (state && data !== undefined) {
       const $$select_data = this.props.select_value.data;
       const $$choose_data = this.props.choose_value.data;
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'img'], data)
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "img"], data)
       );
     }
   };
@@ -101,189 +102,186 @@ class EditorMall extends React.Component {
     const $$select_data = this.props.select_value.data;
     const $$choose_data = this.props.choose_value.data;
     // Current component name
-    const name = $$select_data
-      .get($$choose_data.get('number'))
-      .get('customize')
-      .get('name');
+    const name = $$select_data.getIn([$$choose_data.get("number"), "customize", "name"]);
     // 表单
-    if (opt_name === 'item_change') {
+    if (opt_name === "item_change") {
       // update position
       const $$item = {
         ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('customize')
-          .get('item')
+          .get($$choose_data.get("number"))
+          .get("customize")
+          .get("item")
           .toJS()[this.state.number],
-        ...data,
+        ...data
       };
       // new data
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['customize', 'item', this.state.number], fromJS($$item))
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item", this.state.number], fromJS($$item))
       );
     }
-    if (opt_name === 'item_delete') {
+    if (opt_name === "item_delete") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['customize', 'item', this.state.number, 'img'], '')
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item", this.state.number, "img"], "")
       );
     }
-    if (opt_name === 'item_tiling') {
+    if (opt_name === "item_tiling") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
+          .get($$choose_data.get("number"))
           .setIn(
             [
-              'customize',
-              'item',
+              "customize",
+              "item",
               this.state.number,
-              'img_config',
-              'tiling',
-              'value',
+              "img_config",
+              "tiling",
+              "value"
             ],
             data.target.checked
           )
       );
     }
-    if (opt_name === 'item_stretching') {
+    if (opt_name === "item_stretching") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
+          .get($$choose_data.get("number"))
           .setIn(
             [
-              'customize',
-              'item',
+              "customize",
+              "item",
               this.state.number,
-              'img_config',
-              'stretching',
-              'value',
+              "img_config",
+              "stretching",
+              "value"
             ],
             data.target.checked
           )
       );
     }
     //功能性按键
-    if (opt_name === 'add_item') {
+    if (opt_name === "add_item") {
       const $$add = $$select_data
-        .get($$choose_data.get('number'))
-        .get('customize')
-        .get('item')
-        .push(fromJS($$mall_item_database));
+        .get($$choose_data.get("number"))
+        .get("customize")
+        .get("item")
+        .push($$mall_item_database);
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['customize', 'item'], $$add)
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item"], $$add)
       );
     }
-    if (opt_name === 'reset') {
-      if (name === 'list_mall') {
-        this.sendAction(fromJS($$mall_database(name)));
+    if (opt_name === "reset") {
+      if (name === "list_mall") {
+        this.sendAction($$list_mall_database);
       }
-      if (name === 'grid_mall') {
-        this.sendAction(fromJS($$mall_database(name)));
+      if (name === "grid_mall") {
+        this.sendAction($$grid_mall_database);
       }
     }
-    if (opt_name === 'base') {
+    if (opt_name === "base") {
       if (data.layout) {
         this.sendAction(
           $$select_data
-            .get($$choose_data.get('number'))
-            .setIn(['customize', 'base', 'layout', 'value'], data.layout.value)
+            .get($$choose_data.get("number"))
+            .setIn(["customize", "base", "layout", "value"], data.layout.value)
         );
       }
       if (data.show_element) {
         this.sendAction(
           $$select_data
-            .get($$choose_data.get('number'))
+            .get($$choose_data.get("number"))
             .setIn(
-              ['customize', 'base', 'show_element', 'value'],
+              ["customize", "base", "show_element", "value"],
               data.show_element.value
             )
         );
       }
     }
-    if (opt_name === 'item_deletes') {
+    if (opt_name === "item_deletes") {
       const $$new_data = $$select_data
-        .get($$choose_data.get('number'))
-        .get('customize')
-        .get('item')
+        .get($$choose_data.get("number"))
+        .get("customize")
+        .get("item")
         .delete(data);
 
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['customize', 'item'], $$new_data)
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item"], $$new_data)
       );
     }
     // 高级设置
-    if (opt_name === 'color') {
+    if (opt_name === "color") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'color'], data.hex)
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "color"], data.hex)
       );
     }
-    if (opt_name === 'position') {
+    if (opt_name === "position") {
       // update position
       const $$position = {
         ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('position')
+          .get($$choose_data.get("number"))
+          .get("advance")
+          .get("position")
           .toJS(),
-        ...data,
+        ...data
       };
       // new data
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'position'], fromJS($$position))
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "position"], fromJS($$position))
       );
     }
-    if (opt_name === 'padding') {
+    if (opt_name === "padding") {
       // update position
       const $$padding = {
         ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('padding')
+          .get($$choose_data.get("number"))
+          .get("advance")
+          .get("padding")
           .toJS(),
-        ...data,
+        ...data
       };
       // new data
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'padding'], fromJS($$padding))
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "padding"], fromJS($$padding))
       );
     }
-    if (opt_name === 'tiling') {
+    if (opt_name === "tiling") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
+          .get($$choose_data.get("number"))
           .setIn(
-            ['advance', 'img_config', 'tiling', 'value'],
+            ["advance", "img_config", "tiling", "value"],
             data.target.checked
           )
       );
     }
-    if (opt_name === 'stretching') {
+    if (opt_name === "stretching") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
+          .get($$choose_data.get("number"))
           .setIn(
-            ['advance', 'img_config', 'stretching', 'value'],
+            ["advance", "img_config", "stretching", "value"],
             data.target.checked
           )
       );
     }
-    if (opt_name === 'delete') {
+    if (opt_name === "delete") {
       this.sendAction(
         $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'img'], '')
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "img"], "")
       );
     }
   };
@@ -299,12 +297,12 @@ class EditorMall extends React.Component {
     const $$choose_data = this.props.choose_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get('number'),
+      $$choose_data.get("number"),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set('data', up_data);
+    const $$new_choose_data = $$choose_data.set("data", up_data);
     // send action
-    this.props.select_upData($$new_select_data, '', false);
+    this.props.select_upData($$new_select_data, "", false);
     this.props.choose_upData(
       $$new_choose_data,
       Map({ content: true, choose: true }),
@@ -314,43 +312,48 @@ class EditorMall extends React.Component {
 
   render() {
     // 传递过来的数据
-    const $$ui_text_data = this.props.data.get('data');
-    const $$customize = $$ui_text_data.get('customize');
-    const $$advance = $$ui_text_data.get('advance');
+    const $$ui_text_data = this.props.data.get("data");
+    const $$customize = $$ui_text_data.get("customize");
+    const $$advance = $$ui_text_data.get("advance");
     const operations = (
-      <Button onClick={this.editorFeatures.bind(this, 'reset')}>
+      <Button onClick={this.editorFeatures.bind(this, "reset")}>
         恢复默认
       </Button>
     );
     const item = (img, title, number) => (
-      <Row gutter={16}>
+      <Row gutter={8}>
         <Col span={8}>
           <img
-            width={'50px'}
-            height={'auto'}
+            width={"50px"}
+            height={"45px"}
             src={
               img
                 ? img
-                : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"
             }
-            alt={'img'}
+            alt={"img"}
           />
         </Col>
-        <Col span={12} style={{ padding: '8px' }}>
-          {title}
+        <Col span={10} style={{
+          padding: "8px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        }}>
+          {title.get("value")}
         </Col>
-        <Col span={4} style={{ padding: '8px' }}>
+        <Col span={6} style={{ padding: "8px" }}>
           <Tooltip title="修改">
             <Icon
               type="edit"
-              style={{ marginRight: '15px' }}
+              style={{ marginRight: "15px" }}
               onClick={this.changeItem.bind(this, number)}
             />
           </Tooltip>
           <Tooltip title="删除">
             <Icon
               type="delete"
-              onClick={this.editorFeatures.bind(this, 'item_deletes', number)}
+              onClick={this.editorFeatures.bind(this, "item_deletes", number)}
             />
           </Tooltip>
         </Col>
@@ -369,35 +372,35 @@ class EditorMall extends React.Component {
                 span={7}
                 offset={3}
                 style={{
-                  margin: 'auto',
-                  height: '100px',
-                  border: '1px solid #e7e7e7',
-                  textAlign: 'center',
-                  color: '#e7e7e7',
-                  display: 'flex',
-                  alignItems: 'center',
+                  margin: "auto",
+                  height: "100px",
+                  border: "1px solid #e7e7e7",
+                  textAlign: "center",
+                  color: "#e7e7e7",
+                  display: "flex",
+                  alignItems: "center"
                 }}
                 onClick={this.showModal}
               >
                 <img
                   style={{
-                    verticalAlign: 'middle',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    margin: 'auto',
+                    verticalAlign: "middle",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    margin: "auto"
                   }}
                   src={
                     $$customize
-                      .get('item')
+                      .get("item")
                       .get(this.state.number)
-                      .get('img')
+                      .get("img")
                       ? $$customize
-                          .get('item')
-                          .get(this.state.number)
-                          .get('img')
-                      : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
+                        .get("item")
+                        .get(this.state.number)
+                        .get("img")
+                      : "http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"
                   }
-                  alt={'img'}
+                  alt={"img"}
                 />
               </Col>
               {/*图片配套功能*/}
@@ -405,23 +408,23 @@ class EditorMall extends React.Component {
                 <Button.Group>
                   <Button onClick={this.showModal}>更换</Button>
                   <Button
-                    onClick={this.editorFeatures.bind(this, 'item_delete')}
+                    onClick={this.editorFeatures.bind(this, "item_delete")}
                   >
                     删除
                   </Button>
                 </Button.Group>
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <Row gutter={16}>
                   <Col span={10}>
                     <Checkbox
-                      onChange={this.editorFeatures.bind(this, 'item_tiling')}
+                      onChange={this.editorFeatures.bind(this, "item_tiling")}
                       defaultValue={$$customize
-                        .get('item')
+                        .get("item")
                         .get(this.state.number)
-                        .get('img_config')
-                        .get('tiling')
-                        .get('value')}
+                        .get("img_config")
+                        .get("tiling")
+                        .get("value")}
                     >
                       平铺
                     </Checkbox>
@@ -430,14 +433,14 @@ class EditorMall extends React.Component {
                     <Checkbox
                       onChange={this.editorFeatures.bind(
                         this,
-                        'item_stretching'
+                        "item_stretching"
                       )}
                       defaultValue={$$customize
-                        .get('item')
+                        .get("item")
                         .get(this.state.number)
-                        .get('img_config')
-                        .get('stretching')
-                        .get('value')}
+                        .get("img_config")
+                        .get("stretching")
+                        .get("value")}
                     >
                       拉伸
                     </Checkbox>
@@ -447,47 +450,47 @@ class EditorMall extends React.Component {
                   visible={this.state.visible}
                   unvisible={this.itemCloseModal.bind(this)}
                   img={$$customize
-                    .get('item')
+                    .get("item")
                     .get(this.state.number)
-                    .get('img')}
+                    .get("img")}
                 />
               </Col>
             </Row>
-            <Divider />
+            <Divider/>
             {/*表单*/}
             <ImgItemForm
-              name={$$customize.get('name')}
+              name={$$customize.get("name")}
               {...$$ui_text_data
-                .get('customize')
-                .get('item')
+                .get("customize")
+                .get("item")
                 .toJS()[this.state.number]}
-              onChange={this.editorFeatures.bind(this, 'item_change')}
+              onChange={this.editorFeatures.bind(this, "item_change")}
             />
           </Card>
         ) : (
-          <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations} key={1}>
+          <Tabs defaultActiveKey={"1"} tabBarExtraContent={operations} key={1}>
             <Tabs.TabPane tab="内容设置" key="1">
-              <Card title="基础属性" style={{ marginTop: '-18px' }}>
+              <Card title="基础属性" style={{ marginTop: "-18px" }}>
                 <MallBaseForm
-                  name={$$customize.get('name')}
-                  {...$$customize.get('base').toJS()}
-                  onChange={this.editorFeatures.bind(this, 'base')}
+                  name={$$customize.get("name")}
+                  {...$$customize.get("base").toJS()}
+                  onChange={this.editorFeatures.bind(this, "base")}
                 />
               </Card>
               <Card
                 title="项目列表"
                 extra={
-                  <div onClick={this.editorFeatures.bind(this, 'add_item')}>
-                    <Icon type="plus" />添加
+                  <div onClick={this.editorFeatures.bind(this, "add_item")}>
+                    <Icon type="plus"/>添加
                   </div>
                 }
               >
-                {$$customize.get('item').map((data, index) => {
+                {$$customize.get("item").map((data, index) => {
                   return (
                     <Collapse.Panel
-                      style={{ marginBottom: '10px' }}
+                      style={{ marginBottom: "10px" }}
                       disabled
-                      header={item(data.get('img'), data.get('title'), index)}
+                      header={item(data.get("img"), data.get("title"), index)}
                       key={index}
                     />
                   );
@@ -496,24 +499,24 @@ class EditorMall extends React.Component {
             </Tabs.TabPane>
 
             <Tabs.TabPane tab="高级设置" key="2">
-              <Card title="背景色" style={{ marginTop: '-18px' }}>
+              <Card title="背景色" style={{ marginTop: "-18px" }}>
                 <Popover
                   content={
                     <SketchPicker
-                      color={$$advance.get('color')}
-                      onChangeComplete={this.editorFeatures.bind(this, 'color')}
+                      color={$$advance.get("color")}
+                      onChangeComplete={this.editorFeatures.bind(this, "color")}
                     />
                   }
                   trigger="click"
                 >
                   <Card.Grid
                     style={{
-                      textAlign: 'center',
-                      width: '45%',
-                      background: $$advance.get('color'),
+                      textAlign: "center",
+                      width: "45%",
+                      background: $$advance.get("color")
                     }}
                   >
-                    <Icon type="plus" />&nbsp;&nbsp;自定义
+                    <Icon type="plus"/>&nbsp;&nbsp;自定义
                   </Card.Grid>
                 </Popover>
               </Card>
@@ -522,50 +525,50 @@ class EditorMall extends React.Component {
                   <Col
                     span={7}
                     style={{
-                      margin: 'auto',
-                      height: '100px',
-                      border: '1px solid #e7e7e7',
-                      textAlign: 'center',
-                      color: '#e7e7e7',
-                      display: 'flex',
-                      alignItems: 'center',
+                      margin: "auto",
+                      height: "100px",
+                      border: "1px solid #e7e7e7",
+                      textAlign: "center",
+                      color: "#e7e7e7",
+                      display: "flex",
+                      alignItems: "center"
                     }}
                     onClick={this.showModal}
                   >
                     <img
                       style={{
-                        verticalAlign: 'middle',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        margin: 'auto',
+                        verticalAlign: "middle",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        margin: "auto"
                       }}
                       src={
-                        $$advance.get('img')
-                          ? $$advance.get('img')
-                          : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
+                        $$advance.get("img")
+                          ? $$advance.get("img")
+                          : "http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"
                       }
-                      alt={'img'}
+                      alt={"img"}
                     />
                   </Col>
                   <Col span={12}>
                     <Button.Group>
                       <Button onClick={this.showModal}>更换</Button>
                       <Button
-                        onClick={this.editorFeatures.bind(this, 'delete')}
+                        onClick={this.editorFeatures.bind(this, "delete")}
                       >
                         删除
                       </Button>
                     </Button.Group>
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     <Row gutter={16}>
-                      <Col span={10}>
+                      <Col span={12}>
                         <Checkbox
-                          onChange={this.editorFeatures.bind(this, 'tiling')}
+                          onChange={this.editorFeatures.bind(this, "tiling")}
                           defaultValue={$$advance
-                            .get('img_config')
-                            .get('tiling')
-                            .get('value')}
+                            .get("img_config")
+                            .get("tiling")
+                            .get("value")}
                         >
                           平铺
                         </Checkbox>
@@ -574,12 +577,12 @@ class EditorMall extends React.Component {
                         <Checkbox
                           onChange={this.editorFeatures.bind(
                             this,
-                            'stretching'
+                            "stretching"
                           )}
                           defaultValue={$$advance
-                            .get('img_config')
-                            .get('stretching')
-                            .get('value')}
+                            .get("img_config")
+                            .get("stretching")
+                            .get("value")}
                         >
                           拉伸
                         </Checkbox>
@@ -588,21 +591,21 @@ class EditorMall extends React.Component {
                     <UpImgPart
                       visible={this.state.visible}
                       unvisible={this.closeModal.bind(this)}
-                      img={$$advance.get('img')}
+                      img={$$advance.get("img")}
                     />
                   </Col>
                 </Row>
               </Card>
-              <Card title="内边距" style={{ width: '100%' }}>
+              <Card title="内边距" style={{ width: "100%" }}>
                 <PaddingForm
-                  {...$$advance.get('padding').toJS()}
-                  onChange={this.editorFeatures.bind(this, 'padding')}
+                  {...$$advance.get("padding").toJS()}
+                  onChange={this.editorFeatures.bind(this, "padding")}
                 />
               </Card>
-              <Card title="定位" style={{ width: '100%' }}>
+              <Card title="定位" style={{ width: "100%" }}>
                 <PositionForm
-                  {...$$advance.get('position').toJS()}
-                  onChange={this.editorFeatures.bind(this, 'position')}
+                  {...$$advance.get("position").toJS()}
+                  onChange={this.editorFeatures.bind(this, "position")}
                 />
               </Card>
             </Tabs.TabPane>
@@ -616,7 +619,7 @@ class EditorMall extends React.Component {
 const mapStateToProps = state => {
   return {
     select_value: state.select_reducer,
-    choose_value: state.choose_reducer,
+    choose_value: state.choose_reducer
   };
 };
 
@@ -625,7 +628,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
+      dispatch(choose_action(data, meta, error))
   };
 };
 

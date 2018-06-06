@@ -1,14 +1,16 @@
 import React from 'react';
 import { Divider } from 'antd';
+import { Map } from 'immutable';
+import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
+import { choose_action, select_action } from '../../../../redux/action';
 import {
   GridMallTemplate,
   ListMallTemplate,
 } from '../../../../components/visual/template/mall';
-import { fromJS, Map } from 'immutable';
-import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../../redux/action';
-import { $$mall_database } from '../../../../database/components/mall';
+import { $$grid_mall_database, $$list_mall_database } from "../../../../database/components/mall_database";
+
+
 
 class MallSelect extends React.Component {
   /**
@@ -33,23 +35,19 @@ class MallSelect extends React.Component {
     );
   };
   render() {
-    const option_data = name => {
-      return fromJS($$mall_database(name));
-    };
-
     return (
       <QueueAnim delay={200}>
         <div
           className={'components_hover'}
           key={1}
-          onClick={this.transfer.bind(this, option_data('grid_mall'))}
+          onClick={this.transfer.bind(this, $$grid_mall_database)}
         >
           <GridMallTemplate />
         </div>
         <div
           className={'components_hover'}
           key={2}
-          onClick={this.transfer.bind(this, option_data('list_mall'))}
+          onClick={this.transfer.bind(this, $$list_mall_database)}
         >
           <ListMallTemplate />
         </div>

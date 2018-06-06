@@ -138,7 +138,7 @@ class ListMallComponent extends React.Component {
               >
                 {customize.get('item').map((data, index) => {
                   return (
-                    <Col key={index} span={col($$layout) ? col($$layout) : 24}>
+                    <Col key={index} span={col($$layout) ? col($$layout) : 24} style={{margin:'5px 0'}}>
                       <Col span={12}>
                         {$$img ? (
                           <img
@@ -191,10 +191,10 @@ class ListMallComponent extends React.Component {
                         ) : (
                           ''
                         )}
-                        {$$current ? data.get('current').get('value') : ''}
-                        {$$original ? data.get('original').get('value') : ''}
+                        {$$current ? <span style={{marginRight:"5px",color:"red"}}>现价{data.get('current').get('value')}</span> : ''}
+                       {$$original ? <span style={{textDecoration:'line-through'}}>原价{data.get('original').get('value')}</span> : ''}
                         {$$button ? (
-                          <Button>
+                          <Button style={{width:'100%'}}>
                             {data.get('btn_content').get('value')}
                           </Button>
                         ) : (
@@ -220,7 +220,7 @@ class ListMallComponent extends React.Component {
             >
               {customize.get('item').map((data, index) => {
                 return (
-                  <Col key={index} span={col($$layout) ? col($$layout) : 24}>
+                  <Col key={index} span={col($$layout) ? col($$layout) : 24} style={{margin:'5px 0'}}>
                     <Col span={12}>
                       {$$img ? (
                         <img
@@ -273,10 +273,12 @@ class ListMallComponent extends React.Component {
                       ) : (
                         ''
                       )}
-                      {$$current ? data.get('current').get('value') : ''}
-                      {$$original ? data.get('original').get('value') : ''}
+                      {$$current ? <span style={{marginRight:"5px",color:"red"}}>现价{data.get('current').get('value')}</span> : ''}
+                     {$$original ? <span style={{textDecoration:'line-through'}}>原价{data.get('original').get('value')}</span> : ''}
                       {$$button ? (
-                        <Button>{data.get('btn_content').get('value')}</Button>
+                        <Button style={{width:'100%'}}>
+                          {data.get('btn_content').get('value')}
+                        </Button>
                       ) : (
                         ''
                       )}
