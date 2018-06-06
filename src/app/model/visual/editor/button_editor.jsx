@@ -4,7 +4,7 @@ import { Tabs, Button, Row, Col, Card, Popover, Checkbox, Icon } from 'antd';
 import { choose_action, select_action } from '../../../../redux/action';
 import { SketchPicker } from 'react-color';
 import { fromJS, Map } from 'immutable';
-import { $$button_database } from '../../../../database/components/button';
+import { $$button_database } from '../../../../database/components/button_database';
 import PaddingForm from '../../../../components/visual/form/padding_form';
 import PositionForm from '../../../../components/visual/form/position_form';
 import UpImgPart from '../../part/up_img';
@@ -172,10 +172,12 @@ class EditorButton extends React.Component {
     return (
       <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
         <Tabs.TabPane tab="内容设置" key="1">
+          <Card title="基础属性" style={{ marginTop: '-18px' }}>
           <ButtonForm
             {...$$customize.toJS()}
             onChange={this.editorFeatures.bind(this, 'customize')}
           />
+          </Card>
         </Tabs.TabPane>
         <Tabs.TabPane tab="高级设置" key="2">
           <Card title="背景色" style={{ marginTop: '-18px' }}>
@@ -239,7 +241,7 @@ class EditorButton extends React.Component {
                 <br />
                 <br />
                 <Row gutter={16}>
-                  <Col span={10}>
+                  <Col span={12}>
                     <Checkbox
                       onChange={this.editorFeatures.bind(this, 'tiling')}
                       defaultValue={$$advance

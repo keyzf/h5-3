@@ -6,6 +6,7 @@ export const ButtonAtom = styled.button`
   //高度
   height: ${props => (props.height ? props.height + 'px' : '30px')};
   border: none;
+  margin: 5px 0;
   // 圆角
   border-radius: ${props => (props.radius ? props.radius + 'px' : 'null')};
   // 阴影

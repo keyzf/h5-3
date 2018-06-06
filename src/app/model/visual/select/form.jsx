@@ -7,14 +7,14 @@ import { FormTemplate } from '../../../../components/visual/template/form';
 import {
   $$form_database,
   $$form_item_database,
-} from '../../../../database/components/form';
+} from '../../../../database/components/form_database';
 
 class FormSelect extends React.Component {
   transfer = data => {
     let img_data = $$form_database(data.name);
     // 给数据修改值
     img_data.customize.item = data.title.map((datas, index) =>
-      $$form_item_database(data.decorator[index], datas, [
+      $$form_item_database('radio',data.decorator[index], datas, [
         '非常满意',
         '满意',
         '一般满意',

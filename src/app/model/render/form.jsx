@@ -5,7 +5,7 @@ import EditorMusic from "../visual/editor/music_editor";
 import EditorVideo from "../visual/editor/video_editor";
 import EditorMall from "../visual/editor/mall_editoer";
 import EditorButton from "../visual/editor/button_editor";
-import EditorForm from "../visual/editor/form";
+import EditorForm from "../visual/editor/form_editor";
 
 /**
  * 接收数据，返回相对应的数据表 很重要的一个函数

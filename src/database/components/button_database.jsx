@@ -1,3 +1,5 @@
+
+
 export const $$button_database = name => {
   return {
     customize: {
@@ -11,7 +13,6 @@ export const $$button_database = name => {
     },
     advance: {
       color: '',
-
       img: '',
       img_config: {
         stretching: { value: '' },
