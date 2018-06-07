@@ -91,7 +91,9 @@ export const html5_reducer = (
  * @returns {*}
  *
  */
+
 export const up_img_reducer = (
+  
   state = {
     data: Map({ self: List(), recommend: '' }),
     meta: '',
