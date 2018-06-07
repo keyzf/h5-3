@@ -62,6 +62,7 @@ class UpImgPart extends React.Component {
       });
   }
 
+  // 用户点击不同的图片给与不同的样式
   choose = (img_url,name) => {
     if ('public_library'===name){
       this.setState({
@@ -74,6 +75,7 @@ class UpImgPart extends React.Component {
     }
   };
 
+  // 图片上传
   ImgPartChange = (changedFields) => {
     const file = changedFields.upload.value.file;
     if (file.status === "uploading") {
@@ -102,13 +104,13 @@ class UpImgPart extends React.Component {
           url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_${props.index}.json`
         })
           .then((response) => {
-            let c = this.state.ajax_url;
+            let ajax_url = this.state.ajax_url;
             let length = this.state.length;
             response.data.map((data) => {
-              return c.push(data);
+              return ajax_url.push(data);
             });
             this.setState({
-              ajax_url: c,
+              ajax_url: ajax_url,
               length: length + 1
             });
           })
