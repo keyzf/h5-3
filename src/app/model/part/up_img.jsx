@@ -5,7 +5,7 @@ import { Button, Tabs, Modal, Icon, Divider, Progress, message, Row, Col } from 
 import ImgForm from "../../../components/visual/form/img_form";
 import { up_img_action } from "../../../redux/action";
 import axios from "axios";
-
+import range from "lodash.range";
 
 /**
  * 功能：
@@ -16,11 +16,12 @@ import axios from "axios";
 
 class UpImgPart extends React.Component {
   state = {
+    page_data: { number: 3, data: "" },
     //获取传递过来的图片
     img_url: this.props.img,
     // 进度条
     progress: false,
-    length:0,
+    length: 0,
     test: [
       { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
       { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
@@ -96,71 +97,31 @@ class UpImgPart extends React.Component {
 
     // 公共图片库
     const ShowImg = (props) => {
-      if (this.state.length=== 0 && props.index===0) {
+      if (this.state.length === props.index) {
         axios({
           method: "get",
-          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_0.json"
+          url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_${props.index}.json`
         })
           .then((response) => {
             let c = this.state.test;
             let length = this.state.length;
-            response.data.map((data)=>{
-              c.push(data)
+            response.data.map((data) => {
+              c.push(data);
             });
             this.setState({
               test: c,
-              length: length+1
+              length: length + 1
             });
-            console.log(c)
           })
           .catch(function(error) {
             console.log(error);
           });
       }
-      if (this.state.length  === 1 && props.index===1) {
-        axios({
-          method: "get",
-          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_1.json"
-        })
-          .then((response) => {
-            let c = this.state.test;
-            let length = this.state.length;
-            response.data.map((data)=>{
-              c.push(data)
-            });
-            this.setState({
-              test: c,
-              length: length+1
-            });
-            console.log(c)
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-      }
-      if (this.state.length  === 2 && props.index===2) {
-        axios({
-          method: "get",
-          url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json"
-        })
-          .then((response) => {
-            let c = this.state.test;
-            let length = this.state.length;
-            response.data.map((data)=>{
-              c.push(data)
-            });
-            this.setState({
-              test: c,
-              length: length+1
-            });
-            console.log(c)
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-      }
+      console.log(this.state.length,props.index)
       return (
-        <Row gutter={16}>
+        <React.Fragment>
+
+          {this.state.length-1 === props.index?<Row gutter={16}>
           {
             this.state.test.map((data, index) => {
               return (
@@ -190,7 +151,8 @@ class UpImgPart extends React.Component {
               );
             })
           }
-        </Row>
+          </Row>:<div style={{display:'none'}}>代价在</div>}
+        </React.Fragment>
       );
 
     };
@@ -310,12 +272,15 @@ class UpImgPart extends React.Component {
                  *总页数,以及第一页数据
                  **/}
                 {
-                  [1, 2, 3, 4, 5].map((data, index) => {
+                  range(this.state.page_data.number).map((data, index) => {
+                    console.log(range(this.state.page_data.number));
                     return (
                       //对要显示的界面进行懒加载处理
-                      <LazyLoad once={true} throttle={100}  height={600} overflow key={index}>
-                        <ShowImg index={index}/>
-                      </LazyLoad>
+                      <React.Fragment key={index}>
+                        <LazyLoad once={true} throttle={100} height={600} overflow key={index}>
+                          <ShowImg index={index}/>
+                        </LazyLoad>
+                      </React.Fragment>
                     );
                   })
                 }
