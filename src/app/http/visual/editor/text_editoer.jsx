@@ -12,7 +12,7 @@ import { choose_action, select_action } from '../../../../redux/action';
 import PaddingForm from '../../../../components/visual/form/padding_form';
 import PositionForm from '../../../../components/visual/form/position_form';
 import RichTextEditor from '../../../../components/visual/form/editor_form';
-import UpImgPart from '../../part/up_img';
+import UpImgPart from '../../../model/part/up_img';
 
 /**
  * editor for text

@@ -7,7 +7,7 @@ import { fromJS, Map } from 'immutable';
 import { $$button_database } from '../../../../database/components/button_database';
 import PaddingForm from '../../../../components/visual/form/padding_form';
 import PositionForm from '../../../../components/visual/form/position_form';
-import UpImgPart from '../../part/up_img';
+import UpImgPart from '../../../model/part/up_img';
 import ButtonForm from '../../../../components/visual/form/button_form';
 
 class EditorButton extends React.Component {

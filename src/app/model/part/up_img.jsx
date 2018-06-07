@@ -13,13 +13,45 @@ import axios from "axios";
  * 一、图片（存在，或者不存在）
  * 二、关闭函数（将数据传递给父级组件）
  */
+
 class UpImgPart extends React.Component {
   state = {
     //获取传递过来的图片
     img_url: this.props.img,
+    // 进度条
     progress: false,
-    test: []
+    length:0,
+    test: [
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" },
+      { type: 1, url: "https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg" }
 
+    ]
   };
 
   choose = img_url => {
@@ -47,6 +79,7 @@ class UpImgPart extends React.Component {
         progress: false
       });
     }
+
   };
 
   render() {
@@ -61,85 +94,104 @@ class UpImgPart extends React.Component {
      */
     const $$up_img = this.props.up_img_value.data.get("self");
 
+    // 公共图片库
     const ShowImg = (props) => {
-      let ajaxData = [];
-      if (props.index === 0) {
+      if (this.state.length=== 0 && props.index===0) {
         axios({
           method: "get",
           url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_0.json"
         })
           .then((response) => {
-            this.setState({
-              test: response.data
+            let c = this.state.test;
+            let length = this.state.length;
+            response.data.map((data)=>{
+              c.push(data)
             });
+            this.setState({
+              test: c,
+              length: length+1
+            });
+            console.log(c)
           })
           .catch(function(error) {
             console.log(error);
           });
       }
-      if (props.index === 1) {
+      if (this.state.length  === 1 && props.index===1) {
         axios({
           method: "get",
           url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_1.json"
         })
           .then((response) => {
-            this.setState({
-              test: response.data
+            let c = this.state.test;
+            let length = this.state.length;
+            response.data.map((data)=>{
+              c.push(data)
             });
+            this.setState({
+              test: c,
+              length: length+1
+            });
+            console.log(c)
           })
           .catch(function(error) {
             console.log(error);
           });
       }
-      if (props.index === 2) {
+      if (this.state.length  === 2 && props.index===2) {
         axios({
           method: "get",
           url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json"
         })
           .then((response) => {
-            this.setState({
-              test: response.data
+            let c = this.state.test;
+            let length = this.state.length;
+            response.data.map((data)=>{
+              c.push(data)
             });
+            this.setState({
+              test: c,
+              length: length+1
+            });
+            console.log(c)
           })
           .catch(function(error) {
             console.log(error);
           });
       }
-      if (ajaxData !== []) {
-        return (
-          <Row gutter={16}>
-            {
-              this.state.test.map((data, index) => {
-                return (
-                  <Col span={4} style={{ margin: "0 0 5px 0" }} key={index}>
-                    {
-                      data.type === 1 ?
-                        <LazyLoad height={50} offset={100} once overflow key={index}>
-                          <div style={{
-                            width: "100%",
-                            height: "100%",
-                            display: "inline-block",
-                            verticalAlign: "top",
-                            marginBottom: "10px",
-                            marginRight: "13px",
-                            boxSizing: "border-box"
-                          }}>
-                            <img style={{
-                              verticalAlign: "middle",
-                              maxWidth: "100%",
-                              maxHeight: "100%",
-                              margin: "auto"
-                            }} src={data.url} alt={"img"}/>
-                          </div>
-                        </LazyLoad> : ""
-                    }
-                  </Col>
-                );
-              })
-            }
-          </Row>
-        );
-      }
+      return (
+        <Row gutter={16}>
+          {
+            this.state.test.map((data, index) => {
+              return (
+                <Col span={4} style={{ margin: "0 0 5px 0" }} key={index}>
+                  {
+                    data.type === 1 ?
+                      <LazyLoad height={50} offset={100} once overflow key={index}>
+                        <div style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "inline-block",
+                          verticalAlign: "top",
+                          marginBottom: "10px",
+                          marginRight: "13px",
+                          boxSizing: "border-box"
+                        }}>
+                          <img style={{
+                            verticalAlign: "middle",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            margin: "auto"
+                          }} src={data.url} alt={"img"}/>
+                        </div>
+                      </LazyLoad> : ""
+                  }
+                </Col>
+              );
+            })
+          }
+        </Row>
+      );
 
     };
     return (
@@ -261,7 +313,7 @@ class UpImgPart extends React.Component {
                   [1, 2, 3, 4, 5].map((data, index) => {
                     return (
                       //对要显示的界面进行懒加载处理
-                      <LazyLoad once height={600} throttle={100} overflow key={index}>
+                      <LazyLoad once={true} throttle={100}  height={600} overflow key={index}>
                         <ShowImg index={index}/>
                       </LazyLoad>
                     );

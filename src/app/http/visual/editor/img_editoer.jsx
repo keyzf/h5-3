@@ -12,23 +12,28 @@ import {
   Checkbox,
   Popover,
   Tooltip,
-  Divider
+  Divider,
+  Popconfirm
 } from "antd";
 import { SketchPicker } from "react-color";
 import { choose_action, select_action } from "../../../../redux/action";
 import PaddingForm from "../../../../components/visual/form/padding_form";
 import PositionForm from "../../../../components/visual/form/position_form";
-import UpImgPart from "../../part/up_img";
-import MallBaseForm from "../../../../components/visual/form/mall_base_form";
-
-import ImgItemForm from "../../../../components/visual/form/mall_item_form";
+import UpImgPart from "../../../model/part/up_img";
+import ImgBaseForm from "../../../../components/visual/form/img_base_form";
+import ImgItemForm from "../../../../components/visual/form/img_item_form";
 import {
-  $$grid_mall_database,
-  $$list_mall_database,
-  $$mall_item_database
-} from "../../../../database/components/mall_database";
+  $$carousel_img_database,
+  $$grid_img_database, $$img_addItem_database,
+  $$list_img_database, $$slider_img_database,
+  $$single_img_database
+} from "../../../../database/components/img_database";
 
-class EditorMall extends React.Component {
+class EditorImg extends React.Component {
+  /**
+   * control mode
+   * @type {{visible: boolean}}
+   */
   state = {
     visible: false,
     item: false,
@@ -102,16 +107,21 @@ class EditorMall extends React.Component {
     const $$select_data = this.props.select_value.data;
     const $$choose_data = this.props.choose_value.data;
     // Current component name
-    const name = $$select_data.getIn([$$choose_data.get("number"), "customize", "name"]);
-    // 表单
+    const name = $$select_data.getIn([$$choose_data.get("number"),"customize","name"])
+    // features
+    if (opt_name === "item_deletes") {
+      const $$new_data = $$select_data.getIn([$$choose_data.get("number"),"customize","item"]).delete(data);
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item"], $$new_data)
+      );
+    }
+
     if (opt_name === "item_change") {
       // update position
       const $$item = {
-        ...$$select_data
-          .get($$choose_data.get("number"))
-          .get("customize")
-          .get("item")
-          .toJS()[this.state.number],
+        ...$$select_data.getIn([$$choose_data.get("number"),"customize","item"]).toJS()[this.state.number],
         ...data
       };
       // new data
@@ -121,6 +131,72 @@ class EditorMall extends React.Component {
           .setIn(["customize", "item", this.state.number], fromJS($$item))
       );
     }
+
+    if (opt_name === "add_item") {
+      const $$add = $$select_data
+        .getIn([$$choose_data.get("number"),"customize","item"])
+        .push($$img_addItem_database);
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(["customize", "item"], $$add)
+      );
+    }
+    if (opt_name === "base") {
+      if (data.layout) {
+        this.sendAction(
+          $$select_data
+            .get($$choose_data.get("number"))
+            .setIn(["customize", "base", "layout", "value"], data.layout.value)
+        );
+      }
+      if (data.show_element) {
+        this.sendAction(
+          $$select_data
+            .get($$choose_data.get("number"))
+            .setIn(
+              ["customize", "base", "show_element", "value"],
+              data.show_element.value
+            )
+        );
+      }
+    }
+    if (opt_name === "color") {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "color"], data.hex)
+      );
+    }
+
+    if (opt_name === "delete") {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(["advance", "img"], "")
+      );
+    }
+    if (opt_name === "tiling") {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(
+            ["advance", "img_config", "tiling", "value"],
+            data.target.checked
+          )
+      );
+    }
+    if (opt_name === "stretching") {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get("number"))
+          .setIn(
+            ["advance", "img_config", "stretching", "value"],
+            data.target.checked
+          )
+      );
+    }
+
     if (opt_name === "item_delete") {
       this.sendAction(
         $$select_data
@@ -162,67 +238,7 @@ class EditorMall extends React.Component {
           )
       );
     }
-    //功能性按键
-    if (opt_name === "add_item") {
-      const $$add = $$select_data
-        .get($$choose_data.get("number"))
-        .get("customize")
-        .get("item")
-        .push($$mall_item_database);
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["customize", "item"], $$add)
-      );
-    }
-    if (opt_name === "reset") {
-      if (name === "list_mall") {
-        this.sendAction($$list_mall_database);
-      }
-      if (name === "grid_mall") {
-        this.sendAction($$grid_mall_database);
-      }
-    }
-    if (opt_name === "base") {
-      if (data.layout) {
-        this.sendAction(
-          $$select_data
-            .get($$choose_data.get("number"))
-            .setIn(["customize", "base", "layout", "value"], data.layout.value)
-        );
-      }
-      if (data.show_element) {
-        this.sendAction(
-          $$select_data
-            .get($$choose_data.get("number"))
-            .setIn(
-              ["customize", "base", "show_element", "value"],
-              data.show_element.value
-            )
-        );
-      }
-    }
-    if (opt_name === "item_deletes") {
-      const $$new_data = $$select_data
-        .get($$choose_data.get("number"))
-        .get("customize")
-        .get("item")
-        .delete(data);
 
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["customize", "item"], $$new_data)
-      );
-    }
-    // 高级设置
-    if (opt_name === "color") {
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "color"], data.hex)
-      );
-    }
     if (opt_name === "position") {
       // update position
       const $$position = {
@@ -244,9 +260,7 @@ class EditorMall extends React.Component {
       // update position
       const $$padding = {
         ...$$select_data
-          .get($$choose_data.get("number"))
-          .get("advance")
-          .get("padding")
+          .getIn([$$choose_data.get("number"),"advance","padding"])
           .toJS(),
         ...data
       };
@@ -257,32 +271,22 @@ class EditorMall extends React.Component {
           .setIn(["advance", "padding"], fromJS($$padding))
       );
     }
-    if (opt_name === "tiling") {
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(
-            ["advance", "img_config", "tiling", "value"],
-            data.target.checked
-          )
-      );
-    }
-    if (opt_name === "stretching") {
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(
-            ["advance", "img_config", "stretching", "value"],
-            data.target.checked
-          )
-      );
-    }
-    if (opt_name === "delete") {
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get("number"))
-          .setIn(["advance", "img"], "")
-      );
+    if (opt_name === "reset") {
+      if (name === "single_img") {
+        this.sendAction($$single_img_database);
+      }
+      if (name === "list_img") {
+        this.sendAction($$list_img_database);
+      }
+      if (name === "grid_img") {
+        this.sendAction($$grid_img_database);
+      }
+      if (name === "sider_img") {
+        this.sendAction($$slider_img_database);
+      }
+      if (name === "carousel_img") {
+        this.sendAction($$carousel_img_database);
+      }
     }
   };
 
@@ -316,31 +320,33 @@ class EditorMall extends React.Component {
     const $$customize = $$ui_text_data.get("customize");
     const $$advance = $$ui_text_data.get("advance");
     const operations = (
-      <Button onClick={this.editorFeatures.bind(this, "reset")}>
+      <Popconfirm
+        placement="bottom"
+        title={'重置为默认设置？'}
+        onConfirm={this.editorFeatures.bind(this, "reset")}
+        okText="确认"
+        cancelText="取消"
+      >
+      <Button >
         恢复默认
       </Button>
+      </Popconfirm>
     );
     const item = (img, title, number) => (
-      <Row gutter={8}>
+      <Row gutter={16}>
         <Col span={8}>
-          <img
-            width={"50px"}
-            height={"45px"}
-            src={
-              img
-                ? img
-                : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"
-            }
-            alt={"img"}
-          />
+          <img width={"50px"} height={"40px"} src={img?img:'https://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'} alt={"img"}/>
         </Col>
-        <Col span={10} style={{
-          padding: "8px",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap"
-        }}>
-          {title.get("value")}
+        <Col
+          span={10}
+          style={{
+            padding: "8px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          }}
+        >
+          {title.get('value')}
         </Col>
         <Col span={6} style={{ padding: "8px" }}>
           <Tooltip title="修改">
@@ -350,11 +356,16 @@ class EditorMall extends React.Component {
               onClick={this.changeItem.bind(this, number)}
             />
           </Tooltip>
-          <Tooltip title="删除">
-            <Icon
-              type="delete"
-              onClick={this.editorFeatures.bind(this, "item_deletes", number)}
-            />
+          <Tooltip title="删除" placement="bottom">
+            <Popconfirm
+              placement="top"
+              title={'确认删除此图片?'}
+              onConfirm={this.editorFeatures.bind(this, "item_deletes", number)}
+              okText="确认"
+              cancelText="取消"
+            >
+            <Icon type="delete"/>
+            </Popconfirm>
           </Tooltip>
         </Col>
       </Row>
@@ -362,12 +373,8 @@ class EditorMall extends React.Component {
     return (
       <div>
         {this.state.item ? (
-          <Card
-            title="编辑图集数据"
-            extra={<div onClick={this.backItem}>返回</div>}
-          >
+          <Card title="编辑图集数据" extra={<div onClick={this.backItem}>返回</div>}>
             <Row gutter={16}>
-              {/*图片*/}
               <Col
                 span={7}
                 offset={3}
@@ -390,93 +397,59 @@ class EditorMall extends React.Component {
                     margin: "auto"
                   }}
                   src={
-                    $$customize
-                      .get("item")
-                      .get(this.state.number)
-                      .get("img")
-                      ? $$customize
-                        .get("item")
-                        .get(this.state.number)
-                        .get("img")
+                    $$customize.getIn(["item", this.state.number, "img"])
+                      ? $$customize.getIn(["item", this.state.number, "img"])
                       : "http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png"
                   }
                   alt={"img"}
                 />
               </Col>
-              {/*图片配套功能*/}
               <Col span={14}>
                 <Button.Group>
                   <Button onClick={this.showModal}>更换</Button>
-                  <Button
-                    onClick={this.editorFeatures.bind(this, "item_delete")}
+                  <Popconfirm
+                    placement="top"
+                    title={"确认删除此背景图?"}
+                    onConfirm={this.editorFeatures.bind(this, "item_delete")}
+                    okText="确认"
+                    cancelText="取消"
                   >
-                    删除
-                  </Button>
+                    <Button>
+                      删除
+                    </Button>
+                  </Popconfirm>
                 </Button.Group>
                 <br/>
                 <br/>
-                <Row gutter={16}>
-                  <Col span={10}>
-                    <Checkbox
-                      onChange={this.editorFeatures.bind(this, "item_tiling")}
-                      defaultValue={$$customize
-                        .get("item")
-                        .get(this.state.number)
-                        .get("img_config")
-                        .get("tiling")
-                        .get("value")}
-                    >
-                      平铺
-                    </Checkbox>
-                  </Col>
-                  <Col span={12}>
-                    <Checkbox
-                      onChange={this.editorFeatures.bind(
-                        this,
-                        "item_stretching"
-                      )}
-                      defaultValue={$$customize
-                        .get("item")
-                        .get(this.state.number)
-                        .get("img_config")
-                        .get("stretching")
-                        .get("value")}
-                    >
-                      拉伸
-                    </Checkbox>
-                  </Col>
-                </Row>
+                <p> 上传图片格式为：JPG/PNG</p>
                 <UpImgPart
                   visible={this.state.visible}
                   unvisible={this.itemCloseModal.bind(this)}
-                  img={$$customize
-                    .get("item")
-                    .get(this.state.number)
-                    .get("img")}
+                  img={$$customize.getIn(["item", this.state.number, "img"])}
                 />
               </Col>
             </Row>
             <Divider/>
-            {/*表单*/}
             <ImgItemForm
               name={$$customize.get("name")}
-              {...$$ui_text_data
-                .get("customize")
-                .get("item")
-                .toJS()[this.state.number]}
+              {...$$ui_text_data.getIn(["customize", "item"]).toJS()[this.state.number]}
               onChange={this.editorFeatures.bind(this, "item_change")}
             />
           </Card>
         ) : (
           <Tabs defaultActiveKey={"1"} tabBarExtraContent={operations} key={1}>
             <Tabs.TabPane tab="内容设置" key="1">
-              <Card title="基础属性" style={{ marginTop: "-18px" }}>
-                <MallBaseForm
-                  name={$$customize.get("name")}
-                  {...$$customize.get("base").toJS()}
-                  onChange={this.editorFeatures.bind(this, "base")}
-                />
-              </Card>
+              {$$customize.get("name") === "single_img" ? (
+                ""
+              ) : (
+                <Card title="基础属性" style={{ marginTop: "-18px" }}>
+                  <ImgBaseForm
+                    name={$$customize.get("name")}
+                    {...$$customize.get("base").toJS()}
+                    onChange={this.editorFeatures.bind(this, "base")}
+                  />
+                </Card>
+              )}
               <Card
                 title="项目列表"
                 extra={
@@ -497,7 +470,6 @@ class EditorMall extends React.Component {
                 })}
               </Card>
             </Tabs.TabPane>
-
             <Tabs.TabPane tab="高级设置" key="2">
               <Card title="背景色" style={{ marginTop: "-18px" }}>
                 <Popover
@@ -632,4 +604,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditorMall);
+export default connect(mapStateToProps, mapDispatchToProps)(EditorImg);

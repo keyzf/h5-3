@@ -5,12 +5,12 @@
  */
 import React from 'react';
 import { List } from 'immutable';
-import TextSelect from '../../app/model/visual/select/text';
-import ImgSelect from '../../app/model/visual/select/img';
-import MusicSelect from '../../app/model/visual/select/music';
-import VideoSelect from '../../app/model/visual/select/video';
-import MallSelect from '../../app/model/visual/select/mall';
-import InterActiveSelect from '../../app/model/visual/select/interactive';
+import TextSelect from '../../app/http/visual/select/text';
+import ImgSelect from '../../app/http/visual/select/img';
+import MusicSelect from '../../app/http/visual/select/music';
+import VideoSelect from '../../app/http/visual/select/video';
+import MallSelect from '../../app/http/visual/select/mall';
+import InterActiveSelect from '../../app/http/visual/select/interactive';
 
 export const $$visual_sider_database = List([
   // 文字

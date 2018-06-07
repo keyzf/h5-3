@@ -1,11 +1,11 @@
 import React from "react";
-import EditorText from "../visual/editor/text_editoer";
-import EditorImg from "../visual/editor/img_editoer";
-import EditorMusic from "../visual/editor/music_editor";
-import EditorVideo from "../visual/editor/video_editor";
-import EditorMall from "../visual/editor/mall_editoer";
-import EditorButton from "../visual/editor/button_editor";
-import EditorForm from "../visual/editor/form_editor";
+import EditorText from "../../http/visual/editor/text_editoer";
+import EditorImg from "../../http/visual/editor/img_editoer";
+import EditorMusic from "../../http/visual/editor/music_editor";
+import EditorVideo from "../../http/visual/editor/video_editor";
+import EditorMall from "../../http/visual/editor/mall_editoer";
+import EditorButton from "../../http/visual/editor/button_editor";
+import EditorForm from "../../http/visual/editor/form_editor";
 
 /**
  * 接收数据，返回相对应的数据表 很重要的一个函数
