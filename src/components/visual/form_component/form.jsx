@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Map } from "immutable";
 import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from "antd";
 import { FormLayoutAtom } from "./layout_atom";
-import ComponentLocation from "../../../app/model/visual/component-location";
+import ComponentLocation from "../../../model/visual/component-location";
 import { choose_action, select_action } from "../../../redux/action";
 
 const FormItem = Form.Item;

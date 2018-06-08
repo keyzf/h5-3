@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { choose_action, select_action } from '../../../redux/action';
 import { TextLayoutAtom } from './layout_atom';
-import ComponentLocation from '../../../app/model/visual/component-location';
+import ComponentLocation from '../../../model/visual/component-location';
 
 class VTextComponent extends React.Component {
   choose = (number, data) => {

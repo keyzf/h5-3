@@ -2,7 +2,7 @@ import React from 'react';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'antd';
-import ComponentLocation from '../../../app/model/visual/component-location';
+import ComponentLocation from '../../../model/visual/component-location';
 import { MallLayoutAtom } from './layout_atom';
 import { choose_action, select_action } from '../../../redux/action';
 

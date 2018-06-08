@@ -1,5 +1,5 @@
 import React from "react";
-import ComponentLocation from "../../../app/model/visual/component-location";
+import ComponentLocation from "../../../model/visual/component-location";
 import { Map } from "immutable";
 import { choose_action, select_action } from "../../../redux/action";
 import { connect } from "react-redux";
