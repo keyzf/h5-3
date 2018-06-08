@@ -19,6 +19,22 @@ export const render_form = data => {
     case "horizontal_text":
       return <EditorText data={data}/>;
 
+    case "one_text":
+      return <EditorText data={data}/>;
+    case "two_text":
+      return <EditorText data={data}/>;
+    case "three_text":
+      return <EditorText data={data}/>;
+    case "four_text":
+      return <EditorText data={data}/>;
+    case "five_text":
+      return <EditorText data={data}/>;
+    case "six_text":
+      return <EditorText data={data}/>;
+    case "seven_text":
+      return <EditorText data={data}/>;
+
+
     case "single_img":
       return <EditorImg data={data}/>;
     case "grid_img":

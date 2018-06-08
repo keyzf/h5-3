@@ -1,5 +1,12 @@
 import { Map, fromJS } from "immutable";
 
+export const one_html_text = "<p>这里填充标题<br/>填充补充内容填充补充内容填充补充内容</p>";
+export const two_html_text = "<p>请在这里填入适当的内容！</p>";
+export const three_html_text = "位置定位";
+export const four_html_text = "时刻钟表";
+export const five_html_text = "在这里填充合适的内容";
+export const six_html_text = "极度完美主义";
+export const seven_html_text = "<h1>主讲人</h1>";
 /**
  * 核心数据结构
  * @param name

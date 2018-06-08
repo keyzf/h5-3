@@ -1,6 +1,16 @@
 import React from 'react';
 import VTextComponent from '../../../components/visual/text/vertical_components';
 import HTextComponent from '../../../components/visual/text/horizontal_components';
+
+import OneTextComponent from "../../../components/visual/text/one";
+import TwoTextComponent from "../../../components/visual/text/two";
+import ThreeTextComponent from "../../../components/visual/text/three";
+import FourTextComponent from "../../../components/visual/text/four";
+import FiveTextComponent from "../../../components/visual/text/five";
+import SixTextComponent from "../../../components/visual/text/six";
+import SevenTextComponent from "../../../components/visual/text/seven";
+
+
 import UpImgComponent from '../../../components/visual/img/img_component';
 import GridImgComponent from '../../../components/visual/img/grid_component';
 import ListImgComponent from '../../../components/visual/img/list_component';
@@ -29,6 +39,22 @@ export const render_component = (data, choose, index) => {
       return <VTextComponent data={data} choose={choose} index={index} />;
     case 'horizontal_text':
       return <HTextComponent data={data} choose={choose} index={index} />;
+
+    case "one_text":
+      return <OneTextComponent data={data} choose={choose} index={index}/>;
+    case "two_text":
+      return <TwoTextComponent data={data} choose={choose} index={index}/>;
+    case "three_text":
+      return <ThreeTextComponent data={data} choose={choose} index={index}/>;
+    case "four_text":
+      return <FourTextComponent data={data} choose={choose} index={index}/>;
+    case "five_text":
+      return <FiveTextComponent data={data} choose={choose} index={index}/>;
+    case "six_text":
+      return <SixTextComponent data={data} choose={choose} index={index}/>;
+    case "seven_text":
+      return <SevenTextComponent data={data} choose={choose} index={index}/>;
+
 
     case 'single_img':
       return <UpImgComponent data={data} choose={choose} index={index} />;
