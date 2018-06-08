@@ -26,6 +26,7 @@ class ContentVisualView extends PureComponent {
       repeat: $$bg_data.get("customize").get("img_config").get("repeat"),
       fixed: $$bg_data.get("customize").get("img_config").get("fixed")
     };
+
     return (
       //visual content 内容栏
       <div id={"content_root"} className={style.template}>

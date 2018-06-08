@@ -29,7 +29,7 @@ class App extends Component {
           <Switch>
             {/*重定向，由此导入相应页面*/}
             <Route exact={true} path={"/"}>
-              <Redirect to="visual"/>
+              <Redirect to="h5_template"/>
             </Route>
             <Route path={"/visual"} component={VisualLoadable}/>
             <Route path={"/preview"} component={PreviewLoadable}/>

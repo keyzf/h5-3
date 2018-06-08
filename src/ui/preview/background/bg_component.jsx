@@ -12,6 +12,7 @@ class BgPreview extends React.Component {
       repeat: this.props.repeat,
       fixed: this.props.fixed
     };
+    console.log(bg_config);
     return (
       //背景样式组件
       <BgLayoutPreviewAtom {...bg_config}>
