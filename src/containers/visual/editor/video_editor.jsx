@@ -3,9 +3,9 @@ import { Tabs, Card, Radio, Input } from "antd";
 import { connect } from "react-redux";
 import { choose_action, select_action } from "../../../redux/action";
 import { fromJS, Map } from "immutable";
-import PaddingForm from "../../../components/visual/form/padding_form";
-import PositionForm from "../../../components/visual/form/position_form";
-import ImgForm from "../../../components/visual/form/img_form";
+import PaddingForm from "../../../ui/visual/form/padding_form";
+import PositionForm from "../../../ui/visual/form/position_form";
+import ImgForm from "../../../ui/visual/form/img_form";
 
 const { TextArea } = Input;
 

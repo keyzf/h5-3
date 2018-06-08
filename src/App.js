@@ -11,10 +11,10 @@ import {
   Html5Loadable,
   PreviewLoadable,
   ReleaseLoadable,
-  VisualLoadable
 } from "./routers/page_router";
 import { store } from "./redux/store";
 import "./core.css";
+import { VisualLoadable } from "./routers/visual.router";
 
 /**
  * 实际开发中，这里将作为入口

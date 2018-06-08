@@ -1,0 +1,25 @@
+.layout {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.header {
+  box-sizing: border-box;
+  height: 6%;
+  background: linear-gradient(to bottom right, #5ea2ff, #00b9ff, #00caff);
+}
+
+.content {
+  box-sizing: border-box;
+  height: 94%;
+  width: 100%;
+  margin: 0;
+}
+
+.side {
+  background: white;
+  box-shadow: 0 13px 24px -11px rgba(33, 33, 33, 0.6);
+  height: 100%;
+}

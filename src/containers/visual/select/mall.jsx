@@ -7,7 +7,7 @@ import { choose_action, select_action } from '../../../redux/action';
 import {
   GridMallTemplate,
   ListMallTemplate,
-} from '../../../components/visual/template/mall';
+} from '../../../ui/visual/template/mall';
 import { $$grid_mall_database, $$list_mall_database } from "../../../database/components/mall_database";
 
 

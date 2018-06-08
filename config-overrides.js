@@ -1,6 +1,6 @@
 const { injectBabelPlugin } = require("react-app-rewired");
 const rewireLess = require("react-app-rewire-less");
-
+const rewireCssModules = require('react-app-rewire-css-modules');
 module.exports = function override(config, env) {
   config = injectBabelPlugin(["import", { libraryName: "antd", style: true }], config);
   config = rewireLess.withLoaderOptions({
@@ -12,5 +12,6 @@ module.exports = function override(config, env) {
       "@primary-color": "#19a0fa", // 主题色
     }
   })(config, env);
+  config = rewireCssModules(config, env);
   return config;
 };

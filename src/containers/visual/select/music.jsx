@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { MusicTemplate } from '../../../components/visual/template/music';
+import { MusicTemplate } from '../../../ui/visual/template/music';
 import { Map, fromJS } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';

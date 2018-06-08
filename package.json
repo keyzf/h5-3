@@ -37,9 +37,12 @@
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "jsdoc": "^3.5.5",
+    "node-sass": "^4.9.0",
     "prettier": "^1.12.1",
+    "react-app-rewire-css-modules": "codebandits/react-app-rewire-css-modules",
     "react-app-rewire-less": "^2.1.1",
     "react-app-rewired": "^1.5.2",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "sass-loader": "^7.0.3"
   }
 }

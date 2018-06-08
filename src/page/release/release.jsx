@@ -1,8 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
-import HeaderReleaseView from './_header';
-import ContentReleaseView from './_content';
-import EditorReleaseView from './_editor';
+import HeaderReleaseView from './header.page';
+import ContentReleaseView from './content';
+import EditorReleaseView from './editor.page';
 import './_core.css';
 
 class ReleaseView extends React.Component {

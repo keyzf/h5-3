@@ -10,7 +10,7 @@ import {
   ListImgTemplate,
   SliderImgTemplate,
   UpImgTemplate
-} from "../../../components/visual/template/img";
+} from "../../../ui/visual/template/img";
 import {
   $$carousel_img_database,
   $$grid_img_database,

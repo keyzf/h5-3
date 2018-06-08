@@ -17,11 +17,11 @@ import {
 } from "antd";
 import { SketchPicker } from "react-color";
 import { choose_action, select_action } from "../../../redux/action";
-import PaddingForm from "../../../components/visual/form/padding_form";
-import PositionForm from "../../../components/visual/form/position_form";
-import UpImgPart from "../../../model/part/up_img";
-import ImgBaseForm from "../../../components/visual/form/img_base_form";
-import ImgItemForm from "../../../components/visual/form/img_item_form";
+import PaddingForm from "../../../ui/visual/form/padding_form";
+import PositionForm from "../../../ui/visual/form/position_form";
+import UpImgPart from "../../../common/part/up_img";
+import ImgBaseForm from "../../../ui/visual/form/img_base_form";
+import ImgItemForm from "../../../ui/visual/form/img_item_form";
 import {
   $$carousel_img_database,
   $$grid_img_database, $$img_addItem_database,

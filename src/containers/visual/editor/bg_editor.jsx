@@ -3,7 +3,7 @@ import { connect } from "react-redux"; //状态管理器
 import { SketchPicker } from "react-color"; //拾色器
 import { Card, Icon, Divider, Checkbox, Popover, Popconfirm } from "antd"; //ant ui
 import { bg_action } from "../../../redux/action"; // 发送数据修改
-import UpImgPart from "../../../model/part/up_img"; // 图片上传组件
+import UpImgPart from "../../../common/part/up_img"; // 图片上传组件
 import "./_visual_editor.css";
 
 /**

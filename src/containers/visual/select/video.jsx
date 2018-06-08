@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { VideoTemplate } from '../../../components/visual/template/video';
+import { VideoTemplate } from '../../../ui/visual/template/video';
 import { fromJS, Map } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';

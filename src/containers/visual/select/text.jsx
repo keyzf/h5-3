@@ -8,7 +8,7 @@ import {
   FourTextTemplate,
   HorizontalTextTemplate, OneTextTemplate, SevenTextTemplate, SixTextTemplate, ThreeTextTemplate, TwoTextTemplate,
   VerticalTextTemplate
-} from "../../../components/visual/template/text";
+} from "../../../ui/visual/template/text";
 import { choose_action, select_action } from "../../../redux/action";
 import {
   $$text_database, five_html_text, four_html_text,

@@ -3,7 +3,7 @@ import { Divider } from 'antd';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
 import { Map, fromJS } from 'immutable';
-import { FormTemplate } from '../../../components/visual/template/form';
+import { FormTemplate } from '../../../ui/visual/template/form';
 import {
   $$form_database,
   $$form_item_database,
