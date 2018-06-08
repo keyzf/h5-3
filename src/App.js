@@ -6,15 +6,14 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import {
-  HelpLoadable,
-  Html5Loadable,
-  PreviewLoadable,
-  ReleaseLoadable,
-} from "./routers/page_router";
 import { store } from "./redux/store";
 import "./core.css";
 import { VisualLoadable } from "./routers/visual.router";
+import { PreviewLoadable } from "./routers/preview.router";
+import { Html5Loadable } from "./routers/h5.router";
+import { ReleaseLoadable } from "./routers/release.router";
+import { H5TemplateLoadable } from "./routers/h5template.router";
+import { helpLoadable } from "./routers/help.router";
 
 /**
  * 实际开发中，这里将作为入口
@@ -30,13 +29,14 @@ class App extends Component {
           <Switch>
             {/*重定向，由此导入相应页面*/}
             <Route exact={true} path={"/"}>
-              <Redirect to="visual" />
+              <Redirect to="visual"/>
             </Route>
-            <Route path={"/visual"} component={VisualLoadable} />
-            <Route path={"/preview"} component={PreviewLoadable} />
-            <Route path={"/html5"} component={Html5Loadable} />
-            <Route path={"/help"} component={HelpLoadable} />
-            <Route path={"/release"} component={ReleaseLoadable} />
+            <Route path={"/visual"} component={VisualLoadable}/>
+            <Route path={"/preview"} component={PreviewLoadable}/>
+            <Route path={"/html5"} component={Html5Loadable}/>
+            <Route path={"/help"} component={helpLoadable}/>
+            <Route path={"/release"} component={ReleaseLoadable}/>
+            <Route path={"/h5_template"} component={H5TemplateLoadable}/>
           </Switch>
         </Router>
       </Provider>

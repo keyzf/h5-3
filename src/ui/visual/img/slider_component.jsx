@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
-import ComponentLocation from '../../../common/visual/component-location';
+import ComponentLocation from '../../../containers/visual/component-location';
 import { ImgLayoutAtom } from './layout_atom';
 import { choose_action, select_action } from '../../../redux/action';
 

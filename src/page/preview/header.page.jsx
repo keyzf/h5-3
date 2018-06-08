@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Menu, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import { $$logo_database } from '../../database/layout/logo_database';
+import { $$logo_database } from '../../common/database/logo_database';
 
 class HeaderPreviewView extends React.Component {
   render() {

@@ -7,7 +7,7 @@ import {
   $$text_database,
   h_html_text,
   v_html_text,
-} from '../../../database/components/text_database';
+} from '../../../ui/components/text_database';
 import { choose_action, select_action } from '../../../redux/action';
 import PaddingForm from '../../../ui/visual/form/padding_form';
 import PositionForm from '../../../ui/visual/form/position_form';

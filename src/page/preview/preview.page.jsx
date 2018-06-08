@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import QueueAnim from "rc-queue-anim";
 import HeaderPreviewView from "./header.page";
 import ContentPreviewView from "./content.page";
-import EditorPreviewView from "../../common/preview/preview_editor";
+import EditorPreviewView from "../../containers/preview/preview_editor";
 import style from "./preview.module.scss";
 
 class PreviewView extends React.Component {

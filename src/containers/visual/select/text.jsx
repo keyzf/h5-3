@@ -14,7 +14,7 @@ import {
   $$text_database, five_html_text, four_html_text,
   h_html_text, one_html_text, seven_html_text, six_html_text, three_html_text, two_html_text,
   v_html_text
-} from "../../../database/components/text_database";
+} from "../../../ui/components/text_database";
 
 class TextSelect extends React.Component {
   /**

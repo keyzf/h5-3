@@ -1,7 +1,7 @@
 import React from 'react';
 import { RotateAtom } from './rotat_animation';
 import { Map } from 'immutable';
-import ComponentLocation from '../../../common/visual/component-location';
+import ComponentLocation from '../../../containers/visual/component-location';
 import { choose_action, select_action } from '../../../redux/action';
 import { connect } from 'react-redux';
 

@@ -23,7 +23,7 @@ import UpImgPart from "../../../common/part/up_img";
 import {
   $$form_database,
   $$form_item_database, $$from_opt_checkbox, $$from_opt_datepicker, $$from_opt_input, $$from_opt_rate
-} from "../../../database/components/form_database";
+} from "../../../ui/components/form_database";
 
 class EditorForm extends React.Component {
   /**

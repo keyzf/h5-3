@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonAtom } from './button_atom';
-import ComponentLocation from '../../../common/visual/component-location';
+import ComponentLocation from '../../../containers/visual/component-location';
 import { Map } from 'immutable';
 import { choose_action, select_action } from '../../../redux/action';
 import { connect } from 'react-redux';

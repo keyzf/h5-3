@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { Col, Menu, Row, Dropdown, Icon } from "antd";
-import { $$logo_database } from "../../database/layout/logo_database";
+import { $$logo_database } from "../../common/database/logo_database";
 import style from "./header.module.scss";
 
 /**

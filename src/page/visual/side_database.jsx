@@ -1,8 +1,3 @@
-/**
- * 直接被调用，不经过redux,
- * 不使用fromJS的原因：如果使用fromJS时，在循环时，select循环不出来
- * @type {{width: number, height: number, url: string}}
- */
 import React from 'react';
 import { List } from 'immutable';
 import TextSelect from '../../containers/visual/select/text';

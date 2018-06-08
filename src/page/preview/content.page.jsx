@@ -1,5 +1,5 @@
 import React from "react";
-import ContentPreviewModel from "../../common/preview/preview_content";
+import ContentPreviewModel from "../../containers/preview/preview_content";
 import style from "./content.module.scss";
 
 class ContentPreviewView extends React.Component {
