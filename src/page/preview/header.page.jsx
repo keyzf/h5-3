@@ -51,7 +51,7 @@ class HeaderPreviewView extends React.Component {
         <Col {...close_col}>
           <Menu theme={'dark'} style={{ lineHeight: '50px' }} mode="horizontal">
             <Menu.Item key="quite">
-              <Link to={'/'}>
+              <Link to={'/visual'}>
                 <i
                   className="icon iconfont icon-iconfonticon2"
                   style={{ marginRight: '10px' }}

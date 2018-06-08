@@ -1306,8 +1306,6 @@ const $$data = fromJS([{
     }
   }
 }]);
-
-
 class H5Template extends PureComponent {
   chooseTemplate = (data) => {
     this.props.select_upData(data, "mate", false);
@@ -1319,9 +1317,7 @@ class H5Template extends PureComponent {
       }),
       false
     );
-
   };
-
   render() {
     const { Header, Content } = Layout;
     return (
@@ -1376,8 +1372,6 @@ class H5Template extends PureComponent {
     );
   }
 }
-
-
 const mapDispatchToProps = (dispatch) => {
   return {
     select_upData: (data, meta, error) =>
@@ -1386,7 +1380,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(choose_action(data, meta, error))
   };
 };
-
 export default connect(
   "",
   mapDispatchToProps
