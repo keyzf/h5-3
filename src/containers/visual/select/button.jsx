@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
 import { Map, fromJS } from 'immutable';
 import { ButtonTemplate } from '../../../ui/visual/template/button';
-import { $$button_database } from '../../../ui/components/button_database';
+import { $$button_database } from '../../../ui/visual/components/button_database';
 
 class ButtonSelect extends React.Component {
   transfer = data => {

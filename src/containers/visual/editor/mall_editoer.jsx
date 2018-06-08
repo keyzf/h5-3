@@ -26,7 +26,7 @@ import {
   $$grid_mall_database,
   $$list_mall_database,
   $$mall_item_database
-} from "../../../ui/components/mall_database";
+} from "../../../ui/visual/components/mall_database";
 
 class EditorMall extends React.Component {
   state = {

@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { choose_action, select_action } from "../../redux/action";
 import { render_component } from "../../common/render/components";
-import BgComponent from "../../ui/visual/background/bg_component";
+import BgComponent from "../../ui/visual/core/background/bg_component";
 import style from './content.module.scss'
 /**
  * 实现功能

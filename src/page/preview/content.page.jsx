@@ -5,7 +5,7 @@ import style from "./content.module.scss";
 class ContentPreviewView extends React.Component {
   render() {
     return (
-      <div style={{ padding: "5% 32%", height: "100%" }}>
+      <div style={{ margin: " 40px auto" ,width:"340px",height:'630px'}}>
         <div className={style.phone}>
           <div className={style.phone_header}/>
           <div className={style.phone_content}>

@@ -27,7 +27,7 @@ import {
   $$grid_img_database, $$img_addItem_database,
   $$list_img_database, $$slider_img_database,
   $$single_img_database
-} from "../../../ui/components/img_database";
+} from "../../../ui/visual/components/img_database";
 
 class EditorImg extends React.Component {
   /**

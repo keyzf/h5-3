@@ -4,7 +4,7 @@ import { Tabs, Button, Row, Col, Card, Popover, Checkbox, Icon } from 'antd';
 import { choose_action, select_action } from '../../../redux/action';
 import { SketchPicker } from 'react-color';
 import { fromJS, Map } from 'immutable';
-import { $$button_database } from '../../../ui/components/button_database';
+import { $$button_database } from '../../../ui/visual/components/button_database';
 import PaddingForm from '../../../ui/visual/form/padding_form';
 import PositionForm from '../../../ui/visual/form/position_form';
 import UpImgPart from '../../../common/part/up_img';

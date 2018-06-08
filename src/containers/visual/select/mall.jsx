@@ -8,7 +8,7 @@ import {
   GridMallTemplate,
   ListMallTemplate,
 } from '../../../ui/visual/template/mall';
-import { $$grid_mall_database, $$list_mall_database } from "../../../ui/components/mall_database";
+import { $$grid_mall_database, $$list_mall_database } from "../../../ui/visual/components/mall_database";
 
 
 

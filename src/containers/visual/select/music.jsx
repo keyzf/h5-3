@@ -5,7 +5,7 @@ import { MusicTemplate } from '../../../ui/visual/template/music';
 import { Map, fromJS } from 'immutable';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
-import { $$music_database } from '../../../ui/components/music_database';
+import { $$music_database } from '../../../ui/visual/components/music_database';
 
 class MusicSelect extends React.Component {
   /**
