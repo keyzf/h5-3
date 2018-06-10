@@ -2,7 +2,7 @@
   "name": "e7wei-company",
   "version": "0.1.0",
   "private": false,
-  "homepage": "./",
+  "homepage": "101.37.175.138",
   "dependencies": {
     "antd": "^3.5.3",
     "axios": "^0.18.0",
