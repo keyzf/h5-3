@@ -3,7 +3,7 @@ import { Card, Col, Row } from 'antd';
 import FormPreviewView from '../../page/preview/form.page';
 import { connect } from 'react-redux';
 import { html5_action } from '../../redux/action';
-import UpImgPart from '../../common/part/up_img';
+import UpImgPart from '../../common/upload_common';
 
 class EditorPreviewView extends React.Component {
   state = {

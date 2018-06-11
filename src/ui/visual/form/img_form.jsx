@@ -1,6 +1,6 @@
-import React from "react";
-import { Form, Upload} from "antd";
-import { uploadToken } from "../../../toolkit/qiniu_upload";
+import React from 'react';
+import { Form, Upload } from 'antd';
+import { uploadToken } from '../../../toolkit/qiniu_upload';
 
 class ImgForm extends React.Component {
   /**
@@ -10,17 +10,16 @@ class ImgForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const upload_props = {
-      name: "file",
-      action: "http://up.qiniup.com",
+      name: 'file',
+      action: 'http://up.qiniup.com',
       showUploadList: false,
       data: { token: uploadToken },
     };
 
-
     return (
       <Form hideRequiredMark>
         <Form.Item>
-          {getFieldDecorator("upload")(
+          {getFieldDecorator('upload')(
             <Upload {...upload_props}>{this.props.child}</Upload>
           )}
         </Form.Item>
@@ -37,8 +36,8 @@ export default Form.create({
     return {
       upload: Form.createFormField({
         ...props.upload,
-        value: props.upload.value
-      })
+        value: props.upload.value,
+      }),
     };
-  }
+  },
 })(ImgForm);

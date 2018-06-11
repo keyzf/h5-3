@@ -1,8 +1,10 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { Col, Menu, Row, Dropdown, Icon } from "antd";
-import { $$logo_database } from "../../common/database/logo_database";
+import { $$logo_database } from "../../common/database/logo_database_common";
+import CleanContent from "../../containers/visual/clean_content";
 import style from "./header.module.scss";
+
 
 /**
  * 实现目标：
@@ -22,22 +24,22 @@ class HeaderVisualView extends PureComponent {
       xs: 5,
       sm: 5,
       md: 5,
-      lg: 5,
-      xl: 3
+      lg: 4,
+      xl: 4
     };
     const chooseCol = {
       xs: 0,
       sm: 0,
       md: 0,
-      lg: { span: 9, offset: 2 },
-      xl: { span: 8, offset: 6 }
+      lg: { span: 12, offset: 1 },
+      xl: { span: 10, offset: 4 }
     };
     const closeCol = {
       xs: 0,
       sm: 0,
       md: 0,
       lg: { span: 7 },
-      xl: { span: 5, offset: 2 }
+      xl: { span: 5, offset: 1 }
     };
     // 项目样式
     const MenuConfig = {
@@ -54,49 +56,51 @@ class HeaderVisualView extends PureComponent {
       xl: 0
     };
     //手机屏幕下 菜单项
-    const MobileMenu = (<Menu>
-      <Menu.Item>
-        <Link to={"./preview"}>
+    const MobileMenu = (
+      <Menu>
+        <Menu.Item>
+          <Link to={"./preview"}>
+            <i
+              className={"icon iconfont icon-yulan"}
+              style={{ marginRight: "10px" }}
+            />
+            预览/设置
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
           <i
-            className={"icon iconfont icon-yulan"}
+            className={"icon iconfont icon-baocun"}
             style={{ marginRight: "10px" }}
           />
-          预览/设置
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <i
-          className={"icon iconfont icon-baocun"}
-          style={{ marginRight: "10px" }}
-        />
-        保存
-      </Menu.Item>
-      <Menu.Item>
-        <Link to={"./release"}>
+          保存
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={"./release"}>
+            <i
+              className={"icon iconfont icon-fabu"}
+              style={{ marginRight: "10px" }}
+            />
+            发布
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
           <i
-            className={"icon iconfont icon-fabu"}
+            className={"icon iconfont icon-icon"}
             style={{ marginRight: "10px" }}
           />
-          发布
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <i
-          className={"icon iconfont icon-icon"}
-          style={{ marginRight: "10px" }}
-        />
-        使用指南
-      </Menu.Item>
-      <Menu.Item>
-        <Link to={"/"}>
-          <i
-            className={"icon iconfont icon-iconfonticon2"}
-            style={{ marginRight: "10px" }}
-          />
-          关闭
-        </Link>
-      </Menu.Item>
-    </Menu>);
+          使用指南
+        </Menu.Item>
+        <Menu.Item>
+          <Link to={"/"}>
+            <i
+              className={"icon iconfont icon-iconfonticon2"}
+              style={{ marginRight: "10px" }}
+            />
+            关闭
+          </Link>
+        </Menu.Item>
+      </Menu>
+    );
 
     return (
       <Row className={style.layout} {...LayoutRow}>
@@ -135,18 +139,21 @@ class HeaderVisualView extends PureComponent {
                 发布
               </Link>
             </Menu.Item>
+            <Menu.Item key={"null"}>
+              <CleanContent/>
+            </Menu.Item>
           </Menu>
         </Col>
         <Col {...closeCol}>
           <Menu {...MenuConfig}>
             <Menu.Item key={"help"}>
-              <Link to={"/help"}>
+              <a href={"http://www.e7wei.com/help-article-id-436.html"}>
                 <i
                   className={"icon iconfont icon-icon"}
                   style={{ marginRight: "10px" }}
                 />
                 使用指南
-              </Link>
+              </a>
             </Menu.Item>
             <Menu.Item key={"quite"}>
               <Link to={"/"}>

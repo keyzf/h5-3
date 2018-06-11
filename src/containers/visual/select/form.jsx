@@ -14,7 +14,7 @@ class FormSelect extends React.Component {
     let img_data = $$form_database(data.name);
     // 给数据修改值
     img_data.customize.item = data.title.map((datas, index) =>
-      $$form_item_database('radio',data.decorator[index], datas, [
+      $$form_item_database('radio', data.decorator[index], datas, [
         '非常满意',
         '满意',
         '一般满意',

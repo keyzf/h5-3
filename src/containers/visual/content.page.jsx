@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { choose_action, select_action } from "../../redux/action";
 import { render_component } from "../../common/render/components";
 import BgComponent from "../../ui/visual/core/background/bg_component";
-import style from './content.module.scss'
+import style from "./content.module.scss";
+
 /**
  * 实现功能
  * 1. 读取choose 中的meta字段，判断显示内容
@@ -21,10 +22,10 @@ class ContentVisualView extends PureComponent {
 
     // 解析出背景需要的数据
     const bg_config = {
-      color: $$bg_data.get("customize").get("color"),
-      img: $$bg_data.get("customize").get("img"),
-      repeat: $$bg_data.get("customize").get("img_config").get("repeat"),
-      fixed: $$bg_data.get("customize").get("img_config").get("fixed")
+      color: $$bg_data.getIn(["customize", "color"]),
+      img: $$bg_data.getIn(["customize", "img"]),
+      repeat: $$bg_data.getIn(["customize", "img_config", "repeat"]),
+      fixed: $$bg_data.getIn(["customize", "img_config", "fixed"])
     };
 
     return (
@@ -32,7 +33,7 @@ class ContentVisualView extends PureComponent {
       <div id={"content_root"} className={style.template}>
         <BgComponent {...bg_config}>
           {/*判读用户当前操作，如果没有选择组件则显示默认，否则遍历出组件*/}
-          {choose_meta.get("content") ?
+          {choose_meta.get("content") ? (
             $$select_data.map((ui_data, index) => {
               return (
                 //将遍历的数据传递给render函数
@@ -50,15 +51,14 @@ class ContentVisualView extends PureComponent {
                 </React.Fragment>
               );
             })
-            :
+          ) : (
             <div className={style.default}>请从左侧选择组件~</div>
-          }
+          )}
         </BgComponent>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {

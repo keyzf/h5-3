@@ -2,7 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map, fromJS } from 'immutable';
 import { SketchPicker } from 'react-color';
-import { Tabs, Button, Checkbox, Popover, Icon, Card, Row, Col ,Popconfirm} from 'antd';
+import {
+  Tabs,
+  Button,
+  Checkbox,
+  Popover,
+  Icon,
+  Card,
+  Row,
+  Col,
+  Popconfirm,
+} from 'antd';
 import {
   $$text_database,
   h_html_text,
@@ -12,7 +22,7 @@ import { choose_action, select_action } from '../../../redux/action';
 import PaddingForm from '../../../ui/visual/form/padding_form';
 import PositionForm from '../../../ui/visual/form/position_form';
 import RichTextEditor from '../../../ui/visual/form/editor_form';
-import UpImgPart from '../../../common/part/up_img';
+import UpImgPart from '../../../common/upload_common';
 
 /**
  * editor for text
@@ -209,9 +219,7 @@ class EditorText extends React.Component {
         okText="确认"
         cancelText="取消"
       >
-      <Button>
-        恢复默认
-      </Button>
+        <Button>恢复默认</Button>
       </Popconfirm>
     );
     return (
@@ -289,9 +297,7 @@ class EditorText extends React.Component {
                     okText="确认"
                     cancelText="取消"
                   >
-                  <Button>
-                    删除
-                  </Button>
+                    <Button>删除</Button>
                   </Popconfirm>
                 </Button.Group>
                 <br />

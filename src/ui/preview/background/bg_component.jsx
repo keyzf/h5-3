@@ -1,5 +1,5 @@
-import React from "react";
-import { BgLayoutPreviewAtom } from "./layout_atom";
+import React from 'react';
+import { BgLayoutPreviewAtom } from './layout_atom';
 
 /**
  * 背景组件
@@ -10,7 +10,7 @@ class BgPreview extends React.Component {
       color: this.props.color,
       img: this.props.img,
       repeat: this.props.repeat,
-      fixed: this.props.fixed
+      fixed: this.props.fixed,
     };
     console.log(bg_config);
     return (

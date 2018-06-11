@@ -7,7 +7,7 @@ import { fromJS, Map } from 'immutable';
 import { $$button_database } from '../../../ui/visual/components/button_database';
 import PaddingForm from '../../../ui/visual/form/padding_form';
 import PositionForm from '../../../ui/visual/form/position_form';
-import UpImgPart from '../../../common/part/up_img';
+import UpImgPart from '../../../common/upload_common';
 import ButtonForm from '../../../ui/visual/form/button_form';
 
 class EditorButton extends React.Component {
@@ -173,10 +173,10 @@ class EditorButton extends React.Component {
       <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
         <Tabs.TabPane tab="内容设置" key="1">
           <Card title="基础属性" style={{ marginTop: '-18px' }}>
-          <ButtonForm
-            {...$$customize.toJS()}
-            onChange={this.editorFeatures.bind(this, 'customize')}
-          />
+            <ButtonForm
+              {...$$customize.toJS()}
+              onChange={this.editorFeatures.bind(this, 'customize')}
+            />
           </Card>
         </Tabs.TabPane>
         <Tabs.TabPane tab="高级设置" key="2">

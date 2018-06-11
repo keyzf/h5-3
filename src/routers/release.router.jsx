@@ -1,7 +1,6 @@
 import Loadable from 'react-loadable';
 import { page_Loading } from './load_style';
 
-
 export const ReleaseLoadable = Loadable({
   loader: () => import('../page/release/release.page'), // 文件路径
   loading: page_Loading, // 加载时显示的组件

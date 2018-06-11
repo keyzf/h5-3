@@ -1,12 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Map } from "immutable";
-import TweenOne from "rc-tween-one";
-import BgEditor from "./editor/bg_editor";
-import style from "./editor.module.scss";
-import { choose_action } from "../../redux/action";
-import { render_form } from "../../common/render/form";
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+import TweenOne from 'rc-tween-one';
+import BgEditor from './editor/bg_editor';
+import style from './editor.module.scss';
+import { choose_action } from '../../redux/action';
+import { render_form } from '../../common/render/form';
 
 /**
  * 实现功能：
@@ -19,8 +18,8 @@ class EditorVisualView extends React.Component {
     this.props.choose_upData(
       this.props.choose_value.data,
       Map({
-        content: this.props.choose_value.meta.get("content"),
-        choose: false
+        content: this.props.choose_value.meta.get('content'),
+        choose: false,
       }),
       false
     );
@@ -31,20 +30,23 @@ class EditorVisualView extends React.Component {
     const $$choose_meta = this.props.choose_value.meta;
     return (
       <div className={style.layout}>
-        {$$choose_meta.get("choose") ?
+        {$$choose_meta.get('choose') ? (
           //显示组件编辑栏
           <React.Fragment>
-            <TweenOne animation={{ left: "-85px" }} className={style.pos_tab}
-                      onClick={this.onclick_choose_bg.bind(this)}>
+            <TweenOne
+              animation={{ left: '-85px' }}
+              className={style.pos_tab}
+              onClick={this.onclick_choose_bg.bind(this)}
+            >
               全局背景
             </TweenOne>
             {/** TODO 后期进一步提取信息 将信息传递给渲染组件*/}
             {render_form($$choose_data)}
           </React.Fragment>
-          :
+        ) : (
           // 显示背景
-          <BgEditor/>
-        }
+          <BgEditor />
+        )}
       </div>
     );
   }
@@ -52,13 +54,13 @@ class EditorVisualView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(EditorVisualView);

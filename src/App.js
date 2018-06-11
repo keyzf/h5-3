@@ -7,11 +7,11 @@ import {
   Redirect
 } from "react-router-dom";
 import { store } from "./redux/store";
-import "./core.css";
 import { VisualLoadable } from "./routers/visual.router";
 import { PreviewLoadable } from "./routers/preview.router";
 import { Html5Loadable } from "./routers/h5.router";
 import { ReleaseLoadable } from "./routers/release.router";
+import "./core.css";
 
 /**
  * 实际开发中，这里将作为入口
@@ -27,7 +27,7 @@ class App extends Component {
           <Switch>
             {/*重定向，由此导入相应页面*/}
             <Route exact={true} path={"/"}>
-              <Redirect to="h5_template"/>
+              <Redirect to="visual"/>
             </Route>
             <Route path={"/visual"} component={VisualLoadable}/>
             <Route path={"/preview"} component={PreviewLoadable}/>

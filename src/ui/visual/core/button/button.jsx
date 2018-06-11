@@ -72,10 +72,12 @@ class ButtonComponent extends React.Component {
     return (
       <ButtonAtom {...advanced_settings}>
         {this.props.choose ? (
-          <div style={{ border: '1px grey solid' ,width:'100%',height:'100%'}}>
+          <div
+            style={{ border: '1px grey solid', width: '100%', height: '100%' }}
+          >
             <ComponentLocation visible={this.props.choose}>
               <div
-                style={{ width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
                 onClick={this.choose.bind(
                   this,
                   this.props.index,
@@ -91,7 +93,7 @@ class ButtonComponent extends React.Component {
         ) : (
           <ComponentLocation visible={this.props.choose}>
             <div
-              style={{ width: '100%', height: '100%'}}
+              style={{ width: '100%', height: '100%' }}
               onClick={this.choose.bind(
                 this,
                 this.props.index,

@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import { Tabs } from "antd";
-import { $$visual_sider_database } from "./side_database";
-import style from "./side.module.scss";
+import React, { PureComponent } from 'react';
+import { Tabs } from 'antd';
+import { $$visual_sider_database } from './side_database';
+import style from './side.module.scss';
 
 /**
  * 将侧边栏数据遍历出来
@@ -13,8 +13,8 @@ class SiderVisualView extends PureComponent {
   render() {
     // tab 样式
     const Tab = {
-      defaultActiveKey: "文字",
-      tabPosition: "left"
+      defaultActiveKey: '文字',
+      tabPosition: 'left',
     };
     // 遍历出项目头
     const tabPan = (icon, title) => {
@@ -22,12 +22,12 @@ class SiderVisualView extends PureComponent {
         key: title,
         tab: (
           <span>
-            <i className={icon} style={{ fontSize: 24, marginRight: 3 }}/>
-            <br/>
+            <i className={icon} style={{ fontSize: 24, marginRight: 3 }} />
+            <br />
             {title}
           </span>
         ),
-        className: style.item
+        className: style.item,
       };
     };
 

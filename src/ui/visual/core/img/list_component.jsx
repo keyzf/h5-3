@@ -82,7 +82,7 @@ class ListImgComponent extends React.Component {
         return null;
       }
     };
-    const $$show_element = customize.getIn(['base','show_element','value'])
+    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
     const $$show_element_title =
       $$show_element !== undefined ? $$show_element[0] : '';
     const $$show_element_content =
@@ -104,7 +104,11 @@ class ListImgComponent extends React.Component {
               >
                 {customize.get('item').map((data, index) => {
                   return (
-                    <Col style={{margin:'5px 0'}} key={index} span={col( customize.getIn(['base','layout','value']))}>
+                    <Col
+                      style={{ margin: '5px 0' }}
+                      key={index}
+                      span={col(customize.getIn(['base', 'layout', 'value']))}
+                    >
                       <Col span={12}>
                         <img
                           width={
@@ -148,10 +152,10 @@ class ListImgComponent extends React.Component {
                               display: 'flex',
                               justifyContent: 'center',
                               alignItems: 'center',
-                              overflow: "hidden",
+                              overflow: 'hidden',
                             }}
                           >
-                            {data.getIn(['content','value'])}
+                            {data.getIn(['content', 'value'])}
                           </div>
                         )}
                       </Col>
@@ -173,7 +177,11 @@ class ListImgComponent extends React.Component {
             >
               {customize.get('item').map((data, index) => {
                 return (
-                  <Col style={{margin:'5px 0'}} key={index} span={col( customize.getIn(['base','layout','value']))}>
+                  <Col
+                    style={{ margin: '5px 0' }}
+                    key={index}
+                    span={col(customize.getIn(['base', 'layout', 'value']))}
+                  >
                     <Col span={12}>
                       <img
                         width={
@@ -217,10 +225,10 @@ class ListImgComponent extends React.Component {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            overflow: "hidden",
+                            overflow: 'hidden',
                           }}
                         >
-                          {data.getIn(['content','value'])}
+                          {data.getIn(['content', 'value'])}
                         </div>
                       )}
                     </Col>
