@@ -21,6 +21,7 @@ class NormalLoginForm extends React.Component {
   };
 
   handleSubmit = e => {
+    //{{title:'',value:''},{title:'',value:''},{title:'',value:''}}
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
