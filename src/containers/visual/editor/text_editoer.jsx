@@ -17,7 +17,10 @@ import { choose_action, select_action } from '../../../redux/action';
 import PaddingForm from '../../../ui/visual/form/padding_form';
 import RichTextEditor from '../../../ui/visual/form/editor_form';
 import UpImgPart from '../../../common/upload_common';
-import { $$horizontal_text, $$vertical_text } from "../../../ui/visual/database/text_database";
+import {
+  $$horizontal_text,
+  $$vertical_text,
+} from '../../../ui/visual/database/text_database';
 
 /**
  * editor for text

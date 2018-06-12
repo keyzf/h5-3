@@ -103,7 +103,7 @@ export const GridImgTemplate = () => {
 };
 
 // 默认模板
-export const UpImgTemplate = () => {
+export const SingleImgTemplate = () => {
   return (
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>

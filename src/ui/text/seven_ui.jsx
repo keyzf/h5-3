@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 /**
  * 接收数据
  * 1. html 信息
@@ -16,7 +16,7 @@ class SevenTextUi extends PureComponent {
         >
           <div
             dangerouslySetInnerHTML={{
-              __html: this.props.html
+              __html: this.props.html,
             }}
           />
         </div>
@@ -42,9 +42,6 @@ class SevenTextUi extends PureComponent {
   }
 }
 
-const seven_html_text = "<h1>主讲人</h1>";
+const seven_html_text = '<h1>主讲人</h1>';
 
-export {
-  SevenTextUi,
-  seven_html_text
-}
+export { SevenTextUi, seven_html_text };

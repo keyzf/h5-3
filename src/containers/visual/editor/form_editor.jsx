@@ -27,7 +27,7 @@ import {
   $$from_opt_datepicker,
   $$from_opt_input,
   $$from_opt_rate,
-} from '../../../ui/visual/components/form_database';
+} from '../../../ui/visual/database/form_database';
 
 class EditorForm extends React.Component {
   /**

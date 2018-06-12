@@ -1,4 +1,4 @@
-import { Map} from 'immutable';
+import { Map } from 'immutable';
 
 /**
  * logo 公共信息
@@ -9,4 +9,3 @@ export const $$logo_database = Map({
   height: 50,
   url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/new.png',
 });
-

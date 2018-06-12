@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import { Row, Col } from "antd";
+import React, { PureComponent } from 'react';
+import { Row, Col } from 'antd';
 
 /**
  * 接收数据
@@ -9,14 +9,14 @@ class FourTextUi extends PureComponent {
   render() {
     const LayoutRow = {
       gutter: 16,
-      type: "flex",
-      justify: "center",
-      align: "center",
+      type: 'flex',
+      justify: 'center',
+      align: 'center',
       style: {
-        alignItems: "center",
-        height: "100%",
-        overflow: "hidden"
-      }
+        alignItems: 'center',
+        height: '100%',
+        overflow: 'hidden',
+      },
     };
     return (
       <Row {...LayoutRow}>
@@ -39,9 +39,6 @@ class FourTextUi extends PureComponent {
   }
 }
 
-const four_html_text = "时刻钟表";
+const four_html_text = '时刻钟表';
 
-export {
-  four_html_text,
-  FourTextUi
-}
+export { four_html_text, FourTextUi };
