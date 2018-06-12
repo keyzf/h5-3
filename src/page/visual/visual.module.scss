@@ -1,24 +1,25 @@
 .layout {
   height: 100vh;
   width: 100%;
-  overflow: hidden;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .header {
   box-sizing: border-box;
-  height: 55px;
+  height: 48px;
   background: linear-gradient(to bottom right, #5ea2ff, #00b9ff, #00caff);
 }
 
 .content {
   box-sizing: border-box;
-  height: 100%;
+  height: calc(100% - 48px);
   width: 100%;
   margin: 0;
 }
 
 .side {
+  box-sizing: border-box;
   background: white;
   box-shadow: 0 13px 24px -11px rgba(33, 33, 33, 0.6);
   height: 100%;

@@ -9,6 +9,7 @@ import FourTextComponent from '../../ui/visual/recommend/text/four';
 import FiveTextComponent from '../../ui/visual/recommend/text/five';
 import SixTextComponent from '../../ui/visual/recommend/text/six';
 import SevenTextComponent from '../../ui/visual/recommend/text/seven';
+import EightTextComponent from "../../ui/visual/recommend/text/eight";
 
 import UpImgComponent from '../../ui/visual/core/img/img_component';
 import GridImgComponent from '../../ui/visual/core/img/grid_component';
@@ -21,6 +22,7 @@ import GridMallComponent from '../../ui/visual/core/mall/grid_component';
 import ListMallComponent from '../../ui/visual/core/mall/list_component';
 import ButtonComponent from '../../ui/visual/core/button/button';
 import FormComponent from '../../ui/visual/core/form_component/form';
+
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -52,6 +54,8 @@ export const render_component = (data, choose, index) => {
       return <SixTextComponent data={data} choose={choose} index={index} />;
     case 'seven_text':
       return <SevenTextComponent data={data} choose={choose} index={index} />;
+    case 'eight_text':
+      return <EightTextComponent data={data} choose={choose} index={index} />;
     // 图片类
     case 'single_img':
       return <UpImgComponent data={data} choose={choose} index={index} />;
