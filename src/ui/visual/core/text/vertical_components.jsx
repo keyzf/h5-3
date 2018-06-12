@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Map } from "immutable";
+import { fromJS, Map } from "immutable";
 import Draggable from "react-draggable";
 import { ResizableBox } from "react-resizable";
 import { TextLayoutAtom } from "./layout_atom";
@@ -13,25 +13,50 @@ import ComponentLocation from "../../../../containers/visual/component-location"
  */
 class VTextComponent extends React.Component {
   state = {
-    width: 319,
-    height: 147,
-    activeDrags: 0,
-    deltaPosition: {
-      x: 0,
-      y: 0
-    }
+    activeDrags: 0
+  };
+
+
+  /**
+   * send action
+   * Receive: Single component style
+   * @param up_data
+   */
+  sendAction = up_data => {
+    // data source
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // create new data
+    const $$new_select_data = $$select_data.set(
+      $$choose_data.get("number"), up_data
+    );
+    const $$new_choose_data = $$choose_data.set("data", up_data);
+    // send action
+    this.props.select_upData($$new_select_data, "", false);
+    this.props.choose_upData(
+      $$new_choose_data,
+      Map({ content: true, choose: true }),
+      false
+    );
   };
 
   // 设置位置，通过动画属性设置
   handleDrag(e, ui) {
-    const { x, y } = this.state.deltaPosition;
-    console.log(this.state.deltaPosition);
-    this.setState({
-      deltaPosition: {
-        x: x + ui.deltaX,
-        y: y + ui.deltaY
-      }
-    });
+    // data source
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // 获取当前长度与宽度
+    const $$transform = $$select_data.get($$choose_data.get("number"));
+    // width
+    const $$translateX = $$transform.getIn(["advance", "transform", "translateX", "value"]);
+    // height
+    const $$translateY = $$transform.getIn(["advance", "transform", "translateY", "value"]);
+    // 更新translateX 与 translateY 的值
+    const $$change_translateX = $$transform.setIn(["advance", "perimeter", "translateX", "value"], $$translateX + ui.deltaX);
+    const $$change_translateY = $$change_translateX.setIn(["advance", "perimeter", "translateY", "value"], $$translateY + ui.deltaX);
+    // new data
+    this.sendAction($$change_translateY);
+
   }
 
   onStart = () => {
@@ -46,7 +71,15 @@ class VTextComponent extends React.Component {
   // 调整长宽时的 长度与宽度
   onResize = (event, { element, size }) => {
     event.stopPropagation();
-    this.setState({ width: size.width, height: size.height });
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // 获取当前长度与宽度
+    const $$perimeter = $$select_data.get($$choose_data.get("number"));
+    // 更新width 与 height 的值
+    const $$change_width = $$perimeter.setIn(["advance", "perimeter", "width", "value"], size.width);
+    const $$change_height = $$change_width.setIn(["advance", "perimeter", "height", "value"], size.height);
+    // new data
+    this.sendAction($$change_height);
   };
   // 控制当前选择的组件
   choose = (number, data) => {
@@ -64,6 +97,10 @@ class VTextComponent extends React.Component {
     // 接收的数据
     const advance = this.props.data.get("advance");
     const customize = this.props.data.get("customize");
+    // width
+    const $$width = advance.getIn(["perimeter", "width", "value"]);
+    // height
+    const $$height = advance.getIn(["perimeter", "height", "value"]);
     // 拆解出的位置数据
     const advanced_settings = {
       // 绝对定位
@@ -92,20 +129,23 @@ class VTextComponent extends React.Component {
         {...dragHandlers}
         cancel=".react-resizable-handle"
       >
-        <div>
+        <div onClick={this.choose.bind(
+          this,
+          this.props.index,
+          this.props.data
+        )}>
           <ResizableBox
-            width={this.state.width}
-            height={this.state.height}
+            width={$$width}
+            height={$$height}
             onResize={this.onResize}
           >
             <span>
-              <TextLayoutAtom {...advanced_settings}>
+              <TextLayoutAtom {...advanced_settings}    >
                 {this.props.choose ? (
                   <div
                     style={{
                       border: "1px dashed black",
                       boxSizing: "border-box",
-                      pointerEvents: "none",
                       width: "100%",
                       height: "100%"
                     }}
@@ -113,11 +153,7 @@ class VTextComponent extends React.Component {
                     <ComponentLocation>
                       <span>
                         <div
-                          onClick={this.choose.bind(
-                            this,
-                            this.props.index,
-                            this.props.data
-                          )}
+
                           style={{
                             writingMode: "vertical-rl",
                             textAlign: "center",
@@ -163,6 +199,13 @@ class VTextComponent extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    select_value: state.select_reducer,
+    choose_value: state.choose_reducer
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     choose_upData: (data, meta, error) =>
@@ -172,4 +215,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect("", mapDispatchToProps)(VTextComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(VTextComponent);
