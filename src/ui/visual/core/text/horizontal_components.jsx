@@ -1,91 +1,60 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Map } from 'immutable';
-import { choose_action, select_action } from '../../../../redux/action';
-import { TextLayoutAtom } from './layout_atom';
-import ComponentLocation from '../../../../containers/visual/component-location';
+import React from "react";
+import DynamicCommon from "../../../../common/dynamic_common";
 
 class HTextComponent extends React.Component {
-  choose = (number, data) => {
-    this.props.choose_upData(
-      Map({ number: number, data: data }),
-      Map({
-        content: true,
-        choose: true,
-      }),
-      false
-    );
-  };
-
   render() {
-    const advance = this.props.data.get('advance');
-    const customize = this.props.data.get('customize');
-
-    // 可编辑属性 data:为文本
+    // 接收的数据
+    const advance = this.props.data.get("advance");
+    const customize = this.props.data.get("customize");
+    // 拆解出的位置数据
     const advanced_settings = {
-      // 绝对定位
-      top: advance.getIn(['position', 'top', 'value']),
-      left: advance.getIn(['position', 'left', 'value']),
-      right: advance.getIn(['position', 'right', 'value']),
-      bottom: advance.getIn(['position', 'bottom', 'value']),
-      depth: advance.getIn(['position', 'depth', 'value']),
-      // 内边距
-      pb: advance.getIn(['padding', 'bottom', 'value']),
-      pl: advance.getIn(['padding', 'left', 'value']),
-      pr: advance.getIn(['padding', 'right', 'value']),
-      pt: advance.getIn(['padding', 'top', 'value']),
+      // 动画移动
+      transformX: advance.getIn(["transform", "translateX", "value"]),
+      transformY: advance.getIn(["transform", "translateY", "value"]),
+      // 周长
+      width: advance.getIn(["perimeter", "width", "value"]),
+      height: advance.getIn(["perimeter", "height", "value"]),
+      //内边距
+      pb: advance.getIn(["padding", "bottom", "value"]),
+      pl: advance.getIn(["padding", "left", "value"]),
+      pr: advance.getIn(["padding", "right", "value"]),
+      pt: advance.getIn(["padding", "top", "value"]),
       // 颜色
-      bgColor: advance.get('color'),
+      bgColor: advance.get("color"),
       //背景
-      img: advance.get('img'),
-      stretching: advance.getIn(['img_config', 'stretching', 'value']),
-      tiling: advance.getIn(['img_config', 'tiling', 'value']),
+
+      img: advance.get("img"),
+      //拉伸
+      stretching: advance.getIn(["img_config", "stretching", "value"]),
+      //平铺
+      tiling: advance.getIn(["img_config", "tiling", "value"])
     };
     return (
-      <TextLayoutAtom {...advanced_settings}>
-        {// 判断用户选择的组件，主要用来甄别用户当前选择的组件
-        this.props.choose ? (
-          <div style={{ border: '1px grey solid' }}>
-            <ComponentLocation>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: customize.get('html_content'),
-                }}
-                onClick={this.choose.bind(
-                  this,
-                  this.props.index,
-                  this.props.data
-                )}
-              />
-            </ComponentLocation>
-          </div>
-        ) : (
-          <ComponentLocation>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: customize.get('html_content'),
-              }}
-              onClick={this.choose.bind(
-                this,
-                this.props.index,
-                this.props.data
-              )}
-            />
-          </ComponentLocation>
-        )}
-      </TextLayoutAtom>
+      /**
+       * 传递下去的数据包括：
+       * 1. 布局组件样式 layout
+       * 2. 当前组件号 index
+       * 3. 接收的数据  data
+       * 4. 组件 component
+       * 5. 当前是否选中 choose
+       */
+      <DynamicCommon
+        choose={this.props.choose}
+        index={this.props.index}
+        data={this.props.data}
+        layout={advanced_settings}
+        component={
+          <div
+            dangerouslySetInnerHTML={{
+              __html: customize.get('html_content'),
+            }}
+          />
+        }
+      />
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
-    select_upData: (data, meta, error) =>
-      dispatch(select_action(data, meta, error)),
-  };
-};
+export default HTextComponent;
 
-// hoc 包装组件
-export default connect('', mapDispatchToProps)(HTextComponent);
+

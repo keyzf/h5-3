@@ -7,7 +7,7 @@ import { FormTemplate } from '../../../ui/visual/template/form';
 import {
   $$form_database,
   $$form_item_database,
-} from '../../../ui/visual/components/form_database';
+} from '../../../ui/visual/database/form_database';
 
 class FormSelect extends React.Component {
   transfer = data => {

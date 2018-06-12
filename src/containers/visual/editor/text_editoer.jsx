@@ -13,16 +13,11 @@ import {
   Col,
   Popconfirm,
 } from 'antd';
-import {
-  $$text_database,
-  h_html_text,
-  v_html_text,
-} from '../../../ui/visual/components/text_database';
 import { choose_action, select_action } from '../../../redux/action';
 import PaddingForm from '../../../ui/visual/form/padding_form';
-import PositionForm from '../../../ui/visual/form/position_form';
 import RichTextEditor from '../../../ui/visual/form/editor_form';
 import UpImgPart from '../../../common/upload_common';
+import { $$horizontal_text, $$vertical_text } from "../../../ui/visual/database/text_database";
 
 /**
  * editor for text
@@ -135,23 +130,6 @@ class EditorText extends React.Component {
           )
       );
     }
-    if (opt_name === 'position') {
-      // update position
-      const $$position = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('position')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'position'], fromJS($$position))
-      );
-    }
     if (opt_name === 'padding') {
       // update position
       const $$padding = {
@@ -171,10 +149,10 @@ class EditorText extends React.Component {
     }
     if (opt_name === 'reset') {
       if (name === 'horizontal_text') {
-        this.sendAction(Map($$text_database(name, h_html_text)));
+        this.sendAction($$horizontal_text);
       }
       if (name === 'vertical_text') {
-        this.sendAction(Map($$text_database(name, v_html_text)));
+        this.sendAction($$vertical_text);
       }
     }
   };
@@ -338,12 +316,6 @@ class EditorText extends React.Component {
             <PaddingForm
               {...$$advance.get('padding').toJS()}
               onChange={this.editorFeatures.bind(this, 'padding')}
-            />
-          </Card>
-          <Card title="定位" style={{ width: '100%' }}>
-            <PositionForm
-              {...$$advance.get('position').toJS()}
-              onChange={this.editorFeatures.bind(this, 'position')}
             />
           </Card>
         </Tabs.TabPane>

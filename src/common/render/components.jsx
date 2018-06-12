@@ -32,12 +32,12 @@ import FormComponent from '../../ui/visual/core/form_component/form';
 export const render_component = (data, choose, index) => {
   // 获取组件名称，通过组件名称进行匹配
   switch (data.getIn(['customize', 'name'])) {
-    /**==============文本类============**/
+    //文本类
     case 'vertical_text':
       return <VTextComponent data={data} choose={choose} index={index} />;
     case 'horizontal_text':
       return <HTextComponent data={data} choose={choose} index={index} />;
-
+    //文本类 （推荐组件）
     case 'one_text':
       return <OneTextComponent data={data} choose={choose} index={index} />;
     case 'two_text':
@@ -52,7 +52,7 @@ export const render_component = (data, choose, index) => {
       return <SixTextComponent data={data} choose={choose} index={index} />;
     case 'seven_text':
       return <SevenTextComponent data={data} choose={choose} index={index} />;
-
+    // 图片类
     case 'single_img':
       return <UpImgComponent data={data} choose={choose} index={index} />;
     case 'grid_img':
@@ -63,19 +63,24 @@ export const render_component = (data, choose, index) => {
       return <SliderImgComponent data={data} choose={choose} index={index} />;
     case 'carousel_img':
       return <CarouselImgComponent data={data} choose={choose} index={index} />;
-
+    // 媒体类
     case 'video':
       return <VideoComponent data={data} choose={choose} index={index} />;
+    //  音乐类
     case 'music':
       return <MusicComponent data={data} choose={choose} index={index} />;
+    //  列表类
     case 'list_mall':
       return <ListMallComponent data={data} choose={choose} index={index} />;
     case 'grid_mall':
       return <GridMallComponent data={data} choose={choose} index={index} />;
+    //  按钮类
     case 'button':
       return <ButtonComponent data={data} choose={choose} index={index} />;
+    //  表单类
     case 'form':
       return <FormComponent data={data} choose={choose} index={index} />;
+    //  默认输出
     default:
       return '';
   }

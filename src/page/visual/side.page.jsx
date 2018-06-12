@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Tabs } from 'antd';
-import { $$visual_sider_database } from './side_database';
+import { $$visual_sider_database } from '../../common/database/side_database_common';
 import style from './side.module.scss';
 
 /**

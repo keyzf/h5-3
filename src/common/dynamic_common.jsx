@@ -7,72 +7,14 @@ import { Map } from "immutable";
 import Draggable from "react-draggable";
 import { ResizableBox } from "react-resizable";
 import ComponentLocation from "../containers/visual/component-location";
-import { TextLayoutAtom } from "../ui/visual/core/text/layout_atom";
+import { TextLayoutAtom, Translate } from "../ui/visual/core/text/layout_atom";
 import { choose_action, select_action } from "../redux/action";
 
 class DynamicCommon extends React.Component {
+  // 内部属性 不需要设置
   state = {
     activeDrags: 0
   };
-
-  /**
-   * send action
-   * Receive: Single component style
-   * @param up_data
-   */
-  sendAction = up_data => {
-    // data source
-    const $$select_data = this.props.select_value.data;
-    const $$choose_data = this.props.choose_value.data;
-    // create new data
-    const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
-      up_data
-    );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
-    // send action
-    this.props.select_upData($$new_select_data, "", false);
-    this.props.choose_upData(
-      $$new_choose_data,
-      Map({ content: true, choose: true }),
-      false
-    );
-  };
-
-  // 设置位置，通过动画属性设置
-  handleDrag(e, ui) {
-    // data source
-    const $$select_data = this.props.select_value.data;
-    const $$choose_data = this.props.choose_value.data;
-    // 获取当前长度与宽度
-    const $$transform = $$select_data.get($$choose_data.get("number"));
-    // width
-    const $$translateX = $$transform.getIn([
-      "advance",
-      "transform",
-      "translateX",
-      "value"
-    ]);
-    // height
-    const $$translateY = $$transform.getIn([
-      "advance",
-      "transform",
-      "translateY",
-      "value"
-    ]);
-    // 更新translateX 与 translateY 的值
-    const $$change_translateX = $$transform.setIn(
-      ["advance", "perimeter", "translateX", "value"],
-      $$translateX + ui.deltaX
-    );
-    const $$change_translateY = $$change_translateX.setIn(
-      ["advance", "perimeter", "translateY", "value"],
-      $$translateY + ui.deltaX
-    );
-    // new data
-    this.sendAction($$change_translateY);
-  }
-
   onStart = () => {
     let add = this.state.activeDrags;
     this.setState({ activeDrags: ++add });
@@ -81,6 +23,34 @@ class DynamicCommon extends React.Component {
     let less = this.state.activeDrags;
     this.setState({ activeDrags: --less });
   };
+  // 需要操作项
+
+  // 设置位置，通过动画属性设置
+  handleDrag(e, ui) {
+    const $$translateX = this.props.data.getIn([
+      "advance",
+      "transform",
+      "translateX",
+      "value"
+    ]);
+    const $$translateY = this.props.data.getIn([
+      "advance",
+      "transform",
+      "translateY",
+      "value"
+    ]);
+    // 更新translateX 与 translateY 的值
+    const $$change_translateX = this.props.data.setIn(
+      ["advance", "transform", "translateX", "value"],
+      $$translateX + ui.deltaX
+    );
+    const $$change_translateY = $$change_translateX.setIn(
+      ["advance", "transform", "translateY", "value"],
+      $$translateY + ui.deltaY
+    );
+    // new data
+    this.sendAction($$change_translateY);
+  }
 
   // 调整长宽时的 长度与宽度
   onResize = (event, { element, size }) => {
@@ -113,56 +83,91 @@ class DynamicCommon extends React.Component {
     );
   };
 
+  /**
+   * send action
+   * Receive: Single component style
+   * @param up_data
+   */
+  sendAction = up_data => {
+    // data source
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // create new data
+    const $$new_select_data = $$select_data.set(
+      $$choose_data.get("number"),
+      up_data
+    );
+    const $$new_choose_data = $$choose_data.set("data", up_data);
+    // send action
+    this.props.select_upData($$new_select_data, "", false);
+    this.props.choose_upData(
+      $$new_choose_data,
+      Map({ content: true, choose: true }),
+      false
+    );
+  };
+
   render() {
-    // 接收的数据
     const advance = this.props.data.get("advance");
-    // width
     const $$width = advance.getIn(["perimeter", "width", "value"]);
-    // height
     const $$height = advance.getIn(["perimeter", "height", "value"]);
+    const $$translateX  = advance.getIn(["transform", "translateX", "value"]);
+    const $$translateY = advance.getIn(["transform", "translateY", "value"]);
     // 拆解出的位置数据
     const dragHandlers = { onStart: this.onStart, onStop: this.onStop };
     return (
-      <Draggable
-        onDrag={this.handleDrag.bind(this)}
-        {...dragHandlers}
-        cancel=".react-resizable-handle"
-      >
-        <div
-          onClick={this.choose.bind(this, this.props.index, this.props.data)}
-        >
-          <ResizableBox
-            width={$$width}
-            height={$$height}
-            onResize={this.onResize}
+      <React.Fragment>
+        {this.props.choose ? (
+          <Draggable    defaultPosition={{x: $$translateX , y: $$translateY}}
+                        onDrag={this.handleDrag.bind(this)}
+                        {...dragHandlers}
+                        cancel=".react-resizable-handle"
           >
-            <span>
-              <TextLayoutAtom {...this.props.layout}>
-                {this.props.choose ? (
-                  <div
-                    style={{
-                      border: "1px dashed black",
-                      boxSizing: "border-box",
-                      width: "100%",
-                      height: "100%"
-                    }}
-                  >
-                    <ComponentLocation>
-                      <span>{this.props.component}</span>
-                    </ComponentLocation>
-                  </div>
-                ) : (
-                  <span>
-                    <ComponentLocation>
-                      {this.props.component}
-                    </ComponentLocation>
-                  </span>
-                )}
-              </TextLayoutAtom>
-            </span>
-          </ResizableBox>
-        </div>
-      </Draggable>
+            <div
+              onClick={this.choose.bind(
+                this,
+                this.props.index,
+                this.props.data
+              )}
+            >
+              <ResizableBox
+                width={$$width}
+                height={$$height}
+                onResize={this.onResize}
+              >
+          <Translate {...this.props.layout}>
+
+                <span>
+                    <div
+                      style={{
+                        border: "1px dashed black",
+                        boxSizing: "border-box",
+                        width: "100%",
+                        height: "100%"
+                      }}
+                    >
+                      <ComponentLocation>
+                        <span>{this.props.component}</span>
+                      </ComponentLocation>
+                    </div>
+                         </span>
+
+          </Translate>
+              </ResizableBox>
+            </div>
+          </Draggable>
+        ) : (
+          <TextLayoutAtom {...this.props.layout}>
+            <div
+              onClick={this.choose.bind(
+                this,
+                this.props.index,
+                this.props.data
+              )}
+            >{this.props.component}</div>
+          </TextLayoutAtom>
+        )}
+      </React.Fragment>
     );
   }
 }

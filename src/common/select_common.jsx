@@ -1,13 +1,14 @@
 import React from "react";
+import { Map } from "immutable";
 import { Divider } from "antd";
-import QueueAnim from "rc-queue-anim";
-import { VideoTemplate } from "../../../ui/visual/template/video";
-import { fromJS, Map } from "immutable";
 import { connect } from "react-redux";
-import { choose_action, select_action } from "../../../redux/action";
-import { $$video_database } from "../../../ui/visual/database/video_database";
+import QueueAnim from "rc-queue-anim";
+import { choose_action, select_action } from "../redux/action";
 
-class VideoSelect extends React.Component {
+/**
+ * 文本组件选择栏
+ */
+class SelectCommon extends React.Component {
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -31,19 +32,27 @@ class VideoSelect extends React.Component {
   };
 
   render() {
-    const option_data = name => {
-      return fromJS($$video_database(name));
-    };
     return (
       <QueueAnim delay={200}>
-        <div
-          className={"components_hover"}
-          key={1}
-          onClick={this.transfer.bind(this, option_data("video"))}
-        >
-          <VideoTemplate/>
-        </div>
-        <Divider orientation="left">设计师推荐</Divider>
+        {
+          this.props.data.map((data, index) => {
+            return (
+              <div key={index}>
+                {
+                  data.data === "dividing-line" ?
+                    <Divider orientation="left" key={index}>设计师推荐</Divider> :
+                    <div
+                      className={"components_hover"}
+                      key={index}
+                      onClick={this.transfer.bind(this, data.data)}
+                    >
+                      {data.template}
+                    </div>
+                }
+              </div>
+            );
+          })
+        }
       </QueueAnim>
     );
   }
@@ -64,4 +73,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCommon);

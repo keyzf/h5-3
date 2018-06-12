@@ -17,7 +17,7 @@ import {
   $$list_img_database,
   $$slider_img_database,
   $$single_img_database,
-} from '../../../ui/visual/components/img_database';
+} from '../../../ui/visual/database/img_database';
 
 class ImgSelect extends React.Component {
   //将选择的组件数据加入数组中

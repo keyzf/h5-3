@@ -11,7 +11,7 @@ import {
 import {
   $$grid_mall_database,
   $$list_mall_database,
-} from '../../../ui/visual/components/mall_database';
+} from '../../../ui/visual/database/mall_database';
 
 class MallSelect extends React.Component {
   /**
