@@ -80,14 +80,15 @@ class SiderVisualView extends PureComponent {
     };
 
     return (
-      <Tabs className={style.layout} {...Tab}>
+      <Tabs className={style.layout} {...Tab} >
         {/*通过循环将组件信息渲染出来*/}
         {$$visual_sider_database.map(data => {
           return (
             //遍历出项目头 icon ，名称
-            <Tabs.TabPane {...tabPan(data.icon, data.title)}>
+            <Tabs.TabPane {...tabPan(data.icon, data.title)} >
               {/*遍历出项目 内容*/}
               {data.select}
+
             </Tabs.TabPane>
           );
         })}
