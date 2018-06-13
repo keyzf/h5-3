@@ -33,6 +33,26 @@ export const render_form = data => {
       return <EditorText data={data} />;
     case 'seven_text':
       return <EditorText data={data} />;
+    case 'eight_text':
+      return <EditorText data={data} />;
+    case 'nine_text':
+      return <EditorText data={data} />;
+    case 'ten_text':
+      return <EditorText data={data} />;
+    case 'eleven_text':
+      return <EditorText data={data} />;
+    case 'twelve_text':
+      return <EditorText data={data} />;
+    case 'thirteen_text':
+      return <EditorText data={data} />;
+    case 'fourteen_text':
+      return <EditorText data={data} />;
+    case 'fifteen_text':
+      return <EditorText data={data} />;
+    case 'sixteen_text':
+      return <EditorText data={data} />;
+    case 'seventeen_text':
+      return <EditorText data={data} />;
 
     case 'single_img':
       return <EditorImg data={data} />;

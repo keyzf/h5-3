@@ -56,7 +56,7 @@ class SiderVisualView extends PureComponent {
       {
         icon: 'icon iconfont icon-zhinengyuyinjiaohu',
         title: '互动',
-        select: <InterActiveSelect/>,
+        select: <InterActiveSelect />,
       },
     ]);
     // tab 样式

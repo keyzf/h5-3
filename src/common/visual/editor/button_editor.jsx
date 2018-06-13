@@ -4,9 +4,7 @@ import { Tabs, Button, Row, Col, Card, Popover, Checkbox, Icon } from 'antd';
 import { choose_action, select_action } from '../../../redux/action';
 import { SketchPicker } from 'react-color';
 import { fromJS, Map } from 'immutable';
-import { $$button_database } from '../../../ui/visual/database/button_database';
-import PaddingForm from '../../../ui/visual/form/padding_form';
-import PositionForm from '../../../ui/visual/form/position_form';
+import { $$button_database } from '../../../ui/button/button_database';
 import UpImgPart from '../upload_common';
 import ButtonForm from '../../../ui/visual/form/button_form';
 
@@ -98,40 +96,6 @@ class EditorButton extends React.Component {
             ['advance', 'img_config', 'stretching', 'value'],
             data.target.checked
           )
-      );
-    }
-    if (opt_name === 'position') {
-      // update position
-      const $$position = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('position')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'position'], fromJS($$position))
-      );
-    }
-    if (opt_name === 'padding') {
-      // update position
-      const $$padding = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('padding')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'padding'], fromJS($$padding))
       );
     }
     if (opt_name === 'reset') {
@@ -271,18 +235,6 @@ class EditorButton extends React.Component {
                 />
               </Col>
             </Row>
-          </Card>
-          <Card title="内边距" style={{ width: '100%' }}>
-            <PaddingForm
-              {...$$advance.get('padding').toJS()}
-              onChange={this.editorFeatures.bind(this, 'padding')}
-            />
-          </Card>
-          <Card title="定位" style={{ width: '100%' }}>
-            <PositionForm
-              {...$$advance.get('position').toJS()}
-              onChange={this.editorFeatures.bind(this, 'position')}
-            />
           </Card>
         </Tabs.TabPane>
       </Tabs>

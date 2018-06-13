@@ -10,16 +10,19 @@ class TwelveTextUi extends PureComponent {
     return (
       <Row gutter={16}>
         <Col span={14}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-          }} dangerouslySetInnerHTML={{ __html: this.props.html }} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+            }}
+            dangerouslySetInnerHTML={{ __html: this.props.html }}
+          />
         </Col>
         <Col span={10}>
           <img
-            style={{width:'100%',height:"100%"}}
+            style={{ width: '100%', height: '100%' }}
             src={
               'http://pa797wytw.bkt.clouddn.com/%E7%9F%A9%E5%BD%A27%E6%8B%B7%E8%B4%9D8@2x.png'
             }

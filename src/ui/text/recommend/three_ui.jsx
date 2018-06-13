@@ -22,7 +22,7 @@ class ThreeTextUi extends PureComponent {
       <Row {...LayoutRow}>
         <Col span={4}>
           <img
-            style={{width:'100%',height:'100%'}}
+            style={{ width: '100%', height: '100%' }}
             src={
               'https://e7wei-img.oss-cn-beijing.aliyuncs.com/%E5%AE%9A%E4%BD%8D%402x.png'
             }

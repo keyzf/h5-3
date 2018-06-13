@@ -11,10 +11,11 @@ class EditorMusic extends React.Component {
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      const $$new_data = this.props.data
-        .get('data')
-        .get('customize')
-        .get('history');
+      const $$new_data = this.props.data.getIn([
+        'data',
+        'customize',
+        'history',
+      ]);
       const cs = $$new_data.push({
         name: changedFields.upload.value.file.name,
         url: `http://p8afqcqwq.bkt.clouddn.com/${

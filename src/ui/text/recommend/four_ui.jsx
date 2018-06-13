@@ -22,7 +22,7 @@ class FourTextUi extends PureComponent {
       <Row {...LayoutRow}>
         <Col span={4}>
           <img
-            style={{width:'100%',height:'100%'}}
+            style={{ width: '100%', height: '100%' }}
             src={
               'https://e7wei-img.oss-cn-beijing.aliyuncs.com/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A22%402x.png'
             }

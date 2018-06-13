@@ -1,12 +1,12 @@
 /**
  * 用来清空visual页面中 http中的内容
  */
-import React, { PureComponent } from "react";
-import { List, Map } from "immutable";
-import { connect } from "react-redux";
-import { Icon, Modal, message } from "antd";
-import { bg_action, choose_action, select_action } from "../../../redux/action";
-import { $$background_database } from "../../../ui/visual/database/background_database";
+import React, { PureComponent } from 'react';
+import { List, Map } from 'immutable';
+import { connect } from 'react-redux';
+import { Icon, Modal, message } from 'antd';
+import { bg_action, choose_action, select_action } from '../../../redux/action';
+import { $$background_database } from '../../../ui/visual/background_database';
 
 /**
  * 逻辑：
@@ -20,57 +20,57 @@ class CleanContent extends PureComponent {
   state = { visible: false };
   showModal = () => {
     this.setState({
-      visible: true
+      visible: true,
     });
   };
   hideModal = () => {
     this.setState({
-      visible: false
+      visible: false,
     });
   };
 
   clean = () => {
     // 清空核心组件
-    this.props.select_upData(List(), "", false);
+    this.props.select_upData(List(), '', false);
     // 清空背景组件
-    this.props.bg_upData($$background_database, "", false);
+    this.props.bg_upData($$background_database, '', false);
     // 更新选择组件
     this.props.choose_upData(
       Map(),
       Map({
         content: false,
-        choose: false
+        choose: false,
       }),
       false
     );
     this.setState({
-      visible: false
+      visible: false,
     });
-    message.success("内容已清空");
+    message.success('内容已清空');
   };
 
   confirm = () => {
     //判断用户是否设置内容(背景组件)
-    const $$color = this.props.bg_value.data.getIn(["customize", "color"]);
-    const $$img = this.props.bg_value.data.getIn(["customize", "img"]);
+    const $$color = this.props.bg_value.data.getIn(['customize', 'color']);
+    const $$img = this.props.bg_value.data.getIn(['customize', 'img']);
     const $$select_size = this.props.select_value.data.size;
-    if ($$color === "" && $$img === "" && $$select_size === 0) {
+    if ($$color === '' && $$img === '' && $$select_size === 0) {
       Modal.confirm({
-        title: "内容清空",
-        okText: "确认",
-        cancelText: "取消",
-        content: "请先在画布中填充内容",
+        title: '内容清空',
+        okText: '确认',
+        cancelText: '取消',
+        content: '请先在画布中填充内容',
         onOk: this.hideModal,
-        onCancel: this.hideModal
+        onCancel: this.hideModal,
       });
     } else {
       Modal.confirm({
-        title: "内容清空",
-        okText: "确认",
-        cancelText: "取消",
-        content: "内容删除后无法恢复,请慎重操作",
+        title: '内容清空',
+        okText: '确认',
+        cancelText: '取消',
+        content: '内容删除后无法恢复,请慎重操作',
         onOk: this.clean,
-        onCancel: this.hideModal
+        onCancel: this.hideModal,
       });
     }
   };
@@ -78,8 +78,8 @@ class CleanContent extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div onClick={this.confirm} style={{ color: "white" }}>
-          <Icon type="delete" style={{ marginRight: "10px" }}/>
+        <div onClick={this.confirm} style={{ color: 'white' }}>
+          <Icon type="delete" style={{ marginRight: '10px' }} />
           内容清空
         </div>
       </React.Fragment>
@@ -93,16 +93,15 @@ const mapDispatchToProps = dispatch => {
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
       dispatch(choose_action(data, meta, error)),
-    bg_upData: (data, meta, error) => dispatch(bg_action(data, meta, error))
+    bg_upData: (data, meta, error) => dispatch(bg_action(data, meta, error)),
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     bg_value: state.bg_reducer,
-    select_value: state.select_reducer
+    select_value: state.select_reducer,
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CleanContent);

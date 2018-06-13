@@ -16,6 +16,8 @@ import { fourteen_html_text } from './recommend/fourteen_ui';
 import { fifteen_html_text } from './recommend/fifteen_ui';
 import { sixteen_html_text } from './recommend/sixteen_ui';
 import { seventeen_html_text } from './recommend/seventeen_ui';
+import { h_html_text } from './core/horizontal_ui';
+import { v_html_text } from './core/vertical_ui';
 
 /**
  * 根级数据，用来生成组件
@@ -39,24 +41,9 @@ const $$text_database = (name, html) => {
       },
       perimeter: { width: { value: 319 }, height: { value: 147 } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
-      padding: {
-        top: { value: 0 },
-        bottom: { value: 0 },
-        left: { value: 0 },
-        right: { value: 0 },
-      },
     }),
   };
 };
-
-/**
- * 可编辑的html信息
- * @type {string}
- */
-const h_html_text =
-  '<h2 style="text-align:center;">横排文本示例</h2><p style="text-align:center;"> <h3 style="text-align:center;">上邪</h3><p style="text-align:center;"> 上邪，我欲与君相知，长命无绝衰。<br/>山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝</p>';
-const v_html_text =
-  '<h2 style="text-align:center;">竖排文本示例</h2> <h3 style="text-align:center;">元日</h3><p style="text-align:center;">爆竹声中一岁除<br/>春风送暖入屠苏<br/>千门万户曈曈日<br/>总把新桃换旧符</p>';
 
 /**
  * 各组件的数据
@@ -91,7 +78,7 @@ const $$sixteen_text = fromJS(
   $$text_database('sixteen_text', sixteen_html_text)
 );
 const $$seventeen_text = fromJS(
-  $$text_database('sixteen_text', seventeen_html_text)
+  $$text_database('seventeen_text', seventeen_html_text)
 );
 export {
   $$horizontal_text,

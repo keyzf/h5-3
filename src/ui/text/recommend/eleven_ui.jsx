@@ -11,22 +11,25 @@ class ElevenTextUi extends PureComponent {
       <Row gutter={16}>
         <Col span={6}>
           <img
-             style={{width:'100%',height:"100%"}}
+            style={{ width: '100%', height: '100%' }}
             src={'http://pa797wytw.bkt.clouddn.com/%E7%BB%8411@2x.png'}
             alt={'img'}
           />
         </Col>
         <Col span={12}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-          }} dangerouslySetInnerHTML={{ __html: this.props.html }} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+            }}
+            dangerouslySetInnerHTML={{ __html: this.props.html }}
+          />
         </Col>
         <Col span={6}>
           <img
-            style={{width:'100%',height:"100%"}}
+            style={{ width: '100%', height: '100%' }}
             src={
               'http://pa797wytw.bkt.clouddn.com/%E7%BB%8411%E6%8B%B7%E8%B4%9D@2x.png'
             }

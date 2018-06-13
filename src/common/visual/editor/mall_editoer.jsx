@@ -16,8 +16,6 @@ import {
 } from 'antd';
 import { SketchPicker } from 'react-color';
 import { choose_action, select_action } from '../../../redux/action';
-import PaddingForm from '../../../ui/visual/form/padding_form';
-import PositionForm from '../../../ui/visual/form/position_form';
 import UpImgPart from '../upload_common';
 import MallBaseForm from '../../../ui/visual/form/mall_base_form';
 
@@ -26,7 +24,7 @@ import {
   $$grid_mall_database,
   $$list_mall_database,
   $$mall_item_database,
-} from '../../../ui/visual/database/mall_database';
+} from '../../../ui/mall/mall_database';
 
 class EditorMall extends React.Component {
   state = {
@@ -225,40 +223,6 @@ class EditorMall extends React.Component {
         $$select_data
           .get($$choose_data.get('number'))
           .setIn(['advance', 'color'], data.hex)
-      );
-    }
-    if (opt_name === 'position') {
-      // update position
-      const $$position = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('position')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'position'], fromJS($$position))
-      );
-    }
-    if (opt_name === 'padding') {
-      // update position
-      const $$padding = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('padding')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'padding'], fromJS($$padding))
       );
     }
     if (opt_name === 'tiling') {
@@ -602,18 +566,6 @@ class EditorMall extends React.Component {
                     />
                   </Col>
                 </Row>
-              </Card>
-              <Card title="内边距" style={{ width: '100%' }}>
-                <PaddingForm
-                  {...$$advance.get('padding').toJS()}
-                  onChange={this.editorFeatures.bind(this, 'padding')}
-                />
-              </Card>
-              <Card title="定位" style={{ width: '100%' }}>
-                <PositionForm
-                  {...$$advance.get('position').toJS()}
-                  onChange={this.editorFeatures.bind(this, 'position')}
-                />
               </Card>
             </Tabs.TabPane>
           </Tabs>

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../redux/action';
-import { render_component } from '../../common/visual/render/components';
 import BgComponent from '../../ui/visual/core/background/bg_component';
 import style from './content.module.scss';
+import RenderUI from '../../common/visual/render_ui';
 
 /**
  * 实现功能
@@ -43,11 +43,11 @@ class ContentVisualView extends PureComponent {
                    判断用户是否选中当前组件，
                    index: 组件号
                    */}
-                  {render_component(
-                    ui_data,
-                    index === $$choose_data.get('number'),
-                    index
-                  )}
+                  <RenderUI
+                    data={ui_data}
+                    choose={index === $$choose_data.get('number')}
+                    index={index}
+                  />
                 </React.Fragment>
               );
             })

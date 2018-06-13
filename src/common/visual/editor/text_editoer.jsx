@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 import { SketchPicker } from 'react-color';
 import {
   Tabs,
@@ -14,7 +14,6 @@ import {
   Popconfirm,
 } from 'antd';
 import { choose_action, select_action } from '../../../redux/action';
-import PaddingForm from '../../../ui/visual/form/padding_form';
 import RichTextEditor from '../../../ui/visual/form/editor_form';
 import UpImgPart from '../upload_common';
 import {
@@ -94,10 +93,11 @@ class EditorText extends React.Component {
     const $$select_data = this.props.select_value.data;
     const $$choose_data = this.props.choose_value.data;
     // Current component name
-    const name = $$select_data
-      .get($$choose_data.get('number'))
-      .get('customize')
-      .get('name');
+    const name = $$select_data.getIn([
+      $$choose_data.get('number'),
+      'customize',
+      'name',
+    ]);
     // features
     if (opt_name === 'color') {
       this.sendAction(
@@ -131,23 +131,6 @@ class EditorText extends React.Component {
             ['advance', 'img_config', 'stretching', 'value'],
             data.target.checked
           )
-      );
-    }
-    if (opt_name === 'padding') {
-      // update position
-      const $$padding = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('padding')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'padding'], fromJS($$padding))
       );
     }
     if (opt_name === 'reset') {
@@ -314,12 +297,6 @@ class EditorText extends React.Component {
                 />
               </Col>
             </Row>
-          </Card>
-          <Card title="内边距" style={{ width: '100%' }}>
-            <PaddingForm
-              {...$$advance.get('padding').toJS()}
-              onChange={this.editorFeatures.bind(this, 'padding')}
-            />
           </Card>
         </Tabs.TabPane>
       </Tabs>

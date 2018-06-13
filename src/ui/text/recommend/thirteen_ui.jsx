@@ -21,12 +21,15 @@ class ThirteenTextUi extends PureComponent {
         </Col>
         <Col span={10} />
         <Col span={24}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-          }} dangerouslySetInnerHTML={{ __html: this.props.html }} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+            }}
+            dangerouslySetInnerHTML={{ __html: this.props.html }}
+          />
         </Col>
         <Col span={14} offset={10}>
           <img

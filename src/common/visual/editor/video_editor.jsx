@@ -2,9 +2,7 @@ import React from 'react';
 import { Tabs, Card, Radio, Input } from 'antd';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
-import { fromJS, Map } from 'immutable';
-import PaddingForm from '../../../ui/visual/form/padding_form';
-import PositionForm from '../../../ui/visual/form/position_form';
+import { Map } from 'immutable';
 import ImgForm from '../../../ui/visual/form/img_form';
 
 const { TextArea } = Input;
@@ -15,10 +13,11 @@ class EditorVideo extends React.Component {
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      const $$new_data = this.props.data
-        .get('data')
-        .get('customize')
-        .get('history');
+      const $$new_data = this.props.data.getIn([
+        'data',
+        'customize',
+        'history',
+      ]);
       const cs = $$new_data.push({
         name: changedFields.upload.value.file.name,
         url: `http://p8afqcqwq.bkt.clouddn.com/${
@@ -30,52 +29,16 @@ class EditorVideo extends React.Component {
       );
     }
   };
-  editorFeatures = (opt_name, data) => {
-    // data source
-    const $$select_data = this.props.select_value.data;
-    const $$choose_data = this.props.choose_value.data;
-    // Current component name
-    // const name = $$select_data
-    //   .get($$choose_data.get("number"))
-    //   .get("customize")
-    //   .get("name");
-    // features
-    if (opt_name === 'position') {
-      // update position
-      const $$position = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('position')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'position'], fromJS($$position))
-      );
-    }
-    if (opt_name === 'padding') {
-      // update position
-      const $$padding = {
-        ...$$select_data
-          .get($$choose_data.get('number'))
-          .get('advance')
-          .get('padding')
-          .toJS(),
-        ...data,
-      };
-      // new data
-      this.sendAction(
-        $$select_data
-          .get($$choose_data.get('number'))
-          .setIn(['advance', 'padding'], fromJS($$padding))
-      );
-    }
+  onChange = e => {
+    this.sendAction(
+      this.props.data.get('data').setIn(['customize', 'video'], e.target.value)
+    );
   };
-
+  shareChange = e => {
+    this.sendAction(
+      this.props.data.get('data').setIn(['customize', 'share'], e.target.value)
+    );
+  };
   sendAction = up_data => {
     // data source
     const $$select_data = this.props.select_value.data;
@@ -94,19 +57,9 @@ class EditorVideo extends React.Component {
       false
     );
   };
-  onChange = e => {
-    this.sendAction(
-      this.props.data.get('data').setIn(['customize', 'video'], e.target.value)
-    );
-  };
-  shareChange = e => {
-    this.sendAction(
-      this.props.data.get('data').setIn(['customize', 'share'], e.target.value)
-    );
-  };
+
   render() {
-    const $$customize = this.props.data.get('data').get('customize');
-    const $$advance = this.props.data.get('data').get('advance');
+    const $$customize = this.props.data.getIn(['data', 'customize']);
     const radioStyle = {
       display: 'block',
       height: '30px',
@@ -170,20 +123,6 @@ class EditorVideo extends React.Component {
                 );
               })}
             </Radio.Group>
-          </Card>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="高级设置" key="2">
-          <Card title="内边距" style={{ marginTop: '-18px' }}>
-            <PaddingForm
-              {...$$advance.get('padding').toJS()}
-              onChange={this.editorFeatures.bind(this, 'padding')}
-            />
-          </Card>
-          <Card title="定位">
-            <PositionForm
-              {...$$advance.get('position').toJS()}
-              onChange={this.editorFeatures.bind(this, 'position')}
-            />
           </Card>
         </Tabs.TabPane>
       </Tabs>

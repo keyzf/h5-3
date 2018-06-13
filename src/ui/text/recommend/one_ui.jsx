@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import styled from "styled-components";
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 
 /**
  * 接收数据
@@ -14,9 +14,9 @@ class OneTextUi extends PureComponent {
     return (
       <OneTextStyle>
         <div
-          style={{ padding: "18px 0 0 13px" }}
+          style={{ padding: '18px 0 0 13px' }}
           dangerouslySetInnerHTML={{
-            __html: this.props.html
+            __html: this.props.html,
           }}
         />
       </OneTextStyle>
@@ -24,6 +24,6 @@ class OneTextUi extends PureComponent {
   }
 }
 
-const one_html_text = "<h4>易企微,微信营销平台</h4><h4>WWW.E7WEI.COM</h4>";
+const one_html_text = '<h4>易企微,微信营销平台</h4><h4>WWW.E7WEI.COM</h4>';
 
 export { OneTextUi, one_html_text };
