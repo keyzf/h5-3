@@ -47,7 +47,6 @@
     color: #19a0fa;
 }
 
-
 /*sider 侧边栏选择组件时使用的样式*/
 .components_hover {
     padding: 5px 6px;
@@ -75,15 +74,19 @@
 .react-draggable, .cursor {
     cursor: move;
 }
+
 .no-cursor {
     cursor: auto;
 }
+
 .cursor-y {
     cursor: ns-resize;
 }
+
 .cursor-x {
     cursor: ew-resize;
 }
+
 .react-draggable strong {
     background: #ddd;
     border: 1px solid #999;
@@ -94,10 +97,10 @@
     text-align: center;
 }
 
-
 .react-resizable {
     position: relative;
 }
+
 .react-resizable-handle {
     position: absolute;
     width: 20px;
@@ -113,3 +116,7 @@
     cursor: se-resize;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0
+}

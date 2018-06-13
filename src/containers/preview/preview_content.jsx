@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { select_action } from '../../redux/action';
-import { preview_render_component } from '../../common/render/preview_components';
+import { preview_render_component } from '../../common/visual/render/preview_components';
 import BgPreview from '../../ui/preview/background/bg_component';
 
 class ContentPreviewModel extends React.Component {

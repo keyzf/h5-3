@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { EightTextUi } from "../../../text/eight_ui";
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { EightTextUi } from '../../../text/recommend/eight_ui';
 
 class EightTextComponent extends React.Component {
   render() {

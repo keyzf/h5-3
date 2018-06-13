@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { OneTextUi } from '../../../text/one_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { OneTextUi } from '../../../text/recommend/one_ui';
 
 class OneTextComponent extends React.Component {
   render() {

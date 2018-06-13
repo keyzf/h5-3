@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { SixTextUi } from '../../../text/six_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { SixTextUi } from '../../../text/recommend/six_ui';
 
 class SixTextComponent extends React.Component {
   render() {

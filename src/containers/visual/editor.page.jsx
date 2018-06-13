@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import TweenOne from 'rc-tween-one';
-import BgEditor from './editor/bg_editor';
+import BgEditor from '../../common/visual/editor/bg_editor';
 import style from './editor.module.scss';
 import { choose_action } from '../../redux/action';
-import { render_form } from '../../common/render/form';
+import { render_form } from '../../common/visual/render/form';
 
 /**
  * 实现功能：

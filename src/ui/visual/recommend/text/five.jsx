@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { FiveTextUi } from '../../../text/five_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { FiveTextUi } from '../../../text/recommend/five_ui';
 
 class FiveTextComponent extends React.Component {
   render() {

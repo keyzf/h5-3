@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/visual/content.page.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/visual/content.page.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { choose_action, select_action } from '../../redux/action';
+import { render_component } from '../../common/visual/render/components';
+import BgComponent from '../../ui/visual/core/background/bg_component';
+import style from './content.module.scss';
+
+/**
+ * 实现功能
+ * 1. 读取choose 中的meta字段，判断显示内容
+ * 2. 实时监听背景组件数据源，及时更新数据
+ * 3. 遍历出核心组件的数据，提交给 render函数
+ */
+class ContentVisualView extends PureComponent {
+  render() {
+    // 读取数据源
+    const $$bg_data = this.props.bg_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    const $$select_data = this.props.select_value.data;
+    // 取出choose数据源的分支
+    const choose_meta = this.props.choose_value.meta;
+
+    // 解析出背景需要的数据
+    const bg_config = {
+      color: $$bg_data.getIn(['customize', 'color']),
+      img: $$bg_data.getIn(['customize', 'img']),
+      repeat: $$bg_data.getIn(['customize', 'img_config', 'repeat']),
+      fixed: $$bg_data.getIn(['customize', 'img_config', 'fixed']),
+    };
+
+    return (
+      //visual content 内容栏
+      &lt;div id={'content_root'} className={style.template}>
+        &lt;BgComponent {...bg_config}>
+          {/*判读用户当前操作，如果没有选择组件则显示默认，否则遍历出组件*/}
+          {choose_meta.get('content') ? (
+            $$select_data.map((ui_data, index) => {
+              return (
+                //将遍历的数据传递给render函数
+                &lt;React.Fragment key={index}>
+                  {/**
+                   ui_data:组件样式数据，
+                   判断用户是否选中当前组件，
+                   index: 组件号
+                   */}
+                  {render_component(
+                    ui_data,
+                    index === $$choose_data.get('number'),
+                    index
+                  )}
+                &lt;/React.Fragment>
+              );
+            })
+          ) : (
+            &lt;div className={style.default}>请从左侧选择组件~&lt;/div>
+          )}
+        &lt;/BgComponent>
+      &lt;/div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    // 组件数据
+    select_value: state.select_reducer,
+    // 选择组件数组
+    choose_value: state.choose_reducer,
+    // 背景组件数据
+    bg_value: state.bg_reducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // 选择组件数据更新触发器
+    choose_upData: (data, meta, error) =>
+      dispatch(choose_action(data, meta, error)),
+    // 核心组件数据更新触发器
+    select_upData: (data, meta, error) =>
+      dispatch(select_action(data, meta, error)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentVisualView);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="BgPreview.html">BgPreview</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="MusicComponent.html">MusicComponent</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PaddingForm.html">PaddingForm</a></li><li><a href="PositionForm.html">PositionForm</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SiderVisualView.html">SiderVisualView</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$logo_database">$$logo_database</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#accessKey">accessKey</a></li><li><a href="global.html#h_html_text">h_html_text</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#render_component">render_component</a></li><li><a href="global.html#render_form">render_form</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jun 13 2018 11:59:18 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

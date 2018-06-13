@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
-import FormPreviewView from '../../page/preview/form.page';
+import FormPreviewView from '../../http/preview/form.page';
 import { connect } from 'react-redux';
 import { html5_action } from '../../redux/action';
-import UpImgPart from '../../common/upload_common';
+import UpImgPart from '../../common/visual/upload_common';
 
 class EditorPreviewView extends React.Component {
   state = {

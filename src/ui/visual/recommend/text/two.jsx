@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { TwoTextUi } from '../../../text/two_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { TwoTextUi } from '../../../text/recommend/two_ui';
 
 class TwoTextComponent extends React.Component {
   render() {

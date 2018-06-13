@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
 import { FormLayoutAtom } from './layout_atom';
-import ComponentLocation from '../../../../containers/visual/component-location';
+import ComponentLocation from '../../../../common/visual/component-location';
 import { choose_action, select_action } from '../../../../redux/action';
 
 const FormItem = Form.Item;
@@ -34,6 +34,7 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const advance = this.props.data.get('advance');
     const customize = this.props.data.get('customize');
+    console.log(customize);
     // 可编辑属性 data:为文本
     const advanced_settings = {
       // 绝对定位

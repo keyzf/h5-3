@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: common/visual/dynamic_common.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: common/visual/dynamic_common.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 为组件添加动态效果
+ */
+import React from 'react';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+import Draggable from 'react-draggable';
+import { ResizableBox } from 'react-resizable';
+import ComponentLocation from './component-location';
+import { TextLayoutAtom, Translate } from '../../ui/text/layout_atom';
+import { choose_action, select_action } from '../../redux/action';
+
+class DynamicCommon extends React.Component {
+  // 内部属性 不需要设置
+  state = {
+    activeDrags: 0,
+  };
+  onStart = () => {
+    let add = this.state.activeDrags;
+    this.setState({ activeDrags: ++add });
+  };
+  onStop = () => {
+    let less = this.state.activeDrags;
+    this.setState({ activeDrags: --less });
+  };
+  // 需要操作项
+
+  // 设置位置，通过动画属性设置
+  handleDrag(e, ui) {
+    const $$translateX = this.props.data.getIn([
+      'advance',
+      'transform',
+      'translateX',
+      'value',
+    ]);
+    const $$translateY = this.props.data.getIn([
+      'advance',
+      'transform',
+      'translateY',
+      'value',
+    ]);
+    // 更新translateX 与 translateY 的值
+    const $$change_translateX = this.props.data.setIn(
+      ['advance', 'transform', 'translateX', 'value'],
+      $$translateX + ui.deltaX
+    );
+    const $$change_translateY = $$change_translateX.setIn(
+      ['advance', 'transform', 'translateY', 'value'],
+      $$translateY + ui.deltaY
+    );
+    // new data
+    this.sendAction($$change_translateY);
+  }
+
+  // 调整长宽时的 长度与宽度
+  onResize = (event, { element, size }) => {
+    event.stopPropagation();
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // 获取当前长度与宽度
+    const $$perimeter = $$select_data.get($$choose_data.get('number'));
+    // 更新width 与 height 的值
+    const $$change_width = $$perimeter.setIn(
+      ['advance', 'perimeter', 'width', 'value'],
+      size.width
+    );
+    const $$change_height = $$change_width.setIn(
+      ['advance', 'perimeter', 'height', 'value'],
+      size.height
+    );
+    // new data
+    this.sendAction($$change_height);
+  };
+  // 控制当前选择的组件
+  choose = (number, data) => {
+    this.props.choose_upData(
+      Map({ number: number, data: data }),
+      Map({
+        content: true,
+        choose: true,
+      }),
+      false
+    );
+  };
+
+  /**
+   * send action
+   * Receive: Single component style
+   * @param up_data
+   */
+  sendAction = up_data => {
+    // data source
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    // create new data
+    const $$new_select_data = $$select_data.set(
+      $$choose_data.get('number'),
+      up_data
+    );
+    const $$new_choose_data = $$choose_data.set('data', up_data);
+    // send action
+    this.props.select_upData($$new_select_data, '', false);
+    this.props.choose_upData(
+      $$new_choose_data,
+      Map({ content: true, choose: true }),
+      false
+    );
+  };
+
+  render() {
+    const advance = this.props.data.get('advance');
+    const $$width = advance.getIn(['perimeter', 'width', 'value']);
+    const $$height = advance.getIn(['perimeter', 'height', 'value']);
+    const $$translateX = advance.getIn(['transform', 'translateX', 'value']);
+    const $$translateY = advance.getIn(['transform', 'translateY', 'value']);
+    // 拆解出的位置数据
+    const dragHandlers = { onStart: this.onStart, onStop: this.onStop };
+    return (
+      &lt;React.Fragment>
+        {this.props.choose ? (
+          &lt;Draggable
+            defaultPosition={{ x: $$translateX, y: $$translateY }}
+            onDrag={this.handleDrag.bind(this)}
+            {...dragHandlers}
+            cancel=".react-resizable-handle"
+          >
+            &lt;div
+              onClick={this.choose.bind(
+                this,
+                this.props.index,
+                this.props.data
+              )}
+            >
+              &lt;ResizableBox
+                width={$$width}
+                height={$$height}
+                onResize={this.onResize}
+              >
+                &lt;Translate {...this.props.layout}>
+                  &lt;span>
+                    &lt;div
+                      style={{
+                        border: '1px dashed black',
+                        boxSizing: 'border-box',
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    >
+                      &lt;ComponentLocation>
+                        &lt;span>{this.props.component}&lt;/span>
+                      &lt;/ComponentLocation>
+                    &lt;/div>
+                  &lt;/span>
+                &lt;/Translate>
+              &lt;/ResizableBox>
+            &lt;/div>
+          &lt;/Draggable>
+        ) : (
+          &lt;TextLayoutAtom {...this.props.layout}>
+            &lt;div
+              onClick={this.choose.bind(
+                this,
+                this.props.index,
+                this.props.data
+              )}
+            >
+              {this.props.component}
+            &lt;/div>
+          &lt;/TextLayoutAtom>
+        )}
+      &lt;/React.Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    select_value: state.select_reducer,
+    choose_value: state.choose_reducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    choose_upData: (data, meta, error) =>
+      dispatch(choose_action(data, meta, error)),
+    select_upData: (data, meta, error) =>
+      dispatch(select_action(data, meta, error)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DynamicCommon);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="BgPreview.html">BgPreview</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="MusicComponent.html">MusicComponent</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PaddingForm.html">PaddingForm</a></li><li><a href="PositionForm.html">PositionForm</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SiderVisualView.html">SiderVisualView</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$logo_database">$$logo_database</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#accessKey">accessKey</a></li><li><a href="global.html#h_html_text">h_html_text</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#render_component">render_component</a></li><li><a href="global.html#render_form">render_form</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jun 13 2018 11:59:18 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

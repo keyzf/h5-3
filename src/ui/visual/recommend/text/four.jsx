@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { FourTextUi } from '../../../text/four_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { FourTextUi } from '../../../text/recommend/four_ui';
 
 class FourTextComponent extends React.Component {
   render() {

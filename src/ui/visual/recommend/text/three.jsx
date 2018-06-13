@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { ThreeTextUi } from '../../../text/three_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { ThreeTextUi } from '../../../text/recommend/three_ui';
 
 class ThreeTextComponent extends React.Component {
   render() {

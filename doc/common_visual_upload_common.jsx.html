@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: common/visual/upload_common.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: common/visual/upload_common.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import axios from 'axios';
+import range from 'lodash.range';
+import { connect } from 'react-redux';
+import LazyLoad from 'react-lazyload';
+import {
+  Button,
+  Tabs,
+  Modal,
+  Icon,
+  Divider,
+  Progress,
+  message,
+  Row,
+  Col,
+} from 'antd';
+import ImgForm from '../../ui/visual/form/img_form';
+import { up_img_action } from '../../redux/action';
+
+/**
+ * 功能：
+ *  1. 通过 ajax 获取图片
+ *  2. 上传图片
+ *  3. 选择图片
+ *  4. 显示用户当前使用的图片
+ *  bug TODO 内存泄漏
+ */
+class UpImgPart extends React.Component {
+  state = {
+    //模拟数据：总页数,第一轮数据,用户上传图片数据
+    number: 3,
+    ajax_url: [],
+    library_list: [],
+    user_library: [],
+    // 用来比对的补充字段
+    length: 0,
+    //获取传递过来的图片
+    img_url: this.props.img,
+    // 进度条
+    progress: false,
+  };
+
+  // 在渲染之前,通过ajax 获取数据
+  componentDidMount() {
+    // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
+    axios({
+      method: 'get',
+      url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
+    })
+      .then(response => {
+        this.setState({
+          ajax_url: response.data,
+        });
+      })
+      .catch(function(error) {
+        // 暑促错误信息，生产环境中需要剔除
+        console.log(error);
+      });
+    // 用来搜寻用户库
+    axios({
+      method: 'get',
+      url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
+    })
+      .then(response => {
+        this.setState({
+          ajax_url: response.data,
+        });
+      })
+      .catch(function(error) {
+        // 暑促错误信息，生产环境中需要剔除
+        console.log(error);
+      });
+  }
+
+  // 用户点击不同的图片给与不同的样式
+  choose = (img_url, name) => {
+    if ('public_library' === name) {
+      this.setState({
+        img_url: img_url.url, //技术图片信息
+      });
+    } else {
+      this.setState({
+        img_url: img_url, //技术图片信息
+      });
+    }
+  };
+
+  // 图片上传
+  ImgPartChange = changedFields => {
+    const file = changedFields.upload.value.file;
+    if (file.status === 'uploading') {
+      this.setState({
+        progress: true,
+      });
+    }
+    if (file.status === 'done') {
+      message.success('上传成功');
+      const new_user_library = this.state.user_library;
+      new_user_library.push(
+        `http://p8afqcqwq.bkt.clouddn.com/${file.response.key}`
+      );
+      this.setState({
+        progress: false,
+        user_library: new_user_library,
+      });
+    }
+  };
+
+  render() {
+    // 公共图片库
+    const ShowImg = props => {
+      if (this.state.length === props.index) {
+        axios({
+          method: 'get',
+          url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_${
+            props.index
+          }.json`,
+        })
+          .then(response => {
+            let ajax_url = this.state.ajax_url;
+            let length = this.state.length;
+            response.data.map(data => {
+              return ajax_url.push(data);
+            });
+            this.setState({
+              ajax_url: ajax_url,
+              length: length + 1,
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+      return (
+        &lt;React.Fragment>
+          {this.state.length - 1 === props.index ? (
+            &lt;Row gutter={16}>
+              {this.state.ajax_url.map((data, index) => {
+                return (
+                  &lt;Col span={4} style={{ margin: '0 0 5px 0' }} key={index}>
+                    {data.type === 1 ? (
+                      &lt;LazyLoad
+                        height={50}
+                        offset={100}
+                        once
+                        overflow
+                        key={index}
+                      >
+                        &lt;div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'inline-block',
+                            verticalAlign: 'top',
+                            marginBottom: '10px',
+                            marginRight: '13px',
+                            boxSizing: 'border-box',
+                          }}
+                          onClick={this.choose.bind(
+                            this,
+                            data,
+                            'public_library'
+                          )}
+                          className={
+                            data.url === this.state.img_url
+                              ? 'part_active'
+                              : 'part_choose'
+                          }
+                        >
+                          &lt;img
+                            style={{
+                              verticalAlign: 'middle',
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              margin: 'auto',
+                            }}
+                            src={data.url}
+                            alt={'img'}
+                          />
+                        &lt;/div>
+                      &lt;/LazyLoad>
+                    ) : (
+                      ''
+                    )}
+                  &lt;/Col>
+                );
+              })}
+            &lt;/Row>
+          ) : (
+            &lt;div style={{ display: 'none' }}>代价在&lt;/div>
+          )}
+        &lt;/React.Fragment>
+      );
+    };
+
+    const TabPane = Tabs.TabPane;
+    const { visible, unvisible } = this.props;
+    return (
+      &lt;Modal
+        width={800}
+        title="素材库"
+        visible={visible}
+        onCancel={unvisible}
+        footer={null}
+      >
+        {this.state.progress ? &lt;Progress percent={50} status="active" /> : ''}
+        &lt;Tabs
+          tabBarExtraContent={
+            &lt;ImgForm
+              upload={{ value: '' }}
+              onChange={this.ImgPartChange}
+              child={
+                &lt;div style={{ color: '#19a0fa', cursor: 'pointer' }}>
+                  &lt;Icon type="plus" />
+                  &amp;nbsp;添加素材
+                &lt;/div>
+              }
+            />
+          }
+        >
+          &lt;TabPane tab="我的素材" key="1">
+            {this.state.user_library.length ? (
+              &lt;div style={{ width: '100%', minHeight: '400px' }}>
+                &lt;div style={{ minHeight: '300px' }}>
+                  {// 循环显示出用户的自上传图片
+                  this.state.user_library.map((data, index) => {
+                    return (
+                      &lt;div
+                        key={index}
+                        style={{
+                          width: '90px',
+                          height: '90px',
+                          display: 'inline-block',
+                          verticalAlign: 'top',
+                          marginBottom: '10px',
+                          marginRight: '13px',
+                          boxSizing: 'border-box',
+                        }}
+                      >
+                        &lt;div
+                          className={
+                            data === this.state.img_url
+                              ? 'part_active'
+                              : 'part_choose'
+                          }
+                          onClick={this.choose.bind(this, data)}
+                        >
+                          &lt;img
+                            style={{
+                              verticalAlign: 'middle',
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              margin: 'auto',
+                            }}
+                            src={data}
+                            alt={'img'}
+                          />
+                        &lt;/div>
+                      &lt;/div>
+                    );
+                  })}
+                &lt;/div>
+                &lt;Divider />
+                &lt;div style={{ padding: '0 35%', width: '100%' }}>
+                  &lt;Button
+                    onClick={this.props.unvisible.bind(
+                      this,
+                      true,
+                      this.state.img_url
+                    )}
+                    style={{ width: '100px', marginRight: '10px' }}
+                  >
+                    取消
+                  &lt;/Button>
+                  &lt;Button
+                    onClick={this.props.unvisible.bind(
+                      this,
+                      true,
+                      this.state.img_url
+                    )}
+                    style={{ width: '100px', marginRight: '10px' }}
+                  >
+                    确定
+                  &lt;/Button>
+                &lt;/div>
+              &lt;/div>
+            ) : (
+              &lt;div style={{ textAlign: 'center', padding: '0 80px' }}>
+                &lt;img
+                  src={
+                    'https://e7wei-img.oss-cn-beijing.aliyuncs.com/img/%E7%BC%BA%E7%9C%81.png'
+                  }
+                  alt={'img'}
+                />
+                &lt;br />
+                &lt;ImgForm
+                  upload={{ value: '' }}
+                  onChange={this.ImgPartChange.bind(this)}
+                  child={
+                    &lt;Button type="dashed" style={{ width: '150px' }}>
+                      种植素材
+                    &lt;/Button>
+                  }
+                />
+              &lt;/div>
+            )}
+          &lt;/TabPane>
+          &lt;TabPane tab="共享素材" key="2">
+            &lt;Tabs tabPosition={'left'}>
+              &lt;TabPane
+                tab="背景"
+                key="1"
+                style={{ maxHeight: '400px', overflow: 'auto' }}
+              >
+                {/**
+                 *总页数,以及第一页数据
+                 **/}
+                {range(this.state.number).map((data, index) => {
+                  return (
+                    //对要显示的界面进行懒加载处理
+                    &lt;React.Fragment key={index}>
+                      &lt;LazyLoad
+                        once={true}
+                        throttle={100}
+                        height={600}
+                        overflow
+                        key={index}
+                      >
+                        &lt;ShowImg index={index} />
+                      &lt;/LazyLoad>
+                    &lt;/React.Fragment>
+                  );
+                })}
+              &lt;/TabPane>
+            &lt;/Tabs>
+            &lt;Divider />
+            &lt;div style={{ padding: '0 35%', width: '100%' }}>
+              &lt;Button
+                onClick={this.props.unvisible.bind(this, true, this.props.img)}
+                style={{ width: '100px', marginRight: '10px' }}
+              >
+                取消
+              &lt;/Button>
+              &lt;Button
+                onClick={this.props.unvisible.bind(
+                  this,
+                  true,
+                  this.state.img_url
+                )}
+                style={{ width: '100px', marginRight: '10px' }}
+              >
+                确定
+              &lt;/Button>
+            &lt;/div>
+          &lt;/TabPane>
+        &lt;/Tabs>
+      &lt;/Modal>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    up_img_value: state.up_img_reducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    up_img_upData: (data, meta, error) =>
+      dispatch(up_img_action(data, meta, error)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpImgPart);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="BgPreview.html">BgPreview</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="MusicComponent.html">MusicComponent</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PaddingForm.html">PaddingForm</a></li><li><a href="PositionForm.html">PositionForm</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SiderVisualView.html">SiderVisualView</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$logo_database">$$logo_database</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#accessKey">accessKey</a></li><li><a href="global.html#h_html_text">h_html_text</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#render_component">render_component</a></li><li><a href="global.html#render_form">render_form</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jun 13 2018 11:59:18 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

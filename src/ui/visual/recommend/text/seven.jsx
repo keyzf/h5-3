@@ -1,6 +1,6 @@
 import React from 'react';
-import DynamicCommon from '../../../../common/dynamic_common';
-import { SevenTextUi } from '../../../text/seven_ui';
+import DynamicCommon from '../../../../common/visual/dynamic_common';
+import { SevenTextUi } from '../../../text/recommend/seven_ui';
 
 class SevenTextComponent extends React.Component {
   render() {
