@@ -14,7 +14,7 @@ import {
   Popconfirm,
 } from 'antd';
 import { choose_action, select_action } from '../../../redux/action';
-import RichTextEditor from '../../../ui/visual/form/editor_form';
+import RichTextEditor from '../editor_form';
 import UpImgPart from '../upload_common';
 import {
   $$horizontal_text,

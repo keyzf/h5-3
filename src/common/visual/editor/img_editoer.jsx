@@ -18,8 +18,8 @@ import {
 import { SketchPicker } from 'react-color';
 import { choose_action, select_action } from '../../../redux/action';
 import UpImgPart from '../upload_common';
-import ImgBaseForm from '../../../ui/visual/form/img_base_form';
-import ImgItemForm from '../../../ui/visual/form/img_item_form';
+import ImgBaseForm from '../../../ui/img/img_base_form';
+import ImgItemForm from '../../../ui/img/img_item_form';
 import {
   $$carousel_img_database,
   $$grid_img_database,

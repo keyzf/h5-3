@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../redux/action';
-import BgComponent from '../../ui/visual/core/background/bg_component';
+import BgComponent from '../../ui/background/bg_component';
 import style from './content.module.scss';
 import RenderUI from '../../common/visual/render_ui';
 

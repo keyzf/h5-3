@@ -34,17 +34,17 @@ class EditorVisualView extends React.Component {
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ left: '-85px' }}
+              animation={{ left: '-90px' }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >
               全局背景
             </TweenOne>
-            {/** TODO 后期进一步提取信息 将信息传递给渲染组件*/}
             {render_form($$choose_data)}
           </React.Fragment>
         ) : (
           // 显示背景
+
           <BgEditor />
         )}
       </div>

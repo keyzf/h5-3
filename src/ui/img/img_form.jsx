@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Upload } from 'antd';
-import { uploadToken } from '../../../toolkit/qiniu_upload';
+import { uploadToken } from '../../toolkit/qiniu_upload';
 
 class ImgForm extends React.Component {
   /**

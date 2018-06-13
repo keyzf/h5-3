@@ -6,7 +6,7 @@ import { List, Map } from 'immutable';
 import { connect } from 'react-redux';
 import { Icon, Modal, message } from 'antd';
 import { bg_action, choose_action, select_action } from '../../../redux/action';
-import { $$background_database } from '../../../ui/visual/background_database';
+import { $$background_database } from '../../../ui/background/background_database';
 
 /**
  * 逻辑：

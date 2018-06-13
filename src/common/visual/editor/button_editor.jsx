@@ -6,7 +6,7 @@ import { SketchPicker } from 'react-color';
 import { fromJS, Map } from 'immutable';
 import { $$button_database } from '../../../ui/button/button_database';
 import UpImgPart from '../upload_common';
-import ButtonForm from '../../../ui/visual/form/button_form';
+import ButtonForm from '../../../ui/button/button_form';
 
 class EditorButton extends React.Component {
   state = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Tabs, Radio, Card } from 'antd';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
-import ImgForm from '../../../ui/visual/form/img_form';
+import ImgForm from '../../../ui/img/img_form';
 import { Map } from 'immutable';
 
 class EditorMusic extends React.Component {

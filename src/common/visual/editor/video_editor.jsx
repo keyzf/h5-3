@@ -3,7 +3,7 @@ import { Tabs, Card, Radio, Input } from 'antd';
 import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../redux/action';
 import { Map } from 'immutable';
-import ImgForm from '../../../ui/visual/form/img_form';
+import ImgForm from '../../../ui/img/img_form';
 
 const { TextArea } = Input;
 

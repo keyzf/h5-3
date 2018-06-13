@@ -1,5 +1,5 @@
 import { Map, List } from 'immutable';
-import { $$background_database } from '../ui/visual/background_database';
+import { $$background_database } from '../ui/background/background_database';
 
 export const select_reducer = (
   state = { data: List(), meta: '', error: '' },

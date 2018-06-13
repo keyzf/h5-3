@@ -17,9 +17,9 @@ import {
 import { SketchPicker } from 'react-color';
 import { choose_action, select_action } from '../../../redux/action';
 import UpImgPart from '../upload_common';
-import MallBaseForm from '../../../ui/visual/form/mall_base_form';
+import MallBaseForm from '../../../ui/mall/mall_base_form';
 
-import ImgItemForm from '../../../ui/visual/form/mall_item_form';
+import ImgItemForm from '../../../ui/mall/mall_item_form';
 import {
   $$grid_mall_database,
   $$list_mall_database,

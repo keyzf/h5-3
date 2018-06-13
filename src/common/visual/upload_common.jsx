@@ -14,7 +14,7 @@ import {
   Row,
   Col,
 } from 'antd';
-import ImgForm from '../../ui/visual/form/img_form';
+import ImgForm from '../../ui/img/img_form';
 import { up_img_action } from '../../redux/action';
 
 /**
