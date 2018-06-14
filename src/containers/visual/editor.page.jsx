@@ -44,7 +44,6 @@ class EditorVisualView extends React.Component {
           </React.Fragment>
         ) : (
           // 显示背景
-
           <BgEditor />
         )}
       </div>

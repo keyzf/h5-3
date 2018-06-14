@@ -19,8 +19,8 @@ class TwoTextUi extends PureComponent {
       },
     };
     return (
-      <Row {...LayoutRow}>
-        <Col span={15}>
+      <Row  gutter={16}>
+        <Col span={15} {...LayoutRow}>
           <div
             style={{ display: ' inline' }}
             dangerouslySetInnerHTML={{ __html: this.props.html }}

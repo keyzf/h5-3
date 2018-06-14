@@ -6618,6 +6618,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+re-resizable@4.4.10:
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/re-resizable/-/re-resizable-4.4.10.tgz#720be625e1b7b53b15c82f8b3b31c4f0a8822a61"
+
 react-app-rewire-css-modules@codebandits/react-app-rewire-css-modules:
   version "1.0.0"
   resolved "https://codeload.github.com/codebandits/react-app-rewire-css-modules/tar.gz/956a2330c2eb70cb5bc0795c0e83604e271d4a03"
@@ -6742,6 +6746,13 @@ react-resizable@^1.7.5:
   dependencies:
     prop-types "15.x"
     react-draggable "^2.2.6 || ^3.0.3"
+
+react-rnd@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/react-rnd/-/react-rnd-7.4.1.tgz#8b928d7db590fdc8c8d194ab03388e9fa479c189"
+  dependencies:
+    re-resizable "4.4.10"
+    react-draggable "^3.0.5"
 
 react-router-dom@^4.2.2:
   version "4.2.2"

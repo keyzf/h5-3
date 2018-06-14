@@ -1,10 +1,10 @@
 import { fromJS } from 'immutable';
 
-export const $$video_database = name => {
+export const $$video_database = (name,url) => {
   return fromJS({
     customize: {
       name: name,
-      video: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
+      video: url,
       share: '',
       history: [],
     },
@@ -15,7 +15,7 @@ export const $$video_database = name => {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: 319 }, height: { value: 147 } },
+      perimeter: { width: { value: 320 }, height: { value: 174 } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
     },
   });

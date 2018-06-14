@@ -11,7 +11,7 @@ class SliderImgUI extends React.Component {
         ? $$show_element[1]
         : '';
     return (
-      <React.Fragment>
+      <div style={{width:'100%',overflow:'auto',display:'flex',flex:'0 0 200px'}}>
         {customize.get('item').map((data, index) => {
           return (
             <div key={index} style={{ flex: '0 0 120px', marginRight: '2px' }}>
@@ -62,7 +62,7 @@ class SliderImgUI extends React.Component {
             </div>
           );
         })}
-      </React.Fragment>
+      </div>
     );
   }
 }
