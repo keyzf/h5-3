@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 export const ButtonAtom = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // 宽度
   width: 100%;
-  //高度
-  height: 100%;
+  height:100%;
+  outline: none;
   border: none;
-  margin: 5px 0;
+  background: transparent;
   // 圆角
   border-radius: ${props => (props.radius ? props.radius + 'px' : 'null')};
   // 阴影
   box-shadow: ${props =>
-    props.shadow ? props.shadow : '0 0 15px rgba(0, 0, 0, 0.15)'};
+    props.shadow ? props.shadow : ''};
 `;

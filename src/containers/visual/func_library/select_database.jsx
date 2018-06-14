@@ -101,13 +101,15 @@ import {
   SevenTeenTextUi
 } from "../../../ui/text/recommend/seventeen_ui";
 import { ButtonTemplate } from "../../../ui/button/template/button";
-import { $$button_database } from "../../../ui/button/button_database";
+import { $$button_database, $$one_button_database } from "../../../ui/button/button_database";
 import { FormTemplate } from "../../../ui/form/template/form_template";
-import { $$form_database } from "../../../ui/form/form_database";
+import { $$form_database, $$one_form_database } from "../../../ui/form/form_database";
 import { OneImgUi } from "../../../ui/img/recommend/one_img_ui";
 import MusicListUI from "../../../ui/music/recommonnd/music_list_ui";
-import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
+import VideoListUI from "../../../ui/video/recommonnd/video_list_ui";
 import { OneMallUi } from "../../../ui/mall/recommend/one_mall_ui";
+import { OneButtonUi } from "../../../ui/button/recommend/one_button_ui";
+import { OneFormUi } from "../../../ui/form/recommend/one_form_ui";
 
 /**
  * text
@@ -181,7 +183,10 @@ const template_music_data = [
  * @type {*[]}
  */
 const template_video_data = [
-  { template: <VideoTemplate/>, data: $$video_database("video",'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4') },
+  {
+    template: <VideoTemplate/>,
+    data: $$video_database("video", "https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4")
+  },
   { template: "", data: "dividing-line" },
   { template: <VideoListUI/>, data: "video_list_ui" }
 ];
@@ -193,7 +198,7 @@ const template_mall_data = [
   { template: <GridMallTemplate/>, data: $$grid_mall_database },
   { template: <ListMallTemplate/>, data: $$list_mall_database },
   { template: "", data: "dividing-line" },
-  { template: <OneMallUi data={$$one_mall_database}/>, data: $$one_mall_database },
+  { template: <OneMallUi data={$$one_mall_database}/>, data: $$one_mall_database }
 
 ];
 /**
@@ -202,15 +207,18 @@ const template_mall_data = [
  */
 const template_button_data = [
   { template: <ButtonTemplate/>, data: $$button_database },
-  { template: "", data: "dividing-line" }
+  { template: "", data: "dividing-line" },
+  { template: <OneButtonUi data={$$one_button_database}/>, data: $$one_button_database }
 ];
+
 /**
  * form
  * @type {*[]}
  */
 const template_form_data = [
   { template: <FormTemplate/>, data: $$form_database },
-  { template: "", data: "dividing-line" }
+  { template: "", data: "dividing-line" },
+  { template: <OneFormUi data={$$one_form_database}/>, data: $$one_form_database }
 ];
 export {
   template_text_data,

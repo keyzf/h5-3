@@ -23,16 +23,6 @@ class ButtonForm extends Component {
       <Row gutter={16}>
         <Form hideRequiredMark>
           <Col span={24}>
-            <FormItem {...form_item_style('高度')}>
-              {getFieldDecorator('height')(<Input />)}
-            </FormItem>
-          </Col>
-          <Col span={24}>
-            <FormItem {...form_item_style('宽度')}>
-              {getFieldDecorator('width')(<Input />)}
-            </FormItem>
-          </Col>
-          <Col span={24}>
             <FormItem {...form_item_style('按钮内容')}>
               {getFieldDecorator('content')(<Input />)}
             </FormItem>
@@ -79,14 +69,6 @@ export default Form.create({
   },
   mapPropsToFields(props) {
     return {
-      height: Form.createFormField({
-        ...props.height,
-        value: props.height.value,
-      }),
-      width: Form.createFormField({
-        ...props.width,
-        value: props.width.value,
-      }),
       content: Form.createFormField({
         ...props.content,
         value: props.content.value,

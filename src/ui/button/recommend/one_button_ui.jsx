@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonAtom } from "../button_atom";
 
-class ButtonUi extends React.Component {
+class OneButtonUi extends React.Component {
   render() {
     const customize = this.props.data.get("customize");
     // // 可编辑属性 data:为文本
@@ -12,12 +12,20 @@ class ButtonUi extends React.Component {
     };
     return (
       <ButtonAtom {...advanced_settings}>
-        {customize.get("content").get("value")
-          ? customize.get("content").get("value")
-          : "基础按钮"}
+        <div style={{
+          boxShadow: "0 5px 20px 0 rgba(0,0,0,0.2), 0 13px 24px -11px rgba(233,30,99,0.6)",
+          color: "#fff",
+          backgroundColor: "#e91e63",
+          width: "100%",
+          height: "100%"
+        }}>
+          {customize.getIn(["content", "value"])
+            ? customize.getIn(["content", "value"])
+            : "基础按钮"}
+        </div>
       </ButtonAtom>
     );
   }
 }
 
-export { ButtonUi };
+export { OneButtonUi };

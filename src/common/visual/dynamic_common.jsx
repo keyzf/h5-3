@@ -156,6 +156,7 @@ class DynamicCommon extends React.Component {
           :
           <TextLayoutAtom {...this.props.layout}>
             <div
+               style={{width:'100%',height:'100%'}}
               onClick={this.choose.bind(
                 this,
                 this.props.index,

@@ -39,6 +39,8 @@ import { ButtonUi } from '../../../ui/button/core/button';
 import { FormUi } from '../../../ui/form/core/form';
 import { OneImgUi } from "../../../ui/img/recommend/one_img_ui";
 import { OneMallUi } from "../../../ui/mall/recommend/one_mall_ui";
+import { OneButtonUi } from "../../../ui/button/recommend/one_button_ui";
+import { OneFormUi } from "../../../ui/form/recommend/one_form_ui";
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -129,9 +131,14 @@ export const switch_ui = data => {
     //  按钮类
     case 'button':
       return <ButtonUi data={data} />;
+    case 'one_button':
+      return <OneButtonUi data={data} />;
     //  表单类
     case 'form':
       return <FormUi data={data} />;
+
+    case 'one_form':
+      return <OneFormUi data={data} />;
     //  默认输出
     default:
       return '';

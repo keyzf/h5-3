@@ -79,7 +79,11 @@ export const render_form = data => {
       return <EditorMall data={data}/>;
     case "form":
       return <EditorForm data={data}/>;
+    case "one_form":
+      return <EditorForm data={data}/>;
     case "button":
+      return <EditorButton data={data}/>;
+    case "one_button":
       return <EditorButton data={data}/>;
     default:
       return "";

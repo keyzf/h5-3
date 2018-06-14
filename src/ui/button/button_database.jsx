@@ -1,29 +1,29 @@
-import { fromJS } from 'immutable';
+import { fromJS } from "immutable";
 
-const $$button = name => {
+const $$button = (name, width, height) => {
   return {
     customize: {
       name: name,
-      width: { value: '' },
-      height: { value: '' },
-      btn_url: { value: '' },
+      btn_url: { value: "" },
       shadow: { value: undefined },
-      radius: { value: '' },
-      content: { value: '' },
+      radius: { value: "" },
+      content: { value: "" }
     },
     advance: {
-      color: '',
-      img: '',
+      color: "",
+      img: "",
       img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
+        stretching: { value: "" },
+        tiling: { value: "" }
       },
-      perimeter: { width: { value: 319 }, height: { value: 147 } },
-      transform: { translateX: { value: 0 }, translateY: { value: 0 } },
-    },
+      perimeter: { width: { value: width }, height: { value: height } },
+      transform: { translateX: { value: 0 }, translateY: { value: 0 } }
+    }
   };
 };
 
-const $$button_database = fromJS($$button('button'));
+const $$button_database = fromJS($$button("button", 320, 40));
 
-export { $$button_database };
+const $$one_button_database = fromJS($$button("one_button", 320, 40));
+
+export { $$button_database, $$one_button_database };
