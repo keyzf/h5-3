@@ -19,7 +19,7 @@ class TwoTextUi extends PureComponent {
       },
     };
     return (
-      <Row  gutter={16}>
+      <Row gutter={16}>
         <Col span={15} {...LayoutRow}>
           <div
             style={{ display: ' inline' }}

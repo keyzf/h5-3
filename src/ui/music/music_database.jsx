@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-export const $$music_database = (name,url) => {
+export const $$music_database = (name, url) => {
   return fromJS({
     customize: {
       name: name,
@@ -18,7 +18,7 @@ export const $$music_database = (name,url) => {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: 80}, height: { value: 80} },
+      perimeter: { width: { value: 80 }, height: { value: 80 } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
     },
   });

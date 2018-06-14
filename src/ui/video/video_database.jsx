@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-export const $$video_database = (name,url) => {
+export const $$video_database = (name, url) => {
   return fromJS({
     customize: {
       name: name,

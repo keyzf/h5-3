@@ -6,13 +6,12 @@ export const ButtonAtom = styled.button`
   align-items: center;
   // 宽度
   width: 100%;
-  height:100%;
+  height: 100%;
   outline: none;
   border: none;
   background: transparent;
   // 圆角
   border-radius: ${props => (props.radius ? props.radius + 'px' : 'null')};
   // 阴影
-  box-shadow: ${props =>
-    props.shadow ? props.shadow : ''};
+  box-shadow: ${props => (props.shadow ? props.shadow : '')};
 `;

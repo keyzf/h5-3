@@ -37,10 +37,10 @@ import { ListMallUi } from '../../../ui/mall/core/list_ui';
 import { ButtonUi } from '../../../ui/button/core/button';
 // 表单
 import { FormUi } from '../../../ui/form/core/form';
-import { OneImgUi } from "../../../ui/img/recommend/one_img_ui";
-import { OneMallUi } from "../../../ui/mall/recommend/one_mall_ui";
-import { OneButtonUi } from "../../../ui/button/recommend/one_button_ui";
-import { OneFormUi } from "../../../ui/form/recommend/one_form_ui";
+import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
+import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
+import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
+import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -111,8 +111,6 @@ export const switch_ui = data => {
     case 'one_img':
       return <OneImgUi data={data} />;
 
-
-
     // 媒体类
     case 'video':
       return <VideoUi data={data} />;
@@ -126,7 +124,7 @@ export const switch_ui = data => {
     case 'grid_mall':
       return <GridMallUi data={data} />;
     case 'one_mall':
-      return <OneMallUi data={data}/>;
+      return <OneMallUi data={data} />;
 
     //  按钮类
     case 'button':
