@@ -8,7 +8,7 @@ import styled from 'styled-components';
 class FourTeenTextUi extends PureComponent {
   render() {
     const OneTextStyle = styled.div`
-      background: url(http://pa797wytw.bkt.clouddn.com/8b313d35cf00b922f1e1251457d6224c%E5%89%AF%E6%9C%AC@2x.png)
+      background: url(http://src.e7wei.com/8b313d35cf00b922f1e1251457d6224c%E5%89%AF%E6%9C%AC@2x.png)
         no-repeat;
     `;
     return (

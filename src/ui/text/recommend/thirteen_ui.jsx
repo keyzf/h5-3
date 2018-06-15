@@ -14,7 +14,7 @@ class ThirteenTextUi extends PureComponent {
             width={'100%'}
             height={'auto'}
             src={
-              'http://pa797wytw.bkt.clouddn.com/%E7%9F%A9%E5%BD%A22%E6%8B%B7%E8%B4%9D2@2x.png'
+              'http://src.e7wei.com/%E7%9F%A9%E5%BD%A22%E6%8B%B7%E8%B4%9D2@2x.png'
             }
             alt={'img'}
           />
@@ -36,7 +36,7 @@ class ThirteenTextUi extends PureComponent {
             width={'100%'}
             height={'auto'}
             src={
-              'http://pa797wytw.bkt.clouddn.com/%E7%9F%A9%E5%BD%A22%E6%8B%B7%E8%B4%9D@2x.png'
+              'http://src.e7wei.com/%E7%9F%A9%E5%BD%A22%E6%8B%B7%E8%B4%9D@2x.png'
             }
             alt={'img'}
           />

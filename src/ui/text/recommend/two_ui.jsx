@@ -30,7 +30,7 @@ class TwoTextUi extends PureComponent {
           <img
             style={{ width: '100%', height: '100%' }}
             src={
-              'https://e7wei-img.oss-cn-beijing.aliyuncs.com/%E7%BB%846%402x.png'
+              'http://src.e7wei.com/%E7%BB%846%402x.png'
             }
             alt={'img'}
           />

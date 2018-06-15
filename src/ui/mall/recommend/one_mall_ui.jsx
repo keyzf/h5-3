@@ -11,6 +11,7 @@ class OneMallUi extends React.Component {
     let $$title = true;
     let $$content = true;
     let $$current = true;
+    // eslint-disable-next-line
     let $$original = true;
     let $$img = true;
     let $$button = true;

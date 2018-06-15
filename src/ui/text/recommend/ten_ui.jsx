@@ -19,7 +19,7 @@ class TenTextUi extends PureComponent {
               margin: 'auto',
               maxWidth: '310px',
               background:
-                'url(http://pa797wytw.bkt.clouddn.com/%E7%BB%8410@2x.png)',
+                'url(http://src.e7wei.com/%E7%BB%8410@2x.png)',
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
             }}

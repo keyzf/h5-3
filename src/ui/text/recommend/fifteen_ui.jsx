@@ -32,7 +32,7 @@ class FifteenTextUi extends PureComponent {
           <img
             alt={'img'}
             style={{ width: '100%', height: 'auto' }}
-            src={'http://pa797wytw.bkt.clouddn.com/%E7%BB%8414@2x.png'}
+            src={'http://src.e7wei.com/%E7%BB%8414@2x.png'}
           />
         </Col>
       </Row>

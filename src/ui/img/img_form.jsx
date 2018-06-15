@@ -11,7 +11,7 @@ class ImgForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const upload_props = {
       name: 'file',
-      action: 'http://up.qiniup.com',
+      action: 'http://upload.qiniup.com',
       showUploadList: false,
       data: { token: uploadToken },
     };

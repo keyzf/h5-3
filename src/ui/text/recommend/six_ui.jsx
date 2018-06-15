@@ -25,7 +25,7 @@ class SixTextUi extends PureComponent {
             <img
               style={{ width: '100%', height: '100%' }}
               src={
-                'https://e7wei-img.oss-cn-beijing.aliyuncs.com/%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D47%402x.png'
+                'http://src.e7wei.com/%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D47%402x.png'
               }
               alt={'img'}
             />
@@ -37,7 +37,7 @@ class SixTextUi extends PureComponent {
             <img
               style={{ width: '100%', height: '100%' }}
               src={
-                'https://e7wei-img.oss-cn-beijing.aliyuncs.com/%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D47%402x.png'
+                'http://src.e7wei.com/%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D47%402x.png'
               }
               alt={'img'}
             />

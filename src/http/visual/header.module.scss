@@ -1,13 +1,15 @@
 .layout{
-    align-items: center;
+
     height: 100%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .logo {
-    display: flex;
-    align-content: center;
-    margin: auto;
+
 }
 
 .side_tab {

@@ -11,7 +11,7 @@ class EightTextUi extends PureComponent {
       <Row gutter={16}>
         <Col span={24}>
           <img
-            src={'http://pa797wytw.bkt.clouddn.com/%E7%9F%A9%E5%BD%A25@2x.png'}
+            src={'http://src.e7wei.com/%E7%9F%A9%E5%BD%A25@2x.png'}
             alt={'img'}
           />
         </Col>

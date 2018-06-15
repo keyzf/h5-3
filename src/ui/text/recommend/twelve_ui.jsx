@@ -24,7 +24,7 @@ class TwelveTextUi extends PureComponent {
           <img
             style={{ width: '100%', height: '100%' }}
             src={
-              'http://pa797wytw.bkt.clouddn.com/%E7%9F%A9%E5%BD%A27%E6%8B%B7%E8%B4%9D8@2x.png'
+              'http://src.e7wei.com/%E7%9F%A9%E5%BD%A27%E6%8B%B7%E8%B4%9D8@2x.png'
             }
             alt={'img'}
           />

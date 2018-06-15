@@ -18,7 +18,7 @@ class NineTextUi extends PureComponent {
               alignContent: 'center',
               margin: 'auto',
               maxWidth: '310px',
-              background: 'url(http://pa797wytw.bkt.clouddn.com/1.png)',
+              background: 'url(http://src.e7wei.com/20180615102050.png)',
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
             }}

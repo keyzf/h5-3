@@ -94,10 +94,11 @@ class UpImgPart extends React.Component {
       });
     }
     if (file.status === 'done') {
+      console.log(changedFields);
       message.success('上传成功');
       const new_user_library = this.state.user_library;
       new_user_library.push(
-        `http://p8afqcqwq.bkt.clouddn.com/${file.response.key}`
+        `http://src.e7wei.com/${file.response.key}`
       );
       this.setState({
         progress: false,

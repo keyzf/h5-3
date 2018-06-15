@@ -33,7 +33,7 @@ class SixTeenTextUi extends PureComponent {
             alt={'img'}
             style={{ width: '100%', height: 'auto' }}
             src={
-              'http://pa797wytw.bkt.clouddn.com/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D@2x.png'
+              'http://src.e7wei.com/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A23%E6%8B%B7%E8%B4%9D@2x.png'
             }
           />
         </Col>
