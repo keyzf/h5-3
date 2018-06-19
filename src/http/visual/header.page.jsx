@@ -1,9 +1,11 @@
-import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
-import { Col, Menu, Row, Dropdown, Icon } from "antd";
-import { $$logo_database } from "../../common/visual/database/logo_database_common";
-import CleanContent from "../../containers/visual/func_library/clean_content";
-import style from "./header.module.scss";
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { init } from 'ityped';
+import { Col, Menu, Row, Dropdown, Icon } from 'antd';
+import VisualSaveAjax from '../../api/save_ajax';
+import QueueAnim from 'rc-queue-anim';
+import CleanContent from '../../containers/visual/func_library/clean_content';
+import style from './header.module.scss';
 
 /**
  * 实现目标：
@@ -11,162 +13,131 @@ import style from "./header.module.scss";
  * 2. 在小屏幕下显示logo与面包菜单
  */
 class HeaderVisualView extends PureComponent {
+  /**
+   * 导航栏logo文字打字机效果
+   */
+  componentDidMount() {
+    const myElement = document.querySelector('#logo');
+    init(myElement, {
+      loop: false,
+      backSpeed: 100,
+      showCursor: false,
+      strings: ['一站式微信营销平台', '易企微'],
+    });
+  }
+
+  /**
+   * 渲染
+   */
   render() {
-    // 整体布局
-    const LayoutRow = {
-      gutter: 16,
-      type: "flex",
-      align: "center"
-    };
     //选项布局
     const LogoCol = {
       xs: 5,
       sm: 5,
       md: 5,
-      lg: 4,
-      xl: 4
+      lg: 5,
+      xl: 5,
     };
     const chooseCol = {
       xs: 0,
       sm: 0,
       md: 0,
-      lg: { span: 12, offset: 1 },
-      xl: { span: 10, offset: 4 }
+      lg: { span: 12 },
+      xl: { span: 10, offset: 3 },
     };
     const closeCol = {
       xs: 0,
       sm: 0,
       md: 0,
       lg: { span: 7 },
-      xl: { span: 5, offset: 1 }
+      xl: { span: 5, offset: 1 },
     };
     // 项目样式
     const MenuConfig = {
-      theme: "dark",
-      style: { background: "transparent", lineHeight: "50px" },
+      theme: 'dark',
+      style: { background: 'transparent', lineHeight: '50px' },
       selectable: false,
-      mode: "horizontal"
+      mode: 'horizontal',
     };
-    const Menus = {
-      xs: { span: 4, offset: 15 },
-      sm: { span: 4, offset: 15 },
-      md: { span: 4, offset: 15 },
-      lg: 0,
-      xl: 0
-    };
-    //手机屏幕下 菜单项
-    const MobileMenu = (
-      <Menu>
-        <Menu.Item>
-          <Link to={"./preview"}>
-            <i
-              className={"icon iconfont icon-yulan"}
-              style={{ marginRight: "10px" }}
-            />
-            预览/设置
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <i
-            className={"icon iconfont icon-baocun"}
-            style={{ marginRight: "10px" }}
-          />
-          保存
-        </Menu.Item>
-        <Menu.Item>
-          <Link to={"./release"}>
-            <i
-              className={"icon iconfont icon-fabu"}
-              style={{ marginRight: "10px" }}
-            />
-            发布
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <i
-            className={"icon iconfont icon-icon"}
-            style={{ marginRight: "10px" }}
-          />
-          使用指南
-        </Menu.Item>
-        <Menu.Item>
-          <Link to={"/"}>
-            <i
-              className={"icon iconfont icon-iconfonticon2"}
-              style={{ marginRight: "10px" }}
-            />
-            关闭
-          </Link>
-        </Menu.Item>
-      </Menu>
-    );
 
     return (
-      <Row className={style.layout} {...LayoutRow}>
+      <Row className={style.layout} align={'center'} gutter={16} type={16}>
+        {/*logo*/}
         <Col className={style.logo} {...LogoCol}>
-          <h1 style={{color:'white',fontFamily:'Chinese Quote',fontStyle:'oblique'}}>易企微</h1>
-        </Col>
-        <Col {...chooseCol}>
-          <Menu {...MenuConfig}>
-            <Menu.Item key={"preview"}>
-              <Link to={"./preview"}>
-                <i
-                  className={"icon iconfont icon-yulan"}
-                  style={{ marginRight: "10px" }}
-                />
-                预览/设置
-              </Link>
-            </Menu.Item>
-            <Menu.Item key={"save"}>
-              <i
-                className={"icon iconfont icon-baocun"}
-                style={{ marginRight: "10px" }}
-              />
-              保存
-            </Menu.Item>
-            <Menu.Item key={"release"}>
-              <Link to={"./release"}>
-                <i
-                  className={"icon iconfont icon-fabu"}
-                  style={{ marginRight: "10px" }}
-                />
-                发布
-              </Link>
-            </Menu.Item>
-            <Menu.Item key={"null"}>
-              <CleanContent/>
-            </Menu.Item>
-          </Menu>
-        </Col>
-        <Col {...closeCol}>
-          <Menu {...MenuConfig}>
-            <Menu.Item key={"help"}>
-              <a href={"http://www.e7wei.com/help-article-id-436.html"}>
-                <i
-                  className={"icon iconfont icon-icon"}
-                  style={{ marginRight: "10px" }}
-                />
-                使用指南
+          <Menu theme={'dark'} mode={'horizontal'}>
+            <Menu.Item>
+              <a href={'https://www.e7wei.com/'}>
+                <h2 style={{ color: 'white' }} id={'logo'} />
               </a>
             </Menu.Item>
-            <Menu.Item key={"quite"}>
-              <Link to={"/"}>
-                <i
-                  className={"icon iconfont icon-iconfonticon2"}
-                  style={{ marginRight: "10px" }}
-                />
-                关闭
+          </Menu>
+        </Col>
+        {/*选项*/}
+        <Col className={style.col_center} {...chooseCol}>
+          <Menu {...MenuConfig}>
+            <Menu.Item key={'preview'}>
+              <Link to={'./preview'}>
+                <QueueAnim type={'bottom'} delay={200}>
+                  <React.Framgent key={'1'}>
+                    <i
+                      className={'icon iconfont icon-yulan'}
+                      style={{ marginRight: '10px' }}
+                    />
+                    预览/设置
+                  </React.Framgent>
+                </QueueAnim>
               </Link>
+            </Menu.Item>
+            <Menu.Item key={'save'}>
+              <VisualSaveAjax />
+            </Menu.Item>
+            <Menu.Item key={'release'}>
+              <Link to={'./release'}>
+                <QueueAnim type={'bottom'} delay={240}>
+                  <React.Framgent key={'1'}>
+                    <i
+                      className={'icon iconfont icon-fabu'}
+                      style={{ marginRight: '10px' }}
+                    />
+                    发布
+                  </React.Framgent>
+                </QueueAnim>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key={'null'}>
+              <CleanContent />
             </Menu.Item>
           </Menu>
         </Col>
-        {/*小屏幕下显示的组件*/}
-        <Col {...Menus}>
-          <Dropdown overlay={MobileMenu}>
-            <div>
-              <Icon type="bars" style={{ color: "white", fontSize: "20px" }}/>
-            </div>
-          </Dropdown>
+        <Col {...closeCol} className={style.col_center}>
+          <Menu {...MenuConfig}>
+            <Menu.Item key={'help'}>
+              <a href={'http://www.e7wei.com/help-article-id-436.html'}>
+                <QueueAnim type={'bottom'} delay={280}>
+                  <React.Framgent key={'1'}>
+                    <i
+                      className={'icon iconfont icon-icon'}
+                      style={{ marginRight: '10px' }}
+                    />
+                    使用指南
+                  </React.Framgent>
+                </QueueAnim>
+              </a>
+            </Menu.Item>
+            <Menu.Item key={'quite'}>
+              <Link to={'/'}>
+                <QueueAnim type={'bottom'} delay={300}>
+                  <React.Framgent key={'1'}>
+                    <i
+                      className={'icon iconfont icon-iconfonticon2'}
+                      style={{ marginRight: '10px' }}
+                    />
+                    关闭
+                  </React.Framgent>
+                </QueueAnim>
+              </Link>
+            </Menu.Item>
+          </Menu>
         </Col>
       </Row>
     );

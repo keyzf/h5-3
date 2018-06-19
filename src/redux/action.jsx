@@ -42,3 +42,19 @@ export const up_img_action = (data, meta, error) => {
     error: error,
   };
 };
+
+/**
+ * 展示visual中的ui
+ * @param data
+ * @param meta
+ * @param error
+ * @returns {{type: string, payload: *, meta: *, error: *}}
+ */
+export const visual_ui_show_action = (data, meta, error) => {
+  return {
+    type: 'VISUAL_UI_SHOW',
+    payload: data,
+    meta: meta,
+    error: error,
+  };
+};

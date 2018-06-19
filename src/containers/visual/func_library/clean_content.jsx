@@ -5,6 +5,7 @@ import React, { PureComponent } from 'react';
 import { List, Map } from 'immutable';
 import { connect } from 'react-redux';
 import { Icon, Modal, message } from 'antd';
+import QueueAnim from 'rc-queue-anim';
 import { bg_action, choose_action, select_action } from '../../../redux/action';
 import { $$background_database } from '../../../ui/background/background_database';
 
@@ -77,12 +78,14 @@ class CleanContent extends PureComponent {
 
   render() {
     return (
-      <React.Fragment>
-        <div onClick={this.confirm} style={{ color: 'white' }}>
-          <Icon type="delete" style={{ marginRight: '10px' }} />
-          内容清空
-        </div>
-      </React.Fragment>
+      <div onClick={this.confirm}>
+        <QueueAnim type={'bottom'} delay={260}>
+          <React.Framgent key={'1'}>
+            <Icon type="delete" style={{ marginRight: '10px' }} />
+            内容清空
+          </React.Framgent>
+        </QueueAnim>
+      </div>
     );
   }
 }

@@ -8,8 +8,7 @@ import styled from 'styled-components';
 class OneTextUi extends PureComponent {
   render() {
     const OneTextStyle = styled.div`
-      background: url(http://src.e7wei.com/20180615102010.png)
-        no-repeat;
+      background: url(http://src.e7wei.com/20180615102010.png) no-repeat;
     `;
     return (
       <OneTextStyle>

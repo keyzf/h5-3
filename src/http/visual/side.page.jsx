@@ -1,16 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Tabs } from 'antd';
-import { List } from 'immutable';
-import style from './side.module.scss';
-import SelectCommon from '../../common/visual/select_common';
-import InterActiveSelect from '../../containers/visual/func_library/interactive';
-import {
-  template_img_data,
-  template_mall_data,
-  template_music_data,
-  template_text_data,
-  template_video_data,
-} from '../../containers/visual/func_library/select_database';
+import { Menu, Icon, Layout } from 'antd';
+import { List, Map } from 'immutable';
+import { connect } from 'react-redux';
+import { visual_ui_show_action } from '../../redux/action';
 
 /**
  * 将侧边栏数据遍历出来
@@ -19,6 +11,21 @@ import {
  * 2. 项目 内容
  */
 class SiderVisualView extends PureComponent {
+  state = {
+    collapsed: true,
+  };
+  onCollapse = collapsed => {
+    if (collapsed) {
+      this.props.visual_ui_show_upData(Map({ name: '' }), '', '');
+    }
+
+    this.setState({ collapsed });
+  };
+
+  onShow = name => {
+    this.props.visual_ui_show_upData(Map({ name: name }), '', '');
+  };
+
   render() {
     // 侧边栏显示数据 ->select 中data 数据指向的是common 文件中database/select_database_common文件
     const $$visual_sider_database = List([
@@ -26,74 +33,76 @@ class SiderVisualView extends PureComponent {
       {
         icon: 'iconfont icon-wenzixiaoguo',
         title: '文字',
-        select: <SelectCommon data={template_text_data} />,
+        name: 'text',
       },
       // 图片
       {
         icon: 'iconfont icon-tupian',
         title: '图片',
-        select: <SelectCommon data={template_img_data} />,
+        name: 'img',
       },
       // 音乐
       {
         icon: 'iconfont icon-yinlemusic214',
         title: '音乐',
-        select: <SelectCommon data={template_music_data} />,
+        name: 'music',
       },
       // 视频
       {
         icon: 'iconfont icon-shipin',
         title: '视频',
-        select: <SelectCommon data={template_video_data} />,
+        name: 'video',
       },
       // 商品
       {
         icon: 'iconfont icon-unie62d',
         title: '商品',
-        select: <SelectCommon data={template_mall_data} />,
+        name: 'mall',
       },
       // 互动
       {
         icon: 'icon iconfont icon-zhinengyuyinjiaohu',
         title: '互动',
-        select: <InterActiveSelect />,
+        name: 'lnteractive',
       },
     ]);
-    // tab 样式
-    const Tab = {
-      defaultActiveKey: '文字',
-      tabPosition: 'left',
-    };
-    // 遍历出项目头
-    const tabPan = (icon, title) => {
-      return {
-        key: title,
-        tab: (
-          <span>
-            <i className={icon} style={{ fontSize: 24, marginRight: 3 }} />
-            <br />
-            {title}
-          </span>
-        ),
-        className: style.item,
-      };
-    };
 
     return (
-      <Tabs className={style.layout} {...Tab}>
-        {/*通过循环将组件信息渲染出来*/}
-        {$$visual_sider_database.map(data => {
-          return (
-            //遍历出项目头 icon ，名称
-            <Tabs.TabPane {...tabPan(data.icon, data.title)}>
-              {/*遍历出项目 内容*/}
-              {data.select}
-            </Tabs.TabPane>
-          );
-        })}
-      </Tabs>
+      <Layout.Sider
+        style={{ background: 'white' }}
+        width={120}
+        collapsible
+        selectable={false}
+        collapsed={this.state.collapsed}
+        onCollapse={this.onCollapse}
+      >
+        <Menu mode="inline">
+          {$$visual_sider_database.map((data, index) => {
+            return (
+              <Menu.Item
+                key={index}
+                style={{ marginTop: 0 }}
+                onClick={this.onShow.bind(this, data.name)}
+              >
+                <Icon>
+                  {' '}
+                  <i className={data.icon} />
+                </Icon>
+                <span>{data.title}</span>
+              </Menu.Item>
+            );
+          })}
+        </Menu>
+      </Layout.Sider>
     );
   }
 }
 
-export default SiderVisualView;
+const mapDispatchToProps = dispatch => {
+  return {
+    visual_ui_show_upData: (data, meta, error) =>
+      dispatch(visual_ui_show_action(data, meta, error)),
+  };
+};
+
+export default connect('', mapDispatchToProps)(SiderVisualView);

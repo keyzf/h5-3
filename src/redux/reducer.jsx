@@ -112,3 +112,24 @@ export const up_img_reducer = (
       return state;
   }
 };
+
+export const visual_ui_show_reducer = (
+  state = {
+    data: Map({ name: '' }),
+    meta: '',
+    error: false,
+  },
+  action
+) => {
+  switch (action.type) {
+    case 'VISUAL_UI_SHOW':
+      return {
+        // 将信息传递给处理函数
+        data: action.payload,
+        meta: action.meta,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};

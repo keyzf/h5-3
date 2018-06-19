@@ -18,8 +18,7 @@ class TenTextUi extends PureComponent {
               alignContent: 'center',
               margin: 'auto',
               maxWidth: '310px',
-              background:
-                'url(http://src.e7wei.com/%E7%BB%8410@2x.png)',
+              background: 'url(http://src.e7wei.com/%E7%BB%8410@2x.png)',
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
             }}

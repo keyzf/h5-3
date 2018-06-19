@@ -97,9 +97,7 @@ class UpImgPart extends React.Component {
       console.log(changedFields);
       message.success('上传成功');
       const new_user_library = this.state.user_library;
-      new_user_library.push(
-        `http://src.e7wei.com/${file.response.key}`
-      );
+      new_user_library.push(`http://src.e7wei.com/${file.response.key}`);
       this.setState({
         progress: false,
         user_library: new_user_library,

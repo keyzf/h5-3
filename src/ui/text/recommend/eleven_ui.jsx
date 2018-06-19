@@ -30,9 +30,7 @@ class ElevenTextUi extends PureComponent {
         <Col span={6}>
           <img
             style={{ width: '100%', height: '100%' }}
-            src={
-              'http://src.e7wei.com/%E7%BB%8411%E6%8B%B7%E8%B4%9D@2x.png'
-            }
+            src={'http://src.e7wei.com/%E7%BB%8411%E6%8B%B7%E8%B4%9D@2x.png'}
             alt={'img'}
           />
         </Col>

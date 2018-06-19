@@ -2,12 +2,13 @@
   height: 100vh;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .header {
-  box-sizing: border-box;
   height: 48px;
-  padding: 0 24px!important;
+  padding: 0;
+  margin: 0;
   background: linear-gradient(to bottom right, #5ea2ff, #00b9ff, #00caff);
 }
 
@@ -21,6 +22,6 @@
 .side {
   box-sizing: border-box;
   background: white;
-  box-shadow: 0 13px 24px -11px rgba(33, 33, 33, 0.6);
   height: 100%;
 }
+

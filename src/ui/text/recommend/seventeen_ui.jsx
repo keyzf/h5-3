@@ -23,9 +23,7 @@ class SevenTeenTextUi extends PureComponent {
           <img
             alt={'img'}
             style={{ width: '100%', height: 'auto' }}
-            src={
-              'http://src.e7wei.com/20b5f5b6c4c4702c9426b25498d6d891@2x.png'
-            }
+            src={'http://src.e7wei.com/20b5f5b6c4c4702c9426b25498d6d891@2x.png'}
           />
         </Col>
       </Row>

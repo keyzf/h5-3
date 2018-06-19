@@ -31,9 +31,7 @@ class SevenTextUi extends PureComponent {
           }}
         >
           <img
-            src={
-              'http://src.e7wei.com/%E7%9F%A9%E5%BD%A26%402x.png'
-            }
+            src={'http://src.e7wei.com/%E7%9F%A9%E5%BD%A26%402x.png'}
             alt={'img'}
           />
         </div>
