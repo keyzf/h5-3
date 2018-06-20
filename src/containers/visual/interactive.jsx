@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Divider, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import SelectCommon from '../../../common/visual/select_common';
+import SelectCommon from '../../common/visual/select_common';
 import { template_button_data, template_form_data } from './select_database';
 
 class InterActiveSelect extends React.Component {

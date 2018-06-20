@@ -115,7 +115,7 @@ export const up_img_reducer = (
 
 export const visual_ui_show_reducer = (
   state = {
-    data: Map({ name: '' }),
+    data: Map({ name: 'text' }),
     meta: '',
     error: false,
   },

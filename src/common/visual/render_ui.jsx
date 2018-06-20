@@ -1,6 +1,6 @@
 import React from 'react';
 import DynamicCommon from './dynamic_common';
-import { switch_ui } from '../../containers/visual/func_library/switch_ui';
+import { switch_ui } from '../../containers/visual/switch_ui';
 
 class RenderUI extends React.Component {
   render() {

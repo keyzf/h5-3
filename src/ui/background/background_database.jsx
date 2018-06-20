@@ -13,6 +13,7 @@ export const $$background_database = fromJS({
     color: '',
     //背景图
     img: '',
+    crop_img:'',
     // 背景图的配套属性
     img_config: {
       //重复：背景图随x轴重复

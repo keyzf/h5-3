@@ -16,6 +16,7 @@ import {
 } from 'antd';
 import ImgForm from '../../ui/img/img_form';
 import { up_img_action } from '../../redux/action';
+import style from './upload_common.module.scss'
 
 /**
  * 功能：
@@ -162,8 +163,8 @@ class UpImgPart extends React.Component {
                           )}
                           className={
                             data.url === this.state.img_url
-                              ? 'part_active'
-                              : 'part_choose'
+                              ? style.part_active
+                              : style.part_choose
                           }
                         >
                           <img
@@ -239,8 +240,8 @@ class UpImgPart extends React.Component {
                         <div
                           className={
                             data === this.state.img_url
-                              ? 'part_active'
-                              : 'part_choose'
+                              ? style.part_active
+                              : style.part_choose
                           }
                           onClick={this.choose.bind(this, data)}
                         >

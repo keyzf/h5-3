@@ -1,29 +1,22 @@
-import React, { Component } from "react";
+/**
+ * 实际开发中，此文件将作为入口
+ * 1. 通过 url 分析用户当前需要进行那种操作
+ * 2. 如果用户不进行选择则默认进入模板页
+ */
+import React, { PureComponent } from "react";
 import { Provider } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { store } from "./redux/store";
 import { VisualLoadable } from "./routers/visual.router";
 import { PreviewLoadable } from "./routers/preview.router";
 import { Html5Loadable } from "./routers/h5.router";
 import { ReleaseLoadable } from "./routers/release.router";
-import "./core.css";
 
-/**
- * 实际开发中，这里将作为入口
- * 1. 通过 url 分析用户当前需要进行那种操作
- * 2. 如果用户不进行选择则默认进入模板页
- */
-
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <BrowserRouter>
           <Switch>
             {/*重定向，由此导入相应页面*/}
             <Route exact={true} path={"/"}>
@@ -34,7 +27,7 @@ class App extends Component {
             <Route path={"/release"} component={ReleaseLoadable}/>
             <Route path={"/html5"} component={Html5Loadable}/>
           </Switch>
-        </Router>
+        </BrowserRouter>
       </Provider>
     );
   }

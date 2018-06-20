@@ -22,24 +22,24 @@ import {
   $$twelve_text,
   $$two_text,
   $$vertical_text,
-} from '../../../ui/text/text_database';
+} from '../../ui/text/text_database';
 import {
   HorizontalTextTemplate,
   VerticalTextTemplate,
-} from '../../../ui/text/template/_template_text';
-import { one_html_text, OneTextUi } from '../../../ui/text/recommend/one_ui';
-import { two_html_text, TwoTextUi } from '../../../ui/text/recommend/two_ui';
+} from '../../ui/text/template/_template_text';
+import { one_html_text, OneTextUi } from '../../ui/text/recommend/one_ui';
+import { two_html_text, TwoTextUi } from '../../ui/text/recommend/two_ui';
 import {
   three_html_text,
   ThreeTextUi,
-} from '../../../ui/text/recommend/three_ui';
-import { four_html_text, FourTextUi } from '../../../ui/text/recommend/four_ui';
-import { five_html_text, FiveTextUi } from '../../../ui/text/recommend/five_ui';
-import { six_html_text, SixTextUi } from '../../../ui/text/recommend/six_ui';
+} from '../../ui/text/recommend/three_ui';
+import { four_html_text, FourTextUi } from '../../ui/text/recommend/four_ui';
+import { five_html_text, FiveTextUi } from '../../ui/text/recommend/five_ui';
+import { six_html_text, SixTextUi } from '../../ui/text/recommend/six_ui';
 import {
   seven_html_text,
   SevenTextUi,
-} from '../../../ui/text/recommend/seven_ui';
+} from '../../ui/text/recommend/seven_ui';
 import {
   $$carousel_img_database,
   $$grid_img_database,
@@ -47,77 +47,77 @@ import {
   $$one_img_database,
   $$single_img_database,
   $$slider_img_database,
-} from '../../../ui/img/img_database';
+} from '../../ui/img/img_database';
 import {
   CarouselImgTemplate,
   GridImgTemplate,
   ListImgTemplate,
   SingleImgTemplate,
   SliderImgTemplate,
-} from '../../../ui/img/template/img_template';
-import { MusicTemplate } from '../../../ui/music/template/music_template';
-import { $$music_database } from '../../../ui/music/music_database';
-import { $$video_database } from '../../../ui/video/video_database';
-import { VideoTemplate } from '../../../ui/video/template/video_template';
+} from '../../ui/img/template/img_template';
+import { MusicTemplate } from '../../ui/music/template/music_template';
+import { $$music_database } from '../../ui/music/music_database';
+import { $$video_database } from '../../ui/video/video_database';
+import { VideoTemplate } from '../../ui/video/template/video_template';
 import {
   $$grid_mall_database,
   $$list_mall_database,
   $$one_mall_database,
-} from '../../../ui/mall/mall_database';
+} from '../../ui/mall/mall_database';
 import {
   GridMallTemplate,
   ListMallTemplate,
-} from '../../../ui/mall/template/mall_template';
+} from '../../ui/mall/template/mall_template';
 import {
   eight_html_text,
   EightTextUi,
-} from '../../../ui/text/recommend/eight_ui';
-import { nine_html_text, NineTextUi } from '../../../ui/text/recommend/nine_ui';
-import { ten_html_text, TenTextUi } from '../../../ui/text/recommend/ten_ui';
+} from '../../ui/text/recommend/eight_ui';
+import { nine_html_text, NineTextUi } from '../../ui/text/recommend/nine_ui';
+import { ten_html_text, TenTextUi } from '../../ui/text/recommend/ten_ui';
 import {
   eleven_html_text,
   ElevenTextUi,
-} from '../../../ui/text/recommend/eleven_ui';
+} from '../../ui/text/recommend/eleven_ui';
 import {
   twelve_html_text,
   TwelveTextUi,
-} from '../../../ui/text/recommend/twelve_ui';
+} from '../../ui/text/recommend/twelve_ui';
 import {
   thirteen_html_text,
   ThirteenTextUi,
-} from '../../../ui/text/recommend/thirteen_ui';
+} from '../../ui/text/recommend/thirteen_ui';
 import {
   fourteen_html_text,
   FourTeenTextUi,
-} from '../../../ui/text/recommend/fourteen_ui';
+} from '../../ui/text/recommend/fourteen_ui';
 import {
   fifteen_html_text,
   FifteenTextUi,
-} from '../../../ui/text/recommend/fifteen_ui';
+} from '../../ui/text/recommend/fifteen_ui';
 import {
   sixteen_html_text,
   SixTeenTextUi,
-} from '../../../ui/text/recommend/sixteen_ui';
+} from '../../ui/text/recommend/sixteen_ui';
 import {
   seventeen_html_text,
   SevenTeenTextUi,
-} from '../../../ui/text/recommend/seventeen_ui';
-import { ButtonTemplate } from '../../../ui/button/template/button';
+} from '../../ui/text/recommend/seventeen_ui';
+import { ButtonTemplate } from '../../ui/button/template/button';
 import {
   $$button_database,
   $$one_button_database,
-} from '../../../ui/button/button_database';
-import { FormTemplate } from '../../../ui/form/template/form_template';
+} from '../../ui/button/button_database';
+import { FormTemplate } from '../../ui/form/template/form_template';
 import {
   $$form_database,
   $$one_form_database,
-} from '../../../ui/form/form_database';
-import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
-import MusicListUI from '../../../ui/music/recommonnd/music_list_ui';
-import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
-import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
-import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
+} from '../../ui/form/form_database';
+import { OneImgUi } from '../../ui/img/recommend/one_img_ui';
+import MusicListUI from '../../ui/music/recommonnd/music_list_ui';
+import VideoListUI from '../../ui/video/recommonnd/video_list_ui';
+import { OneMallUi } from '../../ui/mall/recommend/one_mall_ui';
+import { OneButtonUi } from '../../ui/button/recommend/one_button_ui';
+import { OneFormUi } from '../../ui/form/recommend/one_form_ui';
 
 /**
  * text
