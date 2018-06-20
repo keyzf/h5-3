@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../redux/action';
-import BgComponent from '../../ui/background/bg_component';
-import style from './content.module.scss';
-import RenderUI from '../../common/visual/render_ui';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { choose_action, select_action } from "../../redux/action";
+import BgComponent from "../../ui/background/bg_component";
+import style from "./content.module.scss";
+import { RenderUILoadable } from "../../routers/common.router";
 
 /**
  * 实现功能
@@ -22,18 +22,18 @@ class ContentVisualView extends PureComponent {
 
     // 解析出背景需要的数据
     const bg_config = {
-      color: $$bg_data.getIn(['customize', 'color']),
-      img: $$bg_data.getIn(['customize', 'img']),
-      repeat: $$bg_data.getIn(['customize', 'img_config', 'repeat']),
-      fixed: $$bg_data.getIn(['customize', 'img_config', 'fixed']),
+      color: $$bg_data.getIn(["customize", "color"]),
+      img: $$bg_data.getIn(["customize", "crop_img"]),
+      repeat: $$bg_data.getIn(["customize", "img_config", "repeat"]),
+      fixed: $$bg_data.getIn(["customize", "img_config", "fixed"])
     };
 
     return (
       //visual content 内容栏
-      <div id={'content_root'} className={style.template}>
+      <div id={"content_root"} className={style.template}>
         <BgComponent {...bg_config}>
           {/*判读用户当前操作，如果没有选择组件则显示默认，否则遍历出组件*/}
-          {choose_meta.get('content') ? (
+          {choose_meta.get("content") ? (
             $$select_data.map((ui_data, index) => {
               return (
                 //将遍历的数据传递给render函数
@@ -43,11 +43,10 @@ class ContentVisualView extends PureComponent {
                    判断用户是否选中当前组件，
                    index: 组件号
                    */}
-                  <RenderUI
-                    data={ui_data}
-                    choose={index === $$choose_data.get('number')}
-                    index={index}
-                  />
+                  <RenderUILoadable data={ui_data}
+                                    choose={index === $$choose_data.get("number")}
+                                    index={index}/>
+
                 </React.Fragment>
               );
             })
@@ -67,7 +66,7 @@ const mapStateToProps = state => {
     // 选择组件数组
     choose_value: state.choose_reducer,
     // 背景组件数据
-    bg_value: state.bg_reducer,
+    bg_value: state.bg_reducer
   };
 };
 
@@ -78,7 +77,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(choose_action(data, meta, error)),
     // 核心组件数据更新触发器
     select_upData: (data, meta, error) =>
-      dispatch(select_action(data, meta, error)),
+      dispatch(select_action(data, meta, error))
   };
 };
 

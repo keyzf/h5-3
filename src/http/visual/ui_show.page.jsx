@@ -8,9 +8,9 @@ import {
   template_music_data,
   template_text_data,
   template_video_data,
-} from '../../containers/visual/func_library/select_database';
+} from '../../containers/visual/select_database';
 import SelectCommon from '../../common/visual/select_common';
-import InterActiveSelect from '../../containers/visual/func_library/interactive';
+import InterActiveSelect from '../../containers/visual/interactive';
 
 class VisualUiShowView extends React.Component {
   render() {

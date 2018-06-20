@@ -14,11 +14,11 @@ class VisualSaveAjax extends PureComponent {
    */
   onSave = () => {
     // 背景组件
-    const bg_data = this.props.bg_value.data.toJS();
-    // 页面组件
-    const component_data = this.props.select_value.data.toJS();
-    // 用户设置的信息
-    const html5_value = this.props.html5_value.data.toJS();
+    // const bg_data = this.props.bg_value.data.toJS();
+    // // 页面组件
+    // const component_data = this.props.select_value.data.toJS();
+    // // 用户设置的信息
+    // const html5_value = this.props.html5_value.data.toJS();
 
     // axios.post('/')
     //   .then(function (response) {
@@ -33,13 +33,13 @@ class VisualSaveAjax extends PureComponent {
     return (
       <div onClick={this.onSave}>
         <QueueAnim type={'bottom'} delay={220}>
-          <React.Framgent key={'1'}>
+          <div key={'1'}>
             <i
               className={'icon iconfont icon-baocun'}
               style={{ marginRight: '10px' }}
             />
             保存
-          </React.Framgent>
+          </div>
         </QueueAnim>
       </div>
     );
