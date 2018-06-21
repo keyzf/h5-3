@@ -46,4 +46,13 @@ export const VisualEditorLoadable = Loadable({
   timeout: 5000 // 超时时间
 });
 
+/**
+ * 工具类组件
+ */
+export const VisualRichEditorLoadable = Loadable({
+  loader: () => import("../containers/visual/editor/rich_editor"), // 文件路径
+  loading: component_loading, // 加载时显示的组件
+  delay: 300,
+  timeout: 5000 // 超时时间
+});
 

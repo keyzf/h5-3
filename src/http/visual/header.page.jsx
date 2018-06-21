@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Menu, Row } from "antd";
 import VisualSaveAjax from "../../api/save_ajax";
 import QueueAnim from "rc-queue-anim";
-import CleanContent from "../../containers/visual/clean_content";
+import CleanContent from "../../containers/visual/header/clean_content";
 import style from "./header.module.scss";
 
 /**

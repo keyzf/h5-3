@@ -15,13 +15,16 @@ import {
   VisualUiShowLoadable
 } from "../../routers/visual.router";
 
+/**
+ * visual 页面父级组件
+ */
 class VisualView extends PureComponent {
   /**
    * 查询用户屏幕显示比例
    * 如果屏幕分辨率宽度低于1119则显示提示信息
    */
   componentDidMount = () => {
-    if (window.screen.width < 1119) {
+    if (window.screen.width < 1148) {
       notification["warning"]({
         message: "提醒",
         description: `屏幕分辨率过低,请调整视窗缩放比例`,
