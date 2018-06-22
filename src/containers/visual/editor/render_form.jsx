@@ -65,6 +65,8 @@ export const render_form = data => {
       return <EditorImg data={data} />;
     case 'one_img':
       return <EditorImg data={data} />;
+    case 'two_img':
+      return <EditorImg data={data} />;
 
     case 'music':
       return <EditorMusic data={data} />;

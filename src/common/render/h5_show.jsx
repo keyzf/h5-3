@@ -24,7 +24,7 @@ class H5RenderCommon extends PureComponent {
     };
     return (
       <RenderBg {...bg_config}>
-        <div style={{ overflow: "auto", width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100vh",overflow:'auto' }}>
           {select_data.map((ui_data, index) => {
             const advanced_settings = {
               // 动画移动
@@ -42,7 +42,7 @@ class H5RenderCommon extends PureComponent {
               //平铺
               tiling: ui_data.getIn(["advance", "img_config", "tiling", "value"])
             };
-            return <ItemAtom {...advanced_settings} key={index}>{render_switch_ui(ui_data)}</ItemAtom>;
+            return <ItemAtom {...advanced_settings} key={index}>{render_switch_ui(ui_data)}</ItemAtom>
           })}
         </div>
       </RenderBg>

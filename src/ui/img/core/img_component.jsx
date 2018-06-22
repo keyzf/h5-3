@@ -1,14 +1,15 @@
-import React from 'react';
+import React,{PureComponent} from 'react';
 
-class UpImgUi extends React.Component {
+class UpImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
+    const font_color = customize.getIn(["base", "font_color"]);
     return (
       <div>
         {customize.get('item').map((data, index) => {
           return (
             <div key={index}>
-              <img
+             <a href={data.getIn(['link','value'])} style={{color:font_color}}> <img
                 width={
                   data.getIn(['width', 'value'])
                     ? data.getIn(['width', 'value'])
@@ -19,9 +20,9 @@ class UpImgUi extends React.Component {
                     ? data.getIn(['height', 'value'])
                     : 'auto'
                 }
-                src={data.get('img')}
+                src={data.get('crop_img')}
                 alt={'img'}
-              />
+             /></a>
             </div>
           );
         })}

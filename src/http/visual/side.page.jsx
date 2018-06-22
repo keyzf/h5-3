@@ -18,7 +18,7 @@ class SiderVisualView extends PureComponent {
    * @type {{collapsed: boolean}}
    */
   state = {
-    collapsed: false
+    collapsed: true
   };
   /**
    * 更新组件状态，并发送数据给数据集

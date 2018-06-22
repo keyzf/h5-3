@@ -46,8 +46,8 @@ import {
   $$list_img_database,
   $$one_img_database,
   $$single_img_database,
-  $$slider_img_database,
-} from '../../../ui/img/img_database';
+  $$slider_img_database, $$two_img_database
+} from "../../../ui/img/img_database";
 import {
   CarouselImgTemplate,
   GridImgTemplate,
@@ -118,6 +118,7 @@ import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
+import { TwoImgUi } from "../../../ui/img/recommend/two_img_ui";
 
 /**
  * text
@@ -174,6 +175,10 @@ const template_img_data = [
   {
     template: <OneImgUi data={$$one_img_database} />,
     data: $$one_img_database,
+  },
+  {
+    template: <TwoImgUi data={$$two_img_database} />,
+    data: $$two_img_database,
   },
 ];
 /**

@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { Map } from "immutable";
 import { SketchPicker } from "react-color";
 import {
-  Tabs,
   Button,
   Checkbox,
   Popover,
@@ -18,11 +17,6 @@ import {
 } from "antd";
 import { choose_action, select_action } from "../../../redux/action";
 import UpImgPart from "../../../common/up_img_common/upload_common";
-import {
-  $$horizontal_text,
-  $$vertical_text
-} from "../../../ui/text/text_database";
-import { VisualRichEditorLoadable } from "../../../routers/visual.router";
 import { ImgCrop } from "../../../common/up_img_common/img_crop";
 
 /**
@@ -117,10 +111,12 @@ class AdvanceEditor extends PureComponent {
     const $$choose_data = this.props.choose_value.data;
     // features
     if (opt_name === "color") {
+
       this.sendAction(
         $$select_data
           .get($$choose_data.get("number"))
           .setIn(["advance", "color"], data.hex)
+
       );
     }
     if (opt_name === "delete") {
