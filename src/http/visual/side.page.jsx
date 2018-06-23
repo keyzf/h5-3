@@ -139,7 +139,7 @@ const action = (type, data) => {
  * @param state
  * @returns {{visual_ui_show_value: *}}
  */
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     visual_ui_show_value: state.visual_ui_show_reducer
   };
@@ -152,7 +152,7 @@ const mapStateToProps = (state) => {
  */
 const mapDispatchToProps = dispatch => {
   return {
-    visual_ui_show_upData: (data) => dispatch(action("VISUAL_UI_SHOW", data))
+    visual_ui_show_upData: data => dispatch(action("VISUAL_UI_SHOW", data))
   };
 };
 

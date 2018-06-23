@@ -41,7 +41,7 @@ import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
-import { TwoImgUi } from "../../../ui/img/recommend/two_img_ui";
+import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）

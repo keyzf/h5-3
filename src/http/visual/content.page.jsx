@@ -1,11 +1,11 @@
 /**
  * visual 组件拼装显示栏
  */
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { RenderUILoadable } from "../../routers/common.router";
-import BgComponent from "../../ui/background/bg_component";
-import style from "./content.module.scss";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { RenderUILoadable } from '../../routers/common.router';
+import BgComponent from '../../ui/background/bg_component';
+import style from './content.module.scss';
 
 /**
  * 实现功能
@@ -23,10 +23,10 @@ class ContentVisualView extends PureComponent {
      *  解析出背景组件需要的数据
      */
     const bg_config = {
-      color: $$bg_data.getIn(["customize", "color"]),
-      img: $$bg_data.getIn(["customize", "crop_img"]),
-      repeat: $$bg_data.getIn(["customize", "img_config", "repeat"]),
-      fixed: $$bg_data.getIn(["customize", "img_config", "fixed"])
+      color: $$bg_data.getIn(['customize', 'color']),
+      img: $$bg_data.getIn(['customize', 'crop_img']),
+      repeat: $$bg_data.getIn(['customize', 'img_config', 'repeat']),
+      fixed: $$bg_data.getIn(['customize', 'img_config', 'fixed']),
     };
     /**
      *  渲染出组件
@@ -35,13 +35,16 @@ class ContentVisualView extends PureComponent {
       <div className={style.template}>
         <BgComponent {...bg_config}>
           {/*判读用户当前操作，如果没有选择组件则显示默认，否则遍历出组件*/}
-          {choose_meta.get("content") ? (
+          {choose_meta.get('content') ? (
             $$select_data.map((ui_data, index) => {
               return (
                 // 跳转至 ==> /src/common/component_state 进行操作
-                <RenderUILoadable key={index} data={ui_data}
-                                  choose={index === $$choose_data.get("number")}
-                                  index={index}/>
+                <RenderUILoadable
+                  key={index}
+                  data={ui_data}
+                  choose={index === $$choose_data.get('number')}
+                  index={index}
+                />
               );
             })
           ) : (
@@ -62,18 +65,18 @@ class ContentVisualView extends PureComponent {
  */
 const choose_action = (data, meta, error) => {
   return {
-    type: "CHOOSE_COMPONENTS",
+    type: 'CHOOSE_COMPONENTS',
     payload: data,
     meta: meta,
-    error: error
+    error: error,
   };
 };
 const action = (type, data) => {
   return {
     type: type,
     payload: data,
-    meta: "",
-    error: ""
+    meta: '',
+    error: '',
   };
 };
 
@@ -89,7 +92,7 @@ const mapStateToProps = state => {
     // 选择组件数组
     choose_value: state.choose_reducer,
     // 背景组件数据
-    bg_value: state.bg_reducer
+    bg_value: state.bg_reducer,
   };
 };
 
@@ -104,8 +107,7 @@ const mapDispatchToProps = dispatch => {
     choose_upData: (data, meta, error) =>
       dispatch(choose_action(data, meta, error)),
     // 核心组件数据更新触发器
-    select_upData: (data) =>
-      dispatch(action("SELECT_COMPONENTS", data))
+    select_upData: data => dispatch(action('SELECT_COMPONENTS', data)),
   };
 };
 

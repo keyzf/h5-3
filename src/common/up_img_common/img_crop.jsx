@@ -1,12 +1,11 @@
 /**
  * 图片裁剪
  */
-import React, { PureComponent } from "react";
-import { Modal } from "antd";
-import ReactCrop from "react-image-crop";
-import { img_size } from "../../toolkit/img_size";
-import './crop.css'
-
+import React, { PureComponent } from 'react';
+import { Modal } from 'antd';
+import ReactCrop from 'react-image-crop';
+import { img_size } from '../../toolkit/img_size';
+import './crop.css';
 
 /**
  * 图片裁剪功能实现
@@ -21,14 +20,14 @@ export class ImgCrop extends PureComponent {
       x: 10,
       y: 10,
       width: 80,
-      height: 80
+      height: 80,
     },
     new_crop: {
-      x: "",
-      y: "",
-      width: "",
-      height: ""
-    }
+      x: '',
+      y: '',
+      width: '',
+      height: '',
+    },
   };
   /**
    * 图片裁剪数值
@@ -41,7 +40,7 @@ export class ImgCrop extends PureComponent {
       x: crop.x / 100 * $$img_size.width,
       y: crop.y / 100 * $$img_size.height,
       width: crop.width / 100 * $$img_size.width,
-      height: crop.height / 100 * $$img_size.height
+      height: crop.height / 100 * $$img_size.height,
     };
     this.setState({ new_crop: size });
   };
@@ -59,8 +58,8 @@ export class ImgCrop extends PureComponent {
         visible={crop_visible}
         onCancel={crop_unvisible.bind(this, true, this.state.new_crop)}
         onOk={crop_unvisible.bind(this, true, this.state.new_crop)}
-        okText={"裁剪"}
-        cancelText={"取消"}
+        okText={'裁剪'}
+        cancelText={'取消'}
       >
         <ReactCrop
           src={src}

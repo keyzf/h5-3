@@ -1,9 +1,9 @@
 /**
  * 筛选组件，传递数据
  */
-import React, { PureComponent } from "react";
-import DynamicCommon from "./dynamic_common";
-import { switch_ui } from "./switch_ui";
+import React, { PureComponent } from 'react';
+import DynamicCommon from './dynamic_common';
+import { switch_ui } from './switch_ui';
 
 /**
  * 剥离出相关数据，
@@ -13,23 +13,23 @@ import { switch_ui } from "./switch_ui";
 class RenderUI extends PureComponent {
   render() {
     // 接收的数据
-    const advance = this.props.data.get("advance");
+    const advance = this.props.data.get('advance');
     // 拆解所有组件的高级设置
     const advanced_settings = {
       // 动画移动
-      transformX: advance.getIn(["transform", "translateX", "value"]),
-      transformY: advance.getIn(["transform", "translateY", "value"]),
+      transformX: advance.getIn(['transform', 'translateX', 'value']),
+      transformY: advance.getIn(['transform', 'translateY', 'value']),
       // 周长
-      width: advance.getIn(["perimeter", "width", "value"]),
-      height: advance.getIn(["perimeter", "height", "value"]),
+      width: advance.getIn(['perimeter', 'width', 'value']),
+      height: advance.getIn(['perimeter', 'height', 'value']),
       // 颜色
-      bgColor: advance.get("color"),
+      bgColor: advance.get('color'),
       //背景
-      img: advance.get("img"),
+      img: advance.get('img'),
       //拉伸
-      stretching: advance.getIn(["img_config", "stretching", "value"]),
+      stretching: advance.getIn(['img_config', 'stretching', 'value']),
       //平铺
-      tiling: advance.getIn(["img_config", "tiling", "value"])
+      tiling: advance.getIn(['img_config', 'tiling', 'value']),
     };
     return (
       /**

@@ -1,10 +1,10 @@
-import React,{PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 
 class GridImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
-    const font_color = customize.getIn(["base", "font_color"]);
+    const font_color = customize.getIn(['base', 'font_color']);
     // 接收一行显示数，返回应给显示的比例
     const col = number => {
       if (number === 1) {
@@ -39,25 +39,28 @@ class GridImgUi extends PureComponent {
               key={index}
               span={col(customize.getIn(['base', 'layout', 'value']))}
             >
-              <a href={data.getIn(["link", "value"])} style={{ color: font_color }}>
-              <img
-                width={
-                  data.getIn(['width','value'])
-                    ?     data.getIn(['width','value'])
-                    : '100%'
-                }
-                height={
-                  data.getIn(['height','value'])
-                    ? data.getIn(['height','value'])
-                    : 'auto'
-                }
-                src={
-                  data.get('crop_img')
-                    ? data.get('crop_img')
-                    : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                }
-                alt={'img'}
-              />
+              <a
+                href={data.getIn(['link', 'value'])}
+                style={{ color: font_color }}
+              >
+                <img
+                  width={
+                    data.getIn(['width', 'value'])
+                      ? data.getIn(['width', 'value'])
+                      : '100%'
+                  }
+                  height={
+                    data.getIn(['height', 'value'])
+                      ? data.getIn(['height', 'value'])
+                      : 'auto'
+                  }
+                  src={
+                    data.get('crop_img')
+                      ? data.get('crop_img')
+                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                  }
+                  alt={'img'}
+                />
               </a>
               {$$show_element_title ? (
                 ''
@@ -68,10 +71,10 @@ class GridImgUi extends PureComponent {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    color: font_color
+                    color: font_color,
                   }}
                 >
-                  {data.getIn(['title','value'])}
+                  {data.getIn(['title', 'value'])}
                 </div>
               )}
               {$$show_element_content ? (
@@ -83,10 +86,10 @@ class GridImgUi extends PureComponent {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    color: font_color
+                    color: font_color,
                   }}
                 >
-                  {data.getIn(['content','value'])}
+                  {data.getIn(['content', 'value'])}
                 </div>
               )}
             </Col>

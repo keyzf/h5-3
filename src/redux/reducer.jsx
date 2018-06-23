@@ -1,8 +1,8 @@
 /**
  * 数据源（重要）
  */
-import { Map, List, fromJS } from "immutable";
-import { $$background_database } from "../ui/background/background_database";
+import { Map, List, fromJS } from 'immutable';
+import { $$background_database } from '../ui/background/background_database';
 
 /**
  * 核心组件（制作h5,修改h5 页面数据集存放的地方）
@@ -10,15 +10,15 @@ import { $$background_database } from "../ui/background/background_database";
  * @param action
  * @returns {*}
  */
-const select_data = { data: List(), meta: "", error: "" };
+const select_data = { data: List(), meta: '', error: '' };
 const select_reducer = (state = { ...select_data }, action) => {
   switch (action.type) {
-    case "SELECT_COMPONENTS":
+    case 'SELECT_COMPONENTS':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -32,21 +32,24 @@ const select_reducer = (state = { ...select_data }, action) => {
  */
 const user_h5_message_data = {
   data: fromJS({
-    img: "",
-    title: { value: "" },
-    content: { value: "" }
+    img: '',
+    title: { value: '' },
+    content: { value: '' },
   }),
-  meta: "",
-  error: false
+  meta: '',
+  error: false,
 };
-const user_h5_message_reducer = (state = { ...user_h5_message_data }, action) => {
+const user_h5_message_reducer = (
+  state = { ...user_h5_message_data },
+  action
+) => {
   switch (action.type) {
-    case "USER_H5_MESSAGE":
+    case 'USER_H5_MESSAGE':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -59,18 +62,18 @@ const user_h5_message_reducer = (state = { ...user_h5_message_data }, action) =>
  * @returns {*}
  */
 const visual_ui_show_data = {
-  data: fromJS({ name: "text", menuChoose: 0 }),
-  meta: "",
-  error: false
+  data: fromJS({ name: 'text', menuChoose: 0 }),
+  meta: '',
+  error: false,
 };
 const visual_ui_show_reducer = (state = { ...visual_ui_show_data }, action) => {
   switch (action.type) {
-    case "VISUAL_UI_SHOW":
+    case 'VISUAL_UI_SHOW':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -87,16 +90,16 @@ const visual_ui_show_reducer = (state = { ...visual_ui_show_data }, action) => {
 const choose_data = {
   data: Map(),
   meta: Map({ content: false, choose: false }),
-  error: false
+  error: false,
 };
 const choose_reducer = (state = { ...choose_data }, action) => {
   switch (action.type) {
-    case "CHOOSE_COMPONENTS":
+    case 'CHOOSE_COMPONENTS':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -108,15 +111,15 @@ const choose_reducer = (state = { ...choose_data }, action) => {
  * @param action
  * @returns {*}
  */
-const bg_data = { data: $$background_database, meta: "", error: false };
+const bg_data = { data: $$background_database, meta: '', error: false };
 const bg_reducer = (state = { ...bg_data }, action) => {
   switch (action.type) {
-    case "BG_COMPONENTS":
+    case 'BG_COMPONENTS':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -131,29 +134,28 @@ export {
   visual_ui_show_reducer,
   choose_reducer,
   select_reducer,
-  bg_reducer
+  bg_reducer,
 };
-
 
 export const html5_reducer = (
   state = {
     data: Map({
-      img: "",
-      title: Map({ value: "" }),
-      content: Map({ value: "" })
+      img: '',
+      title: Map({ value: '' }),
+      content: Map({ value: '' }),
     }),
-    meta: "",
-    error: false
+    meta: '',
+    error: false,
   },
   action
 ) => {
   switch (action.type) {
-    case "Html5_message":
+    case 'Html5_message':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
@@ -169,25 +171,21 @@ export const html5_reducer = (
  */
 export const up_img_reducer = (
   state = {
-    data: Map({ self: List(), recommend: "" }),
-    meta: "",
-    error: false
+    data: Map({ self: List(), recommend: '' }),
+    meta: '',
+    error: false,
   },
   action
 ) => {
   switch (action.type) {
-    case "UP_IMG_COMPONENTS":
+    case 'UP_IMG_COMPONENTS':
       return {
         // 将信息传递给处理函数
         data: action.payload,
         meta: action.meta,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
   }
 };
-
-
-
-

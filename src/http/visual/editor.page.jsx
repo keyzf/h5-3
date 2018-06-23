@@ -1,14 +1,14 @@
 /**
  *  visual editor编辑界面
  */
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Map } from "immutable";
-import TweenOne from "rc-tween-one";
-import BgEditor from "../../containers/visual/editor/bg_editor";
-import style from "./editor.module.scss";
-import { choose_action } from "../../redux/action";
-import { render_form } from "../../containers/visual/editor/render_form";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+import TweenOne from 'rc-tween-one';
+import BgEditor from '../../containers/visual/editor/bg_editor';
+import style from './editor.module.scss';
+import { choose_action } from '../../redux/action';
+import { render_form } from '../../containers/visual/editor/render_form';
 
 /**
  * 实现功能：
@@ -25,8 +25,8 @@ class EditorVisualView extends PureComponent {
     this.props.choose_upData(
       this.props.choose_value.data,
       Map({
-        content: this.props.choose_value.meta.get("content"),
-        choose: false
+        content: this.props.choose_value.meta.get('content'),
+        choose: false,
       }),
       false
     );
@@ -41,11 +41,11 @@ class EditorVisualView extends PureComponent {
     const $$choose_meta = this.props.choose_value.meta;
     return (
       <div className={style.layout}>
-        {$$choose_meta.get("choose") ? (
+        {$$choose_meta.get('choose') ? (
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ left: "-90px" }}
+              animation={{ left: '-90px' }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >
@@ -55,7 +55,7 @@ class EditorVisualView extends PureComponent {
           </React.Fragment>
         ) : (
           // 显示背景
-          <BgEditor/>
+          <BgEditor />
         )}
       </div>
     );
@@ -69,7 +69,7 @@ class EditorVisualView extends PureComponent {
  */
 const mapStateToProps = state => {
   return {
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
@@ -81,7 +81,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 

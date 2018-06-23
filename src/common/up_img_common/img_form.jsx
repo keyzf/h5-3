@@ -1,9 +1,9 @@
 /**
  * 图片上传设置
  */
-import React,{PureComponent} from "react";
-import { Form, Upload } from "antd";
-import { uploadToken } from "../../toolkit/qiniu_upload";
+import React, { PureComponent } from 'react';
+import { Form, Upload } from 'antd';
+import { uploadToken } from '../../toolkit/qiniu_upload';
 
 /**
  * 图片上传
@@ -16,16 +16,16 @@ class ImgForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const upload_props = {
-      name: "file",
-      action: "http://upload.qiniup.com",
+      name: 'file',
+      action: 'http://upload.qiniup.com',
       showUploadList: false,
-      data: { token: uploadToken ,key:Math.random()+'.png'},
-      accept:'image/*'
+      data: { token: uploadToken, key: Math.random() + '.png' },
+      accept: 'image/*',
     };
     return (
       <Form hideRequiredMark>
         <Form.Item>
-          {getFieldDecorator("upload")(
+          {getFieldDecorator('upload')(
             <Upload {...upload_props}>{this.props.child}</Upload>
           )}
         </Form.Item>
@@ -42,8 +42,8 @@ export default Form.create({
     return {
       upload: Form.createFormField({
         ...props.upload,
-        value: props.upload.value
-      })
+        value: props.upload.value,
+      }),
     };
-  }
+  },
 })(ImgForm);

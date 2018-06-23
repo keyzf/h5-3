@@ -1,7 +1,7 @@
 /**
  * img 基础设置
  */
-import React,{PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import { Form, InputNumber, Checkbox } from 'antd';
 
 /**

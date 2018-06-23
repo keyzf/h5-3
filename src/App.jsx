@@ -3,21 +3,21 @@
  * 1. 通过 url 分析用户当前需要进行那种操作
  * 2. 如果用户不进行选择则默认进入模板页
  */
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { VisualLoadable } from "./routers/visual.router";
-import { PreviewLoadable } from "./routers/preview.router";
-import { Html5Loadable } from "./routers/h5.router";
-import { ReleaseLoadable } from "./routers/release.router";
-import { GetUrlPara } from "./toolkit/parse_url";
-import './core.css'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { VisualLoadable } from './routers/visual.router';
+import { PreviewLoadable } from './routers/preview.router';
+import { Html5Loadable } from './routers/h5.router';
+import { ReleaseLoadable } from './routers/release.router';
+import { GetUrlPara } from './toolkit/parse_url';
+import './core.css';
 /**
  * 应用根组件
  */
 class App extends PureComponent {
   state = {
-    router: "/visual"
+    router: '/visual',
   };
 
   /**
@@ -35,13 +35,13 @@ class App extends PureComponent {
      * 需要解析的值待商议，目前使用默认的（id，state）
      */
     // let recognition = GetUrlPara("id"); // 用户辨识号
-    let operating = GetUrlPara("state"); // 操作码
-    if (operating === "createH5") {
+    let operating = GetUrlPara('state'); // 操作码
+    if (operating === 'createH5') {
       this.setState({
-        router: "visual"
+        router: 'visual',
       });
     }
-    if (operating === "editorH5") {
+    if (operating === 'editorH5') {
       /**
        * 通过获取的数据 访问 API；
        * 获取数据后，将数据导入select_render中
@@ -62,7 +62,7 @@ class App extends PureComponent {
       //       console.log("访问服务器错误", error);
       //     });
     }
-    if (operating === "editorUserMessage") {
+    if (operating === 'editorUserMessage') {
       /**
        * 通过获取的数据 访问 API；
        * 获取数据后，将数据导入select_render中
@@ -93,13 +93,13 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           {/*重定向，由此导入相应页面*/}
-          <Route exact={true} path={"/"}>
+          <Route exact={true} path={'/'}>
             <Redirect to={this.state.router} />
           </Route>
-          <Route path={"/visual"} component={VisualLoadable} />
-          <Route path={"/preview"} component={PreviewLoadable} />
-          <Route path={"/release"} component={ReleaseLoadable} />
-          <Route path={"/html5"} component={Html5Loadable} />
+          <Route path={'/visual'} component={VisualLoadable} />
+          <Route path={'/preview'} component={PreviewLoadable} />
+          <Route path={'/release'} component={ReleaseLoadable} />
+          <Route path={'/html5'} component={Html5Loadable} />
         </Switch>
       </BrowserRouter>
     );
@@ -112,8 +112,8 @@ const action = (type, data) => {
   return {
     type: type,
     payload: data,
-    meta: "",
-    error: ""
+    meta: '',
+    error: '',
   };
 };
 /**
@@ -123,11 +123,11 @@ const action = (type, data) => {
  */
 const mapDispatchToProps = dispatch => {
   return {
-    select_upData: data => dispatch(action("SELECT_COMPONENTS", data)),
-    user_h5_upDate: data => dispatch(action("USER_H5_MESSAGE", data))
+    select_upData: data => dispatch(action('SELECT_COMPONENTS', data)),
+    user_h5_upDate: data => dispatch(action('USER_H5_MESSAGE', data)),
   };
 };
 /**
  * 高阶组件 hoc
  */
-export default connect("", mapDispatchToProps)(App);
+export default connect('', mapDispatchToProps)(App);

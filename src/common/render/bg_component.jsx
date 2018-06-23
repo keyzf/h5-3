@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import { RenderBgAtom } from "./layout_atom";
+import React, { PureComponent } from 'react';
+import { RenderBgAtom } from './layout_atom';
 
 /**
  * 背景组件
@@ -10,7 +10,7 @@ class RenderBg extends PureComponent {
       color: this.props.color,
       img: this.props.img,
       repeat: this.props.repeat,
-      fixed: this.props.fixed
+      fixed: this.props.fixed,
     };
     return (
       //背景样式组件

@@ -1,17 +1,17 @@
 /**
  * text 编辑栏
  */
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Map } from "immutable";
-import { Tabs, Button, Card, Popconfirm } from "antd";
-import { choose_action, select_action } from "../../../redux/action";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+import { Tabs, Button, Card, Popconfirm } from 'antd';
+import { choose_action, select_action } from '../../../redux/action';
 import {
   $$horizontal_text,
-  $$vertical_text
-} from "../../../ui/text/text_database";
-import { VisualRichEditorLoadable } from "../../../routers/visual.router";
-import AdvanceEditor from "./advance.editor";
+  $$vertical_text,
+} from '../../../ui/text/text_database';
+import { VisualRichEditorLoadable } from '../../../routers/visual.router';
+import AdvanceEditor from './advance.editor';
 
 /**
  * editor for text
@@ -33,11 +33,11 @@ class EditorText extends PureComponent {
     const $$select_data = this.props.select_value.data;
     // create new data
     const $$new_select_data = $$select_data.setIn(
-      [$$choose_data.get("number"), "customize", "html_content"],
+      [$$choose_data.get('number'), 'customize', 'html_content'],
       html_callback
     );
     // send action  -> to change select_render's data
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
   };
 
   /**
@@ -53,15 +53,15 @@ class EditorText extends PureComponent {
     const $$choose_data = this.props.choose_value.data;
     // Current component name
     const name = $$select_data.getIn([
-      $$choose_data.get("number"),
-      "customize",
-      "name"
+      $$choose_data.get('number'),
+      'customize',
+      'name',
     ]);
-    if (opt_name === "reset") {
-      if (name === "horizontal_text") {
+    if (opt_name === 'reset') {
+      if (name === 'horizontal_text') {
         this.sendAction($$horizontal_text);
       }
-      if (name === "vertical_text") {
+      if (name === 'vertical_text') {
         this.sendAction($$vertical_text);
       }
     }
@@ -78,12 +78,12 @@ class EditorText extends PureComponent {
     const $$choose_data = this.props.choose_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
+      $$choose_data.get('number'),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
+    const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
     this.props.choose_upData(
       $$new_choose_data,
       Map({ content: true, choose: true }),
@@ -93,16 +93,16 @@ class EditorText extends PureComponent {
 
   render() {
     // resolve props data
-    const $$ui_text_data = this.props.data.get("data");
-    const $$customize = $$ui_text_data.get("customize");
+    const $$ui_text_data = this.props.data.get('data');
+    const $$customize = $$ui_text_data.get('customize');
     /**
      * reset data
      */
     const operations = (
       <Popconfirm
         placement="bottom"
-        title={"重置为默认设置？"}
-        onConfirm={this.editorFeatures.bind(this, "reset")}
+        title={'重置为默认设置？'}
+        onConfirm={this.editorFeatures.bind(this, 'reset')}
         okText="确认"
         cancelText="取消"
       >
@@ -110,11 +110,11 @@ class EditorText extends PureComponent {
       </Popconfirm>
     );
     return (
-      <Tabs defaultActiveKey={"1"} tabBarExtraContent={operations}>
+      <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
         <Tabs.TabPane tab="内容设置" key="1">
           <Card
             title="富文本编辑器"
-            style={{ width: "100%", marginTop: "-18px" }}
+            style={{ width: '100%', marginTop: '-18px' }}
           >
             <VisualRichEditorLoadable
               data={$$customize}
@@ -138,7 +138,7 @@ class EditorText extends PureComponent {
 const mapStateToProps = state => {
   return {
     select_value: state.select_reducer,
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
@@ -152,7 +152,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 

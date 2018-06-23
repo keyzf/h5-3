@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import { Row, Col } from "antd";
+import React, { PureComponent } from 'react';
+import { Row, Col } from 'antd';
 
 class ListImgUi extends PureComponent {
   render() {
-    const customize = this.props.data.get("customize");
+    const customize = this.props.data.get('customize');
 
     const col = number => {
       if (number === 1) {
@@ -21,72 +21,79 @@ class ListImgUi extends PureComponent {
         return null;
       }
     };
-    const $$show_element = customize.getIn(["base", "show_element", "value"]);
-    const font_color = customize.getIn(["base", "font_color"]);
-    console.log(customize,font_color);
+    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
+    const font_color = customize.getIn(['base', 'font_color']);
+    console.log(customize, font_color);
     const $$show_element_title =
-      $$show_element !== undefined ? $$show_element[0] : "";
+      $$show_element !== undefined ? $$show_element[0] : '';
     const $$show_element_content =
       $$show_element !== undefined && $$show_element[1]
         ? $$show_element[1]
-        : "";
+        : '';
     return (
       <Row gutter={16}>
-        {customize.get("item").map((data, index) => {
+        {customize.get('item').map((data, index) => {
           return (
             <Col
-              style={{ margin: "5px 0" }}
+              style={{ margin: '5px 0' }}
               key={index}
-              span={col(customize.getIn(["base", "layout", "value"]))}
+              span={col(customize.getIn(['base', 'layout', 'value']))}
             >
               <Col span={12}>
-                <a href={data.getIn(["link", "value"])} style={{ color: font_color }}>
-                <img
-                  width={
-                    data.getIn(["width", "value"])
-                      ? data.getIn(["width", "value"])
-                      : "100%"
-                  }
-                  height={
-                    data.getIn(["height", "value"])
-                      ? data.getIn(["height", "value"])
-                      : "auto"
-                  }
-                  src={
-                    data.get("crop_img")
-                      ? data.get("crop_img")
-                      : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"
-                  }
-                  alt={"img"}
-                />
+                <a
+                  href={data.getIn(['link', 'value'])}
+                  style={{ color: font_color }}
+                >
+                  <img
+                    width={
+                      data.getIn(['width', 'value'])
+                        ? data.getIn(['width', 'value'])
+                        : '100%'
+                    }
+                    height={
+                      data.getIn(['height', 'value'])
+                        ? data.getIn(['height', 'value'])
+                        : 'auto'
+                    }
+                    src={
+                      data.get('crop_img')
+                        ? data.get('crop_img')
+                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                    }
+                    alt={'img'}
+                  />
                 </a>
-                <br/>
+                <br />
               </Col>
               <Col span={12}>
                 {$$show_element_title ? (
-                  ""
+                  ''
                 ) : (
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignCenter: "center",
-                    color: font_color
-                  }}>
-                    {data.getIn(["title", "value"])}
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      alignCenter: 'center',
+                      color: font_color,
+                    }}
+                  >
+                    {data.getIn(['title', 'value'])}
                   </div>
                 )}
                 {$$show_element_content ? (
-                  ""
+                  ''
                 ) : (
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignCenter: "center",
-                    color: font_color
-                  }}>
-                    {data.getIn(["content", "value"])}
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      alignCenter: 'center',
+                      color: font_color,
+                    }}
+                  >
+                    {data.getIn(['content', 'value'])}
                   </div>
                 )}
               </Col>

@@ -40,12 +40,10 @@ class HeaderReleaseView extends React.Component {
     return (
       <Row {...Layout}>
         <Col className={style.col_center} {...LogoCol}>
-          <Menu theme={"dark"} mode={"horizontal"}>
+          <Menu theme={'dark'} mode={'horizontal'}>
             <Menu.Item>
-              <a href={"https://www.e7wei.com/"}>
-                <div className={style.logo}>
-                  易企微
-                </div>
+              <a href={'https://www.e7wei.com/'}>
+                <div className={style.logo}>易企微</div>
               </a>
             </Menu.Item>
           </Menu>
