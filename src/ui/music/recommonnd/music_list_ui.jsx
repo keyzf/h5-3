@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import QueueAnim from "rc-queue-anim";
 import { choose_action, select_action } from "../../../redux/action";
 import { $$music_database } from "../music_database";
-// import LazyLoad from "react-lazyload";
 import axios from "axios";
 
 /**
@@ -13,46 +12,27 @@ import axios from "axios";
  */
 class MusicListUI extends React.Component {
   state = {
-    ajax_url: [
-      {
-        dsc: "音乐一",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      },
-      {
-        dsc: "音乐二",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      },
-      {
-        dsc: "音乐三",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      },
-      {
-        dsc: "音乐四",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      },
-      {
-        dsc: "音乐五",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      },
-      {
-        dsc: "音乐六",
-        url: "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
-      }
-    ]
+    ajax_url: []
   };
 
   // 在渲染之前,通过ajax 获取数据
   componentDidMount() {
-    console.log(1);
-    // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
-    axios.get('http://localhost:3001/posts/1')
-      .then(function (response) {
-        console.log(response);
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/recommend_music',
+    })
+      .then(response => {
+        this.setState({
+          ajax_url: response.data,
+        });
       })
-      .catch(function (error) {
+      .catch(function(error) {
+        // 输出错误信息，生产环境中需要剔除
         console.log(error);
       });
   }
+
+
 
   /**
    * 触发两个action

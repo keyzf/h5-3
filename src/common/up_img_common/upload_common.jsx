@@ -32,7 +32,7 @@ import style from './upload_common.module.scss';
 class UpImgPart extends PureComponent {
   state = {
     //模拟数据：总页数,第一轮数据,用户上传图片数据
-    number: 3,
+    number: '',
     ajax_url: [],
     library_list: [],
     user_library: [],
@@ -49,11 +49,12 @@ class UpImgPart extends PureComponent {
     // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
     axios({
       method: 'get',
-      url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
+      url: 'http://localhost:3001/first',
     })
       .then(response => {
         this.setState({
-          ajax_url: response.data,
+          ajax_url: response.data.data,
+          number: response.data.number
         });
       })
       .catch(function(error) {
@@ -61,19 +62,6 @@ class UpImgPart extends PureComponent {
         console.log(error);
       });
     // 用来搜寻用户库
-    axios({
-      method: 'get',
-      url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
-    })
-      .then(response => {
-        this.setState({
-          ajax_url: response.data,
-        });
-      })
-      .catch(function(error) {
-        // 暑促错误信息，生产环境中需要剔除
-        console.log(error);
-      });
   }
 
   // 用户点击不同的图片给与不同的样式
@@ -114,9 +102,9 @@ class UpImgPart extends PureComponent {
       if (this.state.length === props.index) {
         axios({
           method: 'get',
-          url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_${
+          url: `http://localhost:3001/${
             props.index
-          }.json`,
+          }`,
         })
           .then(response => {
             let ajax_url = this.state.ajax_url;
