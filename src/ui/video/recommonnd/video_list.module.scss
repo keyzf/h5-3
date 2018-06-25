@@ -1,0 +1,22 @@
+
+/*sider 侧边栏选择组件时使用的样式*/
+.components_hover {
+  padding: 5px 6px;
+  transition: box-shadow .2s cubic-bezier(0.4, 0, 1, 1), background-color .2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow .2s cubic-bezier(0.4, 0, 1, 1);
+  will-change: box-shadow, transform;
+  cursor: pointer;
+  &:hover {
+    padding: 5px 6px;
+    background: rgba(221, 221, 221, .21);
+    cursor: pointer;
+  }
+}
+
+.hide_text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}

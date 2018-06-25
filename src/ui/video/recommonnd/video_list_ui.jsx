@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { Row, Col } from "antd";
 import { Map } from "immutable";
 import { connect } from "react-redux";
@@ -6,11 +6,12 @@ import QueueAnim from "rc-queue-anim";
 import { choose_action, select_action } from "../../../redux/action";
 import { $$video_database } from "../video_database";
 import axios from "axios";
+import style from "./video_list.module.scss";
 
 /**
  * 文本组件选择栏
  */
-class VideoListUI extends React.Component {
+class VideoListUI extends PureComponent {
   state = {
     ajax_url: []
   };
@@ -62,15 +63,15 @@ class VideoListUI extends React.Component {
           return (
             <Row
               key={index}
-              className={"components_hover"}
+              className={style.components_hover}
               onClick={this.transfer.bind(
                 this,
                 $$video_database("video", data.url)
               )}
             >
-              <Col span={8}>{data.dsc}</Col>
-              <Col span={8}>其他信息</Col>
-              <Col span={8}>选择</Col>
+              <Col span={8} className={style.hide_text}>{data.dsc}</Col>
+              <Col span={8} className={style.hide_text}>其他信息</Col>
+              <Col span={8} className={style.hide_text}>选择</Col>
             </Row>
           );
         })}

@@ -25,7 +25,6 @@ import { SliderImgUI } from '../../ui/img/core/slider_component';
 import { CarouselImgUI } from '../../ui/img/core/carousel_component';
 import { OneImgUi } from '../../ui/img/recommend/one_img_ui';
 import { VideoUi } from '../../ui/video/core/video_ui';
-import { MusicUi } from '../../ui/music/core/music_ui';
 import { ListMallUi } from '../../ui/mall/core/list_ui';
 import { GridMallUi } from '../../ui/mall/core/grid_ui';
 import { OneMallUi } from '../../ui/mall/recommend/one_mall_ui';
@@ -33,6 +32,7 @@ import { ButtonUi } from '../../ui/button/core/button';
 import { OneButtonUi } from '../../ui/button/recommend/one_button_ui';
 import { FormUi } from '../../ui/form/core/form';
 import { OneFormUi } from '../../ui/form/recommend/one_form_ui';
+import { ProMusicUi } from "../../ui/music/core/music_ui";
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -108,7 +108,7 @@ export const render_switch_ui = data => {
       return <VideoUi data={data} />;
     //  音乐类
     case 'music':
-      return <MusicUi data={data} />;
+      return <ProMusicUi data={data} />;
 
     //  列表类
     case 'list_mall':

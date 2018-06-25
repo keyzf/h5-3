@@ -1,12 +1,13 @@
-import React from 'react';
-import { Row, Col, Button } from 'antd';
+import React, { PureComponent } from "react";
+import { Row, Col, Button } from "antd";
 
-class GridMallUi extends React.Component {
+class GridMallUi extends PureComponent {
   render() {
     // 将接收到的信息分解提取
-    const customize = this.props.data.get('customize');
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const $$layout = customize.getIn(['base', 'layout', 'value']);
+    const customize = this.props.data.get("customize");
+    const $$show_element = customize.getIn(["base", "show_element", "value"]);
+    const $$layout = customize.getIn(["base", "layout", "value"]);
+    const font_color = customize.getIn(["base", "font_color"]);
     // 将可需要判断是否存在的属性提取出来
     let $$title = true;
     let $$content = true;
@@ -18,22 +19,22 @@ class GridMallUi extends React.Component {
     if ($$show_element !== undefined) {
       // eslint-disable-next-line
       $$show_element.map(data => {
-        if (data === '标题') {
+        if (data === "标题") {
           $$title = false;
         }
-        if (data === '内容') {
+        if (data === "内容") {
           $$content = false;
         }
-        if (data === '现价') {
+        if (data === "现价") {
           $$current = false;
         }
-        if (data === '原价') {
+        if (data === "原价") {
           $$original = false;
         }
-        if (data === '图片') {
+        if (data === "图片") {
           $$img = false;
         }
-        if (data === '按钮') {
+        if (data === "按钮") {
           $$button = false;
         }
       });
@@ -58,82 +59,84 @@ class GridMallUi extends React.Component {
 
     return (
       <Row gutter={16}>
-        {customize.get('item').map((data, index) => {
+        {customize.get("item").map((data, index) => {
           return (
             <Col
               key={index}
               span={col($$layout) ? col($$layout) : 12}
-              style={{ margin: '5px 0' }}
+              style={{ margin: "5px 0" }}
             >
               {/*图片显示*/}
               {$$img ? (
                 <img
                   width={
-                    data.get('width').get('value')
-                      ? data.get('width').get('value')
-                      : '100%'
+                    data.getIn(["width", "value"])
+                      ? data.getIn(["width", "value"])
+                      : "100%"
                   }
                   height={
-                    data.get('height').get('value')
-                      ? data.get('height').get('value')
-                      : 'auto'
+                    data.getIn(["height", "value"])
+                      ? data.getIn(["height", "value"])
+                      : "auto"
                   }
                   src={
-                    data.get('img')
-                      ? data.get('img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                    data.get("crop_img")
+                      ? data.get("crop_img")
+                      : "http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg"
                   }
-                  alt={'img'}
+                  alt={"img"}
                 />
               ) : (
-                ''
+                ""
               )}
               {$$title ? (
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: font_color
                   }}
                 >
-                  {data.get('title').get('value')}
+                  {data.getIn(["title", "value"])}
                 </div>
               ) : (
-                ''
+                ""
               )}
               {$$content ? (
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: font_color
                   }}
                 >
-                  {data.get('content').get('value')}
+                  {data.getIn(["content", "value"])}
                 </div>
               ) : (
-                ''
+                ""
               )}
               {$$current ? (
-                <span style={{ marginRight: '5px', color: 'red' }}>
-                  现价{data.get('current').get('value')}
+                <span style={{ marginRight: "5px", color: "red" }}>
+                  现价{data.get("current").get("value")}
                 </span>
               ) : (
-                ''
+                ""
               )}
               {$$original ? (
-                <span style={{ textDecoration: 'line-through' }}>
-                  原价{data.get('original').get('value')}
+                <span style={{ textDecoration: "line-through" }}>
+                  原价{data.getIn(["original", "value"])}
                 </span>
               ) : (
-                ''
+                ""
               )}
               {$$button ? (
-                <Button style={{ width: '100%' }}>
-                  {data.get('btn_content').get('value')}
+                <Button style={{ width: "100%" }}>
+                  {data.get("btn_content").get("value")}
                 </Button>
               ) : (
-                ''
+                ""
               )}
             </Col>
           );

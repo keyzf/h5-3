@@ -4,7 +4,6 @@ export const ItemAtom = styled.div`
   // 长宽
   width: ${props => props.width + 'px'};
   height: ${props => props.height + 'px'};
-  margin: auto;
   // 动画移动
   touch-action: none;
   transform: translate(

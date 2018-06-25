@@ -24,7 +24,7 @@ class H5RenderCommon extends PureComponent {
     };
     return (
       <RenderBg {...bg_config}>
-        <div style={{ width: '100%', height: '100vh', overflow: 'auto' }}>
+        <div style={{ width: '100%', height: '100vh', overflow: 'auto',padding:'0 5px 0 5px'}}>
           {select_data.map((ui_data, index) => {
             const advanced_settings = {
               // 动画移动

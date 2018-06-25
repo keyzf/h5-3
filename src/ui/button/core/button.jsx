@@ -9,11 +9,12 @@ class ButtonUi extends React.Component {
       btn_url: customize.getIn(['btn_url', 'value']),
       shadow: customize.getIn(['shadow', 'value']),
       radius: customize.getIn(['radius', 'value']),
+      font_color:customize.get('font_color'),
     };
     return (
       <ButtonAtom {...advanced_settings}>
-        {customize.get('content').get('value')
-          ? customize.get('content').get('value')
+        {customize.getIn(['content','value'])
+          ? customize.getIn(['content','value'])
           : '基础按钮'}
       </ButtonAtom>
     );
