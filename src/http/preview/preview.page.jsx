@@ -1,12 +1,18 @@
-import React from 'react';
+/**
+ * preview 页面
+ */
+import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import HeaderPreviewView from './header.page';
 import ContentPreviewView from './content.page';
-import EditorPreviewView from '../../containers/preview/preview_editor';
+import EditorPreviewView from './preview_editor';
 import style from './preview.module.scss';
 
-class PreviewView extends React.Component {
+/**
+ * 页面区域划分
+ */
+class PreviewView extends PureComponent {
   render() {
     const { Header, Sider, Content } = Layout;
     return (

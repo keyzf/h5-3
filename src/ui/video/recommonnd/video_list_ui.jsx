@@ -1,62 +1,39 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
 import { choose_action, select_action } from '../../../redux/action';
 import { $$video_database } from '../video_database';
-// import LazyLoad from "react-lazyload";
-// import axios from "axios";
+import axios from 'axios';
+import style from './video_list.module.scss';
 
 /**
  * 文本组件选择栏
  */
-class VideoListUI extends React.Component {
+class VideoListUI extends PureComponent {
   state = {
-    ajax_url: [
-      {
-        dsc: '视频一',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-      {
-        dsc: '视频二',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-      {
-        dsc: '视频三',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-      {
-        dsc: '视频四',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-      {
-        dsc: '视频五',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-      {
-        dsc: '视频六',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4',
-      },
-    ],
+    ajax_url: [],
   };
+
   // 在渲染之前,通过ajax 获取数据
-  // componentDidMount() {
-  //   // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
-  //   axios({
-  //     method: 'get',
-  //     url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
-  //   })
-  //     .then(response => {
-  //       this.setState({
-  //         ajax_url: response.data,
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       // 暑促错误信息，生产环境中需要剔除
-  //       console.log(error);
-  //     });
-  // }
+  componentDidMount() {
+    // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/recommend_video',
+    })
+      .then(response => {
+        this.setState({
+          ajax_url: response.data,
+        });
+      })
+      .catch(function(error) {
+        // 暑促错误信息，生产环境中需要剔除
+        console.log(error);
+      });
+  }
+
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -86,15 +63,21 @@ class VideoListUI extends React.Component {
           return (
             <Row
               key={index}
-              className={'components_hover'}
+              className={style.components_hover}
               onClick={this.transfer.bind(
                 this,
                 $$video_database('video', data.url)
               )}
             >
-              <Col span={8}>{data.dsc}</Col>
-              <Col span={8}>其他信息</Col>
-              <Col span={8}>选择</Col>
+              <Col span={8} className={style.hide_text}>
+                {data.dsc}
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                其他信息
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                选择
+              </Col>
             </Row>
           );
         })}

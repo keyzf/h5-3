@@ -1,6 +1,8 @@
-import React from 'react';
+/**
+ * ui 选择展示栏
+ */
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { visual_ui_show_action } from '../../redux/action';
 import { Layout } from 'antd';
 import {
   template_img_data,
@@ -8,13 +10,22 @@ import {
   template_music_data,
   template_text_data,
   template_video_data,
-} from '../../containers/visual/select_database';
-import SelectCommon from '../../common/visual/select_common';
-import InterActiveSelect from '../../containers/visual/interactive';
+} from '../../containers/visual/side/select_database';
+import SelectCommon from '../../containers/visual/side/select_common';
+import InterActiveSelect from '../../containers/visual/side/interactive';
 
-class VisualUiShowView extends React.Component {
+/**
+ * 接收数据源数据，判断显示那种ui
+ */
+class VisualUiShowView extends PureComponent {
   render() {
     const $$name = this.props.visual_ui_show_value.data.get('name');
+    const { Sider } = Layout;
+    /**
+     * 根据获取不同的名称，展示出不同的组件
+     * @param $$name
+     * @returns {*}
+     */
     const show = $$name => {
       if ($$name === 'text') {
         return <SelectCommon data={template_text_data} />;
@@ -38,12 +49,12 @@ class VisualUiShowView extends React.Component {
     return (
       <React.Fragment>
         {$$name ? (
-          <Layout.Sider
+          <Sider
             width={330}
             style={{ height: '100%', background: 'transparent' }}
           >
             {show($$name)}
-          </Layout.Sider>
+          </Sider>
         ) : (
           ''
         )}
@@ -52,17 +63,18 @@ class VisualUiShowView extends React.Component {
   }
 }
 
+/**
+ * 读取数据源数据
+ * @param state
+ * @returns {{visual_ui_show_value: *}}
+ */
 const mapStateToProps = state => {
   return {
     visual_ui_show_value: state.visual_ui_show_reducer,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    visual_ui_show_upData: (data, meta, error) =>
-      dispatch(visual_ui_show_action(data, meta, error)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VisualUiShowView);
+/**
+ * 高阶组件 hoc
+ */
+export default connect(mapStateToProps, '')(VisualUiShowView);

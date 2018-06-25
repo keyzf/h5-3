@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const $$button = (name, width, height) => {
+const $$button = (name, height, font_color) => {
   return {
     customize: {
       name: name,
@@ -8,22 +8,24 @@ const $$button = (name, width, height) => {
       shadow: { value: undefined },
       radius: { value: '' },
       content: { value: '' },
+      font_color: font_color,
     },
     advance: {
       color: '',
       img: '',
+      crop_img: '',
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: width }, height: { value: height } },
+      perimeter: { width: { value: 320 }, height: { value: height } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
     },
   };
 };
 
-const $$button_database = fromJS($$button('button', 320, 40));
+const $$button_database = fromJS($$button('button', 40, 'black'));
 
-const $$one_button_database = fromJS($$button('one_button', 320, 40));
+const $$one_button_database = fromJS($$button('one_button', 40, 'white'));
 
 export { $$button_database, $$one_button_database };

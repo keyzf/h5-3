@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 // img 根级数据集函数
-const $$img_func_database = (name, item, layout, width, height) => {
+const $$img_func_database = (name, item, layout, height) => {
   return fromJS({
     // 基础编辑属性
     customize: {
@@ -9,6 +9,7 @@ const $$img_func_database = (name, item, layout, width, height) => {
       base: {
         show_element: { value: undefined }, // 元素显示
         layout: { value: layout }, // 布局
+        font_color: '#000', //字体颜色
       },
     },
     // 高级编辑属性
@@ -19,7 +20,7 @@ const $$img_func_database = (name, item, layout, width, height) => {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: width }, height: { value: height } },
+      perimeter: { width: { value: 320 }, height: { value: height } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
     },
   });
@@ -47,7 +48,8 @@ const $$single_img_database = $$img_func_database(
   'single_img',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg',
+      img: 'http://src.e7wei.com/0.41802468997793696.png',
+      crop_img: 'http://src.e7wei.com/0.41802468997793696.png',
       title: { value: '图片备注' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -62,7 +64,6 @@ const $$single_img_database = $$img_func_database(
     },
   ],
   0,
-  320,
   213
 );
 // 2. 横排排列图
@@ -70,10 +71,11 @@ const $$grid_img_database = $$img_func_database(
   'grid_img',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg',
+      img: ' http://src.e7wei.com/0.3528611499486174.png',
+      crop_img: ' http://src.e7wei.com/0.3528611499486174.png',
       title: { value: '这里是图片标题' },
       content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
+        value: '这里是图片描述，这里是图片描述',
       },
       link: { value: '' },
       width: { value: '' },
@@ -84,10 +86,11 @@ const $$grid_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg',
+      img: 'http://src.e7wei.com/0.27458586147898956.png',
+      crop_img: 'http://src.e7wei.com/0.27458586147898956.png',
       title: { value: '这里是图片标题' },
       content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
+        value: '这里是图片描述，这里是图片描述',
       },
       link: { value: '' },
       width: { value: '' },
@@ -98,10 +101,11 @@ const $$grid_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg2.jpg',
+      img: 'http://src.e7wei.com/0.9035000016293588.png',
+      crop_img: 'http://src.e7wei.com/0.9035000016293588.png',
       title: { value: '这里是图片标题' },
       content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
+        value: '这里是图片描述，这里是图片描述',
       },
       link: { value: '' },
       width: { value: '' },
@@ -112,10 +116,11 @@ const $$grid_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg',
+      img: 'http://src.e7wei.com/0.4045054410741806.png',
+      crop_img: 'http://src.e7wei.com/0.4045054410741806.png',
       title: { value: '这里是图片标题' },
       content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
+        value: '这里是图片描述，这里是图片描述',
       },
       link: { value: '' },
       width: { value: '' },
@@ -127,15 +132,15 @@ const $$grid_img_database = $$img_func_database(
     },
   ],
   2,
-  320,
-  350
+  450
 );
 // 3. 竖排排列图
 const $$list_img_database = $$img_func_database(
   'list_img',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg.jpg',
+      img: 'http://src.e7wei.com/0.35113021335874683.png',
+      crop_img: 'http://src.e7wei.com/0.35113021335874683.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -149,7 +154,8 @@ const $$list_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg0.jpg',
+      img: 'http://src.e7wei.com/0.2450519793780439.png',
+      crop_img: 'http://src.e7wei.com/0.2450519793780439.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -163,21 +169,8 @@ const $$list_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg2.jpg',
-      title: { value: '这里是图片标题' },
-      content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
-      },
-      link: { value: '' },
-      width: { value: '' },
-      height: { value: '' },
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      },
-    },
-    {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg',
+      img: 'http://src.e7wei.com/0.8020362485232375.png',
+      crop_img: 'http://src.e7wei.com/0.8020362485232375.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -192,15 +185,15 @@ const $$list_img_database = $$img_func_database(
     },
   ],
   1,
-  320,
-  400
+  500
 );
 // 4. 滑动图
 const $$slider_img_database = $$img_func_database(
   'slider_img',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg.jpg',
+      img: 'http://src.e7wei.com/0.385996187680848.png',
+      crop_img: 'http://src.e7wei.com/0.385996187680848.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -214,7 +207,8 @@ const $$slider_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg0.jpg',
+      img: 'http://src.e7wei.com/0.3713184937697187.png',
+      crop_img: 'http://src.e7wei.com/0.3713184937697187.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -228,7 +222,8 @@ const $$slider_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg2.jpg',
+      img: 'http://src.e7wei.com/0.2893359930657198.png',
+      crop_img: 'http://src.e7wei.com/0.2893359930657198.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -242,7 +237,23 @@ const $$slider_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg',
+      img: 'http://src.e7wei.com/0.6791210836134676.png',
+      crop_img: 'http://src.e7wei.com/0.6791210836134676.png',
+      title: { value: '这里是图片标题' },
+      content: {
+        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
+      },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.26510017936261243.png',
+      crop_img: 'http://src.e7wei.com/0.26510017936261243.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -257,7 +268,6 @@ const $$slider_img_database = $$img_func_database(
     },
   ],
   0,
-  320,
   200
 );
 // 5. 轮播图
@@ -265,7 +275,8 @@ const $$carousel_img_database = $$img_func_database(
   'carousel_img',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg.jpg',
+      img: 'http://src.e7wei.com/0.3078424418116057.png',
+      crop_img: 'http://src.e7wei.com/0.3078424418116057.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -279,7 +290,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg0.jpg',
+      img: 'http://src.e7wei.com/0.9703241613472722.png',
+      crop_img: 'http://src.e7wei.com/0.9703241613472722.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -293,7 +305,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg2.jpg',
+      img: 'http://src.e7wei.com/0.5336862457968479.png',
+      crop_img: 'http://src.e7wei.com/0.5336862457968479.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -307,7 +320,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/bg3.jpg',
+      img: 'http://src.e7wei.com/0.7599642934946711.png',
+      crop_img: 'http://src.e7wei.com/0.7599642934946711.png',
       title: { value: '这里是图片标题' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -322,7 +336,6 @@ const $$carousel_img_database = $$img_func_database(
     },
   ],
   0,
-  320,
   165
 );
 
@@ -332,6 +345,8 @@ const $$one_img_database = $$img_func_database(
   [
     {
       img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160441_mfnkDr?x-oss-process=image/resize,w_116/format,jpg',
+      crop_img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160441_mfnkDr?x-oss-process=image/resize,w_116/format,jpg',
       title: { value: '居家办公' },
       content: {
@@ -348,6 +363,8 @@ const $$one_img_database = $$img_func_database(
     {
       img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160450_hkfRNh?x-oss-process=image/resize,w_116/format,jpg',
+      crop_img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160450_hkfRNh?x-oss-process=image/resize,w_116/format,jpg',
       title: { value: '数码潮品' },
       content: {
         value: '苹果正在开发特别的东西',
@@ -362,6 +379,8 @@ const $$one_img_database = $$img_func_database(
     },
     {
       img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160457_tGE6Ny?x-oss-process=image/resize,w_116/format,jpg',
+      crop_img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160457_tGE6Ny?x-oss-process=image/resize,w_116/format,jpg',
       title: { value: '美食茶艺' },
       content: {
@@ -378,6 +397,8 @@ const $$one_img_database = $$img_func_database(
     {
       img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160514_76XecX?x-oss-process=image/resize,w_116/format,jpg',
+      crop_img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170117160514_76XecX?x-oss-process=image/resize,w_116/format,jpg',
       title: { value: '音乐达人' },
       content: {
         value: '只要世上还有不灭的光 远方也不算太远',
@@ -392,7 +413,31 @@ const $$one_img_database = $$img_func_database(
     },
   ],
   1,
-  320,
+  400
+);
+
+// 推荐组件 2
+const $$two_img_database = $$img_func_database(
+  'two_img',
+  [
+    {
+      img: 'http://src.e7wei.com/0.017786148335042107.png',
+      crop_img: 'http://src.e7wei.com/0.017786148335042107.png',
+      title: { value: '居家生活' },
+      content: {
+        value:
+          '身为颜值控、装备党的她，在能力范围内只选最好,想把喜欢的北欧经典设计都搬回家！',
+      },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  1,
   400
 );
 
@@ -405,4 +450,5 @@ export {
   $$carousel_img_database,
   $$img_addItem_database,
   $$one_img_database,
+  $$two_img_database,
 };

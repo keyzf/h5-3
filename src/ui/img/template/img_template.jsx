@@ -24,7 +24,7 @@ export const CarouselImgTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/huandeng.png'}
+          src={'http://src.e7wei.com/0.5602715866542995.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -45,7 +45,7 @@ export const SliderImgTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/henghua.png'}
+          src={'http://src.e7wei.com/0.003189428486113366.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -66,7 +66,7 @@ export const ListImgTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/list.png'}
+          src={'http://src.e7wei.com/0.5666231334403333.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -87,7 +87,7 @@ export const GridImgTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/gezi.png'}
+          src={'http://src.e7wei.com/0.5593881604308839.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -108,7 +108,7 @@ export const SingleImgTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/general-img.png'}
+          src={'http://src.e7wei.com/0.46851856602664643.png'}
           alt={'horizontal_text_img'}
         />
       </Col>

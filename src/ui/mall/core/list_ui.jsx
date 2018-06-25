@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col, Button } from 'antd';
 
-class ListMallUi extends React.Component {
+class ListMallUi extends PureComponent {
   render() {
     // 将接收到的信息分解提取
     const customize = this.props.data.get('customize');
     const $$show_element = customize.getIn(['base', 'show_element', 'value']);
     const $$layout = customize.getIn(['base', 'layout', 'value']);
+    const font_color = customize.getIn(['base', 'font_color']);
     // 将可需要判断是否存在的属性提取出来
     let $$title = true;
     let $$content = true;
@@ -68,18 +69,18 @@ class ListMallUi extends React.Component {
                 {$$img ? (
                   <img
                     width={
-                      data.get('width').get('value')
-                        ? data.get('width').get('value')
+                      data.getIn(['width', 'value'])
+                        ? data.getIn(['width', 'value'])
                         : '100%'
                     }
                     height={
-                      data.get('height').get('value')
-                        ? data.get('height').get('value')
-                        : 'auto'
+                      data.getIn(['height', 'value'])
+                        ? data.getIn(['height', 'value'])
+                        : '130px'
                     }
                     src={
-                      data.get('img')
-                        ? data.get('img')
+                      data.get('crop_img')
+                        ? data.get('crop_img')
                         : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
                     }
                     alt={'img'}
@@ -96,9 +97,10 @@ class ListMallUi extends React.Component {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      color: font_color,
                     }}
                   >
-                    {data.get('title').get('value')}
+                    {data.getIn(['title', 'value'])}
                   </div>
                 ) : (
                   ''
@@ -109,9 +111,10 @@ class ListMallUi extends React.Component {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      color: font_color,
                     }}
                   >
-                    {data.get('content').get('value')}
+                    {data.getIn(['content', 'value'])}
                   </div>
                 ) : (
                   ''

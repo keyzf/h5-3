@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import { fromJS, List } from 'immutable';
 import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
 
-class NormalLoginForm extends React.Component {
+class NormalLoginForm extends PureComponent {
   handleSubmit = e => {
     //{{title:'',value:''},{title:'',value:''},{title:'',value:''}}
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', List(fromJS(values)).toJS());
       }
     });
   };
@@ -16,7 +17,6 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const customize = this.props.data.get('customize');
     const FormItem = Form.Item;
-
     const radioStyle = {
       display: 'block',
       height: '30px',
@@ -31,7 +31,6 @@ class NormalLoginForm extends React.Component {
         },
       };
     };
-
     return (
       <Form
         onSubmit={this.handleSubmit.bind(this)}
@@ -40,7 +39,7 @@ class NormalLoginForm extends React.Component {
       >
         {customize.get('item').map((data, index) => {
           return (
-            <div key={index}>
+            <React.Fragment key={index}>
               {data.get('type') === 'radio' ? (
                 <FormItem
                   {...form_item_style(`${data.get('title').get('value')}`)}
@@ -62,11 +61,9 @@ class NormalLoginForm extends React.Component {
               )}
               {data.get('type') === 'input' ? (
                 <FormItem
-                  {...form_item_style(`${data.get('title').get('value')}`)}
+                  {...form_item_style(`${data.getIn(['title', 'value'])}`)}
                 >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Input value={data.getIn(['option', 'value'])} />
-                  )}
+                  {getFieldDecorator(`${data.get('decorator')}`)(<Input />)}
                 </FormItem>
               ) : (
                 ''
@@ -104,10 +101,9 @@ class NormalLoginForm extends React.Component {
               ) : (
                 ''
               )}
-            </div>
+            </React.Fragment>
           );
         })}
-
         <FormItem key={'asfdasdf'}>
           <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
             提交

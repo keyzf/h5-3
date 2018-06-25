@@ -1,7 +1,13 @@
-import React from 'react';
-import { Form, Input } from 'antd';
+/**
+ * img 单项 表单
+ */
+import React, { PureComponent } from 'react';
+import { Form, Input, InputNumber } from 'antd';
 
-class ImgItemForm extends React.Component {
+/**
+ * img 单项 表单
+ */
+class ImgItemForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { TextArea } = Input;
@@ -17,13 +23,16 @@ class ImgItemForm extends React.Component {
     };
 
     return (
-      //TODO 这里报错需要后期处理
       <Form hideRequiredMark>
-        <Form.Item {...form_item_style('长度')}>
-          {getFieldDecorator('height')(<Input />)}
+        <Form.Item {...form_item_style('图片长度')}>
+          {getFieldDecorator('height')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
-        <Form.Item {...form_item_style('宽度')}>
-          {getFieldDecorator('width')(<Input />)}
+        <Form.Item {...form_item_style('图片宽度')}>
+          {getFieldDecorator('width')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
         {this.props.name === 'single_img' ? (
           <Form.Item {...form_item_style('备注')}>
@@ -49,6 +58,9 @@ class ImgItemForm extends React.Component {
   }
 }
 
+/**
+ * 高阶组件 hoc
+ */
 export default Form.create({
   // 双向绑定
   onFieldsChange(props, changedFields) {

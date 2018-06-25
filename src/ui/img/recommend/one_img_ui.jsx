@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 
-class OneImgUi extends React.Component {
+class OneImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
+    const font_color = customize.getIn(['base', 'font_color']);
 
     const col = number => {
       if (number === 1) {
@@ -41,24 +42,50 @@ class OneImgUi extends React.Component {
               {index % 2 === 0 ? (
                 <React.Fragment>
                   <Col span={12}>
-                    <img
-                      width={
-                        data.get('width').get('value')
-                          ? data.get('width').get('value')
-                          : '100%'
-                      }
-                      height={
-                        data.get('height').get('value')
-                          ? data.get('height').get('value')
-                          : 'auto'
-                      }
-                      src={
-                        data.get('img')
-                          ? data.get('img')
-                          : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                      }
-                      alt={'img'}
-                    />
+                    {data.getIn(['link', 'value']) === '' ? (
+                      <img
+                        width={
+                          data.get('width').get('value')
+                            ? data.get('width').get('value')
+                            : '100%'
+                        }
+                        height={
+                          data.get('height').get('value')
+                            ? data.get('height').get('value')
+                            : 'auto'
+                        }
+                        src={
+                          data.get('img')
+                            ? data.get('img')
+                            : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                        }
+                        alt={'img'}
+                      />
+                    ) : (
+                      <a
+                        href={data.getIn(['link', 'value'])}
+                        style={{ color: font_color }}
+                      >
+                        <img
+                          width={
+                            data.get('width').get('value')
+                              ? data.get('width').get('value')
+                              : '100%'
+                          }
+                          height={
+                            data.get('height').get('value')
+                              ? data.get('height').get('value')
+                              : 'auto'
+                          }
+                          src={
+                            data.get('img')
+                              ? data.get('img')
+                              : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                          }
+                          alt={'img'}
+                        />
+                      </a>
+                    )}
                   </Col>
                   <Col span={12}>
                     {$$show_element_title ? (
@@ -69,6 +96,7 @@ class OneImgUi extends React.Component {
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
+                          color: font_color,
                         }}
                       >
                         {data.get('title').get('value')}
@@ -83,6 +111,7 @@ class OneImgUi extends React.Component {
                           justifyContent: 'center',
                           alignItems: 'center',
                           overflow: 'hidden',
+                          color: font_color,
                         }}
                       >
                         {data.getIn(['content', 'value'])}
@@ -101,6 +130,7 @@ class OneImgUi extends React.Component {
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
+                          color: font_color,
                         }}
                       >
                         {data.get('title').get('value')}
@@ -115,6 +145,7 @@ class OneImgUi extends React.Component {
                           justifyContent: 'center',
                           alignItems: 'center',
                           overflow: 'hidden',
+                          color: font_color,
                         }}
                       >
                         {data.getIn(['content', 'value'])}
@@ -122,24 +153,50 @@ class OneImgUi extends React.Component {
                     )}
                   </Col>
                   <Col span={12}>
-                    <img
-                      width={
-                        data.get('width').get('value')
-                          ? data.get('width').get('value')
-                          : '100%'
-                      }
-                      height={
-                        data.get('height').get('value')
-                          ? data.get('height').get('value')
-                          : 'auto'
-                      }
-                      src={
-                        data.get('img')
-                          ? data.get('img')
-                          : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                      }
-                      alt={'img'}
-                    />
+                    {data.getIn(['link', 'value']) === '' ? (
+                      <img
+                        width={
+                          data.get('width').get('value')
+                            ? data.get('width').get('value')
+                            : '100%'
+                        }
+                        height={
+                          data.get('height').get('value')
+                            ? data.get('height').get('value')
+                            : 'auto'
+                        }
+                        src={
+                          data.get('img')
+                            ? data.get('img')
+                            : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                        }
+                        alt={'img'}
+                      />
+                    ) : (
+                      <a
+                        href={data.getIn(['link', 'value'])}
+                        style={{ color: font_color }}
+                      >
+                        <img
+                          width={
+                            data.get('width').get('value')
+                              ? data.get('width').get('value')
+                              : '100%'
+                          }
+                          height={
+                            data.get('height').get('value')
+                              ? data.get('height').get('value')
+                              : 'auto'
+                          }
+                          src={
+                            data.get('img')
+                              ? data.get('img')
+                              : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                          }
+                          alt={'img'}
+                        />
+                      </a>
+                    )}
                   </Col>
                 </React.Fragment>
               )}

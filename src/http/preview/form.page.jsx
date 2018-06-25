@@ -7,10 +7,12 @@ class FormPreviewView extends React.Component {
     return (
       <Form layout="vertical">
         <Form.Item label="标题">
-          {getFieldDecorator('title')(<Input />)}
+          {getFieldDecorator('title')(<Input placeholder="请输入标题" />)}
         </Form.Item>
         <Form.Item label="描述">
-          {getFieldDecorator('content')(<Input.TextArea rows={4} />)}
+          {getFieldDecorator('content')(
+            <Input.TextArea rows={4} placeholder="请输入推广简介" />
+          )}
         </Form.Item>
       </Form>
     );

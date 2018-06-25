@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 
-class ListImgUi extends React.Component {
+class ListImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
 
@@ -22,6 +22,8 @@ class ListImgUi extends React.Component {
       }
     };
     const $$show_element = customize.getIn(['base', 'show_element', 'value']);
+    const font_color = customize.getIn(['base', 'font_color']);
+    console.log(customize, font_color);
     const $$show_element_title =
       $$show_element !== undefined ? $$show_element[0] : '';
     const $$show_element_content =
@@ -38,24 +40,29 @@ class ListImgUi extends React.Component {
               span={col(customize.getIn(['base', 'layout', 'value']))}
             >
               <Col span={12}>
-                <img
-                  width={
-                    data.get('width').get('value')
-                      ? data.get('width').get('value')
-                      : '100%'
-                  }
-                  height={
-                    data.get('height').get('value')
-                      ? data.get('height').get('value')
-                      : 'auto'
-                  }
-                  src={
-                    data.get('img')
-                      ? data.get('img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                  }
-                  alt={'img'}
-                />
+                <a
+                  href={data.getIn(['link', 'value'])}
+                  style={{ color: font_color }}
+                >
+                  <img
+                    width={
+                      data.getIn(['width', 'value'])
+                        ? data.getIn(['width', 'value'])
+                        : '100%'
+                    }
+                    height={
+                      data.getIn(['height', 'value'])
+                        ? data.getIn(['height', 'value'])
+                        : 'auto'
+                    }
+                    src={
+                      data.get('crop_img')
+                        ? data.get('crop_img')
+                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                    }
+                    alt={'img'}
+                  />
+                </a>
                 <br />
               </Col>
               <Col span={12}>
@@ -67,9 +74,11 @@ class ListImgUi extends React.Component {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      alignCenter: 'center',
+                      color: font_color,
                     }}
                   >
-                    {data.get('title').get('value')}
+                    {data.getIn(['title', 'value'])}
                   </div>
                 )}
                 {$$show_element_content ? (
@@ -80,7 +89,8 @@ class ListImgUi extends React.Component {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      overflow: 'hidden',
+                      alignCenter: 'center',
+                      color: font_color,
                     }}
                   >
                     {data.getIn(['content', 'value'])}

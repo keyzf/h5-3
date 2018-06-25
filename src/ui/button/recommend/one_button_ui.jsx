@@ -9,6 +9,7 @@ class OneButtonUi extends React.Component {
       btn_url: customize.getIn(['btn_url', 'value']),
       shadow: customize.getIn(['shadow', 'value']),
       radius: customize.getIn(['radius', 'value']),
+      font_color: customize.get('font_color'),
     };
     return (
       <ButtonAtom {...advanced_settings}>
@@ -16,7 +17,7 @@ class OneButtonUi extends React.Component {
           style={{
             boxShadow:
               '0 5px 20px 0 rgba(0,0,0,0.2), 0 13px 24px -11px rgba(233,30,99,0.6)',
-            color: '#fff',
+            color: customize.get('font_color'),
             backgroundColor: '#e91e63',
             width: '100%',
             height: '100%',

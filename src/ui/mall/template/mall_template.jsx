@@ -24,7 +24,7 @@ export const ListMallTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/list.png'}
+          src={'http://src.e7wei.com/0.5666231334403333.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -45,7 +45,7 @@ export const GridMallTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/gezi.png'}
+          src={'http://src.e7wei.com/0.5593881604308839.png'}
           alt={'horizontal_text_img'}
         />
       </Col>

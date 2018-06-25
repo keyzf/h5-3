@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Menu, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import { $$logo_database } from '../../common/visual/database/logo_database_common';
+import style from './header.module.scss';
 
 class HeaderReleaseView extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class HeaderReleaseView extends React.Component {
         overflow: 'hidden',
       },
     };
-    const img_col = {
+    const LogoCol = {
       xs: 5,
       sm: 5,
       md: 5,
@@ -39,13 +39,14 @@ class HeaderReleaseView extends React.Component {
     };
     return (
       <Row {...Layout}>
-        <Col {...img_col}>
-          <img
-            src={$$logo_database.get('url')}
-            width={$$logo_database.get('width')}
-            height={$$logo_database.get('height')}
-            alt={'e7wei_logo'}
-          />
+        <Col className={style.col_center} {...LogoCol}>
+          <Menu theme={'dark'} mode={'horizontal'}>
+            <Menu.Item>
+              <a href={'https://www.e7wei.com/'}>
+                <div className={style.logo}>易企微</div>
+              </a>
+            </Menu.Item>
+          </Menu>
         </Col>
         <Col {...offset_col} />
         <Col {...close_col}>

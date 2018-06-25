@@ -10,6 +10,7 @@ export const ButtonAtom = styled.button`
   outline: none;
   border: none;
   background: transparent;
+  color: ${props => props.font_color};
   // 圆角
   border-radius: ${props => (props.radius ? props.radius + 'px' : 'null')};
   // 阴影

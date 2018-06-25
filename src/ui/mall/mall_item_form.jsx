@@ -1,7 +1,7 @@
-import React from 'react';
-import { Form, Input } from 'antd';
+import React, { PureComponent } from 'react';
+import { Form, Input, InputNumber } from 'antd';
 
-class ImgItemForm extends React.Component {
+class MallItemForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const form_item_style = label_name => {
@@ -18,10 +18,14 @@ class ImgItemForm extends React.Component {
     return (
       <Form hideRequiredMark>
         <Form.Item {...form_item_style('图片长度')}>
-          {getFieldDecorator('height')(<Input />)}
+          {getFieldDecorator('height')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
         <Form.Item {...form_item_style('图片宽度')}>
-          {getFieldDecorator('width')(<Input />)}
+          {getFieldDecorator('width')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
         <Form.Item {...form_item_style('图片链接')}>
           {getFieldDecorator('img_url')(<Input />)}
@@ -30,13 +34,17 @@ class ImgItemForm extends React.Component {
           {getFieldDecorator('title')(<Input />)}
         </Form.Item>
         <Form.Item {...form_item_style('内容')}>
-          {getFieldDecorator('content')(<Input />)}
+          {getFieldDecorator('content')(<Input.TextArea rows={3} />)}
         </Form.Item>
         <Form.Item {...form_item_style('现价')}>
-          {getFieldDecorator('current')(<Input />)}
+          {getFieldDecorator('current')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
         <Form.Item {...form_item_style('原价')}>
-          {getFieldDecorator('original')(<Input />)}
+          {getFieldDecorator('original')(
+            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
+          )}
         </Form.Item>
         <Form.Item {...form_item_style('按钮内容')}>
           {getFieldDecorator('btn_content')(<Input />)}
@@ -95,4 +103,4 @@ export default Form.create({
       }),
     };
   },
-})(ImgItemForm);
+})(MallItemForm);

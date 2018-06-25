@@ -23,7 +23,7 @@ export const VerticalTextTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/text2.png'}
+          src={'http://src.e7wei.com/0.33359334389678663.png'}
           alt={'horizontal_text_img'}
         />
       </Col>
@@ -42,7 +42,7 @@ export const HorizontalTextTemplate = () => {
     <Row type={'flex'} gutter={16}>
       <Col span={6} style={default_text}>
         <img
-          src={'http://marketing.xiuzan.com/src/images/form/text.png'}
+          src={'http://src.e7wei.com/0.15285884372691427.png'}
           alt={'horizontal_text_img'}
         />
       </Col>

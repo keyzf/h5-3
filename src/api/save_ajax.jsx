@@ -19,7 +19,6 @@ class VisualSaveAjax extends PureComponent {
     // const component_data = this.props.select_value.data.toJS();
     // // 用户设置的信息
     // const html5_value = this.props.html5_value.data.toJS();
-
     // axios.post('/')
     //   .then(function (response) {
     //     console.log(response);

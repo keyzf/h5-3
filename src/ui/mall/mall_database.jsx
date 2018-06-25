@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 // 创建核心组件函数
-const $$mall_func_database = (name, item, layout, width, height) => {
+const $$mall_func_database = (name, item, layout, height) => {
   return fromJS({
     // 基础设置
     customize: {
@@ -10,6 +10,7 @@ const $$mall_func_database = (name, item, layout, width, height) => {
         show_element: { value: undefined },
         // 一行显示个数
         layout: { value: layout },
+        font_color: '#000', //字体颜色
       },
       item: item,
     },
@@ -17,11 +18,12 @@ const $$mall_func_database = (name, item, layout, width, height) => {
     advance: {
       color: '',
       img: '',
+      crop_img: '',
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: width }, height: { value: height } },
+      perimeter: { width: { value: 320 }, height: { value: height } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
     },
   });
@@ -29,6 +31,8 @@ const $$mall_func_database = (name, item, layout, width, height) => {
 // 添加组件时的数据集
 const $$mall_item_database = fromJS({
   img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+  crop_img:
+    'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
   img_config: {
     stretching: { value: '' },
     tiling: { value: '' },
@@ -51,7 +55,8 @@ const $$grid_mall_database = $$mall_func_database(
   'grid_mall',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: 'http://src.e7wei.com/0.0029435212707935587.png', //图片
+      crop_img: 'http://src.e7wei.com/0.0029435212707935587.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -70,7 +75,8 @@ const $$grid_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: ' http://src.e7wei.com/0.412080779609844.png ', //图片
+      crop_img: ' http://src.e7wei.com/0.412080779609844.png ', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -89,7 +95,8 @@ const $$grid_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: 'http://src.e7wei.com/0.5455798769523392.png', //图片
+      crop_img: 'http://src.e7wei.com/0.5455798769523392.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -108,7 +115,8 @@ const $$grid_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: ' http://src.e7wei.com/0.2904350469691286.png', //图片
+      crop_img: ' http://src.e7wei.com/0.2904350469691286.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -128,14 +136,14 @@ const $$grid_mall_database = $$mall_func_database(
     },
   ],
   2,
-  320,
-  455
+  550
 );
 const $$list_mall_database = $$mall_func_database(
   'list_mall',
   [
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: ' http://src.e7wei.com/0.412080779609844.png ', //图片
+      crop_img: ' http://src.e7wei.com/0.412080779609844.png ', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -154,7 +162,8 @@ const $$list_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: 'http://src.e7wei.com/0.5455798769523392.png', //图片
+      crop_img: 'http://src.e7wei.com/0.5455798769523392.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -173,26 +182,8 @@ const $$list_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      }, //图片配置
-      img_url: { value: '' }, // 图片地址
-      //基础内容
-      width: { value: '' }, // 图片宽度
-      height: { value: '' }, //图片高度
-      title: { value: '这里是商品图片' }, //标题
-      content: { value: '这里是商品描述，这里是商品描述' }, //内容
-      //商品价格
-      current: { value: '330' }, //现价
-      original: { value: '600' }, //原价
-      //按钮
-      btn_content: { value: '按钮' }, //按钮内容
-      btn_url: { value: '' }, // 按钮链接
-    },
-    {
-      img: 'https://demos.creative-tim.com/material-kit-pro/assets/img/dg2.jpg', //图片
+      img: 'http://src.e7wei.com/0.979647849432727.png', //图片
+      crop_img: 'http://src.e7wei.com/0.979647849432727.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -212,8 +203,7 @@ const $$list_mall_database = $$mall_func_database(
     },
   ],
   1,
-  320,
-  480
+  550
 );
 
 //recommend
@@ -222,6 +212,8 @@ const $$one_mall_database = $$mall_func_database(
   [
     {
       img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170118110355_8fNJ4b?x-oss-process=image/resize,w_116/format,png', //图片
+      crop_img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170118110355_8fNJ4b?x-oss-process=image/resize,w_116/format,png', //图片
       img_config: {
         stretching: { value: '' },
@@ -243,6 +235,8 @@ const $$one_mall_database = $$mall_func_database(
     {
       img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170118110830_m873dh?x-oss-process=image/resize,w_116/format,png', //图片
+      crop_img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170118110830_m873dh?x-oss-process=image/resize,w_116/format,png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -263,6 +257,8 @@ const $$one_mall_database = $$mall_func_database(
     {
       img:
         'http://pimg.xiuzan.com/xiuzan/2017/01/20170118113237_EdDfdc?x-oss-process=image/resize,w_116/format,png', //图片
+      crop_img:
+        'http://pimg.xiuzan.com/xiuzan/2017/01/20170118113237_EdDfdc?x-oss-process=image/resize,w_116/format,png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -282,7 +278,6 @@ const $$one_mall_database = $$mall_func_database(
     },
   ],
   1,
-  320,
   480
 );
 

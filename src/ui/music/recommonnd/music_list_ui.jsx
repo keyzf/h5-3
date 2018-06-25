@@ -1,62 +1,38 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
 import { choose_action, select_action } from '../../../redux/action';
 import { $$music_database } from '../music_database';
-// import LazyLoad from "react-lazyload";
-// import axios from "axios";
+import axios from 'axios';
+import style from './music_ui.module.scss';
 
 /**
  * 文本组件选择栏
  */
-class MusicListUI extends React.Component {
+class MusicListUI extends PureComponent {
   state = {
-    ajax_url: [
-      {
-        dsc: '音乐一',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-      {
-        dsc: '音乐二',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-      {
-        dsc: '音乐三',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-      {
-        dsc: '音乐四',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-      {
-        dsc: '音乐五',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-      {
-        dsc: '音乐六',
-        url: 'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3',
-      },
-    ],
+    ajax_url: [],
   };
+
   // 在渲染之前,通过ajax 获取数据
-  // componentDidMount() {
-  //   // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
-  //   axios({
-  //     method: 'get',
-  //     url: `https://e7wei-img.oss-cn-beijing.aliyuncs.com/test_json/img_2.json`,
-  //   })
-  //     .then(response => {
-  //       this.setState({
-  //         ajax_url: response.data,
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       // 暑促错误信息，生产环境中需要剔除
-  //       console.log(error);
-  //     });
-  // }
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/recommend_music',
+    })
+      .then(response => {
+        this.setState({
+          ajax_url: response.data,
+        });
+      })
+      .catch(function(error) {
+        // 输出错误信息，生产环境中需要剔除
+        console.log(error);
+      });
+  }
+
   /**
    * 触发两个action
    * 目的---> 1.更新核心数组 select
@@ -86,15 +62,21 @@ class MusicListUI extends React.Component {
           return (
             <Row
               key={index}
-              className={'components_hover'}
+              className={style.components_hover}
               onClick={this.transfer.bind(
                 this,
                 $$music_database('music', data.url)
               )}
             >
-              <Col span={8}>{data.dsc}</Col>
-              <Col span={8}>其他信息</Col>
-              <Col span={8}>选择</Col>
+              <Col span={8} className={style.hide_text}>
+                {data.dsc}
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                其他信息
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                选择
+              </Col>
             </Row>
           );
         })}

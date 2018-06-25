@@ -1,7 +1,13 @@
-import React from 'react';
+/**
+ * img 基础设置
+ */
+import React, { PureComponent } from 'react';
 import { Form, InputNumber, Checkbox } from 'antd';
 
-class ImgBaseForm extends React.Component {
+/**
+ * 可操作表单项
+ */
+class ImgBaseForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const form_item_style = label_name => {
@@ -17,7 +23,7 @@ class ImgBaseForm extends React.Component {
     const plainOptions = ['标题', '内容'];
     return (
       <Form hideRequiredMark>
-        <Form.Item {...form_item_style('组件元素')}>
+        <Form.Item {...form_item_style('元素隐藏')}>
           {getFieldDecorator('show_element')(
             <Checkbox.Group options={plainOptions} />
           )}
@@ -34,6 +40,9 @@ class ImgBaseForm extends React.Component {
   }
 }
 
+/**
+ * 高阶组件 hoc
+ */
 export default Form.create({
   // 双向绑定
   onFieldsChange(props, changedFields) {
