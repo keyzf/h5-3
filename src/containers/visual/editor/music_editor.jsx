@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import { Tabs, Radio, Card } from "antd";
-import { connect } from "react-redux";
-import { choose_action, select_action } from "../../../redux/action";
-import MusicForm from "../../../common/up_music_common/music_form";
-import { Map } from "immutable";
+import React, { PureComponent } from 'react';
+import { Tabs, Radio, Card } from 'antd';
+import { connect } from 'react-redux';
+import { choose_action, select_action } from '../../../redux/action';
+import MusicForm from '../../../common/up_music_common/music_form';
+import { Map } from 'immutable';
 
 class EditorMusic extends PureComponent {
   ImgPartChange = changedFields => {
@@ -12,18 +12,18 @@ class EditorMusic extends PureComponent {
       changedFields.upload.value.file.response !== undefined
     ) {
       const $$new_data = this.props.data.getIn([
-        "data",
-        "customize",
-        "history"
+        'data',
+        'customize',
+        'history',
       ]);
       const cs = $$new_data.push({
         name: changedFields.upload.value.file.name,
         url: `http://p8afqcqwq.bkt.clouddn.com/${
           changedFields.upload.value.file.response.key
-          }`
+        }`,
       });
       this.sendAction(
-        this.props.data.get("data").setIn(["customize", "history"], cs)
+        this.props.data.get('data').setIn(['customize', 'history'], cs)
       );
     }
   };
@@ -33,12 +33,12 @@ class EditorMusic extends PureComponent {
     const $$choose_data = this.props.choose_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
+      $$choose_data.get('number'),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
+    const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
-    this.props.select_upData($$new_select_data, "", false);
+    this.props.select_upData($$new_select_data, '', false);
     this.props.choose_upData(
       $$new_choose_data,
       Map({ content: true, choose: true }),
@@ -47,40 +47,40 @@ class EditorMusic extends PureComponent {
   };
   onChange = e => {
     this.sendAction(
-      this.props.data.get("data").setIn(["customize", "music"], e.target.value)
+      this.props.data.get('data').setIn(['customize', 'music'], e.target.value)
     );
   };
 
   render() {
-    const $$customize = this.props.data.get("data").get("customize");
+    const $$customize = this.props.data.get('data').get('customize');
     const tab_config = {
-      defaultActiveKey: "1",
-      style: { height: "100%" }
+      defaultActiveKey: '1',
+      style: { height: '100%' },
     };
     const radioStyle = {
-      display: "block",
-      height: "30px",
-      lineHeight: "30px"
+      display: 'block',
+      height: '30px',
+      lineHeight: '30px',
     };
     return (
       <Tabs {...tab_config}>
         <Tabs.TabPane tab="内容设置" key="1">
-          <Card title="当前使用" style={{ marginTop: "-18px" }}>
+          <Card title="当前使用" style={{ marginTop: '-18px' }}>
             <audio
-              src={$$customize.get("music")}
+              src={$$customize.get('music')}
               controls
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
             <span>
               <MusicForm
-                upload={{ value: "" }}
+                upload={{ value: '' }}
                 onChange={this.ImgPartChange}
                 child={
                   <div
                     style={{
-                      color: "#19a0fa",
-                      cursor: "pointer",
-                      marginTop: "-20px"
+                      color: '#19a0fa',
+                      cursor: 'pointer',
+                      marginTop: '-20px',
                     }}
                   >
                     &nbsp;添加素材
@@ -92,17 +92,17 @@ class EditorMusic extends PureComponent {
           <Card title="上传记录">
             <Radio.Group
               onChange={this.onChange}
-              value={$$customize.get("music")}
+              value={$$customize.get('music')}
             >
               <Radio
                 style={radioStyle}
                 value={
-                  "https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3"
+                  'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3'
                 }
               >
                 默认
               </Radio>
-              {$$customize.get("history").map((data, index) => {
+              {$$customize.get('history').map((data, index) => {
                 return (
                   <Radio key={index} style={radioStyle} value={data.url}>
                     {data.name}
@@ -120,7 +120,7 @@ class EditorMusic extends PureComponent {
 const mapStateToProps = state => {
   return {
     select_value: state.select_reducer,
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
@@ -129,7 +129,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 

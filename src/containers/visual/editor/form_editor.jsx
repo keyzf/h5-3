@@ -1,11 +1,13 @@
-import React from 'react';
+/**
+ * 表单组件编辑
+ */
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Map, fromJS } from 'immutable';
-import { SketchPicker } from 'react-color';
+import AdvanceEditor from './advance.editor';
 import {
   Tabs,
   Button,
-  Checkbox,
   Popover,
   Icon,
   Card,
@@ -17,8 +19,6 @@ import {
   Input,
 } from 'antd';
 import { choose_action, select_action } from '../../../redux/action';
-
-import UpImgPart from '../../../common/up_img_common/upload_common';
 import {
   $$form_database,
   $$form_item_database,
@@ -27,18 +27,26 @@ import {
   $$from_opt_input,
   $$from_opt_rate,
 } from '../../../ui/form/form_database';
+import { SketchPicker } from 'react-color';
 
-class EditorForm extends React.Component {
-  /**
-   * control mode
-   * @type {{visible: boolean}}
-   */
+/**
+ * 表单组件，设置
+ */
+class EditorForm extends PureComponent {
   state = {
     visible: false,
+    // 默认界面控制器
     item: false,
     number: '',
   };
-
+  /**
+   * 返回默认界面
+   */
+  backItem = () => {
+    this.setState({
+      item: false,
+    });
+  };
   // 修改单个选项值
   changeItem = number => {
     this.setState({
@@ -46,12 +54,7 @@ class EditorForm extends React.Component {
       number: number,
     });
   };
-  // 回到原页面
-  backItem = () => {
-    this.setState({
-      item: false,
-    });
-  };
+
   /**
    * model show
    */
@@ -60,7 +63,6 @@ class EditorForm extends React.Component {
       visible: true,
     });
   };
-
   // close Model
   closeModal = (state, data) => {
     this.setState({
@@ -76,7 +78,6 @@ class EditorForm extends React.Component {
       );
     }
   };
-
   add_opt = opt_name => {
     // data source
     const $$select_data = this.props.select_value.data;
@@ -129,6 +130,24 @@ class EditorForm extends React.Component {
         $$select_data
           .get($$choose_data.get('number'))
           .setIn(['customize', 'item'], $$new_item)
+      );
+    }
+  };
+  opt_add = () => {
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    const name = $$select_data
+      .get($$choose_data.get('number'))
+      .getIn(['customize', 'item', this.state.number, 'type']);
+    if (name === 'radio') {
+      const new_option = $$select_data
+        .get($$choose_data.get('number'))
+        .getIn(['customize', 'item', this.state.number, 'option'])
+        .push('添加项');
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get('number'))
+          .setIn(['customize', 'item', this.state.number, 'option'], new_option)
       );
     }
   };
@@ -214,8 +233,29 @@ class EditorForm extends React.Component {
 
       this.sendAction(fromJS(img_data));
     }
-  };
 
+    if (opt_name === 'title_color') {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get('number'))
+          .setIn(
+            ['customize', 'item', this.state.number, 'title_color'],
+            data.hex
+          )
+      );
+    }
+
+    if (opt_name === 'opt_color') {
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get('number'))
+          .setIn(
+            ['customize', 'item', this.state.number, 'opt_color'],
+            data.hex
+          )
+      );
+    }
+  };
   /**
    * send action
    * Receive: Single component style
@@ -239,7 +279,6 @@ class EditorForm extends React.Component {
       false
     );
   };
-
   handleChange = (inside_index, event) => {
     const $$select_data = this.props.select_value.data;
     const $$choose_data = this.props.choose_value.data;
@@ -255,15 +294,6 @@ class EditorForm extends React.Component {
   CustomizeFormChange = event => {
     const $$select_data = this.props.select_value.data;
     const $$choose_data = this.props.choose_value.data;
-    console.log(
-      $$select_data
-        .get($$choose_data.get('number'))
-        .get('customize')
-        .get('item')
-        .get(this.state.number)
-        .get('title')
-        .get('value')
-    );
     this.sendAction(
       $$select_data
         .get($$choose_data.get('number'))
@@ -274,25 +304,30 @@ class EditorForm extends React.Component {
     );
   };
 
-  render() {
-    // resolve props data
-    const $$ui_text_data = this.props.data.get('data');
-    const $$customize = $$ui_text_data.get('customize');
-    const $$advance = $$ui_text_data.get('advance');
-    /**
-     * reset data
-     */
-    const operations = (
-      <Button onClick={this.editorFeatures.bind(this, 'reset')}>
-        恢复默认
-      </Button>
+  opt_delete = number => {
+    const $$select_data = this.props.select_value.data;
+    const $$choose_data = this.props.choose_value.data;
+    this.sendAction(
+      $$select_data
+        .get($$choose_data.get('number'))
+        .removeIn(['customize', 'item', this.state.number, 'option', number])
     );
+  };
+
+  render() {
+    const $$data = this.props.data.get('data');
+    const $$customize = $$data.get('customize');
+
+    /**
+     * 默认界面显示项
+     * @param title (标题)
+     * @param number (选择的项目号)
+     * @returns {*}
+     */
     const item = (title, number) => (
       <Row gutter={16}>
-        <Col span={16} style={{ padding: '8px' }}>
-          {title}
-        </Col>
-        <Col span={8} style={{ padding: '8px' }}>
+        <Col span={16}>{title}</Col>
+        <Col span={8}>
           <Tooltip title="修改">
             <Icon
               type="edit"
@@ -309,6 +344,16 @@ class EditorForm extends React.Component {
         </Col>
       </Row>
     );
+
+    /**
+     * reset data
+     */
+    const operations = (
+      <Button onClick={this.editorFeatures.bind(this, 'reset')}>
+        恢复默认
+      </Button>
+    );
+
     const form_item_style = label_name => {
       return {
         label: label_name,
@@ -335,41 +380,123 @@ class EditorForm extends React.Component {
         </Col>
       </Row>
     );
+
     return (
-      <div>
+      <Fragment>
         {this.state.item ? (
           <Card
-            title="编辑图集数据"
+            title="表单项编辑"
             extra={<div onClick={this.backItem}>返回</div>}
           >
             <Form>
               <Form.Item {...form_item_style('标题')}>
                 <Input
-                  value={$$customize
-                    .get('item')
-                    .get(this.state.number)
-                    .get('title')
-                    .get('value')}
+                  value={$$customize.getIn([
+                    'item',
+                    this.state.number,
+                    'title',
+                    'value',
+                  ])}
                   onChange={this.CustomizeFormChange.bind(this)}
                 />
               </Form.Item>
             </Form>
+            <Form>
+              <Form.Item {...form_item_style('标题字体色')}>
+                <Popover
+                  content={
+                    <SketchPicker
+                      color={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'title_color',
+                      ])}
+                      onChangeComplete={this.editorFeatures.bind(
+                        this,
+                        'title_color'
+                      )}
+                    />
+                  }
+                  trigger="click"
+                >
+                  <div
+                    style={{
+                      marginTop: '6px',
+                      height: '25px',
+                      width: '100%',
+                      backgroundColor: $$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'title_color',
+                      ]),
+                    }}
+                  />
+                </Popover>
+              </Form.Item>
+            </Form>
+            <Form>
+              <Form.Item {...form_item_style('选项字体色')}>
+                <Popover
+                  content={
+                    <SketchPicker
+                      color={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'opt_color',
+                      ])}
+                      onChangeComplete={this.editorFeatures.bind(
+                        this,
+                        'opt_color'
+                      )}
+                    />
+                  }
+                  trigger="click"
+                >
+                  <div
+                    style={{
+                      marginTop: '6px',
+                      height: '25px',
+                      width: '100%',
+                      backgroundColor: $$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'opt_color',
+                      ]),
+                    }}
+                  />
+                </Popover>
+              </Form.Item>
+            </Form>
             {$$customize
-              .get('item')
-              .get(this.state.number)
-              .get('option')
+              .getIn(['item', this.state.number, 'option'])
               .map((data, inside_index) => {
                 return (
-                  <Form>
-                    <Form.Item {...form_item_style('可选项')}>
-                      <Input
-                        value={data}
-                        onChange={this.handleChange.bind(this, inside_index)}
-                      />
-                    </Form.Item>
-                  </Form>
+                  <Fragment key={inside_index}>
+                    <Form>
+                      <Form.Item {...form_item_style('可选项')}>
+                        <Input
+                          defaultValue={data}
+                          onChange={this.handleChange.bind(this, inside_index)}
+                          addonAfter={
+                            <Icon
+                              className="dynamic-delete-button"
+                              type="minus-circle-o"
+                              onClick={this.opt_delete.bind(this, inside_index)}
+                            />
+                          }
+                        />
+                      </Form.Item>
+                    </Form>
+                  </Fragment>
                 );
               })}
+            <Button
+              type="primary"
+              style={{ width: '100%' }}
+              onClick={this.opt_add}
+            >
+              添加项目
+            </Button>
           </Card>
         ) : (
           <Tabs defaultActiveKey={'1'} tabBarExtraContent={operations}>
@@ -388,7 +515,7 @@ class EditorForm extends React.Component {
                     <Collapse.Panel
                       style={{ marginBottom: '10px' }}
                       disabled
-                      header={item(data.get('title').get('value'), index)}
+                      header={item(data.getIn(['title', 'value']), index)}
                       key={index}
                     />
                   );
@@ -396,107 +523,11 @@ class EditorForm extends React.Component {
               </Card>
             </Tabs.TabPane>
             <Tabs.TabPane tab="高级设置" key="2">
-              <Card title="背景色" style={{ marginTop: '-18px' }}>
-                <Popover
-                  content={
-                    <SketchPicker
-                      color={$$advance.get('color')}
-                      onChangeComplete={this.editorFeatures.bind(this, 'color')}
-                    />
-                  }
-                  trigger="click"
-                >
-                  <Card.Grid
-                    style={{
-                      textAlign: 'center',
-                      width: '45%',
-                      background: $$advance.get('color'),
-                    }}
-                  >
-                    <Icon type="plus" />&nbsp;&nbsp;自定义
-                  </Card.Grid>
-                </Popover>
-              </Card>
-              <Card title="背景图">
-                <Row gutter={16}>
-                  <Col
-                    span={7}
-                    style={{
-                      margin: 'auto',
-                      height: '100px',
-                      border: '1px solid #e7e7e7',
-                      textAlign: 'center',
-                      color: '#e7e7e7',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                    onClick={this.showModal}
-                  >
-                    <img
-                      style={{
-                        verticalAlign: 'middle',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        margin: 'auto',
-                      }}
-                      src={
-                        $$advance.get('img')
-                          ? $$advance.get('img')
-                          : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
-                      }
-                      alt={'img'}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <Button.Group>
-                      <Button onClick={this.showModal}>更换</Button>
-                      <Button
-                        onClick={this.editorFeatures.bind(this, 'delete')}
-                      >
-                        删除
-                      </Button>
-                    </Button.Group>
-                    <br />
-                    <br />
-                    <Row gutter={16}>
-                      <Col span={12}>
-                        <Checkbox
-                          onChange={this.editorFeatures.bind(this, 'tiling')}
-                          defaultValue={$$advance
-                            .get('img_config')
-                            .get('tiling')
-                            .get('value')}
-                        >
-                          平铺
-                        </Checkbox>
-                      </Col>
-                      <Col span={12}>
-                        <Checkbox
-                          onChange={this.editorFeatures.bind(
-                            this,
-                            'stretching'
-                          )}
-                          defaultValue={$$advance
-                            .get('img_config')
-                            .get('stretching')
-                            .get('value')}
-                        >
-                          拉伸
-                        </Checkbox>
-                      </Col>
-                    </Row>
-                    <UpImgPart
-                      visible={this.state.visible}
-                      unvisible={this.closeModal.bind(this)}
-                      img={$$advance.get('img')}
-                    />
-                  </Col>
-                </Row>
-              </Card>
+              <AdvanceEditor data={$$data} />
             </Tabs.TabPane>
           </Tabs>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
@@ -527,4 +558,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+/**
+ * 高阶组件 hoc
+ */
 export default connect(mapStateToProps, mapDispatchToProps)(EditorForm);

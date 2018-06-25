@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
+import { fromJS, List } from 'immutable';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -7,7 +8,7 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', List(fromJS(values)).toJS());
       }
     });
   };

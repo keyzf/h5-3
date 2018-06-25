@@ -32,7 +32,7 @@ import { ButtonUi } from '../../ui/button/core/button';
 import { OneButtonUi } from '../../ui/button/recommend/one_button_ui';
 import { FormUi } from '../../ui/form/core/form';
 import { OneFormUi } from '../../ui/form/recommend/one_form_ui';
-import { ProMusicUi } from "../../ui/music/core/music_ui";
+import { ProMusicUi } from '../../ui/music/core/music_ui';
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）

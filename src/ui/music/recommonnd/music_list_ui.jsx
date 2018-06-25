@@ -1,30 +1,30 @@
-import React, { PureComponent } from "react";
-import { Row, Col } from "antd";
-import { Map } from "immutable";
-import { connect } from "react-redux";
-import QueueAnim from "rc-queue-anim";
-import { choose_action, select_action } from "../../../redux/action";
-import { $$music_database } from "../music_database";
-import axios from "axios";
-import style from "./music_ui.module.scss";
+import React, { PureComponent } from 'react';
+import { Row, Col } from 'antd';
+import { Map } from 'immutable';
+import { connect } from 'react-redux';
+import QueueAnim from 'rc-queue-anim';
+import { choose_action, select_action } from '../../../redux/action';
+import { $$music_database } from '../music_database';
+import axios from 'axios';
+import style from './music_ui.module.scss';
 
 /**
  * 文本组件选择栏
  */
 class MusicListUI extends PureComponent {
   state = {
-    ajax_url: []
+    ajax_url: [],
   };
 
   // 在渲染之前,通过ajax 获取数据
   componentDidMount() {
     axios({
-      method: "get",
-      url: "http://localhost:3001/recommend_music"
+      method: 'get',
+      url: 'http://localhost:3001/recommend_music',
     })
       .then(response => {
         this.setState({
-          ajax_url: response.data
+          ajax_url: response.data,
         });
       })
       .catch(function(error) {
@@ -32,7 +32,6 @@ class MusicListUI extends PureComponent {
         console.log(error);
       });
   }
-
 
   /**
    * 触发两个action
@@ -44,13 +43,13 @@ class MusicListUI extends PureComponent {
     // 将选择的组件塞进老数组中，从而得到新数组
     const select_up_data = this.props.select_value.data.push(data);
     // 更新核心数组
-    this.props.select_upData(select_up_data, "meta", false);
+    this.props.select_upData(select_up_data, 'meta', false);
     // 更新选择组件
     this.props.choose_upData(
       Map({ number: select_up_data.size - 1, data: data }),
       Map({
         content: true,
-        choose: true
+        choose: true,
       }),
       false
     );
@@ -58,7 +57,7 @@ class MusicListUI extends PureComponent {
 
   render() {
     return (
-      <QueueAnim delay={200} type={"bottom"}>
+      <QueueAnim delay={200} type={'bottom'}>
         {this.state.ajax_url.map((data, index) => {
           return (
             <Row
@@ -66,12 +65,18 @@ class MusicListUI extends PureComponent {
               className={style.components_hover}
               onClick={this.transfer.bind(
                 this,
-                $$music_database("music", data.url)
+                $$music_database('music', data.url)
               )}
             >
-              <Col span={8} className={style.hide_text}>{data.dsc}</Col>
-              <Col span={8} className={style.hide_text}>其他信息</Col>
-              <Col span={8} className={style.hide_text}>选择</Col>
+              <Col span={8} className={style.hide_text}>
+                {data.dsc}
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                其他信息
+              </Col>
+              <Col span={8} className={style.hide_text}>
+                选择
+              </Col>
             </Row>
           );
         })}
@@ -82,7 +87,7 @@ class MusicListUI extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    select_value: state.select_reducer
+    select_value: state.select_reducer,
   };
 };
 
@@ -91,7 +96,7 @@ const mapDispatchToProps = dispatch => {
     select_upData: (data, meta, error) =>
       dispatch(select_action(data, meta, error)),
     choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error))
+      dispatch(choose_action(data, meta, error)),
   };
 };
 

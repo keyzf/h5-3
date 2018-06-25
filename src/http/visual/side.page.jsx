@@ -1,10 +1,10 @@
 /**
  * 可伸缩侧边栏
  */
-import React, { PureComponent } from "react";
-import { Menu, Icon, Layout } from "antd";
-import { List, fromJS } from "immutable";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { Menu, Icon, Layout } from 'antd';
+import { List, fromJS } from 'immutable';
+import { connect } from 'react-redux';
 
 /**
  * 将侧边栏数据遍历出来
@@ -18,7 +18,7 @@ class SiderVisualView extends PureComponent {
    * @type {{collapsed: boolean}}
    */
   state = {
-    collapsed: true
+    collapsed: true,
   };
   /**
    * 更新组件状态，并发送数据给数据集
@@ -29,7 +29,7 @@ class SiderVisualView extends PureComponent {
      * 如果状态为真，则将show_ui收缩
      */
     if (collapsed) {
-      this.props.visual_ui_show_upData(fromJS({ name: "", menuChoose: null }));
+      this.props.visual_ui_show_upData(fromJS({ name: '', menuChoose: null }));
     }
     this.setState({ collapsed });
   };
@@ -53,46 +53,46 @@ class SiderVisualView extends PureComponent {
     const $$visual_sider_database = List([
       // 文字
       {
-        icon: "iconfont icon-wenzixiaoguo",
-        title: "文字",
-        name: "text"
+        icon: 'iconfont icon-wenzixiaoguo',
+        title: '文字',
+        name: 'text',
       },
       // 图片
       {
-        icon: "iconfont icon-tupian",
-        title: "图片",
-        name: "img"
+        icon: 'iconfont icon-tupian',
+        title: '图片',
+        name: 'img',
       },
       // 音乐
       {
-        icon: "iconfont icon-yinlemusic214",
-        title: "音乐",
-        name: "music"
+        icon: 'iconfont icon-yinlemusic214',
+        title: '音乐',
+        name: 'music',
       },
       // 视频
       {
-        icon: "iconfont icon-shipin",
-        title: "视频",
-        name: "video"
+        icon: 'iconfont icon-shipin',
+        title: '视频',
+        name: 'video',
       },
       // 商品
       {
-        icon: "iconfont icon-unie62d",
-        title: "商品",
-        name: "mall"
+        icon: 'iconfont icon-unie62d',
+        title: '商品',
+        name: 'mall',
       },
       // 互动
       {
-        icon: "icon iconfont icon-zhinengyuyinjiaohu",
-        title: "互动",
-        name: "lnteractive"
-      }
+        icon: 'icon iconfont icon-zhinengyuyinjiaohu',
+        title: '互动',
+        name: 'lnteractive',
+      },
     ]);
     const { Sider } = Layout;
-    const $$menuChoose = this.props.visual_ui_show_value.data.get("menuChoose");
+    const $$menuChoose = this.props.visual_ui_show_value.data.get('menuChoose');
     return (
       <Sider
-        style={{ background: "white" }}
+        style={{ background: 'white' }}
         width={120}
         collapsible
         collapsed={this.state.collapsed}
@@ -107,7 +107,7 @@ class SiderVisualView extends PureComponent {
                 onClick={this.onShow.bind(this, data.name, index)}
               >
                 <Icon>
-                  <i className={data.icon}/>
+                  <i className={data.icon} />
                 </Icon>
                 <span>{data.title}</span>
               </Menu.Item>
@@ -129,8 +129,8 @@ const action = (type, data) => {
   return {
     type: type,
     payload: data,
-    meta: "",
-    error: ""
+    meta: '',
+    error: '',
   };
 };
 
@@ -141,7 +141,7 @@ const action = (type, data) => {
  */
 const mapStateToProps = state => {
   return {
-    visual_ui_show_value: state.visual_ui_show_reducer
+    visual_ui_show_value: state.visual_ui_show_reducer,
   };
 };
 
@@ -152,7 +152,7 @@ const mapStateToProps = state => {
  */
 const mapDispatchToProps = dispatch => {
   return {
-    visual_ui_show_upData: data => dispatch(action("VISUAL_UI_SHOW", data))
+    visual_ui_show_upData: data => dispatch(action('VISUAL_UI_SHOW', data)),
   };
 };
 

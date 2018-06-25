@@ -26,23 +26,31 @@ const $$form = (name, item_data, width, height) => {
 const template = fromJS([
   {
     type: 'radio',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: 'item_one' },
     decorator: 'item_one',
     option: ['题目一', '题目二', '题目三', '题目四'],
   },
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'radio',
     title: { value: 'item_two' },
     decorator: 'item_two',
     option: ['题目一', '题目二', '题目三', '题目四'],
   },
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'radio',
     title: { value: 'item_three' },
     decorator: 'item_three',
     option: ['题目一', '题目二', '题目三', '题目四'],
   },
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'radio',
     title: { value: 'item_four' },
     decorator: 'item_four',
@@ -54,21 +62,27 @@ export const $$form_database = $$form('form', template, 320, 760);
 // 推荐
 const one_template = fromJS([
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'input',
-    title: { value: '反馈内容' },
-    decorator: '反馈内容',
+    title: { value: '你的姓名' },
+    decorator: '你的姓名',
     option: { value: '' },
   },
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'input',
     title: { value: '联系邮箱' },
     decorator: '联系邮箱',
     option: { value: '' },
   },
   {
+    title_color: '#000',
+    opt_color: '#000',
     type: 'input',
-    title: { value: '你的姓名' },
-    decorator: '你的姓名',
+    title: { value: '反馈内容' },
+    decorator: '反馈内容',
     option: { value: '' },
   },
 ]);

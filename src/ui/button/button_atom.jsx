@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonAtom = styled.button`
   display: flex;
@@ -10,9 +10,9 @@ export const ButtonAtom = styled.button`
   outline: none;
   border: none;
   background: transparent;
-  color:${props => props.font_color };
+  color: ${props => props.font_color};
   // 圆角
-  border-radius: ${props => (props.radius ? props.radius + "px" : "null")};
+  border-radius: ${props => (props.radius ? props.radius + 'px' : 'null')};
   // 阴影
-  box-shadow: ${props => (props.shadow ? props.shadow : "")};
+  box-shadow: ${props => (props.shadow ? props.shadow : '')};
 `;

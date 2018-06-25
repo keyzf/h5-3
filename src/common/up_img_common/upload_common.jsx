@@ -54,7 +54,7 @@ class UpImgPart extends PureComponent {
       .then(response => {
         this.setState({
           ajax_url: response.data.data,
-          number: response.data.number
+          number: response.data.number,
         });
       })
       .catch(function(error) {
@@ -102,9 +102,7 @@ class UpImgPart extends PureComponent {
       if (this.state.length === props.index) {
         axios({
           method: 'get',
-          url: `http://localhost:3001/${
-            props.index
-          }`,
+          url: `http://localhost:3001/${props.index}`,
         })
           .then(response => {
             let ajax_url = this.state.ajax_url;
