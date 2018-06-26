@@ -4,6 +4,8 @@
  * 2. 如果用户不进行选择则默认进入模板页
  */
 import React, { PureComponent } from 'react';
+import axios from 'axios';
+import { fromJS } from 'immutable';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { VisualLoadable } from './routers/visual.router';
@@ -11,13 +13,16 @@ import { PreviewLoadable } from './routers/preview.router';
 import { Html5Loadable } from './routers/h5.router';
 import { ReleaseLoadable } from './routers/release.router';
 import { GetUrlPara } from './toolkit/parse_url';
+import { JsonLoadable } from './routers/json.router';
+import { bg_action } from './redux/action';
 import './core.css';
+
 /**
  * 应用根组件
  */
 class App extends PureComponent {
   state = {
-    router: '/visual',
+    router: '',
   };
 
   /**
@@ -36,6 +41,11 @@ class App extends PureComponent {
      */
     // let recognition = GetUrlPara("id"); // 用户辨识号
     let operating = GetUrlPara('state'); // 操作码
+    if (!operating) {
+      this.setState({
+        router: 'visual',
+      });
+    }
     if (operating === 'createH5') {
       this.setState({
         router: 'visual',
@@ -61,6 +71,27 @@ class App extends PureComponent {
       //     .catch(function(error) {
       //       console.log("访问服务器错误", error);
       //     });
+    }
+    if (operating === 'showH5') {
+      /**
+       * 通过获取的数据 访问 API；
+       * 获取数据后，将数据导入select_render中
+       */
+      //   let params = new URLSearchParams();
+      //   params.append("user_id", recognition);
+      axios
+        .get(' http://localhost:3001/one_ui')
+        .then(response => {
+          console.log('链接正确时返回', response.data);
+          this.props.select_upData(fromJS(response.data.ui), '', false);
+          this.props.bg_upDate(fromJS(response.data.bg), '', false);
+          this.setState({
+            router: '/html5',
+          });
+        })
+        .catch(function(error) {
+          console.log('访问服务器错误', error);
+        });
     }
     if (operating === 'editorUserMessage') {
       /**
@@ -100,11 +131,14 @@ class App extends PureComponent {
           <Route path={'/preview'} component={PreviewLoadable} />
           <Route path={'/release'} component={ReleaseLoadable} />
           <Route path={'/html5'} component={Html5Loadable} />
+          {/** TODO:开发环境中注释掉*/}
+          <Route path={'/json'} component={JsonLoadable} />
         </Switch>
       </BrowserRouter>
     );
   }
 }
+
 /**
  * 数据更新触发器
  */
@@ -125,6 +159,7 @@ const mapDispatchToProps = dispatch => {
   return {
     select_upData: data => dispatch(action('SELECT_COMPONENTS', data)),
     user_h5_upDate: data => dispatch(action('USER_H5_MESSAGE', data)),
+    bg_upDate: (data, meta, error) => dispatch(bg_action(data, meta, error)),
   };
 };
 /**

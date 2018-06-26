@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
 
 // import axios from "axios";
-
 class VisualSaveAjax extends PureComponent {
   /**
    * 将信息传递给后台

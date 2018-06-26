@@ -49,7 +49,7 @@ class UpImgPart extends PureComponent {
     // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
     axios({
       method: 'get',
-      url: 'http://localhost:3001/first',
+      url: 'http://localhost:3001/page_start',
     })
       .then(response => {
         this.setState({
@@ -102,7 +102,7 @@ class UpImgPart extends PureComponent {
       if (this.state.length === props.index) {
         axios({
           method: 'get',
-          url: `http://localhost:3001/${props.index}`,
+          url: `http://localhost:3001/page_${props.index}`,
         })
           .then(response => {
             let ajax_url = this.state.ajax_url;

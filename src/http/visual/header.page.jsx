@@ -57,6 +57,8 @@ class HeaderVisualView extends PureComponent {
               </a>
             </Menu.Item>
           </Menu>
+          {/** TODO:开发环境注释掉*/}
+          <Link to={'/json'}>json</Link>
         </Col>
         {/*选项*/}
         <Col className={style.col_center} {...chooseCol}>

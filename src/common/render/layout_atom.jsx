@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const RenderBgAtom = styled.div`
   position: relative;
   // 宽度
-  width: 100%;
+  width: 320px;
   height: ${props => (props.fixed ? ' 100vh' : 'auto')};
   // 背景图片 如果不附加判断，则无法显示渐变
   background-color: ${props => (props.color ? props.color : null)};

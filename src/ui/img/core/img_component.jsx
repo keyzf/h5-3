@@ -9,26 +9,50 @@ class UpImgUi extends PureComponent {
         {customize.get('item').map((data, index) => {
           return (
             <div key={index}>
-              <a
-                href={data.getIn(['link', 'value'])}
-                style={{ color: font_color }}
-              >
-                {' '}
+              {data.getIn(['link', 'value']) === '' ? (
                 <img
                   width={
-                    data.getIn(['width', 'value'])
-                      ? data.getIn(['width', 'value'])
+                    data.get('width').get('value')
+                      ? data.get('width').get('value')
                       : '100%'
                   }
                   height={
-                    data.getIn(['height', 'value'])
-                      ? data.getIn(['height', 'value'])
+                    data.get('height').get('value')
+                      ? data.get('height').get('value')
                       : 'auto'
                   }
-                  src={data.get('crop_img')}
+                  src={
+                    data.get('crop_img')
+                      ? data.get('crop_img')
+                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                  }
                   alt={'img'}
                 />
-              </a>
+              ) : (
+                <a
+                  href={data.getIn(['link', 'value'])}
+                  style={{ color: font_color }}
+                >
+                  <img
+                    width={
+                      data.get('width').get('value')
+                        ? data.get('width').get('value')
+                        : '100%'
+                    }
+                    height={
+                      data.get('height').get('value')
+                        ? data.get('height').get('value')
+                        : 'auto'
+                    }
+                    src={
+                      data.get('crop_img')
+                        ? data.get('crop_img')
+                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                    }
+                    alt={'img'}
+                  />
+                </a>
+              )}
             </div>
           );
         })}
