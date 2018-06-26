@@ -118,8 +118,8 @@ import MusicListUI from '../../../ui/music/recommonnd/music_list_ui';
 import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { FormUi } from "../../../ui/form/form_ui_render";
 
 /**
  * text
@@ -245,7 +245,7 @@ const template_form_data = [
   { template: <FormTemplate />, data: $$form_database },
   { template: '', data: 'dividing-line' },
   {
-    template: <OneFormUi data={$$one_form_database} />,
+    template: <FormUi data={$$one_form_database} />,
     data: $$one_form_database,
   },
 ];
