@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col, Row } from 'antd';
 import FormPreviewView from './form.page';
 import { connect } from 'react-redux';
-import { html5_action } from '../../redux/action';
+import { share_msg_action } from '../../redux/action';
 import UpImgPart from '../../common/up_img_common/upload_common';
 
 class EditorPreviewView extends React.Component {
@@ -22,7 +22,7 @@ class EditorPreviewView extends React.Component {
     });
     if (state && data !== undefined) {
       const $$new_html5 = this.props.html5_message_value.data.set('img', data);
-      this.props.html5_upData($$new_html5, '', false);
+      this.props.share_upData($$new_html5, '', false);
     }
   };
 
@@ -40,7 +40,7 @@ class EditorPreviewView extends React.Component {
         data.content.value
       );
     }
-    this.props.html5_upData($$new_html5, '', false);
+    this.props.share_upData($$new_html5, '', false);
   };
 
   render() {
@@ -124,14 +124,14 @@ class EditorPreviewView extends React.Component {
 const mapStateToProps = state => {
   return {
     up_img_value: state.up_img_reducer,
-    html5_message_value: state.html5_reducer,
+    html5_message_value: state.user_h5_message_reducer,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    html5_upData: (data, mete, error) =>
-      dispatch(html5_action(data, mete, error)),
+    share_upData: (data, mete, error) =>
+      dispatch(share_msg_action(data, mete, error)),
   };
 };
 

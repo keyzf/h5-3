@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
 
 // import axios from "axios";
-class VisualSaveAjax extends PureComponent {
+class ToPreviewAjax extends PureComponent {
   /**
    * 将信息传递给后台
    * 1. 页面组件
@@ -12,12 +12,13 @@ class VisualSaveAjax extends PureComponent {
    * 3. 用户设置的信息
    */
   onSave = () => {
-    // 背景组件
     // const bg_data = this.props.bg_value.data.toJS();
-    // // 页面组件
     // const component_data = this.props.select_value.data.toJS();
-    // // 用户设置的信息
     // const html5_value = this.props.html5_value.data.toJS();
+    // let params = new URLSearchParams();
+    // let number = recognition = GetUrlPara("number");
+    // params.append("id", recognition);
+    // params.append("number", number);
     // axios.post('/')
     //   .then(function (response) {
     //     console.log(response);
@@ -33,10 +34,10 @@ class VisualSaveAjax extends PureComponent {
         <QueueAnim type={'bottom'} delay={220}>
           <div key={'1'}>
             <i
-              className={'icon iconfont icon-baocun'}
+              className={'icon iconfont icon-fabu'}
               style={{ marginRight: '10px' }}
             />
-            保存
+            发布
           </div>
         </QueueAnim>
       </div>
@@ -48,8 +49,8 @@ const mapStateToProps = state => {
   return {
     bg_value: state.bg_reducer,
     select_value: state.select_reducer,
-    html5_value: state.html5_reducer,
+    html5_value: state.user_h5_message_reducer,
   };
 };
 
-export default connect(mapStateToProps, '')(VisualSaveAjax);
+export default connect(mapStateToProps, '')(ToPreviewAjax);

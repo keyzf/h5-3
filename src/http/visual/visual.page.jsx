@@ -5,7 +5,7 @@
  */
 import React, { PureComponent } from 'react';
 import { Layout, notification } from 'antd';
-import QueueAnim from 'rc-queue-anim';
+import { Steps } from 'intro.js-react';
 import style from './visual.module.scss';
 import {
   VisualContentLoadable,
@@ -14,11 +14,35 @@ import {
   VisualSideLoadable,
   VisualUiShowLoadable,
 } from '../../routers/visual.router';
+import 'intro.js/introjs.css';
+import { connect } from 'react-redux';
 
 /**
  * visual 页面父级组件
  */
 class VisualView extends PureComponent {
+  state = {
+    stepsEnabled: this.props.guide_value.data.get('guide'),
+    initialStep: 0,
+    steps: [
+      {
+        element: `.side`,
+        intro: '在这里选择你想要使用的组件，内有大量设计师推荐组件',
+      },
+      {
+        element: `.content`,
+        intro: '此处用来制作h5页面，选中组件后，可对组件进行拖拽缩放，等操作',
+      },
+      {
+        element: `.${style.side}`,
+        intro:
+          '编辑栏，用来对选中的组件进行内容设置，高级设置中有更多功能，欢迎使用',
+      },
+    ],
+  };
+  onExit = () => {
+    this.setState(() => ({ stepsEnabled: false }));
+  };
   /**
    * 查询用户屏幕显示比例
    * 如果屏幕分辨率宽度低于1119则显示提示信息
@@ -34,11 +58,8 @@ class VisualView extends PureComponent {
   };
 
   render() {
+    const { stepsEnabled, steps, initialStep } = this.state;
     const { Header, Sider, Content } = Layout;
-    /**
-     * 编辑栏 ant design 样式
-     * @type {{collapsedWidth: number, width: number, collapsible: boolean, trigger: null, breakpoint: string}}
-     */
     const editorConfig = {
       collapsedWidth: 0,
       width: 380,
@@ -47,27 +68,43 @@ class VisualView extends PureComponent {
       breakpoint: 'md',
     };
     return (
-      // 入场动画
-      <QueueAnim className={style.layout} type={'right'}>
-        <Header className={style.header} key={'animation_one'}>
-          <VisualHeaderLoadable />
-        </Header>
-        <Layout className={style.content} key={'animation_two'}>
-          {/*侧边栏*/}
-          <VisualSideLoadable />
-          {/*/!*组件展示选择*!/*/}
-          <VisualUiShowLoadable />
-          <Content>
-            <VisualContentLoadable />
-          </Content>
-          {/*/!*组件展示选择*!/*/}
-          <Sider className={style.side} {...editorConfig}>
-            <VisualEditorLoadable />
-          </Sider>
-        </Layout>
-      </QueueAnim>
+      <React.Fragment>
+        <Steps
+          enabled={stepsEnabled}
+          steps={steps}
+          initialStep={initialStep}
+          onExit={this.onExit}
+        />
+        <div className={style.layout}>
+          <Header className={style.header}>
+            <VisualHeaderLoadable />
+          </Header>
+          <Layout className={style.content}>
+            {/*侧边栏*/}
+            <div className={'side'} style={{ backgroundColor: 'white' }}>
+              <VisualSideLoadable />
+            </div>
+            <VisualUiShowLoadable />
+            <Content>
+              <div className={'content'}>
+                <VisualContentLoadable />
+              </div>
+            </Content>
+            <Sider className={style.side} {...editorConfig}>
+              <VisualEditorLoadable />
+            </Sider>
+          </Layout>
+        </div>
+      </React.Fragment>
     );
   }
 }
 
-export default VisualView;
+// Map Redux state to component props
+const mapStateToProps = state => {
+  return {
+    guide_value: state.guide_reducer,
+  };
+};
+
+export default connect(mapStateToProps, '')(VisualView);

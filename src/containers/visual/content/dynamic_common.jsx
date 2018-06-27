@@ -82,7 +82,6 @@ class DynamicCommon extends PureComponent {
     // new data
     this.sendAction($$change_translateY);
   }
-
   // 调整长宽时的 长度与宽度
   onResize = (event, { element, size }) => {
     event.stopPropagation();

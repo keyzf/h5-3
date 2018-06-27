@@ -43,6 +43,33 @@ export const up_img_action = (data, meta, error) => {
   };
 };
 
+export const id_action = (data, meta, error) => {
+  return {
+    type: 'ID',
+    payload: data,
+    meta: meta,
+    error: error,
+  };
+};
+
+export const guide_action = (data, meta, error) => {
+  return {
+    type: 'GUIDE',
+    payload: data,
+    meta: meta,
+    error: error,
+  };
+};
+
+export const share_msg_action = (data, meta, error) => {
+  return {
+    type: 'USER_H5_MESSAGE',
+    payload: data,
+    meta: meta,
+    error: error,
+  };
+};
+
 /**
  * 展示visual中的ui
  * @param data

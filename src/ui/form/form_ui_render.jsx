@@ -2,9 +2,9 @@
  * form_ui 组件渲染组件
  * 只需要传递数据进来即可
  */
-import React, { PureComponent } from "react";
-import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from "antd";
-import { fromJS, List } from "immutable";
+import React, { PureComponent } from 'react';
+import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
+import { fromJS, List } from 'immutable';
 
 // import axios from "axios";
 
@@ -28,7 +28,7 @@ class CoreForm extends PureComponent {
         //   .catch(function (error) {
         //     console.log(error);
         //   });
-        console.log("Received values of form: ", List(fromJS(values)).toJS());
+        console.log('Received values of form: ', List(fromJS(values)).toJS());
       }
     });
   };
@@ -36,16 +36,16 @@ class CoreForm extends PureComponent {
   render() {
     const FormItem = Form.Item;
     const { getFieldDecorator } = this.props.form;
-    const customize = this.props.data.get("customize");
-    const btn_color = customize.get("btn_color");
-    const btn_bg_color = customize.get("btn_bg_color");
+    const customize = this.props.data.get('customize');
+    const btn_color = customize.get('btn_color');
+    const btn_bg_color = customize.get('btn_bg_color');
     /**
      * form 表单配置项
      */
     const form_config = {
       onSubmit: this.handleSubmit.bind(this),
-      layout: "vertical",
-      hideRequiredMark: true
+      layout: 'vertical',
+      hideRequiredMark: true,
     };
     /**
      * 表单选项显示样式
@@ -56,7 +56,7 @@ class CoreForm extends PureComponent {
     const form_item_style = (label_name, color) => {
       return {
         label: <div style={{ color: color }}>{label_name}</div>,
-        wrapperCol: { lg: { span: 24 } }
+        wrapperCol: { lg: { span: 24 } },
       };
     };
     /**
@@ -64,24 +64,31 @@ class CoreForm extends PureComponent {
      */
     return (
       <Form {...form_config}>
-        {customize.get("item").map((data, index) => {
-          const opt_color = data.get("opt_color");
+        {customize.get('item').map((data, index) => {
+          const opt_color = data.get('opt_color');
           return (
             <div key={index}>
-              {data.get("type") === "radio" ? (
+              {data.get('type') === 'radio' ? (
                 <FormItem
-                  {...form_item_style(`${data.getIn(["title", "value"])}`, data.get("title_color"))}
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
                 >
-                  {getFieldDecorator(`${data.get("decorator")}`)(
+                  {getFieldDecorator(`${data.get('decorator')}`)(
                     <Radio.Group>
-                      {data.get("option").map((data, index) => {
+                      {data.get('option').map((data, index) => {
                         return (
-                          <Radio style={{
-                            display: "block",
-                            height: "30px",
-                            lineHeight: "30px",
-                            color: opt_color
-                          }} value={index} key={index}>
+                          <Radio
+                            style={{
+                              display: 'block',
+                              height: '30px',
+                              lineHeight: '30px',
+                              color: opt_color,
+                            }}
+                            value={index}
+                            key={index}
+                          >
                             {data}
                           </Radio>
                         );
@@ -90,59 +97,84 @@ class CoreForm extends PureComponent {
                   )}
                 </FormItem>
               ) : (
-                ""
+                ''
               )}
-              {data.get("type") === "input" ? (
+              {data.get('type') === 'input' ? (
                 <FormItem
-                  {...form_item_style(`${data.getIn(["title", "value"])}`, data.get("title_color"))}
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
                 >
-                  {getFieldDecorator(`${data.get("decorator")}`)(
-                    <Input size="large" value={data.getIn(["option", "value"])}/>
+                  {getFieldDecorator(`${data.get('decorator')}`)(
+                    <Input
+                      size="large"
+                      value={data.getIn(['option', 'value'])}
+                    />
                   )}
                 </FormItem>
               ) : (
-                ""
+                ''
               )}
-              {data.get("type") === "rate" ? (
+              {data.get('type') === 'rate' ? (
                 <FormItem
-                  {...form_item_style(`${data.getIn(["title", "value"])}`, data.get("title_color"))}
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
                 >
-                  {getFieldDecorator(`${data.get("decorator")}`)(
-                    <Rate value={data.getIn(["option", "value"])}/>
+                  {getFieldDecorator(`${data.get('decorator')}`)(
+                    <Rate value={data.getIn(['option', 'value'])} />
                   )}
                 </FormItem>
               ) : (
-                ""
+                ''
               )}
-              {data.get("type") === "checkbox" ? (
+              {data.get('type') === 'checkbox' ? (
                 <FormItem
-                  {...form_item_style(`${data.getIn(["title", "value"])}`, data.get("title_color"))}
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
                 >
-                  {getFieldDecorator(`${data.get("decorator")}`)(
-                    <Checkbox.Group style={{ color: opt_color }} options={data.get("option").toJS()}/>
+                  {getFieldDecorator(`${data.get('decorator')}`)(
+                    <Checkbox.Group
+                      style={{ color: opt_color }}
+                      options={data.get('option').toJS()}
+                    />
                   )}
                 </FormItem>
               ) : (
-                ""
+                ''
               )}
-              {data.get("type") === "datePicker" ? (
+              {data.get('type') === 'datePicker' ? (
                 <FormItem
-                  {...form_item_style(`${data.getIn(["title", "value"])}`, data.get("title_color"))}
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
                 >
-                  {getFieldDecorator(`${data.get("decorator")}`)(
-                    <DatePicker value={data.getIn(["option", "value"])}/>
+                  {getFieldDecorator(`${data.get('decorator')}`)(
+                    <DatePicker value={data.getIn(['option', 'value'])} />
                   )}
                 </FormItem>
               ) : (
-                ""
+                ''
               )}
             </div>
           );
         })}
-        <FormItem key={"asfdasdf"}>
-          <Button type="primary" htmlType="submit"
-                  style={{ width: "100%", color: btn_color, background: btn_bg_color }}>
-            {customize.getIn(["btn_content", "value"])}
+        <FormItem key={'asfdasdf'}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{
+              width: '100%',
+              color: btn_color,
+              background: btn_bg_color,
+            }}
+          >
+            {customize.getIn(['btn_content', 'value'])}
           </Button>
         </FormItem>
       </Form>

@@ -11,6 +11,8 @@ module.exports = function() {
     recommend_music: require("./music_recommend_ui/recommend_music"),
     recommend_video: require("./video_recommend_ui/recommend_video"),
     // ui
-    one_ui: require("./ui_json/one_ui")
+    one_ui: require("./ui_json/one_ui"),
+    two_ui: require("./ui_json/two_ui")
+    // 修改 h5 用户信息
   };
 };

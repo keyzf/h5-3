@@ -127,6 +127,50 @@ const bg_reducer = (state = { ...bg_data }, action) => {
 };
 
 /**
+ * 用户id
+ */
+const id_data = {
+  data: Map({ id: '' }),
+  meta: Map({ content: false, choose: false }),
+  error: false,
+};
+const id_reducer = (state = { ...id_data }, action) => {
+  switch (action.type) {
+    case 'ID':
+      return {
+        // 将信息传递给处理函数
+        data: action.payload,
+        meta: action.meta,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
+
+/**
+ * visual 页面引导
+ */
+const guide_data = {
+  data: fromJS({ guide: false }),
+  meta: Map({ content: false, choose: false }),
+  error: false,
+};
+const guide_reducer = (state = { ...guide_data }, action) => {
+  switch (action.type) {
+    case 'GUIDE':
+      return {
+        // 将信息传递给处理函数
+        data: action.payload,
+        meta: action.meta,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
+
+/**
  * 导出文件
  */
 export {
@@ -135,6 +179,8 @@ export {
   choose_reducer,
   select_reducer,
   bg_reducer,
+  id_reducer,
+  guide_reducer,
 };
 
 export const html5_reducer = (

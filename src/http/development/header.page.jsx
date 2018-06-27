@@ -12,7 +12,7 @@ import style from './header.module.scss';
  * 1、 在大屏下显示选项
  * 2. 在小屏幕下显示logo与面包菜单
  */
-class HeaderVisualView extends PureComponent {
+class HeaderDevelopmentView extends PureComponent {
   /**
    * 渲染
    */
@@ -90,28 +90,15 @@ class HeaderVisualView extends PureComponent {
         </Col>
         <Col className={style.col_center} {...closeCol}>
           <Menu {...MenuConfig}>
-            <Menu.Item key={'help'}>
-              <a href={'http://www.e7wei.com/help-article-id-436.html'}>
-                <QueueAnim type={'bottom'} delay={280}>
-                  <div key={'1'}>
-                    <i
-                      className={'icon iconfont icon-icon'}
-                      style={{ marginRight: '10px' }}
-                    />
-                    使用指南
-                  </div>
-                </QueueAnim>
-              </a>
-            </Menu.Item>
-            <Menu.Item key={'quite'}>
-              <Link to={'/'}>
+            <Menu.Item key={'json'}>
+              <Link to={'/json'}>
                 <QueueAnim type={'bottom'} delay={300}>
                   <div key={'1'}>
                     <i
                       className={'icon iconfont icon-iconfonticon2'}
                       style={{ marginRight: '10px' }}
                     />
-                    关闭
+                    JSON
                   </div>
                 </QueueAnim>
               </Link>
@@ -123,4 +110,4 @@ class HeaderVisualView extends PureComponent {
   }
 }
 
-export default HeaderVisualView;
+export default HeaderDevelopmentView;

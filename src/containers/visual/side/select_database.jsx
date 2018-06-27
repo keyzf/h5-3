@@ -119,7 +119,7 @@ import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
-import { FormUi } from "../../../ui/form/form_ui_render";
+import { FormUi } from '../../../ui/form/form_ui_render';
 
 /**
  * text

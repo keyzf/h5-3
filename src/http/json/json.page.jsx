@@ -17,17 +17,23 @@ class JsonView extends PureComponent {
     return (
       <Layout style={{ height: '100vh' }}>
         <Layout.Header>
-          <Link to={'/'}>回到 visual 页面</Link>
+          <Link to={'/development'}>回到 development 页面</Link>
         </Layout.Header>
         <Layout.Content>
           <Row gutter={16}>
-            <Col span={12} style={{ overflow: 'auto' }}>
+            <Col
+              span={12}
+              style={{ overflow: 'auto', height: 'calc(100vh - 56px)' }}
+            >
               <div className="language-bash">
                 数据<br />
                 {JSON.stringify($$data.toJS(), null, 2)}
               </div>
             </Col>
-            <Col span={12} style={{ overflow: 'auto' }}>
+            <Col
+              span={12}
+              style={{ overflow: 'auto', height: 'calc(100vh - 56px)' }}
+            >
               <div className="language-bash">
                 背景<br />
                 {JSON.stringify($$bg_data.toJS(), null, 2)}

@@ -18,7 +18,7 @@ class OneForm extends PureComponent {
         //   .catch(function (error) {
         //     console.log(error);
         //   });
-        console.log("Received values of form: ", List(fromJS(values)).toJS());
+        console.log('Received values of form: ', List(fromJS(values)).toJS());
       }
     });
   };
