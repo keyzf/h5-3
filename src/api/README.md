@@ -17,3 +17,7 @@
    ajax_url：公共图片数据集，
    library_list： 图片项目表
    user_library：用户图片库
+   
+   
+### src/ui/form/recommend     (表单组件信息传递)
+> 用户点击表单组件的提交按钮后，将表单数据提交给指定链接

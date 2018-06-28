@@ -24,15 +24,64 @@ class H5RenderCommon extends PureComponent {
     };
     return (
       <RenderBg {...bg_config}>
-        <div
-          style={{
-            width: '100%',
-            height: '100vh',
-            overflow: 'auto',
-            padding: '0 5px 0 5px',
-          }}
-        >
-          {select_data.map((ui_data, index) => {
+        {bg_config.fixed ? (
+          <div style={{ height: '100vh', width: '100%', overflow: 'auto' }}>
+            {select_data.map((ui_data, index) => {
+              const advanced_settings = {
+                // 动画移动
+                transformX: ui_data.getIn([
+                  'advance',
+                  'transform',
+                  'translateX',
+                  'value',
+                ]),
+                transformY: ui_data.getIn([
+                  'advance',
+                  'transform',
+                  'translateY',
+                  'value',
+                ]),
+                // 周长
+                width: ui_data.getIn([
+                  'advance',
+                  'perimeter',
+                  'width',
+                  'value',
+                ]),
+                height: ui_data.getIn([
+                  'advance',
+                  'perimeter',
+                  'height',
+                  'value',
+                ]),
+                // 颜色
+                bgColor: ui_data.getIn(['advance', 'color']),
+                //背景
+                img: ui_data.getIn(['advance', 'img']),
+                //拉伸
+                stretching: ui_data.getIn([
+                  'advance',
+                  'img_config',
+                  'stretching',
+                  'value',
+                ]),
+                //平铺
+                tiling: ui_data.getIn([
+                  'advance',
+                  'img_config',
+                  'tiling',
+                  'value',
+                ]),
+              };
+              return (
+                <ItemAtom {...advanced_settings} key={index}>
+                  {render_switch_ui(ui_data)}
+                </ItemAtom>
+              );
+            })}
+          </div>
+        ) : (
+          select_data.map((ui_data, index) => {
             const advanced_settings = {
               // 动画移动
               transformX: ui_data.getIn([
@@ -79,8 +128,8 @@ class H5RenderCommon extends PureComponent {
                 {render_switch_ui(ui_data)}
               </ItemAtom>
             );
-          })}
-        </div>
+          })
+        )}
       </RenderBg>
     );
   }

@@ -25,7 +25,7 @@ class RenderUI extends PureComponent {
       // 颜色
       bgColor: advance.get('color'),
       //背景
-      img: advance.get('img'),
+      img: advance.get('crop_img'),
       //拉伸
       stretching: advance.getIn(['img_config', 'stretching', 'value']),
       //平铺

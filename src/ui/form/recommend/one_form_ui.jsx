@@ -2,17 +2,26 @@ import React, { PureComponent } from 'react';
 import { fromJS, List } from 'immutable';
 import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
 
-class NormalLoginForm extends PureComponent {
+class OneForm extends PureComponent {
   handleSubmit = e => {
     //{{title:'',value:''},{title:'',value:''},{title:'',value:''}}
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        // 将信息发送给指定url
+        // axios.post('this.props.data.getIn(["customize","btn_url"])', {
+        //   form_data: List(fromJS(values)).toJS(),
+        // })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
         console.log('Received values of form: ', List(fromJS(values)).toJS());
       }
     });
   };
-
   render() {
     const { getFieldDecorator } = this.props.form;
     const customize = this.props.data.get('customize');
@@ -114,6 +123,6 @@ class NormalLoginForm extends PureComponent {
   }
 }
 
-const OneFormUi = Form.create()(NormalLoginForm);
+const OneFormUi = Form.create()(OneForm);
 
 export { OneFormUi };

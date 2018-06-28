@@ -4,6 +4,7 @@
 import React from 'react';
 import {
   $$eight_text,
+  $$eighteen_text,
   $$eleven_text,
   $$fifteen_text,
   $$five_text,
@@ -118,8 +119,9 @@ import MusicListUI from '../../../ui/music/recommonnd/music_list_ui';
 import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { FormUi } from '../../../ui/form/form_ui_render';
+import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
 
 /**
  * text
@@ -160,6 +162,10 @@ const template_text_data = [
   {
     template: <SevenTeenTextUi html={seventeen_html_text} />,
     data: $$seventeen_text,
+  },
+  {
+    template: <EighteenTextUi html={eight_html_text} />,
+    data: $$eighteen_text,
   },
 ];
 /**
@@ -245,7 +251,7 @@ const template_form_data = [
   { template: <FormTemplate />, data: $$form_database },
   { template: '', data: 'dividing-line' },
   {
-    template: <OneFormUi data={$$one_form_database} />,
+    template: <FormUi data={$$one_form_database} />,
     data: $$one_form_database,
   },
 ];

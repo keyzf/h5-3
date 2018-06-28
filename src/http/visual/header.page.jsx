@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Menu, Row } from 'antd';
-import VisualSaveAjax from '../../api/save_ajax';
+import VisualSaveAjax from '../../containers/visual/header/save_ajax';
 import QueueAnim from 'rc-queue-anim';
 import CleanContent from '../../containers/visual/header/clean_content';
+import ToPreviewAjax from '../../containers/visual/header/preview_ajax';
 import style from './header.module.scss';
 
 /**
@@ -79,15 +80,7 @@ class HeaderVisualView extends PureComponent {
             </Menu.Item>
             <Menu.Item key={'release'}>
               <Link to={'./release'}>
-                <QueueAnim type={'bottom'} delay={240}>
-                  <div key={'1'}>
-                    <i
-                      className={'icon iconfont icon-fabu'}
-                      style={{ marginRight: '10px' }}
-                    />
-                    发布
-                  </div>
-                </QueueAnim>
+                <ToPreviewAjax />
               </Link>
             </Menu.Item>
             <Menu.Item key={'null'}>

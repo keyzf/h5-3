@@ -20,6 +20,7 @@ import { FourTeenTextUi } from '../../../ui/text/recommend/fourteen_ui';
 import { FifteenTextUi } from '../../../ui/text/recommend/fifteen_ui';
 import { SixTeenTextUi } from '../../../ui/text/recommend/sixteen_ui';
 import { SevenTeenTextUi } from '../../../ui/text/recommend/seventeen_ui';
+import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
 // 图片
 import { UpImgUi } from '../../../ui/img/core/img_component';
 import { GridImgUi } from '../../../ui/img/core/grid_component';
@@ -36,11 +37,11 @@ import { ListMallUi } from '../../../ui/mall/core/list_ui';
 // 按钮
 import { ButtonUi } from '../../../ui/button/core/button';
 // 表单
-import { FormUi } from '../../../ui/form/core/form';
+import { FormUi } from '../../../ui/form/form_ui_render';
+
 import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 
 /**
@@ -97,6 +98,10 @@ export const switch_ui = data => {
       return (
         <SevenTeenTextUi html={data.getIn(['customize', 'html_content'])} />
       );
+    case 'eighteen_text':
+      return (
+        <EighteenTextUi html={data.getIn(['customize', 'html_content'])} />
+      );
 
     // 图片类
     case 'single_img':
@@ -138,7 +143,7 @@ export const switch_ui = data => {
       return <FormUi data={data} />;
 
     case 'one_form':
-      return <OneFormUi data={data} />;
+      return <FormUi data={data} />;
     //  默认输出
     default:
       return '';

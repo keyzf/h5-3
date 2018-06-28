@@ -18,6 +18,7 @@ import { sixteen_html_text } from './recommend/sixteen_ui';
 import { seventeen_html_text } from './recommend/seventeen_ui';
 import { h_html_text } from './core/horizontal_ui';
 import { v_html_text } from './core/vertical_ui';
+import { eighteen_html_text } from './recommend/eighteen_ui';
 
 /**
  * 根级数据，用来生成组件}}
@@ -84,6 +85,9 @@ const $$sixteen_text = fromJS(
 const $$seventeen_text = fromJS(
   $$text_database('seventeen_text', seventeen_html_text, 80)
 );
+const $$eighteen_text = fromJS(
+  $$text_database('eighteen_text', eighteen_html_text, 80)
+);
 export {
   $$horizontal_text,
   $$vertical_text,
@@ -104,4 +108,5 @@ export {
   $$fifteen_text,
   $$sixteen_text,
   $$seventeen_text,
+  $$eighteen_text,
 };
