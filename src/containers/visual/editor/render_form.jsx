@@ -52,6 +52,8 @@ export const render_form = data => {
       return <EditorText data={data} />;
     case 'seventeen_text':
       return <EditorText data={data} />;
+    case 'eighteen_text':
+      return <EditorText data={data} />;
 
     case 'single_img':
       return <EditorImg data={data} />;

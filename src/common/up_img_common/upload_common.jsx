@@ -20,6 +20,7 @@ import {
 import ImgForm from './img_form';
 import { up_img_action } from '../../redux/action';
 import style from './upload_common.module.scss';
+import { $$api } from '../../api/api.database';
 
 /**
  * 功能：
@@ -31,11 +32,14 @@ import style from './upload_common.module.scss';
  */
 class UpImgPart extends PureComponent {
   state = {
+    tab_change: '',
     //模拟数据：总页数,第一轮数据,用户上传图片数据
-    number: '',
-    ajax_url: [],
-    library_list: [],
-    user_library: [],
+    number: '', //总页数
+    ajax_url: [], // 公共图片库
+    library_list: [], // 侧边列表
+    user_library: [], // 用户图库
+    user_number: '', // 用户上传图片总页数
+    user_length: 0,
     // 用来比对的补充字段
     length: 0,
     //获取传递过来的图片
@@ -46,22 +50,59 @@ class UpImgPart extends PureComponent {
 
   // 在渲染之前,通过ajax 获取数据
   componentDidMount() {
-    // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
-    axios({
-      method: 'get',
-      url: 'http://localhost:3001/page_start',
-    })
-      .then(response => {
+    if ($$api.get('surroundings') === 'development') {
+      // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
+      axios({
+        method: 'get',
+        url: `${$$api.getIn(['development', 'public_img_start'])}`,
+      }).then(response => {
         this.setState({
           ajax_url: response.data.data,
-          number: response.data.number,
+          library_list: response.data.img_list,
         });
-      })
-      .catch(function(error) {
-        // 输出错误信息，生产环境中需要剔除
-        console.log(error);
       });
-    // 用来搜寻用户库
+      // 用来用户图片数据
+      axios({
+        method: 'get',
+        url: `${$$api.getIn(['development', 'user_img_start'])}`,
+      }).then(response => {
+        if (response.data.data !== '') {
+          this.setState({
+            user_library: response.data.data,
+            user_number: response.data.number,
+          });
+        }
+      });
+    }
+    if ($$api.get('surroundings') === 'produce') {
+      // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
+      axios({
+        method: 'get',
+        url: `${$$api.getIn(['produce', 'public_img_start'])}`,
+      })
+        .then(response => {
+          this.setState({
+            ajax_url: response.data.data,
+          });
+        })
+        .catch(function(error) {
+          console.log('访问服务器错误', error);
+        });
+      // 用来用户图片数据
+      let params = new URLSearchParams();
+      params.append('id', this.props.id_value.data.get('id'));
+      axios
+        .post(`${$$api.getIn(['produce', 'user_img_start'])}`, params)
+        .then(response => {
+          this.setState({
+            user_library: response.data.data,
+            user_number: response.data.number,
+          });
+        })
+        .catch(function(error) {
+          console.log('访问服务器错误', error);
+        });
+    }
   }
 
   // 用户点击不同的图片给与不同的样式
@@ -72,7 +113,7 @@ class UpImgPart extends PureComponent {
       });
     } else {
       this.setState({
-        img_url: img_url, //技术图片信息
+        img_url: img_url.url, //技术图片信息
       });
     }
   };
@@ -88,22 +129,52 @@ class UpImgPart extends PureComponent {
     if (file.status === 'done') {
       message.success('上传成功');
       const new_user_library = this.state.user_library;
-      new_user_library.push(`http://src.e7wei.com/${file.response.key}`);
+      new_user_library.unshift({
+        type: 1,
+        url: `http://src.e7wei.com/${file.response.key}`,
+      });
       this.setState({
         progress: false,
         user_library: new_user_library,
       });
     }
   };
+  tabChange = name => {
+    this.setState({
+      tab_change: name,
+    });
+  };
 
   render() {
     // 公共图片库
-    const ShowImg = props => {
-      if (this.state.length === props.index) {
-        axios({
-          method: 'get',
-          url: `http://localhost:3001/page_${props.index}`,
-        })
+    const ShowPublicImg = props => {
+      if ($$api.get('surroundings') === 'development') {
+        if (this.state.length === props.index) {
+          axios({
+            method: 'get',
+            url: `${$$api.getIn(['development', 'public_img_other'])}${
+              props.index
+            }`,
+          }).then(response => {
+            let ajax_url = this.state.ajax_url;
+            let length = this.state.length;
+            response.data.map(data => {
+              return ajax_url.push(data);
+            });
+            this.setState({
+              ajax_url: ajax_url,
+              length: length + 1,
+            });
+          });
+        }
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        params.append('id', this.props.id_value.data.get('id'));
+        params.append('number', props.index);
+        params.append('name', props.name);
+        axios
+          .post(`${$$api.getIn(['development', 'public_img_other'])}`, params)
           .then(response => {
             let ajax_url = this.state.ajax_url;
             let length = this.state.length;
@@ -114,9 +185,6 @@ class UpImgPart extends PureComponent {
               ajax_url: ajax_url,
               length: length + 1,
             });
-          })
-          .catch(function(error) {
-            console.log(error);
           });
       }
       return (
@@ -180,6 +248,105 @@ class UpImgPart extends PureComponent {
         </React.Fragment>
       );
     };
+
+    // 公共图片库
+    const ShowUserImg = props => {
+      if ($$api.get('surroundings') === 'development') {
+        if (this.state.user_length === props.index) {
+          axios({
+            method: 'get',
+            url: `${$$api.getIn(['development', 'user_img_other'])}${
+              props.index
+            }`,
+          }).then(response => {
+            let user_library = this.state.user_library;
+            let user_length = this.state.user_length;
+            response.data.map(data => {
+              return user_library.push(data);
+            });
+            this.setState({
+              user_library: user_library,
+              user_length: user_length + 1,
+            });
+          });
+        }
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        params.append('id', this.props.id_value.data.get('id'));
+        params.append('number', props.index);
+        axios
+          .post(`${$$api.getIn(['produce', 'user_img_other'])}`, params)
+          .then(response => {
+            let user_library = this.user_library;
+            let user_length = this.state.user_length;
+            response.data.map(data => {
+              return user_library.push(data);
+            });
+            this.setState({
+              user_library: user_library,
+              user_length: user_length + 1,
+            });
+          });
+      }
+      return (
+        <React.Fragment>
+          {this.state.user_length - 1 === props.index ? (
+            <Row gutter={16}>
+              {this.state.user_library.map((data, index) => {
+                return (
+                  <Col span={4} style={{ margin: '0 0 5px 0' }} key={index}>
+                    {data.type === 1 ? (
+                      <LazyLoad
+                        height={50}
+                        offset={100}
+                        once
+                        overflow
+                        key={index}
+                      >
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'inline-block',
+                            verticalAlign: 'top',
+                            marginBottom: '10px',
+                            marginRight: '13px',
+                            boxSizing: 'border-box',
+                          }}
+                          onClick={this.choose.bind(this, data, 'user_library')}
+                          className={
+                            data.url === this.state.img_url
+                              ? style.part_active
+                              : style.part_choose
+                          }
+                        >
+                          <img
+                            style={{
+                              verticalAlign: 'middle',
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              margin: 'auto',
+                            }}
+                            src={data.url}
+                            alt={'img'}
+                          />
+                        </div>
+                      </LazyLoad>
+                    ) : (
+                      ''
+                    )}
+                  </Col>
+                );
+              })}
+            </Row>
+          ) : (
+            <div style={{ display: 'none' }}>加载中-------</div>
+          )}
+        </React.Fragment>
+      );
+    };
+
     const TabPane = Tabs.TabPane;
     const { visible, unvisible } = this.props;
     return (
@@ -208,42 +375,21 @@ class UpImgPart extends PureComponent {
           <TabPane tab="我的素材" key="1">
             {this.state.user_library.length ? (
               <div style={{ width: '100%', minHeight: '400px' }}>
-                <div style={{ minHeight: '300px' }}>
-                  {// 循环显示出用户的自上传图片
-                  this.state.user_library.map((data, index) => {
+                <div style={{ maxHeight: '400px', overflow: 'auto' }}>
+                  {range(this.state.user_number).map((data, index) => {
                     return (
-                      <div
-                        key={index}
-                        style={{
-                          width: '90px',
-                          height: '90px',
-                          display: 'inline-block',
-                          verticalAlign: 'top',
-                          marginBottom: '10px',
-                          marginRight: '13px',
-                          boxSizing: 'border-box',
-                        }}
-                      >
-                        <div
-                          className={
-                            data === this.state.img_url
-                              ? style.part_active
-                              : style.part_choose
-                          }
-                          onClick={this.choose.bind(this, data)}
+                      //对要显示的界面进行懒加载处理
+                      <React.Fragment key={index}>
+                        <LazyLoad
+                          once={true}
+                          throttle={100}
+                          height={600}
+                          key={index}
+                          overflow
                         >
-                          <img
-                            style={{
-                              verticalAlign: 'middle',
-                              maxWidth: '100%',
-                              maxHeight: '100%',
-                              margin: 'auto',
-                            }}
-                            src={data}
-                            alt={'img'}
-                          />
-                        </div>
-                      </div>
+                          <ShowUserImg index={index} />
+                        </LazyLoad>
+                      </React.Fragment>
                     );
                   })}
                 </div>
@@ -294,31 +440,36 @@ class UpImgPart extends PureComponent {
           </TabPane>
           <TabPane tab="共享素材" key="2">
             <Tabs tabPosition={'left'}>
-              <TabPane
-                tab="背景"
-                key="1"
-                style={{ maxHeight: '400px', overflow: 'auto' }}
-              >
-                {/**
-                 *总页数,以及第一页数据
-                 **/}
-                {range(this.state.number).map((data, index) => {
-                  return (
-                    //对要显示的界面进行懒加载处理
-                    <React.Fragment key={index}>
-                      <LazyLoad
-                        once={true}
-                        throttle={100}
-                        height={600}
-                        key={index}
-                        overflow
-                      >
-                        <ShowImg index={index} />
-                      </LazyLoad>
-                    </React.Fragment>
-                  );
-                })}
-              </TabPane>
+              {this.state.library_list.map((tab_data, tab_index) => {
+                return (
+                  <TabPane
+                    tab={tab_data.name}
+                    key={tab_index}
+                    style={{ maxHeight: '400px', overflow: 'auto' }}
+                    onChange={this.tabChange.bind(this, tab_data.name)}
+                  >
+                    {/**
+                     *总页数,以及第一页数据
+                     **/}
+                    {range(tab_data.number).map((data, index) => {
+                      return (
+                        //对要显示的界面进行懒加载处理
+                        <React.Fragment key={index}>
+                          <LazyLoad
+                            once={true}
+                            throttle={100}
+                            height={600}
+                            key={index}
+                            overflow
+                          >
+                            <ShowPublicImg index={index} name={tab_data.name} />
+                          </LazyLoad>
+                        </React.Fragment>
+                      );
+                    })}
+                  </TabPane>
+                );
+              })}
             </Tabs>
             <Divider />
             <div style={{ padding: '0 35%', width: '100%' }}>
@@ -354,6 +505,7 @@ class UpImgPart extends PureComponent {
 const mapStateToProps = state => {
   return {
     up_img_value: state.up_img_reducer,
+    id_value: state.id_reducer,
   };
 };
 

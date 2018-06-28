@@ -4,6 +4,7 @@
 import React from 'react';
 import {
   $$eight_text,
+  $$eighteen_text,
   $$eleven_text,
   $$fifteen_text,
   $$five_text,
@@ -120,6 +121,7 @@ import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 import { FormUi } from '../../../ui/form/form_ui_render';
+import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
 
 /**
  * text
@@ -160,6 +162,10 @@ const template_text_data = [
   {
     template: <SevenTeenTextUi html={seventeen_html_text} />,
     data: $$seventeen_text,
+  },
+  {
+    template: <EighteenTextUi html={eight_html_text} />,
+    data: $$eighteen_text,
   },
 ];
 /**

@@ -1,6 +1,19 @@
 {
   "number": 5,
-  "img_list": [],
+  "img_list": [
+    {
+      "name": "背景",
+      "number": "5"
+    },
+    {
+      "name": "艺术字",
+      "number": "5"
+    },
+    {
+      "name": "文字背景",
+      "number": "5"
+    }
+  ],
   "data": [
     {
       "type": 1,

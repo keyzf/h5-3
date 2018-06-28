@@ -1,0 +1,728 @@
+{
+  "说明": "",
+  "share": {
+    "img": "",
+    "title": {
+      "value": "分享啦"
+    },
+    "content": {
+      "value": "没错，我们就是爱分享"
+    }
+  },
+  "bg": {
+    "name": "background",
+    "customize": {
+      "color": "#cf4680",
+      "img": "",
+      "crop_img": "",
+      "img_config": {}
+    }
+  },
+  "ui": [
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.772671681068478.png",
+            "crop_img": "http://src.e7wei.com/0.772671681068478.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 301
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": 0
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.029622221780913227.png",
+            "crop_img": "http://src.e7wei.com/0.029622221780913227.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 236
+          },
+          "height": {
+            "value": 228
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 47
+          },
+          "translateY": {
+            "value": -264
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.16683513286186402,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\">LET&#x27;S PLAY</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 108
+          },
+          "height": {
+            "value": 23
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 107
+          },
+          "translateY": {
+            "value": -366
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.9422693723457571.png",
+            "crop_img": "http://src.e7wei.com/0.9422693723457571.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": 1000,
+              "name": "height",
+              "touched": true,
+              "dirty": false
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 291
+          },
+          "height": {
+            "value": 971
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 14
+          },
+          "translateY": {
+            "value": -264
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.18255109938476832,
+        "name": "eighteen_text",
+        "html_content": "<h2><span style=\"color:#ffffff\">活动介绍</span></h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 151
+          },
+          "height": {
+            "value": 30
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 3
+          },
+          "translateY": {
+            "value": -1223
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.16683513286186402,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#2c3e50\">”世界上有60多亿人，我们一生能遇见2900万人，两个人相遇的概率只有0.0048“</span></p><p><span style=\"color:#2c3e50\">-------</span></p><p><span style=\"color:#2c3e50\">这么低的概率下</span></p><p><span style=\"color:#2c3e50\">性遇到心仪的那个人吗?</span></p><p><span style=\"color:#2c3e50\">-------</span></p><p><span style=\"color:#2c3e50\">快来参见夏日狂欢party吧！</span></p><h6><span style=\"color:#999999\">(文案仅做示例，请自行修改)</span></h6>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 275
+          },
+          "height": {
+            "value": 174
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 23
+          },
+          "translateY": {
+            "value": -1200
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.18255109938476832,
+        "name": "eighteen_text",
+        "html_content": "<h2 style=\"color: white;\">主办方</h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 150
+          },
+          "height": {
+            "value": 34
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 2
+          },
+          "translateY": {
+            "value": -1172
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.08606229871399718.png",
+            "crop_img": "http://src.e7wei.com/0.08606229871399718.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 145
+          },
+          "height": {
+            "value": 95
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 70
+          },
+          "translateY": {
+            "value": -1153
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.16683513286186402,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#2c3e50\">乐巢酒吧成立于2006年，是一家以R&amp;B,HIPHOP音乐为主的连锁酒吧、是一家以时尚音乐加人性化的精致服务为一体的大型跨省直营娱乐品牌酒吧。在南京、南昌、深圳、长沙、镇江、西安、太原等城市揩油连锁分店。</span></p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 263
+          },
+          "height": {
+            "value": 144
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 26
+          },
+          "translateY": {
+            "value": -1107
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.18255109938476832,
+        "name": "eighteen_text",
+        "html_content": "<h2><span style=\"color:#ffffff\">时间地点</span></h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 166
+          },
+          "height": {
+            "value": 35
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 3
+          },
+          "translateY": {
+            "value": -1080
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.5558238493122394.png",
+            "crop_img": "http://src.e7wei.com/0.5558238493122394.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 23
+          },
+          "height": {
+            "value": 37
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 37
+          },
+          "translateY": {
+            "value": -1058
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.16683513286186402,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>南京江宁区百家湖1912街区</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 177
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 71
+          },
+          "translateY": {
+            "value": -1093
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.2497746554449749.png",
+            "crop_img": "http://src.e7wei.com/0.2497746554449749.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 24
+          },
+          "height": {
+            "value": 28
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 35
+          },
+          "translateY": {
+            "value": -1068
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "index_number": 0.16683513286186402,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>2018.6.18 </p><p>8:30</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 120
+          },
+          "height": {
+            "value": 41
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 69
+          },
+          "translateY": {
+            "value": -1105
+          }
+        }
+      }
+    }
+  ]
+}

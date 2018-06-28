@@ -20,6 +20,7 @@ import { FourTeenTextUi } from '../../../ui/text/recommend/fourteen_ui';
 import { FifteenTextUi } from '../../../ui/text/recommend/fifteen_ui';
 import { SixTeenTextUi } from '../../../ui/text/recommend/sixteen_ui';
 import { SevenTeenTextUi } from '../../../ui/text/recommend/seventeen_ui';
+import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
 // 图片
 import { UpImgUi } from '../../../ui/img/core/img_component';
 import { GridImgUi } from '../../../ui/img/core/grid_component';
@@ -96,6 +97,10 @@ export const switch_ui = data => {
     case 'seventeen_text':
       return (
         <SevenTeenTextUi html={data.getIn(['customize', 'html_content'])} />
+      );
+    case 'eighteen_text':
+      return (
+        <EighteenTextUi html={data.getIn(['customize', 'html_content'])} />
       );
 
     // 图片类

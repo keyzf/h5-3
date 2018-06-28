@@ -24,6 +24,7 @@ import { Html5Loadable } from './routers/h5.router';
 import { ReleaseLoadable } from './routers/release.router';
 import { JsonLoadable } from './routers/json.router';
 import { DevelopmentLoadable } from './routers/development.router';
+import { $$api } from './api/api.database';
 
 /**
  * 应用根组件
@@ -91,27 +92,46 @@ class App extends PureComponent {
      *  并将用户信息录入核心数组中
      */
     if (operating === 'editorH5') {
-      // let params = new URLSearchParams();
-      // let number = recognition = GetUrlPara("number");
-      // params.append("id", recognition);
-      // params.append("number", number);
-      axios
-        .get('http://localhost:3001/one_ui')
-        .then(response => {
-          this.props.select_upData(fromJS(response.data.ui), '', false);
-          this.props.bg_upDate(fromJS(response.data.bg), '', false);
-          this.props.choose_upDate(
-            Map(),
-            Map({ content: true, choose: false }),
-            ''
-          );
-          this.setState({
-            router: 'visual',
+      if ($$api.get('surroundings') === 'development') {
+        axios
+          .get(`${$$api.getIn(['development', 'editorH5'])}`)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.props.choose_upDate(
+              Map(),
+              Map({ content: true, choose: false }),
+              ''
+            );
+            this.setState({
+              router: 'visual',
+            });
           });
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        let number = (recognition = GetUrlPara('number'));
+        params.append('id', recognition);
+        // number 为要获取的 模板编号
+        params.append('number', number);
+        axios
+          .post('http://localhost:3001/one_ui', params)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.props.choose_upDate(
+              Map(),
+              Map({ content: true, choose: false }),
+              ''
+            );
+            this.setState({
+              router: 'visual',
+            });
+          })
+          .catch(function(error) {
+            console.log('访问服务器错误', error);
+          });
+      }
     }
     /**
      * 如果用户操作码为 showH5
@@ -119,50 +139,84 @@ class App extends PureComponent {
      * 将背景信息录入组件
      */
     if (operating === 'showH5') {
-      // let params = new URLSearchParams();
-      // let number = recognition = GetUrlPara("number");
-      // params.append("id", recognition);
-      // params.append("number", number);
-      axios
-        .get('http://localhost:3001/one_ui')
-        .then(response => {
-          this.props.select_upData(fromJS(response.data.ui), '', false);
-          this.props.bg_upDate(fromJS(response.data.bg), '', false);
-          this.setState({
-            router: 'html5',
+      if ($$api.get('surroundings') === 'development') {
+        axios
+          .get(`${$$api.getIn(['development', 'showH5'])}`)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.setState({
+              router: 'html5',
+            });
           });
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        let number = (recognition = GetUrlPara('number'));
+        params.append('id', recognition);
+        // number 为要获取的 模板编号
+        params.append('number', number);
+        axios
+          .post('http://localhost:3001/one_ui', params)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.setState({
+              router: 'html5',
+            });
+          })
+          .catch(function(error) {
+            console.log('访问服务器错误', error);
+          });
+      }
     }
     /**
      * 如果用户操作码为 ShareMsg
      * 将信息传递出去
      */
     if (operating === 'shareMsg') {
-      // let params = new URLSearchParams();
-      // let number = recognition = GetUrlPara("number");
-      // params.append("id", recognition);
-      // params.append("number", number);
-      axios
-        .get('http://localhost:3001/one_ui')
-        .then(response => {
-          this.props.select_upData(fromJS(response.data.ui), '', false);
-          this.props.bg_upDate(fromJS(response.data.bg), '', false);
-          this.props.share_upDate(fromJS(response.data.share), '', false);
-          this.props.choose_upDate(
-            Map(),
-            Map({ content: true, choose: false }),
-            ''
-          );
-          this.setState({
-            router: 'preview',
+      if ($$api.get('surroundings') === 'development') {
+        axios
+          .get(`${$$api.getIn(['development', 'showH5'])}`)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.props.share_upDate(fromJS(response.data.share), '', false);
+            this.props.choose_upDate(
+              Map(),
+              Map({ content: true, choose: false }),
+              ''
+            );
+            this.setState({
+              router: 'preview',
+            });
           });
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        let number = (recognition = GetUrlPara('number'));
+        params.append('id', recognition);
+        // number 为要获取的 模板编号
+        params.append('number', number);
+        axios
+          .post('http://localhost:3001/one_ui', params)
+          .then(response => {
+            this.props.select_upData(fromJS(response.data.ui), '', false);
+            this.props.bg_upDate(fromJS(response.data.bg), '', false);
+            this.props.share_upDate(fromJS(response.data.share), '', false);
+            this.props.choose_upDate(
+              Map(),
+              Map({ content: true, choose: false }),
+              ''
+            );
+            this.setState({
+              router: 'preview',
+            });
+          })
+          .catch(function(error) {
+            console.log('访问服务器错误', error);
+          });
+      }
     }
   }
 
