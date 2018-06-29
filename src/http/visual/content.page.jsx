@@ -1,6 +1,3 @@
-/**
- * visual 组件拼装显示栏
- */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { RenderUILoadable } from '../../routers/common.router';
@@ -17,7 +14,7 @@ class ContentVisualView extends PureComponent {
   render() {
     const $$bg_data = this.props.bg_value.data;
     const $$choose_data = this.props.choose_value.data;
-    const $$select_data = this.props.select_value.data;
+    const $$select_data = this.props.h5_data_value.data;
     const choose_meta = this.props.choose_value.meta;
     /**
      *  解析出背景组件需要的数据
@@ -56,39 +53,10 @@ class ContentVisualView extends PureComponent {
   }
 }
 
-/**
- * 触发器
- * @param data
- * @param meta
- * @param error
- * @returns {{type: string, payload: *, meta: *, error: *}}
- */
-const choose_action = (data, meta, error) => {
-  return {
-    type: 'CHOOSE_COMPONENTS',
-    payload: data,
-    meta: meta,
-    error: error,
-  };
-};
-const action = (type, data) => {
-  return {
-    type: type,
-    payload: data,
-    meta: '',
-    error: '',
-  };
-};
-
-/**
- * 获取数据源数据
- * @param state
- * @returns {{select_value: *, choose_value: *, bg_value: *}}
- */
 const mapStateToProps = state => {
   return {
     // 组件数据
-    select_value: state.select_reducer,
+    h5_data_value: state.h5_data_reducer,
     // 选择组件数组
     choose_value: state.choose_reducer,
     // 背景组件数据
@@ -96,22 +64,4 @@ const mapStateToProps = state => {
   };
 };
 
-/**
- * 修改数据源数据
- * @param dispatch
- * @returns {{choose_upData: (function(*=, *=, *=): *), select_upData: (function(*=, *=, *=): *)}}
- */
-const mapDispatchToProps = dispatch => {
-  return {
-    // 选择组件数据更新触发器
-    choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
-    // 核心组件数据更新触发器
-    select_upData: data => dispatch(action('SELECT_COMPONENTS', data)),
-  };
-};
-
-/**
- * 高阶组件 hoc
- */
-export default connect(mapStateToProps, mapDispatchToProps)(ContentVisualView);
+export default connect(mapStateToProps)(ContentVisualView);

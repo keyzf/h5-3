@@ -5,12 +5,6 @@
  */
 import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
-import {
-  VisualContentLoadable,
-  VisualEditorLoadable,
-  VisualSideLoadable,
-  VisualUiShowLoadable,
-} from '../../routers/visual.router';
 import HeaderDevelopmentView from './header.page';
 import style from './development.module.scss';
 
@@ -33,21 +27,21 @@ class DevelopmentView extends PureComponent {
           <Header className={style.header}>
             <HeaderDevelopmentView />
           </Header>
-          <Layout className={style.content}>
-            {/*侧边栏*/}
-            <div className={'side'} style={{ backgroundColor: 'white' }}>
-              <VisualSideLoadable />
-            </div>
-            <VisualUiShowLoadable />
-            <Content>
-              <div className={'content'}>
-                <VisualContentLoadable />
-              </div>
-            </Content>
-            <Sider className={style.side} {...editorConfig}>
-              <VisualEditorLoadable />
-            </Sider>
-          </Layout>
+          {/*<Layout className={style.content}>*/}
+            {/*/!*侧边栏*!/*/}
+            {/*<div className={'side'} style={{ backgroundColor: 'white' }}>*/}
+              {/*<VisualSideLoadable />*/}
+            {/*</div>*/}
+            {/*<VisualUiShowLoadable />*/}
+            {/*<Content>*/}
+              {/*<div className={'content'}>*/}
+                {/*<VisualContentLoadable />*/}
+              {/*</div>*/}
+            {/*</Content>*/}
+            {/*<Sider className={style.side} {...editorConfig}>*/}
+              {/*<VisualEditorLoadable />*/}
+            {/*</Sider>*/}
+          {/*</Layout>*/}
         </div>
       </React.Fragment>
     );

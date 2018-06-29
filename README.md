@@ -50,7 +50,7 @@
     
     npm run beaut
     
-4.   测试代码   (架构功能错误，需要后期修复)
+4.   测试代码 
     
     npm run test
     

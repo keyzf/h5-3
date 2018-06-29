@@ -103,7 +103,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     bg_value: state.bg_reducer,
-    select_value: state.select_reducer,
+    select_value: state.h5_data_reducer,
   };
 };
 

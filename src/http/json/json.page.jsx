@@ -48,7 +48,7 @@ class JsonView extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    select_value: state.select_reducer,
+    select_value: state.h5_data_reducer,
     bg_value: state.bg_reducer,
   };
 };

@@ -1,14 +1,10 @@
-/**
- *  visual editor编辑界面
- */
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { Map } from 'immutable';
-import TweenOne from 'rc-tween-one';
-import BgEditor from '../../containers/visual/editor/bg_editor';
-import style from './editor.module.scss';
-import { choose_action } from '../../redux/action';
-import { render_form } from '../../containers/visual/editor/render_form';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import TweenOne from "rc-tween-one";
+import BgEditor from "../../containers/visual/editor/bg_editor";
+import { choose_redux_action } from "../../redux/action";
+import { render_form } from "../../containers/visual/editor/render_form";
+import style from "./editor.module.scss";
 
 /**
  * 实现功能：
@@ -22,13 +18,12 @@ class EditorVisualView extends PureComponent {
    * 使editor界面返回到背景编辑界面
    */
   onclick_choose_bg = () => {
-    this.props.choose_upData(
+    this.props.choose_upData("CHOOSE_UI",
       this.props.choose_value.data,
-      Map({
-        content: this.props.choose_value.meta.get('content'),
-        choose: false,
-      }),
-      false
+      {
+        content: this.props.choose_value.meta.get("content"),
+        choose: false
+      }
     );
   };
 
@@ -41,11 +36,11 @@ class EditorVisualView extends PureComponent {
     const $$choose_meta = this.props.choose_value.meta;
     return (
       <div className={style.layout}>
-        {$$choose_meta.get('choose') ? (
+        {$$choose_meta.get("choose") ? (
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ left: '-90px' }}
+              animation={{ top: "10px" }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >
@@ -55,37 +50,24 @@ class EditorVisualView extends PureComponent {
           </React.Fragment>
         ) : (
           // 显示背景
-          <BgEditor />
+          <BgEditor/>
         )}
       </div>
     );
   }
 }
 
-/**
- * 从数据源读取数据
- * @param state
- * @returns {{choose_value: *}}
- */
 const mapStateToProps = state => {
   return {
-    choose_value: state.choose_reducer,
+    choose_value: state.choose_reducer
   };
 };
 
-/**
- * 发送需要修改的数据
- * @param dispatch
- * @returns {{choose_upData: (function(*=, *=, *=): *)}}
- */
 const mapDispatchToProps = dispatch => {
   return {
-    choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
+    choose_upData: (name, data, meta) =>
+      dispatch(choose_redux_action(name, data, meta))
   };
 };
 
-/**
- * 高阶组件 hoc
- */
 export default connect(mapStateToProps, mapDispatchToProps)(EditorVisualView);

@@ -1,14 +1,11 @@
-/**
- * visual editor默认样式
- */
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { SketchPicker } from 'react-color';
-import { Card, Icon, Divider, Checkbox, Popover, Popconfirm } from 'antd';
-import { bg_action } from '../../../redux/action';
-import UpImgPart from '../../../common/up_img_common/upload_common';
-import { ImgCrop } from '../../../common/up_img_common/img_crop';
-import style from './bg_editor.module.scss';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { SketchPicker } from "react-color";
+import { Card, Icon, Divider, Checkbox, Popover, Popconfirm } from "antd";
+import { bg_action, redux_action } from "../../../redux/action";
+import UpImgPart from "../../../common/up_img_common/upload_common";
+import { ImgCrop } from "../../../common/up_img_common/img_crop";
+import style from "./bg_editor.module.scss";
 
 /**
  * 功能:
@@ -24,99 +21,98 @@ class BgEditor extends PureComponent {
   // 控制model 的显示与关闭
   state = {
     visible: false,
-    crop_visible: false,
+    crop_visible: false
   };
   // 展示model
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
   crop_showModal = () => {
     this.setState({
-      crop_visible: true,
+      crop_visible: true
     });
   };
   // 关闭Model
   closeModal = (state, data) => {
     this.setState({
-      visible: false,
+      visible: false
     });
     // 添加判断是为了控制model遮罩层时的图片显示问题
     if (state && data !== undefined) {
       const $$bg_new = this.props.bg_value.data.setIn(
-        ['customize', 'img'],
+        ["customize", "img"],
         data
       );
-      const $$bg_crop_img = $$bg_new.setIn(['customize', 'crop_img'], data);
-      this.props.bg_upData($$bg_crop_img, ''.false);
+      const $$bg_crop_img = $$bg_new.setIn(["customize", "crop_img"], data);
+      this.props.upData("BG_UI", $$bg_crop_img);
     }
   };
   // 关闭Model
   crop_closeModal = (state, data) => {
     this.setState({
-      crop_visible: false,
+      crop_visible: false
     });
     if (state && data !== undefined) {
-      let $$new_img = this.props.bg_value.data.getIn(['customize', 'img']);
+      let $$new_img = this.props.bg_value.data.getIn(["customize", "img"]);
       $$new_img =
         $$new_img +
         `?imageMogr2/crop/!${data.width}x${data.height}a${data.x}a${data.y}`;
       const $$bg_new = this.props.bg_value.data.setIn(
-        ['customize', 'crop_img'],
+        ["customize", "crop_img"],
         $$new_img
       );
-      this.props.bg_upData($$bg_new, ''.false);
+      this.props.upData("BG_UI", $$bg_new);
     }
   };
   // 界面功能实现 ---> 删除背景图
   delete = () => {
-    const $$bg_new = this.props.bg_value.data.setIn(['customize', 'img'], '');
-    const $$bg_crop = $$bg_new.setIn(['customize', 'crop_img'], '');
-    this.props.bg_upData($$bg_crop, ''.false);
+    const $$bg_new = this.props.bg_value.data.setIn(["customize", "img"], "");
+    const $$bg_crop = $$bg_new.setIn(["customize", "crop_img"], "");
+    this.props.upData("BG_UI", $$bg_crop);
   };
   // 界面功能实现 --> 通过识别关键字，完成平铺，固定的checkbox
   bg_img_config = (tip, e) => {
     let $$bg_new;
-    if (tip === 'fixed') {
+    if (tip === "fixed") {
       $$bg_new = this.props.bg_value.data.setIn(
-        ['customize', 'img_config', 'fixed'],
+        ["customize", "img_config", "fixed"],
         e.target.checked
       );
     } else {
       $$bg_new = this.props.bg_value.data.setIn(
-        ['customize', 'img_config', 'repeat'],
+        ["customize", "img_config", "repeat"],
         e.target.checked
       );
     }
-    this.props.bg_upData($$bg_new, ''.false);
+    this.props.upData("BG_UI", $$bg_new);
   };
   // 界面功能实现 -->  修改色值后插入数据中
   bg_color_config = color => {
     const $$bg_new = this.props.bg_value.data.setIn(
-      ['customize', 'color'],
+      ["customize", "color"],
       color.hex
     );
-    this.props.bg_upData($$bg_new, ''.false);
+    this.props.upData("BG_UI", $$bg_new);
   };
 
   render() {
     // 解构出背景组件数据
     const { data } = this.props.bg_value;
     // 获取特定数值
-    const $$color = data.getIn(['customize', 'color']); //颜色
-    const $$crop_img = data.getIn(['customize', 'crop_img']); //图片
-    const $$img = data.getIn(['customize', 'img']); //图片
-    const $$img_config = data.getIn(['customize', 'img_config']); //图片配置
+    const $$color = data.getIn(["customize", "color"]); //颜色
+    const $$crop_img = data.getIn(["customize", "crop_img"]); //图片
+    const $$img = data.getIn(["customize", "img"]); //图片
+    const $$img_config = data.getIn(["customize", "img_config"]); //图片配置
     return (
       <React.Fragment>
-        {/*背景图栏*/}
         <Card
-          title={'背景图'}
+          title={"背景图"}
           className={style.card}
           extra={
             <div onClick={this.showModal}>
-              <Icon type="plus" />
+              <Icon type="plus"/>
               上传图片
             </div>
           }
@@ -127,14 +123,14 @@ class BgEditor extends PureComponent {
             <React.Fragment>
               {/* 显示图片*/}
               <div className={style.img_show} onClick={this.showModal}>
-                <img className={style.img} src={$$crop_img} alt={'img'} />
+                <img className={style.img} src={$$crop_img} alt={"img"}/>
               </div>
               {/*显示操作栏*/}
               <div className={style.editor}>
                 <div className={style.editor_click} onClick={this.showModal}>
                   更换
                 </div>
-                <Divider type="vertical" />
+                <Divider type="vertical"/>
                 <div className={style.editor_click}>
                   <div
                     className={style.editor_click}
@@ -143,11 +139,11 @@ class BgEditor extends PureComponent {
                     裁剪
                   </div>
                 </div>
-                <Divider type="vertical" />
+                <Divider type="vertical"/>
                 <div className={style.editor_delete}>
                   <Popconfirm
                     placement="top"
-                    title={'确认删除此背景图?'}
+                    title={"确认删除此背景图?"}
                     onConfirm={this.delete}
                     okText="确认"
                     cancelText="取消"
@@ -156,14 +152,14 @@ class BgEditor extends PureComponent {
                   </Popconfirm>
                 </div>
                 <Checkbox
-                  onChange={this.bg_img_config.bind(this, 'repeat')}
-                  defaultChecked={$$img_config.get('repeat')}
+                  onChange={this.bg_img_config.bind(this, "repeat")}
+                  defaultChecked={$$img_config.get("repeat")}
                 >
                   重复
                 </Checkbox>
                 <Checkbox
-                  onChange={this.bg_img_config.bind(this, 'fixed')}
-                  defaultChecked={$$img_config.get('fixed')}
+                  onChange={this.bg_img_config.bind(this, "fixed")}
+                  defaultChecked={$$img_config.get("fixed")}
                 >
                   固定
                 </Checkbox>
@@ -171,7 +167,7 @@ class BgEditor extends PureComponent {
             </React.Fragment>
           ) : (
             // 不存在
-            <div onClick={this.showModal} className={style.bg_transparent} />
+            <div onClick={this.showModal} className={style.bg_transparent}/>
           )}
           <UpImgPart
             visible={this.state.visible}
@@ -184,8 +180,7 @@ class BgEditor extends PureComponent {
             src={$$img}
           />
         </Card>
-        {/*颜色栏*/}
-        <Card title={'背景色配置'} className={style.card}>
+        <Card title={"背景色配置"} className={style.card}>
           <Popover
             content={
               <SketchPicker
@@ -200,7 +195,7 @@ class BgEditor extends PureComponent {
               className={style.card_grid}
               style={{ background: $$color }}
             >
-              <Icon type="edit" />&nbsp;&nbsp;自定义
+              <Icon type="edit"/>&nbsp;&nbsp;自定义
             </Card.Grid>
           </Popover>
         </Card>
@@ -209,29 +204,17 @@ class BgEditor extends PureComponent {
   }
 }
 
-/**
- * 从数据源读取数据
- * @param state
- * @returns {{bg_value: *}}
- */
+
 const mapStateToProps = state => {
   return {
-    bg_value: state.bg_reducer,
+    bg_value: state.bg_reducer
   };
 };
 
-/**
- * 修改数据源数据
- * @param dispatch
- * @returns {{bg_upData: (function(*=, *=, *=): *)}}
- */
 const mapDispatchToProps = dispatch => {
   return {
-    bg_upData: (data, meta, error) => dispatch(bg_action(data, meta, error)),
+    upData: (name, data) => dispatch(redux_action(name, data))
   };
 };
 
-/**
- * 高阶组件 hoc
- */
 export default connect(mapStateToProps, mapDispatchToProps)(BgEditor);

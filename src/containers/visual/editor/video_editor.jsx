@@ -132,7 +132,7 @@ class EditorVideo extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    select_value: state.select_reducer,
+    select_value: state.h5_data_reducer,
     choose_value: state.choose_reducer,
   };
 };

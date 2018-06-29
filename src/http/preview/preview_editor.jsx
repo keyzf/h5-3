@@ -124,7 +124,7 @@ class EditorPreviewView extends React.Component {
 const mapStateToProps = state => {
   return {
     up_img_value: state.up_img_reducer,
-    html5_message_value: state.user_h5_message_reducer,
+    html5_message_value: state.shareMsg_reducer,
   };
 };
 

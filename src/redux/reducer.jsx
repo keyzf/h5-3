@@ -1,5 +1,5 @@
 /**
- * 数据源（重要）
+ * 数据处理层
  */
 import { Map, List, fromJS } from 'immutable';
 import { $$background_database } from '../ui/background/background_database';
@@ -11,7 +11,7 @@ import { $$background_database } from '../ui/background/background_database';
  * @returns {*}
  */
 const select_data = { data: List(), meta: '', error: '' };
-const select_reducer = (state = { ...select_data }, action) => {
+const h5_data_reducer = (state = { ...select_data }, action) => {
   switch (action.type) {
     case 'SELECT_COMPONENTS':
       return {
@@ -39,7 +39,7 @@ const user_h5_message_data = {
   meta: '',
   error: false,
 };
-const user_h5_message_reducer = (
+const shareMsg_reducer = (
   state = { ...user_h5_message_data },
   action
 ) => {
@@ -62,11 +62,11 @@ const user_h5_message_reducer = (
  * @returns {*}
  */
 const visual_ui_show_data = {
-  data: fromJS({ name: 'text', menuChoose: 0 }),
+  data: fromJS({ name: '', menuChoose: ''}),
   meta: '',
   error: false,
 };
-const visual_ui_show_reducer = (state = { ...visual_ui_show_data }, action) => {
+const ui_h5_data_reducer = (state = { ...visual_ui_show_data }, action) => {
   switch (action.type) {
     case 'VISUAL_UI_SHOW':
       return {
@@ -174,10 +174,10 @@ const guide_reducer = (state = { ...guide_data }, action) => {
  * 导出文件
  */
 export {
-  user_h5_message_reducer,
-  visual_ui_show_reducer,
+  shareMsg_reducer,
+  ui_h5_data_reducer,
   choose_reducer,
-  select_reducer,
+  h5_data_reducer,
   bg_reducer,
   id_reducer,
   guide_reducer,

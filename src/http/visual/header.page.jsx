@@ -23,14 +23,14 @@ class HeaderVisualView extends PureComponent {
       sm: 5,
       md: 5,
       lg: 5,
-      xl: 5,
+      xl: 3,
     };
     const chooseCol = {
       xs: 0,
       sm: 0,
       md: 0,
       lg: { span: 12 },
-      xl: { span: 10, offset: 3 },
+      xl: { span: 12, offset: 3 },
     };
     const closeCol = {
       xs: 0,
@@ -49,7 +49,6 @@ class HeaderVisualView extends PureComponent {
 
     return (
       <Row className={style.layout} align={'center'} gutter={16} type={'flex'}>
-        {/*logo*/}
         <Col className={style.col_center} {...LogoCol}>
           <Menu theme={'dark'} mode={'horizontal'}>
             <Menu.Item>
@@ -59,7 +58,6 @@ class HeaderVisualView extends PureComponent {
             </Menu.Item>
           </Menu>
         </Col>
-        {/*选项*/}
         <Col className={style.col_center} {...chooseCol}>
           <Menu {...MenuConfig}>
             <Menu.Item key={'preview'}>

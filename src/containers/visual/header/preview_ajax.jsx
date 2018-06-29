@@ -48,8 +48,8 @@ class ToPreviewAjax extends PureComponent {
 const mapStateToProps = state => {
   return {
     bg_value: state.bg_reducer,
-    select_value: state.select_reducer,
-    html5_value: state.user_h5_message_reducer,
+    select_value: state.h5_data_reducer,
+    html5_value: state.shareMsg_reducer,
   };
 };
 
