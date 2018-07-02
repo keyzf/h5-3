@@ -27,6 +27,8 @@ import { GridImgUi } from '../../../ui/img/core/grid_component';
 import { ListImgUi } from '../../../ui/img/core/list_component';
 import { SliderImgUI } from '../../../ui/img/core/slider_component';
 import { CarouselImgUI } from '../../../ui/img/core/carousel_component';
+import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { ThreeImgUi } from '../../../ui/img/recommend/three_img_ui';
 // 音乐
 import { MusicUi } from '../../../ui/music/core/music_ui';
 // 视频
@@ -42,7 +44,6 @@ import { FormUi } from '../../../ui/form/form_ui_render';
 import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -118,6 +119,8 @@ export const switch_ui = data => {
       return <OneImgUi data={data} />;
     case 'two_img':
       return <TwoImgUi data={data} />;
+    case 'three_img':
+      return <ThreeImgUi data={data} />;
     // 媒体类
     case 'video':
       return <VideoUi data={data} />;

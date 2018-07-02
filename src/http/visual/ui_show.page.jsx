@@ -1,19 +1,19 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Layout } from "antd";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Layout } from 'antd';
 import {
   template_img_data,
   template_mall_data,
   template_music_data,
   template_text_data,
-  template_video_data
-} from "../../containers/visual/side/select_database";
-import SelectCommon from "../../containers/visual/side/select_common";
-import InterActiveSelect from "../../containers/visual/side/interactive";
+  template_video_data,
+} from '../../containers/visual/side/select_database';
+import SelectCommon from '../../containers/visual/side/select_common';
+import InterActiveSelect from '../../containers/visual/side/interactive';
 
 class VisualUiShowView extends PureComponent {
   render() {
-    const $$name = this.props.ui_select_value.data.get("name");
+    const $$name = this.props.ui_select_value.data.get('name');
     const { Sider } = Layout;
     /**
      * 根据获取不同的名称，展示出不同的组件
@@ -21,23 +21,23 @@ class VisualUiShowView extends PureComponent {
      * @returns {*}
      */
     const show = $$name => {
-      if ($$name === "text") {
-        return <SelectCommon data={template_text_data}/>;
+      if ($$name === 'text') {
+        return <SelectCommon data={template_text_data} />;
       }
-      if ($$name === "img") {
-        return <SelectCommon data={template_img_data}/>;
+      if ($$name === 'img') {
+        return <SelectCommon data={template_img_data} />;
       }
-      if ($$name === "music") {
-        return <SelectCommon data={template_music_data}/>;
+      if ($$name === 'music') {
+        return <SelectCommon data={template_music_data} />;
       }
-      if ($$name === "video") {
-        return <SelectCommon data={template_video_data}/>;
+      if ($$name === 'video') {
+        return <SelectCommon data={template_video_data} />;
       }
-      if ($$name === "mall") {
-        return <SelectCommon data={template_mall_data}/>;
+      if ($$name === 'mall') {
+        return <SelectCommon data={template_mall_data} />;
       }
-      if ($$name === "lnteractive") {
-        return <InterActiveSelect/>;
+      if ($$name === 'lnteractive') {
+        return <InterActiveSelect />;
       }
     };
     return (
@@ -45,12 +45,12 @@ class VisualUiShowView extends PureComponent {
         {$$name ? (
           <Sider
             width={330}
-            style={{ height: "100%", background: "transparent" }}
+            style={{ height: '100%', background: 'transparent' }}
           >
             {show($$name)}
           </Sider>
         ) : (
-          ""
+          ''
         )}
       </React.Fragment>
     );
@@ -59,8 +59,8 @@ class VisualUiShowView extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    ui_select_value: state.ui_h5_data_reducer
+    ui_select_value: state.ui_h5_data_reducer,
   };
 };
 
-export default connect(mapStateToProps, "")(VisualUiShowView);
+export default connect(mapStateToProps, '')(VisualUiShowView);

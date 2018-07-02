@@ -12,10 +12,9 @@ import style from './content.module.scss';
  */
 class ContentVisualView extends PureComponent {
   render() {
+    const { data: $$choose_data, meta: choose_meta } = this.props.choose_value;
     const $$bg_data = this.props.bg_value.data;
-    const $$choose_data = this.props.choose_value.data;
     const $$select_data = this.props.h5_data_value.data;
-    const choose_meta = this.props.choose_value.meta;
     /**
      *  解析出背景组件需要的数据
      */
@@ -24,6 +23,7 @@ class ContentVisualView extends PureComponent {
       img: $$bg_data.getIn(['customize', 'crop_img']),
       repeat: $$bg_data.getIn(['customize', 'img_config', 'repeat']),
       fixed: $$bg_data.getIn(['customize', 'img_config', 'fixed']),
+      height: $$bg_data.getIn(['advanced', 'height', 'value']),
     };
     /**
      *  渲染出组件

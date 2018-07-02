@@ -22,4 +22,7 @@ export const $$background_database = fromJS({
       fixed: undefined,
     },
   },
+  advanced: {
+    height: { value: 0 },
+  },
 });

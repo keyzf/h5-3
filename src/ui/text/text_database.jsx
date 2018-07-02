@@ -26,6 +26,7 @@ import { eighteen_html_text } from './recommend/eighteen_ui';
 const $$text_database = (name, html, height) => {
   return {
     customize: Map({
+      type: 'text',
       index_number: Math.random(), // 编辑器赓续index_Number来更新内容
       name: name,
       html_content: html,

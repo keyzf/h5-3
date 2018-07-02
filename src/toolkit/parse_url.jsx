@@ -18,6 +18,4 @@ const GetUrlPara = search_string => {
   return search_data;
 };
 
-export {
-  GetUrlPara
-}
+export { GetUrlPara };

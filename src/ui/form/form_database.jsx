@@ -6,6 +6,7 @@ import { fromJS } from 'immutable';
 const $$form = (name, item_data, height) => {
   return fromJS({
     customize: {
+      type: 'form',
       name: name,
       item: item_data,
       btn_content: { value: '提交' },

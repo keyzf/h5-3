@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Tabs, Button, Card, Form, Popover } from 'antd';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 import { fromJS, Map } from 'immutable';
-import AdvanceEditor from './advance.editor';
+import AdvanceEditor from '../advance.form';
 import { SketchPicker } from 'react-color';
-import { $$button_database } from '../../../ui/button/button_database';
-import ButtonForm from '../../../ui/button/button_form';
+import { $$button_database } from '../../../../ui/button/button_database';
+import ButtonForm from '../../../../ui/button/button_form';
 
 class EditorButton extends React.Component {
   state = {

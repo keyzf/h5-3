@@ -19,17 +19,17 @@ import {
   Form,
   Popover,
 } from 'antd';
-import { choose_action, select_action } from '../../../redux/action';
-import UpImgPart from '../../../common/up_img_common/upload_common';
-import MallItemForm from '../../../ui/mall/mall_item_form';
-import MallBaseForm from '../../../ui/mall/mall_base_form';
-import AdvanceEditor from './advance.editor';
-import { ImgCrop } from '../../../common/up_img_common/img_crop';
+import { choose_action, select_action } from '../../../../redux/action';
+import UpImgPart from '../../../../common/up_img_common/upload_common';
+import MallItemForm from '../../../../ui/mall/mall_item_form';
+import MallBaseForm from '../../../../ui/mall/mall_base_form';
+import AdvanceEditor from '../advance.form';
+import { ImgCrop } from '../../../../common/up_img_common/img_crop';
 import {
   $$grid_mall_database,
   $$list_mall_database,
   $$mall_item_database,
-} from '../../../ui/mall/mall_database';
+} from '../../../../ui/mall/mall_database';
 
 /**
  * 实现功能：

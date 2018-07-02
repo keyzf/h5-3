@@ -1,5 +1,6 @@
 {
   "说明": "",
+  "release":"https://www.e7wei.com/",
   "share": {
     "img": "",
     "title": {
@@ -16,7 +17,11 @@
       "img": "",
       "crop_img": "",
       "img_config": {}
+    },
+    "advanced": {
+      "height": { "value": 0 }
     }
+
   },
   "ui": [
     {

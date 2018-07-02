@@ -2,10 +2,10 @@
  * redux 根数据源
  * 程序中有且只能有一个
  */
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { applyMiddleware, createStore } from "redux";
-import { rootReducer } from "./root.reducer";
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { applyMiddleware, createStore } from 'redux';
+import { rootReducer } from './root.reducer';
 
 /**
  * 建立数据源函数
@@ -19,6 +19,4 @@ const store = createStore(
 /**
  * 导出数据
  */
-export {
-  store
-};
+export { store };

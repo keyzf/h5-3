@@ -21,6 +21,7 @@ class H5RenderCommon extends PureComponent {
       img: customize.get('crop_img'),
       repeat: customize.getIn(['img_config', 'repeat']),
       fixed: customize.getIn(['img_config', 'fixed']),
+      height: this.props.bg_value.data.getIn(['advanced', 'height', 'value']),
     };
     return (
       <RenderBg {...bg_config}>

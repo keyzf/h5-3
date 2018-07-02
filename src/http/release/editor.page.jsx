@@ -3,6 +3,7 @@ import { Button, Card, Col, message, Row } from 'antd';
 import QRCode from 'qrcode.react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class EditorReleaseView extends React.Component {
   static outMessage() {
@@ -10,13 +11,14 @@ class EditorReleaseView extends React.Component {
   }
 
   render() {
+    const $$url = this.props.release_value.data.get('url');
     return (
       <Row>
         <Col>
           <Card title="38女神节店铺促销" style={{ width: '100%' }}>
             <Row gutter={24}>
               <Col span={8}>
-                <QRCode size={180} value="http://facebook.github.io/react/" />
+                <QRCode size={180} value={$$url} />
                 <br />
                 <p style={{ textAlign: 'center' }}>微信扫一扫，预览活动</p>
               </Col>
@@ -40,7 +42,7 @@ class EditorReleaseView extends React.Component {
             <Row gutter={16}>
               <Col span={12}>
                 <Button type="primary" style={{ width: '100%' }}>
-                  <Link to={'/'}>继续编辑</Link>
+                  <Link to={'/visual'}>继续编辑</Link>
                 </Button>
               </Col>
               <Col span={12}>
@@ -61,4 +63,10 @@ class EditorReleaseView extends React.Component {
   }
 }
 
-export default EditorReleaseView;
+const mapStateToProps = state => {
+  return {
+    release_value: state.release_reducer,
+  };
+};
+
+export default connect(mapStateToProps)(EditorReleaseView);

@@ -1,4 +1,4 @@
-import { fromJS } from "immutable";
+import { fromJS } from 'immutable';
 
 /**
  * h5 页面引导
@@ -8,9 +8,9 @@ import { fromJS } from "immutable";
  */
 const guide_reducer = (state = { data: fromJS({ guide: false }) }, action) => {
   switch (action.type) {
-    case "GUIDE":
+    case 'GUIDE':
       return {
-        data: action.payload
+        data: action.payload,
       };
     default:
       return state;

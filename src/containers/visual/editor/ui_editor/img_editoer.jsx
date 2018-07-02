@@ -19,10 +19,10 @@ import {
   Form,
   Popover,
 } from 'antd';
-import { choose_action, select_action } from '../../../redux/action';
-import UpImgPart from '../../../common/up_img_common/upload_common';
-import ImgBaseForm from '../../../ui/img/img_base_form';
-import ImgItemForm from '../../../ui/img/img_item_form';
+import { choose_action, select_action } from '../../../../redux/action';
+import UpImgPart from '../../../../common/up_img_common/upload_common';
+import ImgBaseForm from '../../../../ui/img/img_base_form';
+import ImgItemForm from '../../../../ui/img/img_item_form';
 import {
   $$carousel_img_database,
   $$grid_img_database,
@@ -30,9 +30,9 @@ import {
   $$list_img_database,
   $$slider_img_database,
   $$single_img_database,
-} from '../../../ui/img/img_database';
-import AdvanceEditor from './advance.editor';
-import { ImgCrop } from '../../../common/up_img_common/img_crop';
+} from '../../../../ui/img/img_database';
+import AdvanceEditor from '../advance.form';
+import { ImgCrop } from '../../../../common/up_img_common/img_crop';
 
 /**
  * 实现功能：

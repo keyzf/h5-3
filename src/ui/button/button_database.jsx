@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 const $$button = (name, height, font_color) => {
   return {
     customize: {
+      type: 'button',
       name: name,
       btn_url: { value: '' },
       shadow: { value: undefined },

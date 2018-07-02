@@ -4,7 +4,8 @@ export const RenderBgAtom = styled.div`
   position: relative;
   // 宽度
   width: 320px;
-  height: ${props => (props.fixed ? '100vh' : 'auto')};
+  height: ${props =>
+    props.fixed ? '100%' : props.height ? props.height + 'px' : 'auto'};
   ${props => (props.fixed ? 'overflow: hidden' : '')};
   // 背景图片 如果不附加判断，则无法显示渐变
   background-color: ${props => (props.color ? props.color : null)};
@@ -13,4 +14,5 @@ export const RenderBgAtom = styled.div`
   background-attachment: local;
   background-size: 100%;
   margin: auto;
+  overflow: hidden;
 `;

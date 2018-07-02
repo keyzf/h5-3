@@ -48,6 +48,7 @@ import {
   $$one_img_database,
   $$single_img_database,
   $$slider_img_database,
+  $$three_img_database,
   $$two_img_database,
 } from '../../../ui/img/img_database';
 import {
@@ -122,6 +123,7 @@ import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 import { FormUi } from '../../../ui/form/form_ui_render';
 import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
+import { ThreeImgUi } from '../../../ui/img/recommend/three_img_ui';
 
 /**
  * text
@@ -186,6 +188,10 @@ const template_img_data = [
   {
     template: <TwoImgUi data={$$two_img_database} />,
     data: $$two_img_database,
+  },
+  {
+    template: <ThreeImgUi data={$$three_img_database} />,
+    data: $$three_img_database,
   },
 ];
 /**

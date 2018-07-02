@@ -1,5 +1,6 @@
 {
   "说明": "样式参考链接http://src.e7wei.com/0.4804065800798081.png",
+  "release":"https://www.e7wei.com/",
   "share": {
     "img": "",
     "title": {
@@ -16,6 +17,9 @@
       "img": "http://src.e7wei.com/0.4804065800798081.png",
       "crop_img": "http://src.e7wei.com/0.4804065800798081.png",
       "img_config": {}
+    },
+    "advanced": {
+      "height": { "value": 0 }
     }
   },
   "ui": [

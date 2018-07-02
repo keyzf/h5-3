@@ -11,6 +11,7 @@ class RenderBg extends PureComponent {
       img: this.props.img,
       repeat: this.props.repeat,
       fixed: this.props.fixed,
+      height: this.props.height,
     };
     return (
       //背景样式组件

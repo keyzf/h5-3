@@ -29,7 +29,7 @@ import { ImgCrop } from '../../../common/up_img_common/img_crop';
  *          4. padding  <css element>
  *          5. position <css element>
  */
-class AdvanceEditor extends PureComponent {
+class AdvanceForm extends PureComponent {
   state = {
     visible: false,
     crop_visible: false,
@@ -292,4 +292,4 @@ const mapDispatchToProps = dispatch => {
 /**
  * 高阶组件 hoc
  */
-export default connect(mapStateToProps, mapDispatchToProps)(AdvanceEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(AdvanceForm);

@@ -4,7 +4,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Map, fromJS } from 'immutable';
-import AdvanceEditor from './advance.editor';
+import AdvanceEditor from '../advance.form';
 import {
   Tabs,
   Button,
@@ -18,7 +18,7 @@ import {
   Form,
   Input,
 } from 'antd';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 import {
   $$form_database,
   $$form_item_database,
@@ -26,7 +26,7 @@ import {
   $$from_opt_datepicker,
   $$from_opt_input,
   $$from_opt_rate,
-} from '../../../ui/form/form_database';
+} from '../../../../ui/form/form_database';
 import { SketchPicker } from 'react-color';
 
 /**

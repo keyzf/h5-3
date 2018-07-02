@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Tabs, Radio, Card } from 'antd';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
-import MusicForm from '../../../common/up_music_common/music_form';
+import { choose_action, select_action } from '../../../../redux/action';
+import MusicForm from '../../../../common/up_music_common/music_form';
 import { Map } from 'immutable';
 
 class EditorMusic extends PureComponent {

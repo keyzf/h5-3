@@ -1,55 +1,59 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Card, Col, Row } from 'antd';
 import FormPreviewView from './form.page';
 import { connect } from 'react-redux';
-import { share_msg_action } from '../../redux/action';
+import { redux_action } from '../../redux/action';
 import UpImgPart from '../../common/up_img_common/upload_common';
 
-class EditorPreviewView extends React.Component {
+class EditorPreviewView extends PureComponent {
   state = {
     visible: false,
   };
-
   showModal = () => {
     this.setState({
       visible: true,
     });
   };
-
   closeModal = (state, data) => {
     this.setState({
       visible: false,
     });
     if (state && data !== undefined) {
-      const $$new_html5 = this.props.html5_message_value.data.set('img', data);
-      this.props.share_upData($$new_html5, '', false);
+      const $$img = this.props.shareMsg_value.data.set('img', data);
+      this.props.upData('SHARE_MSG', $$img);
     }
   };
-
   editorFeatures = data => {
     let $$new_html5;
     if (data.title) {
-      $$new_html5 = this.props.html5_message_value.data.setIn(
+      $$new_html5 = this.props.shareMsg_value.data.setIn(
         ['title', 'value'],
         data.title.value
       );
     }
     if (data.content) {
-      $$new_html5 = this.props.html5_message_value.data.setIn(
+      $$new_html5 = this.props.shareMsg_value.data.setIn(
         ['content', 'value'],
         data.content.value
       );
     }
-    this.props.share_upData($$new_html5, '', false);
+    this.props.upData($$new_html5, '', false);
   };
 
   render() {
-    const $$img = this.props.html5_message_value.data.get('img');
-    const $$data = this.props.html5_message_value.data;
+    const $$img = this.props.shareMsg_value.data.get('img');
+    const $$data = this.props.shareMsg_value.data;
     return (
       <Row>
         <Col>
-          <Card title="微信分享设置">
+          <Card
+            title="微信分享设置"
+            style={{
+              borderLeft: 'none',
+              borderRight: 'none',
+              borderBottom: 'none',
+            }}
+          >
             <Row gutter={16}>
               <Col
                 span={7}
@@ -101,7 +105,7 @@ class EditorPreviewView extends React.Component {
               />
             </Row>
           </Card>
-          <Card title="微信显示效果" style={{ width: '100%' }}>
+          <Card title="微信显示效果" style={{ border: 'none' }}>
             <Row gutter={16}>
               <Col span={24}>
                 <img
@@ -123,15 +127,13 @@ class EditorPreviewView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    up_img_value: state.up_img_reducer,
-    html5_message_value: state.shareMsg_reducer,
+    shareMsg_value: state.shareMsg_reducer,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    share_upData: (data, mete, error) =>
-      dispatch(share_msg_action(data, mete, error)),
+    upData: (name, data) => dispatch(redux_action(name, data)),
   };
 };
 

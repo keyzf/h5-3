@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import TweenOne from "rc-tween-one";
-import BgEditor from "../../containers/visual/editor/bg_editor";
-import { choose_redux_action } from "../../redux/action";
-import { render_form } from "../../containers/visual/editor/render_form";
-import style from "./editor.module.scss";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import TweenOne from 'rc-tween-one';
+import BgEditor from '../../containers/visual/editor/ui_editor/bg_editor';
+import { choose_redux_action } from '../../redux/action';
+import { render_formFunc } from '../../containers/visual/editor/render_form.func';
+import style from './editor.module.scss';
 
 /**
  * 实现功能：
@@ -18,13 +18,10 @@ class EditorVisualView extends PureComponent {
    * 使editor界面返回到背景编辑界面
    */
   onclick_choose_bg = () => {
-    this.props.choose_upData("CHOOSE_UI",
-      this.props.choose_value.data,
-      {
-        content: this.props.choose_value.meta.get("content"),
-        choose: false
-      }
-    );
+    this.props.choose_upData('CHOOSE_UI', this.props.choose_value.data, {
+      content: this.props.choose_value.meta.get('content'),
+      choose: false,
+    });
   };
 
   /**
@@ -32,25 +29,24 @@ class EditorVisualView extends PureComponent {
    * @returns {*}
    */
   render() {
-    const $$choose_data = this.props.choose_value.data;
-    const $$choose_meta = this.props.choose_value.meta;
+    const { data, meta } = this.props.choose_value;
     return (
       <div className={style.layout}>
-        {$$choose_meta.get("choose") ? (
+        {meta.get('choose') ? (
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ top: "10px" }}
+              animation={{ top: '10px' }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >
               全局背景
             </TweenOne>
-            {render_form($$choose_data)}
+            {render_formFunc(data)}
           </React.Fragment>
         ) : (
           // 显示背景
-          <BgEditor/>
+          <BgEditor />
         )}
       </div>
     );
@@ -59,14 +55,14 @@ class EditorVisualView extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    choose_value: state.choose_reducer
+    choose_value: state.choose_reducer,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     choose_upData: (name, data, meta) =>
-      dispatch(choose_redux_action(name, data, meta))
+      dispatch(choose_redux_action(name, data, meta)),
   };
 };
 

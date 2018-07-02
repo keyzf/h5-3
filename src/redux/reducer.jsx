@@ -39,10 +39,7 @@ const user_h5_message_data = {
   meta: '',
   error: false,
 };
-const shareMsg_reducer = (
-  state = { ...user_h5_message_data },
-  action
-) => {
+const shareMsg_reducer = (state = { ...user_h5_message_data }, action) => {
   switch (action.type) {
     case 'USER_H5_MESSAGE':
       return {
@@ -62,7 +59,7 @@ const shareMsg_reducer = (
  * @returns {*}
  */
 const visual_ui_show_data = {
-  data: fromJS({ name: '', menuChoose: ''}),
+  data: fromJS({ name: '', menuChoose: '' }),
   meta: '',
   error: false,
 };

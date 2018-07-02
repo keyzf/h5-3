@@ -1,16 +1,14 @@
-import { fromJS } from "immutable";
+import { fromJS } from 'immutable';
 
 const shareMsg_data = {
   data: fromJS({
     img: '',
+    crop_img: '',
     title: { value: '' },
     content: { value: '' },
   }),
 };
-const shareMsg_reducer = (
-  state = { ...shareMsg_data },
-  action
-) => {
+const shareMsg_reducer = (state = { ...shareMsg_data }, action) => {
   switch (action.type) {
     case 'SHARE_MSG':
       return {
@@ -29,4 +27,4 @@ const shareMsg_reducer = (
 /**
  * 导出文件
  */
-export { shareMsg_reducer};
+export { shareMsg_reducer };

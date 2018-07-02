@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Tabs, Card, Radio, Input } from 'antd';
 import { connect } from 'react-redux';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 import { Map } from 'immutable';
-import VideoForm from '../../../common/up_video_common/video_form';
+import VideoForm from '../../../../common/up_video_common/video_form';
 
 const { TextArea } = Input;
 

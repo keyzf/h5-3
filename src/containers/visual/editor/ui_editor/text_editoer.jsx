@@ -5,13 +5,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import { Tabs, Button, Card, Popconfirm } from 'antd';
-import { choose_action, select_action } from '../../../redux/action';
+import { choose_action, select_action } from '../../../../redux/action';
 import {
   $$horizontal_text,
   $$vertical_text,
-} from '../../../ui/text/text_database';
-import { VisualRichEditorLoadable } from '../../../routers/visual.router';
-import AdvanceEditor from './advance.editor';
+} from '../../../../ui/text/text_database';
+import { VisualRichEditorLoadable } from '../../../../routers/visual.router';
+import AdvanceEditor from '../advance.form';
 
 /**
  * editor for text
