@@ -2,7 +2,6 @@
  * 为组件添加动态效果
  */
 import React, { PureComponent } from 'react';
-import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
