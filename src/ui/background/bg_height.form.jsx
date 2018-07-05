@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Form, Slider } from 'antd';
 
-class BgHeightForm extends React.Component {
+class BgHeightForm extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     const form_item_style = label_name => {
@@ -16,8 +16,8 @@ class BgHeightForm extends React.Component {
     };
     return (
       <Form hideRequiredMark>
-        <Form.Item {...form_item_style('背景长度')}>
-          {getFieldDecorator('height')(<Slider max={4000} min={0} />)}
+        <Form.Item {...form_item_style('背景高度')}>
+          {getFieldDecorator('height')(<Slider max={4000} min={600} />)}
         </Form.Item>
       </Form>
     );

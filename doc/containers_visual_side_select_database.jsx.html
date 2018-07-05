@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/visual/side/select_database.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/visual/side/select_database.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 显示可选组件列表
+ */
+import React from 'react';
+import {
+  $$eight_text,
+  $$eighteen_text,
+  $$eleven_text,
+  $$fifteen_text,
+  $$five_text,
+  $$four_text,
+  $$fourteen_text,
+  $$horizontal_text,
+  $$nine_text,
+  $$nineteen_text,
+  $$one_text,
+  $$seven_text,
+  $$seventeen_text,
+  $$six_text,
+  $$sixteen_text,
+  $$ten_text,
+  $$thirteen_text,
+  $$three_text,
+  $$twelve_text,
+  $$twenty_text,
+  $$two_text,
+  $$vertical_text,
+} from '../../../ui/text/text_database';
+import {
+  HorizontalTextTemplate,
+  VerticalTextTemplate,
+} from '../../../ui/text/template/_template_text';
+import { one_html_text, OneTextUi } from '../../../ui/text/recommend/one_ui';
+import { two_html_text, TwoTextUi } from '../../../ui/text/recommend/two_ui';
+import {
+  three_html_text,
+  ThreeTextUi,
+} from '../../../ui/text/recommend/three_ui';
+import { four_html_text, FourTextUi } from '../../../ui/text/recommend/four_ui';
+import { five_html_text, FiveTextUi } from '../../../ui/text/recommend/five_ui';
+import { six_html_text, SixTextUi } from '../../../ui/text/recommend/six_ui';
+import {
+  seven_html_text,
+  SevenTextUi,
+} from '../../../ui/text/recommend/seven_ui';
+import {
+  $$carousel_img_database,
+  $$four_img_database,
+  $$grid_img_database,
+  $$list_img_database,
+  $$one_img_database,
+  $$single_img_database,
+  $$slider_img_database,
+  $$three_img_database,
+  $$two_img_database,
+} from '../../../ui/img/img_database';
+import {
+  CarouselImgTemplate,
+  GridImgTemplate,
+  ListImgTemplate,
+  SingleImgTemplate,
+  SliderImgTemplate,
+} from '../../../ui/img/template/img_template';
+import { MusicTemplate } from '../../../ui/music/template/music_template';
+import { $$music_database } from '../../../ui/music/music_database';
+import { $$video_database } from '../../../ui/video/video_database';
+import { VideoTemplate } from '../../../ui/video/template/video_template';
+import {
+  $$grid_mall_database,
+  $$list_mall_database,
+  $$one_mall_database,
+} from '../../../ui/mall/mall_database';
+import {
+  GridMallTemplate,
+  ListMallTemplate,
+} from '../../../ui/mall/template/mall_template';
+import {
+  eight_html_text,
+  EightTextUi,
+} from '../../../ui/text/recommend/eight_ui';
+import { nine_html_text, NineTextUi } from '../../../ui/text/recommend/nine_ui';
+import { ten_html_text, TenTextUi } from '../../../ui/text/recommend/ten_ui';
+import {
+  eleven_html_text,
+  ElevenTextUi,
+} from '../../../ui/text/recommend/eleven_ui';
+import {
+  twelve_html_text,
+  TwelveTextUi,
+} from '../../../ui/text/recommend/twelve_ui';
+import {
+  thirteen_html_text,
+  ThirteenTextUi,
+} from '../../../ui/text/recommend/thirteen_ui';
+import {
+  fourteen_html_text,
+  FourTeenTextUi,
+} from '../../../ui/text/recommend/fourteen_ui';
+import {
+  fifteen_html_text,
+  FifteenTextUi,
+} from '../../../ui/text/recommend/fifteen_ui';
+import {
+  sixteen_html_text,
+  SixTeenTextUi,
+} from '../../../ui/text/recommend/sixteen_ui';
+import {
+  seventeen_html_text,
+  SevenTeenTextUi,
+} from '../../../ui/text/recommend/seventeen_ui';
+import { ButtonTemplate } from '../../../ui/button/template/button';
+import {
+  $$button_database,
+  $$one_button_database,
+} from '../../../ui/button/button_database';
+import { FormTemplate } from '../../../ui/form/template/form_template';
+import {
+  $$form_database,
+  $$one_form_database,
+} from '../../../ui/form/form_database';
+import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
+import MusicListUI from '../../../ui/music/recommonnd/music_list_ui';
+import VideoListUI from '../../../ui/video/recommonnd/video_list_ui';
+import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
+import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
+import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { FormUi } from '../../../ui/form/form_ui_render';
+import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
+import { ThreeImgUi } from '../../../ui/img/recommend/three_img_ui';
+import {
+  nineteen_html_text,
+  NineTeenTextUi,
+} from '../../../ui/text/recommend/nineteen_ui';
+import {
+  twenty_html_text,
+  TwentyTextUi,
+} from '../../../ui/text/recommend/twenty_ui';
+import { FourImgUi } from '../../../ui/img/recommend/four_img_ui';
+
+/**
+ * text
+ * @type {*[]}
+ */
+const template_text_data = [
+  { template: &lt;HorizontalTextTemplate />, data: $$horizontal_text },
+  { template: &lt;VerticalTextTemplate />, data: $$vertical_text },
+  { template: '', data: 'dividing-line' },
+  { template: &lt;OneTextUi html={one_html_text} />, data: $$one_text },
+  { template: &lt;TwoTextUi html={two_html_text} />, data: $$two_text },
+  { template: &lt;ThreeTextUi html={three_html_text} />, data: $$three_text },
+  { template: &lt;FourTextUi html={four_html_text} />, data: $$four_text },
+  { template: &lt;FiveTextUi html={five_html_text} />, data: $$five_text },
+  { template: &lt;SixTextUi html={six_html_text} />, data: $$six_text },
+  { template: &lt;SevenTextUi html={seven_html_text} />, data: $$seven_text },
+  { template: &lt;EightTextUi html={eight_html_text} />, data: $$eight_text },
+  { template: &lt;NineTextUi html={nine_html_text} />, data: $$nine_text },
+  { template: &lt;TenTextUi html={ten_html_text} />, data: $$ten_text },
+  { template: &lt;ElevenTextUi html={eleven_html_text} />, data: $$eleven_text },
+  { template: &lt;TwelveTextUi html={twelve_html_text} />, data: $$twelve_text },
+  {
+    template: &lt;ThirteenTextUi html={thirteen_html_text} />,
+    data: $$thirteen_text,
+  },
+  {
+    template: &lt;FourTeenTextUi html={fourteen_html_text} />,
+    data: $$fourteen_text,
+  },
+  {
+    template: &lt;FifteenTextUi html={fifteen_html_text} />,
+    data: $$fifteen_text,
+  },
+  {
+    template: &lt;SixTeenTextUi html={sixteen_html_text} />,
+    data: $$sixteen_text,
+  },
+  {
+    template: &lt;SevenTeenTextUi html={seventeen_html_text} />,
+    data: $$seventeen_text,
+  },
+  {
+    template: &lt;EighteenTextUi html={eight_html_text} />,
+    data: $$eighteen_text,
+  },
+  {
+    template: &lt;NineTeenTextUi html={nineteen_html_text} />,
+    data: $$nineteen_text,
+  },
+  { template: &lt;TwentyTextUi html={twenty_html_text} />, data: $$twenty_text },
+];
+/**
+ * img
+ * @type {*[]}
+ */
+const template_img_data = [
+  { template: &lt;SingleImgTemplate />, data: $$single_img_database },
+  { template: &lt;GridImgTemplate />, data: $$grid_img_database },
+  { template: &lt;ListImgTemplate />, data: $$list_img_database },
+  { template: &lt;SliderImgTemplate />, data: $$slider_img_database },
+  { template: &lt;CarouselImgTemplate />, data: $$carousel_img_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneImgUi data={$$one_img_database} />,
+    data: $$one_img_database,
+  },
+  {
+    template: &lt;TwoImgUi data={$$two_img_database} />,
+    data: $$two_img_database,
+  },
+  {
+    template: &lt;ThreeImgUi data={$$three_img_database} />,
+    data: $$three_img_database,
+  },
+  {
+    template: &lt;FourImgUi data={$$four_img_database} />,
+    data: $$four_img_database,
+  },
+];
+/**
+ * music
+ * @type {*[]}
+ */
+const template_music_data = [
+  {
+    template: &lt;MusicTemplate />,
+    data: $$music_database(
+      'music',
+      'https://e7wei-img.oss-cn-beijing.aliyuncs.com/music.mp3'
+    ),
+  },
+  { template: '', data: 'dividing-line' },
+  { template: &lt;MusicListUI />, data: 'music_list_ui' },
+];
+/**
+ * video
+ * @type {*[]}
+ */
+const template_video_data = [
+  {
+    template: &lt;VideoTemplate />,
+    data: $$video_database(
+      'video',
+      'https://e7wei-img.oss-cn-beijing.aliyuncs.com/movie.mp4'
+    ),
+  },
+  { template: '', data: 'dividing-line' },
+  { template: &lt;VideoListUI />, data: 'video_list_ui' },
+];
+/**
+ * mall
+ * @type {*[]}
+ */
+const template_mall_data = [
+  { template: &lt;GridMallTemplate />, data: $$grid_mall_database },
+  { template: &lt;ListMallTemplate />, data: $$list_mall_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneMallUi data={$$one_mall_database} />,
+    data: $$one_mall_database,
+  },
+];
+/**
+ * button
+ * @type {*[]}
+ */
+const template_button_data = [
+  { template: &lt;ButtonTemplate />, data: $$button_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneButtonUi data={$$one_button_database} />,
+    data: $$one_button_database,
+  },
+];
+/**
+ * form
+ * @type {*[]}
+ */
+const template_form_data = [
+  { template: &lt;FormTemplate />, data: $$form_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;FormUi data={$$one_form_database} />,
+    data: $$one_form_database,
+  },
+];
+export {
+  template_text_data,
+  template_img_data,
+  template_music_data,
+  template_video_data,
+  template_mall_data,
+  template_button_data,
+  template_form_data,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdvanceForm.html">AdvanceForm</a></li><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ComponentLocation.html">ComponentLocation</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="DevelopmentView.html">DevelopmentView</a></li><li><a href="DynamicCommon.html">DynamicCommon</a></li><li><a href="EditorForm.html">EditorForm</a></li><li><a href="EditorImg.html">EditorImg</a></li><li><a href="EditorMall.html">EditorMall</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EighteenTextUi.html">EighteenTextUi</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="H5RenderCommon.html">H5RenderCommon</a></li><li><a href="HeaderDevelopmentView.html">HeaderDevelopmentView</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="ImgBaseForm.html">ImgBaseForm</a></li><li><a href="ImgCrop.html">ImgCrop</a></li><li><a href="ImgForm.html">ImgForm</a></li><li><a href="ImgItemForm.html">ImgItemForm</a></li><li><a href="InterActiveSelect.html">InterActiveSelect</a></li><li><a href="JsonView.html">JsonView</a></li><li><a href="MusicForm.html">MusicForm</a></li><li><a href="MusicListUI.html">MusicListUI</a></li><li><a href="MusicUi.html">MusicUi</a></li><li><a href="NineTeenTextUi.html">NineTeenTextUi</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PreviewView.html">PreviewView</a></li><li><a href="RenderBg.html">RenderBg</a></li><li><a href="RenderUI.html">RenderUI</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwentyTextUi.html">TwentyTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li><li><a href="VideoForm.html">VideoForm</a></li><li><a href="VideoListUI.html">VideoListUI</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$form_item_database">$$form_item_database</a></li><li><a href="global.html#$$from_opt_input">$$from_opt_input</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#bg_data">bg_data</a></li><li><a href="global.html#bg_reducer">bg_reducer</a></li><li><a href="global.html#choose_data">choose_data</a></li><li><a href="global.html#guide_data">guide_data</a></li><li><a href="global.html#guide_reducer">guide_reducer</a></li><li><a href="global.html#h5_data_reducer">h5_data_reducer</a></li><li><a href="global.html#id_data">id_data</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#NoChoose">NoChoose</a></li><li><a href="global.html#one_template">one_template</a></li><li><a href="global.html#render_formFunc">render_formFunc</a></li><li><a href="global.html#render_switch_ui">render_switch_ui</a></li><li><a href="global.html#rootReducer">rootReducer</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#secretKey">secretKey</a></li><li><a href="global.html#select_data">select_data</a></li><li><a href="global.html#store">store</a></li><li><a href="global.html#switch_ui">switch_ui</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#UIChoose">UIChoose</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li><li><a href="global.html#user_h5_message_data">user_h5_message_data</a></li><li><a href="global.html#user_id_reducer">user_id_reducer</a></li><li><a href="global.html#visual_ui_show_action">visual_ui_show_action</a></li><li><a href="global.html#visual_ui_show_data">visual_ui_show_data</a></li><li><a href="global.html#VisualLoadable">VisualLoadable</a></li><li><a href="global.html#VisualRichEditorLoadable">VisualRichEditorLoadable</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jul 03 2018 15:54:51 GMT+0800 (China Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

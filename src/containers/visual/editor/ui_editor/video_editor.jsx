@@ -4,10 +4,48 @@ import { connect } from 'react-redux';
 import { choose_action, select_action } from '../../../../redux/action';
 import { Map } from 'immutable';
 import VideoForm from '../../../../common/up_video_common/video_form';
-
-const { TextArea } = Input;
+import axios from 'axios/index';
+import { $$api } from '../../../../api/api.database';
+import range from 'lodash.range';
+import LazyLoad from 'react-lazyload';
 
 class EditorVideo extends PureComponent {
+  state = {
+    user_video: [],
+    user_number: '',
+    length: 0,
+  };
+
+  componentWillMount() {
+    if ($$api.get('surroundings') === 'development') {
+      axios({
+        method: 'get',
+        url: `${$$api.getIn(['development', 'user_video_start'])}`,
+      }).then(response => {
+        this.setState({
+          user_video: response.data.data,
+          user_number: response.data.number,
+        });
+      });
+    }
+    if ($$api.get('surroundings') === 'produce') {
+      // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
+      axios({
+        method: 'get',
+        url: `${$$api.getIn(['produce', 'user_video_start'])}`,
+      })
+        .then(response => {
+          this.setState({
+            user_video: response.data.data,
+            user_number: response.data.number,
+          });
+        })
+        .catch(function(error) {
+          console.log('访问服务器错误', error);
+        });
+    }
+  }
+
   ImgPartChange = changedFields => {
     if (
       changedFields.upload &&
@@ -60,10 +98,65 @@ class EditorVideo extends PureComponent {
 
   render() {
     const $$customize = this.props.data.getIn(['data', 'customize']);
+    const { TextArea } = Input;
     const radioStyle = {
       display: 'block',
       height: '30px',
       lineHeight: '30px',
+    };
+    const ShowMusic = props => {
+      if ($$api.get('surroundings') === 'development') {
+        if (this.state.length === props.index) {
+          axios({
+            method: 'get',
+            url: `${$$api.getIn(['development', 'user_video_other'])}${
+              props.index
+            }`,
+          }).then(response => {
+            let user_video = this.state.user_video;
+            let length = this.state.length;
+            response.data.map(data => {
+              return user_video.push(data);
+            });
+            this.setState({
+              user_video: user_video,
+              length: length + 1,
+            });
+          });
+        }
+      }
+      if ($$api.get('surroundings') === 'produce') {
+        let params = new URLSearchParams();
+        params.append('number', props.index);
+        axios
+          .post(`${$$api.getIn(['development', 'user_music_other'])}`, params)
+          .then(response => {
+            let user_video = this.state.user_video;
+            let length = this.state.length;
+            response.data.map(data => {
+              return user_video.push(data);
+            });
+            this.setState({
+              recommend_music: user_video,
+              length: length + 1,
+            });
+          });
+      }
+      return (
+        <React.Fragment>
+          {this.state.length - 1 === props.index ? (
+            this.state.user_video.map((data, index) => {
+              return (
+                <Radio key={index} style={radioStyle} value={data.url}>
+                  {data.dsc}
+                </Radio>
+              );
+            })
+          ) : (
+            <div style={{ display: 'none' }}>代价在</div>
+          )}
+        </React.Fragment>
+      );
     };
     return (
       <Tabs defaultActiveKey="1" style={{ height: '100%' }}>
@@ -102,7 +195,7 @@ class EditorVideo extends PureComponent {
             </div>
             <TextArea rows={4} onChange={this.shareChange} />
           </Card>
-          <Card title="上传记录">
+          <Card title="上传记录" style={{ height: '400px', overflow: 'auto' }}>
             <Radio.Group
               onChange={this.onChange}
               value={$$customize.get('video')}
@@ -115,11 +208,17 @@ class EditorVideo extends PureComponent {
               >
                 默认
               </Radio>
-              {$$customize.get('history').map((data, index) => {
+              {range(this.state.user_number).map((n_data, n_index) => {
                 return (
-                  <Radio key={index} style={radioStyle} value={data.url}>
-                    {data.name}
-                  </Radio>
+                  <LazyLoad
+                    once={true}
+                    throttle={100}
+                    key={n_index}
+                    height={30}
+                    overflow
+                  >
+                    <ShowMusic index={n_index} />
+                  </LazyLoad>
                 );
               })}
             </Radio.Group>

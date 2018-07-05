@@ -26,6 +26,7 @@ import {
   $$from_opt_datepicker,
   $$from_opt_input,
   $$from_opt_rate,
+  $$from_opt_upload,
 } from '../../../../ui/form/form_database';
 import { SketchPicker } from 'react-color';
 
@@ -126,6 +127,18 @@ class EditorForm extends PureComponent {
         .get('customize')
         .get('item');
       const $$new_item = $$item.push($$from_opt_datepicker);
+      this.sendAction(
+        $$select_data
+          .get($$choose_data.get('number'))
+          .setIn(['customize', 'item'], $$new_item)
+      );
+    }
+    if (opt_name === 'upload') {
+      const $$item = $$select_data
+        .get($$choose_data.get('number'))
+        .get('customize')
+        .get('item');
+      const $$new_item = $$item.push($$from_opt_upload);
       this.sendAction(
         $$select_data
           .get($$choose_data.get('number'))
@@ -399,6 +412,9 @@ class EditorForm extends PureComponent {
         </Col>
         <Col span={12} onClick={this.add_opt.bind(this, 'datePicker')}>
           日期
+        </Col>
+        <Col span={12} onClick={this.add_opt.bind(this, 'upload')}>
+          上传
         </Col>
       </Row>
     );

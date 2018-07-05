@@ -1,10 +1,6 @@
 import { fromJS } from 'immutable'; //不可变数据结构库
 
-/**
- * 背景组件数据结构
- * @type {any}
- */
-export const $$background_database = fromJS({
+const $$background_database = fromJS({
   // 组件名称，用于后期的content判断与editor判断
   name: 'background',
   // 基础属性
@@ -26,3 +22,5 @@ export const $$background_database = fromJS({
     height: { value: 0 },
   },
 });
+
+export { $$background_database };

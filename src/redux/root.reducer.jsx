@@ -10,6 +10,9 @@ import { bg_reducer } from './renducer/bg.renducer';
 import { shareMsg_reducer } from './renducer/shareMsg.renducer';
 import { ui_h5_data_reducer } from './renducer/ui_select.renducer';
 import { release_reducer } from './renducer/release.renducer';
+import { img_model_reducer } from './renducer/img_model.renducer';
+import { upload_recode_reducer } from './renducer/upload_recode.renducer';
+import { img_library_reducer } from './renducer/img_library.renducer';
 
 import { up_img_reducer, html5_reducer } from './reducer';
 
@@ -34,6 +37,12 @@ const rootReducer = combineReducers({
   ui_h5_data_reducer,
   // 用户模板链接
   release_reducer,
+  // img model 模块（用户图片及公共图片）
+  img_model_reducer,
+  // 记录用户上传图片及选择图片url
+  upload_recode_reducer,
+  // 图片库
+  img_library_reducer,
 
   up_img_reducer,
   html5_reducer,

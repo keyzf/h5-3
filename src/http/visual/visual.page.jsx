@@ -25,7 +25,7 @@ class VisualView extends PureComponent {
         intro: '此处用来制作h5页面，选中组件后，可对组件进行拖拽缩放，等操作',
       },
       {
-        element: `.${style.side}`,
+        element: `.editor`,
         intro:
           '编辑栏，用来对选中的组件进行内容设置，高级设置中有更多功能，欢迎使用',
       },
@@ -91,7 +91,9 @@ class VisualView extends PureComponent {
             </div>
           </Content>
           <Sider className={style.side} {...editorConfig}>
-            <EditorVisualView />
+            <div className={'editor'}>
+              <EditorVisualView />
+            </div>
           </Sider>
         </Layout>
       </Layout>
@@ -105,4 +107,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, '')(VisualView);
+export default connect(mapStateToProps)(VisualView);

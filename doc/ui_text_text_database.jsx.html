@@ -44,16 +44,19 @@ import { fourteen_html_text } from './recommend/fourteen_ui';
 import { fifteen_html_text } from './recommend/fifteen_ui';
 import { sixteen_html_text } from './recommend/sixteen_ui';
 import { seventeen_html_text } from './recommend/seventeen_ui';
+import { h_html_text } from './core/horizontal_ui';
+import { v_html_text } from './core/vertical_ui';
+import { eighteen_html_text } from './recommend/eighteen_ui';
+import { nineteen_html_text } from './recommend/nineteen_ui';
+import { twenty_html_text } from './recommend/twenty_ui';
 
 /**
- * 根级数据，用来生成组件
- * @param name
- * @param html
- * @returns {{customize: (*|Immutable.Map&lt;any, any>|Immutable.Map&lt;string, number>), advance: any}}
+ * 根级数据，用来生成组件}}
  */
-const $$text_database = (name, html) => {
+const $$text_database = (name, html, height) => {
   return {
     customize: Map({
+      type: 'text',
       index_number: Math.random(), // 编辑器赓续index_Number来更新内容
       name: name,
       html_content: html,
@@ -61,65 +64,66 @@ const $$text_database = (name, html) => {
     advance: fromJS({
       color: '',
       img: '',
+      crop_img: '',
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
       },
-      perimeter: { width: { value: 319 }, height: { value: 147 } },
+      perimeter: { width: { value: 320 }, height: { value: height } },
       transform: { translateX: { value: 0 }, translateY: { value: 0 } },
-      padding: {
-        top: { value: 0 },
-        bottom: { value: 0 },
-        left: { value: 0 },
-        right: { value: 0 },
-      },
     }),
   };
 };
-
-/**
- * 可编辑的html信息
- * @type {string}
- */
-const h_html_text =
-  '&lt;h2 style="text-align:center;">横排文本示例&lt;/h2>&lt;p style="text-align:center;"> &lt;h3 style="text-align:center;">上邪&lt;/h3>&lt;p style="text-align:center;"> 上邪，我欲与君相知，长命无绝衰。&lt;br/>山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝&lt;/p>';
-const v_html_text =
-  '&lt;h2 style="text-align:center;">竖排文本示例&lt;/h2> &lt;h3 style="text-align:center;">元日&lt;/h3>&lt;p style="text-align:center;">爆竹声中一岁除&lt;br/>春风送暖入屠苏&lt;br/>千门万户曈曈日&lt;br/>总把新桃换旧符&lt;/p>';
 
 /**
  * 各组件的数据
  * @type {any}
  */
 const $$horizontal_text = fromJS(
-  $$text_database('horizontal_text', h_html_text)
+  $$text_database('horizontal_text', h_html_text, 147)
 );
-const $$vertical_text = fromJS($$text_database('vertical_text', v_html_text));
-const $$one_text = fromJS($$text_database('one_text', one_html_text));
-const $$two_text = fromJS($$text_database('two_text', two_html_text));
-const $$three_text = fromJS($$text_database('three_text', three_html_text));
-const $$four_text = fromJS($$text_database('four_text', four_html_text));
-const $$five_text = fromJS($$text_database('five_text', five_html_text));
-const $$six_text = fromJS($$text_database('six_text', six_html_text));
-const $$seven_text = fromJS($$text_database('seven_text', seven_html_text));
-const $$eight_text = fromJS($$text_database('eight_text', eight_html_text));
-const $$nine_text = fromJS($$text_database('nine_text', nine_html_text));
-const $$ten_text = fromJS($$text_database('ten_text', ten_html_text));
-const $$eleven_text = fromJS($$text_database('eleven_text', eleven_html_text));
-const $$twelve_text = fromJS($$text_database('twelve_text', twelve_html_text));
+const $$vertical_text = fromJS(
+  $$text_database('vertical_text', v_html_text, 147)
+);
+const $$one_text = fromJS($$text_database('one_text', one_html_text, 68));
+const $$two_text = fromJS($$text_database('two_text', two_html_text, 37));
+const $$three_text = fromJS($$text_database('three_text', three_html_text, 37));
+const $$four_text = fromJS($$text_database('four_text', four_html_text, 37));
+const $$five_text = fromJS($$text_database('five_text', five_html_text, 47));
+const $$six_text = fromJS($$text_database('six_text', six_html_text, 47));
+const $$seven_text = fromJS($$text_database('seven_text', seven_html_text, 40));
+const $$eight_text = fromJS($$text_database('eight_text', eight_html_text, 47));
+const $$nine_text = fromJS($$text_database('nine_text', nine_html_text, 34));
+const $$ten_text = fromJS($$text_database('ten_text', ten_html_text, 34));
+const $$eleven_text = fromJS(
+  $$text_database('eleven_text', eleven_html_text, 35)
+);
+const $$twelve_text = fromJS(
+  $$text_database('twelve_text', twelve_html_text, 36)
+);
 const $$thirteen_text = fromJS(
-  $$text_database('thirteen_text', thirteen_html_text)
+  $$text_database('thirteen_text', thirteen_html_text, 78)
 );
 const $$fourteen_text = fromJS(
-  $$text_database('fourteen_text', fourteen_html_text)
+  $$text_database('fourteen_text', fourteen_html_text, 78)
 );
 const $$fifteen_text = fromJS(
-  $$text_database('fifteen_text', fifteen_html_text)
+  $$text_database('fifteen_text', fifteen_html_text, 130)
 );
 const $$sixteen_text = fromJS(
-  $$text_database('sixteen_text', sixteen_html_text)
+  $$text_database('sixteen_text', sixteen_html_text, 130)
 );
 const $$seventeen_text = fromJS(
-  $$text_database('sixteen_text', seventeen_html_text)
+  $$text_database('seventeen_text', seventeen_html_text, 80)
+);
+const $$eighteen_text = fromJS(
+  $$text_database('eighteen_text', eighteen_html_text, 80)
+);
+const $$nineteen_text = fromJS(
+  $$text_database('nineteen_text', nineteen_html_text, 80)
+);
+const $$twenty_text = fromJS(
+  $$text_database('twenty_text', twenty_html_text, 80)
 );
 export {
   $$horizontal_text,
@@ -141,6 +145,9 @@ export {
   $$fifteen_text,
   $$sixteen_text,
   $$seventeen_text,
+  $$eighteen_text,
+  $$nineteen_text,
+  $$twenty_text,
 };
 </code></pre>
         </article>
@@ -152,13 +159,13 @@ export {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="BgPreview.html">BgPreview</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="MusicComponent.html">MusicComponent</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PaddingForm.html">PaddingForm</a></li><li><a href="PositionForm.html">PositionForm</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SiderVisualView.html">SiderVisualView</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$logo_database">$$logo_database</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#accessKey">accessKey</a></li><li><a href="global.html#h_html_text">h_html_text</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#render_component">render_component</a></li><li><a href="global.html#render_form">render_formFunc</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdvanceForm.html">AdvanceForm</a></li><li><a href="App.html">App</a></li><li><a href="BgComponent.html">BgComponent</a></li><li><a href="BgEditor.html">BgEditor</a></li><li><a href="CleanContent.html">CleanContent</a></li><li><a href="ComponentLocation.html">ComponentLocation</a></li><li><a href="ContentVisualView.html">ContentVisualView</a></li><li><a href="DevelopmentView.html">DevelopmentView</a></li><li><a href="DynamicCommon.html">DynamicCommon</a></li><li><a href="EditorForm.html">EditorForm</a></li><li><a href="EditorImg.html">EditorImg</a></li><li><a href="EditorMall.html">EditorMall</a></li><li><a href="EditorText.html">EditorText</a></li><li><a href="EditorVisualView.html">EditorVisualView</a></li><li><a href="EighteenTextUi.html">EighteenTextUi</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="GetUrlPara.html">GetUrlPara</a></li><li><a href="H5RenderCommon.html">H5RenderCommon</a></li><li><a href="HeaderDevelopmentView.html">HeaderDevelopmentView</a></li><li><a href="HeaderVisualView.html">HeaderVisualView</a></li><li><a href="ImgBaseForm.html">ImgBaseForm</a></li><li><a href="ImgCrop.html">ImgCrop</a></li><li><a href="ImgForm.html">ImgForm</a></li><li><a href="ImgItemForm.html">ImgItemForm</a></li><li><a href="InterActiveSelect.html">InterActiveSelect</a></li><li><a href="JsonView.html">JsonView</a></li><li><a href="MusicForm.html">MusicForm</a></li><li><a href="MusicListUI.html">MusicListUI</a></li><li><a href="MusicUi.html">MusicUi</a></li><li><a href="NineTeenTextUi.html">NineTeenTextUi</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="OneTextUi.html">OneTextUi</a></li><li><a href="PreviewView.html">PreviewView</a></li><li><a href="RenderBg.html">RenderBg</a></li><li><a href="RenderUI.html">RenderUI</a></li><li><a href="RichTextEditor.html">RichTextEditor</a></li><li><a href="SelectCommon.html">SelectCommon</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwentyTextUi.html">TwentyTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UpImgPart.html">UpImgPart</a></li><li><a href="VideoForm.html">VideoForm</a></li><li><a href="VideoListUI.html">VideoListUI</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$background_database">$$background_database</a></li><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$form_item_database">$$form_item_database</a></li><li><a href="global.html#$$from_opt_input">$$from_opt_input</a></li><li><a href="global.html#$$horizontal_text">$$horizontal_text</a></li><li><a href="global.html#$$text_database">$$text_database</a></li><li><a href="global.html#bg_data">bg_data</a></li><li><a href="global.html#bg_reducer">bg_reducer</a></li><li><a href="global.html#choose_data">choose_data</a></li><li><a href="global.html#guide_data">guide_data</a></li><li><a href="global.html#guide_reducer">guide_reducer</a></li><li><a href="global.html#h5_data_reducer">h5_data_reducer</a></li><li><a href="global.html#id_data">id_data</a></li><li><a href="global.html#mapDispatchToProps">mapDispatchToProps</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#NoChoose">NoChoose</a></li><li><a href="global.html#one_template">one_template</a></li><li><a href="global.html#render_formFunc">render_formFunc</a></li><li><a href="global.html#render_switch_ui">render_switch_ui</a></li><li><a href="global.html#rootReducer">rootReducer</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#secretKey">secretKey</a></li><li><a href="global.html#select_data">select_data</a></li><li><a href="global.html#store">store</a></li><li><a href="global.html#switch_ui">switch_ui</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_music_data">template_music_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#template_video_data">template_video_data</a></li><li><a href="global.html#UIChoose">UIChoose</a></li><li><a href="global.html#up_img_reducer">up_img_reducer</a></li><li><a href="global.html#user_h5_message_data">user_h5_message_data</a></li><li><a href="global.html#user_id_reducer">user_id_reducer</a></li><li><a href="global.html#visual_ui_show_action">visual_ui_show_action</a></li><li><a href="global.html#visual_ui_show_data">visual_ui_show_data</a></li><li><a href="global.html#VisualLoadable">VisualLoadable</a></li><li><a href="global.html#VisualRichEditorLoadable">VisualRichEditorLoadable</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jun 13 2018 11:59:18 GMT+0800 (CST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jul 03 2018 15:54:51 GMT+0800 (China Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
