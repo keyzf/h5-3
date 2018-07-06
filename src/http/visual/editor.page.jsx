@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import TweenOne from 'rc-tween-one';
-import BgEditor from '../../containers/visual/editor/ui_editor/bg_editor';
+import BgEditor from '../../containers/visual/editor/bg/bg_editor';
 import { choose_redux_action } from '../../redux/action';
 import { render_formFunc } from '../../containers/visual/editor/render_form.func';
 import style from './editor.module.scss';
@@ -36,7 +36,7 @@ class EditorVisualView extends PureComponent {
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ top: '10px' }}
+              animation={{ top: '0px' }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >

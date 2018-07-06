@@ -18,7 +18,7 @@ const VisualLoadable = LoadableVisibility({
  * 工具类组件
  */
 const VisualRichEditorLoadable = LoadableVisibility({
-  loader: () => import('../containers/visual/editor/ui_editor/rich_editor'), // 文件路径
+  loader: () => import('../containers/visual/editor/text/rich_editor'), // 文件路径
   loading: component_loading, // 加载时显示的组件
   delay: 300,
   timeout: 5000, // 超时时间

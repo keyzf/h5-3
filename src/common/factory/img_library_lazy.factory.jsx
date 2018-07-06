@@ -14,8 +14,9 @@ class ImgLibraryLazyFactory extends PureComponent {
     let number = '';
     $$data.get('list').map(data => {
       if (data.get('name') === name) {
-        return (number = data.get('number'));
+        number = data.get('number');
       }
+      return number;
     });
     return number;
   };

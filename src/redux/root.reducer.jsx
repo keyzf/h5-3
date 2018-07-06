@@ -13,8 +13,9 @@ import { release_reducer } from './renducer/release.renducer';
 import { img_model_reducer } from './renducer/img_model.renducer';
 import { upload_recode_reducer } from './renducer/upload_recode.renducer';
 import { img_library_reducer } from './renducer/img_library.renducer';
+import { user_video_reducer } from './renducer/user_video.renducer';
+import { user_movie_reducer } from './renducer/user_movie.renducer';
 
-import { up_img_reducer, html5_reducer } from './reducer';
 
 /**
  * 合并数据处理层
@@ -43,9 +44,11 @@ const rootReducer = combineReducers({
   upload_recode_reducer,
   // 图片库
   img_library_reducer,
+  //用户个人video
+  user_video_reducer,
+  // 用户个人movie
+  user_movie_reducer,
 
-  up_img_reducer,
-  html5_reducer,
 });
 
 /**

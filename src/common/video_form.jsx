@@ -3,7 +3,7 @@
  */
 import React, { PureComponent } from 'react';
 import { Form, Upload } from 'antd';
-import { uploadToken } from '../../toolkit/qiniu_upload';
+import { uploadToken } from '../toolkit/qiniu_upload';
 
 /**
  * 图片上传
@@ -19,7 +19,7 @@ class VideoForm extends PureComponent {
       name: 'file',
       action: 'http://upload.qiniup.com',
       showUploadList: false,
-      data: { token: uploadToken, key: Math.random() },
+      data: { token: uploadToken },
       accept: 'video/*',
     };
     return (

@@ -3,12 +3,12 @@
  */
 import React, { PureComponent } from 'react';
 import { Form, Upload } from 'antd';
-import { uploadToken } from '../../toolkit/qiniu_upload';
+import { uploadToken } from '../toolkit/qiniu_upload';
 
 /**
  * 图片上传
  */
-class ImgForm extends PureComponent {
+class MusicForm extends PureComponent {
   /**
    * 内存泄漏
    * @returns {*}
@@ -19,8 +19,8 @@ class ImgForm extends PureComponent {
       name: 'file',
       action: 'http://upload.qiniup.com',
       showUploadList: false,
-      data: { token: uploadToken, key: Math.random() + '.png' },
-      accept: 'image/*',
+      data: { token: uploadToken },
+      accept: 'audio/*',
     };
     return (
       <Form hideRequiredMark>
@@ -46,4 +46,4 @@ export default Form.create({
       }),
     };
   },
-})(ImgForm);
+})(MusicForm);
