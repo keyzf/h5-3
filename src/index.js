@@ -1,6 +1,3 @@
-/**
- * 将整个程序渲染至 id 为 'root'  的 div 中
- */
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -9,19 +6,15 @@ import App from "./App";
 import "./core.css";
 import registerServiceWorker from "./registerServiceWorker";
 
-/**
- * 渲染
- */
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
 
 /**
- * 需要改将 json 中的 homepage 字段更改为访问更目录地址
- * 例如：
- *  "homepage" :'https://e7wei.com'
+ * 将package.json中'homepage'字段内容更改为 访问根目录地址
+ * 例："homepage" :'https://e7wei.com'
  */
 registerServiceWorker();

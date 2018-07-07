@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 export const $$music_database = (name, url) => {
   return fromJS({
     customize: {
+      type: 'music',
       name: name,
       //上传
       music: url,

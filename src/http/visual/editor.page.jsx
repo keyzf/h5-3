@@ -1,14 +1,10 @@
-/**
- *  visual editor编辑界面
- */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Map } from 'immutable';
 import TweenOne from 'rc-tween-one';
-import BgEditor from '../../containers/visual/editor/bg_editor';
+import BgEditor from '../../containers/visual/editor/bg/bg_editor';
+import { choose_redux_action } from '../../redux/action';
+import { render_formFunc } from '../../containers/visual/editor/render_form.func';
 import style from './editor.module.scss';
-import { choose_action } from '../../redux/action';
-import { render_form } from '../../containers/visual/editor/render_form';
 
 /**
  * 实现功能：
@@ -22,14 +18,10 @@ class EditorVisualView extends PureComponent {
    * 使editor界面返回到背景编辑界面
    */
   onclick_choose_bg = () => {
-    this.props.choose_upData(
-      this.props.choose_value.data,
-      Map({
-        content: this.props.choose_value.meta.get('content'),
-        choose: false,
-      }),
-      false
-    );
+    this.props.choose_upData('CHOOSE_UI', this.props.choose_value.data, {
+      content: this.props.choose_value.meta.get('content'),
+      choose: false,
+    });
   };
 
   /**
@@ -37,21 +29,20 @@ class EditorVisualView extends PureComponent {
    * @returns {*}
    */
   render() {
-    const $$choose_data = this.props.choose_value.data;
-    const $$choose_meta = this.props.choose_value.meta;
+    const { data, meta } = this.props.choose_value;
     return (
       <div className={style.layout}>
-        {$$choose_meta.get('choose') ? (
+        {meta.get('choose') ? (
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ left: '-90px' }}
+              animation={{ top: '0px' }}
               className={style.pos_tab}
               onClick={this.onclick_choose_bg.bind(this)}
             >
               全局背景
             </TweenOne>
-            {render_form($$choose_data)}
+            {render_formFunc(data)}
           </React.Fragment>
         ) : (
           // 显示背景
@@ -62,30 +53,17 @@ class EditorVisualView extends PureComponent {
   }
 }
 
-/**
- * 从数据源读取数据
- * @param state
- * @returns {{choose_value: *}}
- */
 const mapStateToProps = state => {
   return {
     choose_value: state.choose_reducer,
   };
 };
 
-/**
- * 发送需要修改的数据
- * @param dispatch
- * @returns {{choose_upData: (function(*=, *=, *=): *)}}
- */
 const mapDispatchToProps = dispatch => {
   return {
-    choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
+    choose_upData: (name, data, meta) =>
+      dispatch(choose_redux_action(name, data, meta)),
   };
 };
 
-/**
- * 高阶组件 hoc
- */
 export default connect(mapStateToProps, mapDispatchToProps)(EditorVisualView);

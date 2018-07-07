@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Menu, Row } from 'antd';
-import VisualSaveAjax from '../../containers/visual/header/save_ajax';
+import VisualSaveAjax from '../../containers/visual/header/save.ajax';
 import QueueAnim from 'rc-queue-anim';
 import CleanContent from '../../containers/visual/header/clean_content';
-import ToPreviewAjax from '../../containers/visual/header/preview_ajax';
+import ToPreviewAjax from '../../containers/visual/header/release.ajax';
 import style from './header.module.scss';
 
 /**

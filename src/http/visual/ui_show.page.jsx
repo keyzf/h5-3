@@ -1,6 +1,3 @@
-/**
- * ui 选择展示栏
- */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
@@ -14,12 +11,9 @@ import {
 import SelectCommon from '../../containers/visual/side/select_common';
 import InterActiveSelect from '../../containers/visual/side/interactive';
 
-/**
- * 接收数据源数据，判断显示那种ui
- */
 class VisualUiShowView extends PureComponent {
   render() {
-    const $$name = this.props.visual_ui_show_value.data.get('name');
+    const $$name = this.props.ui_select_value.data.get('name');
     const { Sider } = Layout;
     /**
      * 根据获取不同的名称，展示出不同的组件
@@ -63,18 +57,10 @@ class VisualUiShowView extends PureComponent {
   }
 }
 
-/**
- * 读取数据源数据
- * @param state
- * @returns {{visual_ui_show_value: *}}
- */
 const mapStateToProps = state => {
   return {
-    visual_ui_show_value: state.visual_ui_show_reducer,
+    ui_select_value: state.ui_h5_data_reducer,
   };
 };
 
-/**
- * 高阶组件 hoc
- */
 export default connect(mapStateToProps, '')(VisualUiShowView);

@@ -11,6 +11,7 @@ class BgComponent extends React.Component {
       img: this.props.img,
       repeat: this.props.repeat,
       fixed: this.props.fixed,
+      height: this.props.height,
     };
     return (
       //背景样式组件

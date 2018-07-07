@@ -1,8 +1,8 @@
-
 .layout {
-  height: calc(100% - 48px);
+  box-sizing: border-box;
+  height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow-y: hidden;
 }
 
 /*定位图标*/
@@ -10,6 +10,7 @@
   position: absolute;
   width: 80px;
   height: 43px;
+  left: -90px;
   border-radius: 5px;
   background: white;
   display: flex;

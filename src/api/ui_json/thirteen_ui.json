@@ -1,0 +1,1189 @@
+{
+  "说明": "",
+  "release": "https://www.e7wei.com/",
+  "share": {
+    "img": "",
+    "title": {
+      "value": "分享啦"
+    },
+    "content": {
+      "value": "没错，我们就是爱分享"
+    }
+  },
+  "bg": {
+    "name": "background",
+    "customize": {
+      "color": "#ffffff",
+      "img": "",
+      "crop_img": "",
+      "img_config": {}
+    },
+    "advanced": {
+      "height": {
+        "value": 0
+      }
+    }
+  },
+  "ui": [
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.6862382492808785.png",
+            "crop_img": "http://src.e7wei.com/0.6862382492808785.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 259
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": 0
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.5329014029179995.png",
+            "crop_img": "http://src.e7wei.com/0.5329014029179995.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 118
+          },
+          "height": {
+            "value": 75
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 104
+          },
+          "translateY": {
+            "value": -177
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<h3 style=\"text-align:center;\">亲子活动集 邀您一起来</h3>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 184
+          },
+          "height": {
+            "value": 28
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 67
+          },
+          "translateY": {
+            "value": -157
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.8258936528020198,
+        "name": "twenty_text",
+        "html_content": "<h2 style=\"color: white;\">多陪陪孩子</h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 45
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": -117
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>工作太忙，没有时间见证孩子成长的一点一滴</p><p>生活太繁，没有时间关注孩子脸上的一颦一笑</p><p>不是挤不出时间，知识缺少关怀方式</p><p>不是亲情变淡，知识缺乏沟通的语言</p><p>周末的陪伴，让爱加倍，亲情不打烊！</p><p></p><p></p><p></p><p></p><p></p><p></p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 286
+          },
+          "height": {
+            "value": 112
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 16
+          },
+          "translateY": {
+            "value": -98
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.8258936528020198,
+        "name": "twenty_text",
+        "html_content": "<h2><span style=\"color:#ffffff\">主办方</span></h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 80
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": -58
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">金色阳关少儿培训中心是一所集少儿培训教育与托管服务与一体的新型教育机构。中心毗邻鲁迅故里，环境优雅，设施完善，占地面积2000多平米，是学生理想的学院、乐园、家园。</p><p style=\"text-align:left;\">四年来，在全国、省、市级各类竞赛中，阳光学子频频获奖。我们也赢得了广大家长与学生的认可与喜爱。目前，中心正在打造更优质的品牌教育，使更多学生能在这里放飞希望。</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 299
+          },
+          "height": {
+            "value": 164
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 12
+          },
+          "translateY": {
+            "value": -80
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.8258936528020198,
+        "name": "twenty_text",
+        "html_content": "<h2><span style=\"color:#ffffff\">活动流程</span></h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 46
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": -43
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p><em>09:00</em> 农家庄园集合</p><p><em>09:30</em> 参观农场</p><p> </p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 305
+          },
+          "height": {
+            "value": 52
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 15
+          },
+          "translateY": {
+            "value": -26
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">工作人员带领父母和宝贝参观农场，熟悉农作物，体验粒粒皆辛苦</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 235
+          },
+          "height": {
+            "value": 41
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 52
+          },
+          "translateY": {
+            "value": -33
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\"><em>10:15</em> 菜品抽签</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 236
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 11
+          },
+          "translateY": {
+            "value": -27
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">父母抽取要做的菜品，并在桌上找到所需食材对应的图片，并让宝贝到农场里寻找食材。</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 244
+          },
+          "height": {
+            "value": 69
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 49
+          },
+          "translateY": {
+            "value": -19
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\"><em>10:25</em> 喝汁辨菜</p><p> </p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 224
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 9
+          },
+          "translateY": {
+            "value": -21
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">宝贝出去寻找食材的同时，父母参加和汁辨菜环节，通过尝蔬菜汁来辨别是什么蔬菜，速度最快得6分，一次递减。</p><p></p><p> </p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 246
+          },
+          "height": {
+            "value": 96
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 50
+          },
+          "translateY": {
+            "value": -11
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\"><em>10:30</em> 烹饪环节</p><p></p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 261
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 12
+          },
+          "translateY": {
+            "value": -31
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\"><em>11:15</em> 颁奖环节</p><p></p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 225
+          },
+          "height": {
+            "value": 26
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 10
+          },
+          "translateY": {
+            "value": 70
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">工作人员统计最后的得分，给大家领奖，送出讲评。</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 229
+          },
+          "height": {
+            "value": 51
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 47
+          },
+          "translateY": {
+            "value": 76
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:left;\">父母根据找回来的食材烹饪出之前抽到的菜品，最后由评委选出最好的菜最好的6分，一次递减</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 234
+          },
+          "height": {
+            "value": 98
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 52
+          },
+          "translateY": {
+            "value": -96
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.8258936528020198,
+        "name": "twenty_text",
+        "html_content": "<h2><span style=\"color:#ffffff\">活动细节</span></h2>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 65
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": 0
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.8057841581293332.png",
+            "crop_img": "http://src.e7wei.com/0.8057841581293332.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 28
+          },
+          "height": {
+            "value": 49
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 19
+          },
+          "translateY": {
+            "value": -3
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>南京建邺区绿色生态园</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 168
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 60
+          },
+          "translateY": {
+            "value": -47
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.9201728756880487.png",
+            "crop_img": "http://src.e7wei.com/0.9201728756880487.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 30
+          },
+          "height": {
+            "value": 44
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 17
+          },
+          "translateY": {
+            "value": -32
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>2018.6.18 9：30</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 177
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 61
+          },
+          "translateY": {
+            "value": -67
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.9359231904266287.png",
+            "crop_img": "http://src.e7wei.com/0.9359231904266287.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 33
+          },
+          "height": {
+            "value": 36
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 18
+          },
+          "translateY": {
+            "value": -51
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "text",
+        "index_number": 0.946532077904694,
+        "name": "horizontal_text",
+        "html_content": "<p style=\"text-align:center;\"></p><p>13188888888（李老师）</p>"
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "crop_img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 229
+          },
+          "height": {
+            "value": 20
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 65
+          },
+          "translateY": {
+            "value": -79
+          }
+        }
+      }
+    },
+    {
+      "customize": {
+        "type": "img",
+        "name": "single_img",
+        "item": [
+          {
+            "img": "http://src.e7wei.com/0.06475865846260587.png",
+            "crop_img": "http://src.e7wei.com/0.06475865846260587.png",
+            "title": {
+              "value": "图片备注"
+            },
+            "content": {
+              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+            },
+            "link": {
+              "value": ""
+            },
+            "width": {
+              "value": ""
+            },
+            "height": {
+              "value": ""
+            },
+            "img_config": {
+              "stretching": {
+                "value": ""
+              },
+              "tiling": {
+                "value": ""
+              }
+            }
+          }
+        ],
+        "base": {
+          "show_element": {},
+          "layout": {
+            "value": 0
+          },
+          "font_color": "#000"
+        }
+      },
+      "advance": {
+        "color": "",
+        "img": "",
+        "img_config": {
+          "stretching": {
+            "value": ""
+          },
+          "tiling": {
+            "value": ""
+          }
+        },
+        "perimeter": {
+          "width": {
+            "value": 320
+          },
+          "height": {
+            "value": 68
+          }
+        },
+        "transform": {
+          "translateX": {
+            "value": 0
+          },
+          "translateY": {
+            "value": 0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -21,6 +21,7 @@ class H5RenderCommon extends PureComponent {
       img: customize.get('crop_img'),
       repeat: customize.getIn(['img_config', 'repeat']),
       fixed: customize.getIn(['img_config', 'fixed']),
+      height: this.props.bg_value.data.getIn(['advanced', 'height', 'value']),
     };
     return (
       <RenderBg {...bg_config}>
@@ -142,7 +143,7 @@ class H5RenderCommon extends PureComponent {
  */
 const mapStateToProps = state => {
   return {
-    select_value: state.select_reducer,
+    select_value: state.h5_data_reducer,
     bg_value: state.bg_reducer,
   };
 };

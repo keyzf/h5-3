@@ -12,6 +12,7 @@ import {
   $$fourteen_text,
   $$horizontal_text,
   $$nine_text,
+  $$nineteen_text,
   $$one_text,
   $$seven_text,
   $$seventeen_text,
@@ -21,6 +22,7 @@ import {
   $$thirteen_text,
   $$three_text,
   $$twelve_text,
+  $$twenty_text,
   $$two_text,
   $$vertical_text,
 } from '../../../ui/text/text_database';
@@ -43,11 +45,13 @@ import {
 } from '../../../ui/text/recommend/seven_ui';
 import {
   $$carousel_img_database,
+  $$four_img_database,
   $$grid_img_database,
   $$list_img_database,
   $$one_img_database,
   $$single_img_database,
   $$slider_img_database,
+  $$three_img_database,
   $$two_img_database,
 } from '../../../ui/img/img_database';
 import {
@@ -122,6 +126,16 @@ import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
 import { FormUi } from '../../../ui/form/form_ui_render';
 import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
+import { ThreeImgUi } from '../../../ui/img/recommend/three_img_ui';
+import {
+  nineteen_html_text,
+  NineTeenTextUi,
+} from '../../../ui/text/recommend/nineteen_ui';
+import {
+  twenty_html_text,
+  TwentyTextUi,
+} from '../../../ui/text/recommend/twenty_ui';
+import { FourImgUi } from '../../../ui/img/recommend/four_img_ui';
 
 /**
  * text
@@ -167,6 +181,11 @@ const template_text_data = [
     template: <EighteenTextUi html={eight_html_text} />,
     data: $$eighteen_text,
   },
+  {
+    template: <NineTeenTextUi html={nineteen_html_text} />,
+    data: $$nineteen_text,
+  },
+  { template: <TwentyTextUi html={twenty_html_text} />, data: $$twenty_text },
 ];
 /**
  * img
@@ -186,6 +205,14 @@ const template_img_data = [
   {
     template: <TwoImgUi data={$$two_img_database} />,
     data: $$two_img_database,
+  },
+  {
+    template: <ThreeImgUi data={$$three_img_database} />,
+    data: $$three_img_database,
+  },
+  {
+    template: <FourImgUi data={$$four_img_database} />,
+    data: $$four_img_database,
   },
 ];
 /**

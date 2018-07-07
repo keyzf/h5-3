@@ -4,6 +4,7 @@ const $$mall_func_database = (name, item, layout, height) => {
   return fromJS({
     // 基础设置
     customize: {
+      type: 'mall',
       name: name,
       base: {
         // 可隐藏元素包括：标题，描述，图片，按钮，现价，原价

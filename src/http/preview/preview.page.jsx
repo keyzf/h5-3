@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import HeaderPreviewView from './header.page';
 import ContentPreviewView from './content.page';
-import EditorPreviewView from './preview_editor';
+import EditorPreviewView from './editor';
 import style from './preview.module.scss';
 
 /**

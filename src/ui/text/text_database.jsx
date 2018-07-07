@@ -19,6 +19,8 @@ import { seventeen_html_text } from './recommend/seventeen_ui';
 import { h_html_text } from './core/horizontal_ui';
 import { v_html_text } from './core/vertical_ui';
 import { eighteen_html_text } from './recommend/eighteen_ui';
+import { nineteen_html_text } from './recommend/nineteen_ui';
+import { twenty_html_text } from './recommend/twenty_ui';
 
 /**
  * 根级数据，用来生成组件}}
@@ -26,6 +28,7 @@ import { eighteen_html_text } from './recommend/eighteen_ui';
 const $$text_database = (name, html, height) => {
   return {
     customize: Map({
+      type: 'text',
       index_number: Math.random(), // 编辑器赓续index_Number来更新内容
       name: name,
       html_content: html,
@@ -88,6 +91,12 @@ const $$seventeen_text = fromJS(
 const $$eighteen_text = fromJS(
   $$text_database('eighteen_text', eighteen_html_text, 80)
 );
+const $$nineteen_text = fromJS(
+  $$text_database('nineteen_text', nineteen_html_text, 80)
+);
+const $$twenty_text = fromJS(
+  $$text_database('twenty_text', twenty_html_text, 80)
+);
 export {
   $$horizontal_text,
   $$vertical_text,
@@ -109,4 +118,6 @@ export {
   $$sixteen_text,
   $$seventeen_text,
   $$eighteen_text,
+  $$nineteen_text,
+  $$twenty_text,
 };

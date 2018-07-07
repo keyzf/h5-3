@@ -4,7 +4,8 @@ export const BgLayoutAtom = styled.div`
   position: relative;
   // 宽度
   width: 100%;
-  height: ${props => (props.fixed ? ' 100%' : 'auto')};
+  height: ${props =>
+    props.fixed ? '100%' : props.height ? props.height + 'px' : 'auto'};
   min-height: 640px;
   min-width: 320px;
   // 背景图片 如果不附加判断，则无法显示渐变
@@ -14,4 +15,5 @@ export const BgLayoutAtom = styled.div`
   background-attachment: local;
   background-size: 100%;
   margin: auto;
+  overflow: hidden;
 `;

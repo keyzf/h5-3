@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col, Menu, Row } from 'antd';
 import { Link } from 'react-router-dom';
+import ToReleaseAjax from '../../containers/visual/header/release.ajax';
+import ToSaveAjax from '../../containers/visual/header/save.ajax';
 import style from './header.module.scss';
 
 class HeaderPreviewView extends React.Component {
@@ -13,6 +15,8 @@ class HeaderPreviewView extends React.Component {
       style: {
         alignItems: 'center',
         height: '100%',
+        width: '100%',
+        padding: '0',
         overflow: 'hidden',
       },
     };
@@ -23,19 +27,13 @@ class HeaderPreviewView extends React.Component {
       lg: 5,
       xl: 3,
     };
-    const offset_col = {
-      xs: 15,
-      sm: 15,
-      md: 15,
-      lg: { span: 9, offset: 2 },
-      xl: { span: 8, offset: 6 },
-    };
+
     const close_col = {
-      xs: 4,
-      sm: 4,
-      md: 4,
-      lg: { span: 6, offset: 2 },
-      xl: { span: 2, offset: 5 },
+      xs: 19,
+      sm: 19,
+      md: 19,
+      lg: { span: 6, offset: 13 },
+      xl: { span: 7, offset: 14 },
     };
     return (
       <Row {...Layout}>
@@ -48,9 +46,16 @@ class HeaderPreviewView extends React.Component {
             </Menu.Item>
           </Menu>
         </Col>
-        <Col {...offset_col} />
-        <Col {...close_col}>
+        <Col {...close_col} className={style.col_center}>
           <Menu theme={'dark'} style={{ lineHeight: '50px' }} mode="horizontal">
+            <Menu.Item key="release">
+              <Link to={'/release'}>
+                <ToReleaseAjax />
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="save">
+              <ToSaveAjax />
+            </Menu.Item>
             <Menu.Item key="quite">
               <Link to={'/visual'}>
                 <i

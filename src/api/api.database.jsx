@@ -35,6 +35,10 @@ export const $$api = fromJS({
     recommend_video_other: 'http://localhost:3001/recommend_video_page_',
     user_video_start: 'http://localhost:3001/user_video_start',
     user_video_other: 'http://localhost:3001/user_video_page_',
+    /**
+     * 发布h5
+     */
+    release_url: 'http://localhost:3001/release_url',
   },
   // 生产环境
   produce: {
@@ -57,5 +61,7 @@ export const $$api = fromJS({
     recommend_video_other: '',
     user_video_start: '',
     user_video_other: '',
+    // post 请求 发布h5
+    release_url: '',
   },
 });

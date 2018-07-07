@@ -14,7 +14,6 @@ module.exports = function() {
     user_img_page_2: require("./img_model/user_img/user_img_page_2"),
     user_img_page_3: require("./img_model/user_img/user_img_page_3"),
     user_img_page_4: require("./img_model/user_img/user_img_page_4"),
-
     // 公共音乐
     recommend_music_start: require("./music_recommend_ui/recommend_music_start"),
     recommend_music_page_0: require("./music_recommend_ui/recommend_music_page_0"),
@@ -45,6 +44,8 @@ module.exports = function() {
     user_video_page_4: require("./video_recommend_ui/user_video/user_video_page_4"),
     // ui_template
     one_ui: require("./ui_json/one_ui"),
-    two_ui: require("./ui_json/two_ui")
+    two_ui: require("./ui_json/two_ui"),
+    // release
+    release_url: require("./release/release")
   };
 };

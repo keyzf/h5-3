@@ -4,6 +4,7 @@ const $$img_func_database = (name, item, layout, height) => {
   return fromJS({
     // 基础编辑属性
     customize: {
+      type: 'img',
       name: name,
       item: item,
       base: {
@@ -441,6 +442,118 @@ const $$two_img_database = $$img_func_database(
   400
 );
 
+// 推荐组件3
+const $$three_img_database = $$img_func_database(
+  'three_img',
+  [
+    {
+      img: 'http://src.e7wei.com/0.8215229115496667.png',
+      crop_img: 'http://src.e7wei.com/0.8215229115496667.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: ' http://src.e7wei.com/0.21671174662757564.png',
+      crop_img: ' http://src.e7wei.com/0.21671174662757564.png',
+      title: { value: '我们结婚啦' },
+      content: {
+        value: 'we got marry',
+      },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: ' http://src.e7wei.com/0.096776390844727.png',
+      crop_img: ' http://src.e7wei.com/0.096776390844727.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  1,
+  400
+);
+
+// 推荐组件r
+const $$four_img_database = $$img_func_database(
+  'four_img',
+  [
+    {
+      img: 'http://src.e7wei.com/0.7181557385268003.png ',
+      crop_img: 'http://src.e7wei.com/0.7181557385268003.png ',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: '  http://src.e7wei.com/0.8204851385369176.png',
+      crop_img: '  http://src.e7wei.com/0.8204851385369176.png',
+      title: { value: '' },
+      content: {
+        value: 'we got marry',
+      },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: ' http://src.e7wei.com/0.41941960261219613.png ',
+      crop_img: ' http://src.e7wei.com/0.41941960261219613.png ',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.6717766249508013.png',
+      crop_img: 'http://src.e7wei.com/0.6717766249508013.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  1,
+  400
+);
 // 导出
 export {
   $$single_img_database,
@@ -451,4 +564,6 @@ export {
   $$img_addItem_database,
   $$one_img_database,
   $$two_img_database,
+  $$three_img_database,
+  $$four_img_database,
 };

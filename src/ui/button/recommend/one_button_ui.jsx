@@ -7,8 +7,6 @@ class OneButtonUi extends React.Component {
     // // 可编辑属性 data:为文本
     const advanced_settings = {
       btn_url: customize.getIn(['btn_url', 'value']),
-      shadow: customize.getIn(['shadow', 'value']),
-      radius: customize.getIn(['radius', 'value']),
       font_color: customize.get('font_color'),
     };
     return (

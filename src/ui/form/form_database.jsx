@@ -6,6 +6,7 @@ import { fromJS } from 'immutable';
 const $$form = (name, item_data, height) => {
   return fromJS({
     customize: {
+      type: 'form',
       name: name,
       item: item_data,
       btn_content: { value: '提交' },
@@ -116,25 +117,28 @@ const $$from_opt_input = fromJS({
   decorator: 'input',
   option: { value: '' },
 });
-
 const $$from_opt_rate = fromJS({
   type: 'rate',
   title: { value: '评分栏' },
   decorator: 'rate',
   option: { value: '' },
 });
-
 const $$from_opt_checkbox = fromJS({
   type: 'checkbox',
   title: { value: '多选框' },
   decorator: 'checkbox',
   option: ['Apple', 'Pear', 'Orange'],
 });
-
 const $$from_opt_datepicker = fromJS({
   type: 'datePicker',
   title: { value: '日期选择' },
   decorator: 'datePicker',
+  option: { value: '' },
+});
+const $$from_opt_upload = fromJS({
+  type: 'upload',
+  title: { value: '上传' },
+  decorator: 'upload',
   option: { value: '' },
 });
 
@@ -149,4 +153,5 @@ export {
   $$from_opt_rate,
   $$from_opt_checkbox,
   $$from_opt_datepicker,
+  $$from_opt_upload,
 };

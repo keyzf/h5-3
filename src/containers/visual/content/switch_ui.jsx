@@ -1,5 +1,4 @@
 import React from 'react';
-
 //text
 import { VTextUi } from '../../../ui/text/core/vertical_ui';
 import { HTextUi } from '../../../ui/text/core/horizontal_ui';
@@ -21,12 +20,17 @@ import { FifteenTextUi } from '../../../ui/text/recommend/fifteen_ui';
 import { SixTeenTextUi } from '../../../ui/text/recommend/sixteen_ui';
 import { SevenTeenTextUi } from '../../../ui/text/recommend/seventeen_ui';
 import { EighteenTextUi } from '../../../ui/text/recommend/eighteen_ui';
+import { NineTeenTextUi } from '../../../ui/text/recommend/nineteen_ui';
+import { TwentyTextUi } from '../../../ui/text/recommend/twenty_ui';
 // 图片
 import { UpImgUi } from '../../../ui/img/core/img_component';
 import { GridImgUi } from '../../../ui/img/core/grid_component';
 import { ListImgUi } from '../../../ui/img/core/list_component';
 import { SliderImgUI } from '../../../ui/img/core/slider_component';
 import { CarouselImgUI } from '../../../ui/img/core/carousel_component';
+import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
+import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { ThreeImgUi } from '../../../ui/img/recommend/three_img_ui';
 // 音乐
 import { MusicUi } from '../../../ui/music/core/music_ui';
 // 视频
@@ -34,15 +38,13 @@ import { VideoUi } from '../../../ui/video/core/video_ui';
 // 商品列表
 import { GridMallUi } from '../../../ui/mall/core/grid_ui';
 import { ListMallUi } from '../../../ui/mall/core/list_ui';
+import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 // 按钮
 import { ButtonUi } from '../../../ui/button/core/button';
+import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
 // 表单
 import { FormUi } from '../../../ui/form/form_ui_render';
-
-import { OneImgUi } from '../../../ui/img/recommend/one_img_ui';
-import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
-import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { TwoImgUi } from '../../../ui/img/recommend/two_img_ui';
+import { FourImgUi } from '../../../ui/img/recommend/four_img_ui';
 
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
@@ -102,6 +104,12 @@ export const switch_ui = data => {
       return (
         <EighteenTextUi html={data.getIn(['customize', 'html_content'])} />
       );
+    case 'nineteen_text':
+      return (
+        <NineTeenTextUi html={data.getIn(['customize', 'html_content'])} />
+      );
+    case 'twenty_text':
+      return <TwentyTextUi html={data.getIn(['customize', 'html_content'])} />;
 
     // 图片类
     case 'single_img':
@@ -118,6 +126,10 @@ export const switch_ui = data => {
       return <OneImgUi data={data} />;
     case 'two_img':
       return <TwoImgUi data={data} />;
+    case 'three_img':
+      return <ThreeImgUi data={data} />;
+    case 'four_img':
+      return <FourImgUi data={data} />;
     // 媒体类
     case 'video':
       return <VideoUi data={data} />;

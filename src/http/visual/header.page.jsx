@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Menu, Row } from 'antd';
-import VisualSaveAjax from '../../containers/visual/header/save_ajax';
+import ToSaveAjax from '../../containers/visual/header/save.ajax';
 import QueueAnim from 'rc-queue-anim';
 import CleanContent from '../../containers/visual/header/clean_content';
-import ToPreviewAjax from '../../containers/visual/header/preview_ajax';
+import ToReleaseAjax from '../../containers/visual/header/release.ajax';
 import style from './header.module.scss';
 
 /**
@@ -23,21 +23,14 @@ class HeaderVisualView extends PureComponent {
       sm: 5,
       md: 5,
       lg: 5,
-      xl: 5,
-    };
-    const chooseCol = {
-      xs: 0,
-      sm: 0,
-      md: 0,
-      lg: { span: 12 },
-      xl: { span: 10, offset: 3 },
+      xl: 3,
     };
     const closeCol = {
       xs: 0,
       sm: 0,
       md: 0,
-      lg: { span: 7 },
-      xl: { span: 5, offset: 1 },
+      lg: { span: 19 },
+      xl: { span: 12, offset: 9 },
     };
     // 项目样式
     const MenuConfig = {
@@ -49,42 +42,12 @@ class HeaderVisualView extends PureComponent {
 
     return (
       <Row className={style.layout} align={'center'} gutter={16} type={'flex'}>
-        {/*logo*/}
         <Col className={style.col_center} {...LogoCol}>
           <Menu theme={'dark'} mode={'horizontal'}>
             <Menu.Item>
               <a href={'https://www.e7wei.com/'}>
                 <div className={style.logo}>易企微</div>
               </a>
-            </Menu.Item>
-          </Menu>
-        </Col>
-        {/*选项*/}
-        <Col className={style.col_center} {...chooseCol}>
-          <Menu {...MenuConfig}>
-            <Menu.Item key={'preview'}>
-              <Link to={'./preview'}>
-                <QueueAnim type={'bottom'} delay={200}>
-                  <div key={'1'}>
-                    <i
-                      className={'icon iconfont icon-yulan'}
-                      style={{ marginRight: '10px' }}
-                    />
-                    预览/设置
-                  </div>
-                </QueueAnim>
-              </Link>
-            </Menu.Item>
-            <Menu.Item key={'save'}>
-              <VisualSaveAjax />
-            </Menu.Item>
-            <Menu.Item key={'release'}>
-              <Link to={'./release'}>
-                <ToPreviewAjax />
-              </Link>
-            </Menu.Item>
-            <Menu.Item key={'null'}>
-              <CleanContent />
             </Menu.Item>
           </Menu>
         </Col>
@@ -102,6 +65,30 @@ class HeaderVisualView extends PureComponent {
                   </div>
                 </QueueAnim>
               </a>
+            </Menu.Item>
+            <Menu.Item key={'null'}>
+              <CleanContent />
+            </Menu.Item>
+            <Menu.Item key={'save'}>
+              <ToSaveAjax />
+            </Menu.Item>
+            <Menu.Item key={'preview'}>
+              <Link to={'./preview'}>
+                <QueueAnim type={'bottom'} delay={200}>
+                  <div key={'1'}>
+                    <i
+                      className={'icon iconfont icon-yulan'}
+                      style={{ marginRight: '10px' }}
+                    />
+                    预览/设置
+                  </div>
+                </QueueAnim>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key={'release'}>
+              <Link to={'./release'}>
+                <ToReleaseAjax />
+              </Link>
             </Menu.Item>
             <Menu.Item key={'quite'}>
               <Link to={'/'}>

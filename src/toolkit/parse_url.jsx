@@ -1,10 +1,12 @@
 /**
  * 通过分析url,得到用户传递的数据
+ * 路由示例：
+ *  http://localhost:3000/?state=showH5&id=3
  * @param search_string 例如：user_id
  * @returns {string}
  * @constructor
  */
-export const GetUrlPara = search_string => {
+const GetUrlPara = search_string => {
   let url = document.location.toString();
   let arr = url.substring(url.indexOf('?') + 1, url.length).split('&');
   let search_data = '';
@@ -15,3 +17,5 @@ export const GetUrlPara = search_string => {
   });
   return search_data;
 };
+
+export { GetUrlPara };

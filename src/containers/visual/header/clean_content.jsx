@@ -2,11 +2,10 @@
  * 用来清空visual页面中 http中的内容
  */
 import React, { PureComponent } from 'react';
-import { List, Map } from 'immutable';
 import { connect } from 'react-redux';
 import { Icon, Modal, message } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { bg_action, choose_action, select_action } from '../../../redux/action';
+import { choose_redux_action, redux_action } from '../../../redux/action';
 import { $$background_database } from '../../../ui/background/background_database';
 
 /**
@@ -29,27 +28,25 @@ class CleanContent extends PureComponent {
       visible: false,
     });
   };
-
   clean = () => {
     // 清空核心组件
-    this.props.select_upData(List(), '', false);
+    this.props.upData('H5_DATA', []);
     // 清空背景组件
-    this.props.bg_upData($$background_database, '', false);
+    this.props.bg_upData('BG_UI', $$background_database);
     // 更新选择组件
     this.props.choose_upData(
-      Map(),
-      Map({
+      'CHOOSE_UI',
+      {},
+      {
         content: false,
         choose: false,
-      }),
-      false
+      }
     );
     this.setState({
       visible: false,
     });
     message.success('内容已清空');
   };
-
   confirm = () => {
     //判断用户是否设置内容(背景组件)
     const $$color = this.props.bg_value.data.getIn(['customize', 'color']);
@@ -80,7 +77,7 @@ class CleanContent extends PureComponent {
     return (
       <div onClick={this.confirm}>
         <QueueAnim type={'bottom'} delay={260}>
-          <div key={'1'}>
+          <div key={'animation_one'}>
             <Icon type="delete" style={{ marginRight: '10px' }} />
             内容清空
           </div>
@@ -92,18 +89,16 @@ class CleanContent extends PureComponent {
 
 const mapDispatchToProps = dispatch => {
   return {
-    select_upData: (data, meta, error) =>
-      dispatch(select_action(data, meta, error)),
-    choose_upData: (data, meta, error) =>
-      dispatch(choose_action(data, meta, error)),
-    bg_upData: (data, meta, error) => dispatch(bg_action(data, meta, error)),
+    upData: (name, data) => dispatch(redux_action(name, data)),
+    choose_upData: (name, data, meta) =>
+      dispatch(choose_redux_action(name, data, meta)),
   };
 };
 
 const mapStateToProps = state => {
   return {
     bg_value: state.bg_reducer,
-    select_value: state.select_reducer,
+    select_value: state.h5_data_reducer,
   };
 };
 

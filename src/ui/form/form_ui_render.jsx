@@ -3,10 +3,20 @@
  * 只需要传递数据进来即可
  */
 import React, { PureComponent } from 'react';
-import { Form, Button, Radio, Input, Rate, DatePicker, Checkbox } from 'antd';
-import { fromJS, List } from 'immutable';
-
+import {
+  Form,
+  Button,
+  Radio,
+  Input,
+  Rate,
+  DatePicker,
+  Checkbox,
+  Upload,
+  Icon,
+} from 'antd';
+import { uploadToken } from '../../toolkit/qiniu_upload';
 // import axios from "axios";
+// import { fromJS, List } from "immutable";
 
 class CoreForm extends PureComponent {
   /**
@@ -28,7 +38,7 @@ class CoreForm extends PureComponent {
         //   .catch(function (error) {
         //     console.log(error);
         //   });
-        console.log('Received values of form: ', List(fromJS(values)).toJS());
+        console.log('Received values of form: ', values);
       }
     });
   };
@@ -59,9 +69,18 @@ class CoreForm extends PureComponent {
         wrapperCol: { lg: { span: 24 } },
       };
     };
+    const upload_props = {
+      name: 'file',
+      action: 'http://upload.qiniup.com',
+      multiple: true,
+      showUploadList: true,
+      data: { token: uploadToken, key: Math.random() + '.png' },
+      accept: 'image/*',
+    };
     /**
      * 渲染表单
      */
+
     return (
       <Form {...form_config}>
         {customize.get('item').map((data, index) => {
@@ -156,6 +175,31 @@ class CoreForm extends PureComponent {
                 >
                   {getFieldDecorator(`${data.get('decorator')}`)(
                     <DatePicker value={data.getIn(['option', 'value'])} />
+                  )}
+                </FormItem>
+              ) : (
+                ''
+              )}
+              {data.get('type') === 'upload' ? (
+                <FormItem
+                  {...form_item_style(
+                    `${data.getIn(['title', 'value'])}`,
+                    data.get('title_color')
+                  )}
+                >
+                  {getFieldDecorator(`${data.get('decorator')}`)(
+                    <Upload.Dragger {...upload_props}>
+                      <p className="ant-upload-drag-icon">
+                        <Icon type="inbox" />
+                      </p>
+                      <p className="ant-upload-text">
+                        Click or drag file to this area to upload
+                      </p>
+                      <p className="ant-upload-hint">
+                        Support for a single or bulk upload. Strictly prohibit
+                        from uploading company data or other band files
+                      </p>
+                    </Upload.Dragger>
                   )}
                 </FormItem>
               ) : (
