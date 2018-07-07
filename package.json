@@ -1,6 +1,6 @@
 {
   "name": "e7wei-company",
-  "version": "0.1.0",
+  "version": "0.3x.0",
   "private": true,
   "homepage": "101.37.175.138",
   "proxy": "http://localhost:3001",
