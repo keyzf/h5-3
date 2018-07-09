@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
-import axios from 'axios';
 import NProgress from 'nprogress';
 import { connect } from 'react-redux';
 import { Modal, Tabs, Icon, message, Button, Divider } from 'antd';
 import { redux_action } from '../redux/action';
-import { $$api } from '../api/api.database';
 import UploadImgFactory from './factory/upload_img_form.factory';
 import UserImgLazyFactory from './factory/user_img_lazy.factory';
 import ImgLibraryLazyFactory from './factory/img_library_lazy.factory';
 import 'nprogress/nprogress.css';
+import { public_img_list } from '../ajax/public_img_list';
 
 /**
  * 接收数据
@@ -18,6 +17,10 @@ import 'nprogress/nprogress.css';
  */
 class UploadImgCommon extends PureComponent {
   state = {
+    img_list: [],
+    img: '',
+    list: '',
+    length: '',
     // model 展示
     visible: false,
     // 进度条
@@ -31,82 +34,24 @@ class UploadImgCommon extends PureComponent {
   };
 
   componentWillMount() {
+    public_img_list().then(
+      data => {
+        this.setState({
+          img_list: data,
+        });
+      },
+      function(error) {
+        console.error('出错了', error);
+      }
+    );
+
     const { upDate } = this.props;
     const $$data = this.props.upload_recode_value.data;
+
     upDate('UPLOAD_RECODE', {
       user_upload_img: $$data.get('user_upload_img'),
       choose_img_url: this.props.img_url,
     });
-    /**
-     * 更新用户图片数据
-     */
-    if ($$api.get('surroundings') === 'development') {
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['development', 'user_img_start'])}`,
-      }).then(response => {
-        if (response.data.data !== '') {
-          upDate('IMG_MODEL', {
-            user_img: response.data.data,
-            user_page_number: response.data.number,
-            user_length: 0,
-          });
-        }
-      });
-    }
-    if ($$api.get('surroundings') === 'produce') {
-      let params = new URLSearchParams();
-      params.append('id', this.props.id_value.data.get('user_id'));
-      axios
-        .post(`${$$api.getIn(['produce', 'user_img_start'])}`, params)
-        .then(response => {
-          if (response.data.data !== '') {
-            upDate('IMG_MODEL', {
-              user_img: response.data.data,
-              user_page_number: response.data.number,
-              user_length: 0,
-            });
-          }
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
-    }
-    /**
-     * 公共图片
-     */
-    if ($$api.get('surroundings') === 'development') {
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['development', 'public_img_start'])}`,
-      }).then(response => {
-        if (response.data.data !== '') {
-          upDate('IMG_LIBRARY', {
-            img: [],
-            list: response.data.list,
-            length: 0,
-          });
-        }
-      });
-    }
-    if ($$api.get('surroundings') === 'produce') {
-      let params = new URLSearchParams();
-      params.append('id', this.props.id_value.data.get('user_id'));
-      axios
-        .get(`${$$api.getIn(['produce', 'public_img_start'])}`)
-        .then(response => {
-          if (response.data.data !== '') {
-            upDate('IMG_LIBRARY', {
-              img: response.data.data,
-              list: response.data.list,
-              length: 0,
-            });
-          }
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
-    }
   }
 
   showModal = () => {
@@ -149,8 +94,6 @@ class UploadImgCommon extends PureComponent {
 
   render() {
     const TabPane = Tabs.TabPane;
-    const { data } = this.props.img_model_value;
-    const $$data = this.props.img_library_value.data;
 
     return (
       <React.Fragment>
@@ -178,56 +121,24 @@ class UploadImgCommon extends PureComponent {
             }
           >
             <TabPane tab="我的素材" key="1">
-              {data.get('user_img').size ? (
-                <React.Fragment>
-                  <UserImgLazyFactory img_url={this.props.img_url} />
-                  <Divider />
-                  <div style={{ padding: '0 35%', width: '100%' }}>
-                    <Button
-                      onClick={this.closeModal}
-                      style={{ width: '100px', marginRight: '10px' }}
-                    >
-                      取消
-                    </Button>
-                    <Button
-                      onClick={this.closeModal}
-                      style={{ width: '100px', marginRight: '10px' }}
-                    >
-                      确定
-                    </Button>
-                  </div>
-                </React.Fragment>
-              ) : (
-                <div style={{ textAlign: 'center', padding: '0 80px' }}>
-                  <img
-                    src={'http://src.e7wei.com/0.2823198691104869.png'}
-                    alt={'img'}
-                  />
-                  <br />
-                  <UploadImgFactory
-                    onChange={this.uploadChange}
-                    child={
-                      <Button type="dashed" style={{ width: '150px' }}>
-                        种植素材
-                      </Button>
-                    }
-                    {...this.state.upload}
-                  />
-                </div>
-              )}
+              <UserImgLazyFactory
+                img_url={this.props.img_url}
+                close={this.closeModal}
+                onChange={this.uploadChange}
+              />
             </TabPane>
             <TabPane tab="共享素材" key="2">
               <Tabs tabPosition={'left'}>
-                {$$data.get('list').map((tab_data, tab_index) => {
+                {this.state.img_list.map((data, index) => {
                   return (
                     <TabPane
-                      tab={tab_data.get('name')}
-                      key={tab_index}
+                      tab={data.name}
+                      key={index}
                       style={{ maxHeight: '400px', overflow: 'auto' }}
                     >
                       <ImgLibraryLazyFactory
                         img_url={this.props.img_url}
-                        name={tab_data.get('name')}
+                        name={data.childtype}
                       />
                     </TabPane>
                   );

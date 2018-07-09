@@ -3,23 +3,34 @@ import { connect } from 'react-redux';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
 import { redux_action } from '../../redux/action';
-import { $$api } from '../../api/api.database';
-import axios from 'axios/index';
 import { Row, Col } from 'antd';
 import style from './img_lazy_choose.module.scss';
+import { public_img } from '../../ajax/public_img';
 
 class ImgLibraryLazyFactory extends PureComponent {
-  number = name => {
-    const $$data = this.props.img_library_value.data;
-    let number = '';
-    $$data.get('list').map(data => {
-      if (data.get('name') === name) {
-        number = data.get('number');
-      }
-      return number;
-    });
-    return number;
+  state = {
+    number: '',
+    length: 1,
+    img_library: '',
   };
+
+  componentWillMount() {
+    public_img(0, this.props.childtype).then(
+      data => {
+        let sum = '';
+        if (data.sum % 40 !== 0) {
+          sum = data.sum / 40 + 1;
+        } else {
+          sum = data.sum / 40;
+        }
+        this.setState({
+          number: sum,
+          img_library: data.list,
+        });
+      },
+      function(error) {}
+    );
+  }
 
   choose_img = img_url => {
     const $$up_recode = this.props.upload_recode_value.data;
@@ -30,50 +41,27 @@ class ImgLibraryLazyFactory extends PureComponent {
   };
 
   render() {
-    const $$data = this.props.img_library_value.data;
     const $$up_recode = this.props.upload_recode_value.data;
     const ShowPublicImg = props => {
-      if ($$data.get('length') === props.index) {
-        if ($$api.get('surroundings') === 'development') {
-          axios({
-            method: 'get',
-            url: `${$$api.getIn(['development', 'public_img_other'])}${
-              props.index
-            }`,
-          }).then(response => {
-            this.props.upDate('IMG_LIBRARY', {
-              img: response.data,
-              length: $$data.get('length') + 1,
-              list: $$data.get('list'),
+      if (this.state.length === props.index) {
+        public_img(0, this.props.childtype).then(
+          data => {
+            this.setState({
+              length: this.state.length + 1,
+              img_library: data.list,
             });
-          });
-        }
-        if ($$api.get('surroundings') === 'produce') {
-          let params = new URLSearchParams();
-          const ajax_data = {
-            page_number: props.index,
-            name: props.name,
-          };
-          params.append('name', `${ajax_data}`);
-          axios
-            .post(`${$$api.getIn(['development', 'public_img_other'])}`, params)
-            .then(response => {
-              this.props.upDate('IMG_LIBRARY', {
-                img: response.data,
-                length: $$data.get('length') + 1,
-                list: $$data.get('list'),
-              });
-            });
-        }
+          },
+          function(error) {}
+        );
       }
       return (
         <Row gutter={16}>
-          {$$data.get('img').map((data, index) => {
+          {this.state.img_library.map((data, index) => {
             return (
               <Col
                 span={4}
                 style={{ margin: '0 0 5px 0', height: '60px' }}
-                onClick={this.choose_img.bind(this, data.get('url'))}
+                onClick={this.choose_img.bind(this, data.url)}
                 key={index}
               >
                 <div
@@ -87,7 +75,7 @@ class ImgLibraryLazyFactory extends PureComponent {
                     boxSizing: 'border-box',
                   }}
                   className={
-                    data.get('url') === $$up_recode.get('choose_img_url')
+                    data.url === $$up_recode.choose_img_url
                       ? style.part_active
                       : style.part_choose
                   }
@@ -99,7 +87,7 @@ class ImgLibraryLazyFactory extends PureComponent {
                       maxHeight: '100%',
                       margin: 'auto',
                     }}
-                    src={data.get('url')}
+                    src={data.url}
                     alt={'img'}
                   />
                 </div>
@@ -111,7 +99,7 @@ class ImgLibraryLazyFactory extends PureComponent {
     };
     return (
       <React.Fragment>
-        {range(this.number(this.props.name)).map((data, index) => {
+        {range(this.state.number).map((data, index) => {
           return (
             <LazyLoad
               once={true}
@@ -120,7 +108,7 @@ class ImgLibraryLazyFactory extends PureComponent {
               key={index}
               overflow
             >
-              <ShowPublicImg index={index} name={this.props.name} />
+              <ShowPublicImg index={index} name={this.props.childtype} />
             </LazyLoad>
           );
         })}

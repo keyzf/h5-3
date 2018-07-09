@@ -14,15 +14,6 @@ import { router_redirect_common } from './common/app.common';
 class App extends PureComponent {
   state = { router: '' };
 
-  /**
-   * 测试路由
-   *     一、http://localhost:3000?state=createH5&id=5 (创建h5页面)
-   *     二、http://localhost:3000?state=createH5&id=5&guide=5 (创建h5页面,带引导)
-   *     三、http://localhost:3000?state=editorH5&id=5&number=2 （编辑h5页面）
-   *     四、http://localhost:3000?state=showH5&id=5&number=2  （展示h5页面）
-   *     五、http://localhost:3000?state=shareMsg&id=5&number=2  （修改H5分享信息）
-   *     六、http://localhost:3000?state=release&id=5&number=2 (发布页展示)
-   */
   componentWillMount() {
     const { upDate, choose_upDate } = this.props;
     const [id, number] = [GetUrlPara('id'), GetUrlPara('number')];

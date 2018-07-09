@@ -49,11 +49,6 @@ class SiderVisualView extends PureComponent {
         name: 'music',
       },
       {
-        icon: 'iconfont icon-shipin',
-        title: '视频',
-        name: 'video',
-      },
-      {
         icon: 'iconfont icon-unie62d',
         title: '商品',
         name: 'mall',

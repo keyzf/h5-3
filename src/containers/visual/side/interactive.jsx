@@ -6,6 +6,9 @@ import { Row, Col, Divider, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import SelectCommon from './select_common';
 import { template_button_data, template_form_data } from './select_database';
+import { $$video_database } from '../../../ui/video/video_database';
+import { choose_redux_action, redux_action } from '../../../redux/action';
+import { connect } from 'react-redux';
 
 /**
  * 显示相应的组件列表
@@ -59,6 +62,24 @@ class InterActiveSelect extends PureComponent {
     }
   };
 
+  video = () => {
+    // 将选择的组件塞进老数组中，从而得到新数组
+    const select_up_data = this.props.select_value.data.push(
+      $$video_database('video', '')
+    );
+    // 更新核心数组
+    this.props.upData('H5_DATA', select_up_data);
+    // 更新选择组件
+    this.props.choose_upData(
+      'CHOOSE_UI',
+      { number: select_up_data.size - 1, data: $$video_database('video', '') },
+      {
+        content: true,
+        choose: true,
+      }
+    );
+  };
+
   render() {
     const default_text = {
       alignItems: 'center',
@@ -98,7 +119,18 @@ class InterActiveSelect extends PureComponent {
                 />
                 <div style={{ flex: '1' }}>表单</div>
               </Col>
-              <Col span={6} style={default_text} />
+              <Col
+                span={6}
+                style={default_text}
+                className={'components_hover'}
+                onClick={this.video}
+              >
+                <i
+                  className="iconfont icon-shipin"
+                  style={{ fontSize: '26px', flex: '1' }}
+                />
+                <div style={{ flex: '1' }}>视频</div>
+              </Col>
               <Col span={6} style={default_text} />
             </Row>
           </QueueAnim>
@@ -108,4 +140,18 @@ class InterActiveSelect extends PureComponent {
   }
 }
 
-export default InterActiveSelect;
+const mapStateToProps = state => {
+  return {
+    select_value: state.h5_data_reducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    upData: (name, data) => dispatch(redux_action(name, data)),
+    choose_upData: (name, data, meta) =>
+      dispatch(choose_redux_action(name, data, meta)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InterActiveSelect);

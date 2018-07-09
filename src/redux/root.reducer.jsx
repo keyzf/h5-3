@@ -16,7 +16,6 @@ import { img_library_reducer } from './renducer/img_library.renducer';
 import { user_video_reducer } from './renducer/user_video.renducer';
 import { user_movie_reducer } from './renducer/user_movie.renducer';
 
-
 /**
  * 合并数据处理层
  * @type {Reducer<any> | Reducer<any, AnyAction>}
@@ -48,7 +47,6 @@ const rootReducer = combineReducers({
   user_video_reducer,
   // 用户个人movie
   user_movie_reducer,
-
 });
 
 /**

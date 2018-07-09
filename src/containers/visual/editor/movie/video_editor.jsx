@@ -3,46 +3,33 @@ import { Tabs, Icon, Radio, Input, Button, Collapse } from 'antd';
 import { connect } from 'react-redux';
 import { choose_redux_action, redux_action } from '../../../../redux/action';
 import VideoForm from '../../../../common/video_form';
-import axios from 'axios/index';
-import { $$api } from '../../../../api/api.database';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
+import { user_video } from '../../../../ajax/user_video';
 
 class EditorVideo extends PureComponent {
   state = {
-    user_video: [],
-    user_number: '',
+    video_library: [],
+    number: '',
     length: 0,
   };
 
   componentWillMount() {
-    if ($$api.get('surroundings') === 'development') {
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['development', 'user_video_start'])}`,
-      }).then(response => {
+    user_video(0).then(
+      data => {
+        let sum = '';
+        if (data.sum % 40 !== 0) {
+          sum = data.sum / 40 + 1;
+        } else {
+          sum = data.sum / 40;
+        }
         this.setState({
-          user_video: response.data.data,
-          user_number: response.data.number,
+          number: sum,
+          video_library: data.list,
         });
-      });
-    }
-    if ($$api.get('surroundings') === 'produce') {
-      // 用来搜寻公共库 //总页数，第一轮数据，图片项目表
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['produce', 'user_video_start'])}`,
-      })
-        .then(response => {
-          this.setState({
-            user_video: response.data.data,
-            user_number: response.data.number,
-          });
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
-    }
+      },
+      function(error) {}
+    );
   }
 
   ImgPartChange = changedFields => {
@@ -104,40 +91,22 @@ class EditorVideo extends PureComponent {
     };
     const ShowMusic = props => {
       if (this.state.length === props.index) {
-        if ($$api.get('surroundings') === 'development') {
-          axios({
-            method: 'get',
-            url: `${$$api.getIn(['development', 'user_video_other'])}${
-              props.index
-            }`,
-          }).then(response => {
-            let length = this.state.length;
+        user_video(props.index).then(
+          data => {
             this.setState({
-              user_video: response.data,
-              length: length + 1,
+              length: this.state.length + 1,
+              video_library: data.list,
             });
-          });
-        }
-        if ($$api.get('surroundings') === 'produce') {
-          let params = new URLSearchParams();
-          params.append('number', props.index);
-          axios
-            .post(`${$$api.getIn(['development', 'user_music_other'])}`, params)
-            .then(response => {
-              let length = this.state.length;
-              this.setState({
-                user_video: response.data,
-                length: length + 1,
-              });
-            });
-        }
+          },
+          function(error) {}
+        );
       }
       return (
         <React.Fragment>
-          {this.state.user_video.map((data, index) => {
+          {this.state.video_library.map((data, index) => {
             return (
               <Radio key={index} style={radioStyle} value={data.url}>
-                {data.dsc}
+                {data.desc}
               </Radio>
             );
           })}
@@ -230,7 +199,7 @@ class EditorVideo extends PureComponent {
                   onChange={this.onChange}
                   value={$$customize.get('video')}
                 >
-                  {range(this.state.user_number).map((n_data, n_index) => {
+                  {range(this.state.number).map((n_data, n_index) => {
                     return (
                       <LazyLoad
                         once={true}

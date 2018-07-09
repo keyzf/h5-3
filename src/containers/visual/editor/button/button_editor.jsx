@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Tabs, Card, Form, Popover, Collapse } from 'antd';
+import { Tabs, Form, Popover, Collapse } from 'antd';
 import { choose_redux_action, redux_action } from '../../../../redux/action';
 import { fromJS } from 'immutable';
 import AdvanceEditor from '../advance.form';

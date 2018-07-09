@@ -8,7 +8,7 @@ class RichTextEditor extends PureComponent {
       contentFormat: 'html',
       contentId: this.props.data.get('index_number'),
       initialContent: this.props.data.get('html_content'),
-      onHTMLChange: content => this.props.func(content),
+      onHTMLChange: content => this.props.func(content, Math.random()),
       controls: [
         'undo',
         'redo',

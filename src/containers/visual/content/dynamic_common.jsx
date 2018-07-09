@@ -7,7 +7,6 @@ import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
 import ComponentLocation from './component-location';
 import { NoChoose, UIChoose } from './ui_choose_style';
-import './drag_resizeable.css';
 import { choose_redux_action, redux_action } from '../../../redux/action';
 
 /**

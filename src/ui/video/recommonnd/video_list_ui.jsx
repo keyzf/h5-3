@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import axios from 'axios';
 import range from 'lodash.range';
 import { Row, Col, Icon } from 'antd';
 import { connect } from 'react-redux';
@@ -7,44 +6,35 @@ import QueueAnim from 'rc-queue-anim';
 import LazyLoad from 'react-lazyload';
 import { choose_redux_action, redux_action } from '../../../redux/action';
 import { $$video_database } from '../video_database';
-import { $$api } from '../../../api/api.database';
 import style from './video_list.module.scss';
+import { user_video } from '../../../ajax/user_video';
 
 /**
  * 文本组件选择栏
  */
 class VideoListUI extends PureComponent {
   state = {
-    recommend_video: [],
-    recommend_number: '',
+    video_library: [],
+    number: '',
     length: 0,
   };
 
   componentWillMount() {
-    if ($$api.get('surroundings') === 'development') {
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['development', 'recommend_video_start'])}`,
-      }).then(response => {
+    user_video(0).then(
+      data => {
+        let sum = '';
+        if (data.sum % 40 !== 0) {
+          sum = data.sum / 40 + 1;
+        } else {
+          sum = data.sum / 40;
+        }
         this.setState({
-          recommend_number: response.data.number,
+          number: sum,
+          video_library: data.list,
         });
-      });
-    }
-    if ($$api.get('surroundings') === 'produce') {
-      axios({
-        method: 'get',
-        url: `${$$api.getIn(['produce', 'recommend_video_start'])}`,
-      })
-        .then(response => {
-          this.setState({
-            recommend_number: response.data.number,
-          });
-        })
-        .catch(function(error) {
-          console.log('访问服务器错误', error);
-        });
-    }
+      },
+      function(error) {}
+    );
   }
 
   /**
@@ -72,40 +62,19 @@ class VideoListUI extends PureComponent {
   render() {
     const ShowMusic = props => {
       if (this.state.length === props.index) {
-        if ($$api.get('surroundings') === 'development') {
-          axios({
-            method: 'get',
-            url: `${$$api.getIn(['development', 'recommend_video_other'])}${
-              props.index
-            }`,
-          }).then(response => {
-            let length = this.state.length;
+        user_video(props.index).then(
+          data => {
             this.setState({
-              recommend_video: response.data,
-              length: length + 1,
+              length: this.state.length + 1,
+              video_library: data.list,
             });
-          });
-        }
-        if ($$api.get('surroundings') === 'produce') {
-          let params = new URLSearchParams();
-          params.append('number', props.index);
-          axios
-            .post(
-              `${$$api.getIn(['development', 'recommend_video_other'])}`,
-              params
-            )
-            .then(response => {
-              let length = this.state.length;
-              this.setState({
-                recommend_video: response.data,
-                length: length + 1,
-              });
-            });
-        }
+          },
+          function(error) {}
+        );
       }
       return (
         <Row gutter={16}>
-          {this.state.recommend_video.map((data, index) => {
+          {this.state.video_library.map((data, index) => {
             return (
               <Row
                 key={index}
@@ -116,7 +85,7 @@ class VideoListUI extends PureComponent {
                 )}
               >
                 <Col span={8} className={style.hide_text}>
-                  {data.dsc}
+                  {data.desc}
                 </Col>
                 <Col span={8} className={style.hide_text}>
                   其他信息
@@ -132,7 +101,7 @@ class VideoListUI extends PureComponent {
     };
     return (
       <QueueAnim delay={200} type={'bottom'}>
-        {range(this.state.recommend_number).map((n_data, n_index) => {
+        {range(this.state.number).map((n_data, n_index) => {
           return (
             <LazyLoad
               once={true}

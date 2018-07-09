@@ -40,12 +40,17 @@ class EditorText extends PureComponent {
   /**
    * 将要修改的数据通过此函数传递出去
    * @param html_callback
+   * @param index_number
    */
-  richTextEditor = html_callback => {
+  richTextEditor = (html_callback, index_number) => {
     const $$new_h5_data = this.props.data
       .get('data')
       .setIn(['customize', 'html_content'], html_callback);
-    this.sendAction($$new_h5_data);
+    const $$new_index_number = $$new_h5_data.setIn(
+      ['customize', 'index_number'],
+      index_number
+    );
+    this.sendAction($$new_index_number);
   };
 
   /**

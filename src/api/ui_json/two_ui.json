@@ -1,6 +1,6 @@
 {
   "说明": "",
-  "release":"https://www.e7wei.com/",
+  "release": "https://www.e7wei.com/",
   "share": {
     "img": "",
     "title": {
@@ -19,13 +19,15 @@
       "img_config": {}
     },
     "advanced": {
-      "height": { "value": 0 }
+      "height": {
+        "value": 0
+      }
     }
-
   },
   "ui": [
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -95,6 +97,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -164,6 +167,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -233,6 +237,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -302,6 +307,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -371,6 +377,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -440,6 +447,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.647057652139484,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">大家期待已久的XX直播终于上线啦，动次打次嗨起来！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">兼具颜值才艺的你快点加入我们吧！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">平台将为极具潜力的主播提供强有力的支持</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">下一个王牌主播就是你</span></p>"
@@ -476,6 +484,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.2776592549937906,
         "name": "six_text",
         "html_content": "<h2><span style=\"color:#07a9fe\">招募要求</span></h2>"
@@ -512,6 +521,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.647057652139484,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:left;\"><span style=\"color:#003ba5\">1. 拥有直播设备，不限pc 和手机直播</span></p><p><span style=\"color:#003ba5\">2. 每天至少进行3小时直播，开播时间稳定</span></p><p><span style=\"color:#003ba5\">3. 主播思维敏捷，善于调节气氛，有较好的沟通能力，有专长达人者优先</span></p><p><span style=\"color:#003ba5\">4. 普通话标准，形象气质佳，性格开朗</span></p>"
@@ -548,6 +558,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.2776592549937906,
         "name": "six_text",
         "html_content": "<h2><span style=\"color:#07a9fe\">推广资源</span></h2>"
@@ -584,6 +595,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.647057652139484,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><h3><em><span style=\"color:#07a9fe\">NO.1</span></em></h3><h4><em><span style=\"color:#003ba5\">最优质资源位推荐</span></em></h4><p><em><span style=\"color:#003ba5\">首页推荐等丰富的展示资源</span></em></p><p></p><p></p><h3><em><span style=\"color:#07a9fe\">NO.2</span></em></h3><p><em><span style=\"color:#003ba5\">特殊身份标识</span></em></p><p><em><span style=\"color:#003ba5\">首页直播间+个人资料页王牌标识</span></em></p><p></p><p></p><p><em><span style=\"color:#07a9fe\">NO.3</span></em></p><p><em><span style=\"color:#003ba5\">活动节目优先权</span></em></p><p><em><span style=\"color:#003ba5\">优先参加综艺节目等活动录制</span></em></p>"
@@ -620,6 +632,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.2776592549937906,
         "name": "six_text",
         "html_content": "<h2><span style=\"color:#07a9fe\">丰收待遇</span></h2>"
@@ -656,6 +669,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.647057652139484,
         "name": "horizontal_text",
         "html_content": "<h2 style=\"text-align:center;\"></h2><p><span style=\"color:#07a9fe\"><em>NO.1</em></span></p><p><span style=\"color:#003ba5\">接受专业艺人经纪人的知道和培训</span></p><p></p><p><span style=\"color:#07a9fe\">NO.2</span></p><p><span style=\"color:#003ba5\">每月可领2000-8000底薪</span></p><p></p><p><span style=\"color:#07a9fe\">NO.3</span></p><p><span style=\"color:#003ba5\">超高比例的礼物提成</span></p><p></p>"
@@ -692,6 +706,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.2776592549937906,
         "name": "six_text",
         "html_content": "<h2><span style=\"color:#07a9fe\">报名方式</span></h2>"
@@ -728,6 +743,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.647057652139484,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#07a9fe\">1. 联系电话：025-8451 5170</span></p><p><span style=\"color:#07a9fe\">2. 面试地点：南京建邺区双闸路海峡云谷科技园</span></p>"
@@ -764,6 +780,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -833,6 +850,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -902,6 +920,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -971,6 +990,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {

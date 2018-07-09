@@ -1,5 +1,5 @@
 {
-  "release":"https://www.e7wei.com/",
+  "release": "https://www.e7wei.com/",
   "share": {
     "img": "",
     "title": {
@@ -18,12 +18,15 @@
       "img_config": {}
     },
     "advanced": {
-      "height": { "value": 0 }
+      "height": {
+        "value": 0
+      }
     }
   },
   "ui": [
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -93,6 +96,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.1738588884047505,
         "name": "sixteen_text",
         "html_content": "<p></p>"
@@ -129,6 +133,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"><strong>招聘 我们是认真的</strong></p>"
@@ -165,6 +170,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.03986241090160059,
         "name": "fifteen_text",
         "html_content": "<p></p>"
@@ -201,6 +207,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.03986241090160059,
         "name": "fifteen_text",
         "html_content": "<p></p>"
@@ -237,6 +244,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<h3 style=\"text-align:center;\"><strong>关于我们</strong></h3>"
@@ -273,6 +281,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p><span style=\"color:#000000\">易企微，一站式微信营销平台，是南京易企云软件技术有限公司旗下产品，提供微信营销一站式解决方案。</span></p><p><span style=\"color:#000000\">平台以微信为载体，开发企业实用的互动营销产品。帮助企业技术驱动营销，快捷、高效的开发客户，提升销量</span></p>"
@@ -309,6 +318,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<h3 style=\"text-align:center;\"><strong>招聘岗位</strong></h3>"
@@ -345,6 +355,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#000000\">PHP 研发工程师</span></p><p><span style=\"color:#000000\">我们希望你具备以下条件：</span></p><p><span style=\"color:#000000\">1、热爱WEB开发，有志于在此领域长期发展</span></p><p><span style=\"color:#000000\">2、精通PHP/PYTHON/JAVA/C++/C 任一门语言，并愿意深入学习PHP；</span></p><p><span style=\"color:#000000\">3、理解WEB标准、可用性、可访问性，有能力追踪和学习最新的软件技术；</span></p><p><span style=\"color:#000000\">4、有良好的团队协作能力，逻辑缜密，做事踏实严谨，责任心强，具有一定的软件工程意识；</span></p>"
@@ -381,6 +392,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#000000\">UI 设计师</span></p><p><span style=\"color:#000000\">我们希望你具备以下条件:</span></p><p><span style=\"color:#000000\">1、书籍基本的软件设计，比如PS,DW等设计制作网页软件；</span></p><p><span style=\"color:#000000\">2、了解多质感的运用，熟悉网页图标的设计；</span></p><p><span style=\"color:#000000\">3、良好的审美能力和优秀的美功底，关注最新网站设计趋势，对不同的需求，应用有灵活的艺术表现力；</span></p>"
@@ -417,6 +429,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.03986241090160059,
         "name": "fifteen_text",
         "html_content": "<p></p>"
@@ -453,6 +466,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<h3 style=\"text-align:center;\"></h3><h3><strong>福利待遇</strong></h3>"
@@ -489,6 +503,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#000000\">1、不低于行业标准的薪资，具体情况根据个人能力面议。</span></p><p><span style=\"color:#000000\">2、入职即签订合同并交纳五险一金；</span></p><p><span style=\"color:#000000\">3、丰富的团建活动，零食、下午茶不限量供应；</span></p><p><span style=\"color:#000000\">4、合理的涨薪制度，优秀员工更有股权激励；</span></p><p><span style=\"color:#000000\">5、超长年假，想去哪就去哪！</span></p>"
@@ -525,6 +540,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.03986241090160059,
         "name": "fifteen_text",
         "html_content": "<h3></h3>"
@@ -561,6 +577,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<h3 style=\"text-align:center;\"></h3><h3><strong>联系我们</strong></h3>"
@@ -597,6 +614,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.18670498765401256,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#000000\">Tel: 025-8451 5170</span></p><p><span style=\"color:#000000\">Ad: 南京建邺区扬子江大道399号</span></p><p><span style=\"color:#000000\"> 海峡云谷科技园5号楼520室</span></p>"

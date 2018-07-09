@@ -1,6 +1,6 @@
 {
   "说明": "样式参考链接http://src.e7wei.com/0.4804065800798081.png",
-  "release":"https://www.e7wei.com/",
+  "release": "https://www.e7wei.com/",
   "share": {
     "img": "",
     "title": {
@@ -19,12 +19,15 @@
       "img_config": {}
     },
     "advanced": {
-      "height": { "value": 0 }
+      "height": {
+        "value": 0
+      }
     }
   },
   "ui": [
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<h2 style=\"text-align:center;\"><span style=\"color:#f39c12\">- 你与高薪只差一个平台 -</span></h2>"
@@ -61,6 +64,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<h2 style=\"text-align:center;\"><span style=\"font-size:64px\"><span style=\"font-family:Arial, Helvetica, sans-serif\"><span style=\"color:#8e44ad\">校园招聘会</span></span></span></h2>"
@@ -97,6 +101,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -166,6 +171,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -235,6 +241,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -304,6 +311,7 @@
     },
     {
       "customize": {
+        "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -373,6 +381,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.6243488516197444,
         "name": "one_text",
         "html_content": "<p><span style=\"color:#ffffff\"><span style=\"font-size:14px\">关于我们</span></span></p><p><span style=\"color:#ffffff\"><span style=\"font-size:14px\">ABOUT US</span></span></p>"
@@ -409,6 +418,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">易企微，一站式微信营销平台，是南京易企云软件科技有限公司旗下产品，提供微信一站式解决方案。</span></p><p><span style=\"color:#ffffff\">平台以微信微载体，开发企业实用的互动营销产品。帮助企业技术驱动营销，快捷、高效地开发客户，提升销量。</span></p><p><span style=\"color:#ffffff\">易企微目前提供：微信砍价，微信编辑器、H5场景秀、微信投票、活动抽奖等互动营销产品，后续会持续开发对用户有价值的功能。</span></p>"
@@ -445,6 +455,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.6243488516197444,
         "name": "one_text",
         "html_content": "<h4><span style=\"color:#ffffff\">招聘岗位</span></h4><p><span style=\"color:#ffffff\">JOB POSITION</span></p>"
@@ -481,6 +492,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.9993853902278631,
         "name": "two_text",
         "html_content": "<h4><span style=\"color:#ffffff\">PHP研发工程师</span></h4>"
@@ -517,6 +529,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.9993853902278631,
         "name": "two_text",
         "html_content": "<h4><span style=\"color:#ffffff\">UI 设计师</span></h4>"
@@ -553,6 +566,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">我们希望您具备以下条件：</span></p><p><span style=\"color:#ffffff\">1. 热爱 web 开发，并有志于在此领域长期发展；</span></p><p><span style=\"color:#ffffff\">2. 精通 PHP/ PYTHON / JAVA /C++/C 任一门语言，并愿意深入学习PHP；</span></p><p><span style=\"color:#ffffff\">3. 理解WEB标准、可用性、可访问性，有能力跟踪和学习最新的软件技术；</span></p><p><span style=\"color:#ffffff\">4. 有良好的团队协作能力，逻辑缜密，做事踏实严谨，责任心强，具有一定的软件工程意识；</span></p>"
@@ -589,6 +603,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.6243488516197444,
         "name": "one_text",
         "html_content": "<h4><span style=\"color:#ffffff\">时间地点</span></h4><p><span style=\"color:#ffffff\">TIME AND PLACE</span></p>"
@@ -625,6 +640,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.9993853902278631,
         "name": "two_text",
         "html_content": "<h4><span style=\"color:#ffffff\">5月5日 - 5月7日 9：00 - 11：30</span></h4>"
@@ -661,6 +677,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">南京XX 大学慎思楼前</span></p>"
@@ -697,6 +714,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.6243488516197444,
         "name": "one_text",
         "html_content": "<h4><span style=\"color:#ffffff\">联系我们</span></h4><p><span style=\"color:#ffffff\">CONTACT US </span></p>"
@@ -733,6 +751,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.9993853902278631,
         "name": "two_text",
         "html_content": "<h4><span style=\"color:#ffffff\">Tel : 025-84515170</span></h4>"
@@ -769,6 +788,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">Ad： 南京建邺区扬子江大道399号</span></p><p><span style=\"color:#ffffff\">海峡云谷科技园5号楼520室</span></p>"
@@ -805,6 +825,7 @@
     },
     {
       "customize": {
+        "type": "text",
         "index_number": 0.497668633636803,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">我们希望您具备以下条件：</span></p><p><span style=\"color:#ffffff\">1. 熟悉基本的软件设计，比如 PS，DW 等设计制作网页软件；</span></p><p><span style=\"color:#ffffff\">2. 了解多之感的运用，熟悉网页图标的设计；</span></p><p><span style=\"color:#ffffff\">3. 良好的审美能力和优秀的美术功底，关注最新网站设计趋势，对不同的要求，应用有灵活的艺术表现力</span></p>"

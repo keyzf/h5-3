@@ -25,6 +25,7 @@
   "ui": [
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -94,6 +95,7 @@
     },
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -163,6 +165,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.16683513286186402,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\">LET&#x27;S PLAY</p>"
@@ -199,6 +202,7 @@
     },
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -271,6 +275,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.18255109938476832,
         "name": "eighteen_text",
         "html_content": "<h2><span style=\"color:#ffffff\">活动介绍</span></h2>"
@@ -307,6 +312,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.16683513286186402,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#2c3e50\">”世界上有60多亿人，我们一生能遇见2900万人，两个人相遇的概率只有0.0048“</span></p><p><span style=\"color:#2c3e50\">-------</span></p><p><span style=\"color:#2c3e50\">这么低的概率下</span></p><p><span style=\"color:#2c3e50\">性遇到心仪的那个人吗?</span></p><p><span style=\"color:#2c3e50\">-------</span></p><p><span style=\"color:#2c3e50\">快来参见夏日狂欢party吧！</span></p><h6><span style=\"color:#999999\">(文案仅做示例，请自行修改)</span></h6>"
@@ -343,6 +349,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.18255109938476832,
         "name": "eighteen_text",
         "html_content": "<h2 style=\"color: white;\">主办方</h2>"
@@ -379,6 +386,7 @@
     },
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -448,6 +456,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.16683513286186402,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#2c3e50\">乐巢酒吧成立于2006年，是一家以R&amp;B,HIPHOP音乐为主的连锁酒吧、是一家以时尚音乐加人性化的精致服务为一体的大型跨省直营娱乐品牌酒吧。在南京、南昌、深圳、长沙、镇江、西安、太原等城市揩油连锁分店。</span></p>"
@@ -484,6 +493,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.18255109938476832,
         "name": "eighteen_text",
         "html_content": "<h2><span style=\"color:#ffffff\">时间地点</span></h2>"
@@ -520,6 +530,7 @@
     },
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -589,6 +600,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.16683513286186402,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p>南京江宁区百家湖1912街区</p>"
@@ -625,6 +637,7 @@
     },
     {
       "customize": {
+          "type": "img",
         "name": "single_img",
         "item": [
           {
@@ -694,6 +707,7 @@
     },
     {
       "customize": {
+          "type": "text",
         "index_number": 0.16683513286186402,
         "name": "horizontal_text",
         "html_content": "<p style=\"text-align:center;\"></p><p>2018.6.18 </p><p>8:30</p>"
