@@ -1,13 +1,13 @@
 # API 文件目录
 
 ## Api接口
-1.初始化路径 http://h5.e7wei.com/Index/getData
-2.提交保存路径 http://h5.e7wei.com/Index/postData
-3.添加用户素材 http://h5.e7wei.com/Material/addUser
-4.删除用户素材 http://h5.e7wei.com/Material/delUser 
-5.获取用户素材 http://h5.e7wei.com/Material/getUser 
-6.获取系统素材 http://h5.e7wei.com/Material/getSys
-7.获取系统子分类 http://h5.e7wei.com/Material/getSysType
+1.初始化路径 http://h5.e7wei.com/Index/getData    
+2.提交保存路径 http://h5.e7wei.com/Index/postData     
+3.添加用户素材 http://h5.e7wei.com/Material/addUser    
+4.删除用户素材 http://h5.e7wei.com/Material/delUser     
+5.获取用户素材 http://h5.e7wei.com/Material/getUser     
+6.获取系统素材 http://h5.e7wei.com/Material/getSys    
+7.获取系统子分类 http://h5.e7wei.com/Material/getSysType   
 
 ## 公共字段
 
