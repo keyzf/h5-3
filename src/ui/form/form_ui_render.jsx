@@ -14,7 +14,7 @@ import {
   Upload,
   Icon,
 } from 'antd';
-import { uploadToken } from '../../toolkit/qiniu_upload';
+import { uploadToken } from '../../project/toolkit/qiniu.tool';
 // import axios from "axios";
 // import { fromJS, List } from "immutable";
 
