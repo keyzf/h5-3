@@ -17,7 +17,7 @@ export const public_img = (page, childtype) => {
           reject('访问服务器错误', error);
         });
     }
-    if ($$api.get('surroundings') === 'produce') {
+    if ($$api.get('surroundings') === 'system_library') {
       let params = new URLSearchParams();
       const ajax_data = {
         page: page,

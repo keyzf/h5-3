@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS } from "immutable";
 
 /**
  * 用来记录上传记录
@@ -10,13 +10,13 @@ import { fromJS } from 'immutable';
  */
 
 const upload_recode_reducer = (
-  state = { data: fromJS({ user_upload_img: [], choose_img_url: '' }) },
+  state = { data: fromJS({ user_upload_img: [], choose_img_url: "" }) },
   action
 ) => {
   switch (action.type) {
-    case 'UPLOAD_RECODE':
+    case "UPLOAD_RECODE":
       return {
-        data: action.payload,
+        data: action.payload
       };
     default:
       return state;

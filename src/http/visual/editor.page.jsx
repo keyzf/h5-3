@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import connect from "../../redux/decorator";
 import TweenOne from 'rc-tween-one';
 import BgEditor from '../../containers/visual/editor/bg/bg_editor';
-import { choose_redux_action } from '../../redux/action';
 import { render_formFunc } from '../../containers/visual/editor/render_form.func';
 import style from './editor.module.scss';
 
@@ -11,7 +10,8 @@ import style from './editor.module.scss';
  * 1. 控制背景组件的补充按钮何时出现
  * 2. 控制界面显示何种内容
  */
-class EditorVisualView extends PureComponent {
+@connect
+export default class EditorVisualView extends PureComponent {
   /**
    * 点击背景按钮时，
    * 通过修改choose 数值
@@ -53,17 +53,3 @@ class EditorVisualView extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    choose_value: state.choose_reducer,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    choose_upData: (name, data, meta) =>
-      dispatch(choose_redux_action(name, data, meta)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditorVisualView);

@@ -1,963 +1,960 @@
 {
-  "说明": "",
-  "release": "https://www.e7wei.com/",
-  "share": {
-    "img": "",
-    "title": {
-      "value": "分享啦"
-    },
-    "content": {
-      "value": "没错，我们就是爱分享"
-    }
-  },
-  "bg": {
-    "name": "background",
-    "customize": {
-      "color": "#6400c0",
-      "img": "",
-      "crop_img": "",
-      "img_config": {}
-    },
-    "advanced": {
-      "height": {
-        "value": 1344
-      }
-    }
-  },
-  "ui": [
-    {
+  "error": 0,
+  "link": "",
+  "msg": "",
+  "info": {
+    "title": "",
+    "desc": "",
+    "cover": "",
+    "bg": {
+      "name": "background",
       "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.9142773331682925.png",
-            "crop_img": "http://src.e7wei.com/0.9142773331682925.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+        "color": "#6400c0",
+        "img": "",
+        "crop_img": "",
+        "img_config": {}
+      },
+      "advanced": {
+        "height": {
+          "value": 1344
+        }
+      }
+    },
+    "ui": [
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9142773331682925.png",
+              "crop_img": "http://src.e7wei.com/0.9142773331682925.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 156
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": 0
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.8413184618424399.png",
-            "crop_img": "http://src.e7wei.com/0.8413184618424399.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+              "width": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 246
-          },
-          "height": {
-            "value": 253
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 45
-          },
-          "translateY": {
-            "value": -109
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<h3 style=\"text-align:center;\"><span style=\"color:#ffffff\">|支撑发展 引领未来|</span></h3>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 178
-          },
-          "height": {
-            "value": 36
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 82
-          },
-          "translateY": {
-            "value": -314
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<h1 style=\"text-align:center;\"><span style=\"color:#ffffff\">中国微信营销大会</span></h1>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 243
-          },
-          "height": {
-            "value": 46
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 45
-          },
-          "translateY": {
-            "value": -320
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">WECHAT MARKETING CONFERENCE</span></span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">IN CHINA</span></span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">(标题请自行修改)</span></span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 248
-          },
-          "height": {
-            "value": 67
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 43
-          },
-          "translateY": {
-            "value": -329
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.4470823480928716.png",
-            "crop_img": "http://src.e7wei.com/0.4470823480928716.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+              "height": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
               }
             }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 54
-          },
-          "height": {
-            "value": 156
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 144
-          },
-          "translateY": {
-            "value": -314
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.6759058337640906,
-        "name": "nineteen_text",
-        "html_content": "<h2><span style=\"color:#ffffff\">大会介绍</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 165
-          },
-          "height": {
-            "value": 41
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 90
-          },
-          "translateY": {
-            "value": -263
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:left;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\"><span style=\"font-size:14px\">大数据时代已悄然而至，社会化营销浪潮汹涌而来，品牌面临重塑跨界成为常态，传统的商业模式被重新解构，新的模式亟待创建。小微信大商机，微信公众号已然成为企业营销的利器。中小企业在新一波社会化营销浪潮中急需实现互联网下的社会化营销，而微信营销将会带给中小企业前所未有的机遇</span></span></span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 300
-          },
-          "height": {
-            "value": 169
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 16
-          },
-          "translateY": {
-            "value": -258
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.6759058337640906,
-        "name": "nineteen_text",
-        "html_content": "<h2><span style=\"color:#ffffff\">主办方介绍</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 265
-          },
-          "height": {
-            "value": 49
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 39
-          },
-          "translateY": {
-            "value": -211
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">易企微，一站式微信营销平台，是南京易企云软件科技有限公司旗下产品，提供微信营销一站式解决方案。</span></p><p><span style=\"color:#ffffff\">平台以微信微载体，开发企业实用的互动营销产品。帮助企业技术驱动营销，快捷、高效地开发客户，提升销量。用了易企微，从起，企业微信营销将会变得：简单、流程化、自动化。从而，快速，低成本建立属于企业自己的营销数据库，实时直达自己的用户，推动品牌持续稳定增长。</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 301
-          },
-          "height": {
-            "value": 195
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 14
-          },
-          "translateY": {
-            "value": -213
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.6759058337640906,
-        "name": "nineteen_text",
-        "html_content": "<h2><span style=\"color:#ffffff\">时间地点</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 284
-          },
-          "height": {
-            "value": 46
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 27
-          },
-          "translateY": {
-            "value": -178
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.9080498444486542.png",
-            "crop_img": "http://src.e7wei.com/0.9080498444486542.png",
-            "title": {
-              "value": "图片备注"
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
             },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
               "value": ""
             },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
             "width": {
-              "value": ""
+              "value": 320
             },
             "height": {
-              "value": ""
+              "value": 156
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
             },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
+            "translateY": {
+              "value": 0
             }
           }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
         }
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.8413184618424399.png",
+              "crop_img": "http://src.e7wei.com/0.8413184618424399.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "perimeter": {
-          "width": {
-            "value": 26
-          },
-          "height": {
-            "value": 124
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": -980
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.7947038856247375.png",
-            "crop_img": "http://src.e7wei.com/0.7947038856247375.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
               "value": ""
             },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
             "width": {
-              "value": ""
+              "value": 246
             },
             "height": {
-              "value": ""
+              "value": 253
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 45
             },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
+            "translateY": {
+              "value": -109
             }
           }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
         }
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<h3 style=\"text-align:center;\"><span style=\"color:#ffffff\">|支撑发展 引领未来|</span></h3>"
         },
-        "perimeter": {
-          "width": {
-            "value": 47
-          },
-          "height": {
-            "value": 212
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 273
-          },
-          "translateY": {
-            "value": -1067
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.021697679236105438.png",
-            "crop_img": "http://src.e7wei.com/0.021697679236105438.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
               "value": ""
             },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
             "width": {
-              "value": ""
+              "value": 178
             },
             "height": {
-              "value": ""
+              "value": 36
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 82
             },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
+            "translateY": {
+              "value": -314
             }
           }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
         }
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<h1 style=\"text-align:center;\"><span style=\"color:#ffffff\">中国微信营销大会</span></h1>"
         },
-        "perimeter": {
-          "width": {
-            "value": 36
-          },
-          "height": {
-            "value": 69
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 27
-          },
-          "translateY": {
-            "value": -505
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">南京建邺区双闸路海峡云谷科技园</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 237
-          },
-          "height": {
-            "value": 22
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 77
-          },
-          "translateY": {
-            "value": -566
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.7935843475743756.png",
-            "crop_img": "http://src.e7wei.com/0.7935843475743756.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
               "value": ""
             },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
             "width": {
-              "value": ""
+              "value": 243
             },
             "height": {
-              "value": ""
+              "value": 46
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 45
             },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
+            "translateY": {
+              "value": -320
             }
           }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
         }
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">WECHAT MARKETING CONFERENCE</span></span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">IN CHINA</span></span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">(标题请自行修改)</span></span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
           },
-          "tiling": {
-            "value": ""
+          "perimeter": {
+            "width": {
+              "value": 248
+            },
+            "height": {
+              "value": 67
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 43
+            },
+            "translateY": {
+              "value": -329
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.4470823480928716.png",
+              "crop_img": "http://src.e7wei.com/0.4470823480928716.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "perimeter": {
-          "width": {
-            "value": 34
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
           },
-          "height": {
-            "value": 45
+          "perimeter": {
+            "width": {
+              "value": 54
+            },
+            "height": {
+              "value": 156
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 144
+            },
+            "translateY": {
+              "value": -314
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6759058337640906,
+          "name": "nineteen_text",
+          "html_content": "<h2><span style=\"color:#ffffff\">大会介绍</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 165
+            },
+            "height": {
+              "value": 41
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 90
+            },
+            "translateY": {
+              "value": -263
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:left;\"><span style=\"color:#ffffff\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\"><span style=\"font-size:14px\">大数据时代已悄然而至，社会化营销浪潮汹涌而来，品牌面临重塑跨界成为常态，传统的商业模式被重新解构，新的模式亟待创建。小微信大商机，微信公众号已然成为企业营销的利器。中小企业在新一波社会化营销浪潮中急需实现互联网下的社会化营销，而微信营销将会带给中小企业前所未有的机遇</span></span></span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 300
+            },
+            "height": {
+              "value": 169
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 16
+            },
+            "translateY": {
+              "value": -258
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6759058337640906,
+          "name": "nineteen_text",
+          "html_content": "<h2><span style=\"color:#ffffff\">主办方介绍</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 265
+            },
+            "height": {
+              "value": 49
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 39
+            },
+            "translateY": {
+              "value": -211
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">易企微，一站式微信营销平台，是南京易企云软件科技有限公司旗下产品，提供微信营销一站式解决方案。</span></p><p><span style=\"color:#ffffff\">平台以微信微载体，开发企业实用的互动营销产品。帮助企业技术驱动营销，快捷、高效地开发客户，提升销量。用了易企微，从起，企业微信营销将会变得：简单、流程化、自动化。从而，快速，低成本建立属于企业自己的营销数据库，实时直达自己的用户，推动品牌持续稳定增长。</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 301
+            },
+            "height": {
+              "value": 195
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 14
+            },
+            "translateY": {
+              "value": -213
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6759058337640906,
+          "name": "nineteen_text",
+          "html_content": "<h2><span style=\"color:#ffffff\">时间地点</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 284
+            },
+            "height": {
+              "value": 46
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 27
+            },
+            "translateY": {
+              "value": -178
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9080498444486542.png",
+              "crop_img": "http://src.e7wei.com/0.9080498444486542.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "transform": {
-          "translateX": {
-            "value": 25
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
           },
-          "translateY": {
-            "value": -543
+          "perimeter": {
+            "width": {
+              "value": 26
+            },
+            "height": {
+              "value": 124
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
+            },
+            "translateY": {
+              "value": -980
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.7947038856247375.png",
+              "crop_img": "http://src.e7wei.com/0.7947038856247375.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 47
+            },
+            "height": {
+              "value": 212
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 273
+            },
+            "translateY": {
+              "value": -1067
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.021697679236105438.png",
+              "crop_img": "http://src.e7wei.com/0.021697679236105438.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 36
+            },
+            "height": {
+              "value": 69
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 27
+            },
+            "translateY": {
+              "value": -505
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">南京建邺区双闸路海峡云谷科技园</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 237
+            },
+            "height": {
+              "value": 22
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 77
+            },
+            "translateY": {
+              "value": -566
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.7935843475743756.png",
+              "crop_img": "http://src.e7wei.com/0.7935843475743756.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 34
+            },
+            "height": {
+              "value": 45
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 25
+            },
+            "translateY": {
+              "value": -543
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">2018-5-21 9:00</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 113
+            },
+            "height": {
+              "value": 24
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 75
+            },
+            "translateY": {
+              "value": -576
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6759058337640906,
+          "name": "nineteen_text",
+          "html_content": "<h2><span style=\"color:#ffffff\">联系我们</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 201
+            },
+            "height": {
+              "value": 50
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 61
+            },
+            "translateY": {
+              "value": -502
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5781128581498525,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">Tel: 025-8451 5170</span></p><p><span style=\"color:#ffffff\">Ad: 南京建邺区扬子江大道399号</span></p><p><span style=\"color:#ffffff\"> 海峡云谷科技园5号楼502室</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 236
+            },
+            "height": {
+              "value": 66
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 19
+            },
+            "translateY": {
+              "value": -494
+            }
           }
         }
       }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">2018-5-21 9:00</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 113
-          },
-          "height": {
-            "value": 24
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 75
-          },
-          "translateY": {
-            "value": -576
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.6759058337640906,
-        "name": "nineteen_text",
-        "html_content": "<h2><span style=\"color:#ffffff\">联系我们</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 201
-          },
-          "height": {
-            "value": 50
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 61
-          },
-          "translateY": {
-            "value": -502
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.5781128581498525,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#ffffff\">Tel: 025-8451 5170</span></p><p><span style=\"color:#ffffff\">Ad: 南京建邺区扬子江大道399号</span></p><p><span style=\"color:#ffffff\"> 海峡云谷科技园5号楼502室</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 236
-          },
-          "height": {
-            "value": 66
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 19
-          },
-          "translateY": {
-            "value": -494
-          }
-        }
-      }
-    }
-  ]
+    ]
+  }
 }

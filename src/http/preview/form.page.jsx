@@ -22,9 +22,9 @@ class FormPreviewView extends React.Component {
 export default Form.create({
   mapPropsToFields(props) {
     return {
-      content: Form.createFormField({
-        ...props.content,
-        value: props.content.value,
+      desc: Form.createFormField({
+        ...props.desc,
+        value: props.desc.value,
       }),
       title: Form.createFormField({
         ...props.title,

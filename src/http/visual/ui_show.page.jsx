@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import connect from "../../redux/decorator";
 import { Layout } from 'antd';
 import {
   template_img_data,
@@ -11,7 +11,8 @@ import {
 import SelectCommon from '../../containers/visual/side/select_common';
 import InterActiveSelect from '../../containers/visual/side/interactive';
 
-class VisualUiShowView extends PureComponent {
+@connect
+export default  class VisualUiShowView extends PureComponent {
   render() {
     const $$name = this.props.ui_select_value.data.get('name');
     const { Sider } = Layout;
@@ -57,10 +58,3 @@ class VisualUiShowView extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    ui_select_value: state.ui_h5_data_reducer,
-  };
-};
-
-export default connect(mapStateToProps, '')(VisualUiShowView);

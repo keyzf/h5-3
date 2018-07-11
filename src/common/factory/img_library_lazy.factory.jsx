@@ -75,7 +75,7 @@ class ImgLibraryLazyFactory extends PureComponent {
                     boxSizing: 'border-box',
                   }}
                   className={
-                    data.url === $$up_recode.choose_img_url
+                    data.url === $$up_recode.get('choose_img_url')
                       ? style.part_active
                       : style.part_choose
                   }

@@ -26,7 +26,7 @@ export const user_img = page => {
       };
       params.append('data', `${{ ...ajax_data }}`);
       axios
-        .post(`${$$api.getIn(['produce', 'img_library'])}`, params)
+        .post(`${$$api.getIn(['produce', 'user_library'])}`, params)
         .then(response => {
           resolve(response.data);
         })

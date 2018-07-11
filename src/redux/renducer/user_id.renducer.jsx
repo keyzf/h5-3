@@ -10,7 +10,7 @@ import { Map } from 'immutable';
  * @returns {*}
  */
 const user_id_reducer = (
-  state = { data: Map({ user_id: null, number: '' }) },
+  state = { data: Map({ user_id: null }) },
   action
 ) => {
   switch (action.type) {

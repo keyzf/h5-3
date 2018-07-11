@@ -2,10 +2,10 @@ import { fromJS } from 'immutable';
 
 const shareMsg_data = {
   data: fromJS({
-    img: '',
+    cover: '',
     crop_img: '',
     title: { value: '' },
-    content: { value: '' },
+    desc: { value: '' },
   }),
 };
 const shareMsg_reducer = (state = { ...shareMsg_data }, action) => {

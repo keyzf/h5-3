@@ -17,7 +17,7 @@ export const public_img_list = () => {
           reject('访问服务器错误', error);
         });
     }
-    if ($$api.get('surroundings') === 'produce') {
+    if ($$api.get('surroundings') === 'system_library') {
       let params = new URLSearchParams();
       params.append('type', '1');
       axios

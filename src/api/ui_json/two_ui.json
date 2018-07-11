@@ -1,1062 +1,1059 @@
 {
-  "说明": "",
-  "release": "https://www.e7wei.com/",
-  "share": {
-    "img": "",
-    "title": {
-      "value": "分享啦"
-    },
-    "content": {
-      "value": "没错，我们就是爱分享"
-    }
-  },
-  "bg": {
-    "name": "background",
-    "customize": {
-      "color": "#ffffff",
-      "img": "",
-      "crop_img": "",
-      "img_config": {}
-    },
-    "advanced": {
-      "height": {
-        "value": 0
-      }
-    }
-  },
-  "ui": [
-    {
+  "error": 0,
+  "link": "",
+  "msg": "",
+  "info": {
+    "title": "",
+    "desc": "",
+    "cover": "",
+    "bg": {
+      "name": "background",
       "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.33239685362007654.png",
-            "crop_img": "http://src.e7wei.com/0.33239685362007654.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 86
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": 16
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.018283472594162298.png",
-            "crop_img": "http://src.e7wei.com/0.018283472594162298.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 38
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": 38
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.3062061826919993.png",
-            "crop_img": "http://src.e7wei.com/0.3062061826919993.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 274
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": 35
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.48841344745245574.png",
-            "crop_img": "http://src.e7wei.com/0.48841344745245574.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 262
-          },
-          "height": {
-            "value": 207
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 20
-          },
-          "translateY": {
-            "value": -255
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.0026218710906682485.png",
-            "crop_img": "http://src.e7wei.com/0.0026218710906682485.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 236
-          },
-          "height": {
-            "value": 352
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 24
-          },
-          "translateY": {
-            "value": -523
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.13359713201769852.png",
-            "crop_img": "http://src.e7wei.com/0.13359713201769852.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 124
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": -524
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.647057652139484,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">大家期待已久的XX直播终于上线啦，动次打次嗨起来！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">兼具颜值才艺的你快点加入我们吧！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">平台将为极具潜力的主播提供强有力的支持</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">下一个王牌主播就是你</span></p>"
-      },
-      "advance": {
-        "color": "",
+        "color": "#ffffff",
         "img": "",
         "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 320
-          },
-          "height": {
-            "value": 119
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 0
-          },
-          "translateY": {
-            "value": -644
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.2776592549937906,
-        "name": "six_text",
-        "html_content": "<h2><span style=\"color:#07a9fe\">招募要求</span></h2>"
+        "img_config": {}
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 294
-          },
-          "height": {
-            "value": 35
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 7
-          },
-          "translateY": {
-            "value": -612
-          }
+      "advanced": {
+        "height": {
+          "value": 0
         }
       }
     },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.647057652139484,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:left;\"><span style=\"color:#003ba5\">1. 拥有直播设备，不限pc 和手机直播</span></p><p><span style=\"color:#003ba5\">2. 每天至少进行3小时直播，开播时间稳定</span></p><p><span style=\"color:#003ba5\">3. 主播思维敏捷，善于调节气氛，有较好的沟通能力，有专长达人者优先</span></p><p><span style=\"color:#003ba5\">4. 普通话标准，形象气质佳，性格开朗</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 305
-          },
-          "height": {
-            "value": 129
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 8
-          },
-          "translateY": {
-            "value": -598
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.2776592549937906,
-        "name": "six_text",
-        "html_content": "<h2><span style=\"color:#07a9fe\">推广资源</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 292
-          },
-          "height": {
-            "value": 37
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 12
-          },
-          "translateY": {
-            "value": -566
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.647057652139484,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><h3><em><span style=\"color:#07a9fe\">NO.1</span></em></h3><h4><em><span style=\"color:#003ba5\">最优质资源位推荐</span></em></h4><p><em><span style=\"color:#003ba5\">首页推荐等丰富的展示资源</span></em></p><p></p><p></p><h3><em><span style=\"color:#07a9fe\">NO.2</span></em></h3><p><em><span style=\"color:#003ba5\">特殊身份标识</span></em></p><p><em><span style=\"color:#003ba5\">首页直播间+个人资料页王牌标识</span></em></p><p></p><p></p><p><em><span style=\"color:#07a9fe\">NO.3</span></em></p><p><em><span style=\"color:#003ba5\">活动节目优先权</span></em></p><p><em><span style=\"color:#003ba5\">优先参加综艺节目等活动录制</span></em></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 288
-          },
-          "height": {
-            "value": 155
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 14
-          },
-          "translateY": {
-            "value": -559
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.2776592549937906,
-        "name": "six_text",
-        "html_content": "<h2><span style=\"color:#07a9fe\">丰收待遇</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 301
-          },
-          "height": {
-            "value": 33
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 8
-          },
-          "translateY": {
-            "value": -520
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.647057652139484,
-        "name": "horizontal_text",
-        "html_content": "<h2 style=\"text-align:center;\"></h2><p><span style=\"color:#07a9fe\"><em>NO.1</em></span></p><p><span style=\"color:#003ba5\">接受专业艺人经纪人的知道和培训</span></p><p></p><p><span style=\"color:#07a9fe\">NO.2</span></p><p><span style=\"color:#003ba5\">每月可领2000-8000底薪</span></p><p></p><p><span style=\"color:#07a9fe\">NO.3</span></p><p><span style=\"color:#003ba5\">超高比例的礼物提成</span></p><p></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 297
-          },
-          "height": {
-            "value": 141
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 10
-          },
-          "translateY": {
-            "value": -506
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.2776592549937906,
-        "name": "six_text",
-        "html_content": "<h2><span style=\"color:#07a9fe\">报名方式</span></h2>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 303
-          },
-          "height": {
-            "value": 35
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 6
-          },
-          "translateY": {
-            "value": -486
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "text",
-        "index_number": 0.647057652139484,
-        "name": "horizontal_text",
-        "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#07a9fe\">1. 联系电话：025-8451 5170</span></p><p><span style=\"color:#07a9fe\">2. 面试地点：南京建邺区双闸路海峡云谷科技园</span></p>"
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "crop_img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 300
-          },
-          "height": {
-            "value": 45
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 8
-          },
-          "translateY": {
-            "value": -475
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.6142676400953293.png",
-            "crop_img": "http://src.e7wei.com/0.6142676400953293.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+    "ui": [
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.33239685362007654.png",
+              "crop_img": "http://src.e7wei.com/0.33239685362007654.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 62
-          },
-          "height": {
-            "value": 97
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 258
-          },
-          "translateY": {
-            "value": -953
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.9459753892947524.png",
-            "crop_img": "http://src.e7wei.com/0.9459753892947524.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+              "width": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
-              }
-            }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
-          }
-        },
-        "perimeter": {
-          "width": {
-            "value": 57
-          },
-          "height": {
-            "value": 117
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 263
-          },
-          "translateY": {
-            "value": -816
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.6082569612293962.png",
-            "crop_img": "http://src.e7wei.com/0.6082569612293962.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
-              "value": ""
-            },
-            "width": {
-              "value": ""
-            },
-            "height": {
-              "value": ""
-            },
-            "img_config": {
-              "stretching": {
+              "height": {
                 "value": ""
               },
-              "tiling": {
-                "value": ""
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
               }
             }
-          }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
-        }
-      },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "perimeter": {
-          "width": {
-            "value": 84
-          },
-          "height": {
-            "value": 35
-          }
-        },
-        "transform": {
-          "translateX": {
-            "value": 89
-          },
-          "translateY": {
-            "value": -530
-          }
-        }
-      }
-    },
-    {
-      "customize": {
-        "type": "img",
-        "name": "single_img",
-        "item": [
-          {
-            "img": "http://src.e7wei.com/0.9166617354844757.png",
-            "crop_img": "http://src.e7wei.com/0.9166617354844757.png",
-            "title": {
-              "value": "图片备注"
-            },
-            "content": {
-              "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
-            },
-            "link": {
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
               "value": ""
             },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
             "width": {
-              "value": ""
+              "value": 320
             },
             "height": {
-              "value": ""
+              "value": 86
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
             },
-            "img_config": {
-              "stretching": {
-                "value": ""
-              },
-              "tiling": {
-                "value": ""
-              }
+            "translateY": {
+              "value": 16
             }
           }
-        ],
-        "base": {
-          "show_element": {},
-          "layout": {
-            "value": 0
-          },
-          "font_color": "#000"
         }
       },
-      "advance": {
-        "color": "",
-        "img": "",
-        "img_config": {
-          "stretching": {
-            "value": ""
-          },
-          "tiling": {
-            "value": ""
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.018283472594162298.png",
+              "crop_img": "http://src.e7wei.com/0.018283472594162298.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "perimeter": {
-          "width": {
-            "value": 122
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
           },
-          "height": {
-            "value": 100
+          "perimeter": {
+            "width": {
+              "value": 320
+            },
+            "height": {
+              "value": 38
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
+            },
+            "translateY": {
+              "value": 38
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.3062061826919993.png",
+              "crop_img": "http://src.e7wei.com/0.3062061826919993.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
           }
         },
-        "transform": {
-          "translateX": {
-            "value": 198
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
           },
-          "translateY": {
-            "value": -607
+          "perimeter": {
+            "width": {
+              "value": 320
+            },
+            "height": {
+              "value": 274
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
+            },
+            "translateY": {
+              "value": 35
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.48841344745245574.png",
+              "crop_img": "http://src.e7wei.com/0.48841344745245574.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 262
+            },
+            "height": {
+              "value": 207
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 20
+            },
+            "translateY": {
+              "value": -255
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.0026218710906682485.png",
+              "crop_img": "http://src.e7wei.com/0.0026218710906682485.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 236
+            },
+            "height": {
+              "value": 352
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 24
+            },
+            "translateY": {
+              "value": -523
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.13359713201769852.png",
+              "crop_img": "http://src.e7wei.com/0.13359713201769852.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 320
+            },
+            "height": {
+              "value": 124
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
+            },
+            "translateY": {
+              "value": -524
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.647057652139484,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">大家期待已久的XX直播终于上线啦，动次打次嗨起来！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">兼具颜值才艺的你快点加入我们吧！</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">平台将为极具潜力的主播提供强有力的支持</span></p><p style=\"text-align:center;\"><span style=\"color:#ffffff\">下一个王牌主播就是你</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 320
+            },
+            "height": {
+              "value": 119
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 0
+            },
+            "translateY": {
+              "value": -644
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.2776592549937906,
+          "name": "six_text",
+          "html_content": "<h2><span style=\"color:#07a9fe\">招募要求</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 294
+            },
+            "height": {
+              "value": 35
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 7
+            },
+            "translateY": {
+              "value": -612
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.647057652139484,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:left;\"><span style=\"color:#003ba5\">1. 拥有直播设备，不限pc 和手机直播</span></p><p><span style=\"color:#003ba5\">2. 每天至少进行3小时直播，开播时间稳定</span></p><p><span style=\"color:#003ba5\">3. 主播思维敏捷，善于调节气氛，有较好的沟通能力，有专长达人者优先</span></p><p><span style=\"color:#003ba5\">4. 普通话标准，形象气质佳，性格开朗</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 305
+            },
+            "height": {
+              "value": 129
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 8
+            },
+            "translateY": {
+              "value": -598
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.2776592549937906,
+          "name": "six_text",
+          "html_content": "<h2><span style=\"color:#07a9fe\">推广资源</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 292
+            },
+            "height": {
+              "value": 37
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 12
+            },
+            "translateY": {
+              "value": -566
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.647057652139484,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><h3><em><span style=\"color:#07a9fe\">NO.1</span></em></h3><h4><em><span style=\"color:#003ba5\">最优质资源位推荐</span></em></h4><p><em><span style=\"color:#003ba5\">首页推荐等丰富的展示资源</span></em></p><p></p><p></p><h3><em><span style=\"color:#07a9fe\">NO.2</span></em></h3><p><em><span style=\"color:#003ba5\">特殊身份标识</span></em></p><p><em><span style=\"color:#003ba5\">首页直播间+个人资料页王牌标识</span></em></p><p></p><p></p><p><em><span style=\"color:#07a9fe\">NO.3</span></em></p><p><em><span style=\"color:#003ba5\">活动节目优先权</span></em></p><p><em><span style=\"color:#003ba5\">优先参加综艺节目等活动录制</span></em></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 288
+            },
+            "height": {
+              "value": 155
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 14
+            },
+            "translateY": {
+              "value": -559
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.2776592549937906,
+          "name": "six_text",
+          "html_content": "<h2><span style=\"color:#07a9fe\">丰收待遇</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 301
+            },
+            "height": {
+              "value": 33
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 8
+            },
+            "translateY": {
+              "value": -520
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.647057652139484,
+          "name": "horizontal_text",
+          "html_content": "<h2 style=\"text-align:center;\"></h2><p><span style=\"color:#07a9fe\"><em>NO.1</em></span></p><p><span style=\"color:#003ba5\">接受专业艺人经纪人的知道和培训</span></p><p></p><p><span style=\"color:#07a9fe\">NO.2</span></p><p><span style=\"color:#003ba5\">每月可领2000-8000底薪</span></p><p></p><p><span style=\"color:#07a9fe\">NO.3</span></p><p><span style=\"color:#003ba5\">超高比例的礼物提成</span></p><p></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 297
+            },
+            "height": {
+              "value": 141
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 10
+            },
+            "translateY": {
+              "value": -506
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.2776592549937906,
+          "name": "six_text",
+          "html_content": "<h2><span style=\"color:#07a9fe\">报名方式</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 303
+            },
+            "height": {
+              "value": 35
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 6
+            },
+            "translateY": {
+              "value": -486
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.647057652139484,
+          "name": "horizontal_text",
+          "html_content": "<p style=\"text-align:center;\"></p><p><span style=\"color:#07a9fe\">1. 联系电话：025-8451 5170</span></p><p><span style=\"color:#07a9fe\">2. 面试地点：南京建邺区双闸路海峡云谷科技园</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 300
+            },
+            "height": {
+              "value": 45
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 8
+            },
+            "translateY": {
+              "value": -475
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.6142676400953293.png",
+              "crop_img": "http://src.e7wei.com/0.6142676400953293.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 62
+            },
+            "height": {
+              "value": 97
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 258
+            },
+            "translateY": {
+              "value": -953
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9459753892947524.png",
+              "crop_img": "http://src.e7wei.com/0.9459753892947524.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 57
+            },
+            "height": {
+              "value": 117
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 263
+            },
+            "translateY": {
+              "value": -816
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.6082569612293962.png",
+              "crop_img": "http://src.e7wei.com/0.6082569612293962.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 84
+            },
+            "height": {
+              "value": 35
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 89
+            },
+            "translateY": {
+              "value": -530
+            }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9166617354844757.png",
+              "crop_img": "http://src.e7wei.com/0.9166617354844757.png",
+              "title": {
+                "value": "图片备注"
+              },
+              "content": {
+                "value": "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": {
+                "value": ""
+              },
+              "width": {
+                "value": ""
+              },
+              "height": {
+                "value": ""
+              },
+              "img_config": {
+                "stretching": {
+                  "value": ""
+                },
+                "tiling": {
+                  "value": ""
+                }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": {
+              "value": 0
+            },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": {
+              "value": ""
+            },
+            "tiling": {
+              "value": ""
+            }
+          },
+          "perimeter": {
+            "width": {
+              "value": 122
+            },
+            "height": {
+              "value": 100
+            }
+          },
+          "transform": {
+            "translateX": {
+              "value": 198
+            },
+            "translateY": {
+              "value": -607
+            }
           }
         }
       }
-    }
-  ]
+    ]
+  }
 }
