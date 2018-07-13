@@ -1,10 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-/**
- * 接收数据
- * 1. html 信息
- */
 class OneTextUi extends PureComponent {
   render() {
     const OneTextStyle = styled.div`

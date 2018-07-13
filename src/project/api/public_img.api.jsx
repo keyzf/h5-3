@@ -15,13 +15,11 @@ export const public_img_api = (page, childtype) => {
     }
     if ($$env.get('surroundings') === 'system_library') {
       let params = new URLSearchParams();
-      const ajax_data = {
-        page: page,
-        pagecount: 40,
-        type: 1,
-        childtype: childtype,
-      };
-      params.append('data', `${{ ...ajax_data }}`);
+
+      params.append('page', page);
+      params.append('pagecount', 30);
+      params.append('type', 1);
+      params.append('childtype', childtype);
       axios
         .post(`${$$env.getIn(['produce', 'img_library'])}`, params)
         .then(response => {

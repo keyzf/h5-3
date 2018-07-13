@@ -281,11 +281,298 @@ const $$one_mall_database = $$mall_func_database(
   1,
   480
 );
-
+const $$two_mall_database = $$mall_func_database(
+  'two_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.943903263413274.png', //图片
+      crop_img: 'http://src.e7wei.com/0.943903263413274.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '请编辑宝贝标题' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '￥999.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
+      crop_img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '请编辑宝贝标题' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '￥999.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  2,
+  480
+);
+const $$three_mall_database = $$mall_func_database(
+  'three_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.6431361131703945.png', //图片
+      crop_img: 'http://src.e7wei.com/0.6431361131703945.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: 'FASHION SHOW' }, //标题
+      content: { value: '小清醒刺绣蝴蝶结系领竖女孩' }, //内容
+      //商品价格
+      current: { value: '￥220.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.3005644854593039.png', //图片
+      crop_img: 'http://src.e7wei.com/0.3005644854593039.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: 'FASHION SHOW' }, //标题
+      content: { value: '小清醒刺绣蝴蝶结系领竖女孩' }, //内容
+      //商品价格
+      current: { value: '￥220.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.9430204499264667.png', //图片
+      crop_img: 'http://src.e7wei.com/0.9430204499264667.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: 'FASHION SHOW' }, //标题
+      content: { value: '小清醒刺绣蝴蝶结系领竖女孩' }, //内容
+      //商品价格
+      current: { value: '￥220.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  1,
+  480
+);
+const $$four_mall_database = $$mall_func_database(
+  'four_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.943903263413274.png', //图片
+      crop_img: 'http://src.e7wei.com/0.943903263413274.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '请编辑宝贝标题' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '￥999.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
+      crop_img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '请编辑宝贝标题' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '￥999.00' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  2,
+  480
+);
+const $$five_mall_database = $$mall_func_database(
+  'five_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.42801774343509513.png', //图片
+      crop_img: 'http://src.e7wei.com/0.42801774343509513.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '美白补水保湿炎斑' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '129' }, //现价
+      original: { value: '399' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  1,
+  300
+);
+const $$six_mall_database = $$mall_func_database(
+  'six_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.8905093712207472.png', //图片
+      crop_img: 'http://src.e7wei.com/0.8905093712207472.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '靓白肌肤密护  明星套装' }, //标题
+      content: { value: '美白补水保湿淡斑' }, //内容
+      //商品价格
+      current: { value: '129' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.8905093712207472.png', //图片
+      crop_img: 'http://src.e7wei.com/0.8905093712207472.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '靓白肌肤密护  明星套装' }, //标题
+      content: { value: '美白补水保湿淡斑' }, //内容
+      //商品价格
+      current: { value: '129' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  2,
+  300
+);
+const $$seven_mall_database = $$mall_func_database(
+  'seven_mall',
+  [
+    {
+      img: 'http://src.e7wei.com/0.41873240795828504.png', //图片
+      crop_img: 'http://src.e7wei.com/0.41873240795828504.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '文艺客厅沙发置物架' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '9999' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+    {
+      img: 'http://src.e7wei.com/0.9203663169436525.png', //图片
+      crop_img: 'http://src.e7wei.com/0.9203663169436525.png', //图片
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      }, //图片配置
+      img_url: { value: '' }, // 图片地址
+      //基础内容
+      width: { value: '' }, // 图片宽度
+      height: { value: '' }, //图片高度
+      title: { value: '文艺客厅沙发置物架' }, //标题
+      content: { value: '' }, //内容
+      //商品价格
+      current: { value: '9999' }, //现价
+      original: { value: '' }, //原价
+      //按钮
+      btn_content: { value: '' }, //按钮内容
+      btn_url: { value: '' }, // 按钮链接
+    },
+  ],
+  1,
+  300
+);
 // 导出模块
 export {
   $$mall_item_database,
   $$grid_mall_database,
   $$list_mall_database,
   $$one_mall_database,
+  $$two_mall_database,
+  $$three_mall_database,
+  $$four_mall_database,
+  $$five_mall_database,
+  $$six_mall_database,
+  $$seven_mall_database,
 };

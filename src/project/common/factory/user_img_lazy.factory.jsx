@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import connect from '../../redux/decorator';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
-import { Row, Col, Divider, Button } from 'antd';
+import { Col, Divider, Button, Tooltip } from 'antd';
 import style from './img_lazy_choose.module.scss';
 import UploadImgFactory from '../factory/upload_img_form.factory';
 import { delete_api } from '../../api/delete.api';
@@ -62,7 +62,7 @@ export default class UserImgLazyFactory extends PureComponent {
     const $$up_recode = this.props.user_img_value.data;
     const ShowUserImg = props => {
       if (this.state.length === props.index) {
-        user_img_api(0).then(
+        user_img_api(props.index).then(
           data => {
             this.setState({
               length: this.state.length + 1,
@@ -76,47 +76,31 @@ export default class UserImgLazyFactory extends PureComponent {
         <React.Fragment>
           {this.state.img_library.map((data, index) => {
             return (
-              <Col
-                span={4}
-                style={{ margin: '0 0 5px 0' }}
+              <div
+                className={'flex_1'}
                 onClick={this.choose_img.bind(this, data.url)}
                 key={index}
               >
                 <div
-                  key={index}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'inline-block',
-                    verticalAlign: 'top',
-                    marginBottom: '10px',
-                    marginRight: '13px',
-                    boxSizing: 'border-box',
-                  }}
                   className={
                     data.url === $$up_recode.get('choose_url')
                       ? `${style.part_active}`
                       : `${style.part_choose}`
                   }
                 >
-                  <img
-                    style={{
-                      verticalAlign: 'middle',
-                      maxWidth: '100%',
-                      maxHeight: '100%',
-                      margin: 'auto',
-                    }}
-                    src={data.url}
-                    alt={'img'}
-                  />
+                  <div className={style.img_show}>
+                    <Tooltip
+                      title={
+                        <div onClick={this.del.bind(this, data.mid, index)}>
+                          删除
+                        </div>
+                      }
+                    >
+                      <img className={style.img} src={data.url} alt={'img'} />
+                    </Tooltip>
+                  </div>
                 </div>
-                <Button
-                  onClick={this.del.bind(this, data.mid, index)}
-                  style={{ width: '100%' }}
-                >
-                  删除
-                </Button>
-              </Col>
+              </div>
             );
           })}
         </React.Fragment>
@@ -130,51 +114,45 @@ export default class UserImgLazyFactory extends PureComponent {
             <div
               style={{ width: '100%', maxHeight: '400px', overflow: 'auto' }}
             >
-              <Row gutter={16}>
+              <div className={'response_flex'}>
                 {$$up_recode.get('upload_library').size
                   ? $$up_recode.get('upload_library').map((data, index) => {
                       return (
-                        <Col
-                          span={4}
-                          style={{ margin: '0 0 5px 0' }}
+                        <div
+                          className={'flex_1'}
                           key={index}
                           onClick={this.choose_img.bind(this, data.get('url'))}
                         >
                           <div
-                            key={index}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              display: 'inline-block',
-                              verticalAlign: 'top',
-                              marginBottom: '10px',
-                              marginRight: '13px',
-                              boxSizing: 'border-box',
-                            }}
                             className={
-                              data.get('url') === $$up_recode.get('choose_url')
-                                ? style.part_active
-                                : style.part_choose
+                              data.url === $$up_recode.get('choose_url')
+                                ? `${style.part_active}`
+                                : `${style.part_choose}`
                             }
                           >
-                            <img
-                              style={{
-                                verticalAlign: 'middle',
-                                maxWidth: '100%',
-                                maxHeight: '100%',
-                                margin: 'auto',
-                              }}
-                              src={data.get('url')}
-                              alt={'img'}
-                            />
-                            <Button
-                              onClick={this.del.bind(this, data.mid, index)}
-                              style={{ width: '100%' }}
-                            >
-                              删除
-                            </Button>
+                            <div className={style.img_show}>
+                              <Tooltip
+                                title={
+                                  <div
+                                    onClick={this.del.bind(
+                                      this,
+                                      data.mid,
+                                      index
+                                    )}
+                                  >
+                                    删除
+                                  </div>
+                                }
+                              >
+                                <img
+                                  className={style.img}
+                                  src={data.get('url')}
+                                  alt={'img'}
+                                />
+                              </Tooltip>
+                            </div>
                           </div>
-                        </Col>
+                        </div>
                       );
                     })
                   : ''}
@@ -186,7 +164,7 @@ export default class UserImgLazyFactory extends PureComponent {
                     </LazyLoad>
                   );
                 })}
-              </Row>
+              </div>
             </div>
             <Divider />
             <div style={{ padding: '0 35%', width: '100%' }}>
