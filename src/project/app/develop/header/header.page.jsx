@@ -2,9 +2,6 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Menu, Row } from 'antd';
 import QueueAnim from 'rc-queue-anim';
-import { BtnCleanContent } from './btn_cleanContent';
-import { BtnSave } from '../../../common/btn_save.ajax';
-import { BtnRelease } from '../../../common/btn_release';
 import style from './header.module.scss';
 
 class HeaderVisualView extends PureComponent {

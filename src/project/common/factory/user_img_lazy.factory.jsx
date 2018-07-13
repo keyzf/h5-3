@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import connect from '../../redux/decorator';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
-import { Col, Divider, Button, Tooltip } from 'antd';
+import { Divider, Button, Tooltip } from 'antd';
 import style from './img_lazy_choose.module.scss';
 import UploadImgFactory from '../factory/upload_img_form.factory';
 import { delete_api } from '../../api/delete.api';

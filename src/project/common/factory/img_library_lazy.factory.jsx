@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import connect from '../../redux/decorator';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
-import { Row, Col } from 'antd';
 import style from './img_lazy_choose.module.scss';
 import { public_img_api } from '../../api/public_img.api';
 

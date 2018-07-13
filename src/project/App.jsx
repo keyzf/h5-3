@@ -1,35 +1,36 @@
-import React, { PureComponent } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { GetUrlPara } from './toolkit/parse_url.tool';
-import { access_api } from './api/access.api';
-import { VisualLoadable } from './router/visual.router';
-import { PreviewLoadable } from './router/preview.router';
-import { ReleaseLoadable } from './router/release.router';
-import { DevelopLoadable } from './router/develop.router';
-import { $$env } from './env';
-import { DevJsonLoadable } from './router/dev_json.router';
+import React, { PureComponent } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { GetUrlPara } from "./toolkit/parse_url.tool";
+import { access_api } from "./api/access.api";
+import { VisualLoadable } from "./router/visual.router";
+import { PreviewLoadable } from "./router/preview.router";
+import { ReleaseLoadable } from "./router/release.router";
+import { DevelopLoadable } from "./router/develop.router";
+import { $$env } from "./env";
+import { DevJsonLoadable } from "./router/dev_json.router";
+import { RenderH5Loadable } from "./router/renderH5.router";
 
 class App extends PureComponent {
-  state = { router: '' };
+  state = { router: "" };
 
   componentWillMount() {
-    if ($$env.get('surroundings') === 'development') {
+    if ($$env.get("surroundings") === "development") {
       this.setState({
-        router: 'visual',
+        router: "visual"
       });
     }
-    if ($$env.get('surroundings') === 'produce') {
+    if ($$env.get("surroundings") === "produce") {
       access_api(
         {
-          sid: GetUrlPara('sid'),
-          state: GetUrlPara('state'),
-          guide: GetUrlPara('guide'),
+          sid: GetUrlPara("sid"),
+          state: GetUrlPara("state"),
+          guide: GetUrlPara("guide")
         },
         this.props.upData
       )
         .then(data => {
           this.setState({
-            router: data,
+            router: data
           });
         })
         .catch(error_data => {
@@ -42,15 +43,16 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact={true} path={'/'}>
-            <Redirect to={this.state.router} />
+          <Route exact={true} path={"/"}>
+            <Redirect to={this.state.router}/>
           </Route>
-          <Route path={'/visual'} component={VisualLoadable} />
-          <Route path={'/preview'} component={PreviewLoadable} />
-          <Route path={'/release'} component={ReleaseLoadable} />
+          <Route path={"/visual"} component={VisualLoadable}/>
+          <Route path={"/preview"} component={PreviewLoadable}/>
+          <Route path={"/release"} component={ReleaseLoadable}/>
+          <Route path={"/renderH5"} component={RenderH5Loadable}/>
           {/*开发时使用*/}
-          <Route path={'/develop'} component={DevelopLoadable} />
-          <Route path={'/json'} component={DevJsonLoadable} />
+          <Route path={"/develop"} component={DevelopLoadable}/>
+          <Route path={"/json"} component={DevJsonLoadable}/>
         </Switch>
       </BrowserRouter>
     );
