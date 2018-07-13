@@ -10,13 +10,13 @@ export class BtnSave extends PureComponent {
     save_ajax({ ...this.props })
       .then(data => {
         if (data) {
-          message.success('保存失败');
-        } else {
           message.success('保存成功');
+        } else {
+          message.error('保存失败');
         }
       })
-      .catch(data => {
-        message.success('未知错误');
+      .catch(() => {
+        message.error('网络错误');
       });
   };
 

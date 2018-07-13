@@ -61,6 +61,7 @@ export default class UploadImgCommon extends PureComponent {
     this.setState({
       visible: false,
     });
+    console.log($$data);
     this.props.func($$data.get('choose_url'));
   };
 

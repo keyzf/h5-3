@@ -55,63 +55,42 @@ export default class ImgLibraryLazyFactory extends PureComponent {
         );
       }
       return (
-        <Row gutter={16}>
+        <React.Fragment>
           {this.state.img_library.map((data, index) => {
             return (
-              <Col
-                span={4}
-                style={{ margin: '0 0 5px 0', height: '60px' }}
+              <div
+                className={'flex_1'}
                 onClick={this.choose_img.bind(this, data.url)}
                 key={index}
               >
                 <div
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'inline-block',
-                    verticalAlign: 'top',
-                    marginBottom: '10px',
-                    marginRight: '13px',
-                    boxSizing: 'border-box',
-                  }}
                   className={
                     data.url === $$up_recode.get('choose_url')
                       ? style.part_active
                       : style.part_choose
                   }
                 >
-                  <img
-                    style={{
-                      verticalAlign: 'middle',
-                      maxWidth: '100%',
-                      maxHeight: '100%',
-                      margin: 'auto',
-                    }}
-                    src={data.url}
-                    alt={'img'}
-                  />
+                  <div className={style.img_show}>
+                    <img className={style.img} src={data.url} alt={'img'} />
+                  </div>
                 </div>
-              </Col>
+              </div>
             );
           })}
-        </Row>
+        </React.Fragment>
       );
     };
     return (
       <React.Fragment>
-        {range(this.state.number).map((data, index) => {
-          return (
-            <LazyLoad
-              once={true}
-              throttle={100}
-              height={400}
-              key={index}
-              overflow
-            >
-              <ShowPublicImg index={index} name={this.props.childtype} />
-            </LazyLoad>
-          );
-        })}
+        <div className={'response_flex'}>
+          {range(this.state.number).map((data, index) => {
+            return (
+              <LazyLoad height={400} key={index} overflow once>
+                <ShowPublicImg index={index} name={this.props.childtype} />
+              </LazyLoad>
+            );
+          })}
+        </div>
       </React.Fragment>
     );
   }

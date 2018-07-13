@@ -5,8 +5,9 @@ import { access_api } from './api/access.api';
 import { VisualLoadable } from './router/visual.router';
 import { PreviewLoadable } from './router/preview.router';
 import { ReleaseLoadable } from './router/release.router';
-import './core.css';
+import { DevelopLoadable } from './router/develop.router';
 import { $$env } from './env';
+import { DevJsonLoadable } from './router/dev_json.router';
 
 class App extends PureComponent {
   state = { router: '' };
@@ -47,6 +48,9 @@ class App extends PureComponent {
           <Route path={'/visual'} component={VisualLoadable} />
           <Route path={'/preview'} component={PreviewLoadable} />
           <Route path={'/release'} component={ReleaseLoadable} />
+          {/*开发时使用*/}
+          <Route path={'/develop'} component={DevelopLoadable} />
+          <Route path={'/json'} component={DevJsonLoadable} />
         </Switch>
       </BrowserRouter>
     );

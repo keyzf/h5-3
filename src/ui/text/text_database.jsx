@@ -21,6 +21,10 @@ import { v_html_text } from './core/vertical_ui';
 import { eighteen_html_text } from './recommend/eighteen_ui';
 import { nineteen_html_text } from './recommend/nineteen_ui';
 import { twenty_html_text } from './recommend/twenty_ui';
+import { twenty_one_html_text } from './recommend/twenty_one_ui';
+import { twenty_two_html_text } from './recommend/twenty_two_ui';
+import { twenty_three_html_text } from './recommend/twenty_three_ui';
+import { twenty_four_html_text } from './recommend/twenty_four_ui';
 
 /**
  * 根级数据，用来生成组件}}
@@ -97,6 +101,18 @@ const $$nineteen_text = fromJS(
 const $$twenty_text = fromJS(
   $$text_database('twenty_text', twenty_html_text, 80)
 );
+const $$twenty_one_text = fromJS(
+  $$text_database('twenty_one_text', twenty_one_html_text, 80)
+);
+const $$twenty_two_text = fromJS(
+  $$text_database('twenty_two_text', twenty_two_html_text, 80)
+);
+const $$twenty_three_text = fromJS(
+  $$text_database('twenty_three_text', twenty_three_html_text, 80)
+);
+const $$twenty_four_text = fromJS(
+  $$text_database('twenty_four_text', twenty_four_html_text, 80)
+);
 export {
   $$horizontal_text,
   $$vertical_text,
@@ -120,4 +136,8 @@ export {
   $$eighteen_text,
   $$nineteen_text,
   $$twenty_text,
+  $$twenty_one_text,
+  $$twenty_two_text,
+  $$twenty_three_text,
+  $$twenty_four_text,
 };

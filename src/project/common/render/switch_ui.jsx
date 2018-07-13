@@ -30,8 +30,7 @@ import { GridMallUi } from '../../../ui/mall/core/grid_ui';
 import { OneMallUi } from '../../../ui/mall/recommend/one_mall_ui';
 import { ButtonUi } from '../../../ui/button/core/button';
 import { OneButtonUi } from '../../../ui/button/recommend/one_button_ui';
-import { FormUi } from '../../../ui/form/form_ui_render';
-import { OneFormUi } from '../../../ui/form/recommend/one_form_ui';
+import { FormUi } from '../../../ui/form/recommend/form_ui_render';
 import { ProMusicUi } from '../../../ui/music/core/music_ui';
 
 /**
@@ -127,8 +126,6 @@ export const render_switch_ui = data => {
     case 'form':
       return <FormUi data={data} />;
 
-    case 'one_form':
-      return <OneFormUi data={data} />;
     //  默认输出
     default:
       return '';

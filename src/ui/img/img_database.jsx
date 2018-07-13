@@ -492,7 +492,7 @@ const $$three_img_database = $$img_func_database(
   400
 );
 
-// 推荐组件r
+// 推荐组件4
 const $$four_img_database = $$img_func_database(
   'four_img',
   [
@@ -554,6 +554,81 @@ const $$four_img_database = $$img_func_database(
   1,
   400
 );
+// 推荐组件5
+const $$five_img_database = $$img_func_database(
+  'five_img',
+  [
+    {
+      img: 'http://src.e7wei.com/0.3441348329775462.png',
+      crop_img: 'http://src.e7wei.com/0.3441348329775462.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.22596064074448097.png',
+      crop_img: 'http://src.e7wei.com/0.22596064074448097.png',
+      title: { value: '' },
+      content: {
+        value: 'we got marry',
+      },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.017722394784561057.png',
+      crop_img: 'http://src.e7wei.com/0.017722394784561057.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.3646254685498327.png',
+      crop_img: 'http://src.e7wei.com/0.3646254685498327.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+    {
+      img: 'http://src.e7wei.com/0.8882238527563122.png',
+      crop_img: 'http://src.e7wei.com/0.8882238527563122.png',
+      title: { value: '' },
+      content: { value: '' },
+      link: { value: '' },
+      width: { value: '' },
+      height: { value: '' },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  1,
+  400
+);
 // 导出
 export {
   $$single_img_database,
@@ -566,4 +641,5 @@ export {
   $$two_img_database,
   $$three_img_database,
   $$four_img_database,
+  $$five_img_database,
 };

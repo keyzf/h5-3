@@ -19,12 +19,9 @@ export const user_video_api = page => {
     }
     if ($$env.get('surroundings') === 'produce') {
       let params = new URLSearchParams();
-      const ajax_data = {
-        page: page,
-        pagecount: 40,
-        type: 1,
-      };
-      params.append('data', `${{ ...ajax_data }}`);
+      params.append('page', page);
+      params.append('pagecount', 30);
+      params.append('type', 1);
       axios
         .post(`${$$env.getIn(['produce', 'video_library'])}`, params)
         .then(response => {
