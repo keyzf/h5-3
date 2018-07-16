@@ -13,9 +13,6 @@ export default class EditorVideo extends PureComponent {
     video_library: [],
     number: '',
     length: 0,
-    public_video_library: [],
-    video_number: '',
-    public_length: 0,
   };
 
   componentWillMount() {
@@ -180,7 +177,7 @@ export default class EditorVideo extends PureComponent {
                   })}
                 </Radio.Group>
               </Collapse.Panel>
-              <Collapse.Panel header="第三方素材引入" key="1">
+              <Collapse.Panel header="第三方素材引入" key="2">
                 <div
                   style={{
                     color: '#19a0fa',
@@ -234,33 +231,6 @@ export default class EditorVideo extends PureComponent {
                 </Radio.Group>
               </Collapse.Panel>
             </Collapse>
-          </div>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="热门推荐" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <div style={{ height: '500px', overflow: 'auto' }}>
-              {range(this.state.video_number).map((n_data, n_index) => {
-                return (
-                  <LazyLoad
-                    once={true}
-                    throttle={100}
-                    key={n_index}
-                    height={400}
-                    overflow
-                  >
-                    <ShowMusic index={n_index} />
-                  </LazyLoad>
-                );
-              })}
-            </div>
           </div>
         </Tabs.TabPane>
       </Tabs>

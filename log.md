@@ -97,3 +97,10 @@
 ## 2018年07月11日17:04:01
 1. 为程序添加规范的 git 流程管理
 2. 添加feature_版本
+
+##2018年07月13日16:42:22
+1. 修复text editor 组件 编辑器id 问题
+2. 修复img editor 图片选中 及数据传递问题
+3. 修复video editor 中下拉菜单双选中问题
+4. 修复video editor 中 key 问题
+5. develop 页面引用visual 页面

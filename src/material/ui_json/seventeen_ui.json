@@ -1,0 +1,675 @@
+{
+  "error": 0,
+  "link": "",
+  "msg": "",
+  "info": {
+    "title": "",
+    "desc": "",
+    "cover": "",
+    "bg": {
+      "name": "background",
+      "customize": {
+        "color": "#fc6f5e",
+        "img": "",
+        "crop_img": "",
+        "img_config": {}
+      },
+      "advanced": { "height": { "value": 0 } }
+    },
+    "ui": [
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.2715851608061439.png",
+              "crop_img": "http://src.e7wei.com/0.2715851608061439.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 320 }, "height": { "value": 213 } },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.7841950837840166.png",
+              "crop_img": "http://src.e7wei.com/0.7841950837840166.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 158 }, "height": { "value": 58 } },
+          "transform": {
+            "translateX": { "value": 80 },
+            "translateY": { "value": -110 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.004794614871382219,
+          "name": "horizontal_text",
+          "html_content":
+          "<h2 style=\"text-align:center;\"><span style=\"font-size:40px\">艺童创意绘画</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 266 }, "height": { "value": 67 } },
+          "transform": {
+            "translateX": { "value": 26 },
+            "translateY": { "value": -107 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.9166722643200929,
+          "name": "horizontal_text",
+          "html_content":
+          "<h2 style=\"text-align:center;\">99元3次课+1次亲子课</h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 216 }, "height": { "value": 35 } },
+          "transform": {
+            "translateX": { "value": 54 },
+            "translateY": { "value": -110 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8357683971231709,
+          "name": "horizontal_text",
+          "html_content":
+          "<h2 style=\"text-align:center;\"><span style=\"color:#ffffff\"><span style=\"font-family:Georgia, serif\">火热报名中</span></span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 133 }, "height": { "value": 37 } },
+          "transform": {
+            "translateX": { "value": 91 },
+            "translateY": { "value": -108 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.944879667688999,
+          "name": "twenty_one_text",
+          "html_content":
+          "<h2><span style=\"font-family:Georgia, serif\">关于我们</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 158 }, "height": { "value": 39 } },
+          "transform": {
+            "translateX": { "value": 77 },
+            "translateY": { "value": -76 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.014564624705202478,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">艺童创意绘画2009你那诞生于魅力的人文古都南京，专注于3~14岁儿童艺术和素质教育。6年来，东方娃娃秉承“创造美，感受美”的教育离理念，研发出适合3~14岁儿童的美术教育课程、绘画原创课程、绘本阅读及绘本剧课程。</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 272 }, "height": { "value": 129 } },
+          "transform": {
+            "translateX": { "value": 32 },
+            "translateY": { "value": -72 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6419583496702352,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">在教育实践中，东方娃娃人力求通过艺术的手段解放孩子的心灵，最大限度地保护孩子的想象力，发展其自由的，富有创造力的个性，让孩子能够热情而纯粹地表达最富有触感的体验。</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 278 }, "height": { "value": 115 } },
+          "transform": {
+            "translateX": { "value": 29 },
+            "translateY": { "value": -57 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.7730913685342504,
+          "name": "twenty_one_text",
+          "html_content":
+          "<h2><span style=\"font-family:Georgia, serif\">学生作品</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 205 }, "height": { "value": 36 } },
+          "transform": {
+            "translateX": { "value": 60 },
+            "translateY": { "value": -37 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "five_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.3441348329775462.png",
+              "crop_img": "http://src.e7wei.com/0.3441348329775462.png",
+              "title": { "value": "" },
+              "content": { "value": "" },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.22596064074448097.png",
+              "crop_img": "http://src.e7wei.com/0.22596064074448097.png",
+              "title": { "value": "" },
+              "content": { "value": "we got marry" },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.017722394784561057.png",
+              "crop_img": "http://src.e7wei.com/0.017722394784561057.png",
+              "title": { "value": "" },
+              "content": { "value": "" },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.3646254685498327.png",
+              "crop_img": "http://src.e7wei.com/0.3646254685498327.png",
+              "title": { "value": "" },
+              "content": { "value": "" },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.8882238527563122.png",
+              "crop_img": "http://src.e7wei.com/0.8882238527563122.png",
+              "title": { "value": "" },
+              "content": { "value": "" },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 1 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 313 }, "height": { "value": 328 } },
+          "transform": {
+            "translateX": { "value": 5 },
+            "translateY": { "value": -32 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.05768938216273911,
+          "name": "twenty_one_text",
+          "html_content":
+          "<h2><span style=\"font-family:Georgia, serif\">课程设置</span></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 223 }, "height": { "value": 33 } },
+          "transform": {
+            "translateX": { "value": 51 },
+            "translateY": { "value": -17 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6357761822618946,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">1、幼儿创意班 8人小班制 ￥688/10课时</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 255 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 25 },
+            "translateY": { "value": -11 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.615119770452121,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">幼儿美术班 5人小班制 ￥888/10课时</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 263 }, "height": { "value": 41 } },
+          "transform": {
+            "translateX": { "value": 46 },
+            "translateY": { "value": -4 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8351232250878182,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">2、 兴趣小班 5人小班制 ￥688/10课时</h4><p></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 271 }, "height": { "value": 26 } },
+          "transform": {
+            "translateX": { "value": 24 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8791165388544788,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">艺术小班 5人小班制 ￥688/10课时</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 250 }, "height": { "value": 54 } },
+          "transform": {
+            "translateX": { "value": 47 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5139809033130407,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\"><span style=\"font-family:Arial, Helvetica, sans-serif\">3、艺术基础班 5人小班制 ￥688/10课时</span></h4><p></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 274 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 23 },
+            "translateY": { "value": -17 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8590402291511827,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:center;\">艺术进阶班 一对一教学 ￥888/10课时</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 309 }, "height": { "value": 45 } },
+          "transform": {
+            "translateX": { "value": 6 },
+            "translateY": { "value": -11 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8299971014455096,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">4、陶艺泥塑班 5人小班制 ￥688/10课时</h4><p></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 279 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 22 },
+            "translateY": { "value": -27 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.22853446338419992,
+          "name": "horizontal_text",
+          "html_content":
+          "<p style=\"text-align:center;\"></p><h4>写生创意班 一对一教学 ￥888/10课时</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 270 }, "height": { "value": 21 } },
+          "transform": {
+            "translateX": { "value": 44 },
+            "translateY": { "value": -17 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5778193775303206,
+          "name": "twenty_one_text",
+          "html_content": "<h2>报名方式</h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 253 }, "height": { "value": 40 } },
+          "transform": {
+            "translateX": { "value": 44 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5359934141818812,
+          "name": "horizontal_text",
+          "html_content":
+          "<h4 style=\"text-align:left;\">电话：025-8451 5170</h4><h4 style=\"text-align:left;\">地址：南京建邺区海峡云谷科技园</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 242 }, "height": { "value": 51 } },
+          "transform": {
+            "translateX": { "value": 56 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.4966288914554984.png",
+              "crop_img": "http://src.e7wei.com/0.4966288914554984.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 78 }, "height": { "value": 88 } },
+          "transform": {
+            "translateX": { "value": 123 },
+            "translateY": { "value": -2 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.37913945306569286,
+          "name": "horizontal_text",
+          "html_content": "<h4 style=\"text-align:center;\">关注我们即可试听</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 198 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 72 },
+            "translateY": { "value": 0 }
+          }
+        }
+      }
+    ]
+  }
+
+}

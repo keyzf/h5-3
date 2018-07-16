@@ -33,7 +33,6 @@ export default class ContentVisualView extends PureComponent {
           {choose_meta.get('content') ? (
             $$select_data.map((ui_data, index) => {
               return (
-                // 跳转至 ==> /src/common/component_state 进行操作
                 <RenderUI
                   key={index}
                   data={ui_data}

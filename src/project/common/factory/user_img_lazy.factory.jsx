@@ -41,6 +41,7 @@ export default class UserImgLazyFactory extends PureComponent {
   }
 
   choose_img = img_url => {
+    console.log();
     const $$up_recode = this.props.user_img_value.data;
     this.props.upData('USER_IMG', {
       upload_library: $$up_recode.get('upload_library'),
@@ -125,7 +126,7 @@ export default class UserImgLazyFactory extends PureComponent {
                         >
                           <div
                             className={
-                              data.url === $$up_recode.get('choose_url')
+                              data.get('url') === $$up_recode.get('choose_url')
                                 ? `${style.part_active}`
                                 : `${style.part_choose}`
                             }

@@ -15,19 +15,38 @@ import {
 @connect
 export default class UiShow extends PureComponent {
   transfer = data => {
-    // 将选择的组件塞进老数组中，从而得到新数组
-    const select_up_data = this.props.h5_data_value.data.push(data);
-    // 更新核心数组
-    this.props.upData('H5_DATA', select_up_data);
-    // 更新选择组件
-    this.props.upData(
-      'EDITOR_UI',
-      { number: select_up_data.size - 1, data: data },
-      {
-        content: true,
-        choose: true,
-      }
-    );
+    const $$name = this.props.choose_ui_value.data.get('name');
+    if ($$name === 'text') {
+      // 将选择的组件塞进老数组中，从而得到新数组
+      const select_up_data = this.props.h5_data_value.data.push(
+        data(Math.random())
+      );
+      // 更新核心数组
+      this.props.upData('H5_DATA', select_up_data);
+      // 更新选择组件
+      this.props.upData(
+        'EDITOR_UI',
+        { number: select_up_data.size - 1, data: data(Math.random()) },
+        {
+          content: true,
+          choose: true,
+        }
+      );
+    } else {
+      // 将选择的组件塞进老数组中，从而得到新数组
+      const select_up_data = this.props.h5_data_value.data.push(data);
+      // 更新核心数组
+      this.props.upData('H5_DATA', select_up_data);
+      // 更新选择组件
+      this.props.upData(
+        'EDITOR_UI',
+        { number: select_up_data.size - 1, data: data },
+        {
+          content: true,
+          choose: true,
+        }
+      );
+    }
   };
 
   render() {

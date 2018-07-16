@@ -10,11 +10,11 @@ export default class EditorText extends PureComponent {
     const $$new_h5_data = this.props.data
       .get('data')
       .setIn(['customize', 'html_content'], html_callback);
-    const $$new_index_number = $$new_h5_data.setIn(
-      ['customize', 'index_number'],
-      index_number
-    );
-    this.sendAction($$new_index_number);
+    // const $$new_index_number = $$new_h5_data.setIn(
+    //   ['customize', 'index_number'],
+    //   index_number
+    // );
+    this.sendAction($$new_h5_data);
   };
 
   sendAction = up_data => {
@@ -35,12 +35,6 @@ export default class EditorText extends PureComponent {
   };
 
   render() {
-    /**
-     *  组件间传递
-     * @param data: 当前组件序号，当前组件数据 （->props）
-     *  redux 传递
-     * @param {h5_data_value,choose_value,upData,choose_upData}
-     */
     const $$data = this.props.data.get('data');
     return (
       <Tabs defaultActiveKey={'1'}>

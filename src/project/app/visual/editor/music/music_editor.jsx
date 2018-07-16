@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import range from 'lodash.range';
+import { fromJS } from 'immutable';
 import LazyLoad from 'react-lazyload';
-import { Tabs, Radio, Icon, Collapse, Button } from 'antd';
+import { Tabs, Radio, Icon, Collapse, Button, Row, Col } from 'antd';
 import connect from '../../../../redux/decorator';
 import MusicForm from '../../../../common/music_form';
 import { user_music_api } from '../../../../api/user_music_api';
+import { upload_api } from '../../../../api/upload.api';
+import { delete_api } from '../../../../api/delete.api';
 
 @connect
 export default class EditorMusic extends PureComponent {
@@ -50,6 +53,49 @@ export default class EditorMusic extends PureComponent {
     );
   }
 
+  /**
+   * 删除音乐
+   * history (当前应用上传)
+   * music_library:历史上传记录
+   * public：推荐音乐
+   * @param name
+   * @param number
+   * @param mid
+   */
+  del = (name, number, mid) => {
+    if (name === 'history') {
+      delete_api(mid).then(() => {
+        const $$new_data = this.props.data
+          .getIn(['data', 'customize', 'history'])
+          .delete(number);
+        this.sendAction(
+          this.props.data
+            .get('data')
+            .setIn(['customize', 'history'], $$new_data)
+        );
+      });
+    }
+
+    if (name === 'music_library') {
+      delete_api(mid).then(() => {
+        const $$new_data = fromJS(this.state.music_library).delete(number);
+        this.setState({
+          music_library: $$new_data.toJS(),
+        });
+      });
+    }
+
+    if (name === 'public') {
+      delete_api(mid).then(() => {
+        const $$new_data = fromJS(this.state.public_music_library).delete(
+          number
+        );
+        this.setState({
+          music_library: $$new_data.toJS(),
+        });
+      });
+    }
+  };
   onChange = e => {
     this.sendAction(
       this.props.data.get('data').setIn(['customize', 'music'], e.target.value)
@@ -60,19 +106,31 @@ export default class EditorMusic extends PureComponent {
       changedFields.upload &&
       changedFields.upload.value.file.response !== undefined
     ) {
-      const $$new_data = this.props.data.getIn([
-        'data',
-        'customize',
-        'history',
-      ]);
-      const cs = $$new_data.unshift({
-        name: changedFields.upload.value.file.name,
-        url: `http://p8afqcqwq.bkt.clouddn.com/${
-          changedFields.upload.value.file.response.key
-        }`,
-      });
-      this.sendAction(
-        this.props.data.get('data').setIn(['customize', 'history'], cs)
+      upload_api(
+        1,
+        changedFields.response.name,
+        `http://src.e7wei.com/${changedFields.response.key}`
+      ).then(
+        ajax_data => {
+          const $$new_data = this.props.data.getIn([
+            'data',
+            'customize',
+            'history',
+          ]);
+          const cs = $$new_data.unshift({
+            name: changedFields.upload.value.file.name,
+            url: `http://p8afqcqwq.bkt.clouddn.com/${
+              changedFields.upload.value.file.response.key
+            }`,
+            mid: ajax_data.mid,
+          });
+          this.sendAction(
+            this.props.data.get('data').setIn(['customize', 'history'], cs)
+          );
+        },
+        function(error) {
+          console.error('出错了', error);
+        }
       );
     }
   };
@@ -121,9 +179,20 @@ export default class EditorMusic extends PureComponent {
         <React.Fragment>
           {this.state.music_library.map((data, index) => {
             return (
-              <Radio key={index} style={radioStyle} value={data.url}>
-                {data.desc}
-              </Radio>
+              <React.Fragment key={index}>
+                <Col span={16}>
+                  <Radio key={index} style={radioStyle} value={data.url}>
+                    {data.desc}
+                  </Radio>
+                </Col>
+                <Col span={8}>
+                  <Icon
+                    onClick={this.del.bind(this, props.name, index, data.mid)}
+                    className="dynamic-delete-button"
+                    type="minus-circle-o"
+                  />
+                </Col>
+              </React.Fragment>
             );
           })}
         </React.Fragment>
@@ -163,18 +232,33 @@ export default class EditorMusic extends PureComponent {
                 />
               </Collapse.Panel>
               <Collapse.Panel header="最近上传" key="2">
-                {$$customize.get('history').map((data, index) => {
-                  return (
-                    <Radio.Group
-                      onChange={this.onChange}
-                      value={$$customize.get('music')}
-                    >
-                      <Radio key={index} style={radioStyle} value={data.url}>
-                        {data.name}
-                      </Radio>
-                    </Radio.Group>
-                  );
-                })}
+                <Row gutter={16}>
+                  {$$customize.get('history').map((data, index) => {
+                    return (
+                      <Radio.Group
+                        onChange={this.onChange}
+                        value={$$customize.get('music')}
+                      >
+                        <Col span={16}>
+                          <Radio
+                            key={index}
+                            style={radioStyle}
+                            value={data.url}
+                          >
+                            {data.name}
+                          </Radio>
+                        </Col>
+                        <Col span={8}>
+                          <Icon
+                            onClick={this.del.bind(this, 'history', index)}
+                            className="dynamic-delete-button"
+                            type="minus-circle-o"
+                          />
+                        </Col>
+                      </Radio.Group>
+                    );
+                  })}
+                </Row>
               </Collapse.Panel>
             </Collapse>
           </div>
@@ -209,7 +293,7 @@ export default class EditorMusic extends PureComponent {
                           height={400}
                           overflow
                         >
-                          <ShowMusic index={n_index} />
+                          <ShowMusic index={n_index} name={'music_library'} />
                         </LazyLoad>
                       );
                     })}
@@ -229,23 +313,31 @@ export default class EditorMusic extends PureComponent {
                 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
-            <div style={{ height: '500px', overflow: 'auto' }}>
-              {range(this.state.public_music_library_number).map(
-                (data, index) => {
-                  return (
-                    <LazyLoad
-                      once={true}
-                      throttle={100}
-                      key={index}
-                      height={400}
-                      overflow
-                    >
-                      <ShowMusic index={index} />
-                    </LazyLoad>
-                  );
-                }
-              )}
-            </div>
+            <Collapse
+              bordered={false}
+              defaultActiveKey={['1']}
+              style={{ background: 'transparent' }}
+            >
+              <Collapse.Panel header="热门推荐" key="1">
+                <div style={{ height: '500px', overflow: 'auto' }}>
+                  {range(this.state.public_music_library_number).map(
+                    (data, index) => {
+                      return (
+                        <LazyLoad
+                          once={true}
+                          throttle={100}
+                          key={index}
+                          height={400}
+                          overflow
+                        >
+                          <ShowMusic index={index} name={'public'} />
+                        </LazyLoad>
+                      );
+                    }
+                  )}
+                </div>
+              </Collapse.Panel>
+            </Collapse>
           </div>
         </Tabs.TabPane>
       </Tabs>

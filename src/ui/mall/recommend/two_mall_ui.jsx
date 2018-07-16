@@ -50,7 +50,7 @@ class TwoMallUi extends React.Component {
       }
     };
     return (
-      <Row gutter={16}>
+      <Row gutter={16} type={'flex'}>
         {customize.get('item').map((data, index) => {
           return (
             <Col key={index} span={col($$layout) ? col($$layout) : 24}>
@@ -78,29 +78,27 @@ class TwoMallUi extends React.Component {
                   ''
                 )}
               </Col>
-              <Col span={24}>
-                <Col
-                  span={24}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
-                  }}
-                >
-                  {$$title ? data.getIn(['title', 'value']) : ''}
-                </Col>
-                <Col
-                  span={24}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
-                  }}
-                >
-                  <h3>{$$current ? data.getIn(['current', 'value']) : ''}</h3>
-                </Col>
+              <Col
+                span={24}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: font_color,
+                }}
+              >
+                {$$title ? data.getIn(['title', 'value']) : ''}
+              </Col>
+              <Col
+                span={24}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: font_color,
+                }}
+              >
+                <h3>{$$current ? data.getIn(['current', 'value']) : ''}</h3>
               </Col>
               <br />
             </Col>

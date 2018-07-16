@@ -61,14 +61,10 @@ export default class UploadImgCommon extends PureComponent {
     this.setState({
       visible: false,
     });
-    console.log($$data);
     this.props.func($$data.get('choose_url'));
+    NProgress.done();
   };
 
-  /**
-   * 图片上传
-   * @param changedFields
-   */
   uploadChange = changedFields => {
     const file = changedFields.upload.value.file;
     const $$data = this.props.user_img_value.data;

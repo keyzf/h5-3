@@ -192,7 +192,7 @@ export default class EditorImg extends PureComponent {
     const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
     this.props.upData('H5_DATA', $$new_select_data);
-    this.props.upData('CHOOSE_UI', $$new_choose_data, {
+    this.props.upData('EDITOR_UI', $$new_choose_data, {
       content: true,
       choose: true,
     });
