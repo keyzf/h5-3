@@ -4,7 +4,6 @@ import 'braft-editor/dist/braft.css';
 
 class RichTextEditor extends PureComponent {
   render() {
-    console.log(this.props.data.get('index_number'));
     const editorProps = {
       contentFormat: 'html',
       contentId: this.props.data.get('index_number'),

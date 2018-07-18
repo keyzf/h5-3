@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import { $$env } from '../env';
+import { $$env } from '../../env';
 
 /**
  * 将用户操作的数据提交给后台
@@ -20,10 +20,10 @@ export const upload_api = (type, desc, url) => {
       axios
         .post(`${$$env.getIn(['produce', 'upload'])}`)
         .then(response => {
-          if (response.data.error) {
-            resolve(false);
-          } else {
-            reject(response.data.mid);
+          if(response.data.error){
+            reject(response.data.msg);
+          }else{
+            resolve(response.data);
           }
         })
         .catch(error => {

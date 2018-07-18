@@ -1,13 +1,14 @@
 # API 文件目录
 
 ## Api接口
-1.初始化路径 http://h5.e7wei.com/Index/getData
-2.提交保存路径 http://h5.e7wei.com/Index/postData
-3.添加用户素材 http://h5.e7wei.com/Material/addUser
-4.删除用户素材 http://h5.e7wei.com/Material/delUser 
-5.获取用户素材 http://h5.e7wei.com/Material/getUser 
-6.获取系统素材 http://h5.e7wei.com/Material/getSys
-7.获取系统子分类 http://h5.e7wei.com/Material/getSysType
+1. 初始化路径 http://h5.e7wei.com/Index/getData
+2. 提交保存路径 http://h5.e7wei.com/Index/postData
+3. 添加用户素材 http://h5.e7wei.com/Material/addUser
+4. 删除用户素材 http://h5.e7wei.com/Material/delUser 
+5. 获取用户素材 http://h5.e7wei.com/Material/getUser 
+6. 获取系统素材 http://h5.e7wei.com/Material/getSys
+7. 获取系统子分类 http://h5.e7wei.com/Material/getSysType
+8. 用户表单提交  http://v.e7wei.com/view/postData
 
 ## 公共字段
 
@@ -36,8 +37,7 @@
    
    三、期望接收数据
    
-       {
-       
+       {      
            error: （错误辨识信息）（int）
            link:
            msg:
@@ -75,8 +75,7 @@
    注意： link 通过解析访问路由时以获取
 
 ## 公共图片库
-   一、post(请求)
-   配置：
+   一、post(请求)    
        
       {
            page: 页面(int)
@@ -202,5 +201,17 @@
          error : 判断上传操作是否成功 1；error 0:suc (int)
       }
 
+## 用户提交表单
+   一、提交表单
+     
+     {
+       sid:sid,
+       form:form
+     }
 
+   二、返回信息
+    
+     {
+          error: （错误辨识信息）（int）
+      }
 

@@ -8,6 +8,7 @@ import style from './release.module.scss';
 
 class ReleaseView extends React.Component {
   render() {
+    console.log('release');
     return (
       <QueueAnim type={'bottom'} className={style.layout}>
         <Layout.Header className={style.header} key={'one'}>

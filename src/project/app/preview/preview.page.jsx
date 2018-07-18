@@ -8,6 +8,7 @@ import style from './preview.module.scss';
 
 class PreviewView extends PureComponent {
   render() {
+    console.log('preview');
     const { Header, Sider, Content } = Layout;
     return (
       <QueueAnim type={'bottom'} className={style.layout}>

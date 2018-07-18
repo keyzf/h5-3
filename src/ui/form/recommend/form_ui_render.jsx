@@ -10,32 +10,27 @@ import {
   Upload,
   Icon,
   Select,
+  message,
 } from 'antd';
 import { uploadToken } from '../../../project/toolkit/qiniu.tool';
-// import axios from "axios";
-// import { fromJS, List } from "immutable";
+import { fromJS, List } from 'immutable';
+import { form_api } from '../../../project/api/form.api';
 
 class CoreForm extends PureComponent {
-  /**
-   * TODO 将信息提交至指定 ajax 中
-   * @param e
-   */
   handleSubmit = e => {
-    //{{title:'',value:''},{title:'',value:''},{title:'',value:''}}
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // 将信息发送给指定url
-        // axios.post('this.props.data.getIn(["customize","btn_url"])', {
-        //   form_data: List(fromJS(values)).toJS(),
-        // })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
-        console.log('Received values of form: ', values);
+        const data = List(fromJS(values))
+          .toList()
+          .toJS();
+        const sid = '';
+        form_api(data, sid).then(
+          data => {
+            message.success('表单提交成功');
+          },
+          function(error) {}
+        );
       }
     });
   };

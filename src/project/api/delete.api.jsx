@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import { $$env } from '../env';
+import { $$env } from '../../env';
 
 /**
  * 将用户操作的数据提交给后台
@@ -21,10 +21,10 @@ export const delete_api = mid => {
           if (response.data.error) {
             resolve(false);
           } else {
-            reject(response.data.mid);
+            reject(true);
           }
         })
-        .catch(error => {
+        .catch(() => {
           reject(false);
         });
     }

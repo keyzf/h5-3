@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import { $$env } from '../env';
+import { $$env } from '../../env';
 
 /**
  * 图片列表获取
@@ -25,7 +25,11 @@ export const user_img_api = page => {
       axios
         .post(`${$$env.getIn(['produce', 'user_library'])}`, params)
         .then(response => {
-          resolve(response.data);
+          if(response.data.error){
+            reject(response.data.msg);
+          }else{
+            resolve(response.data);
+          }
         })
         .catch(function(error) {
           reject('访问服务器错误', error);

@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import { $$env } from '../env';
+import { $$env } from '../../env';
 
 /**
  * 图片列表获取
@@ -20,13 +20,17 @@ export const user_music_api = page => {
     if ($$env.get('surroundings') === 'produce') {
       let params = new URLSearchParams();
       params.append('page', page);
-      params.append('pagecount', 30);
-      params.append('type', 1);
+      params.append('pagecount', '30');
+      params.append('type', '4');
 
       axios
         .post(`${$$env.getIn(['produce', 'music_library'])}`, params)
         .then(response => {
-          resolve(response.data);
+          if(response.data.error){
+            reject(response.data.msg);
+          }else{
+            resolve(response.data);
+          }
         })
         .catch(function(error) {
           reject('访问服务器错误', error);
