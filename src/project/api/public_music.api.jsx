@@ -22,9 +22,9 @@ export const public_music_api = page => {
       axios
         .post(`${$$env.getIn(['produce', 'img_library'])}`, params)
         .then(response => {
-          if(response.data.error){
+          if (response.data.error) {
             reject(response.data.msg);
-          }else{
+          } else {
             resolve(response.data);
           }
         })

@@ -1,30 +1,30 @@
-import React, { PureComponent } from "react";
-import range from "lodash.range";
-import { fromJS } from "immutable";
-import LazyLoad from "react-lazyload";
-import { Tabs, Radio, Icon, Collapse, Button, Row, Col, message } from "antd";
-import connect from "../../../../redux/decorator";
-import MusicForm from "../../../../common/music_form";
-import { user_music_api } from "../../../../api/user_music_api";
-import { upload_api } from "../../../../api/upload.api";
-import { delete_api } from "../../../../api/delete.api";
-import { public_music_api } from "../../../../api/public_music.api";
+import React, { PureComponent } from 'react';
+import range from 'lodash.range';
+import { fromJS } from 'immutable';
+import LazyLoad from 'react-lazyload';
+import { Tabs, Radio, Icon, Collapse, Button, Row, Col, message } from 'antd';
+import connect from '../../../../redux/decorator';
+import MusicForm from '../../../../common/music_form';
+import { user_music_api } from '../../../../api/user_music_api';
+import { upload_api } from '../../../../api/upload.api';
+import { delete_api } from '../../../../api/delete.api';
+import { public_music_api } from '../../../../api/public_music.api';
 
 @connect
 export default class EditorMusic extends PureComponent {
   state = {
     music_library: [],
-    number: "",
+    number: '',
     length: 0,
     public_music_library: [],
-    public_music_library_number: "",
-    public_music_length: 0
+    public_music_library_number: '',
+    public_music_length: 0,
   };
 
   componentWillMount() {
     user_music_api(0)
       .then(data => {
-        let sum = "";
+        let sum = '';
         if (data.sum % 30 !== 0) {
           sum = data.sum / 30 + 1;
         } else {
@@ -32,7 +32,7 @@ export default class EditorMusic extends PureComponent {
         }
         this.setState({
           number: sum,
-          music_library: data.list
+          music_library: data.list,
         });
       })
       .catch(error => {
@@ -40,7 +40,7 @@ export default class EditorMusic extends PureComponent {
       });
     public_music_api(0)
       .then(data => {
-        let sum = "";
+        let sum = '';
         if (data.sum % 30 !== 0) {
           sum = data.sum / 30 + 1;
         } else {
@@ -48,7 +48,7 @@ export default class EditorMusic extends PureComponent {
         }
         this.setState({
           public_music_library_number: sum,
-          public_music_library: data.list
+          public_music_library: data.list,
         });
       })
       .catch(error => {
@@ -66,42 +66,42 @@ export default class EditorMusic extends PureComponent {
    * @param mid
    */
   del = (name, number, mid) => {
-    if (name === "history") {
+    if (name === 'history') {
       delete_api(mid).then(() => {
         const $$new_data = this.props.data
-          .getIn(["data", "customize", "history"])
+          .getIn(['data', 'customize', 'history'])
           .delete(number);
         this.sendAction(
           this.props.data
-            .get("data")
-            .setIn(["customize", "history"], $$new_data)
+            .get('data')
+            .setIn(['customize', 'history'], $$new_data)
         );
       });
     }
 
-    if (name === "music_library") {
+    if (name === 'music_library') {
       delete_api(mid).then(() => {
         const $$new_data = fromJS(this.state.music_library).delete(number);
         this.setState({
-          music_library: $$new_data.toJS()
+          music_library: $$new_data.toJS(),
         });
       });
     }
 
-    if (name === "public") {
+    if (name === 'public') {
       delete_api(mid).then(() => {
         const $$new_data = fromJS(this.state.public_music_library).delete(
           number
         );
         this.setState({
-          music_library: $$new_data.toJS()
+          music_library: $$new_data.toJS(),
         });
       });
     }
   };
   onChange = e => {
     this.sendAction(
-      this.props.data.get("data").setIn(["customize", "music"], e.target.value)
+      this.props.data.get('data').setIn(['customize', 'music'], e.target.value)
     );
   };
   ImgPartChange = changedFields => {
@@ -116,23 +116,23 @@ export default class EditorMusic extends PureComponent {
       ).then(
         ajax_data => {
           const $$new_data = this.props.data.getIn([
-            "data",
-            "customize",
-            "history"
+            'data',
+            'customize',
+            'history',
           ]);
           const cs = $$new_data.unshift({
             name: changedFields.upload.value.file.name,
             url: `http://p8afqcqwq.bkt.clouddn.com/${
               changedFields.upload.value.file.response.key
             }`,
-            mid: ajax_data.mid
+            mid: ajax_data.mid,
           });
           this.sendAction(
-            this.props.data.get("data").setIn(["customize", "history"], cs)
+            this.props.data.get('data').setIn(['customize', 'history'], cs)
           );
         },
         function(error) {
-          console.error("出错了", error);
+          console.error('出错了', error);
         }
       );
     }
@@ -143,28 +143,28 @@ export default class EditorMusic extends PureComponent {
     const $$choose_data = this.props.editor_ui_value.data;
     // create new data
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
+      $$choose_data.get('number'),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
+    const $$new_choose_data = $$choose_data.set('data', up_data);
     // send action
-    this.props.upData("H5_DATA", $$new_select_data);
-    this.props.upData("EDITOR_UI", $$new_choose_data, {
+    this.props.upData('H5_DATA', $$new_select_data);
+    this.props.upData('EDITOR_UI', $$new_choose_data, {
       content: true,
-      choose: true
+      choose: true,
     });
   };
 
   render() {
-    const $$customize = this.props.data.getIn(["data", "customize"]);
+    const $$customize = this.props.data.getIn(['data', 'customize']);
     const tab_config = {
-      defaultActiveKey: "1",
-      style: { height: "100%" }
+      defaultActiveKey: '1',
+      style: { height: '100%' },
     };
     const radioStyle = {
-      display: "block",
-      height: "30px",
-      lineHeight: "30px"
+      display: 'block',
+      height: '30px',
+      lineHeight: '30px',
     };
     const ShowMusic = props => {
       if (this.state.length === props.index) {
@@ -172,7 +172,7 @@ export default class EditorMusic extends PureComponent {
           data => {
             this.setState({
               length: this.state.length + 1,
-              music_library: data.list
+              music_library: data.list,
             });
           },
           function(error) {}
@@ -207,7 +207,7 @@ export default class EditorMusic extends PureComponent {
           data => {
             this.setState({
               length: this.state.length + 1,
-              music_library: data.list
+              music_library: data.list,
             });
           },
           function(error) {}
@@ -241,29 +241,29 @@ export default class EditorMusic extends PureComponent {
         <Tabs.TabPane tab="内容设置" key="1">
           <div
             style={{
-              height: "calc(100vh -  55px)",
-              overflow: "hidden",
-              marginTop: "-18px",
+              height: 'calc(100vh -  55px)',
+              overflow: 'hidden',
+              marginTop: '-18px',
               backgroundImage:
-                "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
+                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
             <Collapse
               bordered={false}
-              defaultActiveKey={["1"]}
-              style={{ background: "transparent" }}
+              defaultActiveKey={['1']}
+              style={{ background: 'transparent' }}
             >
               <Collapse.Panel header="当前使用" key="1">
                 <audio
-                  src={$$customize.get("music")}
+                  src={$$customize.get('music')}
                   controls
-                  style={{ width: "100%" }}
+                  style={{ width: '100%' }}
                 />
                 <MusicForm
-                  upload={{ value: "" }}
+                  upload={{ value: '' }}
                   onChange={this.ImgPartChange}
                   child={
-                    <Button style={{ width: "100%" }} type={"dashed"}>
+                    <Button style={{ width: '100%' }} type={'dashed'}>
                       <Icon type="plus" />添加素材
                     </Button>
                   }
@@ -271,11 +271,11 @@ export default class EditorMusic extends PureComponent {
               </Collapse.Panel>
               <Collapse.Panel header="最近上传" key="2">
                 <Row gutter={16}>
-                  {$$customize.get("history").map((data, index) => {
+                  {$$customize.get('history').map((data, index) => {
                     return (
                       <Radio.Group
                         onChange={this.onChange}
-                        value={$$customize.get("music")}
+                        value={$$customize.get('music')}
                       >
                         <Col span={16}>
                           <Radio
@@ -288,7 +288,7 @@ export default class EditorMusic extends PureComponent {
                         </Col>
                         <Col span={8}>
                           <Icon
-                            onClick={this.del.bind(this, "history", index)}
+                            onClick={this.del.bind(this, 'history', index)}
                             className="dynamic-delete-button"
                             type="minus-circle-o"
                           />
@@ -304,25 +304,25 @@ export default class EditorMusic extends PureComponent {
         <Tabs.TabPane tab="历史上传" key="2">
           <div
             style={{
-              height: "calc(100vh -  55px)",
-              overflow: "hidden",
-              marginTop: "-18px",
+              height: 'calc(100vh -  55px)',
+              overflow: 'hidden',
+              marginTop: '-18px',
               backgroundImage:
-                "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
+                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
             <Collapse
               bordered={false}
-              defaultActiveKey={["1"]}
-              style={{ background: "transparent" }}
+              defaultActiveKey={['1']}
+              style={{ background: 'transparent' }}
             >
               <Collapse.Panel header="上传记录" key="1">
                 <div
-                  style={{ height: "calc(100vh -  70px)", overflow: "auto" }}
+                  style={{ height: 'calc(100vh -  70px)', overflow: 'auto' }}
                 >
                   <Radio.Group
                     onChange={this.onChange}
-                    value={$$customize.get("music")}
+                    value={$$customize.get('music')}
                   >
                     {this.state.number
                       ? range(this.state.number).map((n_data, n_index) => {
@@ -336,12 +336,12 @@ export default class EditorMusic extends PureComponent {
                             >
                               <ShowMusic
                                 index={n_index}
-                                name={"music_library"}
+                                name={'music_library'}
                               />
                             </LazyLoad>
                           );
                         })
-                      : ""}
+                      : ''}
                   </Radio.Group>
                 </div>
               </Collapse.Panel>
@@ -351,21 +351,21 @@ export default class EditorMusic extends PureComponent {
         <Tabs.TabPane tab="热门推荐" key="3">
           <div
             style={{
-              height: "calc(100vh -  55px)",
-              overflow: "hidden",
-              marginTop: "-18px",
+              height: 'calc(100vh -  55px)',
+              overflow: 'hidden',
+              marginTop: '-18px',
               backgroundImage:
-                "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
+                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
             <Collapse
               bordered={false}
-              defaultActiveKey={["1"]}
-              style={{ background: "transparent" }}
+              defaultActiveKey={['1']}
+              style={{ background: 'transparent' }}
             >
               <Collapse.Panel header="热门推荐" key="1">
                 <div
-                  style={{ height: "calc(100vh -  70px)", overflow: "auto" }}
+                  style={{ height: 'calc(100vh -  70px)', overflow: 'auto' }}
                 >
                   {this.state.public_music_library_number
                     ? range(this.state.public_music_library_number).map(
@@ -378,12 +378,12 @@ export default class EditorMusic extends PureComponent {
                               height={400}
                               overflow
                             >
-                              <ShowPublicMusic index={index} name={"public"} />
+                              <ShowPublicMusic index={index} name={'public'} />
                             </LazyLoad>
                           );
                         }
                       )
-                    : ""}
+                    : ''}
                 </div>
               </Collapse.Panel>
             </Collapse>

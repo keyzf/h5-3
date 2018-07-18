@@ -12,8 +12,9 @@ export default class EditorReleaseView extends React.Component {
   }
 
   render() {
-    const $$url = this.props.release_value.data.get('url');
-    console.log(this.props);
+    const $$url = this.props.release_value.data.get('url')
+      ? this.props.release_value.data.get('url')
+      : 'www.e7wei.com';
     return (
       <Row>
         <Col>

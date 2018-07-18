@@ -25,9 +25,9 @@ export const user_video_api = page => {
       axios
         .post(`${$$env.getIn(['produce', 'video_library'])}`, params)
         .then(response => {
-          if(response.data.error){
+          if (response.data.error) {
             reject(response.data.msg);
-          }else{
+          } else {
             resolve(response.data);
           }
         })

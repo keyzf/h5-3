@@ -20,9 +20,9 @@ export const upload_api = (type, desc, url) => {
       axios
         .post(`${$$env.getIn(['produce', 'upload'])}`)
         .then(response => {
-          if(response.data.error){
+          if (response.data.error) {
             reject(response.data.msg);
-          }else{
+          } else {
             resolve(response.data);
           }
         })

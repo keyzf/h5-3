@@ -89,8 +89,8 @@ export default class EditorPreviewView extends PureComponent {
               <Col span={24}>
                 <br />
                 <FormPreviewView
-                  desc={$$data.get('desc').toJS()}
-                  title={$$data.get('title').toJS()}
+                  desc={{ value: $$data.get('desc') }}
+                  title={{ value: $$data.get('title') }}
                   onChange={this.editorFeatures}
                 />
               </Col>

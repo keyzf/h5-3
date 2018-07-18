@@ -11,14 +11,18 @@ export default class ContentReleaseView extends PureComponent {
       <div style={{ margin: ' 40px auto', width: '340px', height: '630px' }}>
         <div className={style.phone}>
           <div className={style.phone_header} />
-          {$$bg_data.getIn(['customize', 'img_config', 'fixed']) ? (
-            <div className={style.phone_content}>
-              <H5RenderCommon />
-            </div>
+          {$$bg_data.size ? (
+            $$bg_data.getIn(['customize', 'img_config', 'fixed']) ? (
+              <div className={style.phone_content}>
+                <H5RenderCommon />
+              </div>
+            ) : (
+              <div className={style.phone_content} style={{ overflow: 'auto' }}>
+                <H5RenderCommon />
+              </div>
+            )
           ) : (
-            <div className={style.phone_content} style={{ overflow: 'auto' }}>
-              <H5RenderCommon />
-            </div>
+            ''
           )}
           <div className={style.phone_footer} />
         </div>

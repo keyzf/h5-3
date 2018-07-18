@@ -1,16 +1,16 @@
-import React, { PureComponent } from "react";
-import connect from "../../../redux/decorator";
-import TweenOne from "rc-tween-one";
-import BgEditor from "./bg/bg_editor";
-import { render_formFunc } from "./render_form.func";
-import style from "./editor.module.scss";
+import React, { PureComponent } from 'react';
+import connect from '../../../redux/decorator';
+import TweenOne from 'rc-tween-one';
+import BgEditor from './bg/bg_editor';
+import { render_formFunc } from './render_form.func';
+import style from './editor.module.scss';
 
 @connect
 export default class EditorVisualView extends PureComponent {
   onclick_choose_bg = () => {
-    this.props.upData("EDITOR_UI", this.props.editor_ui_value.data, {
-      content: this.props.editor_ui_value.meta.get("content"),
-      choose: false
+    this.props.upData('EDITOR_UI', this.props.editor_ui_value.data, {
+      content: this.props.editor_ui_value.meta.get('content'),
+      choose: false,
     });
   };
 
@@ -18,13 +18,13 @@ export default class EditorVisualView extends PureComponent {
     const { data, meta } = this.props.editor_ui_value;
     return (
       <div className={style.layout}>
-        {meta.get("choose") ? (
+        {meta.get('choose') ? (
           //显示组件编辑栏
           <React.Fragment>
             <TweenOne
-              animation={{ top: "0px" }}
+              animation={{ top: '0px' }}
               className={style.pos_tab}
-              onClick={this.onclick_choose_bg.bind(this)}
+              onClick={this.onclick_choose_bg}
             >
               全局背景
             </TweenOne>
@@ -32,7 +32,7 @@ export default class EditorVisualView extends PureComponent {
           </React.Fragment>
         ) : (
           // 显示背景
-          <BgEditor/>
+          <BgEditor />
         )}
       </div>
     );

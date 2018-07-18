@@ -17,9 +17,9 @@ export const save_ajax = ({ ...data }) => {
       axios
         .post(`${$$env.getIn(['produce', 'save'])}`)
         .then(response => {
-          if(response.data.error){
+          if (response.data.error) {
             reject(response.data.msg);
-          }else{
+          } else {
             resolve('保存成功');
           }
         })

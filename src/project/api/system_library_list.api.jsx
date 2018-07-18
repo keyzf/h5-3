@@ -38,9 +38,9 @@ export const system_library_list_api = type_number => {
       axios
         .post(`${$$env.getIn(['produce', 'system_library_list'])}`, params)
         .then(response => {
-          if(response.data.error){
+          if (response.data.error) {
             reject(response.data.msg);
-          }else{
+          } else {
             resolve(response.data);
           }
         })
