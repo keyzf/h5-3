@@ -12,9 +12,6 @@ export const user_music_api = page => {
         .get(`${$$env.getIn(['development', 'music_library'])}`)
         .then(response => {
           resolve(response.data);
-        })
-        .catch(function(error) {
-          reject('访问服务器错误', error);
         });
     }
     if ($$env.get('surroundings') === 'produce') {
@@ -22,7 +19,6 @@ export const user_music_api = page => {
       params.append('page', page);
       params.append('pagecount', '30');
       params.append('type', '4');
-
       axios
         .post(`${$$env.getIn(['produce', 'music_library'])}`, params)
         .then(response => {
@@ -31,9 +27,6 @@ export const user_music_api = page => {
           } else {
             resolve(response.data);
           }
-        })
-        .catch(function(error) {
-          reject('访问服务器错误', error);
         });
     }
   });

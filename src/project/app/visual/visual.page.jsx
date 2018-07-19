@@ -6,7 +6,6 @@ import SiderVisualView from './side/side.page';
 import HeaderVisualView from './header/header.page';
 import EditorVisualView from './editor/editor.page';
 import ContentVisualView from './content/content.page';
-import UiShow from './side/ui_show';
 import style from './visual.module.scss';
 import 'intro.js/introjs.css';
 import 'intro.js/themes/introjs-modern.css';
@@ -79,7 +78,6 @@ export default class VisualView extends PureComponent {
         </Header>
         <Layout className={style.content}>
           <SiderVisualView className={'side'} />
-          <UiShow />
           <Content>
             <div className={'content'}>
               <ContentVisualView />

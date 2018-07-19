@@ -14,15 +14,15 @@ class HeaderVisualView extends PureComponent {
       xs: 5,
       sm: 5,
       md: 5,
-      lg: 5,
+      lg: 4,
       xl: 3,
     };
     const closeCol = {
       xs: 0,
       sm: 0,
       md: 0,
-      lg: { span: 19 },
-      xl: { span: 12, offset: 9 },
+      lg: { span: 20 },
+      xl: { span: 14, offset: 7 },
     };
     // 项目样式
     const MenuConfig = {

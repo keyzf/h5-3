@@ -30,9 +30,6 @@ export const user_video_api = page => {
           } else {
             resolve(response.data);
           }
-        })
-        .catch(function(error) {
-          reject('访问服务器错误', error);
         });
     }
   });

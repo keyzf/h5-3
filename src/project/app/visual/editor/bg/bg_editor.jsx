@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import connect from '../../../../redux/decorator';
 import { SketchPicker } from 'react-color';
+import { fromJS } from 'immutable';
 import { Card, Icon, Divider, Checkbox, Popover, Popconfirm } from 'antd';
 import BgHeightForm from '../../../../../ui/background/bg_height.form';
 import UploadImgCommon from '../../../../common/upload_img.common';
@@ -92,17 +93,12 @@ export default class BgEditor extends PureComponent {
   render() {
     // 解构出背景组件数据
     const { data } = this.props.bg_ui_value;
-    // 获取特定数值
-    let $$color = '';
-    let $$crop_img = '';
-    let $$img = '';
-    let $$img_config = '';
-    if (data.size) {
-      $$color = data.getIn(['customize', 'color']); //颜色
-      $$crop_img = data.getIn(['customize', 'crop_img']); //图片
-      $$img = data.getIn(['customize', 'img']); //图片
-      $$img_config = data.getIn(['customize', 'img_config']); //图片配置
-    }
+
+    const $$color = data.getIn(['customize', 'color']); //颜色
+    const $$crop_img = data.getIn(['customize', 'crop_img']); //图片
+    const $$img = data.getIn(['customize', 'img']); //图片
+    const $$img_config = data.getIn(['customize', 'img_config']); //图片配置
+
     const card_upload_img = (
       <UploadImgCommon
         img_url={$$img}
@@ -180,9 +176,14 @@ export default class BgEditor extends PureComponent {
             </React.Fragment>
           ) : (
             <UploadImgCommon
-              img_url={''}
+              img_url={$$img}
               func={this.changeBgImgToChild}
-              children={<div className={style.bg_transparent} />}
+              children={
+                <div className={style.bg_transparent}>
+                  <Icon type="plus" style={{ fontSize: '80px' }} />
+                  上传图片
+                </div>
+              }
             />
           )}
         </Card>
@@ -208,9 +209,9 @@ export default class BgEditor extends PureComponent {
         <Card title={'背景高度'} className={style.card_height}>
           <BgHeightForm
             height={{
-              value: data.getIn(['advanced', 'value'])
-                ? data.getIn(['advanced', 'value'])
-                : 600,
+              value: data.getIn(['advanced', 'height', 'value'])
+                ? data.getIn(['advanced', 'height', 'value'])
+                : null,
             }}
             onChange={this.bg_img_config.bind(this, 'height')}
           />

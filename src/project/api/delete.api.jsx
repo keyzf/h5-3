@@ -16,7 +16,7 @@ export const delete_api = mid => {
       let params = new URLSearchParams();
       params.append('mid', mid);
       axios
-        .post(`${$$env.getIn(['produce', 'del'])}`)
+        .post(`${$$env.getIn(['produce', 'delete'])}`, params)
         .then(response => {
           if (response.data.error) {
             resolve(false);

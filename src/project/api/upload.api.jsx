@@ -18,7 +18,7 @@ export const upload_api = (type, desc, url) => {
       params.append('desc', desc);
       params.append('url', url);
       axios
-        .post(`${$$env.getIn(['produce', 'upload'])}`)
+        .post(`${$$env.getIn(['produce', 'upload'])}`, params)
         .then(response => {
           if (response.data.error) {
             reject(response.data.msg);

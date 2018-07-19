@@ -27,22 +27,18 @@ export default class EditorVideo extends PureComponent {
   };
 
   componentWillMount() {
-    user_video_api(0)
-      .then(data => {
-        let sum = '';
-        if (data.sum % 30 !== 0) {
-          sum = data.sum / 30 + 1;
-        } else {
-          sum = data.sum / 30;
-        }
-        this.setState({
-          number: sum,
-          video_library: data.list,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+    user_video_api(0).then(data => {
+      let sum = '';
+      if (data.sum % 30 !== 0) {
+        sum = data.sum / 30 + 1;
+      } else {
+        sum = data.sum / 30;
+      }
+      this.setState({
+        number: sum,
+        video_library: data.list,
       });
+    });
   }
 
   /**

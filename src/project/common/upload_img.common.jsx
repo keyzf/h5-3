@@ -29,16 +29,12 @@ export default class UploadImgCommon extends PureComponent {
   };
 
   componentWillMount() {
-    // 公共图片库列表
-    system_library_list_api(1)
-      .then(data => {
-        this.setState({
-          img_list: data,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+    system_library_list_api(1).then(data => {
+      console.log(data);
+      this.setState({
+        img_list: data.list,
       });
+    });
   }
 
   showModal = () => {

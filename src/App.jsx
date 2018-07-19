@@ -15,14 +15,12 @@ class App extends PureComponent {
   state = { router: '' };
 
   componentWillMount() {
-    access_api(
-      {
-        sid: GetUrlPara('sid'),
-        state: GetUrlPara('state'),
-        guide: GetUrlPara('guide'),
-      },
-      this.props.upData
-    )
+    const parseUrlData = {
+      sid: GetUrlPara('sid'),
+      state: GetUrlPara('state'),
+      guide: GetUrlPara('guide'),
+    };
+    access_api({ ...parseUrlData }, this.props.upData)
       .then(data => {
         this.setState({
           router: data,

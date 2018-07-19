@@ -22,49 +22,33 @@ export default class EditorMusic extends PureComponent {
   };
 
   componentWillMount() {
-    user_music_api(0)
-      .then(data => {
-        let sum = '';
-        if (data.sum % 30 !== 0) {
-          sum = data.sum / 30 + 1;
-        } else {
-          sum = data.sum / 30;
-        }
-        this.setState({
-          number: sum,
-          music_library: data.list,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+    user_music_api(0).then(data => {
+      let sum = '';
+      if (data.sum % 30 !== 0) {
+        sum = data.sum / 30 + 1;
+      } else {
+        sum = data.sum / 30;
+      }
+      this.setState({
+        number: sum,
+        music_library: data.list,
       });
-    public_music_api(0)
-      .then(data => {
-        let sum = '';
-        if (data.sum % 30 !== 0) {
-          sum = data.sum / 30 + 1;
-        } else {
-          sum = data.sum / 30;
-        }
-        this.setState({
-          public_music_library_number: sum,
-          public_music_library: data.list,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+    });
+
+    public_music_api(0).then(data => {
+      let sum = '';
+      if (data.sum % 30 !== 0) {
+        sum = data.sum / 30 + 1;
+      } else {
+        sum = data.sum / 30;
+      }
+      this.setState({
+        public_music_library_number: sum,
+        public_music_library: data.list,
       });
+    });
   }
 
-  /**
-   * 删除音乐
-   * history (当前应用上传)
-   * music_library:历史上传记录
-   * public：推荐音乐
-   * @param name
-   * @param number
-   * @param mid
-   */
   del = (name, number, mid) => {
     if (name === 'history') {
       delete_api(mid).then(() => {
@@ -203,7 +187,7 @@ export default class EditorMusic extends PureComponent {
     };
     const ShowPublicMusic = props => {
       if (this.state.length === props.index) {
-        public_music_api(props.index).then(
+        public_music_api(props.index + 1).then(
           data => {
             this.setState({
               length: this.state.length + 1,

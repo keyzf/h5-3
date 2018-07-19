@@ -2,11 +2,15 @@ import React, { PureComponent } from 'react';
 import connect from '../../redux/decorator';
 import range from 'lodash.range';
 import LazyLoad from 'react-lazyload';
-import { Divider, Button, Tooltip, message } from 'antd';
+import { Divider, Button, Tooltip } from 'antd';
 import style from './img_lazy_choose.module.scss';
 import UploadImgFactory from '../factory/upload_img_form.factory';
 import { delete_api } from '../../api/delete.api';
 import { user_img_api } from '../../api/user_img.api';
+import { message } from 'antd/lib/index';
+import NProgress from 'nprogress';
+import { upload_api } from '../../api/upload.api';
+import { fromJS } from 'immutable';
 
 @connect
 export default class UserImgLazyFactory extends PureComponent {
@@ -22,27 +26,23 @@ export default class UserImgLazyFactory extends PureComponent {
     },
   };
 
-  componentWillMount() {
-    user_img_api(0)
-      .then(data => {
-        let sum = '';
-        if (data.sum % 30 !== 0) {
-          sum = data.sum / 30 + 1;
-        } else {
-          sum = data.sum / 30;
-        }
-        this.setState({
-          number: sum,
-          img_library: data.list,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+  componentDidMount() {
+    user_img_api(0).then(data => {
+      let sum = '';
+      if (data.sum % 30 !== 0) {
+        sum = data.sum / 30;
+      } else {
+        sum = data.sum / 30;
+      }
+      this.setState({
+        number: sum,
+        img_library: data.list,
+        length: this.state.length + 1,
       });
+    });
   }
 
   choose_img = img_url => {
-    console.log();
     const $$up_recode = this.props.user_img_value.data;
     this.props.upData('USER_IMG', {
       upload_library: $$up_recode.get('upload_library'),
@@ -57,7 +57,47 @@ export default class UserImgLazyFactory extends PureComponent {
         upload_library: $$up_recode.get('upload_library').delete(number),
         choose_url: $$up_recode.get('choose_url'),
       });
+      const $$img = fromJS(this.state.img_library)
+        .delete(number)
+        .toJS();
+      this.setState({
+        img_library: $$img,
+      });
     });
+  };
+
+  uploadChange = changedFields => {
+    const file = changedFields.upload.value.file;
+    const $$data = this.props.user_img_value.data;
+    if (file.status === 'uploading') {
+      NProgress.start();
+      NProgress.inc();
+    }
+    if (file.status === 'done') {
+      upload_api(
+        1,
+        file.response.key,
+        `http://src.e7wei.com/${file.response.key}`
+      ).then(
+        ajax_data => {
+          NProgress.done();
+          NProgress.remove();
+          message.success('上传成功');
+          this.props.upData('USER_IMG', {
+            upload_library: $$data.get('upload_library').unshift(
+              fromJS({
+                url: `http://src.e7wei.com/${file.response.key}`,
+                mid: ajax_data.mid,
+              })
+            ),
+            choose_url: $$data.get('choose_url'),
+          });
+        },
+        function(error) {
+          console.error('出错了', error);
+        }
+      );
+    }
   };
 
   render() {
@@ -108,57 +148,12 @@ export default class UserImgLazyFactory extends PureComponent {
         </React.Fragment>
       );
     };
-
     return (
       <React.Fragment>
-        {this.state.img_library.length ? (
-          <React.Fragment>
-            <div
-              style={{ width: '100%', maxHeight: '400px', overflow: 'auto' }}
-            >
-              <div className={'response_flex'}>
-                {$$up_recode.get('upload_library').size
-                  ? $$up_recode.get('upload_library').map((data, index) => {
-                      return (
-                        <div
-                          className={'flex_1'}
-                          key={index}
-                          onClick={this.choose_img.bind(this, data.get('url'))}
-                        >
-                          <div
-                            className={
-                              data.get('url') === $$up_recode.get('choose_url')
-                                ? `${style.part_active}`
-                                : `${style.part_choose}`
-                            }
-                          >
-                            <div className={style.img_show}>
-                              <Tooltip
-                                title={
-                                  <div
-                                    onClick={this.del.bind(
-                                      this,
-                                      data.mid,
-                                      index
-                                    )}
-                                  >
-                                    删除
-                                  </div>
-                                }
-                              >
-                                <img
-                                  className={style.img}
-                                  src={data.get('url')}
-                                  alt={'img'}
-                                />
-                              </Tooltip>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })
-                  : ''}
-
+        <div style={{ width: '100%', maxHeight: '400px', overflow: 'auto' }}>
+          <div className={'response_flex'}>
+            {this.state.img_library.length ? (
+              <React.Fragment>
                 {range(this.state.number).map((data, index) => {
                   return (
                     <LazyLoad height={450} key={index} overflow once>
@@ -166,8 +161,73 @@ export default class UserImgLazyFactory extends PureComponent {
                     </LazyLoad>
                   );
                 })}
-              </div>
-            </div>
+              </React.Fragment>
+            ) : (
+              ''
+            )}
+            {$$up_recode.get('upload_library').size
+              ? $$up_recode.get('upload_library').map((data, index) => {
+                  return (
+                    <div
+                      className={'flex_1'}
+                      key={index}
+                      onClick={this.choose_img.bind(this, data.get('url'))}
+                    >
+                      <div
+                        className={
+                          data.get('url') === $$up_recode.get('choose_url')
+                            ? `${style.part_active}`
+                            : `${style.part_choose}`
+                        }
+                      >
+                        <div className={style.img_show}>
+                          <Tooltip
+                            title={
+                              <div
+                                onClick={this.del.bind(this, data.mid, index)}
+                              >
+                                删除
+                              </div>
+                            }
+                          >
+                            <img
+                              className={style.img}
+                              src={data.get('url')}
+                              alt={'img'}
+                            />
+                          </Tooltip>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              : ''}
+          </div>
+        </div>
+        {$$up_recode.get('upload_library').size === 0 &&
+        this.state.img_library.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '0 80px' }}>
+            <img
+              src={'http://src.e7wei.com/0.2823198691104869.png'}
+              alt={'img'}
+            />
+            <br />
+            <UploadImgFactory
+              onChange={this.uploadChange}
+              child={
+                <Button type="dashed" style={{ width: '150px' }}>
+                  种植素材
+                </Button>
+              }
+              {...this.state.upload}
+            />
+          </div>
+        ) : (
+          ''
+        )}
+        {$$up_recode.get('upload_library').size ||
+        this.state.img_library.length ? (
+          <React.Fragment>
             <Divider />
             <div style={{ padding: '0 35%', width: '100%' }}>
               <Button
@@ -185,22 +245,7 @@ export default class UserImgLazyFactory extends PureComponent {
             </div>
           </React.Fragment>
         ) : (
-          <div style={{ textAlign: 'center', padding: '0 80px' }}>
-            <img
-              src={'http://src.e7wei.com/0.2823198691104869.png'}
-              alt={'img'}
-            />
-            <br />
-            <UploadImgFactory
-              onChange={this.uploadChange}
-              child={
-                <Button type="dashed" style={{ width: '150px' }}>
-                  种植素材
-                </Button>
-              }
-              {...this.state.upload}
-            />
-          </div>
+          ''
         )}
       </React.Fragment>
     );

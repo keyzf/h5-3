@@ -20,8 +20,8 @@ export const user_img_api = page => {
     if ($$env.get('surroundings') === 'produce') {
       let params = new URLSearchParams();
       params.append('page', page);
-      params.append('pagecount', 30);
-      params.append('type', 1);
+      params.append('pagecount', '30');
+      params.append('type', '1');
       axios
         .post(`${$$env.getIn(['produce', 'user_library'])}`, params)
         .then(response => {
@@ -30,9 +30,6 @@ export const user_img_api = page => {
           } else {
             resolve(response.data);
           }
-        })
-        .catch(function(error) {
-          reject('访问服务器错误', error);
         });
     }
   });

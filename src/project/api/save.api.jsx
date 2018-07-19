@@ -15,7 +15,7 @@ export const save_ajax = ({ ...data }) => {
       params.append('desc', data.shareMsg_value.data.toJS().desc);
       params.append('title', data.shareMsg_value.data.toJS().title);
       axios
-        .post(`${$$env.getIn(['produce', 'save'])}`)
+        .post(`${$$env.getIn(['produce', 'save'])}`, params)
         .then(response => {
           if (response.data.error) {
             reject(response.data.msg);

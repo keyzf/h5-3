@@ -5,32 +5,30 @@ import LazyLoad from 'react-lazyload';
 import { message } from 'antd';
 import style from './img_lazy_choose.module.scss';
 import { public_img_api } from '../../api/public_img.api';
+import { user_img_api } from '../../api/user_img.api';
 
 @connect
 export default class ImgLibraryLazyFactory extends PureComponent {
   state = {
     number: '',
     length: 1,
-    img_library: '',
+    img_library: [],
   };
 
   componentWillMount() {
-    public_img_api(0, this.props.childtype)
-      .then(data => {
-        let sum = '';
-        if (data.sum % 30 !== 0) {
-          sum = data.sum / 30 + 1;
-        } else {
-          sum = data.sum / 30;
-        }
-        this.setState({
-          number: sum,
-          img_library: data.list,
-        });
-      })
-      .catch(error => {
-        message.error(error);
+    public_img_api(0, this.props.childtype).then(data => {
+      let sum = '';
+      if (data.sum % 30 !== 0) {
+        sum = data.sum / 30;
+      } else {
+        sum = data.sum / 30;
+      }
+      this.setState({
+        number: sum,
+        img_library: data.list,
+        length: this.state.length + 1,
       });
+    });
   }
 
   choose_img = img_url => {
@@ -45,7 +43,7 @@ export default class ImgLibraryLazyFactory extends PureComponent {
     const $$up_recode = this.props.user_img_value.data;
     const ShowPublicImg = props => {
       if (this.state.length === props.index) {
-        public_img_api(0, this.props.childtype).then(
+        public_img_api(props.index, this.props.childtype).then(
           data => {
             this.setState({
               length: this.state.length + 1,
