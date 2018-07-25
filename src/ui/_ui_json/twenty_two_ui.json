@@ -1,0 +1,1309 @@
+{
+  "error": 0,
+  "link": "",
+  "msg": "",
+  "info": {
+    "title": "",
+    "desc": "",
+    "cover": "",
+    "bg": {
+      "name": "background",
+      "customize": {
+        "color": "#ffffff",
+        "img": "",
+        "crop_img": "",
+        "img_config": {}
+      },
+      "advanced": { "height": { "value": 1941 } }
+    },
+    "ui": [
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.7140807026530078.png",
+              "crop_img": "http://src.e7wei.com/0.7140807026530078.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 320 },
+            "height": { "value": 291 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": 0 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.2666339969050384.png",
+              "crop_img": "http://src.e7wei.com/0.2666339969050384.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 197 }, "height": { "value": 29 } },
+          "transform": {
+            "translateX": { "value": 64 },
+            "translateY": { "value": -204 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.9970086444862709,
+          "name": "horizontal_text",
+          "html_content":
+            "<p style=\"text-align:center;\">三月限时折扣进行中</p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 147 }, "height": { "value": 22 } },
+          "transform": {
+            "translateX": { "value": 90 },
+            "translateY": { "value": -239 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.3822246308792441,
+          "name": "horizontal_text",
+          "html_content":
+            "<h1 style=\"text-align:center;\"><span style=\"font-family:&quot;Courier New&quot;, Courier, monospace\">简约 X 禅意</span></h1>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 215 }, "height": { "value": 47 } },
+          "transform": {
+            "translateX": { "value": 56 },
+            "translateY": { "value": -233 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.2400961535401651.png",
+              "crop_img": "http://src.e7wei.com/0.2400961535401651.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 43 }, "height": { "value": 29 } },
+          "transform": {
+            "translateX": { "value": 222 },
+            "translateY": { "value": -236 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.2400961535401651.png",
+              "crop_img": "http://src.e7wei.com/0.2400961535401651.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 44 }, "height": { "value": 26 } },
+          "transform": {
+            "translateX": { "value": 59 },
+            "translateY": { "value": -266 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.11535047501269569,
+          "name": "horizontal_text",
+          "html_content":
+            "<p style=\"text-align:center;\"><span style=\"color:#16a085\">家居摆件折扣钜惠</span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 119 }, "height": { "value": 22 } },
+          "transform": {
+            "translateX": { "value": 104 },
+            "translateY": { "value": -290 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.4622144346005339,
+          "name": "horizontal_text",
+          "html_content":
+            "<h3 style=\"text-align:center;\"><span style=\"letter-spacing:6px\"><span style=\"color:#16a085\">梦想家装嘉年华</span></span></h3>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 168 }, "height": { "value": 25 } },
+          "transform": {
+            "translateX": { "value": 84 },
+            "translateY": { "value": -289 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.4355113574665699.png",
+              "crop_img": "http://src.e7wei.com/0.4355113574665699.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 157 }, "height": { "value": 56 } },
+          "transform": {
+            "translateX": { "value": 6 },
+            "translateY": { "value": -287 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.009760687860309591.png",
+              "crop_img": "http://src.e7wei.com/0.009760687860309591.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 29 }, "height": { "value": 53 } },
+          "transform": {
+            "translateX": { "value": 6 },
+            "translateY": { "value": -284 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.009760687860309591.png",
+              "crop_img": "http://src.e7wei.com/0.009760687860309591.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 29 }, "height": { "value": 53 } },
+          "transform": {
+            "translateX": { "value": 114 },
+            "translateY": { "value": -336 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.009760687860309591.png",
+              "crop_img": "http://src.e7wei.com/0.009760687860309591.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 29 }, "height": { "value": 53 } },
+          "transform": {
+            "translateX": { "value": 208 },
+            "translateY": { "value": -389 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.5172325441169714,
+          "name": "horizontal_text",
+          "html_content":
+            "<h2 style=\"text-align:center;\"><em><span style=\"font-size:32px\">20</span></em></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 66 }, "height": { "value": 56 } },
+          "transform": {
+            "translateX": { "value": 12 },
+            "translateY": { "value": -443 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.7417735614779435,
+          "name": "horizontal_text",
+          "html_content":
+            "<h2 style=\"text-align:center;\"><em><span style=\"line-height:normal\"><span style=\"font-size:32px\">50</span></span></em></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 52 }, "height": { "value": 41 } },
+          "transform": {
+            "translateX": { "value": 122 },
+            "translateY": { "value": -493 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.6286055808360627,
+          "name": "horizontal_text",
+          "html_content":
+            "<h2 style=\"text-align:center;\"><em><span style=\"line-height:normal\"><span style=\"font-size:32px\">100</span></span></em></h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 76 }, "height": { "value": 45 } },
+          "transform": {
+            "translateX": { "value": 211 },
+            "translateY": { "value": -536 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.8947888792162342.png",
+              "crop_img": "http://src.e7wei.com/0.8947888792162342.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 20 }, "height": { "value": 50 } },
+          "transform": {
+            "translateX": { "value": 71 },
+            "translateY": { "value": -584 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.8947888792162342.png",
+              "crop_img": "http://src.e7wei.com/0.8947888792162342.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 20 }, "height": { "value": 50 } },
+          "transform": {
+            "translateX": { "value": 174 },
+            "translateY": { "value": -635 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.8947888792162342.png",
+              "crop_img": "http://src.e7wei.com/0.8947888792162342.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 20 }, "height": { "value": 64 } },
+          "transform": {
+            "translateX": { "value": 285 },
+            "translateY": { "value": -692 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8172250236041805,
+          "name": "horizontal_text",
+          "html_content":
+            "<h4 style=\"text-align:left;\"><span style=\"color:#666666\">满399使用</span></h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 81 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 23 },
+            "translateY": { "value": -701 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8632805276899751,
+          "name": "horizontal_text",
+          "html_content":
+            "<h4 style=\"text-align:left;\"><span style=\"line-height:normal\"><span style=\"color:#666666\">满599使用</span></span></h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 77 }, "height": { "value": 26 } },
+          "transform": {
+            "translateX": { "value": 126 },
+            "translateY": { "value": -720 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.39477567588447515,
+          "name": "horizontal_text",
+          "html_content":
+            "<p style=\"text-align:left;\"><span style=\"line-height:normal\"><span style=\"color:#666666\">满799使用</span></span></p>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 78 }, "height": { "value": 20 } },
+          "transform": {
+            "translateX": { "value": 224 },
+            "translateY": { "value": -745 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.2676647838777404.png",
+              "crop_img": "http://src.e7wei.com/0.2676647838777404.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 109 },
+            "height": { "value": 197 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -733 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.23385813542915446.png",
+              "crop_img": "http://src.e7wei.com/0.23385813542915446.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 97 }, "height": { "value": 162 } },
+          "transform": {
+            "translateX": { "value": 223 },
+            "translateY": { "value": -927 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.31730408526156983.png",
+              "crop_img": "http://src.e7wei.com/0.31730408526156983.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 84 }, "height": { "value": 113 } },
+          "transform": {
+            "translateX": { "value": 138 },
+            "translateY": { "value": -1029 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.9433163558961521,
+          "name": "horizontal_text",
+          "html_content": "<h2 style=\"text-align:center;\">新品推荐</h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 113 }, "height": { "value": 36 } },
+          "transform": {
+            "translateX": { "value": 112 },
+            "translateY": { "value": -1030 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "mall",
+          "name": "seven_mall",
+          "base": {
+            "show_element": {},
+            "layout": { "value": 1 },
+            "font_color": "#000"
+          },
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.567039304305093.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.567039304305093.png",
+              "btn_content": { "value": "" },
+              "title": { "value": "文艺客厅沙发置物架" },
+              "content": { "value": "" },
+              "current": { "value": "9999" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.9203663169436525.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9203663169436525.png",
+              "btn_content": { "value": "" },
+              "title": { "value": "文艺客厅沙发置物架" },
+              "content": { "value": "" },
+              "current": { "value": "9999" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ]
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 320 },
+            "height": { "value": 399 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -1013 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.31730408526156983.png",
+              "crop_img": "http://src.e7wei.com/0.31730408526156983.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 111 },
+            "height": { "value": 156 }
+          },
+          "transform": {
+            "translateX": { "value": 106 },
+            "translateY": { "value": -1008 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.637608236003484,
+          "name": "horizontal_text",
+          "html_content": "<h2 style=\"text-align:center;\">热销产品</h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 108 }, "height": { "value": 33 } },
+          "transform": {
+            "translateX": { "value": 95 },
+            "translateY": { "value": -1028 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "mall",
+          "name": "two_mall",
+          "base": {
+            "show_element": {},
+            "layout": { "value": 2 },
+            "font_color": "#000"
+          },
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ]
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 320 },
+            "height": { "value": 217 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -1013 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "mall",
+          "name": "two_mall",
+          "base": {
+            "show_element": {},
+            "layout": { "value": 2 },
+            "font_color": "#000"
+          },
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ]
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 320 },
+            "height": { "value": 217 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -1013 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "mall",
+          "name": "two_mall",
+          "base": {
+            "show_element": {},
+            "layout": { "value": 2 },
+            "font_color": "#000"
+          },
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            },
+            {
+              "img": "http://src.e7wei.com/0.9367751075832671.png",
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "btn_url": { "value": "" },
+              "original": { "value": "" },
+              "img_url": { "value": "" },
+              "crop_img": "http://src.e7wei.com/0.9367751075832671.png",
+              "btn_content": { "value": "" },
+              "title": {
+                "value": "文艺客厅沙发置物架",
+                "name": "title",
+                "touched": true,
+                "dirty": false
+              },
+              "content": { "value": "" },
+              "current": { "value": "￥999.00" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ]
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": {
+            "width": { "value": 320 },
+            "height": { "value": 217 }
+          },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -1013 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.8995298007751433,
+          "name": "horizontal_text",
+          "html_content":
+            "<h2 style=\"text-align:center;\"># 欢迎到店选购 #</h2>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 320 }, "height": { "value": 42 } },
+          "transform": {
+            "translateX": { "value": 0 },
+            "translateY": { "value": -1011 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "text",
+          "index_number": 0.637734198506966,
+          "name": "horizontal_text",
+          "html_content":
+            "<h4 style=\"text-align:left;\">电话：025-84515170</h4><h4>地址：南京海峡云谷科技园</h4>"
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "crop_img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 185 }, "height": { "value": 38 } },
+          "transform": {
+            "translateX": { "value": 23 },
+            "translateY": { "value": -1006 }
+          }
+        }
+      },
+      {
+        "customize": {
+          "type": "img",
+          "name": "single_img",
+          "item": [
+            {
+              "img": "http://src.e7wei.com/0.62705539707655.png",
+              "crop_img": "http://src.e7wei.com/0.62705539707655.png",
+              "title": { "value": "图片备注" },
+              "content": {
+                "value":
+                  "这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描"
+              },
+              "link": { "value": "" },
+              "width": { "value": "" },
+              "height": { "value": "" },
+              "img_config": {
+                "stretching": { "value": "" },
+                "tiling": { "value": "" }
+              }
+            }
+          ],
+          "base": {
+            "show_element": {},
+            "layout": { "value": 0 },
+            "font_color": "#000"
+          }
+        },
+        "advance": {
+          "color": "",
+          "img": "",
+          "img_config": {
+            "stretching": { "value": "" },
+            "tiling": { "value": "" }
+          },
+          "perimeter": { "width": { "value": 69 }, "height": { "value": 72 } },
+          "transform": {
+            "translateX": { "value": 230 },
+            "translateY": { "value": -1059 }
+          }
+        }
+      }
+    ]
+  }
+}

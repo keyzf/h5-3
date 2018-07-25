@@ -17,7 +17,7 @@ class ThreeImgUi extends PureComponent {
       <Row gutter={16}>
         {customize.get('item').map((data, index) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={index}>
               {index === 0 ? (
                 <Col key={index} span={24}>
                   <Col span={24}>

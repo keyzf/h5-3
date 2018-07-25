@@ -112,7 +112,7 @@ import { OneImgUi } from './img/recommend/one_img_ui';
 import { OneMallUi } from './mall/recommend/one_mall_ui';
 import { OneButtonUi } from './button/recommend/one_button_ui';
 import { TwoImgUi } from './img/recommend/two_img_ui';
-import { FormUi } from './form/recommend/form_ui_render';
+import FormUi from './form/recommend/form_ui_render';
 import { EighteenTextUi } from './text/recommend/eighteen_ui';
 import { ThreeImgUi } from './img/recommend/three_img_ui';
 import {
@@ -144,7 +144,26 @@ import {
 import { FiveMallUi } from './mall/recommend/five_mall_ui';
 import { SixMallUi } from './mall/recommend/six_mall_ui';
 import { SevenMallUi } from './mall/recommend/seven_mall_ui';
+import {
+  combinationCore_data,
+  CombinationCoreUI,
+} from './combination/core/combination_croe';
+import { CombinationTemplate } from './combination/template/combination';
 
+/**
+ * combination
+ */
+const tempalate_combination_data = [
+  {
+    template: <CombinationTemplate />,
+    data: combinationCore_data,
+  },
+  { template: '', data: 'dividing-line' },
+  // {
+  //   template: <CombinationCoreUI data={combinationCore_data} />,
+  //   data: combinationCore_data,
+  // },
+];
 /**
  * text
  * @type {*[]}
@@ -339,4 +358,5 @@ export {
   template_mall_data,
   template_button_data,
   template_form_data,
+  tempalate_combination_data,
 };

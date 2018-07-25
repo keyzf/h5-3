@@ -44,10 +44,14 @@ class FourMallUi extends React.Component {
       }
     };
     return (
-      <Row gutter={16}>
+      <Row gutter={16} type={'flex'} style={{ padding: '5px' }}>
         {customize.get('item').map((data, index) => {
           return (
-            <Col key={index} span={col($$layout) ? col($$layout) : 24}>
+            <Col
+              key={index}
+              span={col($$layout) ? col($$layout) : 24}
+              style={{ marginBottom: '10px' }}
+            >
               <Col
                 span={24}
                 style={{
@@ -104,7 +108,6 @@ class FourMallUi extends React.Component {
                   <h3>{$$current ? data.getIn(['current', 'value']) : ''}</h3>
                 </Col>
               </Col>
-              <br />
             </Col>
           );
         })}

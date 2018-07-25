@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import {
   Form,
   Button,
@@ -10,32 +11,40 @@ import {
   Upload,
   Icon,
   Select,
+  message,
 } from 'antd';
-import { uploadToken } from '../../../project/toolkit/qiniu.tool';
-// import axios from "axios";
-// import { fromJS, List } from "immutable";
+import { uploadToken } from '../../../app_feature/tool/qiniu.tool';
+import { fromJS, List } from 'immutable';
+import { form_api } from '../../../api_server/pro/form.api';
 
 class CoreForm extends PureComponent {
-  /**
-   * TODO 将信息提交至指定 ajax 中
-   * @param e
-   */
   handleSubmit = e => {
-    //{{title:'',value:''},{title:'',value:''},{title:'',value:''}}
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
+      console.log(this.props.sid_value.data.get('sid'));
+      const sid = this.props.sid_value.data.get('sid');
       if (!err) {
-        // 将信息发送给指定url
-        // axios.post('this.props.data.getIn(["customize","btn_url"])', {
-        //   form_data: List(fromJS(values)).toJS(),
-        // })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
-        console.log('Received values of form: ', values);
+        let from = [];
+        const data = List(fromJS(values));
+        data.map(data => {
+          if (List(data[1]).size === 2) {
+            from.push({
+              name: data[0],
+              value:
+                'http://src.e7wei.com/' +
+                data[1].getIn(['file', 'response', 'key']),
+            });
+          } else {
+            from.push({ name: data[0], value: data[1] });
+          }
+        });
+        form_api(from, sid)
+          .then(response => {
+            message.success(response);
+          })
+          .catch(response => {
+            message.error(response);
+          });
       }
     });
   };
@@ -258,4 +267,11 @@ class CoreForm extends PureComponent {
 
 const FormUi = Form.create()(CoreForm);
 
-export { FormUi };
+const mapStateToProps = state => {
+  return {
+    // 解析url,获取用户id
+    sid_value: state.sid_reducer,
+  };
+};
+
+export default connect(mapStateToProps)(FormUi);
