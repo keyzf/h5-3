@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import {
   Form,
   Button,
@@ -12,25 +13,38 @@ import {
   Select,
   message,
 } from 'antd';
-import { uploadToken } from '../../../project/toolkit/qiniu.tool';
+import { uploadToken } from '../../../app_feature/tool/qiniu.tool';
 import { fromJS, List } from 'immutable';
-import { form_api } from '../../../project/api/form.api';
+import { form_api } from '../../../api_server/pro/form.api';
 
 class CoreForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
+      console.log(this.props.sid_value.data.get('sid'));
+      const sid = this.props.sid_value.data.get('sid');
       if (!err) {
-        const data = List(fromJS(values))
-          .toList()
-          .toJS();
-        const sid = '';
-        form_api(data, sid).then(
-          data => {
-            message.success('表单提交成功');
-          },
-          function(error) {}
-        );
+        let from = [];
+        const data = List(fromJS(values));
+        data.map(data => {
+          if (List(data[1]).size === 2) {
+            from.push({
+              name: data[0],
+              value:
+                'http://src.e7wei.com/' +
+                data[1].getIn(['file', 'response', 'key']),
+            });
+          } else {
+            from.push({ name: data[0], value: data[1] });
+          }
+        });
+        form_api(from, sid)
+          .then(response => {
+            message.success(response);
+          })
+          .catch(response => {
+            message.error(response);
+          });
       }
     });
   };
@@ -253,4 +267,11 @@ class CoreForm extends PureComponent {
 
 const FormUi = Form.create()(CoreForm);
 
-export { FormUi };
+const mapStateToProps = state => {
+  return {
+    // 解析url,获取用户id
+    sid_value: state.sid_reducer,
+  };
+};
+
+export default connect(mapStateToProps)(FormUi);

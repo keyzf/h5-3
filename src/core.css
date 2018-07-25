@@ -19,6 +19,13 @@ h6 {
 
 }
 
+/*居中*/
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .flex_column {
     display: flex;
     justify-content: center;
@@ -41,6 +48,7 @@ h6 {
     box-sizing: border-box;
     padding: 3px;
 }
+
 .img_show {
     display: flex;
     justify-content: center;

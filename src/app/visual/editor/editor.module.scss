@@ -1,0 +1,27 @@
+.layout {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/*定位图标*/
+.pos_tab {
+  position: absolute;
+  width: 165px;
+  height: 43px;
+  left: -175px;
+  border-radius: 5px;
+  background: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose {
+  &:hover {
+    color: #19a0fa;
+    cursor: pointer;
+  }
+}

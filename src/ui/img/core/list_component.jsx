@@ -23,7 +23,6 @@ class ListImgUi extends PureComponent {
     };
     const $$show_element = customize.getIn(['base', 'show_element', 'value']);
     const font_color = customize.getIn(['base', 'font_color']);
-    console.log(customize, font_color);
     const $$show_element_title =
       $$show_element !== undefined ? $$show_element[0] : '';
     const $$show_element_content =
