@@ -19,6 +19,16 @@ h6 {
 
 }
 
+.img_show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    height: 180px;
+    border: 1px solid #e7e7e7;
+    color: #e7e7e7;
+}
 /*居中*/
 .flex_center {
     display: flex;
@@ -308,6 +318,7 @@ h6 {
 
 /*组件移动*/
 .react-draggable,
+
 .cursor {
     cursor: move;
 }

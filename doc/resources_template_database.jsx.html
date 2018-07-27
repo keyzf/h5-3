@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resources/template_database.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resources/template_database.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import {
+  $$eight_text,
+  $$eighteen_text,
+  $$eleven_text,
+  $$fifteen_text,
+  $$five_text,
+  $$four_text,
+  $$fourteen_text,
+  $$horizontal_text,
+  $$nine_text,
+  $$nineteen_text,
+  $$one_text,
+  $$seven_text,
+  $$seventeen_text,
+  $$six_text,
+  $$sixteen_text,
+  $$ten_text,
+  $$thirteen_text,
+  $$three_text,
+  $$twelve_text,
+  $$twenty_four_text,
+  $$twenty_one_text,
+  $$twenty_text,
+  $$twenty_three_text,
+  $$twenty_two_text,
+  $$two_text,
+  $$vertical_text,
+} from '../database/text.db';
+import {
+  HorizontalTextTemplate,
+  VerticalTextTemplate,
+} from './text/template/_template_text';
+import { one_html_text, OneTextUi } from './text/recommend/one_ui';
+import { two_html_text, TwoTextUi } from './text/recommend/two_ui';
+import { three_html_text, ThreeTextUi } from './text/recommend/three_ui';
+import { four_html_text, FourTextUi } from './text/recommend/four_ui';
+import { five_html_text, FiveTextUi } from './text/recommend/five_ui';
+import { six_html_text, SixTextUi } from './text/recommend/six_ui';
+import { seven_html_text, SevenTextUi } from './text/recommend/seven_ui';
+import {
+  $$carousel_img_database,
+  $$five_img_database,
+  $$four_img_database,
+  $$grid_img_database,
+  $$list_img_database,
+  $$one_img_database,
+  $$single_img_database,
+  $$slider_img_database,
+  $$three_img_database,
+  $$two_img_database,
+} from '../database/img.db';
+import {
+  CarouselImgTemplate,
+  GridImgTemplate,
+  ListImgTemplate,
+  SingleImgTemplate,
+  SliderImgTemplate,
+} from './img/template/img_template';
+import {
+  $$five_mall_database,
+  $$four_mall_database,
+  $$grid_mall_database,
+  $$list_mall_database,
+  $$one_mall_database,
+  $$seven_mall_database,
+  $$six_mall_database,
+  $$three_mall_database,
+  $$two_mall_database,
+} from '../database/mall.db';
+import {
+  GridMallTemplate,
+  ListMallTemplate,
+} from './mall/template/mall_template';
+import { eight_html_text, EightTextUi } from './text/recommend/eight_ui';
+import { nine_html_text, NineTextUi } from './text/recommend/nine_ui';
+import { ten_html_text, TenTextUi } from './text/recommend/ten_ui';
+import { eleven_html_text, ElevenTextUi } from './text/recommend/eleven_ui';
+import { twelve_html_text, TwelveTextUi } from './text/recommend/twelve_ui';
+import {
+  thirteen_html_text,
+  ThirteenTextUi,
+} from './text/recommend/thirteen_ui';
+import {
+  fourteen_html_text,
+  FourTeenTextUi,
+} from './text/recommend/fourteen_ui';
+import { fifteen_html_text, FifteenTextUi } from './text/recommend/fifteen_ui';
+import { sixteen_html_text, SixTeenTextUi } from './text/recommend/sixteen_ui';
+import {
+  seventeen_html_text,
+  SevenTeenTextUi,
+} from './text/recommend/seventeen_ui';
+import { ButtonTemplate } from './button/template/button';
+import {
+  $$button_database,
+  $$one_button_database,
+} from '../database/button.db';
+import { FormTemplate } from './form/template/form_template';
+import {
+  $$eight_form_database,
+  $$five_form_database,
+  $$form_database,
+  $$four_form_database,
+  $$one_form_database,
+  $$seven_form_database,
+  $$six_form_database,
+  $$three_form_database,
+  $$two_form_database,
+} from '../database/form.db';
+import { OneImgUi } from './img/recommend/one_img_ui';
+import { OneMallUi } from './mall/recommend/one_mall_ui';
+import { OneButtonUi } from './button/recommend/one_button_ui';
+import { TwoImgUi } from './img/recommend/two_img_ui';
+import FormUi from './form/recommend/form_ui_render';
+import { EighteenTextUi } from './text/recommend/eighteen_ui';
+import { ThreeImgUi } from './img/recommend/three_img_ui';
+import {
+  nineteen_html_text,
+  NineTeenTextUi,
+} from './text/recommend/nineteen_ui';
+import { twenty_html_text, TwentyTextUi } from './text/recommend/twenty_ui';
+import { FourImgUi } from './img/recommend/four_img_ui';
+import {
+  twenty_one_html_text,
+  TwentyOneTextUi,
+} from './text/recommend/twenty_one_ui';
+import { FiveImgUi } from './img/recommend/five_img_ui';
+import {
+  twenty_two_html_text,
+  TwentyTwoTextUi,
+} from './text/recommend/twenty_two_ui';
+import { TwoMallUi } from './mall/recommend/two_mall_ui';
+import {
+  twenty_three_html_text,
+  TwentyThreeTextUi,
+} from './text/recommend/twenty_three_ui';
+import { ThreeMallUi } from './mall/recommend/three_mall_ui';
+import { FourMallUi } from './mall/recommend/four_mall_ui';
+import {
+  twenty_four_html_text,
+  TwentyFourTextUi,
+} from './text/recommend/twenty_four_ui';
+import { FiveMallUi } from './mall/recommend/five_mall_ui';
+import { SixMallUi } from './mall/recommend/six_mall_ui';
+import { SevenMallUi } from './mall/recommend/seven_mall_ui';
+
+/**
+ * text
+ * @type {*[]}
+ */
+const template_text_data = [
+  { template: &lt;HorizontalTextTemplate />, data: $$horizontal_text },
+  { template: &lt;VerticalTextTemplate />, data: $$vertical_text },
+  { template: '', data: 'dividing-line' },
+  { template: &lt;OneTextUi html={one_html_text} />, data: $$one_text },
+  { template: &lt;TwoTextUi html={two_html_text} />, data: $$two_text },
+  { template: &lt;ThreeTextUi html={three_html_text} />, data: $$three_text },
+  { template: &lt;FourTextUi html={four_html_text} />, data: $$four_text },
+  { template: &lt;FiveTextUi html={five_html_text} />, data: $$five_text },
+  { template: &lt;SixTextUi html={six_html_text} />, data: $$six_text },
+  { template: &lt;SevenTextUi html={seven_html_text} />, data: $$seven_text },
+  { template: &lt;EightTextUi html={eight_html_text} />, data: $$eight_text },
+  { template: &lt;NineTextUi html={nine_html_text} />, data: $$nine_text },
+  { template: &lt;TenTextUi html={ten_html_text} />, data: $$ten_text },
+  { template: &lt;ElevenTextUi html={eleven_html_text} />, data: $$eleven_text },
+  { template: &lt;TwelveTextUi html={twelve_html_text} />, data: $$twelve_text },
+  {
+    template: &lt;ThirteenTextUi html={thirteen_html_text} />,
+    data: $$thirteen_text,
+  },
+  {
+    template: &lt;FourTeenTextUi html={fourteen_html_text} />,
+    data: $$fourteen_text,
+  },
+  {
+    template: &lt;FifteenTextUi html={fifteen_html_text} />,
+    data: $$fifteen_text,
+  },
+  {
+    template: &lt;SixTeenTextUi html={sixteen_html_text} />,
+    data: $$sixteen_text,
+  },
+  {
+    template: &lt;SevenTeenTextUi html={seventeen_html_text} />,
+    data: $$seventeen_text,
+  },
+  {
+    template: &lt;EighteenTextUi html={eight_html_text} />,
+    data: $$eighteen_text,
+  },
+  {
+    template: &lt;NineTeenTextUi html={nineteen_html_text} />,
+    data: $$nineteen_text,
+  },
+  { template: &lt;TwentyTextUi html={twenty_html_text} />, data: $$twenty_text },
+  {
+    template: &lt;TwentyOneTextUi html={twenty_one_html_text} />,
+    data: $$twenty_one_text,
+  },
+  {
+    template: &lt;TwentyTwoTextUi html={twenty_two_html_text} />,
+    data: $$twenty_two_text,
+  },
+  {
+    template: &lt;TwentyThreeTextUi html={twenty_three_html_text} />,
+    data: $$twenty_three_text,
+  },
+  {
+    template: &lt;TwentyFourTextUi html={twenty_four_html_text} />,
+    data: $$twenty_four_text,
+  },
+];
+/**
+ * img
+ * @type {*[]}
+ */
+const template_img_data = [
+  { template: &lt;SingleImgTemplate />, data: $$single_img_database },
+  { template: &lt;GridImgTemplate />, data: $$grid_img_database },
+  { template: &lt;ListImgTemplate />, data: $$list_img_database },
+  { template: &lt;SliderImgTemplate />, data: $$slider_img_database },
+  { template: &lt;CarouselImgTemplate />, data: $$carousel_img_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneImgUi data={$$one_img_database} />,
+    data: $$one_img_database,
+  },
+  {
+    template: &lt;TwoImgUi data={$$two_img_database} />,
+    data: $$two_img_database,
+  },
+  {
+    template: &lt;ThreeImgUi data={$$three_img_database} />,
+    data: $$three_img_database,
+  },
+  {
+    template: &lt;FourImgUi data={$$four_img_database} />,
+    data: $$four_img_database,
+  },
+  {
+    template: &lt;FiveImgUi data={$$five_img_database} />,
+    data: $$five_img_database,
+  },
+];
+/**
+ * mall
+ * @type {*[]}
+ */
+const template_mall_data = [
+  { template: &lt;GridMallTemplate />, data: $$grid_mall_database },
+  { template: &lt;ListMallTemplate />, data: $$list_mall_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneMallUi data={$$one_mall_database} />,
+    data: $$one_mall_database,
+  },
+  {
+    template: &lt;TwoMallUi data={$$two_mall_database} />,
+    data: $$two_mall_database,
+  },
+  {
+    template: &lt;ThreeMallUi data={$$three_mall_database} />,
+    data: $$three_mall_database,
+  },
+  {
+    template: &lt;FourMallUi data={$$four_mall_database} />,
+    data: $$four_mall_database,
+  },
+  {
+    template: &lt;FiveMallUi data={$$five_mall_database} />,
+    data: $$five_mall_database,
+  },
+  {
+    template: &lt;SixMallUi data={$$six_mall_database} />,
+    data: $$six_mall_database,
+  },
+  {
+    template: &lt;SevenMallUi data={$$seven_mall_database} />,
+    data: $$seven_mall_database,
+  },
+];
+/**
+ * button
+ * @type {*[]}
+ */
+const template_button_data = [
+  { template: &lt;ButtonTemplate />, data: $$button_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;OneButtonUi data={$$one_button_database} />,
+    data: $$one_button_database,
+  },
+];
+/**
+ * form
+ * @type {*[]}
+ */
+const template_form_data = [
+  { template: &lt;FormTemplate />, data: $$form_database },
+  { template: '', data: 'dividing-line' },
+  {
+    template: &lt;FormUi data={$$one_form_database} pointer={true} />,
+    data: $$one_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$two_form_database} />,
+    data: $$two_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$three_form_database} />,
+    data: $$three_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$four_form_database} />,
+    data: $$four_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$five_form_database} />,
+    data: $$five_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$six_form_database} />,
+    data: $$six_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$seven_form_database} />,
+    data: $$seven_form_database,
+  },
+  {
+    template: &lt;FormUi pointer={true} data={$$eight_form_database} />,
+    data: $$eight_form_database,
+  },
+];
+
+export {
+  template_text_data,
+  template_img_data,
+  template_mall_data,
+  template_button_data,
+  template_form_data,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BgComponent.html">BgComponent</a></li><li><a href="EighteenTextUi.html">EighteenTextUi</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="ImgBaseForm.html">ImgBaseForm</a></li><li><a href="ImgCropFactory.html">ImgCropFactory</a></li><li><a href="ImgItemForm.html">ImgItemForm</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="MusicUi.html">MusicUi</a></li><li><a href="NineTeenTextUi.html">NineTeenTextUi</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="RenderBg.html">RenderBg</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwentyTextUi.html">TwentyTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UploadImg.html">UploadImg</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$from_opt_input">$$from_opt_input</a></li><li><a href="global.html#one_template">one_template</a></li><li><a href="global.html#render_formFactory">render_formFactory</a></li><li><a href="global.html#render_ui">render_ui</a></li><li><a href="global.html#secretKey">secretKey</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#upload_api">upload_api</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jul 27 2018 16:09:04 GMT+0800 (China Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
