@@ -49,6 +49,12 @@ import { TwentyFourTextUi } from '../../../resources/text/recommend/twenty_four_
 import { FiveMallUi } from '../../../resources/mall/recommend/five_mall_ui';
 import { SixMallUi } from '../../../resources/mall/recommend/six_mall_ui';
 import { SevenMallUi } from '../../../resources/mall/recommend/seven_mall_ui';
+import { TwentyFiveTextUi } from '../../../resources/text/recommend/twenty_five_ui';
+import { TwentySixTextUi } from '../../../resources/text/recommend/twenty_six_ui';
+import { TwentySevenTextUi } from '../../../resources/text/recommend/twenty_seven_ui';
+import { TwoButtonUi } from '../../../resources/button/recommend/two_button_ui';
+import { ThreeButtonUi } from '../../../resources/button/recommend/three_button_ui';
+import { FourButtonUi } from '../../../resources/button/recommend/four_button_ui';
 
 export const render_switch_ui = data => {
   // 获取组件名称，通过组件名称进行匹配
@@ -124,6 +130,12 @@ export const render_switch_ui = data => {
       return (
         <TwentyFourTextUi html={data.getIn(['customize', 'html_content'])} />
       );
+    case 'twenty_five_text':
+      return <TwentyFiveTextUi data={data} />;
+    case 'twenty_six_text':
+      return <TwentySixTextUi data={data} />;
+    case 'twenty_seven_text':
+      return <TwentySevenTextUi data={data} />;
     // 图片类
     case 'single_img':
       return <UpImgUi data={data} />;
@@ -169,6 +181,12 @@ export const render_switch_ui = data => {
       return <ButtonUi data={data} />;
     case 'one_button':
       return <OneButtonUi data={data} />;
+    case 'two_button':
+      return <TwoButtonUi data={data} />;
+    case 'three_button':
+      return <ThreeButtonUi data={data} />;
+    case 'four_button':
+      return <FourButtonUi data={data} />;
     //  表单类
     case 'form':
       return <FormUi data={data} />;

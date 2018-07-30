@@ -33,6 +33,11 @@ class AdvanceForm extends PureComponent {
     if (opt_name === 'color') {
       this.sendAction(this.props.data.setIn(['advance', 'color'], data.hex));
     }
+    if (opt_name === 'style_color') {
+      this.sendAction(
+        this.props.data.setIn(['advance', 'style_color'], data.hex)
+      );
+    }
     if (opt_name === 'delete') {
       const $$bg_new = this.props.data.setIn(['advance', 'img'], '');
       const $$bg_crop = $$bg_new.setIn(['advance', 'crop_img'], '');
@@ -82,127 +87,151 @@ class AdvanceForm extends PureComponent {
     const $$advance = this.props.data.get('advance');
     const Panel = Collapse.Panel;
     return (
-      <React.Fragment>
-        <Collapse
-          bordered={false}
-          defaultActiveKey={['1', '2']}
-          style={{ background: 'transparent' }}
-        >
-          <Panel header="背景色" key="1">
-            <Popover
-              content={
-                <SketchPicker
-                  color={$$advance.get('color')}
-                  onChangeComplete={this.editorFeatures.bind(this, 'color')}
-                />
-              }
-              trigger="click"
+      <Collapse
+        bordered={false}
+        defaultActiveKey={['1', '2']}
+        style={{ background: 'transparent' }}
+      >
+        <Panel header="背景色" key="1">
+          <Popover
+            content={
+              <SketchPicker
+                color={$$advance.get('color')}
+                onChangeComplete={this.editorFeatures.bind(this, 'color')}
+              />
+            }
+            trigger="click"
+          >
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                height: '80px',
+                width: '150px',
+                border: '1px black solid',
+                background: $$advance.get('color'),
+              }}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  height: '80px',
-                  width: '150px',
-                  border: '1px black solid',
-                  background: $$advance.get('color'),
-                }}
+              <Icon type="plus" />&nbsp;&nbsp;自定义
+            </div>
+          </Popover>
+        </Panel>
+        <Panel header="搭配色" key="1">
+          <Popover
+            content={
+              <SketchPicker
+                color={$$advance.get('style_color')}
+                onChangeComplete={this.editorFeatures.bind(this, 'style_color')}
+              />
+            }
+            trigger="click"
+          >
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                height: '80px',
+                width: '150px',
+                border: '1px black solid',
+                background: $$advance.get('color'),
+              }}
+            >
+              <Icon type="plus" />&nbsp;&nbsp;自定义
+            </div>
+          </Popover>
+        </Panel>
+        <Panel header="背景图" key="2">
+          <Row gutter={16}>
+            <Col
+              span={7}
+              style={{
+                margin: 'auto',
+                height: '100px',
+                border: '1px solid black',
+                textAlign: 'center',
+                color: '#e7e7e7',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <UploadImg
+                type={1}
+                func={this.changImgToChild}
+                img_url={$$advance.get('img')}
+                children={
+                  <img
+                    style={{
+                      verticalAlign: 'middle',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      margin: 'auto',
+                    }}
+                    src={
+                      $$advance.get('crop_img')
+                        ? $$advance.get('crop_img')
+                        : 'http://src.e7wei.com/0.2823198691104869.png'
+                    }
+                    alt={'img'}
+                  />
+                }
+              />
+            </Col>
+            <Col span={10}>
+              <UploadImg
+                type={1}
+                func={this.changImgToChild}
+                img_url={$$advance.get('img')}
+                children={<Button style={{ width: '100%' }}>更换</Button>}
+              />
+              <ImgCropFactory
+                func={this.cropImgToChild}
+                children={
+                  <Button style={{ width: '100%' }} onClick={this.showModal}>
+                    裁剪
+                  </Button>
+                }
+                img_url={$$advance.get('img')}
+              />
+              <Popconfirm
+                placement="bottom"
+                title={'确定删除此图片？'}
+                onConfirm={this.editorFeatures.bind(this, 'delete')}
+                okText="确认"
+                cancelText="取消"
               >
-                <Icon type="plus" />&nbsp;&nbsp;自定义
-              </div>
-            </Popover>
-          </Panel>
-          <Panel header="背景图" key="2">
-            <Row gutter={16}>
-              <Col
-                span={7}
-                style={{
-                  margin: 'auto',
-                  height: '100px',
-                  border: '1px solid black',
-                  textAlign: 'center',
-                  color: '#e7e7e7',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
+                <Button style={{ width: '100%' }}>删除</Button>
+              </Popconfirm>
+            </Col>
+            <Col span={7}>
+              <Checkbox
+                onChange={this.editorFeatures.bind(this, 'tiling')}
+                defaultValue={$$advance.getIn([
+                  'img_config',
+                  'tiling',
+                  'value',
+                ])}
               >
-                <UploadImg
-                  type={1}
-                  func={this.changImgToChild}
-                  img_url={$$advance.get('img')}
-                  children={
-                    <img
-                      style={{
-                        verticalAlign: 'middle',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        margin: 'auto',
-                      }}
-                      src={
-                        $$advance.get('crop_img')
-                          ? $$advance.get('crop_img')
-                          : 'http://src.e7wei.com/0.2823198691104869.png'
-                      }
-                      alt={'img'}
-                    />
-                  }
-                />
-              </Col>
-              <Col span={10}>
-                <UploadImg
-                  type={1}
-                  func={this.changImgToChild}
-                  img_url={$$advance.get('img')}
-                  children={<Button style={{ width: '100%' }}>更换</Button>}
-                />
-                <ImgCropFactory
-                  func={this.cropImgToChild}
-                  children={
-                    <Button style={{ width: '100%' }} onClick={this.showModal}>
-                      裁剪
-                    </Button>
-                  }
-                  img_url={$$advance.get('img')}
-                />
-                <Popconfirm
-                  placement="bottom"
-                  title={'确定删除此图片？'}
-                  onConfirm={this.editorFeatures.bind(this, 'delete')}
-                  okText="确认"
-                  cancelText="取消"
-                >
-                  <Button style={{ width: '100%' }}>删除</Button>
-                </Popconfirm>
-              </Col>
-              <Col span={7}>
-                <Checkbox
-                  onChange={this.editorFeatures.bind(this, 'tiling')}
-                  defaultValue={$$advance.getIn([
-                    'img_config',
-                    'tiling',
-                    'value',
-                  ])}
-                >
-                  拉伸
-                </Checkbox>
-                <br />
-                <Checkbox
-                  onChange={this.editorFeatures.bind(this, 'stretching')}
-                  defaultValue={$$advance.getIn([
-                    'img_config',
-                    'stretching',
-                    'value',
-                  ])}
-                >
-                  平铺
-                </Checkbox>
-              </Col>
-            </Row>
-          </Panel>
-        </Collapse>
-      </React.Fragment>
+                拉伸
+              </Checkbox>
+              <br />
+              <Checkbox
+                onChange={this.editorFeatures.bind(this, 'stretching')}
+                defaultValue={$$advance.getIn([
+                  'img_config',
+                  'stretching',
+                  'value',
+                ])}
+              >
+                平铺
+              </Checkbox>
+            </Col>
+          </Row>
+        </Panel>
+      </Collapse>
     );
   }
 }

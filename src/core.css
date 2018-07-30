@@ -18,7 +18,19 @@ h6 {
     flex-direction: row;
 
 }
+.ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
+}
 
+.avatar-uploader > .ant-upload {
+    width: 128px;
+    height: 128px;
+}
+.ant-upload-select-picture-card .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+}
 .img_show {
     display: flex;
     justify-content: center;

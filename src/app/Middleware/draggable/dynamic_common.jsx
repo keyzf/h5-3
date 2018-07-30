@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ResizableRect from '../../../untils/resizable/ResizableRect';
 import ComponentLocation from './component-location';
-import { NoChoose } from './ui_choose_style';
+import { NoChoose, UIChoose } from './ui_choose_style';
 import { redux_action } from '../../../database/redux/action';
 
 const mapStateToProps = state => {
@@ -25,6 +25,20 @@ export default connect(
   mapDispatchToProps
 )(
   class DynamicCommon extends PureComponent {
+    componentWillMount() {
+      const { data, layout } = this.props;
+      if (!layout.top) {
+        // 更新width 与 height 的值
+        const $$change_left = data.setIn(['advance', 'left'], layout.left);
+        const $$change_top = $$change_left.setIn(
+          ['advance', 'top'],
+          layout.top
+        );
+        // new data
+        this.sendAction($$change_top);
+      }
+    }
+
     handleResize = style => {
       let { top, left, width, height } = style;
       top = Math.round(top);
@@ -109,9 +123,11 @@ export default connect(
           onResize={this.handleResize}
           onDrag={this.handleDrag}
           child={
-            <ComponentLocation>
-              <span>{this.props.component}</span>
-            </ComponentLocation>
+            <UIChoose {...this.props.layout}>
+              <ComponentLocation>
+                <span>{this.props.component}</span>
+              </ComponentLocation>
+            </UIChoose>
           }
         />
       );

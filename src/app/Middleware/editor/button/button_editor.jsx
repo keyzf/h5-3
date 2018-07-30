@@ -99,6 +99,9 @@ class EditorButton extends PureComponent {
                   </Form.Item>
                 </Form>
                 <ButtonForm
+                  show={
+                    $$ui_text_data.getIn(['customize', 'name']) === 'button'
+                  }
                   {...$$customize.toJS()}
                   onChange={this.editorFeatures.bind(this, 'customize')}
                 />

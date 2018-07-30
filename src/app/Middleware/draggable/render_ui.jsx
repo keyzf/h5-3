@@ -9,7 +9,9 @@ class RenderUI extends PureComponent {
     // 拆解所有组件的高级设置
     const advanced_settings = {
       // 动画移动
-      top: advance.get('top') ? advance.get('top') : this.props.par_height / 2,
+      top: advance.get('top')
+        ? advance.get('top')
+        : this.props.par_height - 40 - advance.get('height'),
       left: advance.get('left')
         ? advance.get('left')
         : (320 - advance.get('width')) / 2,
@@ -43,9 +45,9 @@ class RenderUI extends PureComponent {
           data={this.props.data}
           layout={advanced_settings}
           component={
-            <span style={{ pointerEvents: 'none' }}>
+            <div style={{ pointerEvents: 'none', userSelect: 'none' }}>
               {render_ui(this.props.data)}
-            </span>
+            </div>
           }
         />
       </React.Fragment>

@@ -21,7 +21,6 @@ class CoreForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log(this.props.sid_value.data.get('sid'));
       const sid = this.props.sid_value.data.get('sid');
       if (!err) {
         let from = [];
@@ -55,20 +54,11 @@ class CoreForm extends PureComponent {
     const customize = this.props.data.get('customize');
     const btn_color = customize.get('btn_color');
     const btn_bg_color = customize.get('btn_bg_color');
-    /**
-     * form 表单配置项
-     */
     const form_config = {
       onSubmit: this.handleSubmit.bind(this),
       layout: 'vertical',
       hideRequiredMark: true,
     };
-    /**
-     * 表单选项显示样式
-     * @param label_name
-     * @param color
-     * @returns {{label: *, wrapperCol: {lg: {span: number, offset: number}}}}
-     */
     const form_item_style = (label_name, color) => {
       return {
         label: <div style={{ color: color }}>{label_name}</div>,
@@ -78,14 +68,18 @@ class CoreForm extends PureComponent {
     const upload_props = {
       name: 'file',
       action: 'http://upload.qiniup.com',
-      multiple: true,
       showUploadList: true,
       data: { token: uploadToken, key: Math.random() + '.png' },
       accept: 'image/*',
+      onChange(info) {
+        const status = info.file.status;
+        if (status === 'done') {
+          message.success(`${info.file.name} 文件上传成功.`);
+        } else if (status === 'error') {
+          message.error(`${info.file.name} 上传失败.`);
+        }
+      },
     };
-    /**
-     * 渲染表单
-     */
     return (
       <Form {...form_config}>
         {customize.get('item').map((data, index) => {
@@ -213,7 +207,11 @@ class CoreForm extends PureComponent {
                   )}
                 >
                   {getFieldDecorator(`${data.get('decorator')}`)(
-                    <DatePicker style={{ width: '100%' }} size="large" />
+                    <DatePicker
+                      style={{ width: '100%' }}
+                      size="large"
+                      placeholder="选择日期"
+                    />
                   )}
                 </FormItem>
               ) : (
@@ -231,7 +229,6 @@ class CoreForm extends PureComponent {
                       <p className="ant-upload-drag-icon">
                         <Icon type="inbox" />
                       </p>
-                      <p className="ant-upload-text">文件上传</p>
                       <p className="ant-upload-hint">
                         将文件拖拽至此框或点击上传
                       </p>

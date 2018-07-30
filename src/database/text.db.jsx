@@ -25,6 +25,9 @@ import { twenty_one_html_text } from '../resources/text/recommend/twenty_one_ui'
 import { twenty_two_html_text } from '../resources/text/recommend/twenty_two_ui';
 import { twenty_three_html_text } from '../resources/text/recommend/twenty_three_ui';
 import { twenty_four_html_text } from '../resources/text/recommend/twenty_four_ui';
+import { twenty_five_html_text } from '../resources/text/recommend/twenty_five_ui';
+import { twenty_six_html_text } from '../resources/text/recommend/twenty_six_ui';
+import { twenty_seven_html_text } from '../resources/text/recommend/twenty_seven_ui';
 
 export const $$text_database = (name, html, height, width, index) => {
   return {
@@ -35,6 +38,7 @@ export const $$text_database = (name, html, height, width, index) => {
       html_content: html,
     }),
     advance: fromJS({
+      style_color: '',
       color: '',
       img: '',
       crop_img: '',
@@ -159,5 +163,28 @@ export const $$twenty_three_text = index => {
 export const $$twenty_four_text = index => {
   return fromJS(
     $$text_database('twenty_four_text', twenty_four_html_text, 80, 300, index)
+  );
+};
+export const $$twenty_five_text = index => {
+  return fromJS(
+    $$text_database('twenty_five_text', twenty_five_html_text, 80, 300, index)
+  );
+};
+
+export const $$twenty_six_text = index => {
+  return fromJS(
+    $$text_database('twenty_six_text', twenty_six_html_text, 240, 300, index)
+  );
+};
+
+export const $$twenty_seven_text = index => {
+  return fromJS(
+    $$text_database(
+      'twenty_seven_text',
+      twenty_seven_html_text,
+      240,
+      300,
+      index
+    )
   );
 };

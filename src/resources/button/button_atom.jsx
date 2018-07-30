@@ -9,6 +9,7 @@ export const ButtonAtom = styled.button`
   height: 100%;
   outline: none;
   border: none;
+
   background: transparent;
   color: ${props => props.font_color};
   // 圆角

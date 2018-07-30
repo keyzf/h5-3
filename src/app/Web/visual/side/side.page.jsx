@@ -173,47 +173,45 @@ export default connect(
         },
       };
       return (
-        <React.Fragment>
-          <Tabs {...Tab}>
-            {$$visual_sider_database.map(data => {
-              return (
-                <Tabs.TabPane {...tabPan(data.icon, data.title)}>
-                  {data.name === 'lnteractive' ? (
-                    <InterActiveSelect />
-                  ) : (
-                    <div className={style.queueAnim}>
-                      {data.content.map((ui_data, index) => {
-                        return (
-                          <div key={index}>
-                            {ui_data.data === 'dividing-line' ? (
-                              <Divider orientation="left" key={index}>
-                                设计师推荐
-                              </Divider>
-                            ) : (
-                              <div
-                                className={style.components_hover}
-                                key={index}
-                                onClick={this.transfer.bind(
-                                  this,
-                                  data.name,
-                                  ui_data.data
-                                )}
-                              >
-                                <span style={{ pointerEvents: 'none' }}>
-                                  {ui_data.template}
-                                </span>
+        <Tabs {...Tab}>
+          {$$visual_sider_database.map(data => {
+            return (
+              <Tabs.TabPane {...tabPan(data.icon, data.title)}>
+                {data.name === 'lnteractive' ? (
+                  <InterActiveSelect />
+                ) : (
+                  <div className={style.queueAnim}>
+                    {data.content.map((ui_data, index) => {
+                      return (
+                        <div key={index}>
+                          {ui_data.data === 'dividing-line' ? (
+                            <Divider orientation="left" key={index}>
+                              设计师推荐
+                            </Divider>
+                          ) : (
+                            <div
+                              className={style.components_hover}
+                              key={index}
+                              onClick={this.transfer.bind(
+                                this,
+                                data.name,
+                                ui_data.data
+                              )}
+                            >
+                              <div style={{ pointerEvents: 'none' }}>
+                                {ui_data.template}
                               </div>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </Tabs.TabPane>
-              );
-            })}
-          </Tabs>
-        </React.Fragment>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </Tabs.TabPane>
+            );
+          })}
+        </Tabs>
       );
     }
   }

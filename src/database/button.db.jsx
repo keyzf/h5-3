@@ -13,6 +13,7 @@ const $$button = (name, width, height, font_color) => {
     },
     advance: {
       color: '',
+      style_color: '',
       img: '',
       crop_img: '',
       img_config: {
@@ -33,5 +34,17 @@ const $$button = (name, width, height, font_color) => {
 const $$button_database = fromJS($$button('button', 100, 40, 'black'));
 
 const $$one_button_database = fromJS($$button('one_button', 100, 40, 'white'));
-
-export { $$button_database, $$one_button_database };
+const $$two_button_database = fromJS($$button('two_button', 220, 70, 'white'));
+const $$three_button_database = fromJS(
+  $$button('three_button', 220, 70, 'white')
+);
+const $$four_button_database = fromJS(
+  $$button('four_button', 220, 70, 'white')
+);
+export {
+  $$button_database,
+  $$one_button_database,
+  $$two_button_database,
+  $$three_button_database,
+  $$four_button_database,
+};

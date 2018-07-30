@@ -19,8 +19,11 @@ import {
   $$thirteen_text,
   $$three_text,
   $$twelve_text,
+  $$twenty_five_text,
   $$twenty_four_text,
   $$twenty_one_text,
+  $$twenty_seven_text,
+  $$twenty_six_text,
   $$twenty_text,
   $$twenty_three_text,
   $$twenty_two_text,
@@ -94,7 +97,10 @@ import {
 import { ButtonTemplate } from './button/template/button';
 import {
   $$button_database,
+  $$four_button_database,
   $$one_button_database,
+  $$three_button_database,
+  $$two_button_database,
 } from '../database/button.db';
 import { FormTemplate } from './form/template/form_template';
 import {
@@ -144,6 +150,12 @@ import {
 import { FiveMallUi } from './mall/recommend/five_mall_ui';
 import { SixMallUi } from './mall/recommend/six_mall_ui';
 import { SevenMallUi } from './mall/recommend/seven_mall_ui';
+import { TwentyFiveTextUi } from './text/recommend/twenty_five_ui';
+import { TwentySixTextUi } from './text/recommend/twenty_six_ui';
+import { TwentySevenTextUi } from './text/recommend/twenty_seven_ui';
+import { TwoButtonUi } from './button/recommend/two_button_ui';
+import { ThreeButtonUi } from './button/recommend/three_button_ui';
+import { FourButtonUi } from './button/recommend/four_button_ui';
 
 /**
  * text
@@ -153,6 +165,18 @@ const template_text_data = [
   { template: <HorizontalTextTemplate />, data: $$horizontal_text },
   { template: <VerticalTextTemplate />, data: $$vertical_text },
   { template: '', data: 'dividing-line' },
+  {
+    template: <TwentyFiveTextUi data={$$twenty_five_text(Math.random())} />,
+    data: $$twenty_five_text,
+  },
+  {
+    template: <TwentySixTextUi data={$$twenty_six_text(Math.random())} />,
+    data: $$twenty_six_text,
+  },
+  {
+    template: <TwentySevenTextUi data={$$twenty_seven_text(Math.random())} />,
+    data: $$twenty_seven_text,
+  },
   { template: <OneTextUi html={one_html_text} />, data: $$one_text },
   { template: <TwoTextUi html={two_html_text} />, data: $$two_text },
   { template: <ThreeTextUi html={three_html_text} />, data: $$three_text },
@@ -290,6 +314,18 @@ const template_button_data = [
   {
     template: <OneButtonUi data={$$one_button_database} />,
     data: $$one_button_database,
+  },
+  {
+    template: <TwoButtonUi data={$$two_button_database} />,
+    data: $$two_button_database,
+  },
+  {
+    template: <ThreeButtonUi data={$$three_button_database} />,
+    data: $$three_button_database,
+  },
+  {
+    template: <FourButtonUi data={$$four_button_database} />,
+    data: $$four_button_database,
   },
 ];
 /**
