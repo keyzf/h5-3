@@ -20,15 +20,10 @@ import {
 } from './text/template/_template_text';
 import {
   $$carousel_img_database,
-  $$five_img_database,
-  $$four_img_database,
   $$grid_img_database,
   $$list_img_database,
-  $$one_img_database,
   $$single_img_database,
   $$slider_img_database,
-  $$three_img_database,
-  $$two_img_database,
 } from '../database/img.db';
 import {
   CarouselImgTemplate,
@@ -75,13 +70,8 @@ import {
   $$three_form_database,
   $$two_form_database,
 } from '../database/form.db';
-import { OneImgUi } from './img/recommend/one_img_ui';
 import { OneMallUi } from './mall/recommend/one_mall_ui';
-import { TwoImgUi } from './img/recommend/two_img_ui';
 import FormUi from './form/recommend/form_ui_render';
-import { ThreeImgUi } from './img/recommend/three_img_ui';
-import { FourImgUi } from './img/recommend/four_img_ui';
-import { FiveImgUi } from './img/recommend/five_img_ui';
 import { TwoMallUi } from './mall/recommend/two_mall_ui';
 import { ThreeMallUi } from './mall/recommend/three_mall_ui';
 import { FourMallUi } from './mall/recommend/four_mall_ui';
@@ -207,26 +197,6 @@ const template_img_data = [
   { template: <SliderImgTemplate />, data: $$slider_img_database },
   { template: <CarouselImgTemplate />, data: $$carousel_img_database },
   { template: '', data: 'dividing-line' },
-  {
-    template: <OneImgUi data={$$one_img_database} />,
-    data: $$one_img_database,
-  },
-  {
-    template: <TwoImgUi data={$$two_img_database} />,
-    data: $$two_img_database,
-  },
-  {
-    template: <ThreeImgUi data={$$three_img_database} />,
-    data: $$three_img_database,
-  },
-  {
-    template: <FourImgUi data={$$four_img_database} />,
-    data: $$four_img_database,
-  },
-  {
-    template: <FiveImgUi data={$$five_img_database} />,
-    data: $$five_img_database,
-  },
 ];
 /**
  * mall

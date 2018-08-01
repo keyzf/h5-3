@@ -29,7 +29,7 @@ class EditorImg extends PureComponent {
     //判断用户是否编辑单个项目
     item: false,
     // 修改的项目编号
-    number: '',
+    number: 0,
   };
   changImgToChild = data => {
     const $$props_data = this.props.data.get('data');
@@ -41,7 +41,8 @@ class EditorImg extends PureComponent {
       ['customize', 'item', this.state.number, 'crop_img'],
       data
     );
-    this.sendAction($$crop_img);
+    const $$model = $$crop_img.setIn(['customize', 'model'], false);
+    this.sendAction($$model);
   };
   cropImgToChild = data => {
     const $$props_data = this.props.data.get('data');
@@ -155,6 +156,11 @@ class EditorImg extends PureComponent {
         $$props_data.setIn(['customize', 'base', 'font_color'], data.hex)
       );
     }
+    if (opt_name === 'content_color') {
+      this.sendAction(
+        $$props_data.setIn(['advance', 'content_color'], data.hex)
+      );
+    }
   };
   sendAction = up_data => {
     // data source
@@ -252,26 +258,85 @@ class EditorImg extends PureComponent {
                 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
-            {this.state.item ? (
+            {$$data.getIn(['customize', 'name']) === 'single_img' ? (
+              <Card style={{ background: 'transparent' }} title="编辑图集数据">
+                <Row gutter={16}>
+                  <Col span={9}>
+                    <UploadImg
+                      type={1}
+                      func={this.changImgToChild}
+                      img_url={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'img',
+                      ])}
+                      model={$$customize.get('model')}
+                      children={
+                        <div className={'img_show'}>
+                          {$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'crop_img',
+                          ]) ? (
+                            <img
+                              className={'img'}
+                              src={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'crop_img',
+                              ])}
+                              alt={'img'}
+                            />
+                          ) : (
+                            '待上传'
+                          )}
+                        </div>
+                      }
+                    />
+                  </Col>
+                  <Col span={15}>
+                    <Button.Group>
+                      <UploadImg
+                        type={1}
+                        func={this.changImgToChild}
+                        img_url={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                        children={<Button>更换</Button>}
+                      />
+                      <ImgCropFactory
+                        func={this.cropImgToChild}
+                        children={<Button>裁剪</Button>}
+                        img_src={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                      />
+                    </Button.Group>
+                    <br />
+                    <br />
+                    <div>格式：*.jpg / *.png</div>
+                    <div>大小不超过2M</div>
+                  </Col>
+                </Row>
+                <Divider />
+                <ImgItemForm
+                  name={$$customize.get('name')}
+                  onChange={this.editorFeatures.bind(this, 'item_change')}
+                  {...$$data.getIn(['customize', 'item']).toJS()[0]}
+                />
+              </Card>
+            ) : this.state.item ? (
               <Card
                 style={{ background: 'transparent' }}
                 title="编辑图集数据"
                 extra={<div onClick={this.backItem}>返回</div>}
               >
                 <Row gutter={16}>
-                  <Col
-                    span={7}
-                    offset={3}
-                    style={{
-                      margin: 'auto',
-                      height: '100px',
-                      border: '1px solid #e7e7e7',
-                      textAlign: 'center',
-                      color: '#e7e7e7',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <Col span={9}>
                     <UploadImg
                       type={1}
                       func={this.changImgToChild}
@@ -281,32 +346,29 @@ class EditorImg extends PureComponent {
                         'img',
                       ])}
                       children={
-                        <img
-                          style={{
-                            verticalAlign: 'middle',
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                            margin: 'auto',
-                          }}
-                          src={
-                            $$customize.getIn([
-                              'item',
-                              this.state.number,
-                              'crop_img',
-                            ])
-                              ? $$customize.getIn([
-                                  'item',
-                                  this.state.number,
-                                  'crop_img',
-                                ])
-                              : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
-                          }
-                          alt={'img'}
-                        />
+                        <div className={'img_show'}>
+                          {$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'crop_img',
+                          ]) ? (
+                            <img
+                              className={'img'}
+                              src={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'crop_img',
+                              ])}
+                              alt={'img'}
+                            />
+                          ) : (
+                            '待上传'
+                          )}
+                        </div>
                       }
                     />
                   </Col>
-                  <Col span={17}>
+                  <Col span={15}>
                     <UploadImg
                       type={1}
                       func={this.changImgToChild}
@@ -379,65 +441,98 @@ class EditorImg extends PureComponent {
             )}
           </div>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="高级设置" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            {/*基础属性，单图上传没有基础属性*/}
-            {$$customize.get('name') === 'single_img' ? (
-              ''
-            ) : (
-              <Collapse
-                bordered={false}
-                defaultActiveKey={['1']}
-                style={{ background: 'transparent' }}
-              >
-                <Panel header="基础属性" key="1">
-                  <Form hideRequiredMark>
-                    <Form.Item {...form_item_style('字体颜色')}>
-                      <Popover
-                        content={
-                          <SketchPicker
-                            color={$$customize.getIn(['base', 'font_color'])}
-                            onChangeComplete={this.editorFeatures.bind(
-                              this,
-                              'color'
-                            )}
+
+        {$$data.getIn(['customize', 'name']) === 'single_img' ? (
+          ''
+        ) : (
+          <Tabs.TabPane tab="高级设置" key="2">
+            <div
+              style={{
+                height: 'calc(100vh -  55px)',
+                overflow: 'hidden',
+                marginTop: '-18px',
+                backgroundImage:
+                  'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+              }}
+            >
+              {/*基础属性，单图上传没有基础属性*/}
+              {$$customize.get('name') === 'single_img' ? (
+                ''
+              ) : (
+                <Collapse
+                  bordered={false}
+                  defaultActiveKey={['1']}
+                  style={{ background: 'transparent' }}
+                >
+                  <Panel header="基础属性" key="1">
+                    <Form hideRequiredMark>
+                      <Form.Item {...form_item_style('字体颜色')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$customize.getIn(['base', 'font_color'])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.getIn([
+                                'base',
+                                'font_color',
+                              ]),
+                            }}
                           />
-                        }
-                        trigger="click"
-                      >
-                        <div
-                          style={{
-                            marginTop: '6px',
-                            height: '25px',
-                            width: '100%',
-                            backgroundColor: $$customize.getIn([
-                              'base',
-                              'font_color',
-                            ]),
-                          }}
-                        />
-                      </Popover>
-                    </Form.Item>
-                  </Form>
-                  <ImgBaseForm
-                    name={$$customize.get('name')}
-                    onChange={this.editorFeatures.bind(this, 'base')}
-                    {...$$customize.get('base').toJS()}
-                  />
-                </Panel>
-              </Collapse>
-            )}
-            <AdvanceEditor data={$$data} />
-          </div>
-        </Tabs.TabPane>
+                        </Popover>
+                      </Form.Item>
+                    </Form>
+                    <Form hideRequiredMark>
+                      <Form.Item {...form_item_style('内容背景')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$data.getIn(['advance', 'content_color'])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'content_color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$data.getIn([
+                                'advance',
+                                'content_color',
+                              ]),
+                            }}
+                          />
+                        </Popover>
+                      </Form.Item>
+                    </Form>
+                    <ImgBaseForm
+                      name={$$customize.get('name')}
+                      onChange={this.editorFeatures.bind(this, 'base')}
+                      {...$$customize.get('base').toJS()}
+                    />
+                  </Panel>
+                </Collapse>
+              )}
+              <AdvanceEditor data={$$data} />
+            </div>
+          </Tabs.TabPane>
+        )}
       </Tabs>
     );
   }

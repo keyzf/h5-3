@@ -1,62 +1,29 @@
 import React, { PureComponent } from 'react';
+import { ImgAtom } from '../img_atom';
 
 class UpImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
-    const font_color = customize.getIn(['base', 'font_color']);
+    const advance = this.props.data.get('advance');
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
+      img: customize.getIn(['item', 0, 'crop_img']),
+      radius: customize.getIn(['item', 0, 'radius', 'value']),
+    };
     return (
-      <div>
-        {customize.get('item').map((data, index) => {
-          return (
-            <div key={index}>
-              {data.getIn(['link', 'value']) === '' ? (
-                <img
-                  width={
-                    data.get('width').get('value')
-                      ? data.get('width').get('value')
-                      : '100%'
-                  }
-                  height={
-                    data.get('height').get('value')
-                      ? data.get('height').get('value')
-                      : 'auto'
-                  }
-                  src={
-                    data.get('crop_img')
-                      ? data.get('crop_img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                  }
-                  alt={'img'}
-                />
-              ) : (
-                <a
-                  href={data.getIn(['link', 'value'])}
-                  style={{ color: font_color }}
-                >
-                  <img
-                    width={
-                      data.get('width').get('value')
-                        ? data.get('width').get('value')
-                        : '100%'
-                    }
-                    height={
-                      data.get('height').get('value')
-                        ? data.get('height').get('value')
-                        : 'auto'
-                    }
-                    src={
-                      data.get('crop_img')
-                        ? data.get('crop_img')
-                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                    }
-                    alt={'img'}
-                  />
-                </a>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <ImgAtom {...advanced_settings}>
+        {advanced_settings.img ? (
+          ''
+        ) : (
+          <div
+            className={'flex-center'}
+            dangerouslySetInnerHTML={{
+              __html: customize.getIn(['item', 0, 'content', 'value']),
+            }}
+          />
+        )}
+      </ImgAtom>
     );
   }
 }

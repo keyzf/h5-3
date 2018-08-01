@@ -60,7 +60,7 @@ class EditorText extends PureComponent {
                 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
-            <AdvanceEditor data={$$data} />
+            <AdvanceEditor data={$$data} name={'text'} />
           </div>
         </Tabs.TabPane>
       </Tabs>

@@ -30,7 +30,7 @@ import { delete_api } from '../../../api/delete.api';
  */
 class UploadImg extends PureComponent {
   state = {
-    visible: false,
+    visible: this.props.model ? this.props.model : false,
     current: 1,
     upload: {
       upload: {
@@ -154,7 +154,7 @@ class UploadImg extends PureComponent {
           onChange={this.uploadChange}
           child={
             <Button type="dashed" style={{ width: '150px' }}>
-              种植素材
+              添加素材
             </Button>
           }
           {...this.state.upload}

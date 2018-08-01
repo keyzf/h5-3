@@ -29,8 +29,11 @@ class ImgBaseForm extends PureComponent {
           )}
         </Form.Item>
         {this.props.name === 'grid_img' || this.props.name === 'list_img' ? (
-          <Form.Item {...form_item_style('组件布局')}>
-            {getFieldDecorator('layout')(<InputNumber min={1} max={4} />)}
+          <Form.Item {...form_item_style('布局')}>
+            一行显示{getFieldDecorator('layout')(
+              <InputNumber min={1} max={4} />
+            )}{' '}
+            个
           </Form.Item>
         ) : (
           ''

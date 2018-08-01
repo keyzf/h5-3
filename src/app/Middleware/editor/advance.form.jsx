@@ -117,9 +117,7 @@ class AdvanceForm extends PureComponent {
             </Popover>
           </Panel>
         )}
-        {this.props.name === 'button' ? (
-          ''
-        ) : (
+        {this.props.name === 'text' ? (
           <Panel header="搭配色" key="3">
             <Popover
               content={
@@ -149,6 +147,8 @@ class AdvanceForm extends PureComponent {
               </div>
             </Popover>
           </Panel>
+        ) : (
+          ''
         )}
         <Panel header="背景图" key="2">
           <Row gutter={16}>

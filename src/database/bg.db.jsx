@@ -4,7 +4,7 @@ export const $$bg_db = fromJS({
   type: 'background',
   name: 'background',
   customize: {
-    color: '',
+    color: 'white',
     img: '',
     crop_img: '',
     height: 600,

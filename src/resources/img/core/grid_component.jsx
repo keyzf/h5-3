@@ -1,124 +1,66 @@
 import React, { PureComponent } from 'react';
-import { Row, Col } from 'antd';
+import { List } from 'immutable';
+import { ImgAtom } from '../img_atom';
 
-class GridImgUi extends PureComponent {
+export class GridImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
-    const font_color = customize.getIn(['base', 'font_color']);
-    // 接收一行显示数，返回应给显示的比例
-    const col = number => {
-      if (number === 1) {
-        return 24;
-      }
-      if (number === 2) {
-        return 12;
-      }
-      if (number === 3) {
-        return 8;
-      }
-      if (number === 4) {
-        return 6;
-      } else {
-        return null;
-      }
+    const advance = this.props.data.get('advance');
+    const $$show_element = List(
+      customize.getIn(['base', 'show_element', 'value'])
+    );
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
     };
-
-    // 展示的数据
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const $$show_element_title =
-      $$show_element !== undefined ? $$show_element[0] : '';
-    const $$show_element_content =
-      $$show_element !== undefined && $$show_element[1]
-        ? $$show_element[1]
-        : '';
     return (
-      <Row gutter={16}>
-        {customize.get('item').map((data, index) => {
-          return (
-            <Col
-              key={index}
-              span={col(customize.getIn(['base', 'layout', 'value']))}
-            >
-              {data.getIn(['link', 'value']) === '' ? (
-                <img
-                  width={
-                    data.get('width').get('value')
-                      ? data.get('width').get('value')
-                      : '100%'
-                  }
-                  height={
-                    data.get('height').get('value')
-                      ? data.get('height').get('value')
-                      : 'auto'
-                  }
-                  src={
-                    data.get('crop_img')
-                      ? data.get('crop_img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                  }
-                  alt={'img'}
-                />
-              ) : (
-                <a
-                  href={data.getIn(['link', 'value'])}
-                  style={{ color: font_color }}
-                >
-                  <img
-                    width={
-                      data.get('width').get('value')
-                        ? data.get('width').get('value')
-                        : '100%'
-                    }
-                    height={
-                      data.get('height').get('value')
-                        ? data.get('height').get('value')
-                        : 'auto'
-                    }
-                    src={
-                      data.get('crop_img')
-                        ? data.get('crop_img')
-                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                    }
-                    alt={'img'}
-                  />
+      <ImgAtom {...advanced_settings}>
+        <div className={'response_flex'}>
+          {customize.get('item').map((data, index) => {
+            return (
+              <div
+                className={`flex_${customize.getIn([
+                  'base',
+                  'layout',
+                  'value',
+                ])}`}
+                key={index}
+              >
+                <a href={data.getIn(['link', 'value'])}>
+                  <img src={data.get('crop_img')} width={'100%'} alt={'img'} />
                 </a>
-              )}
-              {$$show_element_title ? (
-                ''
-              ) : (
                 <div
+                  className={'flex_center'}
                   style={{
-                    overflow: 'hidden',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['title', 'value'])}
+                  <h4>
+                    {' '}
+                    {$$show_element.includes('标题')
+                      ? ''
+                      : data.getIn(['title', 'value'])}
+                  </h4>
                 </div>
-              )}
-              {$$show_element_content ? (
-                ''
-              ) : (
                 <div
+                  className={'flex_center'}
                   style={{
-                    overflow: 'hidden',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['content', 'value'])}
+                  {$$show_element.includes('内容') ? (
+                    ''
+                  ) : (
+                    <h6>{data.getIn(['content', 'value'])}</h6>
+                  )}
                 </div>
-              )}
-            </Col>
-          );
-        })}
-      </Row>
+              </div>
+            );
+          })}
+        </div>
+      </ImgAtom>
     );
   }
 }
-
-export { GridImgUi };

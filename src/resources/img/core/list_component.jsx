@@ -39,18 +39,11 @@ class ListImgUi extends PureComponent {
               span={col(customize.getIn(['base', 'layout', 'value']))}
             >
               <Col span={12}>
-                {data.getIn(['link', 'value']) === '' ? (
+                <a
+                  href={data.getIn(['link', 'value'])}
+                  style={{ color: font_color }}
+                >
                   <img
-                    width={
-                      data.get('width').get('value')
-                        ? data.get('width').get('value')
-                        : '100%'
-                    }
-                    height={
-                      data.get('height').get('value')
-                        ? data.get('height').get('value')
-                        : 'auto'
-                    }
                     src={
                       data.get('crop_img')
                         ? data.get('crop_img')
@@ -58,31 +51,7 @@ class ListImgUi extends PureComponent {
                     }
                     alt={'img'}
                   />
-                ) : (
-                  <a
-                    href={data.getIn(['link', 'value'])}
-                    style={{ color: font_color }}
-                  >
-                    <img
-                      width={
-                        data.get('width').get('value')
-                          ? data.get('width').get('value')
-                          : '100%'
-                      }
-                      height={
-                        data.get('height').get('value')
-                          ? data.get('height').get('value')
-                          : 'auto'
-                      }
-                      src={
-                        data.get('crop_img')
-                          ? data.get('crop_img')
-                          : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                      }
-                      alt={'img'}
-                    />
-                  </a>
-                )}
+                </a>
                 <br />
               </Col>
               <Col span={12}>

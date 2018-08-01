@@ -1,8 +1,20 @@
 import React, { PureComponent } from 'react';
-import { Form, Upload } from 'antd';
+import { Form, Upload, message } from 'antd';
 import { uploadToken } from '../tool/qiniu.tool';
 
 class UploadImgForm extends PureComponent {
+  beforeUpload = file => {
+    const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJPG) {
+      message.error('图片格式只能为png或jpg');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('上传图片过大，不超过2');
+    }
+    return isJPG && isLt2M;
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const upload_props = {
@@ -11,6 +23,7 @@ class UploadImgForm extends PureComponent {
       showUploadList: false,
       data: { token: uploadToken, key: Math.random() + '.png' },
       accept: 'image/*',
+      beforeUpload: this.beforeUpload,
     };
     return (
       <Form hideRequiredMark>
