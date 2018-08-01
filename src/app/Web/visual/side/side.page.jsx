@@ -131,7 +131,7 @@ export default connect(
           content: template_form_data,
         },
         {
-          icon: 'icon iconfont icon-zhinengyuyinjiaohu',
+          icon: 'icon iconfont icon-yingyong',
           title: '更多',
           name: 'lnteractive',
         },

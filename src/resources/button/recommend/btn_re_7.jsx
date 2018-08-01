@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonAtom } from '../button_atom';
 
-class ButtonUi extends React.Component {
+class Btn7Ui extends React.Component {
   render() {
     const customize = this.props.data.get('customize');
     const advance = this.props.data.get('advance');
@@ -27,11 +27,11 @@ class ButtonUi extends React.Component {
         <ButtonAtom {...advanced_settings}>
           {customize.getIn(['content', 'value'])
             ? customize.getIn(['content', 'value'])
-            : '基础按钮'}
+            : '立即下载'}
         </ButtonAtom>
       </a>
     );
   }
 }
 
-export { ButtonUi };
+export { Btn7Ui };

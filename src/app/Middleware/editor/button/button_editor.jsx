@@ -23,6 +23,9 @@ class EditorButton extends PureComponent {
         $$props_data.setIn(['customize', 'font_color'], data.hex)
       );
     }
+    if (opt_name === 'bg_color') {
+      this.sendAction($$props_data.setIn(['customize', 'bg_color'], data.hex));
+    }
   };
   sendAction = up_data => {
     // data source
@@ -98,6 +101,31 @@ class EditorButton extends PureComponent {
                     </Popover>
                   </Form.Item>
                 </Form>
+                <Form hideRequiredMark>
+                  <Form.Item {...form_item_style('按钮背景')}>
+                    <Popover
+                      content={
+                        <SketchPicker
+                          color={$$customize.getIn(['base', 'font_color'])}
+                          onChangeComplete={this.editorFeatures.bind(
+                            this,
+                            'bg_color'
+                          )}
+                        />
+                      }
+                      trigger="click"
+                    >
+                      <div
+                        style={{
+                          marginTop: '6px',
+                          height: '25px',
+                          width: '100%',
+                          backgroundColor: $$customize.get('bg_color'),
+                        }}
+                      />
+                    </Popover>
+                  </Form.Item>
+                </Form>
                 <ButtonForm
                   show={
                     $$ui_text_data.getIn(['customize', 'name']) === 'button'
@@ -119,7 +147,7 @@ class EditorButton extends PureComponent {
                 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
-            <AdvanceEditor data={$$ui_text_data} />
+            <AdvanceEditor data={$$ui_text_data} name={'button'} />
           </div>
         </Tabs.TabPane>
       </Tabs>

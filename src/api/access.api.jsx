@@ -3,7 +3,7 @@ import axios from 'axios';
 export const access_api = (data, up_func) => {
   return new Promise((resolve, reject) => {
     //开发环境
-    // resolve('visual');
+    resolve('visual');
     // 生产环境
     if (data.state && data.sid) {
       let params = new URLSearchParams();

@@ -60,11 +60,6 @@ class AdvanceForm extends PureComponent {
       );
     }
   };
-
-  /**
-   * 更新h5_data 与choose_data 中的信息
-   * @param up_data
-   */
   sendAction = up_data => {
     // data source
     const $$select_data = this.props.h5_data_value.data;
@@ -89,61 +84,72 @@ class AdvanceForm extends PureComponent {
     return (
       <Collapse
         bordered={false}
-        defaultActiveKey={['1', '2']}
+        defaultActiveKey={['1', '2', '3']}
         style={{ background: 'transparent' }}
       >
-        <Panel header="背景色" key="1">
-          <Popover
-            content={
-              <SketchPicker
-                color={$$advance.get('color')}
-                onChangeComplete={this.editorFeatures.bind(this, 'color')}
-              />
-            }
-            trigger="click"
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-                height: '80px',
-                width: '150px',
-                border: '1px black solid',
-                background: $$advance.get('color'),
-              }}
+        {this.props.name === 'button' ? (
+          ''
+        ) : (
+          <Panel header="背景色" key="1">
+            <Popover
+              content={
+                <SketchPicker
+                  color={$$advance.get('color')}
+                  onChangeComplete={this.editorFeatures.bind(this, 'color')}
+                />
+              }
+              trigger="click"
             >
-              <Icon type="plus" />&nbsp;&nbsp;自定义
-            </div>
-          </Popover>
-        </Panel>
-        <Panel header="搭配色" key="1">
-          <Popover
-            content={
-              <SketchPicker
-                color={$$advance.get('style_color')}
-                onChangeComplete={this.editorFeatures.bind(this, 'style_color')}
-              />
-            }
-            trigger="click"
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-                height: '80px',
-                width: '150px',
-                border: '1px black solid',
-                background: $$advance.get('color'),
-              }}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  height: '80px',
+                  width: '150px',
+                  border: '1px black solid',
+                  background: $$advance.get('color'),
+                }}
+              >
+                <Icon type="plus" />&nbsp;&nbsp;自定义
+              </div>
+            </Popover>
+          </Panel>
+        )}
+        {this.props.name === 'button' ? (
+          ''
+        ) : (
+          <Panel header="搭配色" key="3">
+            <Popover
+              content={
+                <SketchPicker
+                  color={$$advance.get('style_color')}
+                  onChangeComplete={this.editorFeatures.bind(
+                    this,
+                    'style_color'
+                  )}
+                />
+              }
+              trigger="click"
             >
-              <Icon type="plus" />&nbsp;&nbsp;自定义
-            </div>
-          </Popover>
-        </Panel>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  height: '80px',
+                  width: '150px',
+                  border: '1px black solid',
+                  background: $$advance.get('style_color'),
+                }}
+              >
+                <Icon type="plus" />&nbsp;&nbsp;自定义
+              </div>
+            </Popover>
+          </Panel>
+        )}
         <Panel header="背景图" key="2">
           <Row gutter={16}>
             <Col

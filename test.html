@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+body{
+	background: #f4f4f4;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#con{
+	width: 320px;
+	min-height: 600px;
+	border:1px solid #eee;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: #fff;
+}	
+
+#con .section{
+	cursor: pointer;
+}
+
+#content{
+	width: 320px;
+	min-height: 1000px;
+	border:1px solid #eee;
+	margin: auto;
+	position: relative;
+	background: #fff;
+}
+</style>
+<script src="http://my.e7wei.com/Public/static/js/jquery.min.js"></script>
+</head>
+<body>
+<div id="con">
+	<div class="section">
+		<img src="http://s.e7wei.com/90626DP37YYCEQC.png" style="width: 320px;">
+	</div>
+</div>
+	
+<div id="content"></div>
+<script>
+$("#con .section").click(function(){
+	var t = document.documentElement.scrollTop||document.body.scrollTop;
+	var h = document.documentElement.clientHeight;
+	var top = h/2 + t - ($(this).height())/2;
+	var p = '<div style="position:absolute; left:0px; top:' + top + 'px;">' + $(this).html() + '</div>';
+	$("#content").html(p);
+});
+</script>
+</body>
+</html>
