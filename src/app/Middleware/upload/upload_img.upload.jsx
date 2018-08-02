@@ -176,7 +176,7 @@ class UploadImg extends PureComponent {
             {this.state.img_library.map((data, index) => {
               return (
                 <div
-                  className={'flex_1'}
+                  className={'flex_model_1'}
                   key={index}
                   onClick={this.choose_img.bind(this, data.url)}
                 >

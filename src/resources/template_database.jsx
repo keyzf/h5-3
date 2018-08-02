@@ -21,6 +21,13 @@ import {
 import {
   $$carousel_img_database,
   $$grid_img_database,
+  $$img_re_1,
+  $$img_re_2,
+  $$img_re_3,
+  $$img_re_4,
+  $$img_re_5,
+  $$img_re_6,
+  $$img_re_7,
   $$list_img_database,
   $$single_img_database,
   $$slider_img_database,
@@ -96,6 +103,13 @@ import { Btn4Ui } from './button/recommend/btn_re_4';
 import { Btn5Ui } from './button/recommend/btn_re_5';
 import { Btn6Ui } from './button/recommend/btn_re_6';
 import { Btn7Ui } from './button/recommend/btn_re_7';
+import { Img1UI } from './img/recommend/img_re_1';
+import { Img2UI } from './img/recommend/img_re_2';
+import { Img3UI } from './img/recommend/img_re_3';
+import { Img4UI } from './img/recommend/img_re_4';
+import { Img5UI } from './img/recommend/img_re_5';
+import { Img6UI } from './img/recommend/img_re_6';
+import { Img7UI } from './img/recommend/img_re_7';
 
 /**
  * text
@@ -197,6 +211,13 @@ const template_img_data = [
   { template: <SliderImgTemplate />, data: $$slider_img_database },
   { template: <CarouselImgTemplate />, data: $$carousel_img_database },
   { template: '', data: 'dividing-line' },
+  { template: <Img1UI data={$$img_re_1} />, data: $$img_re_1 },
+  { template: <Img2UI data={$$img_re_2} />, data: $$img_re_2 },
+  { template: <Img3UI data={$$img_re_3} />, data: $$img_re_3 },
+  { template: <Img4UI data={$$img_re_4} />, data: $$img_re_4 },
+  { template: <Img5UI data={$$img_re_5} />, data: $$img_re_5 },
+  { template: <Img6UI data={$$img_re_6} />, data: $$img_re_6 },
+  { template: <Img7UI data={$$img_re_7} />, data: $$img_re_7 },
 ];
 /**
  * mall

@@ -7,17 +7,12 @@ import { GridImgUi } from '../../../resources/img/core/grid_component';
 import { ListImgUi } from '../../../resources/img/core/list_component';
 import { SliderImgUI } from '../../../resources/img/core/slider_component';
 import { CarouselImgUI } from '../../../resources/img/core/carousel_component';
-import { OneImgUi } from '../../../resources/img/recommend/old_ui/one_img_ui';
-import { TwoImgUi } from '../../../resources/img/recommend/old_ui/two_img_ui';
-import { ThreeImgUi } from '../../../resources/img/recommend/old_ui/three_img_ui';
 import { VideoUi } from '../../../resources/video/core/video_ui';
 import { GridMallUi } from '../../../resources/mall/core/grid_ui';
 import { ListMallUi } from '../../../resources/mall/core/list_ui';
 import { OneMallUi } from '../../../resources/mall/recommend/one_mall_ui';
 import { ButtonUi } from '../../../resources/button/core/button';
 import FormUi from '../../../resources/form/recommend/form_ui_render';
-import { FourImgUi } from '../../../resources/img/recommend/old_ui/four_img_ui';
-import { FiveImgUi } from '../../../resources/img/recommend/old_ui/five_img_ui';
 import { TwoMallUi } from '../../../resources/mall/recommend/two_mall_ui';
 import { ThreeMallUi } from '../../../resources/mall/recommend/three_mall_ui';
 import { FourMallUi } from '../../../resources/mall/recommend/four_mall_ui';
@@ -42,6 +37,13 @@ import { Btn4Ui } from '../../../resources/button/recommend/btn_re_4';
 import { Btn5Ui } from '../../../resources/button/recommend/btn_re_5';
 import { Btn6Ui } from '../../../resources/button/recommend/btn_re_6';
 import { Btn7Ui } from '../../../resources/button/recommend/btn_re_7';
+import { Img1UI } from '../../../resources/img/recommend/img_re_1';
+import { Img2UI } from '../../../resources/img/recommend/img_re_2';
+import { Img3UI } from '../../../resources/img/recommend/img_re_3';
+import { Img4UI } from '../../../resources/img/recommend/img_re_4';
+import { Img5UI } from '../../../resources/img/recommend/img_re_5';
+import { Img6UI } from '../../../resources/img/recommend/img_re_6';
+import { Img7UI } from '../../../resources/img/recommend/img_re_7';
 
 export const render_switch_ui = data => {
   // 获取组件名称，通过组件名称进行匹配
@@ -84,16 +86,20 @@ export const render_switch_ui = data => {
       return <SliderImgUI data={data} />;
     case 'carousel_img':
       return <CarouselImgUI data={data} />;
-    case 'one_img':
-      return <OneImgUi data={data} />;
-    case 'two_img':
-      return <TwoImgUi data={data} />;
-    case 'three_img':
-      return <ThreeImgUi data={data} />;
-    case 'four_img':
-      return <FourImgUi data={data} />;
-    case 'five_img':
-      return <FiveImgUi data={data} />;
+    case 'img_re_1':
+      return <Img1UI data={data} />;
+    case 'img_re_2':
+      return <Img2UI data={data} />;
+    case 'img_re_3':
+      return <Img3UI data={data} />;
+    case 'img_re_4':
+      return <Img4UI data={data} />;
+    case 'img_re_5':
+      return <Img5UI data={data} />;
+    case 'img_re_6':
+      return <Img6UI data={data} />;
+    case 'img_re_7':
+      return <Img7UI data={data} />;
     //  商品类
     case 'list_mall':
       return <ListMallUi data={data} />;

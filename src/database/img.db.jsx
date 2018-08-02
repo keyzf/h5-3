@@ -321,6 +321,181 @@ const $$carousel_img_database = $$img_func_database(
   '',
   '#FFF'
 );
+
+export const $$img_re_1 = $$img_func_database(
+  'img_re_1',
+  [
+    {
+      img: 'http://7xv429.com1.z0.glb.clouddn.com/mao1.jpg',
+      crop_img: 'http://7xv429.com1.z0.glb.clouddn.com/mao1.jpg',
+      title: { value: '——易企微' },
+      content: {
+        value: '微信一站式解决方案',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  300,
+  280,
+  '',
+  '#000'
+);
+
+export const $$img_re_2 = $$img_func_database(
+  'img_re_2',
+  [
+    {
+      img: 'http://7xv429.com1.z0.glb.clouddn.com/nvren1.jpg',
+      crop_img: 'http://7xv429.com1.z0.glb.clouddn.com/nvren1.jpg',
+      title: { value: '' },
+      content: {
+        value:
+          '迷途的爱终究以悲剧收场，致使很多人爱过一次便不敢再爱，相信一个人以后便不再相信。',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  300,
+  280,
+  '',
+  '#000'
+);
+
+export const $$img_re_3 = $$img_func_database(
+  'img_re_3',
+  [
+    {
+      img: 'http://7xn5zt.com1.z0.glb.clouddn.com/15.jpg',
+      crop_img: 'http://7xn5zt.com1.z0.glb.clouddn.com/15.jpg',
+      title: { value: '' },
+      content: {
+        value: '',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  200,
+  280,
+  '',
+  '#000'
+);
+export const $$img_re_4 = $$img_func_database(
+  'img_re_4',
+  [
+    {
+      img: 'http://7xn5zt.com1.z0.glb.clouddn.com/64.jpg',
+      crop_img: 'http://7xn5zt.com1.z0.glb.clouddn.com/64.jpg',
+      title: { value: '' },
+      content: {
+        value: '',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  240,
+  250,
+  '',
+  '#000'
+);
+export const $$img_re_5 = $$img_func_database(
+  'img_re_5',
+  [
+    {
+      img: 'http://7xn5zt.com1.z0.glb.clouddn.com/15.jpg',
+      crop_img: 'http://7xn5zt.com1.z0.glb.clouddn.com/15.jpg',
+      title: { value: '图片名称' },
+      content: {
+        value: '',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  200,
+  280,
+  '',
+  '#000'
+);
+export const $$img_re_6 = $$img_func_database(
+  'img_re_6',
+  [
+    {
+      img: 'http://f.e7wei.com/20161108_58218a762ebd0.png',
+      crop_img: 'http://f.e7wei.com/20161108_58218a762ebd0.png',
+      title: { value: '烘焙' },
+      content: {
+        value:
+          '，是指在物料燃点之下通过干热的方式使物料脱水变干变硬的过程。烘焙是面包、蛋糕类产品制作不可缺少的步骤，通过烘焙后淀粉产生糊化、蛋白质变性等一系列化学变化后，面包、蛋糕达到熟化的目的。',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  300,
+  294,
+  '',
+  '#000'
+);
+
+export const $$img_re_7 = $$img_func_database(
+  'img_re_7',
+  [
+    {
+      img: 'http://f.e7wei.com/20161108_58218a8421c19.png',
+      crop_img: 'http://f.e7wei.com/20161108_58218a8421c19.png',
+      title: { value: '烘焙' },
+      content: {
+        value:
+          '《造房子》是王澍获得“建筑界的诺贝尔奖”普利兹克奖后的第一本著作。这里有他的个人成长轨迹、代表作的诞生过程，以及他对传统文化、东方美学的经年探索。他用建筑对世界发问。',
+      },
+      link: { value: '' },
+      radius: { value: 0 },
+      img_config: {
+        stretching: { value: '' },
+        tiling: { value: '' },
+      },
+    },
+  ],
+  0,
+  300,
+  294,
+  '',
+  '#000'
+);
 // 导出
 export {
   $$single_img_database,

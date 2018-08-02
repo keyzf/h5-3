@@ -426,13 +426,20 @@ class EditorImg extends PureComponent {
                       />
                     );
                   })}
-                  <Button
-                    type="dashed"
-                    style={{ width: '100%' }}
-                    onClick={this.editorFeatures.bind(this, 'add_item')}
-                  >
-                    <Icon type="plus" />添加
-                  </Button>
+                  {$$data.getIn(['customize', 'name']) !== 'grid_img' ||
+                  'list_img' ||
+                  'slider_img' ||
+                  'carousel_img' ? (
+                    ''
+                  ) : (
+                    <Button
+                      type="dashed"
+                      style={{ width: '100%' }}
+                      onClick={this.editorFeatures.bind(this, 'add_item')}
+                    >
+                      <Icon type="plus" />添加
+                    </Button>
+                  )}
                 </Panel>
               </Collapse>
             )}
