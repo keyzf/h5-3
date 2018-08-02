@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Tooltip, Divider, message } from 'antd';
+import { Tooltip, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../database/redux/action';
 
@@ -58,7 +58,7 @@ class ComponentLocation extends PureComponent {
       </span>
     );
     return (
-      <Tooltip title={text} trigger={'click'}>
+      <Tooltip title={text} trigger={'click'} placement="rightTop">
         {this.props.children}
       </Tooltip>
     );

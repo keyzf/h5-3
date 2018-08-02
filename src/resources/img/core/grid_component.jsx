@@ -27,7 +27,14 @@ export class GridImgUi extends PureComponent {
                 key={index}
               >
                 <a href={data.getIn(['link', 'value'])}>
-                  <img src={data.get('crop_img')} width={'100%'} alt={'img'} />
+                  <img
+                    style={{
+                      borderRadius: `${data.getIn(['radius', 'value'])}px`,
+                    }}
+                    src={data.get('crop_img')}
+                    width={'100%'}
+                    alt={'img'}
+                  />
                 </a>
                 <div
                   className={'flex_center'}

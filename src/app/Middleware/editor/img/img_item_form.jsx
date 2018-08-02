@@ -2,7 +2,7 @@
  * img 单项 表单
  */
 import React, { PureComponent } from 'react';
-import { Col, Form, Input, InputNumber, Slider } from 'antd';
+import { Form, Input, Slider } from 'antd';
 
 /**
  * img 单项 表单
@@ -28,18 +28,20 @@ class ImgItemForm extends PureComponent {
           ''
         ) : (
           <Form.Item {...form_item_style('标题')}>
-            {getFieldDecorator('title')(<Input />)}
+            {getFieldDecorator('title')(<Input placeholder="请输入标题" />)}
           </Form.Item>
         )}
         {this.props.name === 'single_img' ? (
           ''
         ) : (
           <Form.Item {...form_item_style('内容')}>
-            {getFieldDecorator('content')(<TextArea rows={4} />)}
+            {getFieldDecorator('content')(
+              <TextArea rows={4} placeholder="请输入内容" />
+            )}
           </Form.Item>
         )}
         <Form.Item {...form_item_style('图片圆角')}>
-          {getFieldDecorator('radius')(<Slider min={0} max={1000} />)}
+          {getFieldDecorator('radius')(<Slider min={0} max={100} />)}
         </Form.Item>
         <Form.Item {...form_item_style('链接')}>
           {getFieldDecorator('link')(

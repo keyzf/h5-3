@@ -4,6 +4,7 @@ export const ImgAtom = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   // 宽度
   width: ${props => props.width + 'px'};
   height: ${props => props.height + 'px'};
@@ -15,5 +16,6 @@ export const ImgAtom = styled.div`
   background-image: ${props => (props.img ? 'url(' + props.img + ')' : null)};
   background-size: 100%;
   overflow: hidden;
+
   margin: auto;
 `;

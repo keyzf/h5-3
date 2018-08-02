@@ -1,95 +1,216 @@
 import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
+import { List } from 'immutable';
+import { ImgAtom } from '../img_atom';
 
 class ListImgUi extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
+    const advance = this.props.data.get('advance');
+    const $$show_element = List(
+      customize.getIn(['base', 'show_element', 'value'])
+    );
 
-    const col = number => {
-      if (number === 1) {
-        return 24;
-      }
-      if (number === 2) {
-        return 12;
-      }
-      if (number === 3) {
-        return 8;
-      }
-      if (number === 4) {
-        return 6;
-      } else {
-        return null;
-      }
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
     };
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const font_color = customize.getIn(['base', 'font_color']);
-    const $$show_element_title =
-      $$show_element !== undefined ? $$show_element[0] : '';
-    const $$show_element_content =
-      $$show_element !== undefined && $$show_element[1]
-        ? $$show_element[1]
-        : '';
     return (
-      <Row gutter={16}>
-        {customize.get('item').map((data, index) => {
-          return (
-            <Col
-              style={{ margin: '5px 0' }}
-              key={index}
-              span={col(customize.getIn(['base', 'layout', 'value']))}
-            >
-              <Col span={12}>
-                <a
-                  href={data.getIn(['link', 'value'])}
-                  style={{ color: font_color }}
-                >
-                  <img
-                    src={
-                      data.get('crop_img')
-                        ? data.get('crop_img')
-                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                    }
-                    alt={'img'}
-                  />
-                </a>
-                <br />
-              </Col>
-              <Col span={12}>
-                {$$show_element_title ? (
-                  ''
-                ) : (
+      <ImgAtom {...advanced_settings}>
+        <div className={'response_flex'}>
+          {customize.getIn(['base', 'layout', 'value']) === 1
+            ? customize.get('item').map((data, index) => {
+                return (
                   <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      alignCenter: 'center',
-                      color: font_color,
-                    }}
+                    key={index}
+                    className={'flex_list_1'}
+                    style={{ margin: '5px 0' }}
                   >
-                    {data.getIn(['title', 'value'])}
+                    <div className={'response_flex'}>
+                      <div className={`flex_list_2`}>
+                        <a href={data.getIn(['link', 'value'])}>
+                          <img
+                            style={{
+                              borderRadius: `${data.getIn([
+                                'radius',
+                                'value',
+                              ])}px`,
+                            }}
+                            src={data.get('crop_img')}
+                            width={'100%'}
+                            height={'100%'}
+                            alt={'img'}
+                          />
+                        </a>
+                      </div>
+                      <div
+                        className={'flex_list_2'}
+                        style={{
+                          background: `${advance.get('content_color')}`,
+                          color: customize.getIn(['base', 'font_color']),
+                        }}
+                      >
+                        <div className={'response_flex flex_center'}>
+                          <h4>
+                            {$$show_element.includes('标题')
+                              ? ''
+                              : data.getIn(['title', 'value'])}
+                            <h6>
+                              {$$show_element.includes('内容')
+                                ? ''
+                                : data.getIn(['content', 'value'])}
+                            </h6>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-                {$$show_element_content ? (
-                  ''
-                ) : (
+                );
+              })
+            : ''}
+          {customize.getIn(['base', 'layout', 'value']) === 2
+            ? customize.get('item').map((data, index) => {
+                return (
                   <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      alignCenter: 'center',
-                      color: font_color,
-                    }}
+                    key={index}
+                    className={'flex_list_1'}
+                    style={{ margin: '5px 0' }}
                   >
-                    {data.getIn(['content', 'value'])}
+                    <div className={'response_flex'}>
+                      <div
+                        className={'flex_list_2'}
+                        style={{
+                          background: `${advance.get('content_color')}`,
+                          color: customize.getIn(['base', 'font_color']),
+                        }}
+                      >
+                        <div className={'response_flex flex_center'}>
+                          <h4>
+                            {$$show_element.includes('标题')
+                              ? ''
+                              : data.getIn(['title', 'value'])}
+                            <h6>
+                              {$$show_element.includes('内容')
+                                ? ''
+                                : data.getIn(['content', 'value'])}
+                            </h6>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className={`flex_list_2`}>
+                        <a href={data.getIn(['link', 'value'])}>
+                          <img
+                            style={{
+                              borderRadius: `${data.getIn([
+                                'radius',
+                                'value',
+                              ])}px`,
+                            }}
+                            src={data.get('crop_img')}
+                            width={'100%'}
+                            height={'100%'}
+                            alt={'img'}
+                          />
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </Col>
-            </Col>
-          );
-        })}
-      </Row>
+                );
+              })
+            : ''}
+          {customize.getIn(['base', 'layout', 'value']) === 3
+            ? customize.get('item').map((data, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={'flex_list_1'}
+                    style={{ margin: '5px 0' }}
+                  >
+                    {index % 2 ? (
+                      <div className={'response_flex'}>
+                        <div
+                          className={'flex_list_2'}
+                          style={{
+                            background: `${advance.get('content_color')}`,
+                            color: customize.getIn(['base', 'font_color']),
+                          }}
+                        >
+                          <div className={'response_flex flex_center'}>
+                            <h4>
+                              {$$show_element.includes('标题')
+                                ? ''
+                                : data.getIn(['title', 'value'])}
+                              <h6>
+                                {$$show_element.includes('内容')
+                                  ? ''
+                                  : data.getIn(['content', 'value'])}
+                              </h6>
+                            </h4>
+                          </div>
+                        </div>
+                        <div className={`flex_list_2`}>
+                          <a href={data.getIn(['link', 'value'])}>
+                            <img
+                              style={{
+                                borderRadius: `${data.getIn([
+                                  'radius',
+                                  'value',
+                                ])}px`,
+                              }}
+                              src={data.get('crop_img')}
+                              width={'100%'}
+                              height={'100%'}
+                              alt={'img'}
+                            />
+                          </a>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={'response_flex'}>
+                        <div className={`flex_list_2`}>
+                          <a href={data.getIn(['link', 'value'])}>
+                            <img
+                              style={{
+                                borderRadius: `${data.getIn([
+                                  'radius',
+                                  'value',
+                                ])}px`,
+                              }}
+                              src={data.get('crop_img')}
+                              width={'100%'}
+                              height={'100%'}
+                              alt={'img'}
+                            />
+                          </a>
+                        </div>
+                        <div
+                          className={'flex_list_2'}
+                          style={{
+                            background: `${advance.get('content_color')}`,
+                            color: customize.getIn(['base', 'font_color']),
+                          }}
+                        >
+                          <div className={'response_flex flex_center'}>
+                            <h4>
+                              {$$show_element.includes('标题')
+                                ? ''
+                                : data.getIn(['title', 'value'])}
+                              <h6>
+                                {$$show_element.includes('内容')
+                                  ? ''
+                                  : data.getIn(['content', 'value'])}
+                              </h6>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            : ''}
+        </div>
+      </ImgAtom>
     );
   }
 }

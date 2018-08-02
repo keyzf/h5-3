@@ -1,6 +1,14 @@
 import { fromJS } from 'immutable';
 // img 根级数据集函数
-const $$img_func_database = (name, item, layout, height, width) => {
+const $$img_func_database = (
+  name,
+  item,
+  layout,
+  height,
+  width,
+  content_color,
+  font_color
+) => {
   return fromJS({
     // 基础编辑属性
     customize: {
@@ -11,7 +19,7 @@ const $$img_func_database = (name, item, layout, height, width) => {
       base: {
         show_element: { value: undefined }, // 元素显示
         layout: { value: layout }, // 布局
-        font_color: '#000', //字体颜色
+        font_color: font_color, //字体颜色
       },
     },
     // 高级编辑属性
@@ -29,7 +37,7 @@ const $$img_func_database = (name, item, layout, height, width) => {
       top: 0,
       rotate: 0,
       zIndex: 100,
-      content_color: 'grey',
+      content_color: content_color,
     },
   });
 };
@@ -43,8 +51,7 @@ const $$img_addItem_database = fromJS({
     value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
   },
   link: { value: '' },
-  width: { value: '' },
-  height: { value: '' },
+  radius: { value: 0 },
   img_config: {
     stretching: { value: '' },
     tiling: { value: '' },
@@ -137,7 +144,9 @@ const $$grid_img_database = $$img_func_database(
   ],
   2,
   444,
-  273
+  273,
+  'grey',
+  '#000'
 );
 // 3. 竖排排列图
 const $$list_img_database = $$img_func_database(
@@ -188,7 +197,9 @@ const $$list_img_database = $$img_func_database(
   ],
   1,
   500,
-  300
+  300,
+  'grey',
+  '#000'
 );
 // 4. 滑动图
 const $$slider_img_database = $$img_func_database(
@@ -236,38 +247,12 @@ const $$slider_img_database = $$img_func_database(
         tiling: { value: '' },
       },
     },
-    {
-      img: 'http://src.e7wei.com/0.6791210836134676.png',
-      crop_img: 'http://src.e7wei.com/0.6791210836134676.png',
-      title: { value: '这里是图片标题' },
-      content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
-      },
-      link: { value: '' },
-      radius: { value: 0 },
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      },
-    },
-    {
-      img: 'http://src.e7wei.com/0.26510017936261243.png',
-      crop_img: 'http://src.e7wei.com/0.26510017936261243.png',
-      title: { value: '这里是图片标题' },
-      content: {
-        value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
-      },
-      link: { value: '' },
-      radius: { value: 0 },
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      },
-    },
   ],
   0,
-  200,
-  300
+  221,
+  311,
+  'grey',
+  '#000'
 );
 // 5. 轮播图
 const $$carousel_img_database = $$img_func_database(
@@ -332,7 +317,9 @@ const $$carousel_img_database = $$img_func_database(
   ],
   0,
   165,
-  300
+  300,
+  '',
+  '#FFF'
 );
 // 导出
 export {

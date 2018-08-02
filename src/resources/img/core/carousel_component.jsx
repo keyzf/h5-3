@@ -1,81 +1,52 @@
 import React, { PureComponent } from 'react';
 import { Carousel } from 'antd';
+import { List } from 'immutable';
+import { ImgAtom } from '../img_atom';
 
-class CarouselImgUI extends PureComponent {
+export class CarouselImgUI extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
-    // 可编辑属性 data:为文本
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const font_color = customize.getIn(['base', 'font_color']);
-    const $$show_element_title =
-      $$show_element !== undefined ? $$show_element[0] : '';
-    const $$show_element_content =
-      $$show_element !== undefined && $$show_element[1]
-        ? $$show_element[1]
-        : '';
+    const advance = this.props.data.get('advance');
+    const $$show_element = List(
+      customize.getIn(['base', 'show_element', 'value'])
+    );
     return (
-      <div>
-        <Carousel autoplay>
-          {customize.get('item').map((data, index) => {
-            return (
-              <div key={index}>
-                <a
-                  href={data.getIn(['link', 'value'])}
-                  style={{ color: font_color }}
-                >
-                  <img
-                    src={
-                      data.get('crop_img')
-                        ? data.get('crop_img')
-                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                    }
-                    alt={'img'}
-                  />
-                </a>
+      <Carousel autoplay>
+        {customize.get('item').map((data, index) => {
+          return (
+            <a href={data.getIn(['link', 'value'])}>
+              <ImgAtom
+                className={'flex_center'}
+                width={advance.get('width')}
+                height={advance.get('height')}
+                img={data.get('crop_img')}
+                radius={data.getIn(['radius', 'value'])}
+                key={index}
+              >
                 <div
-                  style={{
-                    marginTop: '-100px',
-                    position: 'relative',
-                    top: '-30px',
-                    color: font_color,
-                  }}
+                  className={'flex_center'}
+                  style={{ background: `${advance.get('content_color')}` }}
                 >
-                  {$$show_element_title ? (
-                    ''
-                  ) : (
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        color: font_color,
-                      }}
+                  <h4
+                    style={{ color: customize.getIn(['base', 'font_color']) }}
+                  >
+                    {$$show_element.includes('标题')
+                      ? ''
+                      : data.getIn(['title', 'value'])}
+                    <h6
+                      style={{ color: customize.getIn(['base', 'font_color']) }}
                     >
-                      {data.get('title').get('value')}
-                    </div>
-                  )}
-                  {$$show_element_content ? (
-                    ''
-                  ) : (
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        color: font_color,
-                      }}
-                    >
-                      {data.getIn(['content', 'value'])}
-                    </div>
-                  )}
+                      {$$show_element.includes('内容')
+                        ? ''
+                        : data.getIn(['content', 'value'])}
+                    </h6>
+                  </h4>
                 </div>
-              </div>
-            );
-          })}
-        </Carousel>
-      </div>
+              </ImgAtom>
+            </a>
+          );
+        })}
+      </Carousel>
     );
   }
 }
-
-export { CarouselImgUI };

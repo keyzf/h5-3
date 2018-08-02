@@ -1,16 +1,18 @@
 import React, { PureComponent } from 'react';
+import { List } from 'immutable';
+import { ImgAtom } from '../img_atom';
 
-class SliderImgUI extends PureComponent {
+export class SliderImgUI extends PureComponent {
   render() {
     const customize = this.props.data.get('customize');
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const font_color = customize.getIn(['base', 'font_color']);
-    const $$show_element_title =
-      $$show_element !== undefined ? $$show_element[0] : '';
-    const $$show_element_content =
-      $$show_element !== undefined && $$show_element[1]
-        ? $$show_element[1]
-        : '';
+    const advance = this.props.data.get('advance');
+    const $$show_element = List(
+      customize.getIn(['base', 'show_element', 'value'])
+    );
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
+    };
     return (
       <div
         style={{
@@ -20,56 +22,58 @@ class SliderImgUI extends PureComponent {
           flex: '0 0 200px',
         }}
       >
-        {customize.get('item').map((data, index) => {
-          return (
-            <div key={index} style={{ flex: '0 0 120px', marginRight: '2px' }}>
-              <a
-                href={data.getIn(['link', 'value'])}
-                style={{ color: font_color }}
+        <ImgAtom {...advanced_settings}>
+          {customize.get('item').map((data, index) => {
+            return (
+              <div
+                key={index}
+                style={{ flex: '0 0 120px', marginRight: '2px' }}
               >
-                <img
-                  src={
-                    data.get('crop_img')
-                      ? data.get('crop_img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                  }
-                  alt={'img'}
-                />
-              </a>
-              {$$show_element_title ? (
-                ''
-              ) : (
+                <a
+                  href={data.getIn(['link', 'value'])}
+                  style={{ color: customize.getIn(['base', 'font_color']) }}
+                >
+                  <img
+                    style={{
+                      borderRadius: `${data.getIn(['radius', 'value'])}px`,
+                    }}
+                    width={'100%'}
+                    src={data.get('crop_img')}
+                    alt={'img'}
+                  />
+                </a>
                 <div
+                  className={'flex_center'}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['title', 'value'])}
+                  <h4>
+                    {' '}
+                    {$$show_element.includes('标题')
+                      ? ''
+                      : data.getIn(['title', 'value'])}
+                  </h4>
                 </div>
-              )}
-              {$$show_element_content ? (
-                ''
-              ) : (
                 <div
+                  className={'flex_center'}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['content', 'value'])}
+                  {$$show_element.includes('内容') ? (
+                    ''
+                  ) : (
+                    <h6>{data.getIn(['content', 'value'])}</h6>
+                  )}
                 </div>
-              )}
-            </div>
-          );
-        })}
+              </div>
+            );
+          })}
+        </ImgAtom>
       </div>
     );
   }
 }
-
-export { SliderImgUI };

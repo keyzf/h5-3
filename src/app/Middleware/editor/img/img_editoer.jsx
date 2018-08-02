@@ -369,34 +369,31 @@ class EditorImg extends PureComponent {
                     />
                   </Col>
                   <Col span={15}>
-                    <UploadImg
-                      type={1}
-                      func={this.changImgToChild}
-                      img_url={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                      children={<Button style={{ width: '100%' }}>更换</Button>}
-                    />
-                    <ImgCropFactory
-                      func={this.cropImgToChild}
-                      children={<Button style={{ width: '100%' }}>裁剪</Button>}
-                      img_src={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                    />
-                    <Popconfirm
-                      placement="top"
-                      title={'确认删除此背景图?'}
-                      onConfirm={this.editorFeatures.bind(this, 'item_img_de')}
-                      okText="确认"
-                      cancelText="取消"
-                    >
-                      <Button style={{ width: '100%' }}>删除</Button>
-                    </Popconfirm>
+                    <Button.Group>
+                      <UploadImg
+                        type={1}
+                        func={this.changImgToChild}
+                        img_url={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                        children={<Button>更换</Button>}
+                      />
+                      <ImgCropFactory
+                        func={this.cropImgToChild}
+                        children={<Button>裁剪</Button>}
+                        img_src={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                      />
+                    </Button.Group>
+                    <br />
+                    <br />
+                    <div>格式：*.jpg / *.png</div>
+                    <div>大小不超过2M</div>
                   </Col>
                 </Row>
                 <Divider />

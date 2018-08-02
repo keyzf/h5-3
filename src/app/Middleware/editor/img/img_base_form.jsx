@@ -2,7 +2,7 @@
  * img 基础设置
  */
 import React, { PureComponent } from 'react';
-import { Form, InputNumber, Checkbox } from 'antd';
+import { Form, InputNumber, Checkbox, Radio } from 'antd';
 
 /**
  * 可操作表单项
@@ -28,12 +28,25 @@ class ImgBaseForm extends PureComponent {
             <Checkbox.Group options={plainOptions} />
           )}
         </Form.Item>
-        {this.props.name === 'grid_img' || this.props.name === 'list_img' ? (
+        {this.props.name === 'grid_img' ? (
           <Form.Item {...form_item_style('布局')}>
             一行显示{getFieldDecorator('layout')(
               <InputNumber min={1} max={4} />
             )}{' '}
             个
+          </Form.Item>
+        ) : (
+          ''
+        )}
+        {this.props.name === 'list_img' ? (
+          <Form.Item {...form_item_style('布局')}>
+            {getFieldDecorator('layout')(
+              <Radio.Group>
+                <Radio value={1}>左图右文</Radio>
+                <Radio value={2}>左文右图</Radio>
+                <Radio value={3}>图文混排</Radio>
+              </Radio.Group>
+            )}
           </Form.Item>
         ) : (
           ''
