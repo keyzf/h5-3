@@ -1,147 +1,110 @@
 import React, { PureComponent } from 'react';
-import { Row, Col, Button } from 'antd';
+import { List } from 'immutable';
+import { ImgAtom } from '../../img/img_atom';
 
 class GridMallUi extends PureComponent {
   render() {
-    // 将接收到的信息分解提取
     const customize = this.props.data.get('customize');
-    const $$show_element = customize.getIn(['base', 'show_element', 'value']);
-    const $$layout = customize.getIn(['base', 'layout', 'value']);
-    const font_color = customize.getIn(['base', 'font_color']);
-    // 将可需要判断是否存在的属性提取出来
-    let $$title = true;
-    let $$content = true;
-    let $$current = true;
-    let $$original = true;
-    let $$img = true;
-    let $$button = true;
-
-    if ($$show_element !== undefined) {
-      // eslint-disable-next-line
-      $$show_element.map(data => {
-        if (data === '标题') {
-          $$title = false;
-        }
-        if (data === '内容') {
-          $$content = false;
-        }
-        if (data === '现价') {
-          $$current = false;
-        }
-        if (data === '原价') {
-          $$original = false;
-        }
-        if (data === '图片') {
-          $$img = false;
-        }
-        if (data === '按钮') {
-          $$button = false;
-        }
-      });
-    }
-
-    const col = number => {
-      if (number === 1) {
-        return 24;
-      }
-      if (number === 2) {
-        return 12;
-      }
-      if (number === 3) {
-        return 8;
-      }
-      if (number === 4) {
-        return 6;
-      } else {
-        return null;
-      }
+    const advance = this.props.data.get('advance');
+    const $$show_element = List(
+      customize.getIn(['base', 'show_element', 'value'])
+    );
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
     };
 
     return (
-      <Row gutter={16}>
-        {customize.get('item').map((data, index) => {
-          return (
-            <Col
-              key={index}
-              span={col($$layout) ? col($$layout) : 12}
-              style={{ margin: '5px 0' }}
-            >
-              {/*图片显示*/}
-              {$$img ? (
-                <img
-                  width={
-                    data.getIn(['width', 'value'])
-                      ? data.getIn(['width', 'value'])
-                      : '100%'
-                  }
-                  height={
-                    data.getIn(['height', 'value'])
-                      ? data.getIn(['height', 'value'])
-                      : 'auto'
-                  }
-                  src={
-                    data.get('crop_img')
-                      ? data.get('crop_img')
-                      : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                  }
-                  alt={'img'}
-                />
-              ) : (
-                ''
-              )}
-              {$$title ? (
+      <ImgAtom {...advanced_settings}>
+        <div className={'response_flex'}>
+          {customize.get('item').map((data, index) => {
+            return (
+              <div
+                className={`flex_${customize.getIn([
+                  'base',
+                  'layout',
+                  'value',
+                ])}`}
+                key={index}
+              >
+                <a href={data.getIn(['link', 'value'])}>
+                  <img
+                    style={{
+                      borderRadius: `${data.getIn(['radius', 'value'])}px`,
+                    }}
+                    src={data.get('crop_img')}
+                    width={'100%'}
+                    alt={'img'}
+                  />
+                </a>
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['title', 'value'])}
+                  <h4
+                    style={{
+                      color: customize.getIn(['base', 'font_color']),
+                    }}
+                  >
+                    {' '}
+                    {$$show_element.includes('标题')
+                      ? ''
+                      : data.getIn(['title', 'value'])}
+                  </h4>
                 </div>
-              ) : (
-                ''
-              )}
-              {$$content ? (
-                <div
+                <h6
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: font_color,
+                    background: `${advance.get('content_color')}`,
+                    color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {data.getIn(['content', 'value'])}
-                </div>
-              ) : (
-                ''
-              )}
-              {$$current ? (
-                <span style={{ marginRight: '5px', color: 'red' }}>
-                  现价{data.get('current').get('value')}
-                </span>
-              ) : (
-                ''
-              )}
-              {$$original ? (
-                <span style={{ textDecoration: 'line-through' }}>
-                  原价{data.getIn(['original', 'value'])}
-                </span>
-              ) : (
-                ''
-              )}
-              {$$button ? (
-                <Button style={{ width: '100%' }}>
-                  {data.get('btn_content').get('value')}
-                </Button>
-              ) : (
-                ''
-              )}
-            </Col>
-          );
-        })}
-      </Row>
+                  {$$show_element.includes('内容')
+                    ? ''
+                    : data.getIn(['content', 'value'])}
+                </h6>
+                <h6 style={{ background: `${advance.get('content_color')}` }}>
+                  {$$show_element.includes('现价') ? (
+                    ''
+                  ) : (
+                    <span
+                      style={{
+                        marginRight: '5px',
+                        color: 'rgb(255,6,79)',
+                      }}
+                    >
+                      现价{data.get('current').get('value')}
+                    </span>
+                  )}
+                  <span>
+                    {' '}
+                    {$$show_element.includes('原价') ? (
+                      ''
+                    ) : (
+                      <span style={{ textDecoration: 'line-through' }}>
+                        原价{data.getIn(['original', 'value'])}
+                      </span>
+                    )}
+                  </span>
+                </h6>
+                <button
+                  style={{
+                    width: '100%',
+                    background: 'rgb(255,6,79)',
+                    color: 'white',
+                    border: 'none',
+                  }}
+                >
+                  {$$show_element.includes('按钮')
+                    ? ''
+                    : data.get('btn_content').get('value')}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </ImgAtom>
     );
   }
 }

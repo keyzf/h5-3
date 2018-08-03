@@ -1,6 +1,13 @@
 import { fromJS } from 'immutable';
 // 创建核心组件函数
-const $$mall_func_database = (name, item, layout, height, width) => {
+const $$mall_func_database = (
+  name,
+  item,
+  layout,
+  height,
+  width,
+  content_color
+) => {
   return fromJS({
     // 基础设置
     customize: {
@@ -31,6 +38,7 @@ const $$mall_func_database = (name, item, layout, height, width) => {
       rotate: 0,
       live: false,
       zIndex: 100,
+      content_color: content_color,
     },
   });
 };
@@ -76,7 +84,7 @@ const $$grid_mall_database = $$mall_func_database(
       //商品价格
       current: { value: '330' }, //现价
       original: { value: '600' }, //原价
-      //按钮
+      radius: { value: 0 },
       btn_content: { value: '按钮' }, //按钮内容
       btn_url: { value: '' }, // 按钮链接
     },
@@ -98,6 +106,7 @@ const $$grid_mall_database = $$mall_func_database(
       original: { value: '600' }, //原价
       //按钮
       btn_content: { value: '按钮' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
     {
@@ -118,6 +127,7 @@ const $$grid_mall_database = $$mall_func_database(
       original: { value: '600' }, //原价
       //按钮
       btn_content: { value: '按钮' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
     {
@@ -138,6 +148,7 @@ const $$grid_mall_database = $$mall_func_database(
       original: { value: '600' }, //原价
       //按钮
       btn_content: { value: '按钮' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
   ],
@@ -158,6 +169,7 @@ const $$list_mall_database = $$mall_func_database(
       img_url: { value: '' }, // 图片地址
       //基础内容
       width: { value: '' }, // 图片宽度
+      radius: { value: 0 },
       height: { value: '' }, //图片高度
       title: { value: '这里是商品图片' }, //标题
       content: { value: '这里是商品描述，这里是商品描述' }, //内容
@@ -165,8 +177,8 @@ const $$list_mall_database = $$mall_func_database(
       current: { value: '330' }, //现价
       original: { value: '600' }, //原价
       //按钮
-      btn_content: { value: '按钮' }, //按钮内容
-      btn_url: { value: '' }, // 按钮链接
+      btn_content: { value: '立即抢购' }, //立即抢购内容
+      btn_url: { value: '' }, // 立即抢购链接
     },
     {
       img: 'http://src.e7wei.com/0.5455798769523392.png', //图片
@@ -178,15 +190,16 @@ const $$list_mall_database = $$mall_func_database(
       img_url: { value: '' }, // 图片地址
       //基础内容
       width: { value: '' }, // 图片宽度
+      radius: { value: 0 },
       height: { value: '' }, //图片高度
       title: { value: '这里是商品图片' }, //标题
       content: { value: '这里是商品描述，这里是商品描述' }, //内容
       //商品价格
       current: { value: '330' }, //现价
       original: { value: '600' }, //原价
-      //按钮
-      btn_content: { value: '按钮' }, //按钮内容
-      btn_url: { value: '' }, // 按钮链接
+      //立即抢购
+      btn_content: { value: '立即抢购' }, //立即抢购内容
+      btn_url: { value: '' }, // 立即抢购链接
     },
     {
       img: 'http://src.e7wei.com/0.979647849432727.png', //图片
@@ -198,20 +211,21 @@ const $$list_mall_database = $$mall_func_database(
       img_url: { value: '' }, // 图片地址
       //基础内容
       width: { value: '' }, // 图片宽度
+      radius: { value: 0 },
       height: { value: '' }, //图片高度
       title: { value: '这里是商品图片' }, //标题
       content: { value: '这里是商品描述，这里是商品描述' }, //内容
       //商品价格
       current: { value: '330' }, //现价
       original: { value: '600' }, //原价
-      //按钮
-      btn_content: { value: '按钮' }, //按钮内容
+      //立即抢购
+      btn_content: { value: '立即抢购' }, //立即抢购内容
       btn_url: { value: '' }, // 按钮链接
     },
   ],
   1,
-  550,
-  300
+  309,
+  280
 );
 
 //recommend
@@ -238,6 +252,7 @@ const $$one_mall_database = $$mall_func_database(
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '立即抢购' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
     {
@@ -253,6 +268,7 @@ const $$one_mall_database = $$mall_func_database(
       //基础内容
       width: { value: '' }, // 图片宽度
       height: { value: '' }, //图片高度
+      radius: { value: 0 },
       title: { value: '创意清新储物罐装饰花瓶' }, //标题
       content: { value: '软装时尚百搭' }, //内容
       //商品价格
@@ -274,6 +290,7 @@ const $$one_mall_database = $$mall_func_database(
       img_url: { value: '' }, // 图片地址
       //基础内容
       width: { value: '' }, // 图片宽度
+      radius: { value: 0 },
       height: { value: '' }, //图片高度
       title: { value: '小清新高仿真雏菊花' }, //标题
       content: { value: '给生活来点小确幸吧！' }, //内容
@@ -285,9 +302,9 @@ const $$one_mall_database = $$mall_func_database(
       btn_url: { value: '' }, // 按钮链接
     },
   ],
-  1,
-  480,
-  300
+  2,
+  319,
+  289
 );
 const $$two_mall_database = $$mall_func_database(
   'two_mall',
@@ -303,6 +320,7 @@ const $$two_mall_database = $$mall_func_database(
       //基础内容
       width: { value: '' }, // 图片宽度
       height: { value: '' }, //图片高度
+      radius: { value: 0 },
       title: { value: '请编辑宝贝标题' }, //标题
       content: { value: '' }, //内容
       //商品价格
@@ -327,6 +345,7 @@ const $$two_mall_database = $$mall_func_database(
       content: { value: '' }, //内容
       //商品价格
       current: { value: '￥999.00' }, //现价
+      radius: { value: 0 },
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
@@ -334,7 +353,7 @@ const $$two_mall_database = $$mall_func_database(
     },
   ],
   2,
-  480,
+  249,
   300
 );
 const $$three_mall_database = $$mall_func_database(
@@ -370,6 +389,7 @@ const $$three_mall_database = $$mall_func_database(
       img_url: { value: '' }, // 图片地址
       //基础内容
       width: { value: '' }, // 图片宽度
+      radius: { value: 0 },
       height: { value: '' }, //图片高度
       title: { value: 'FASHION SHOW' }, //标题
       content: { value: '小清醒刺绣蝴蝶结系领竖女孩' }, //内容
@@ -391,6 +411,7 @@ const $$three_mall_database = $$mall_func_database(
       //基础内容
       width: { value: '' }, // 图片宽度
       height: { value: '' }, //图片高度
+      radius: { value: 0 },
       title: { value: 'FASHION SHOW' }, //标题
       content: { value: '小清醒刺绣蝴蝶结系领竖女孩' }, //内容
       //商品价格
@@ -422,14 +443,15 @@ const $$four_mall_database = $$mall_func_database(
       content: { value: '' }, //内容
       //商品价格
       current: { value: '￥999.00' }, //现价
+      radius: { value: 0 },
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
       btn_url: { value: '' }, // 按钮链接
     },
     {
-      img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
-      crop_img: 'http://src.e7wei.com/0.2430957175713202.png', //图片
+      img: 'http://src.e7wei.com/0.943903263413274.png', //图片
+      crop_img: 'http://src.e7wei.com/0.943903263413274.png', //图片
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },
@@ -445,11 +467,12 @@ const $$four_mall_database = $$mall_func_database(
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
   ],
   2,
-  480,
+  300,
   300
 );
 const $$five_mall_database = $$mall_func_database(
@@ -470,6 +493,7 @@ const $$five_mall_database = $$mall_func_database(
       content: { value: '' }, //内容
       //商品价格
       current: { value: '129' }, //现价
+      radius: { value: 0 },
       original: { value: '399' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
@@ -477,7 +501,7 @@ const $$five_mall_database = $$mall_func_database(
     },
   ],
   1,
-  300,
+  180,
   300
 );
 const $$six_mall_database = $$mall_func_database(
@@ -501,6 +525,7 @@ const $$six_mall_database = $$mall_func_database(
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
     {
@@ -521,61 +546,15 @@ const $$six_mall_database = $$mall_func_database(
       original: { value: '' }, //原价
       //按钮
       btn_content: { value: '' }, //按钮内容
+      radius: { value: 0 },
       btn_url: { value: '' }, // 按钮链接
     },
   ],
   2,
-  300,
+  315,
   300
 );
-const $$seven_mall_database = $$mall_func_database(
-  'seven_mall',
-  [
-    {
-      img: 'http://src.e7wei.com/0.41873240795828504.png', //图片
-      crop_img: 'http://src.e7wei.com/0.41873240795828504.png', //图片
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      }, //图片配置
-      img_url: { value: '' }, // 图片地址
-      //基础内容
-      width: { value: '' }, // 图片宽度
-      height: { value: '' }, //图片高度
-      title: { value: '文艺客厅沙发置物架' }, //标题
-      content: { value: '' }, //内容
-      //商品价格
-      current: { value: '9999' }, //现价
-      original: { value: '' }, //原价
-      //按钮
-      btn_content: { value: '' }, //按钮内容
-      btn_url: { value: '' }, // 按钮链接
-    },
-    {
-      img: 'http://src.e7wei.com/0.9203663169436525.png', //图片
-      crop_img: 'http://src.e7wei.com/0.9203663169436525.png', //图片
-      img_config: {
-        stretching: { value: '' },
-        tiling: { value: '' },
-      }, //图片配置
-      img_url: { value: '' }, // 图片地址
-      //基础内容
-      width: { value: '' }, // 图片宽度
-      height: { value: '' }, //图片高度
-      title: { value: '文艺客厅沙发置物架' }, //标题
-      content: { value: '' }, //内容
-      //商品价格
-      current: { value: '9999' }, //现价
-      original: { value: '' }, //原价
-      //按钮
-      btn_content: { value: '' }, //按钮内容
-      btn_url: { value: '' }, // 按钮链接
-    },
-  ],
-  1,
-  300,
-  300
-);
+
 // 导出模块
 export {
   $$mall_item_database,
@@ -587,5 +566,4 @@ export {
   $$four_mall_database,
   $$five_mall_database,
   $$six_mall_database,
-  $$seven_mall_database,
 };

@@ -18,7 +18,6 @@ import { ThreeMallUi } from '../../../resources/mall/recommend/three_mall_ui';
 import { FourMallUi } from '../../../resources/mall/recommend/four_mall_ui';
 import { FiveMallUi } from '../../../resources/mall/recommend/five_mall_ui';
 import { SixMallUi } from '../../../resources/mall/recommend/six_mall_ui';
-import { SevenMallUi } from '../../../resources/mall/recommend/seven_mall_ui';
 import { TwentyFiveTextUi } from '../../../resources/text/recommend/twenty_five_ui';
 import { TwentySixTextUi } from '../../../resources/text/recommend/twenty_six_ui';
 import { TwentySevenTextUi } from '../../../resources/text/recommend/twenty_seven_ui';
@@ -117,8 +116,6 @@ export const render_switch_ui = data => {
       return <FiveMallUi data={data} />;
     case 'six_mall':
       return <SixMallUi data={data} />;
-    case 'seven_mall':
-      return <SevenMallUi data={data} />;
     //  按钮类
     case 'button':
       return <ButtonUi data={data} />;

@@ -16,8 +16,16 @@ import {
 import { uploadToken } from '../../../app/Middleware/tool/qiniu.tool';
 import { fromJS, List } from 'immutable';
 import { form_api } from '../../../api/form.api';
+import { ImgAtom } from '../../img/img_atom';
 
 class CoreForm extends PureComponent {
+  state = {
+    loading: false,
+    previewImage: '',
+    upload_array: [],
+    index: '',
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -25,13 +33,11 @@ class CoreForm extends PureComponent {
       if (!err) {
         let from = [];
         const data = List(fromJS(values));
-        data.map(data => {
-          if (List(data[1]).size === 2) {
+        data.map((data, index) => {
+          if (this.state.upload_array[index] !== undefined) {
             from.push({
               name: data[0],
-              value:
-                'http://src.e7wei.com/' +
-                data[1].getIn(['file', 'response', 'key']),
+              value: this.state.upload_array[index],
             });
           } else {
             from.push({ name: data[0], value: data[1] });
@@ -46,6 +52,40 @@ class CoreForm extends PureComponent {
           });
       }
     });
+  };
+
+  handleChange = info => {
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} 文件上传成功.`);
+      const array = this.state.upload_array;
+      array[this.state.index] =
+        'http://src.e7wei.com/' + info.file.response.key;
+      this.setState({
+        loading: false,
+        upload_array: array,
+      });
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} 上传失败.`);
+    }
+    console.log(this.state.upload_array);
+  };
+  beforeUpload = file => {
+    this.setState({
+      index: file,
+    });
+    return true;
+  };
+  onRemove = index => {
+    let array = this.state.upload_array;
+    array[index] = undefined;
+    this.setState({
+      upload_array: array,
+    });
+    return true;
   };
 
   render() {
@@ -67,197 +107,353 @@ class CoreForm extends PureComponent {
     };
     const upload_props = {
       name: 'file',
+      listType: 'picture-card',
       action: 'http://upload.qiniup.com',
-      showUploadList: true,
       data: { token: uploadToken, key: Math.random() + '.png' },
       accept: 'image/*',
-      onChange(info) {
-        const status = info.file.status;
-        if (status === 'done') {
-          message.success(`${info.file.name} 文件上传成功.`);
-        } else if (status === 'error') {
-          message.error(`${info.file.name} 上传失败.`);
-        }
-      },
     };
+    const advance = this.props.data.get('advance');
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
+    };
+    const uploadButton = (
+      <div style={{ width: '100%' }}>
+        <Icon type={this.state.loading ? 'loading' : 'plus'} />
+        <div className="ant-upload-text">点击上传文件</div>
+      </div>
+    );
+
     return (
-      <Form {...form_config}>
-        {customize.get('item').map((data, index) => {
-          const opt_color = data.get('opt_color');
-          return (
-            <div
-              key={index}
-              style={{ pointerEvents: `${this.props.pointer ? 'none' : ''}` }}
-            >
-              {data.get('type') === 'radio' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Radio.Group>
-                      {data.get('option').map((data, index) => {
-                        return (
-                          <Radio
-                            style={{
-                              display: 'block',
-                              height: '30px',
-                              lineHeight: '30px',
-                              color: opt_color,
-                            }}
-                            setFieldsValue={index}
-                            key={index}
-                          >
-                            {data}
-                          </Radio>
-                        );
-                      })}
-                    </Radio.Group>
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'input' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Input size="large" />
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'select' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Select size="large">
-                      {data.get('option').map((data, index) => {
-                        return (
-                          <Select.Option value={data} key={index}>
-                            {data}
-                          </Select.Option>
-                        );
-                      })}
-                    </Select>
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'textarea' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Input.TextArea size="large" rows={4} />
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'rate' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(<Rate />)}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'checkbox' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Checkbox.Group
-                      style={{ color: opt_color }}
-                      options={data.get('option').toJS()}
-                    />
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'datePicker' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <DatePicker
-                      style={{ width: '100%' }}
-                      size="large"
-                      placeholder="选择日期"
-                    />
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-              {data.get('type') === 'upload' ? (
-                <FormItem
-                  {...form_item_style(
-                    `${data.getIn(['title', 'value'])}`,
-                    data.get('title_color')
-                  )}
-                >
-                  {getFieldDecorator(`${data.get('decorator')}`)(
-                    <Upload.Dragger {...upload_props}>
-                      <p className="ant-upload-drag-icon">
-                        <Icon type="inbox" />
-                      </p>
-                      <p className="ant-upload-hint">
-                        将文件拖拽至此框或点击上传
-                      </p>
-                    </Upload.Dragger>
-                  )}
-                </FormItem>
-              ) : (
-                ''
-              )}
-            </div>
-          );
-        })}
-        <FormItem
-          key={'asfdasdf'}
-          style={{ pointerEvents: `${this.props.pointer ? 'none' : ''}` }}
-        >
-          <Button
-            type="primary"
-            htmlType="submit"
-            style={{
-              width: '100%',
-              color: btn_color,
-              background: btn_bg_color,
-            }}
+      <ImgAtom {...advanced_settings}>
+        <Form {...form_config}>
+          {customize.get('item').map((data, index) => {
+            const opt_color = data.get('opt_color');
+            switch (data.get('type')) {
+              case 'upload':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Upload
+                          {...upload_props}
+                          onChange={this.handleChange}
+                          beforeUpload={this.beforeUpload.bind(this, index)}
+                          onRemove={this.onRemove.bind(this, index)}
+                        >
+                          {this.state.upload_array[index] === undefined
+                            ? uploadButton
+                            : null}
+                        </Upload>
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'radio':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Radio.Group>
+                          {data.get('option').map((data, index) => {
+                            return (
+                              <Radio
+                                style={{
+                                  display: 'block',
+                                  height: '30px',
+                                  lineHeight: '30px',
+                                  color: opt_color,
+                                }}
+                                setFieldsValue={index}
+                                key={index}
+                              >
+                                {data}
+                              </Radio>
+                            );
+                          })}
+                        </Radio.Group>
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'input':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Input
+                          size="large"
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'name':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Input
+                          size="large"
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'email':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`, {
+                        rules: [
+                          {
+                            pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
+                            message: '邮箱格式错误',
+                          },
+                        ],
+                      })(
+                        <Input
+                          size="large"
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'address':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Input
+                          size="large"
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'phone':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`, {
+                        rules: [
+                          {
+                            pattern: /^((1[3-8][0-9])+\d{8})$/,
+                            message: '手机号格式错误',
+                          },
+                        ],
+                      })(
+                        <Input
+                          size="large"
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'select':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Select
+                          size="large"
+                          placeholder={`${data.getIn(['option', 0])}`}
+                        >
+                          {data.get('option').map((data, index) => {
+                            return (
+                              <Select.Option value={data} key={index}>
+                                {data}
+                              </Select.Option>
+                            );
+                          })}
+                        </Select>
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'textarea':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Input.TextArea
+                          size="large"
+                          rows={4}
+                          placeholder={data.getIn(['option', 'value'])}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'rate':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(<Rate />)}
+                    </FormItem>
+                  </div>
+                );
+              case 'checkbox':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <Checkbox.Group
+                          style={{ color: opt_color }}
+                          options={data.get('option').toJS()}
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+              case 'datePicker':
+                return (
+                  <div
+                    style={{
+                      pointerEvents: `${this.props.pointer ? 'none' : ''}`,
+                    }}
+                  >
+                    <FormItem
+                      {...form_item_style(
+                        `${data.getIn(['title', 'value'])}`,
+                        data.get('title_color')
+                      )}
+                    >
+                      {getFieldDecorator(`${data.get('decorator')}`)(
+                        <DatePicker
+                          style={{ width: '100%' }}
+                          size="large"
+                          placeholder="选择日期"
+                        />
+                      )}
+                    </FormItem>
+                  </div>
+                );
+            }
+          })}
+          <FormItem
+            key={'asfdasdf'}
+            style={{ pointerEvents: `${this.props.pointer ? 'none' : ''}` }}
           >
-            {customize.getIn(['btn_content', 'value'])}
-          </Button>
-        </FormItem>
-      </Form>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                width: '100%',
+                border: 'none',
+                color: btn_color,
+                background: btn_bg_color,
+              }}
+            >
+              {customize.getIn(['btn_content', 'value'])}
+            </Button>
+          </FormItem>
+        </Form>
+      </ImgAtom>
     );
   }
 }

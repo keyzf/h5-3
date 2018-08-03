@@ -17,19 +17,6 @@ class MallItemForm extends PureComponent {
 
     return (
       <Form hideRequiredMark>
-        <Form.Item {...form_item_style('图片长度')}>
-          {getFieldDecorator('height')(
-            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
-          )}
-        </Form.Item>
-        <Form.Item {...form_item_style('图片宽度')}>
-          {getFieldDecorator('width')(
-            <InputNumber min={0} max={1000} style={{ width: '100%' }} />
-          )}
-        </Form.Item>
-        <Form.Item {...form_item_style('图片链接')}>
-          {getFieldDecorator('img_url')(<Input />)}
-        </Form.Item>
         <Form.Item {...form_item_style('标题')}>
           {getFieldDecorator('title')(<Input />)}
         </Form.Item>
@@ -50,7 +37,14 @@ class MallItemForm extends PureComponent {
           {getFieldDecorator('btn_content')(<Input />)}
         </Form.Item>
         <Form.Item {...form_item_style('按钮链接')}>
-          {getFieldDecorator('btn_url')(<Input />)}
+          {getFieldDecorator('btn_url')(
+            <Input placeholder="示例：http://www.e7wei.com" />
+          )}
+        </Form.Item>
+        <Form.Item {...form_item_style('图片链接')}>
+          {getFieldDecorator('img_url')(
+            <Input placeholder="示例：http://www.e7wei.com" />
+          )}
         </Form.Item>
       </Form>
     );

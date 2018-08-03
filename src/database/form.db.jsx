@@ -93,7 +93,7 @@ const two_template = fromJS([
     opt_color: '#000',
     title: { value: '反馈' },
     decorator: '反馈',
-    option: { value: '' },
+    option: { value: '请填写建议信息' },
   },
   {
     type: 'input',
@@ -101,7 +101,7 @@ const two_template = fromJS([
     opt_color: '#000',
     title: { value: '联系邮箱' },
     decorator: '联系邮箱',
-    option: { value: '' },
+    option: { value: '请输入邮箱地址' },
   },
 ]);
 const three_template = fromJS([
@@ -111,7 +111,7 @@ const three_template = fromJS([
     opt_color: '#000',
     title: { value: '反馈内容' },
     decorator: '反馈内容',
-    option: { value: '' },
+    option: { value: '请填写反馈内容' },
   },
   {
     type: 'input',
@@ -119,7 +119,7 @@ const three_template = fromJS([
     opt_color: '#000',
     title: { value: '联系邮箱' },
     decorator: '联系邮箱',
-    option: { value: '' },
+    option: { value: '请填入联系信息' },
   },
   {
     type: 'upload',
@@ -265,13 +265,13 @@ const eight_template = fromJS([
 ]);
 
 const $$one_form_database = $$form(one_template, 300, 300);
-const $$two_form_database = $$form(two_template, 300, 300);
+const $$two_form_database = $$form(two_template, 361, 241);
 const $$three_form_database = $$form(three_template, 710, 300);
 const $$four_form_database = $$form(four_template, 300, 300);
 const $$five_form_database = $$form(five_template, 710, 300);
 const $$six_form_database = $$form(six_template, 340, 300);
 const $$seven_form_database = $$form(seven_template, 620, 300);
-const $$eight_form_database = $$form(eight_template, 350, 300);
+const $$eight_form_database = $$form(eight_template, 360, 310);
 
 /**
  * 可供选择的项目
@@ -308,6 +308,31 @@ const $$from_opt_upload = fromJS({
   option: { value: '' },
 });
 
+const $$from_opt_name = fromJS({
+  type: 'name',
+  title: { value: '姓名' },
+  decorator: 'name',
+  option: { value: '' },
+});
+const $$from_opt_phone = fromJS({
+  type: 'phone',
+  title: { value: '电话' },
+  decorator: 'phone',
+  option: { value: '' },
+});
+const $$from_opt_address = fromJS({
+  type: 'address',
+  title: { value: '地址' },
+  decorator: 'address',
+  option: { value: '' },
+});
+const $$from_opt_email = fromJS({
+  type: 'email',
+  title: { value: '邮箱' },
+  decorator: 'email',
+  option: { value: '' },
+});
+
 /**
  * 导出项目
  */
@@ -315,6 +340,10 @@ export {
   $$form_database,
   $$from_opt_input,
   $$from_opt_rate,
+  $$from_opt_name,
+  $$from_opt_phone,
+  $$from_opt_address,
+  $$from_opt_email,
   $$from_opt_checkbox,
   $$from_opt_datepicker,
   $$from_opt_upload,

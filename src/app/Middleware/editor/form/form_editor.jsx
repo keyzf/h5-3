@@ -16,9 +16,13 @@ import {
 } from 'antd';
 
 import {
+  $$from_opt_address,
   $$from_opt_checkbox,
   $$from_opt_datepicker,
+  $$from_opt_email,
   $$from_opt_input,
+  $$from_opt_name,
+  $$from_opt_phone,
   $$from_opt_rate,
   $$from_opt_upload,
 } from '../../../../database/form.db';
@@ -31,27 +35,40 @@ class EditorForm extends PureComponent {
     item: false,
     number: '',
   };
-  /**
-   * 返回默认界面
-   */
   backItem = () => {
     this.setState({
       item: false,
     });
   };
-  /**
-   * 修改单个选项值
-   */
   changeItem = number => {
     this.setState({
       item: true,
       number: number,
     });
   };
-
   add_opt = opt_name => {
     // data source
     const $$data = this.props.data.get('data');
+    if (opt_name === 'address') {
+      const $$item = $$data.get('customize').get('item');
+      const $$new_item = $$item.push($$from_opt_address);
+      this.sendAction($$data.setIn(['customize', 'item'], $$new_item));
+    }
+    if (opt_name === 'phone') {
+      const $$item = $$data.get('customize').get('item');
+      const $$new_item = $$item.push($$from_opt_phone);
+      this.sendAction($$data.setIn(['customize', 'item'], $$new_item));
+    }
+    if (opt_name === 'email') {
+      const $$item = $$data.get('customize').get('item');
+      const $$new_item = $$item.push($$from_opt_email);
+      this.sendAction($$data.setIn(['customize', 'item'], $$new_item));
+    }
+    if (opt_name === 'name') {
+      const $$item = $$data.get('customize').get('item');
+      const $$new_item = $$item.push($$from_opt_name);
+      this.sendAction($$data.setIn(['customize', 'item'], $$new_item));
+    }
     // features
     if (opt_name === 'input') {
       const $$item = $$data.get('customize').get('item');
@@ -79,11 +96,10 @@ class EditorForm extends PureComponent {
       this.sendAction($$data.setIn(['customize', 'item'], $$new_item));
     }
   };
-
   opt_add = () => {
     const $$data = this.props.data.get('data');
     const name = $$data.getIn(['customize', 'item', this.state.number, 'type']);
-    if (name === 'radio' || name === 'checkbox') {
+    if (name === 'radio' || name === 'checkbox' || 'select') {
       const new_option = $$data
         .getIn(['customize', 'item', this.state.number, 'option'])
         .push('添加项');
@@ -95,14 +111,6 @@ class EditorForm extends PureComponent {
       );
     }
   };
-
-  /**
-   * editor Functional implementation
-   * opt_name : operating name
-   * data : change data
-   * 1. reset data
-   * 2. color data
-   */
   editorFeatures = (opt_name, data) => {
     const $$data = this.props.data.get('data');
 
@@ -156,12 +164,20 @@ class EditorForm extends PureComponent {
       this.sendAction($$data.setIn(['customize', 'btn_bg_color'], data.hex));
     }
   };
-
   handleChange = (inside_index, event) => {
     const $$data = this.props.data.get('data');
     this.sendAction(
       $$data.setIn(
         ['customize', 'item', this.state.number, 'option', inside_index],
+        event.target.value
+      )
+    );
+  };
+  texthandleChange = event => {
+    const $$data = this.props.data.get('data');
+    this.sendAction(
+      $$data.setIn(
+        ['customize', 'item', this.state.number, 'option', 'value'],
         event.target.value
       )
     );
@@ -193,10 +209,6 @@ class EditorForm extends PureComponent {
       ])
     );
   };
-  /**
-   * 更新h5_data 与choose_data 中的信息
-   * @param up_data
-   */
   sendAction = up_data => {
     // data source
     const $$select_data = this.props.h5_data_value.data;
@@ -219,12 +231,6 @@ class EditorForm extends PureComponent {
     const $$data = this.props.data.get('data');
     const $$customize = $$data.get('customize');
 
-    /**
-     * 默认界面显示项
-     * @param title (标题)
-     * @param number (选择的项目号)
-     * @returns {*}
-     */
     const item = (title, number) => (
       <Row gutter={16}>
         <Col span={16}>{title}</Col>
@@ -245,7 +251,6 @@ class EditorForm extends PureComponent {
         </Col>
       </Row>
     );
-
     const form_item_style = label_name => {
       return {
         label: label_name,
@@ -257,7 +262,20 @@ class EditorForm extends PureComponent {
       };
     };
     const content = (
-      <Row gutter={16}>
+      <Row gutter={16} style={{ width: '150px' }}>
+        <Col span={12} onClick={this.add_opt.bind(this, 'name')}>
+          姓名
+        </Col>
+        <Col span={12} onClick={this.add_opt.bind(this, 'phone')}>
+          电话
+        </Col>
+        <Col span={12} onClick={this.add_opt.bind(this, 'address')}>
+          地址
+        </Col>
+        <Col span={12} onClick={this.add_opt.bind(this, 'email')}>
+          邮箱
+        </Col>
+
         <Col span={12} onClick={this.add_opt.bind(this, 'input')}>
           输入框
         </Col>
@@ -294,6 +312,9 @@ class EditorForm extends PureComponent {
                 title="表单项编辑"
                 extra={<div onClick={this.backItem}>返回</div>}
               >
+                {console.log(
+                  $$customize.getIn(['item', this.state.number, 'type'])
+                )}
                 {$$customize.getIn(['item', this.state.number, 'type']) ===
                 'radio' ? (
                   <React.Fragment>
@@ -466,7 +487,7 @@ class EditorForm extends PureComponent {
                       </Form.Item>
                     </Form>
                     <Form>
-                      <Form.Item {...form_item_style('内容')}>
+                      <Form.Item {...form_item_style('提示内容')}>
                         <Input
                           defaultValue={$$customize.getIn([
                             'item',
@@ -474,8 +495,127 @@ class EditorForm extends PureComponent {
                             'option',
                             'value',
                           ])}
-                          onChange={this.handleChange.bind(this)}
+                          onChange={this.texthandleChange.bind(this)}
                         />
+                      </Form.Item>
+                    </Form>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
+                {$$customize.getIn(['item', this.state.number, 'type']) ===
+                'textarea' ? (
+                  <React.Fragment>
+                    <Form>
+                      <Form.Item {...form_item_style('标题')}>
+                        <Input
+                          value={$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'title',
+                            'value',
+                          ])}
+                          onChange={this.CustomizeFormChange.bind(this)}
+                        />
+                      </Form.Item>
+                    </Form>
+                    <Form>
+                      <Form.Item {...form_item_style('标题字体色')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'title_color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ]),
+                            }}
+                          />
+                        </Popover>
+                      </Form.Item>
+                    </Form>
+                    <Form>
+                      <Form.Item {...form_item_style('提示内容')}>
+                        <Input
+                          defaultValue={$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'option',
+                            'value',
+                          ])}
+                          onChange={this.texthandleChange.bind(this)}
+                        />
+                      </Form.Item>
+                    </Form>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
+                {$$customize.getIn(['item', this.state.number, 'type']) ===
+                'upload' ? (
+                  <React.Fragment>
+                    <Form>
+                      <Form.Item {...form_item_style('标题')}>
+                        <Input
+                          value={$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'title',
+                            'value',
+                          ])}
+                          onChange={this.CustomizeFormChange.bind(this)}
+                        />
+                      </Form.Item>
+                    </Form>
+                    <Form>
+                      <Form.Item {...form_item_style('标题字体色')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'title_color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ]),
+                            }}
+                          />
+                        </Popover>
                       </Form.Item>
                     </Form>
                   </React.Fragment>
@@ -537,6 +677,128 @@ class EditorForm extends PureComponent {
                 )}
                 {$$customize.getIn(['item', this.state.number, 'type']) ===
                 'checkbox' ? (
+                  <React.Fragment>
+                    <Form>
+                      <Form.Item {...form_item_style('标题')}>
+                        <Input
+                          value={$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'title',
+                            'value',
+                          ])}
+                          onChange={this.CustomizeFormChange.bind(this)}
+                        />
+                      </Form.Item>
+                    </Form>
+                    <Form>
+                      <Form.Item {...form_item_style('标题字体色')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'title_color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'title_color',
+                              ]),
+                            }}
+                          />
+                        </Popover>
+                      </Form.Item>
+                    </Form>
+                    <Form>
+                      <Form.Item {...form_item_style('选项字体色')}>
+                        <Popover
+                          content={
+                            <SketchPicker
+                              color={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'opt_color',
+                              ])}
+                              onChangeComplete={this.editorFeatures.bind(
+                                this,
+                                'opt_color'
+                              )}
+                            />
+                          }
+                          trigger="click"
+                        >
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'opt_color',
+                              ]),
+                            }}
+                          />
+                        </Popover>
+                      </Form.Item>
+                    </Form>
+                    {$$customize
+                      .getIn(['item', this.state.number, 'option'])
+                      .map((data, inside_index) => {
+                        return (
+                          <Fragment key={inside_index}>
+                            <Form>
+                              <Form.Item {...form_item_style('可选项')}>
+                                <Input
+                                  defaultValue={data}
+                                  onChange={this.handleChange.bind(
+                                    this,
+                                    inside_index
+                                  )}
+                                  addonAfter={
+                                    <Icon
+                                      className="dynamic-delete-button"
+                                      type="minus-circle-o"
+                                      onClick={this.opt_delete.bind(
+                                        this,
+                                        inside_index
+                                      )}
+                                    />
+                                  }
+                                />
+                              </Form.Item>
+                            </Form>
+                          </Fragment>
+                        );
+                      })}
+                    <Button
+                      type="primary"
+                      style={{ width: '100%' }}
+                      onClick={this.opt_add}
+                    >
+                      添加项目
+                    </Button>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
+                {$$customize.getIn(['item', this.state.number, 'type']) ===
+                'select' ? (
                   <React.Fragment>
                     <Form>
                       <Form.Item {...form_item_style('标题')}>
@@ -795,19 +1057,19 @@ class EditorForm extends PureComponent {
             )}
           </div>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="高级设置" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <AdvanceEditor data={$$data} />
-          </div>
-        </Tabs.TabPane>
+        {/*<Tabs.TabPane tab="高级设置" key="2">*/}
+        {/*<div*/}
+        {/*style={{*/}
+        {/*height: 'calc(100vh -  55px)',*/}
+        {/*overflow: 'hidden',*/}
+        {/*marginTop: '-18px',*/}
+        {/*backgroundImage:*/}
+        {/*'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',*/}
+        {/*}}*/}
+        {/*>*/}
+        {/*<AdvanceEditor data={$$data} />*/}
+        {/*</div>*/}
+        {/*</Tabs.TabPane>*/}
       </Tabs>
     );
   }

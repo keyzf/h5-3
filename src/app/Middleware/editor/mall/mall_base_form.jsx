@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, InputNumber, Checkbox } from 'antd';
+import { Form, InputNumber, Checkbox, Radio } from 'antd';
 
 class MallBaseForm extends React.Component {
   render() {
@@ -22,9 +22,29 @@ class MallBaseForm extends React.Component {
             <Checkbox.Group options={plainOptions} />
           )}
         </Form.Item>
-        <Form.Item {...form_item_style('组件布局')}>
-          {getFieldDecorator('layout')(<InputNumber min={1} max={4} />)}
-        </Form.Item>
+        {this.props.name === 'grid_mall' ? (
+          <Form.Item {...form_item_style('布局')}>
+            一行显示{getFieldDecorator('layout')(
+              <InputNumber min={1} max={4} />
+            )}{' '}
+            个
+          </Form.Item>
+        ) : (
+          ''
+        )}
+        {this.props.name === 'list_mall' ? (
+          <Form.Item {...form_item_style('布局')}>
+            {getFieldDecorator('layout')(
+              <Radio.Group>
+                <Radio value={1}>左图右文</Radio>
+                <Radio value={2}>左文右图</Radio>
+                <Radio value={3}>图文混排</Radio>
+              </Radio.Group>
+            )}
+          </Form.Item>
+        ) : (
+          ''
+        )}
       </Form>
     );
   }

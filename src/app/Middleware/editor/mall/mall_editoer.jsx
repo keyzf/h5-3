@@ -25,6 +25,7 @@ import { $$mall_item_database } from '../../../../database/mall.db';
 
 import { connect } from 'react-redux';
 import { redux_action } from '../../../../database/redux/action';
+
 class EditorMall extends PureComponent {
   state = {
     //判断用户是否编辑单个项目
@@ -170,6 +171,11 @@ class EditorMall extends PureComponent {
         $$props_data.setIn(['customize', 'base', 'font_color'], data.hex)
       );
     }
+    if (opt_name === 'content_color') {
+      this.sendAction(
+        $$props_data.setIn(['advance', 'content_color'], data.hex)
+      );
+    }
   };
   /**
    * 触发器
@@ -211,11 +217,7 @@ class EditorMall extends PureComponent {
             onClick={this.changeItem.bind(this, number)}
             width={'50px'}
             height={'40px'}
-            src={
-              img
-                ? img
-                : 'https://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-            }
+            src={img}
             alt={'img'}
           />
         </Col>
@@ -277,24 +279,16 @@ class EditorMall extends PureComponent {
           >
             {this.state.item ? (
               <Card
-                style={{ background: 'transparent' }}
+                style={{
+                  background: 'transparent',
+                  overflow: 'auto',
+                  height: '100%',
+                }}
                 title="编辑图集数据"
                 extra={<div onClick={this.backItem}>返回</div>}
               >
                 <Row gutter={16}>
-                  <Col
-                    span={7}
-                    offset={3}
-                    style={{
-                      margin: 'auto',
-                      height: '100px',
-                      border: '1px solid #e7e7e7',
-                      textAlign: 'center',
-                      color: '#e7e7e7',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <Col span={9}>
                     <UploadImg
                       type={1}
                       func={this.changImgToChild}
@@ -304,60 +298,54 @@ class EditorMall extends PureComponent {
                         'img',
                       ])}
                       children={
-                        <img
-                          style={{
-                            verticalAlign: 'middle',
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                            margin: 'auto',
-                          }}
-                          src={
-                            $$customize.getIn([
-                              'item',
-                              this.state.number,
-                              'crop_img',
-                            ])
-                              ? $$customize.getIn([
-                                  'item',
-                                  this.state.number,
-                                  'crop_img',
-                                ])
-                              : 'http://h5.xiuzan.com/p/Tplglobal/images/plant-2x.png'
-                          }
-                          alt={'img'}
-                        />
+                        <div className={'img_show'}>
+                          {$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'crop_img',
+                          ]) ? (
+                            <img
+                              className={'img'}
+                              src={$$customize.getIn([
+                                'item',
+                                this.state.number,
+                                'crop_img',
+                              ])}
+                              alt={'img'}
+                            />
+                          ) : (
+                            '待上传'
+                          )}
+                        </div>
                       }
                     />
                   </Col>
-                  <Col span={17}>
-                    <UploadImg
-                      type={1}
-                      func={this.changImgToChild}
-                      img_url={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                      children={<Button style={{ width: '100%' }}>更换</Button>}
-                    />
-                    <ImgCropFactory
-                      func={this.cropImgToChild}
-                      children={<Button style={{ width: '100%' }}>裁剪</Button>}
-                      img_url={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                    />
-                    <Popconfirm
-                      placement="top"
-                      title={'确认删除此背景图?'}
-                      onConfirm={this.editorFeatures.bind(this, 'item_img_de')}
-                      okText="确认"
-                      cancelText="取消"
-                    >
-                      <Button style={{ width: '100%' }}>删除</Button>
-                    </Popconfirm>
+                  <Col span={15}>
+                    <Button.Group>
+                      <UploadImg
+                        type={1}
+                        func={this.changImgToChild}
+                        img_url={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                        children={<Button>更换</Button>}
+                      />
+                      <ImgCropFactory
+                        func={this.cropImgToChild}
+                        children={<Button>裁剪</Button>}
+                        img_src={$$customize.getIn([
+                          'item',
+                          this.state.number,
+                          'img',
+                        ])}
+                      />
+                    </Button.Group>
+                    <br />
+                    <br />
+                    <div>格式：*.jpg / *.png</div>
+                    <div>大小不超过2M</div>
                   </Col>
                 </Row>
                 <Divider />
@@ -390,13 +378,18 @@ class EditorMall extends PureComponent {
                       />
                     );
                   })}
-                  <Button
-                    onClick={this.editorFeatures.bind(this, 'add_item')}
-                    style={{ width: '100%' }}
-                    type="dashed"
-                  >
-                    添加
-                  </Button>
+                  {$$data.getIn(['customize', 'name']) !== 'grid_mall' ||
+                  'list_mall' ? (
+                    ''
+                  ) : (
+                    <Button
+                      onClick={this.editorFeatures.bind(this, 'add_item')}
+                      style={{ width: '100%' }}
+                      type="dashed"
+                    >
+                      添加
+                    </Button>
+                  )}
                 </Collapse.Panel>
               </Collapse>
             )}
@@ -412,51 +405,76 @@ class EditorMall extends PureComponent {
                 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
-            {$$customize.get('name') === 'single_img' ? (
-              ''
-            ) : (
-              <Collapse
-                bordered={false}
-                defaultActiveKey={['1']}
-                style={{ background: 'transparent' }}
-              >
-                <Collapse.Panel header="基础属性" key="1">
-                  <Form hideRequiredMark>
-                    <Form.Item {...form_item_style('字体颜色')}>
-                      <Popover
-                        content={
-                          <SketchPicker
-                            color={$$customize.getIn(['base', 'font_color'])}
-                            onChangeComplete={this.editorFeatures.bind(
-                              this,
-                              'color'
-                            )}
-                          />
-                        }
-                        trigger="click"
-                      >
-                        <div
-                          style={{
-                            marginTop: '6px',
-                            height: '25px',
-                            width: '100%',
-                            backgroundColor: $$customize.getIn([
-                              'base',
-                              'font_color',
-                            ]),
-                          }}
+            <Collapse
+              bordered={false}
+              defaultActiveKey={['1']}
+              style={{ background: 'transparent' }}
+            >
+              <Collapse.Panel header="基础属性" key="1">
+                <Form hideRequiredMark>
+                  <Form.Item {...form_item_style('字体颜色')}>
+                    <Popover
+                      content={
+                        <SketchPicker
+                          color={$$customize.getIn(['base', 'font_color'])}
+                          onChangeComplete={this.editorFeatures.bind(
+                            this,
+                            'color'
+                          )}
                         />
-                      </Popover>
-                    </Form.Item>
-                  </Form>
-                  <MallBaseForm
-                    name={$$customize.get('name')}
-                    onChange={this.editorFeatures.bind(this, 'base')}
-                    {...$$customize.get('base').toJS()}
-                  />
-                </Collapse.Panel>
-              </Collapse>
-            )}
+                      }
+                      trigger="click"
+                    >
+                      <div
+                        style={{
+                          marginTop: '6px',
+                          height: '25px',
+                          width: '100%',
+                          backgroundColor: $$customize.getIn([
+                            'base',
+                            'font_color',
+                          ]),
+                        }}
+                      />
+                    </Popover>
+                  </Form.Item>
+                </Form>
+                <Form hideRequiredMark>
+                  <Form.Item {...form_item_style('内容背景')}>
+                    <Popover
+                      content={
+                        <SketchPicker
+                          color={$$data.getIn(['advance', 'content_color'])}
+                          onChangeComplete={this.editorFeatures.bind(
+                            this,
+                            'content_color'
+                          )}
+                        />
+                      }
+                      trigger="click"
+                    >
+                      <div
+                        style={{
+                          marginTop: '6px',
+                          height: '25px',
+                          width: '100%',
+                          backgroundColor: $$data.getIn([
+                            'advance',
+                            'content_color',
+                          ]),
+                        }}
+                      />
+                    </Popover>
+                  </Form.Item>
+                </Form>
+
+                <MallBaseForm
+                  name={$$customize.get('name')}
+                  onChange={this.editorFeatures.bind(this, 'base')}
+                  {...$$customize.get('base').toJS()}
+                />
+              </Collapse.Panel>
+            </Collapse>
             <AdvanceEditor data={$$data} />
           </div>
         </Tabs.TabPane>
@@ -464,6 +482,7 @@ class EditorMall extends PureComponent {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     // 核心组件

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import { ImgAtom } from '../../img/img_atom';
 
 class FiveMallUi extends React.Component {
   render() {
     // 将接收到的信息分解提取
     const customize = this.props.data.get('customize');
+    const advance = this.props.data.get('advance');
     const $$show_element = customize.getIn(['base', 'show_element', 'value']);
     const $$layout = customize.getIn(['base', 'layout', 'value']);
     const font_color = customize.getIn(['base', 'font_color']);
@@ -49,76 +51,87 @@ class FiveMallUi extends React.Component {
         return null;
       }
     };
+    const advanced_settings = {
+      width: advance.get('width'),
+      height: advance.get('height'),
+    };
     return (
-      <Row gutter={16}>
-        {customize.get('item').map((data, index) => {
-          return (
-            <Col key={index} span={col($$layout) ? col($$layout) : 24}>
-              <Col span={12}>
-                {$$img ? (
-                  <img
-                    width={
-                      data.getIn(['width', 'value'])
-                        ? data.getIn(['width', 'value'])
-                        : '100%'
-                    }
-                    height={
-                      data.getIn(['height', 'value'])
-                        ? data.getIn(['height', 'value'])
-                        : 'auto'
-                    }
-                    src={
-                      data.get('crop_img')
-                        ? data.get('crop_img')
-                        : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
-                    }
-                    alt={'img'}
-                  />
-                ) : (
-                  ''
-                )}
+      <ImgAtom {...advanced_settings}>
+        <Row gutter={16}>
+          {customize.get('item').map((data, index) => {
+            return (
+              <Col key={index} span={col($$layout) ? col($$layout) : 24}>
+                <Col span={12}>
+                  {$$img ? (
+                    <img
+                      width={
+                        data.getIn(['width', 'value'])
+                          ? data.getIn(['width', 'value'])
+                          : '100%'
+                      }
+                      height={
+                        data.getIn(['height', 'value'])
+                          ? data.getIn(['height', 'value'])
+                          : 'auto'
+                      }
+                      src={
+                        data.get('crop_img')
+                          ? data.get('crop_img')
+                          : 'http://demos.creative-tim.com/material-kit-pro/assets/img/image_placeholder.jpg'
+                      }
+                      alt={'img'}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </Col>
+                <Col
+                  span={12}
+                  style={{
+                    padding: '20px 0 0 0',
+                    background: `${advance.get('content_color')}`,
+                  }}
+                >
+                  <Col
+                    span={24}
+                    style={{
+                      color: font_color,
+                    }}
+                  >
+                    {$$title ? data.getIn(['title', 'value']) : ''}
+                  </Col>
+                  <Col
+                    span={24}
+                    style={{
+                      textDecoration: 'line-through',
+                      color: font_color,
+                    }}
+                  >
+                    <h5>
+                      原价：￥{$$original
+                        ? data.getIn(['original', 'value'])
+                        : ''}
+                    </h5>
+                  </Col>
+                  <Col
+                    span={24}
+                    style={{
+                      color: font_color,
+                    }}
+                  >
+                    <h3 style={{ color: 'red' }}>
+                      <span>
+                        <h6 style={{ display: 'inline' }}>折扣价￥</h6>
+                      </span>
+                      {$$current ? data.getIn(['current', 'value']) : ''}
+                    </h3>
+                  </Col>
+                </Col>
               </Col>
-              <Col span={12} style={{ padding: '60px 0 0 0' }}>
-                <Col
-                  span={24}
-                  style={{
-                    color: font_color,
-                  }}
-                >
-                  {$$title ? data.getIn(['title', 'value']) : ''}
-                </Col>
-                <Col
-                  span={24}
-                  style={{
-                    textDecoration: 'line-through',
-                    color: font_color,
-                  }}
-                >
-                  <h5>
-                    原价：￥{$$original
-                      ? data.getIn(['original', 'value'])
-                      : ''}
-                  </h5>
-                </Col>
-                <Col
-                  span={24}
-                  style={{
-                    color: font_color,
-                  }}
-                >
-                  <h3 style={{ color: 'red' }}>
-                    <span>
-                      <h6 style={{ display: 'inline' }}>折扣价￥</h6>
-                    </span>
-                    {$$current ? data.getIn(['current', 'value']) : ''}
-                  </h3>
-                </Col>
-              </Col>
-              <br />
-            </Col>
-          );
-        })}
-      </Row>
+            );
+          })}
+        </Row>
+      </ImgAtom>
     );
   }
 }

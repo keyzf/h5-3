@@ -45,7 +45,6 @@ import {
   $$grid_mall_database,
   $$list_mall_database,
   $$one_mall_database,
-  $$seven_mall_database,
   $$six_mall_database,
   $$three_mall_database,
   $$two_mall_database,
@@ -84,7 +83,6 @@ import { ThreeMallUi } from './mall/recommend/three_mall_ui';
 import { FourMallUi } from './mall/recommend/four_mall_ui';
 import { FiveMallUi } from './mall/recommend/five_mall_ui';
 import { SixMallUi } from './mall/recommend/six_mall_ui';
-import { SevenMallUi } from './mall/recommend/seven_mall_ui';
 import { TwentyFiveTextUi } from './text/recommend/twenty_five_ui';
 import { TwentySixTextUi } from './text/recommend/twenty_six_ui';
 import { TwentySevenTextUi } from './text/recommend/twenty_seven_ui';
@@ -251,22 +249,18 @@ const template_mall_data = [
     template: <SixMallUi data={$$six_mall_database} />,
     data: $$six_mall_database,
   },
-  {
-    template: <SevenMallUi data={$$seven_mall_database} />,
-    data: $$seven_mall_database,
-  },
 ];
 /**
  * form
  * @type {*[]}
  */
 const template_form_data = [
-  { template: <FormTemplate />, data: $$form_database },
-  { template: '', data: 'dividing-line' },
-  {
-    template: <FormUi data={$$one_form_database} pointer={true} />,
-    data: $$one_form_database,
-  },
+  // { template: <FormTemplate />, data: $$form_database },
+  // { template: '', data: 'dividing-line' },
+  // {
+  //   template: <FormUi data={$$one_form_database} pointer={true} />,
+  //   data: $$one_form_database,
+  // },
   {
     template: <FormUi pointer={true} data={$$two_form_database} />,
     data: $$two_form_database,
