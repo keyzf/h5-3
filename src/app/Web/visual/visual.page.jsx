@@ -83,8 +83,11 @@ export default class VisualView extends PureComponent {
           <Sider style={{ background: 'white' }} width={380}>
             <SiderVisualView />
           </Sider>
-          <Content>
-            <div className={'content'}>
+          <Content id={'content'}>
+            <div
+              className={'content'}
+              style={{ height: '10000px', width: '100%' }}
+            >
               <ContentVisualView />
             </div>
           </Content>

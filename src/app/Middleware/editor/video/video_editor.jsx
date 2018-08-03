@@ -65,6 +65,9 @@ class EditorVideo extends PureComponent {
                   </span>
                 </div>
                 <TextArea rows={4} onChange={this.shareChange} />
+                <a href={'http://www.xiuzan.com/help/faq/?id=54&tid=5'}>
+                  如何获取视频通用代码
+                </a>
               </Collapse.Panel>
             </Collapse>
           </div>
@@ -73,6 +76,7 @@ class EditorVideo extends PureComponent {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     // 核心组件

@@ -3,15 +3,15 @@ import React from 'react'
 
 export default styled.div`
   position: absolute;
-  border: 1px solid #eb5648;
+  border: 1px solid rgb(0,153,248);
 
   .square {
     position: absolute;
-    width: 7px;
-    height: 7px;
+    width: 10px;
+    height: 10px;
     background: white;
-    border: 1px solid #eb5648;
-    border-radius: 1px;
+    border: 1px solid rgb(0,153,248);
+    border-radius: 5px;
   }
 
   .resizable-handler {

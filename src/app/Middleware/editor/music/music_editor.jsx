@@ -4,7 +4,7 @@ import {
   Tabs,
   Radio,
   Icon,
-  Collapse,
+  Checkbox,
   Button,
   Row,
   Col,
@@ -19,6 +19,7 @@ import 'nprogress/nprogress.css';
 import { upload_api } from '../../../../api/upload.api';
 import { redux_action } from '../../../../database/redux/action';
 import { system_api } from '../../../../api/system.api';
+import { system_list_api } from '../../../../api/system_list.api';
 
 class EditorMusic extends PureComponent {
   state = {
@@ -28,6 +29,7 @@ class EditorMusic extends PureComponent {
     music_library: [],
     number: 0,
     current: 1,
+    public_list: [],
   };
 
   componentWillMount() {
@@ -42,6 +44,12 @@ class EditorMusic extends PureComponent {
       this.setState({
         public_number: data.sum,
         public_music: data.list,
+      });
+    });
+    //  获取音频的分类
+    system_list_api(4, 0).then(data => {
+      this.setState({
+        public_list: data.list,
       });
     });
   }
@@ -160,35 +168,51 @@ class EditorMusic extends PureComponent {
       defaultActiveKey: '1',
       style: { height: '100%' },
     };
-    const radioStyle = {
-      display: 'block',
-      height: '30px',
-      lineHeight: '30px',
-    };
     return (
-      <Tabs {...tab_config}>
-        <Tabs.TabPane tab="内容设置" key="1">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <Collapse
-              bordered={false}
-              defaultActiveKey={['1']}
-              style={{ background: 'transparent' }}
+      <div>
+        <audio
+          src={$$customize.get('music')}
+          autoPlay={true}
+          style={{ display: 'none' }}
+        />
+        <Tabs {...tab_config}>
+          <Tabs.TabPane tab="我的音频" key="1">
+            <div
+              style={{
+                height: 'calc(100vh -  55px)',
+                overflow: 'auto',
+                marginTop: '-18px',
+                backgroundImage:
+                  'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+              }}
             >
-              <Collapse.Panel header="当前使用" key="1">
-                <audio
-                  src={$$customize.get('music')}
-                  controls
-                  style={{ width: '100%' }}
-                />
-                <div style={{ width: '100%' }}>
+              {this.state.number ? (
+                <div className={'flex_center'}>
+                  <Pagination
+                    simple
+                    total={this.state.number}
+                    pageSize={30}
+                    current={this.state.current}
+                    onChange={this.onChangePage}
+                  />
+
+                  <span style={{ marginBottom: '-20px', marginLeft: '10px' }}>
+                    <MusicForm
+                      upload={{ value: '' }}
+                      onChange={this.ImgPartChange}
+                      child={
+                        <Button style={{ width: '100%' }} type={'dashed'}>
+                          <Icon type="plus" />添加素材
+                        </Button>
+                      }
+                    />
+                  </span>
+                  <br />
+                  <br />
+                  <hr />
+                </div>
+              ) : (
+                <div className={'flex_center'}>
                   <MusicForm
                     upload={{ value: '' }}
                     onChange={this.ImgPartChange}
@@ -199,123 +223,59 @@ class EditorMusic extends PureComponent {
                     }
                   />
                 </div>
-              </Collapse.Panel>
-              <Collapse.Panel header="历史上传" key="2">
-                <Row gutter={16}>
-                  <Col span={24}>
-                    <div className={'flex_center'}>
-                      {this.state.number ? (
+              )}
+
+              {this.state.music_library.map((data, index) => {
+                return (
+                  <div>
+                    {' '}
+                    <Checkbox
+                      onChange={this.onChange}
+                      key={index}
+                      value={data.url}
+                    >
+                      {data.desc}
+                    </Checkbox>
+                    <br />
+                  </div>
+                );
+              })}
+            </div>
+          </Tabs.TabPane>
+          {this.state.public_list.map((data, index) => {
+            return (
+              <Tabs.TabPane tab={data.name} key={index}>
+                {this.state.music_library.map((data, index) => {
+                  return (
+                    <div>
+                      <div className={'flex_center'}>
                         <Pagination
-                          total={this.state.number}
-                          pageSize={30}
-                          current={this.state.current}
-                          onChange={this.onChangePage}
-                        />
-                      ) : (
-                        '暂无上传'
-                      )}
-                    </div>
-                  </Col>
-                  <br />
-                  <br />
-                  <hr />
-                  <br />
-                  <Radio.Group
-                    onChange={this.onChange}
-                    value={$$customize.get('music')}
-                  >
-                    {this.state.music_library.map((data, index) => {
-                      return (
-                        <Row gutter={16}>
-                          <Col span={16}>
-                            <Radio
-                              key={index}
-                              style={radioStyle}
-                              value={data.url}
-                            >
-                              {data.desc}
-                            </Radio>
-                          </Col>
-                          <Col span={8}>
-                            <span style={{ transform: 'translate(10px,3px)' }}>
-                              <Icon
-                                onClick={this.del.bind(this, index, data.mid)}
-                                className="dynamic-delete-button"
-                                type="minus-circle-o"
-                              />
-                            </span>
-                          </Col>
-                        </Row>
-                      );
-                    })}
-                  </Radio.Group>
-                </Row>
-              </Collapse.Panel>
-            </Collapse>
-          </div>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="推荐" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <Collapse
-              bordered={false}
-              defaultActiveKey={['1']}
-              style={{ background: 'transparent' }}
-            >
-              <Collapse.Panel header="热门推荐" key="2">
-                <Row gutter={16}>
-                  <Col span={24}>
-                    <div className={'flex_center'}>
-                      {this.state.public_number ? (
-                        <Pagination
+                          simple
                           total={this.state.public_number}
                           pageSize={30}
                           current={this.state.public_current}
                           onChange={this.public_onChangePage}
                         />
-                      ) : (
-                        '暂无推荐'
-                      )}
+                        <br />
+                        <br />
+                        <hr />
+                      </div>
+                      <Checkbox
+                        onChange={this.onChange}
+                        key={index}
+                        value={data.url}
+                      >
+                        {data.desc}
+                      </Checkbox>
+                      <br />
                     </div>
-                  </Col>
-                  <br />
-                  <br />
-                  <hr />
-                  <br />
-                  <Radio.Group
-                    onChange={this.onChange}
-                    value={$$customize.get('music')}
-                  >
-                    {this.state.public_music.map((data, index) => {
-                      return (
-                        <Row gutter={16}>
-                          <Col span={16}>
-                            <Radio
-                              key={index}
-                              style={radioStyle}
-                              value={data.url}
-                            >
-                              {data.desc}
-                            </Radio>
-                          </Col>
-                          <Col span={8} />
-                        </Row>
-                      );
-                    })}
-                  </Radio.Group>
-                </Row>
-              </Collapse.Panel>
-            </Collapse>
-          </div>
-        </Tabs.TabPane>
-      </Tabs>
+                  );
+                })}
+              </Tabs.TabPane>
+            );
+          })}
+        </Tabs>
+      </div>
     );
   }
 }

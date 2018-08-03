@@ -453,17 +453,29 @@ class EditorMall extends PureComponent {
                       }
                       trigger="click"
                     >
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          height: '25px',
-                          width: '100%',
-                          backgroundColor: $$data.getIn([
-                            'advance',
-                            'content_color',
-                          ]),
-                        }}
-                      />
+                      {$$data.getIn(['advance', 'content_color']) !==
+                      undefined ? (
+                        <div
+                          style={{
+                            marginTop: '6px',
+                            height: '25px',
+                            width: '100%',
+                            backgroundColor: $$data.getIn([
+                              'advance',
+                              'content_color',
+                            ]),
+                          }}
+                        />
+                      ) : (
+                        <div
+                          className={'bg_transparent'}
+                          style={{
+                            marginTop: '6px',
+                            height: '25px',
+                            width: '100%',
+                          }}
+                        />
+                      )}
                     </Popover>
                   </Form.Item>
                 </Form>

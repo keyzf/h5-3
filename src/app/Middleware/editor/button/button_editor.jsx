@@ -115,14 +115,25 @@ class EditorButton extends PureComponent {
                       }
                       trigger="click"
                     >
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          height: '25px',
-                          width: '100%',
-                          backgroundColor: $$customize.get('bg_color'),
-                        }}
-                      />
+                      {$$customize.get('bg_color') !== 'transparent' ? (
+                        <div
+                          style={{
+                            marginTop: '6px',
+                            height: '25px',
+                            width: '100%',
+                            backgroundColor: $$customize.get('bg_color'),
+                          }}
+                        />
+                      ) : (
+                        <div
+                          className={'bg_transparent'}
+                          style={{
+                            marginTop: '6px',
+                            height: '25px',
+                            width: '100%',
+                          }}
+                        />
+                      )}
                     </Popover>
                   </Form.Item>
                 </Form>

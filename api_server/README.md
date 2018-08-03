@@ -7,6 +7,7 @@
 4. 删除用户素材 http://h5.e7wei.com/Material/delUser 
 5. 获取用户素材 http://h5.e7wei.com/Material/getUser 
 6. 用户表单提交  http://v.e7wei.com/view/postData
+7. 获取系统子分类 http://h5.e7wei.com/Material/getSysType
 
 ## 公共字段
 

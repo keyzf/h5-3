@@ -57,6 +57,16 @@ export default connect(
               minHeight={600}
               size={{ height: bg_config.height }}
               onResizeStop={this.changeHeight}
+              RenableResizing={{
+                top: false,
+                right: true,
+                bottom: true,
+                left: false,
+                topRight: false,
+                bottomRight: false,
+                bottomLeft: false,
+                topLeft: false,
+              }}
             >
               <BgComponent {...bg_config}>
                 {choose_meta.get('content') ? (

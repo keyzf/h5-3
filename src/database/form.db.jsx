@@ -137,6 +137,8 @@ const three_template = fromJS([
 const four_template = fromJS([
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '请选择您最喜欢的一组节目' },
     decorator: '请选择您最喜欢的一组节目',
     option: ['光影一体', '同桌的你', '父亲', '博物馆奇妙夜'],
@@ -161,12 +163,16 @@ const five_template = fromJS([
   },
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '性别' },
     decorator: '性别',
     option: ['男', '女'],
   },
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '应聘岗位' },
     decorator: '应聘岗位',
     option: ['前端开发', '后端开发', '运维', 'ui设计师'],
@@ -209,12 +215,16 @@ const six_template = fromJS([
 const seven_template = fromJS([
   {
     type: 'input',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '你的姓名' },
     decorator: '你的姓名',
     option: { value: '' },
   },
   {
     type: 'input',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '你的电话' },
     decorator: '你的电话',
     option: { value: '' },
@@ -233,6 +243,8 @@ const seven_template = fromJS([
   },
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '预约项目' },
     decorator: '预约项目',
     option: ['项目一', '项目二', '项目三', '项目四'],
@@ -241,18 +253,24 @@ const seven_template = fromJS([
 const eight_template = fromJS([
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '性别' },
     decorator: '性别',
     option: ['项目一', '项目二', '项目三', '项目四'],
   },
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '你所在的城市' },
     decorator: '你所在的城市',
     option: ['南京', '上海', '北京', '深圳'],
   },
   {
     type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
     title: { value: '你觉得怎样才算一个幸福的人' },
     decorator: '你觉得怎样才算一个幸福的人',
     option: [
