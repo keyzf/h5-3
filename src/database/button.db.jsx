@@ -41,7 +41,9 @@ const $$button = (
   };
 };
 
-const $$button_database = fromJS($$button('button', 150, 40, '#FFF', '#666'));
+const $$button_database = fromJS(
+  $$button('button', 150, 40, 'white', '#2EA5FF')
+);
 
 const $$btn_re_1 = fromJS(
   $$button(

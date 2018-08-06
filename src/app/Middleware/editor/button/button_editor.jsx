@@ -18,11 +18,13 @@ class EditorButton extends PureComponent {
       };
       this.sendAction($$props_data.set('customize', fromJS($$customize)));
     }
+
     if (opt_name === 'color') {
       this.sendAction(
         $$props_data.setIn(['customize', 'font_color'], data.hex)
       );
     }
+
     if (opt_name === 'bg_color') {
       this.sendAction($$props_data.setIn(['customize', 'bg_color'], data.hex));
     }
@@ -81,7 +83,7 @@ class EditorButton extends PureComponent {
                     <Popover
                       content={
                         <SketchPicker
-                          color={$$customize.getIn(['base', 'font_color'])}
+                          color={$$customize.get('font_color')}
                           onChangeComplete={this.editorFeatures.bind(
                             this,
                             'color'
@@ -106,7 +108,7 @@ class EditorButton extends PureComponent {
                     <Popover
                       content={
                         <SketchPicker
-                          color={$$customize.getIn(['base', 'font_color'])}
+                          color={$$customize.get('bg_color')}
                           onChangeComplete={this.editorFeatures.bind(
                             this,
                             'bg_color'

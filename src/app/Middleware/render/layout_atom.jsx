@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const RenderBgAtom = styled.div`
   position: relative;
   // 宽度
-  width: 320px;
+  width: 100%;
   height: ${props =>
     props.fixed ? '100%' : props.height ? props.height + 'px' : 'auto'};
   ${props => (props.fixed ? 'overflow: hidden' : '')};

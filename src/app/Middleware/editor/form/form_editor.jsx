@@ -312,9 +312,6 @@ class EditorForm extends PureComponent {
                 title="表单项编辑"
                 extra={<div onClick={this.backItem}>返回</div>}
               >
-                {console.log(
-                  $$customize.getIn(['item', this.state.number, 'type'])
-                )}
                 {$$customize.getIn(['item', this.state.number, 'type']) ===
                 'radio' ? (
                   <React.Fragment>
@@ -603,18 +600,33 @@ class EditorForm extends PureComponent {
                           }
                           trigger="click"
                         >
-                          <div
-                            style={{
-                              marginTop: '6px',
-                              height: '25px',
-                              width: '100%',
-                              backgroundColor: $$customize.getIn([
-                                'item',
-                                this.state.number,
-                                'title_color',
-                              ]),
-                            }}
-                          />
+                          {$$customize.getIn([
+                            'item',
+                            this.state.number,
+                            'title_color',
+                          ]) !== undefined ? (
+                            <div
+                              style={{
+                                marginTop: '6px',
+                                height: '25px',
+                                width: '100%',
+                                backgroundColor: $$customize.getIn([
+                                  'item',
+                                  this.state.number,
+                                  'title_color',
+                                ]),
+                              }}
+                            />
+                          ) : (
+                            <div
+                              className={'bg_transparent'}
+                              style={{
+                                marginTop: '6px',
+                                height: '25px',
+                                width: '100%',
+                              }}
+                            />
+                          )}
                         </Popover>
                       </Form.Item>
                     </Form>
@@ -1041,14 +1053,25 @@ class EditorForm extends PureComponent {
                         }
                         trigger="click"
                       >
-                        <div
-                          style={{
-                            marginTop: '6px',
-                            height: '25px',
-                            width: '100%',
-                            backgroundColor: $$customize.get('btn_bg_color'),
-                          }}
-                        />
+                        {$$customize.get('btn_bg_color') !== '' ? (
+                          <div
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                              backgroundColor: $$customize.get('btn_bg_color'),
+                            }}
+                          />
+                        ) : (
+                          <div
+                            className={'bg_transparent'}
+                            style={{
+                              marginTop: '6px',
+                              height: '25px',
+                              width: '100%',
+                            }}
+                          />
+                        )}
                       </Popover>
                     </Form.Item>
                   </Form>

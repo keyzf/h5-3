@@ -149,7 +149,7 @@ const four_template = fromJS([
     opt_color: '#000',
     title: { value: '你的姓名' },
     decorator: '你的姓名',
-    option: { value: '' },
+    option: { value: '请输入姓名' },
   },
 ]);
 const five_template = fromJS([
@@ -159,7 +159,7 @@ const five_template = fromJS([
     opt_color: '#000',
     title: { value: '你的姓名' },
     decorator: '你的姓名',
-    option: { value: '' },
+    option: { value: '请输入姓名' },
   },
   {
     type: 'select',
@@ -183,7 +183,7 @@ const five_template = fromJS([
     opt_color: '#000',
     title: { value: '工作经历' },
     decorator: '工作经历',
-    option: { value: '' },
+    option: { value: '请输入工作经历' },
   },
   {
     type: 'upload',
@@ -219,7 +219,7 @@ const seven_template = fromJS([
     opt_color: '#000',
     title: { value: '你的姓名' },
     decorator: '你的姓名',
-    option: { value: '' },
+    option: { value: '请输入姓名' },
   },
   {
     type: 'input',
@@ -227,7 +227,7 @@ const seven_template = fromJS([
     opt_color: '#000',
     title: { value: '你的电话' },
     decorator: '你的电话',
-    option: { value: '' },
+    option: { value: '请输入电话' },
   },
   {
     type: 'datePicker',

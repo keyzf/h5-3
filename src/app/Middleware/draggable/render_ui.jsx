@@ -11,13 +11,15 @@ class RenderUI extends PureComponent {
     let t = '';
     let h = '';
     let top = '';
-    if ($_content.scrollTop) {
+    try {
+      $_content.scrollTop;
       t = $_content.scrollTop || $_content.body.scrollTop;
       h = $_content.clientHeight;
       top = h / 2 + t - advance.get('height') / 2;
-    } else {
+    } catch (error) {
       top = advance.get('height') / 2;
     }
+
     // 拆解所有组件的高级设置
     const advanced_settings = {
       // 动画移动

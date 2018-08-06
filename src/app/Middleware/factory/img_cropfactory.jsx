@@ -31,8 +31,8 @@ class ImgCropFactory extends PureComponent {
   };
   onCropChange = event => {
     const size = {
-      x: event.detail.x,
-      y: event.detail.y,
+      x: event.detail.x >= 0 ? event.detail.x : 0,
+      y: event.detail.y >= 0 ? event.detail.y : 0,
       width: event.detail.width,
       height: event.detail.height,
     };

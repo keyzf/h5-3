@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {
   Tabs,
-  Radio,
   Icon,
   Checkbox,
   Button,
@@ -40,14 +39,14 @@ class EditorMusic extends PureComponent {
       });
     });
     //  公共音乐库
-    system_api(4, 0).then(data => {
+    system_api(1, 1).then(data => {
       this.setState({
         public_number: data.sum,
         public_music: data.list,
       });
     });
     //  获取音频的分类
-    system_list_api(4, 0).then(data => {
+    system_list_api().then(data => {
       this.setState({
         public_list: data.list,
       });
@@ -100,8 +99,9 @@ class EditorMusic extends PureComponent {
         message.error(response);
       });
   };
-  public_onChangePage = page => {
-    system_api(4, page)
+
+  public_onChangePage = (tid, page = 1) => {
+    system_api(page, tid)
       .then(response => {
         this.setState({
           public_music: response.list,
@@ -165,7 +165,7 @@ class EditorMusic extends PureComponent {
   render() {
     const $$customize = this.props.data.getIn(['data', 'customize']);
     const tab_config = {
-      defaultActiveKey: '1',
+      defaultActiveKey: 'start',
       style: { height: '100%' },
     };
     return (
@@ -175,8 +175,8 @@ class EditorMusic extends PureComponent {
           autoPlay={true}
           style={{ display: 'none' }}
         />
-        <Tabs {...tab_config}>
-          <Tabs.TabPane tab="我的音频" key="1">
+        <Tabs {...tab_config} onChange={this.public_onChangePage}>
+          <Tabs.TabPane tab="我的音频" key="start">
             <div
               style={{
                 height: 'calc(100vh -  55px)',
@@ -227,45 +227,54 @@ class EditorMusic extends PureComponent {
 
               {this.state.music_library.map((data, index) => {
                 return (
-                  <div>
-                    {' '}
-                    <Checkbox
-                      onChange={this.onChange}
-                      key={index}
-                      value={data.url}
-                    >
-                      {data.desc}
-                    </Checkbox>
-                    <br />
-                  </div>
-                );
-              })}
-            </div>
-          </Tabs.TabPane>
-          {this.state.public_list.map((data, index) => {
-            return (
-              <Tabs.TabPane tab={data.name} key={index}>
-                {this.state.music_library.map((data, index) => {
-                  return (
-                    <div>
-                      <div className={'flex_center'}>
-                        <Pagination
-                          simple
-                          total={this.state.public_number}
-                          pageSize={30}
-                          current={this.state.public_current}
-                          onChange={this.public_onChangePage}
-                        />
-                        <br />
-                        <br />
-                        <hr />
-                      </div>
+                  <Row gutter={16}>
+                    <Col span={16}>
                       <Checkbox
                         onChange={this.onChange}
                         key={index}
                         value={data.url}
                       >
                         {data.desc}
+                      </Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <span style={{ transform: 'translate(10px,3px)' }}>
+                        <Icon
+                          onClick={this.del.bind(this, index, data.mid)}
+                          className="dynamic-delete-button"
+                          type="minus-circle-o"
+                        />
+                      </span>
+                    </Col>
+                  </Row>
+                );
+              })}
+            </div>
+          </Tabs.TabPane>
+          {this.state.public_list.map((data, index) => {
+            return (
+              <Tabs.TabPane tab={data.typename} key={index}>
+                <div className={'flex_center'}>
+                  <Pagination
+                    simple
+                    total={this.state.public_number}
+                    pageSize={30}
+                    current={this.state.public_current}
+                    onChange={this.public_onChangePage.bind(this, data.tid)}
+                  />
+                  <br />
+                  <br />
+                  <hr />
+                </div>
+                {this.state.public_music.map((data, index) => {
+                  return (
+                    <div>
+                      <Checkbox
+                        onChange={this.onChange}
+                        key={index}
+                        value={data.url}
+                      >
+                        {data.name}
                       </Checkbox>
                       <br />
                     </div>

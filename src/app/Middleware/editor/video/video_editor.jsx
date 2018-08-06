@@ -10,8 +10,10 @@ class EditorVideo extends PureComponent {
     length: 0,
   };
   shareChange = e => {
+    const newstr = e.target.value.replace('width=', "width='100%'");
+    const newstrs = newstr.replace('height=', "height='100%'");
     this.sendAction(
-      this.props.data.get('data').setIn(['customize', 'share'], e.target.value)
+      this.props.data.get('data').setIn(['customize', 'share'], newstrs)
     );
   };
   sendAction = up_data => {

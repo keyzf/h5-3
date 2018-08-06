@@ -58,7 +58,7 @@ export const $$text_re_2 = index => {
 };
 export const $$twenty_five_text = index => {
   return fromJS(
-    $$text_database('twenty_five_text', twenty_five_html_text, 50, 300, index)
+    $$text_database('twenty_five_text', twenty_five_html_text, 100, 300, index)
   );
 };
 export const $$twenty_six_text = index => {
@@ -91,9 +91,10 @@ export const $$thirty_one_text = index => {
     $$text_database('thirty_one_text', thirty_one_html_text, 50, 300, index)
   );
 };
+
 export const $$thirty_two_text = index => {
   return fromJS(
-    $$text_database('thirty_two_text', thirty_two_html_text, 50, 300, index)
+    $$text_database('thirty_two_text', thirty_two_html_text, 100, 300, index)
   );
 };
 export const $$thirty_three_text = index => {

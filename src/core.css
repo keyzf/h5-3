@@ -133,6 +133,7 @@ h6 {
 }
 .avatar-uploader > .ant-upload {
     width: 128px;
+
     height: 128px;
 }
 
@@ -144,6 +145,7 @@ h6 {
             <rect y="50" width="50" height="50" />\
             </svg>');
     background-size: 30px 30px;
+
 }
 
 

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // 测试成功✅
-export const system_list_api = type => {
+export const system_list_api = () => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
-    params.append('type', type);
+    params.append('type', '1');
     axios
       .post('http://h5.e7wei.com/Material/getSysType', params)
       .then(response => {

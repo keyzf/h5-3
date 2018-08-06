@@ -107,23 +107,24 @@ export default connect(
           content: template_text_data,
         },
         {
-          icon: 'icon iconfont icon-anniu',
-          title: '按钮',
-          name: 'button',
-          content: template_button_data,
-        },
-        {
           icon: 'iconfont icon-tupian',
           title: '图片',
           name: 'img',
           content: template_img_data,
         },
         {
-          icon: 'iconfont icon-unie62d',
-          title: '商品',
-          name: 'mall',
-          content: template_mall_data,
+          icon: 'icon iconfont icon-anniu',
+          title: '按钮',
+          name: 'button',
+          content: template_button_data,
         },
+
+        // {
+        //   icon: 'iconfont icon-unie62d',
+        //   title: '商品',
+        //   name: 'mall',
+        //   content: template_mall_data,
+        // },
         {
           icon: 'icon iconfont icon-biaodan',
           title: '表单',

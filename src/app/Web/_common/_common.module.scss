@@ -15,7 +15,9 @@
   height: 86%;
   width: 100%;
   overflow: hidden;
-  background: rgb(229,229,229);;
+  background: rgb(229,229,229);
+  border-top: 1px rgb(229,229,229) solid;
+  border-bottom: 1px rgb(229,229,229) solid;
 }
 
 .phone_footer {

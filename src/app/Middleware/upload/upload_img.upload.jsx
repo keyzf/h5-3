@@ -79,6 +79,16 @@ class UploadImg extends PureComponent {
                 current: 1,
                 number: response.sum,
               });
+              // 图片
+              if (this.props.type === 1) {
+                this.props.func(`http://src.e7wei.com/${file.response.key}`);
+              }
+              if (this.props.type === 3) {
+                this.props.func(`http://src.e7wei.com/${file.response.key}`);
+              }
+              if (this.props.type === 2) {
+                this.props.func(`http://src.e7wei.com/${file.response.key}`);
+              }
             })
             .catch(response => {
               message.error(response);
