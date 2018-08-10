@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { GetUrlPara } from './app/Middleware/tool/parse_url.tool';
+import {
+  H5ViewLoadable,
+  PreviewLoadable,
+  ReleaseLoadable,
+  VisualLoadable,
+} from './routes/web.route';
+import { access_api } from './api/access.api';
+
+import { redux_action } from './database/redux/action';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
+  };
+};
+
+/**
+ * 实现功能：
+ * 1. 解析路由 ，获取路由信息 （sid, guide, state）
+ * 2. 调用 access_api ,传参：（sid, state）
+ * 3. 如果路由解析中存在guide ，则更改guide状态 ，传递给子组件
+ */
+export default connect(
+  null,
+  mapDispatchToProps
+)(
+  class App extends PureComponent {
+    state = { router: 'visual', guide: false };
+
+    componentWillMount() {
+      if (GetUrlPara('guide')) {
+        this.setState({
+          guide: true,
+        });
+      }
+      const parseUrlData = {
+        sid: GetUrlPara('sid'),
+        state: GetUrlPara('state'),
+      };
+      access_api({ ...parseUrlData }, this.props.upData)
+        .then(data => {
+          this.setState({
+            router: data,
+          });
+        })
+        .catch(error => {
+          window.location.href = error;
+        });
+    }
+
+    render() {
+      return (
+        &lt;HashRouter>
+          &lt;Switch>
+            &lt;Route exact={true} path={'/'}>
+              &lt;Redirect to={this.state.router} />
+            &lt;/Route>
+            &lt;Route
+              path={'/visual'}
+              component={() => &lt;VisualLoadable guide={this.state.guide} />}
+            />
+            &lt;Route path={'/preview'} component={PreviewLoadable} />
+            &lt;Route path={'/release'} component={ReleaseLoadable} />
+            &lt;Route path={'/h5View'} component={H5ViewLoadable} />
+          &lt;/Switch>
+        &lt;/HashRouter>
+      );
+    }
+  }
+);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BgComponent.html">BgComponent</a></li><li><a href="EighteenTextUi.html">EighteenTextUi</a></li><li><a href="EightTextUi.html">EightTextUi</a></li><li><a href="ElevenTextUi.html">ElevenTextUi</a></li><li><a href="FifteenTextUi.html">FifteenTextUi</a></li><li><a href="FiveTextUi.html">FiveTextUi</a></li><li><a href="FourTeenTextUi.html">FourTeenTextUi</a></li><li><a href="FourTextUi.html">FourTextUi</a></li><li><a href="ImgBaseForm.html">ImgBaseForm</a></li><li><a href="ImgCropFactory.html">ImgCropFactory</a></li><li><a href="ImgItemForm.html">ImgItemForm</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="MusicUi.html">MusicUi</a></li><li><a href="NineTeenTextUi.html">NineTeenTextUi</a></li><li><a href="NineTextUi.html">NineTextUi</a></li><li><a href="RenderBg.html">RenderBg</a></li><li><a href="SevenTeenTextUi.html">SevenTeenTextUi</a></li><li><a href="SevenTextUi.html">SevenTextUi</a></li><li><a href="SixTeenTextUi.html">SixTeenTextUi</a></li><li><a href="SixTextUi.html">SixTextUi</a></li><li><a href="TenTextUi.html">TenTextUi</a></li><li><a href="ThirteenTextUi.html">ThirteenTextUi</a></li><li><a href="ThreeTextUi.html">ThreeTextUi</a></li><li><a href="TwelveTextUi.html">TwelveTextUi</a></li><li><a href="TwentyTextUi.html">TwentyTextUi</a></li><li><a href="TwoTextUi.html">TwoTextUi</a></li><li><a href="UploadImg.html">UploadImg</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$$form">$$form</a></li><li><a href="global.html#$$from_opt_input">$$from_opt_input</a></li><li><a href="global.html#one_template">one_template</a></li><li><a href="global.html#render_formFactory">render_formFactory</a></li><li><a href="global.html#render_ui">render_ui</a></li><li><a href="global.html#secretKey">secretKey</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#template_button_data">template_button_data</a></li><li><a href="global.html#template_form_data">template_form_data</a></li><li><a href="global.html#template_img_data">template_img_data</a></li><li><a href="global.html#template_mall_data">template_mall_data</a></li><li><a href="global.html#template_text_data">template_text_data</a></li><li><a href="global.html#upload_api">upload_api</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jul 27 2018 16:09:04 GMT+0800 (China Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
