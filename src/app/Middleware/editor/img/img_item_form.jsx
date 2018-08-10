@@ -24,22 +24,22 @@ class ImgItemForm extends PureComponent {
 
     return (
       <Form hideRequiredMark>
-        {this.props.name === 'single_img' ? (
-          ''
-        ) : (
-          <Form.Item {...form_item_style('标题')}>
-            {getFieldDecorator('title')(<Input placeholder="请输入标题" />)}
-          </Form.Item>
-        )}
-        {this.props.name === 'single_img' ? (
-          ''
-        ) : (
-          <Form.Item {...form_item_style('内容')}>
-            {getFieldDecorator('content')(
-              <TextArea rows={4} placeholder="请输入内容" />
-            )}
-          </Form.Item>
-        )}
+        {/*{this.props.name === 'single_img' ? (*/}
+        {/*''*/}
+        {/*) : (*/}
+        {/*<Form.Item {...form_item_style('标题')}>*/}
+        {/*{getFieldDecorator('title')(<Input placeholder="请输入标题" />)}*/}
+        {/*</Form.Item>*/}
+        {/*)}*/}
+        {/*{this.props.name === 'single_img' ? (*/}
+        {/*''*/}
+        {/*) : (*/}
+        {/*<Form.Item {...form_item_style('内容')}>*/}
+        {/*{getFieldDecorator('content')(*/}
+        {/*<TextArea rows={4} placeholder="请输入内容" />*/}
+        {/*)}*/}
+        {/*</Form.Item>*/}
+        {/*)}*/}
         <Form.Item {...form_item_style('图片圆角')}>
           {getFieldDecorator('radius')(<Slider min={0} max={100} />)}
         </Form.Item>

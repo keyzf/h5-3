@@ -6,12 +6,19 @@ class FormPreviewView extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form layout="vertical">
-        <Form.Item label="标题">
-          {getFieldDecorator('title')(<Input placeholder="请输入标题" />)}
+        <Form.Item label="分享标题">
+          {getFieldDecorator('title', {
+            rules: [{ required: true, message: 'Username is required!' }],
+          })(<Input placeholder="请输入标题" />)}
         </Form.Item>
-        <Form.Item label="描述">
-          {getFieldDecorator('desc')(
-            <Input.TextArea rows={4} placeholder="请输入推广简介" />
+        <Form.Item label="分享描述">
+          {getFieldDecorator('desc', {
+            rules: [{ required: true, message: 'Username is required!' }],
+          })(
+            <Input.TextArea
+              rows={4}
+              placeholder="我用易企微做了一个H5页面，你来看看吧！"
+            />
           )}
         </Form.Item>
       </Form>

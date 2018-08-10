@@ -61,109 +61,86 @@ class EditorButton extends PureComponent {
       };
     };
     return (
-      <Tabs defaultActiveKey={'1'}>
-        <Tabs.TabPane tab="内容设置" key="1">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <Collapse
-              bordered={false}
-              defaultActiveKey={['1']}
-              style={{ background: 'transparent' }}
-            >
-              <Collapse.Panel header="基础属性" key="1">
-                <Form hideRequiredMark>
-                  <Form.Item {...form_item_style('字体颜色')}>
-                    <Popover
-                      content={
-                        <SketchPicker
-                          color={$$customize.get('font_color')}
-                          onChangeComplete={this.editorFeatures.bind(
-                            this,
-                            'color'
-                          )}
-                        />
-                      }
-                      trigger="click"
-                    >
-                      <div
-                        style={{
-                          marginTop: '6px',
-                          height: '25px',
-                          width: '100%',
-                          backgroundColor: $$customize.get('font_color'),
-                        }}
-                      />
-                    </Popover>
-                  </Form.Item>
-                </Form>
-                <Form hideRequiredMark>
-                  <Form.Item {...form_item_style('按钮背景')}>
-                    <Popover
-                      content={
-                        <SketchPicker
-                          color={$$customize.get('bg_color')}
-                          onChangeComplete={this.editorFeatures.bind(
-                            this,
-                            'bg_color'
-                          )}
-                        />
-                      }
-                      trigger="click"
-                    >
-                      {$$customize.get('bg_color') !== 'transparent' ? (
-                        <div
-                          style={{
-                            marginTop: '6px',
-                            height: '25px',
-                            width: '100%',
-                            backgroundColor: $$customize.get('bg_color'),
-                          }}
-                        />
-                      ) : (
-                        <div
-                          className={'bg_transparent'}
-                          style={{
-                            marginTop: '6px',
-                            height: '25px',
-                            width: '100%',
-                          }}
-                        />
-                      )}
-                    </Popover>
-                  </Form.Item>
-                </Form>
-                <ButtonForm
-                  show={
-                    $$ui_text_data.getIn(['customize', 'name']) === 'button'
+      <div
+        style={{
+          height: 'calc(100vh -  55px)',
+          overflow: 'hidden',
+        }}
+      >
+        <Collapse
+          bordered={false}
+          defaultActiveKey={['1000']}
+          style={{ background: 'transparent' }}
+        >
+          <Collapse.Panel header="按钮设置" key="1000">
+            <Form hideRequiredMark>
+              <Form.Item {...form_item_style('字体颜色')}>
+                <Popover
+                  content={
+                    <SketchPicker
+                      color={$$customize.get('font_color')}
+                      onChangeComplete={this.editorFeatures.bind(this, 'color')}
+                    />
                   }
-                  {...$$customize.toJS()}
-                  onChange={this.editorFeatures.bind(this, 'customize')}
-                />
-              </Collapse.Panel>
-            </Collapse>
-          </div>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="高级设置" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <AdvanceEditor data={$$ui_text_data} name={'button'} />
-          </div>
-        </Tabs.TabPane>
-      </Tabs>
+                  trigger="click"
+                >
+                  <div
+                    style={{
+                      marginTop: '6px',
+                      height: '25px',
+                      width: '100%',
+                      backgroundColor: $$customize.get('font_color'),
+                      border: '1px grey solid',
+                    }}
+                  />
+                </Popover>
+              </Form.Item>
+            </Form>
+            <Form hideRequiredMark>
+              <Form.Item {...form_item_style('按钮背景')}>
+                <Popover
+                  content={
+                    <SketchPicker
+                      color={$$customize.get('bg_color')}
+                      onChangeComplete={this.editorFeatures.bind(
+                        this,
+                        'bg_color'
+                      )}
+                    />
+                  }
+                  trigger="click"
+                >
+                  {$$customize.get('bg_color') !== 'transparent' ? (
+                    <div
+                      style={{
+                        marginTop: '6px',
+                        height: '25px',
+                        width: '100%',
+                        backgroundColor: $$customize.get('bg_color'),
+                      }}
+                    />
+                  ) : (
+                    <div
+                      className={'bg_transparent'}
+                      style={{
+                        marginTop: '6px',
+                        height: '25px',
+                        width: '100%',
+                      }}
+                    />
+                  )}
+                </Popover>
+              </Form.Item>
+            </Form>
+            <ButtonForm
+              show={$$ui_text_data.getIn(['customize', 'name']) === 'button'}
+              {...$$customize.toJS()}
+              onChange={this.editorFeatures.bind(this, 'customize')}
+            />
+          </Collapse.Panel>
+        </Collapse>
+        <AdvanceEditor data={$$ui_text_data} name={'button'} />
+      </div>
     );
   }
 }

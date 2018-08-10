@@ -46,7 +46,7 @@ const $$img_func_database = (
 const $$img_addItem_database = fromJS({
   img: 'http://src.e7wei.com/0.2823198691104869.png',
   crop_img: 'http://src.e7wei.com/0.2823198691104869.png',
-  title: { value: '这里是图片标题' },
+  title: { value: '轮播图' },
   content: {
     value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
   },
@@ -261,7 +261,7 @@ const $$carousel_img_database = $$img_func_database(
     {
       img: 'http://src.e7wei.com/0.3078424418116057.png',
       crop_img: 'http://src.e7wei.com/0.3078424418116057.png',
-      title: { value: '这里是图片标题' },
+      title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
       },
@@ -275,7 +275,7 @@ const $$carousel_img_database = $$img_func_database(
     {
       img: 'http://src.e7wei.com/0.9703241613472722.png',
       crop_img: 'http://src.e7wei.com/0.9703241613472722.png',
-      title: { value: '这里是图片标题' },
+      title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
       },
@@ -289,7 +289,7 @@ const $$carousel_img_database = $$img_func_database(
     {
       img: 'http://src.e7wei.com/0.5336862457968479.png',
       crop_img: 'http://src.e7wei.com/0.5336862457968479.png',
-      title: { value: '这里是图片标题' },
+      title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
       },
@@ -303,7 +303,7 @@ const $$carousel_img_database = $$img_func_database(
     {
       img: 'http://src.e7wei.com/0.7599642934946711.png',
       crop_img: 'http://src.e7wei.com/0.7599642934946711.png',
-      title: { value: '这里是图片标题' },
+      title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
       },

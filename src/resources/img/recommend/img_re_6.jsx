@@ -38,38 +38,38 @@ export class Img6UI extends PureComponent {
                     }}
                   />
                 </section>
-                <section className={style.img_6_7}>
-                  <span
-                    style={{
-                      fontSize: '18px',
-                      background: `${advance.get('content_color')}`,
-                      color: customize.getIn(['base', 'font_color']),
-                    }}
-                  >
-                    <strong
-                      style={{
-                        fontSize: '18px',
-                        background: `${advance.get('content_color')}`,
-                        color: customize.getIn(['base', 'font_color']),
-                      }}
-                    >
-                      {' '}
-                      {$$show_element.includes('标题')
-                        ? ''
-                        : data.getIn(['title', 'value'])}
-                    </strong>
-                  </span>
-                  <span
-                    style={{
-                      background: `${advance.get('content_color')}`,
-                      color: customize.getIn(['base', 'font_color']),
-                    }}
-                  >
-                    {$$show_element.includes('内容')
-                      ? ''
-                      : data.getIn(['content', 'value'])}
-                  </span>
-                </section>
+                {/*<section className={style.img_6_7}>*/}
+                {/*<span*/}
+                {/*style={{*/}
+                {/*fontSize: '18px',*/}
+                {/*background: `${advance.get('content_color')}`,*/}
+                {/*color: customize.getIn(['base', 'font_color']),*/}
+                {/*}}*/}
+                {/*>*/}
+                {/*<strong*/}
+                {/*style={{*/}
+                {/*fontSize: '18px',*/}
+                {/*background: `${advance.get('content_color')}`,*/}
+                {/*color: customize.getIn(['base', 'font_color']),*/}
+                {/*}}*/}
+                {/*>*/}
+                {/*{' '}*/}
+                {/*{$$show_element.includes('标题')*/}
+                {/*? ''*/}
+                {/*: data.getIn(['title', 'value'])}*/}
+                {/*</strong>*/}
+                {/*</span>*/}
+                {/*<span*/}
+                {/*style={{*/}
+                {/*background: `${advance.get('content_color')}`,*/}
+                {/*color: customize.getIn(['base', 'font_color']),*/}
+                {/*}}*/}
+                {/*>*/}
+                {/*{$$show_element.includes('内容')*/}
+                {/*? ''*/}
+                {/*: data.getIn(['content', 'value'])}*/}
+                {/*</span>*/}
+                {/*</section>*/}
               </section>
               <section className={style.img_6_8}>
                 <section className={style.img_6_9}>

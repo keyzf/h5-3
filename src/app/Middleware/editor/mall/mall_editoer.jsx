@@ -273,8 +273,6 @@ class EditorMall extends PureComponent {
               height: 'calc(100vh -  55px)',
               overflow: 'hidden',
               marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
             {this.state.item ? (

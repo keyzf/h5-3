@@ -3,10 +3,11 @@ import { fromJS } from 'immutable';
 /**
  * 根级数据函数
  */
-const $$form = (item_data, height, width) => {
+const $$form = (item_data, height, width, types) => {
   return fromJS({
     customize: {
       type: 'form',
+      types: types,
       name: 'form',
       item: item_data,
       btn_content: { value: '提交' },
@@ -33,105 +34,173 @@ const $$form = (item_data, height, width) => {
 };
 
 /**
- * core组件数据
+ * 可供选择的项目
  * @type {any}
  */
-const template = fromJS([
-  {
-    type: 'radio',
-    title_color: '#000',
-    opt_color: '#000',
-    title: { value: '喜欢的课程' },
-    decorator: '喜欢的课程',
-    option: ['语文', '数学', '英语', '历史'],
-  },
-  {
-    type: 'radio',
-    title_color: '#000',
-    opt_color: '#000',
-    title: { value: '擅长的计算机语言' },
-    decorator: '擅长的计算机语言',
-    option: ['c ', 'golang', 'php', 'javascript'],
-  },
-  {
-    type: 'radio',
-    title_color: '#000',
-    opt_color: '#000',
-    title: { value: '最喜欢的运动' },
-    decorator: '最喜欢的运动',
-    option: ['篮球', '足球', '羽毛球', '游泳'],
-  },
-]);
-const $$form_database = $$form(template, 600, 300);
+const $$from_opt_input = fromJS({
+  type: 'input',
+  title: { value: '输入框' },
+  decorator: 'input',
+  option: { value: '' },
+});
+const $$from_opt_rate = fromJS({
+  type: 'rate',
+  title: { value: '评分栏' },
+  decorator: 'rate',
+  option: { value: '' },
+});
+const $$from_opt_checkbox = fromJS({
+  type: 'checkbox',
+  title: { value: '多选框' },
+  decorator: 'checkbox',
+  option: ['Apple', 'Pear', 'Orange'],
+});
+const $$from_opt_radio = fromJS({
+  type: 'radio',
+  title: { value: '单选框' },
+  decorator: '单选框',
+  option: ['选项一', '选项二', '选项三'],
+});
+const $$from_opt_datepicker = fromJS({
+  type: 'datePicker',
+  title: { value: '日期选择' },
+  decorator: 'datePicker',
+  option: { value: '' },
+});
+const $$from_opt_upload = fromJS({
+  type: 'upload',
+  title: { value: '上传' },
+  decorator: 'upload',
+  option: { value: '' },
+});
+
+const $$from_opt_name = fromJS({
+  type: 'name',
+  title: { value: '姓名' },
+  decorator: '姓名',
+  option: { value: '请输入姓名' },
+});
+const $$from_opt_phone = fromJS({
+  type: 'phone',
+  title: { value: '电话' },
+  decorator: '电话',
+  option: { value: '请输入电话' },
+});
+const $$from_opt_address = fromJS({
+  type: 'address',
+  title: { value: '地址' },
+  decorator: 'address',
+  option: { value: '' },
+});
+const $$from_opt_email = fromJS({
+  type: 'email',
+  title: { value: '邮箱' },
+  decorator: '邮箱',
+  option: { value: '请填写邮箱' },
+});
 
 /**
  * 推荐组件
  * @type {any}
  */
 const one_template = fromJS([
-  {
-    type: 'input',
-    title_color: '#000',
-    opt_color: '#000',
-    title: { value: '用户名' },
-    decorator: '用户名',
-    option: { value: '' },
-  },
-  {
-    type: 'input',
-    title_color: '#000',
-    opt_color: '#000',
-    title: { value: '密码' },
-    decorator: '密码',
-    option: { value: '' },
-  },
-]);
-const two_template = fromJS([
+  $$from_opt_name,
+  $$from_opt_phone,
   {
     type: 'textarea',
     title_color: '#000',
     opt_color: '#000',
-    title: { value: '反馈' },
-    decorator: '反馈',
-    option: { value: '请填写建议信息' },
+    title: { value: '备注' },
+    decorator: '备注',
+    option: { value: '请填写备注' },
   },
+]);
+const two_template = fromJS([
+  {
+    title_color: '#000',
+    opt_color: '#000',
+    type: 'radio',
+    title: { value: '应聘岗位' },
+    decorator: '应聘岗位',
+    option: ['管理', '策划', '销售'],
+  },
+  $$from_opt_name,
+  {
+    title_color: '#000',
+    opt_color: '#000',
+    type: 'radio',
+    title: { value: '性别' },
+    decorator: '性别',
+    option: ['男', '女'],
+  },
+  {
+    title_color: '#000',
+    opt_color: '#000',
+    type: 'datePicker',
+    title: { value: '出生日期' },
+    decorator: '出生日期',
+    option: { value: '' },
+  },
+  $$from_opt_phone,
+  $$from_opt_email,
   {
     type: 'input',
     title_color: '#000',
     opt_color: '#000',
-    title: { value: '联系邮箱' },
-    decorator: '联系邮箱',
-    option: { value: '请输入邮箱地址' },
+    title: { value: '毕业学校' },
+    decorator: '毕业学校',
+    option: { value: '请输入毕业学校' },
+  },
+  {
+    type: 'select',
+    title_color: '#000',
+    opt_color: '#000',
+    title: { value: '学历' },
+    decorator: '学历',
+    option: ['博士', '研究生', '本科', '大专'],
+  },
+  {
+    type: 'textarea',
+    title_color: '#000',
+    opt_color: '#000',
+    title: { value: '工作经历' },
+    decorator: '工作经历',
+    option: { value: '请输入工作经历' },
   },
 ]);
 const three_template = fromJS([
+  $$from_opt_name,
+  $$from_opt_phone,
   {
     type: 'input',
     title_color: '#000',
     opt_color: '#000',
-    title: { value: '反馈内容' },
-    decorator: '反馈内容',
-    option: { value: '请填写反馈内容' },
+    title: { value: '公司' },
+    decorator: '公司',
+    option: { value: '请填写公司' },
   },
   {
     type: 'input',
     title_color: '#000',
     opt_color: '#000',
-    title: { value: '联系邮箱' },
-    decorator: '联系邮箱',
-    option: { value: '请填入联系信息' },
+    title: { value: '职务' },
+    decorator: '职务',
+    option: { value: '请填入职务' },
   },
   {
-    type: 'upload',
-    title: { value: '身份证正面照片' },
-    decorator: 'upload',
-    option: { value: '' },
-  },
-  {
-    type: 'upload',
-    title: { value: '身份证反面照片' },
-    decorator: 'upload',
-    option: { value: '' },
+    type: 'checkbox',
+    title: { value: '多选框' },
+    decorator: '多选框',
+    option: [
+      '互联网',
+      '餐饮/视频',
+      '电商/零售',
+      '文化/娱乐',
+      '美容/时尚',
+      '家居/地产',
+      '教育/培训',
+      '金融/银行',
+    ],
   },
 ]);
 const four_template = fromJS([
@@ -282,81 +351,21 @@ const eight_template = fromJS([
   },
 ]);
 
-const $$one_form_database = $$form(one_template, 300, 300);
-const $$two_form_database = $$form(two_template, 361, 241);
-const $$three_form_database = $$form(three_template, 710, 300);
+const $$one_form_database = $$form(one_template, 500, 300, '报名');
+const $$two_form_database = $$form(two_template, 1000, 300, '招聘');
+const $$three_form_database = $$form(three_template, 650, 250, '问卷');
 const $$four_form_database = $$form(four_template, 300, 300);
 const $$five_form_database = $$form(five_template, 710, 300);
 const $$six_form_database = $$form(six_template, 340, 300);
 const $$seven_form_database = $$form(seven_template, 620, 300);
 const $$eight_form_database = $$form(eight_template, 360, 310);
-
-/**
- * 可供选择的项目
- * @type {any}
- */
-const $$from_opt_input = fromJS({
-  type: 'input',
-  title: { value: '输入框' },
-  decorator: 'input',
-  option: { value: '' },
-});
-const $$from_opt_rate = fromJS({
-  type: 'rate',
-  title: { value: '评分栏' },
-  decorator: 'rate',
-  option: { value: '' },
-});
-const $$from_opt_checkbox = fromJS({
-  type: 'checkbox',
-  title: { value: '多选框' },
-  decorator: 'checkbox',
-  option: ['Apple', 'Pear', 'Orange'],
-});
-const $$from_opt_datepicker = fromJS({
-  type: 'datePicker',
-  title: { value: '日期选择' },
-  decorator: 'datePicker',
-  option: { value: '' },
-});
-const $$from_opt_upload = fromJS({
-  type: 'upload',
-  title: { value: '上传' },
-  decorator: 'upload',
-  option: { value: '' },
-});
-
-const $$from_opt_name = fromJS({
-  type: 'name',
-  title: { value: '姓名' },
-  decorator: 'name',
-  option: { value: '' },
-});
-const $$from_opt_phone = fromJS({
-  type: 'phone',
-  title: { value: '电话' },
-  decorator: 'phone',
-  option: { value: '' },
-});
-const $$from_opt_address = fromJS({
-  type: 'address',
-  title: { value: '地址' },
-  decorator: 'address',
-  option: { value: '' },
-});
-const $$from_opt_email = fromJS({
-  type: 'email',
-  title: { value: '邮箱' },
-  decorator: 'email',
-  option: { value: '' },
-});
-
 /**
  * 导出项目
  */
+
 export {
-  $$form_database,
   $$from_opt_input,
+  $$from_opt_radio,
   $$from_opt_rate,
   $$from_opt_name,
   $$from_opt_phone,

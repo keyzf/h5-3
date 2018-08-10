@@ -41,17 +41,17 @@ export class Img5UI extends PureComponent {
                   </section>
                 </section>
               </section>
-              <span
-                style={{
-                  background: `${advance.get('content_color')}`,
-                  color: customize.getIn(['base', 'font_color']),
-                }}
-              >
-                {' '}
-                {$$show_element.includes('标题')
-                  ? ''
-                  : data.getIn(['title', 'value'])}
-              </span>
+              {/*<span*/}
+              {/*style={{*/}
+              {/*background: `${advance.get('content_color')}`,*/}
+              {/*color: customize.getIn(['base', 'font_color']),*/}
+              {/*}}*/}
+              {/*>*/}
+              {/*{' '}*/}
+              {/*{$$show_element.includes('标题')*/}
+              {/*? ''*/}
+              {/*: data.getIn(['title', 'value'])}*/}
+              {/*</span>*/}
             </section>
           );
         })}

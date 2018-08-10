@@ -35,20 +35,20 @@ export class Img2UI extends PureComponent {
                       />
                     </a>
                   </p>
-                  <section className={style.img_2_4}>
-                    <p>
-                      <span
-                        style={{
-                          background: `${advance.get('content_color')}`,
-                          color: customize.getIn(['base', 'font_color']),
-                        }}
-                      >
-                        {$$show_element.includes('内容')
-                          ? ''
-                          : data.getIn(['content', 'value'])}
-                      </span>
-                    </p>
-                  </section>
+                  {/*<section className={style.img_2_4}>*/}
+                  {/*<p>*/}
+                  {/*<span*/}
+                  {/*style={{*/}
+                  {/*background: `${advance.get('content_color')}`,*/}
+                  {/*color: customize.getIn(['base', 'font_color']),*/}
+                  {/*}}*/}
+                  {/*>*/}
+                  {/*{$$show_element.includes('内容')*/}
+                  {/*? ''*/}
+                  {/*: data.getIn(['content', 'value'])}*/}
+                  {/*</span>*/}
+                  {/*</p>*/}
+                  {/*</section>*/}
                 </section>
               </section>
             </section>

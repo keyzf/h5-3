@@ -54,7 +54,7 @@ class ImgCropFactory extends PureComponent {
         >
           <Cropper
             ref="cropper"
-            src={this.props.img_url}
+            src={this.props.img_src}
             style={{ height: 180, width: '100%' }}
             crop={this.onCropChange}
           />

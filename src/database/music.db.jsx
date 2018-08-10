@@ -22,7 +22,7 @@ export const $$music_database = (name, url) => {
       },
       width: 50,
       height: 50,
-      left: 40,
+      left: 10,
       top: 40,
       live: false,
       rotate: 0,

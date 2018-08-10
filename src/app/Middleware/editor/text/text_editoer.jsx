@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Tabs } from 'antd';
-import AdvanceEditor from '../advance.form';
+import { Form, Popover, Tabs, Collapse } from 'antd';
 import RichTextEditor from './rich_editor';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../../database/redux/action';
+import { SketchPicker } from 'react-color';
 
 class EditorText extends PureComponent {
   richTextEditor = html_callback => {
@@ -12,7 +12,13 @@ class EditorText extends PureComponent {
       .setIn(['customize', 'html_content'], html_callback);
     this.sendAction($$new_h5_data);
   };
-
+  editorFeatures = (opt_name, data) => {
+    if (opt_name === 'style_color') {
+      this.sendAction(
+        this.props.data.get('data').setIn(['advance', 'style_color'], data.hex)
+      );
+    }
+  };
   sendAction = up_data => {
     const $$select_data = this.props.h5_data_value.data;
     const $$choose_data = this.props.editor_ui_value.data;
@@ -32,38 +38,72 @@ class EditorText extends PureComponent {
 
   render() {
     const $$data = this.props.data.get('data');
+    const $$advance = $$data.get('advance');
+    const Panel = Collapse.Panel;
+    const form_item_style = label_name => {
+      return {
+        label: label_name,
+        labelCol: { xl: { span: 5, offset: 1 }, lg: { span: 5, offset: 1 } },
+        wrapperCol: {
+          xl: { span: 17, offset: 1 },
+          lg: { span: 18, offset: 1 },
+        },
+      };
+    };
     return (
-      <Tabs defaultActiveKey={'1'}>
-        <Tabs.TabPane tab="内容设置" key="1">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <RichTextEditor
-              data={$$data.get('customize')}
-              func={this.richTextEditor}
-            />
-          </div>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="高级设置" key="2">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-            }}
-          >
-            <AdvanceEditor data={$$data} name={'text'} />
-          </div>
-        </Tabs.TabPane>
-      </Tabs>
+      <Collapse
+        bordered={false}
+        defaultActiveKey={['1', '2']}
+        style={{
+          height: '100%',
+          overflow: 'auto',
+        }}
+      >
+        <Panel header="边框配色" key="1">
+          <Form>
+            <Form.Item {...form_item_style('当前颜色')}>
+              <Popover
+                content={
+                  <SketchPicker
+                    color={$$advance.get('style_color')}
+                    onChangeComplete={this.editorFeatures.bind(
+                      this,
+                      'style_color'
+                    )}
+                  />
+                }
+                trigger="click"
+              >
+                {$$advance.get('style_color') !== '' ? (
+                  <div
+                    style={{
+                      marginTop: '6px',
+                      height: '25px',
+                      width: '100%',
+                      background: $$advance.get('style_color'),
+                    }}
+                  />
+                ) : (
+                  <div
+                    className={'bg_transparent'}
+                    style={{
+                      marginTop: '6px',
+                      height: '25px',
+                      width: '100%',
+                    }}
+                  />
+                )}
+              </Popover>
+            </Form.Item>
+          </Form>
+        </Panel>
+        <Panel header="编辑内容" key="2">
+          <RichTextEditor
+            data={$$data.get('customize')}
+            func={this.richTextEditor}
+          />
+        </Panel>
+      </Collapse>
     );
   }
 }

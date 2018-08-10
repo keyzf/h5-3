@@ -30,7 +30,11 @@ export class SliderImgUI extends PureComponent {
                 style={{ flex: '0 0 120px', marginRight: '2px' }}
               >
                 <a
-                  href={data.getIn(['link', 'value'])}
+                  href={
+                    data.getIn(['link', 'value'])
+                      ? data.getIn(['link', 'value'])
+                      : 'javascript:void(0)'
+                  }
                   style={{ color: customize.getIn(['base', 'font_color']) }}
                 >
                   <img

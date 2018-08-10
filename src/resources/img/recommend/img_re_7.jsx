@@ -39,9 +39,9 @@ export class Img7UI extends PureComponent {
                     color: customize.getIn(['base', 'font_color']),
                   }}
                 >
-                  {$$show_element.includes('内容')
-                    ? ''
-                    : data.getIn(['content', 'value'])}
+                  {/*{$$show_element.includes('内容')*/}
+                  {/*? ''*/}
+                  {/*: data.getIn(['content', 'value'])}*/}
                 </section>
               </section>
               <section className={style.img_7_5} />

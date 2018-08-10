@@ -14,7 +14,13 @@ export class CarouselImgUI extends PureComponent {
       <Carousel autoplay>
         {customize.get('item').map((data, index) => {
           return (
-            <a href={data.getIn(['link', 'value'])}>
+            <a
+              href={
+                data.getIn(['link', 'value'])
+                  ? data.getIn(['link', 'value'])
+                  : 'javascript:void(0)'
+              }
+            >
               <ImgAtom
                 className={'flex_center'}
                 width={advance.get('width')}
@@ -23,25 +29,25 @@ export class CarouselImgUI extends PureComponent {
                 radius={data.getIn(['radius', 'value'])}
                 key={index}
               >
-                <div
-                  className={'flex_center'}
-                  style={{ background: `${advance.get('content_color')}` }}
-                >
-                  <h4
-                    style={{ color: customize.getIn(['base', 'font_color']) }}
-                  >
-                    {$$show_element.includes('标题')
-                      ? ''
-                      : data.getIn(['title', 'value'])}
-                    <h6
-                      style={{ color: customize.getIn(['base', 'font_color']) }}
-                    >
-                      {$$show_element.includes('内容')
-                        ? ''
-                        : data.getIn(['content', 'value'])}
-                    </h6>
-                  </h4>
-                </div>
+                {/*<div*/}
+                {/*className={'flex_center'}*/}
+                {/*style={{ background: `${advance.get('content_color')}` }}*/}
+                {/*>*/}
+                {/*<h4*/}
+                {/*style={{ color: customize.getIn(['base', 'font_color']) }}*/}
+                {/*>*/}
+                {/*{$$show_element.includes('标题')*/}
+                {/*? ''*/}
+                {/*: data.getIn(['title', 'value'])}*/}
+                {/*<h6*/}
+                {/*style={{ color: customize.getIn(['base', 'font_color']) }}*/}
+                {/*>*/}
+                {/*{$$show_element.includes('内容')*/}
+                {/*? ''*/}
+                {/*: data.getIn(['content', 'value'])}*/}
+                {/*</h6>*/}
+                {/*</h4>*/}
+                {/*</div>*/}
               </ImgAtom>
             </a>
           );

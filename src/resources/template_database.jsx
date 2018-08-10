@@ -108,6 +108,8 @@ import { Img4UI } from './img/recommend/img_re_4';
 import { Img5UI } from './img/recommend/img_re_5';
 import { Img6UI } from './img/recommend/img_re_6';
 import { Img7UI } from './img/recommend/img_re_7';
+import { $$music_database } from '../database/music.db';
+import BgEditor from '../app/Middleware/editor/bg/bg_editor';
 
 /**
  * text
@@ -204,18 +206,18 @@ const template_button_data = [
  */
 const template_img_data = [
   { template: <SingleImgTemplate />, data: $$single_img_database },
-  { template: <GridImgTemplate />, data: $$grid_img_database },
-  { template: <ListImgTemplate />, data: $$list_img_database },
-  { template: <SliderImgTemplate />, data: $$slider_img_database },
+  // { template: <GridImgTemplate />, data: $$grid_img_database },
+  // { template: <ListImgTemplate />, data: $$list_img_database },
+  // { template: <SliderImgTemplate />, data: $$slider_img_database },
   { template: <CarouselImgTemplate />, data: $$carousel_img_database },
   { template: '', data: 'dividing-line' },
   { template: <Img1UI data={$$img_re_1} />, data: $$img_re_1 },
-  { template: <Img2UI data={$$img_re_2} />, data: $$img_re_2 },
-  { template: <Img3UI data={$$img_re_3} />, data: $$img_re_3 },
-  { template: <Img4UI data={$$img_re_4} />, data: $$img_re_4 },
-  { template: <Img5UI data={$$img_re_5} />, data: $$img_re_5 },
-  { template: <Img6UI data={$$img_re_6} />, data: $$img_re_6 },
-  { template: <Img7UI data={$$img_re_7} />, data: $$img_re_7 },
+  // { template: <Img2UI data={$$img_re_2} />, data: $$img_re_2 },
+  // { template: <Img3UI data={$$img_re_3} />, data: $$img_re_3 },
+  // { template: <Img4UI data={$$img_re_4} />, data: $$img_re_4 },
+  // { template: <Img5UI data={$$img_re_5} />, data: $$img_re_5 },
+  // { template: <Img6UI data={$$img_re_6} />, data: $$img_re_6 },
+  // { template: <Img7UI data={$$img_re_7} />, data: $$img_re_7 },
 ];
 /**
  * mall
@@ -257,10 +259,10 @@ const template_mall_data = [
 const template_form_data = [
   // { template: <FormTemplate />, data: $$form_database },
   // { template: '', data: 'dividing-line' },
-  // {
-  //   template: <FormUi data={$$one_form_database} pointer={true} />,
-  //   data: $$one_form_database,
-  // },
+  {
+    template: <FormUi data={$$one_form_database} pointer={true} />,
+    data: $$one_form_database,
+  },
   {
     template: <FormUi pointer={true} data={$$two_form_database} />,
     data: $$two_form_database,

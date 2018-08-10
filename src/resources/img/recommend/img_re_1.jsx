@@ -21,7 +21,13 @@ export class Img1UI extends PureComponent {
             <section className={style.img_1_1} key={index}>
               <section className={style.img_1_2}>
                 <section className={style.img_1_3}>
-                  <a href={data.getIn(['link', 'value'])}>
+                  <a
+                    href={
+                      data.getIn(['link', 'value'])
+                        ? data.getIn(['link', 'value'])
+                        : 'javascript:void(0)'
+                    }
+                  >
                     <img
                       style={{
                         borderRadius: `${data.getIn(['radius', 'value'])}px`,
@@ -33,39 +39,39 @@ export class Img1UI extends PureComponent {
                   </a>
                 </section>
               </section>
-              <section className={style.img_1_4}>
-                <section>
-                  <span>
-                    <div
-                      style={{
-                        background: `${advance.get('content_color')}`,
-                        color: customize.getIn(['base', 'font_color']),
-                      }}
-                    >
-                      {$$show_element.includes('标题')
-                        ? ''
-                        : data.getIn(['title', 'value'])}
-                    </div>
-                  </span>
-                </section>
-              </section>
-              <section className={style.img_1_5}>
-                <section>
-                  <span>
-                    {' '}
-                    <div
-                      style={{
-                        background: `${advance.get('content_color')}`,
-                        color: customize.getIn(['base', 'font_color']),
-                      }}
-                    >
-                      {$$show_element.includes('内容')
-                        ? ''
-                        : data.getIn(['content', 'value'])}
-                    </div>
-                  </span>
-                </section>
-              </section>
+              {/*<section className={style.img_1_4}>*/}
+              {/*<section>*/}
+              {/*<span>*/}
+              {/*<div*/}
+              {/*style={{*/}
+              {/*background: `${advance.get('content_color')}`,*/}
+              {/*color: customize.getIn(['base', 'font_color']),*/}
+              {/*}}*/}
+              {/*>*/}
+              {/*{$$show_element.includes('标题')*/}
+              {/*? ''*/}
+              {/*: data.getIn(['title', 'value'])}*/}
+              {/*</div>*/}
+              {/*</span>*/}
+              {/*</section>*/}
+              {/*</section>*/}
+              {/*<section className={style.img_1_5}>*/}
+              {/*<section>*/}
+              {/*<span>*/}
+              {/*{' '}*/}
+              {/*<div*/}
+              {/*style={{*/}
+              {/*background: `${advance.get('content_color')}`,*/}
+              {/*color: customize.getIn(['base', 'font_color']),*/}
+              {/*}}*/}
+              {/*>*/}
+              {/*{$$show_element.includes('内容')*/}
+              {/*? ''*/}
+              {/*: data.getIn(['content', 'value'])}*/}
+              {/*</div>*/}
+              {/*</span>*/}
+              {/*</section>*/}
+              {/*</section>*/}
             </section>
           );
         })}

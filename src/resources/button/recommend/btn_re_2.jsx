@@ -23,7 +23,13 @@ class Btn2Ui extends React.Component {
       tiling: advance.getIn(['img_config', 'tiling', 'value']),
     };
     return (
-      <a href={customize.getIn(['btn_url', 'value'])}>
+      <a
+        href={
+          customize.getIn(['btn_url', 'value'])
+            ? customize.getIn(['btn_url', 'value'])
+            : 'javascript:void(0)'
+        }
+      >
         <ButtonAtom {...advanced_settings}>
           {customize.getIn(['content', 'value'])
             ? customize.getIn(['content', 'value'])

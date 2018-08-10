@@ -1,4 +1,4 @@
-import { ProMusicUi } from '../../../resources/music/core/music_ui';
+import ProMusicUi from '../../../resources/music/core/music_ui';
 import React from 'react';
 import { VTextUi } from '../../../resources/text/core/vertical_ui';
 import { HTextUi } from '../../../resources/text/core/horizontal_ui';

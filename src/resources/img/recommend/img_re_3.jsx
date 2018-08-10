@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { List } from 'immutable';
 import { ImgAtom } from '../img_atom';
 import style from './img_ui.module.scss';
 

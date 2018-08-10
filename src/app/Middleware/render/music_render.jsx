@@ -5,20 +5,11 @@ import { ItemAtom } from './item_atom';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../database/redux/action';
 
-class H5RenderCommon extends PureComponent {
+class MusicRenderCommon extends PureComponent {
   render() {
     const select_data = this.props.h5_data_value.data;
-    const customize = this.props.bg_ui_value.data.get('customize');
-    // 背景属性
-    const bg_config = {
-      color: customize.get('color'),
-      img: customize.get('crop_img'),
-      repeat: customize.getIn(['img_config', 'repeat']),
-      fixed: customize.getIn(['img_config', 'fixed']),
-      height: this.props.bg_ui_value.data.getIn(['customize', 'height']),
-    };
     return (
-      <RenderBg {...bg_config}>
+      <React.Fragment>
         {select_data.map((ui_data, index) => {
           const advanced_settings = {
             // 动画移动
@@ -43,29 +34,22 @@ class H5RenderCommon extends PureComponent {
             tiling: ui_data.getIn(['advance', 'img_config', 'tiling', 'value']),
           };
           return (
-            <ItemAtom {...advanced_settings} key={index}>
-              {ui_data.getIn(['customize', 'type']) === 'music'
-                ? ''
-                : render_switch_ui(ui_data)}
-            </ItemAtom>
+            <React.Fragment key={index}>
+              {ui_data.getIn(['customize', 'type']) === 'music' ? (
+                <ItemAtom
+                  style={{ zIndex: '999' }}
+                  {...advanced_settings}
+                  key={index}
+                >
+                  {render_switch_ui(ui_data)}
+                </ItemAtom>
+              ) : (
+                ''
+              )}
+            </React.Fragment>
           );
         })}
-        <div
-          className={'flex_center'}
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            lineHeight: '30px',
-          }}
-        >
-          <div style={{ borderRadius: '50px', background: 'rgba(0,0,0,0.4)' }}>
-            <a href={'http://m.e7wei.com'} style={{ color: 'white' }}>
-              &nbsp;&nbsp;&nbsp;&nbsp; 技术支持 >>
-              易企微&nbsp;&nbsp;&nbsp;&nbsp;
-            </a>
-          </div>
-        </div>
-      </RenderBg>
+      </React.Fragment>
     );
   }
 }
@@ -88,4 +72,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(H5RenderCommon);
+)(MusicRenderCommon);

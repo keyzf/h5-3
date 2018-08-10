@@ -49,6 +49,7 @@ class EditorPreviewView extends PureComponent {
                 color: '#e7e7e7',
                 display: 'flex',
                 alignItems: 'center',
+                overflow: 'hidden',
               }}
             >
               <UploadImg

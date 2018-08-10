@@ -6,6 +6,9 @@ import EditorPreviewView from './editor/editor';
 import style from './preview.module.scss';
 
 class PreviewView extends PureComponent {
+  componentWillMount() {
+    document.title = '易企微 | 一站式微信营销平台';
+  }
   render() {
     const { Header, Sider, Content } = Layout;
     return (
@@ -13,12 +16,14 @@ class PreviewView extends PureComponent {
         <Header className={style.header}>
           <HeaderPreviewView />
         </Header>
-        <Layout style={{ height: '94%' }}>
-          <Content style={{ height: '100%' }}>
+        <Layout style={{ height: 'calc(100% - 48px)' }}>
+          <Content className={style.s}>
             <PhoneCommonView />
           </Content>
           <Sider className={style.side} breakpoint="md" width={450}>
-            <EditorPreviewView />
+            <div className={style.s}>
+              <EditorPreviewView />
+            </div>
           </Sider>
         </Layout>
       </div>

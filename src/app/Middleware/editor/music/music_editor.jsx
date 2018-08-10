@@ -1,15 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import {
-  Tabs,
-  Icon,
-  Checkbox,
-  Button,
-  Row,
-  Col,
-  Pagination,
-  message,
-} from 'antd';
+import { Tabs, Icon, Button, List, message, Tag, Divider } from 'antd';
 import { user_api } from '../../../../api/user.api';
 import { delete_api } from '../../../../api/delete.api';
 import MusicForm from '../../upload/_music_form';
@@ -27,8 +18,65 @@ class EditorMusic extends PureComponent {
     public_current: 1,
     music_library: [],
     number: 0,
+    // music_library: [
+    //   {
+    //     url: 'http://s.e7wei.com/811285359523452.mp3',
+    //     desc: '3214132',
+    //   },
+    //   {
+    //     url: 'http://s.e7wei.com/81128EUR25E6588.mp3',
+    //     desc: '3214132',
+    //   },
+    //   {
+    //     url: 'http://s.e7wei.com/81128NCH79363V5.mp3',
+    //     desc: '3214132',
+    //   },
+    // ],
+    // number: 1,
     current: 1,
     public_list: [],
+    music_tab: 'me',
+    music_tid: '',
+    audio: 'play',
+  };
+
+  oncliMusic_table = (name, tid) => {
+    if (name === 'me') {
+      this.setState({
+        music_tab: name,
+        music_tid: tid,
+      });
+    } else {
+      system_api(1, tid, 10)
+        .then(response => {
+          this.setState({
+            public_music: response.list,
+            public_current: 1,
+            public_number: response.sum,
+            music_tab: name,
+            music_tid: tid,
+          });
+        })
+        .catch(response => {
+          message.error(response);
+        });
+    }
+  };
+
+  audio = name => {
+    if (name === 'pause') {
+      document.getElementById('audio').play();
+      this.setState({
+        audio: 'play',
+      });
+    }
+    if (name === 'play') {
+      document.getElementById('audio').pause();
+
+      this.setState({
+        audio: 'pause',
+      });
+    }
   };
 
   componentWillMount() {
@@ -39,7 +87,7 @@ class EditorMusic extends PureComponent {
       });
     });
     //  公共音乐库
-    system_api(1, 1).then(data => {
+    system_api(1, 1, 10).then(data => {
       this.setState({
         public_number: data.sum,
         public_music: data.list,
@@ -81,9 +129,19 @@ class EditorMusic extends PureComponent {
   };
 
   onChange = e => {
-    this.sendAction(
-      this.props.data.get('data').setIn(['customize', 'music'], e.target.value)
-    );
+    this.props.h5_data_value.data.map((map_data, index) => {
+      if (map_data.getIn(['customize', 'type']) === 'music') {
+        this.sendAction(
+          this.props.h5_data_value.data
+            .get(index)
+            .setIn(['customize', 'music'], e),
+          index
+        );
+      }
+    });
+    this.setState({
+      audio: 'play',
+    });
   };
 
   onChangePage = page => {
@@ -101,7 +159,7 @@ class EditorMusic extends PureComponent {
   };
 
   public_onChangePage = (tid, page = 1) => {
-    system_api(page, tid)
+    system_api(page, tid, 10)
       .then(response => {
         this.setState({
           public_music: response.list,
@@ -131,6 +189,7 @@ class EditorMusic extends PureComponent {
                 music_library: response.list,
                 current: 1,
                 number: response.sum,
+                music_tab: 'me',
               });
             })
             .catch(response => {
@@ -144,147 +203,233 @@ class EditorMusic extends PureComponent {
     }
   };
 
-  sendAction = up_data => {
+  sendAction = (up_data, index) => {
     // data source
     const $$select_data = this.props.h5_data_value.data;
-    const $$choose_data = this.props.editor_ui_value.data;
     // create new data
-    const $$new_select_data = $$select_data.set(
-      $$choose_data.get('number'),
-      up_data
-    );
-    const $$new_choose_data = $$choose_data.set('data', up_data);
+    const $$new_select_data = $$select_data.set(index, up_data);
+
     // send action
     this.props.upData('H5_DATA', $$new_select_data);
-    this.props.upData('EDITOR_UI', $$new_choose_data, {
-      content: true,
-      choose: true,
-    });
   };
 
   render() {
-    const $$customize = this.props.data.getIn(['data', 'customize']);
-    const tab_config = {
-      defaultActiveKey: 'start',
-      style: { height: '100%' },
-    };
+    const $$customize = this.props.data.get('customize');
+    const $$url = this.props.data.getIn(['customize', 'music']);
+    const TabPane = Tabs.TabPane;
+    const { CheckableTag } = Tag;
     return (
-      <div>
-        <audio
-          src={$$customize.get('music')}
-          autoPlay={true}
-          style={{ display: 'none' }}
-        />
-        <Tabs {...tab_config} onChange={this.public_onChangePage}>
-          <Tabs.TabPane tab="我的音频" key="start">
-            <div
-              style={{
-                height: 'calc(100vh -  55px)',
-                overflow: 'auto',
-                marginTop: '-18px',
-                backgroundImage:
-                  'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-              }}
+      <Tabs
+        tabBarExtraContent={
+          <div className={'flex_center'}>
+            <MusicForm
+              upload={{ value: '' }}
+              onChange={this.ImgPartChange}
+              child={
+                <Button
+                  style={{ width: '100%', marginLeft: '-5px' }}
+                  type={'dashed'}
+                >
+                  <Icon type="plus" />添加音乐
+                </Button>
+              }
+            />
+          </div>
+        }
+      >
+        <TabPane tab="音乐素材" key="3242">
+          <audio id={'audio'} autoPlay={true} src={$$customize.get('music')} />
+          <div>
+            <CheckableTag
+              checked={this.state.music_tab === 'me'}
+              color="magenta"
+              onChange={this.oncliMusic_table.bind(this, 'me')}
             >
-              {this.state.number ? (
-                <div className={'flex_center'}>
-                  <Pagination
-                    simple
-                    total={this.state.number}
-                    pageSize={30}
-                    current={this.state.current}
-                    onChange={this.onChangePage}
-                  />
-
-                  <span style={{ marginBottom: '-20px', marginLeft: '10px' }}>
+              我的
+            </CheckableTag>
+            {this.state.public_list.map((data, index) => {
+              return (
+                <CheckableTag
+                  key={index}
+                  checked={this.state.music_tab === data.typename}
+                  onChange={this.oncliMusic_table.bind(
+                    this,
+                    data.typename,
+                    data.tid
+                  )}
+                >
+                  {data.typename}
+                </CheckableTag>
+              );
+            })}
+          </div>
+          <br />
+          <Divider>
+            {this.state.music_tab === 'me'
+              ? this.state.music_library.length
+                ? '我的'
+                : '暂无音乐'
+              : this.state.music_tab}
+          </Divider>
+          {this.state.music_tab === 'me' ? (
+            <div>
+              {this.state.music_library.length ? (
+                <List
+                  itemLayout="horizontal"
+                  dataSource={this.state.music_library}
+                  pagination={{
+                    simple: 'true',
+                    total: this.state.number,
+                    pageSize: 30,
+                    current: this.state.current,
+                    onChange: this.onChangePage,
+                  }}
+                  renderItem={item => (
+                    <List.Item
+                      actions={[
+                        <a>
+                          {$$url === item.url ? (
+                            <Icon
+                              type="check"
+                              onClick={this.onChange.bind(this, '')}
+                            />
+                          ) : (
+                            <i
+                              className=" iconfont icon-xuanxiangkuang"
+                              onClick={this.onChange.bind(this, item.url)}
+                            />
+                          )}
+                        </a>,
+                        <a>
+                          {$$url === item.url ? (
+                            this.state.audio === 'play' ? (
+                              <Icon
+                                type="pause-circle-o"
+                                onClick={this.audio.bind(this, 'play')}
+                              />
+                            ) : (
+                              <Icon
+                                type="play-circle-o"
+                                onClick={this.audio.bind(this, 'pause')}
+                              />
+                            )
+                          ) : (
+                            <Icon type="play-circle-o" />
+                          )}
+                        </a>,
+                        <a>
+                          {' '}
+                          <Icon
+                            onClick={this.del.bind(this, item.index, item.mid)}
+                            className="dynamic-delete-button"
+                            type="minus-circle-o"
+                          />
+                        </a>,
+                      ]}
+                    >
+                      <i
+                        className="iconfont icon-yinle"
+                        style={{
+                          marginRight: '5px',
+                          transform: 'translate(3px,-3px)',
+                        }}
+                      />
+                      {item.desc}
+                    </List.Item>
+                  )}
+                />
+              ) : (
+                <div style={{ width: '100%', height: '100%' }}>
+                  <div className={'flex_center'}>
                     <MusicForm
                       upload={{ value: '' }}
                       onChange={this.ImgPartChange}
                       child={
                         <Button style={{ width: '100%' }} type={'dashed'}>
-                          <Icon type="plus" />添加素材
+                          <Icon type="plus" />添加音乐
                         </Button>
                       }
                     />
-                  </span>
-                  <br />
-                  <br />
-                  <hr />
-                </div>
-              ) : (
-                <div className={'flex_center'}>
-                  <MusicForm
-                    upload={{ value: '' }}
-                    onChange={this.ImgPartChange}
-                    child={
-                      <Button style={{ width: '100%' }} type={'dashed'}>
-                        <Icon type="plus" />添加素材
-                      </Button>
-                    }
-                  />
+                  </div>
+                  <div
+                    className={'flex_center'}
+                    style={{ marginBottom: '3px' }}
+                  >
+                    MP3音乐2M以内
+                  </div>
+                  <div className={'flex_center'}>
+                    <a href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
+                      下载音乐压缩工具
+                    </a>
+                  </div>
                 </div>
               )}
-
-              {this.state.music_library.map((data, index) => {
-                return (
-                  <Row gutter={16}>
-                    <Col span={16}>
-                      <Checkbox
-                        onChange={this.onChange}
-                        key={index}
-                        value={data.url}
-                      >
-                        {data.desc}
-                      </Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <span style={{ transform: 'translate(10px,3px)' }}>
-                        <Icon
-                          onClick={this.del.bind(this, index, data.mid)}
-                          className="dynamic-delete-button"
-                          type="minus-circle-o"
-                        />
-                      </span>
-                    </Col>
-                  </Row>
-                );
-              })}
             </div>
-          </Tabs.TabPane>
-          {this.state.public_list.map((data, index) => {
-            return (
-              <Tabs.TabPane tab={data.typename} key={index}>
-                <div className={'flex_center'}>
-                  <Pagination
-                    simple
-                    total={this.state.public_number}
-                    pageSize={30}
-                    current={this.state.public_current}
-                    onChange={this.public_onChangePage.bind(this, data.tid)}
-                  />
-                  <br />
-                  <br />
-                  <hr />
-                </div>
-                {this.state.public_music.map((data, index) => {
-                  return (
-                    <div>
-                      <Checkbox
-                        onChange={this.onChange}
-                        key={index}
-                        value={data.url}
-                      >
-                        {data.name}
-                      </Checkbox>
-                      <br />
-                    </div>
-                  );
-                })}
-              </Tabs.TabPane>
-            );
-          })}
-        </Tabs>
-      </div>
+          ) : (
+            <div style={{ marginBottom: '10px' }}>
+              <List
+                itemLayout="horizontal"
+                dataSource={this.state.public_music}
+                pagination={{
+                  simple: 'true',
+                  total: this.state.public_number,
+                  pageSize: 10,
+                  current: this.state.public_current,
+                  onChange: this.public_onChangePage.bind(
+                    this,
+                    this.state.music_tid
+                  ),
+                }}
+                renderItem={item => (
+                  <List.Item
+                    actions={[
+                      <a>
+                        {$$url === item.url ? (
+                          <Icon
+                            type="check"
+                            onClick={this.onChange.bind(this, '')}
+                          />
+                        ) : (
+                          <i
+                            className=" iconfont icon-xuanxiangkuang"
+                            onClick={this.onChange.bind(this, item.url)}
+                          />
+                        )}
+                      </a>,
+                      <a>
+                        {$$url === item.url ? (
+                          this.state.audio === 'play' ? (
+                            <Icon
+                              type="play-circle-o"
+                              onClick={this.audio.bind(this, 'play')}
+                            />
+                          ) : (
+                            <Icon
+                              type="pause-circle-o"
+                              onClick={this.audio.bind(this, 'pause')}
+                            />
+                          )
+                        ) : (
+                          <Icon type="pause-circle-o" />
+                        )}
+                      </a>,
+                    ]}
+                  >
+                    <i
+                      className="iconfont icon-yinle"
+                      style={{
+                        marginRight: '5px',
+                        transform: 'translate(3px,-3px)',
+                      }}
+                    />
+                    {item.name}
+                  </List.Item>
+                )}
+              />
+            </div>
+          )}
+        </TabPane>
+      </Tabs>
     );
   }
 }

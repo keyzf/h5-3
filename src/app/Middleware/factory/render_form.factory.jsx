@@ -1,7 +1,6 @@
 import React from 'react';
 import EditorText from '../editor/text/text_editoer';
 import EditorImg from '../editor/img/img_editoer';
-import EditorMusic from '../editor/music/music_editor';
 import EditorVideo from '../editor/video/video_editor';
 import EditorMall from '../editor/mall/mall_editoer';
 import EditorButton from '../editor/button/button_editor';
@@ -18,8 +17,6 @@ export const render_formFactory = data => {
       return <EditorText data={data} />;
     case 'img':
       return <EditorImg data={data} />;
-    case 'music':
-      return <EditorMusic data={data} />;
     case 'video':
       return <EditorVideo data={data} />;
     case 'mall':

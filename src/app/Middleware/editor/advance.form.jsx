@@ -84,7 +84,7 @@ class AdvanceForm extends PureComponent {
     return (
       <Collapse
         bordered={false}
-        defaultActiveKey={['1', '2', '3']}
+        defaultActiveKey={['1', '3']}
         style={{ background: 'transparent' }}
       >
         {this.props.name === 'button' ? (

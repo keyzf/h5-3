@@ -15,10 +15,7 @@ class BgComponent extends React.Component {
     };
     return (
       //背景样式组件
-      <BgLayoutAtom {...bg_config}>
-        {/*显示背景子元素*/}
-        {this.props.children}
-      </BgLayoutAtom>
+      <BgLayoutAtom {...bg_config}>{this.props.children}</BgLayoutAtom>
     );
   }
 }

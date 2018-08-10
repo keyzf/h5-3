@@ -12,7 +12,5 @@ const rotate360 = keyframes`
 
 // 设置组件
 export const RotateAtom = styled.div`
-  padding: 1rem 1rem;
-  font-size: 1.2rem;
   animation: ${rotate360} 2s linear infinite;
 `;

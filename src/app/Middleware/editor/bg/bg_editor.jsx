@@ -16,8 +16,10 @@ class BgEditor extends PureComponent {
     const $$bg_crop_img = $$bg_new.setIn(['customize', 'crop_img'], url);
     this.props.upData('BG_UI', $$bg_crop_img);
   };
+
   cropBgImgToChild = data => {
     let $$new_img = this.props.bg_ui_value.data.getIn(['customize', 'img']);
+
     const $$bg_new = this.props.bg_ui_value.data.setIn(
       ['customize', 'crop_img'],
       `${$$new_img}?imageMogr2/crop/!${data.width}x${data.height}a${data.x}a${
@@ -26,6 +28,7 @@ class BgEditor extends PureComponent {
     );
     this.props.upData('BG_UI', $$bg_new);
   };
+
   delete = () => {
     const $$bg_new = this.props.bg_ui_value.data.setIn(
       ['customize', 'img'],
@@ -34,6 +37,7 @@ class BgEditor extends PureComponent {
     const $$bg_crop = $$bg_new.setIn(['customize', 'crop_img'], '');
     this.props.upData('BG_UI', $$bg_crop);
   };
+
   bg_img_config = (tip, e) => {
     let $$bg_new;
     if (tip === 'fixed') {
@@ -50,12 +54,15 @@ class BgEditor extends PureComponent {
     }
     this.props.upData('BG_UI', $$bg_new);
   };
+
   bg_color_config = color => {
     const $$bg_new = this.props.bg_ui_value.data.setIn(
       ['customize', 'color'],
       color.hex
     );
-    this.props.upData('BG_UI', $$bg_new);
+    const $$bg_news = $$bg_new.setIn(['customize', 'img'], '');
+    const $$bg_crop_img = $$bg_news.setIn(['customize', 'crop_img'], '');
+    this.props.upData('BG_UI', $$bg_crop_img);
   };
 
   render() {
@@ -64,98 +71,286 @@ class BgEditor extends PureComponent {
     const $$color = $$data.getIn(['customize', 'color']); //颜色
     const $$img = $$data.getIn(['customize', 'img']); //原始图片地址
     const $$crop_img = $$data.getIn(['customize', 'crop_img']); //剪裁后的图片
-    const $$img_config = $$data.getIn(['customize', 'img_config']); //图片配置
+    // const gridStyle = {
+    //   width: "25%",
+    //   textAlign: "center"
+    // };
+    // const $$img_config = $$data.getIn(["customize", "img_config"]); //图片配置
     /**
      * 背景编辑栏 图片上传默认样式
      */
-    const default_upload = (
-      <UploadImg
-        type={2}
-        img_url={$$img}
-        func={this.changeBgImgToChild}
-        children={
-          <div className={style.bg_transparent}>
-            <Icon
-              type="plus"
-              style={{ fontSize: '95px', marginTop: '-17px' }}
-            />
-            <br />
-            <br />
-            <div style={{ fontSize: '22px', marginTop: '-17px' }}>上传图片</div>
-          </div>
-        }
-      />
-    );
+
     /**
      * 背景组件 包含图片时的样式
      * 包含 ，图片展示，删除，裁剪，位置设置。。。
      */
     const bgImg_editor = (
       <React.Fragment>
-        {/*展示图片*/}
         <UploadImg
           type={2}
           img_url={$$img}
           func={this.changeBgImgToChild}
           children={
-            <div className={style.img_show}>
-              <img className={style.img} src={$$crop_img} alt={'img'} />
-            </div>
+            <React.Fragment>
+              {$$data.getIn(['customize', 'crop_img']) ? (
+                <div className={style.img_show}>
+                  <img className={style.img} src={$$crop_img} />
+                </div>
+              ) : (
+                <div className={style.bg_transparent}>
+                  <Icon type="plus" style={{ fontSize: '20px' }} />
+                  <br />
+                  <div style={{ fontSize: '15px' }}>上传图片</div>
+                </div>
+              )}
+            </React.Fragment>
           }
         />
-        {/*操作选项*/}
-        <div className={style.editor}>
-          <UploadImg
-            type={2}
-            img_url={$$img}
-            func={this.changeBgImgToChild}
-            children={<div className={style.editor_click}>更换</div>}
-          />
-          <Divider type="vertical" />
-          <ImgCropFactory
-            func={this.cropBgImgToChild}
-            img_url={$$img}
-            children={
-              <div className={style.editor_click}>
-                <div className={style.editor_click}>裁剪</div>
-              </div>
-            }
-          />
-          <Divider type="vertical" />
-          <div className={style.editor_delete}>
-            <Popconfirm
-              placement="top"
-              title={'确认删除此背景图?'}
-              onConfirm={this.delete}
-              okText="确认"
-              cancelText="取消"
-            >
-              删除
-            </Popconfirm>
-          </div>
-          <Checkbox
-            onChange={this.bg_img_config.bind(this, 'repeat')}
-            defaultChecked={$$img_config.get('repeat')}
-          >
-            重复
-          </Checkbox>
-          <Checkbox
-            onChange={this.bg_img_config.bind(this, 'fixed')}
-            defaultChecked={$$img_config.get('fixed')}
-          >
-            固定
-          </Checkbox>
-        </div>
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.5182970046062747.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.5182970046062747.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.21293656213657686.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.21293656213657686.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.9399785810363934.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.9399785810363934.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.017314256564314734.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.017314256564314734.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.8733457750857099.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.8733457750857099.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.2633511981756784.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.2633511981756784.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.06858509273754665.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.06858509273754665.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.19132678881431509.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.19132678881431509.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.8088298012566268.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.8088298012566268.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.9293878801420654.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.9293878801420654.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.7019754276704415.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.7019754276704415.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.06444740452582765.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.06444740452582765.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.4181801561048386.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.4181801561048386.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.25534700484800354.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.25534700484800354.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.8238020347899278.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.8238020347899278.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.8236058044578007.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.8236058044578007.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.5134087373905294.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.5134087373905294.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.40632079362931695.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.40632079362931695.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.5731551667623831.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.5731551667623831.png) repeat',
+          }}
+        />
+        <Card.Grid
+          onClick={this.changeBgImgToChild.bind(
+            this,
+            'http://src.e7wei.com/0.9002937599084637.png'
+          )}
+          style={{
+            width: '25%',
+            textAlign: 'center',
+            background:
+              'url(http://src.e7wei.com/0.9002937599084637.png) repeat',
+          }}
+        />
       </React.Fragment>
     );
     return (
       <React.Fragment>
-        <Card className={style.card} title={'背景图'}>
-          {$$data.getIn(['customize', 'crop_img'])
-            ? bgImg_editor
-            : default_upload}
-        </Card>
-        <Card title={'背景色配置'} className={style.card_color}>
+        <Card title={'背景色'} className={style.card_color}>
           <Popover
             content={
               <SketchPicker
@@ -173,6 +368,9 @@ class BgEditor extends PureComponent {
               <Icon type="edit" />&nbsp;自定义
             </Card.Grid>
           </Popover>
+        </Card>
+        <Card className={style.card} title={'背景图'}>
+          {bgImg_editor}
         </Card>
       </React.Fragment>
     );

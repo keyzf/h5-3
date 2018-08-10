@@ -247,8 +247,8 @@ class UploadImg extends PureComponent {
           <Tabs
             tabBarExtraContent={
               <span>
-                <Row gutter={16} style={{ width: '300px' }}>
-                  <Col span={8} style={{ transform: 'translate(0,4px)' }}>
+                <Row gutter={16} style={{ width: '350px' }}>
+                  <Col span={7} style={{ transform: 'translate(0,4px)' }}>
                     <UploadImgForm
                       upload={{
                         value: '',
@@ -268,7 +268,7 @@ class UploadImg extends PureComponent {
                       }
                     />
                   </Col>
-                  <Col span={16} style={{ transform: 'translate(0,11px)' }}>
+                  <Col span={17} style={{ transform: 'translate(0,11px)' }}>
                     <Pagination
                       simple
                       pageSize={24}

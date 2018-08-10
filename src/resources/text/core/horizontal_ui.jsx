@@ -13,6 +13,6 @@ class HTextUi extends React.Component {
 }
 
 const h_html_text =
-  '<h2 style="text-align:center;">横排文本示例</h2><p style="text-align:center;"> <h3 style="text-align:center;">上邪</h3><p style="text-align:center;"> 上邪，我欲与君相知，长命无绝衰。<br/>山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝</p>';
+  '<h2 style="text-align:center;">横排文本示例</h2><p style="text-align:center;">点左侧组件可以添加新内容</p><p style="text-align:center;">点一下可以进行删除等操作</p>';
 
 export { h_html_text, HTextUi };

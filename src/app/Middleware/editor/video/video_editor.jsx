@@ -38,14 +38,12 @@ class EditorVideo extends PureComponent {
     const { TextArea } = Input;
     return (
       <Tabs defaultActiveKey="1" style={{ height: '100%' }}>
-        <Tabs.TabPane tab="内容设置" key="1">
+        <Tabs.TabPane tab="视频设置" key="1">
           <div
             style={{
               height: 'calc(100vh -  55px)',
               overflow: 'hidden',
               marginTop: '-18px',
-              backgroundImage:
-                'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
             }}
           >
             <Collapse
@@ -53,7 +51,7 @@ class EditorVideo extends PureComponent {
               defaultActiveKey={['2']}
               style={{ background: 'transparent' }}
             >
-              <Collapse.Panel header="第三方素材引入" key="2">
+              <Collapse.Panel header="插入视频通用代码" key="2">
                 <div
                   style={{
                     color: '#19a0fa',
@@ -67,9 +65,22 @@ class EditorVideo extends PureComponent {
                   </span>
                 </div>
                 <TextArea rows={4} onChange={this.shareChange} />
-                <a href={'http://www.xiuzan.com/help/faq/?id=54&tid=5'}>
-                  如何获取视频通用代码
-                </a>
+                <div style={{ marginTop: '5px' }}>
+                  <div>
+                    将视频通用代码粘贴至框内即可。<a
+                      href={'http://www.e7wei.com/help-article-id-442.html'}
+                    >
+                      查看帮助
+                    </a>
+                  </div>
+                  <div>
+                    支持的视频：<a href={'https://v.qq.com/'}>腾讯视频</a>、<a
+                      href={'https://www.youku.com/'}
+                    >
+                      优酷
+                    </a>
+                  </div>
+                </div>
               </Collapse.Panel>
             </Collapse>
           </div>

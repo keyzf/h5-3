@@ -71,7 +71,6 @@ class CoreForm extends PureComponent {
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} 上传失败.`);
     }
-    console.log(this.state.upload_array);
   };
   beforeUpload = file => {
     this.setState({
@@ -175,16 +174,7 @@ class CoreForm extends PureComponent {
                         <Radio.Group>
                           {data.get('option').map((data, index) => {
                             return (
-                              <Radio
-                                style={{
-                                  display: 'block',
-                                  height: '30px',
-                                  lineHeight: '30px',
-                                  color: opt_color,
-                                }}
-                                setFieldsValue={index}
-                                key={index}
-                              >
+                              <Radio value={data} key={index}>
                                 {data}
                               </Radio>
                             );

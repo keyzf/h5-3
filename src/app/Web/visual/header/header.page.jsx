@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Menu, Row, Dropdown, Icon } from 'antd';
+import { Col, Menu, Row, Button, Icon } from 'antd';
 import BtnSave from '../../../Middleware/factory/btn_save.factory';
 import style from './header.module.scss';
 
@@ -8,18 +8,18 @@ class HeaderVisualView extends PureComponent {
   render() {
     //选项布局
     const LogoCol = {
-      xs: 5,
-      sm: 4,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      xs: 24,
+      sm: 24,
+      md: 24,
+      lg: 12,
+      xl: 11,
     };
     const closeCol = {
       xs: 0,
-      sm: { span: 20 },
-      md: { span: 15, offset: 5 },
-      lg: { span: 11, offset: 9 },
-      xl: { span: 11, offset: 9 },
+      sm: 0,
+      md: 0,
+      lg: { span: 12 },
+      xl: { span: 11, offset: 2 },
     };
     // 项目样式
     const MenuConfig = {
@@ -28,61 +28,73 @@ class HeaderVisualView extends PureComponent {
       selectable: false,
       mode: 'horizontal',
     };
-    const menu = (
-      <Menu>
-        <Menu.Item>
-          <Link to={'/'}>
-            <div key={'1'}>
-              <i
-                className={'icon iconfont icon-iconfonticon2'}
-                style={{ marginRight: '10px' }}
-              />
-              关闭
-            </div>
-          </Link>
-        </Menu.Item>
-      </Menu>
-    );
     return (
       <Row className={style.layout} align={'center'} gutter={16} type={'flex'}>
         <Col className={style.col_center} {...LogoCol}>
           <Menu theme={'dark'} mode={'horizontal'}>
-            <Menu.Item>
-              <a href={'https://www.e7wei.com/'}>
-                <img
-                  style={{ maxWidth: '100px' }}
-                  width={'70%'}
-                  height={'25px'}
-                  src="http://s.e7wei.com/V002904247QF26S5AD4.png"
-                  alt="img"
+            <Menu.Item
+              style={{
+                borderRight: '1px solid rgb(0,187,255)',
+              }}
+            >
+              <a href={'#'} onClick={`javascript :history.back(1)`}>
+                <i
+                  className="icon iconfont icon-zuojiantou"
+                  style={{ fontWeight: 'bold', fontSize: '20px' }}
                 />
+              </a>
+            </Menu.Item>
+            <Menu.Item
+              style={{
+                borderRight: '1px solid rgb(0,187,255)',
+              }}
+            >
+              <a
+                href={'http://my.e7wei.com/package/index.html'}
+                target={'view_window'}
+              >
+                <Button style={{ border: 'none' }}>
+                  <i
+                    className="icon iconfont icon-huiyuan"
+                    style={{ color: 'rgb(255,181,71)' }}
+                  />
+                  <span style={{ marginLeft: '3px', color: 'rgb(255,181,71)' }}>
+                    升级续费
+                  </span>
+                </Button>
+              </a>
+            </Menu.Item>
+            <Menu.Item
+              key={'help131'}
+              style={{
+                borderRight: '1px solid rgb(0,187,255)',
+              }}
+            >
+              <a
+                href={'http://www.e7wei.com/help-article-id-436.html'}
+                target={'view_window'}
+              >
+                <div key={'1'}>
+                  <Icon type="question-circle-o" />
+                  帮助中心
+                </div>
+              </a>
+            </Menu.Item>
+            <Menu.Item key={'help3425'}>
+              <a
+                href={'http://www.e7wei.com/help-article-id-409.html'}
+                target={'view_window'}
+              >
+                <div key={'1'}>
+                  <Icon type="exclamation-circle-o" />
+                  内容规范
+                </div>
               </a>
             </Menu.Item>
           </Menu>
         </Col>
         <Col className={style.col_center} {...closeCol}>
           <Menu {...MenuConfig}>
-            <Menu.Item
-              key={'help'}
-              style={{
-                border: '1px solid transparent',
-                borderImage:
-                  'linear-gradient(0deg, rgb(0,186,255),white 50%, rgb(0,186,255))',
-                borderImageSlice: '10',
-                borderLeft: 'none',
-              }}
-            >
-              <a href={'http://www.e7wei.com/help-article-id-436.html'}>
-                <div key={'1'}>
-                  <i
-                    className={'icon iconfont icon-icon'}
-                    style={{ marginRight: '10px' }}
-                  />
-                  帮助
-                </div>
-              </a>
-            </Menu.Item>
-
             <Menu.Item key={'save'}>
               <BtnSave save={true} />
             </Menu.Item>
@@ -99,14 +111,6 @@ class HeaderVisualView extends PureComponent {
             </Menu.Item>
             <Menu.Item key={'release'}>
               <BtnSave />
-            </Menu.Item>
-            <Menu.Item key={'quite'}>
-              <Dropdown overlay={menu} placement="bottomRight">
-                <Icon
-                  type="bars"
-                  style={{ fontSize: '20px', transform: 'translate(0,3px)' }}
-                />
-              </Dropdown>
             </Menu.Item>
           </Menu>
         </Col>
