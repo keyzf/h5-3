@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import React, { PureComponent } from "react";
 import { getLength, getAngle, getCursor } from "../../utils";
 import StyledRect from "./StyledRect";
@@ -15,22 +15,6 @@ const zoomableMap = {
 };
 
 export default class Rect extends PureComponent {
-  static propTypes = {
-    styles: PropTypes.object,
-    zoomable: PropTypes.string,
-    rotatable: PropTypes.bool,
-    onResizeStart: PropTypes.func,
-    onResize: PropTypes.func,
-    onResizeEnd: PropTypes.func,
-    onRotateStart: PropTypes.func,
-    onRotate: PropTypes.func,
-    onRotateEnd: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDrag: PropTypes.func,
-    onDragEnd: PropTypes.func,
-    parentRotateAngle: PropTypes.number,
-    child: PropTypes.object
-  };
 
   setElementRef = ref => (this.$element = ref);
 

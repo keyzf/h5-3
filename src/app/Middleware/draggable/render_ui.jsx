@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import DynamicCommon from './dynamic_common';
 import { render_ui } from '../factory/render_ui.factory';
-import { NoChoose, UIChoose } from './ui_choose_style';
+import { NoChoose } from './ui_choose_style';
 import { redux_action } from '../../../database/redux/action';
 import connect from 'react-redux/es/connect/connect';
-import ResizableRect from '../../../untils/resizable/ResizableRect';
-import ComponentLocation from './component-location';
 
 class RenderUI extends PureComponent {
   sendAction = up_data => {

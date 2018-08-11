@@ -5,7 +5,7 @@ export const access_api = (data, up_func) => {
     // console.log(window.location.host)
     // 开发环境
 
-    // resolve("release");
+    resolve('visual');
     // 生产环境
 
     if (data.state && data.sid) {

@@ -1,23 +1,13 @@
 import React from 'react';
+import ProMusicUi from '../../../resources/music/core/music_ui';
 import { VTextUi } from '../../../resources/text/core/vertical_ui';
 import { HTextUi } from '../../../resources/text/core/horizontal_ui';
 import { UpImgUi } from '../../../resources/img/core/img_component';
-import { GridImgUi } from '../../../resources/img/core/grid_component';
-import { ListImgUi } from '../../../resources/img/core/list_component';
-import { SliderImgUI } from '../../../resources/img/core/slider_component';
 import { CarouselImgUI } from '../../../resources/img/core/carousel_component';
 import { MusicUi } from '../../../resources/music/core/music_ui';
 import { VideoUi } from '../../../resources/video/core/video_ui';
-import { GridMallUi } from '../../../resources/mall/core/grid_ui';
-import { ListMallUi } from '../../../resources/mall/core/list_ui';
-import { OneMallUi } from '../../../resources/mall/recommend/one_mall_ui';
 import { ButtonUi } from '../../../resources/button/core/button';
 import FormUi from '../../../resources/form/recommend/form_ui_render';
-import { TwoMallUi } from '../../../resources/mall/recommend/two_mall_ui';
-import { ThreeMallUi } from '../../../resources/mall/recommend/three_mall_ui';
-import { FourMallUi } from '../../../resources/mall/recommend/four_mall_ui';
-import { FiveMallUi } from '../../../resources/mall/recommend/five_mall_ui';
-import { SixMallUi } from '../../../resources/mall/recommend/six_mall_ui';
 import { TwentyFiveTextUi } from '../../../resources/text/recommend/twenty_five_ui';
 import { TwentySixTextUi } from '../../../resources/text/recommend/twenty_six_ui';
 import { TwentySevenTextUi } from '../../../resources/text/recommend/twenty_seven_ui';
@@ -37,19 +27,12 @@ import { Btn5Ui } from '../../../resources/button/recommend/btn_re_5';
 import { Btn6Ui } from '../../../resources/button/recommend/btn_re_6';
 import { Btn7Ui } from '../../../resources/button/recommend/btn_re_7';
 import { Img1UI } from '../../../resources/img/recommend/img_re_1';
-import { Img2UI } from '../../../resources/img/recommend/img_re_2';
-import { Img3UI } from '../../../resources/img/recommend/img_re_3';
-import { Img4UI } from '../../../resources/img/recommend/img_re_4';
-import { Img5UI } from '../../../resources/img/recommend/img_re_5';
-import { Img6UI } from '../../../resources/img/recommend/img_re_6';
-import { Img7UI } from '../../../resources/img/recommend/img_re_7';
-
 /**
  * 通过接收数据，返回不同的组件样式，纽带组件！！！（很重要）
  * @param data 数据
  * @returns {*}
  */
-export const render_ui = data => {
+export const render_ui = (data, name) => {
   // 获取组件名称，通过组件名称进行匹配
   switch (data.getIn(['customize', 'name'])) {
     //文本类
@@ -82,45 +65,11 @@ export const render_ui = data => {
     // 图片类
     case 'single_img':
       return <UpImgUi data={data} />;
-    case 'grid_img':
-      return <GridImgUi data={data} />;
-    case 'list_img':
-      return <ListImgUi data={data} />;
-    case 'slider_img':
-      return <SliderImgUI data={data} />;
     case 'carousel_img':
       return <CarouselImgUI data={data} />;
     case 'img_re_1':
       return <Img1UI data={data} />;
-    case 'img_re_2':
-      return <Img2UI data={data} />;
-    case 'img_re_3':
-      return <Img3UI data={data} />;
-    case 'img_re_4':
-      return <Img4UI data={data} />;
-    case 'img_re_5':
-      return <Img5UI data={data} />;
-    case 'img_re_6':
-      return <Img6UI data={data} />;
-    case 'img_re_7':
-      return <Img7UI data={data} />;
-    //  商品类
-    case 'list_mall':
-      return <ListMallUi data={data} />;
-    case 'grid_mall':
-      return <GridMallUi data={data} />;
-    case 'one_mall':
-      return <OneMallUi data={data} />;
-    case 'two_mall':
-      return <TwoMallUi data={data} />;
-    case 'three_mall':
-      return <ThreeMallUi data={data} />;
-    case 'four_mall':
-      return <FourMallUi data={data} />;
-    case 'five_mall':
-      return <FiveMallUi data={data} />;
-    case 'six_mall':
-      return <SixMallUi data={data} />;
+
     //  按钮类
     case 'button':
       return <ButtonUi data={data} />;
@@ -146,7 +95,12 @@ export const render_ui = data => {
       return <VideoUi data={data} />;
     //  音乐类
     case 'music':
-      return <MusicUi data={data} />;
+      if (name === 'show') {
+        return <ProMusicUi data={data} />;
+      } else {
+        return <MusicUi data={data} />;
+      }
+
     //  默认输出
     default:
       return '';

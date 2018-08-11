@@ -1,6 +1,4 @@
 import React from 'react';
-import wx from 'weixin-js-sdk';
-import axios from 'axios';
 import { redux_action } from '../../../database/redux/action';
 import connect from 'react-redux/es/connect/connect';
 import { RotateAtom } from './rotat_animation';

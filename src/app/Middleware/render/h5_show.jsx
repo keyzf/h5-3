@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import RenderBg from './bg_component';
-import { render_switch_ui } from './switch_ui';
+import { render_ui } from '../factory/render_ui.factory';
 import { ItemAtom } from './item_atom';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../database/redux/action';
@@ -46,7 +46,7 @@ class H5RenderCommon extends PureComponent {
             <ItemAtom {...advanced_settings} key={index}>
               {ui_data.getIn(['customize', 'type']) === 'music'
                 ? ''
-                : render_switch_ui(ui_data)}
+                : render_ui(ui_data, 'show')}
             </ItemAtom>
           );
         })}

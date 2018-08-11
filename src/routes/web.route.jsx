@@ -42,8 +42,3 @@ export const ReleaseLoadable = Loadable({
   loading: Loading, // 加载时显示的组件
   timeout: 6000, // 超时时间
 });
-export const H5ViewLoadable = Loadable({
-  loader: () => import('../app/Web/h5view/h5view'), // 文件路径
-  loading: Loading, // 加载时显示的组件
-  timeout: 6000, // 超时时间
-});

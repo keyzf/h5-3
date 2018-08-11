@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import React, { Component } from "react";
 import Rect from "./components/Rect";
 import { getNewStyle, degToRadian } from "./utils";
@@ -32,29 +32,6 @@ const tLToCenter = props => {
 };
 
 class ResizableRect extends Component {
-  static propTypes = {
-    left: PropTypes.number.isRequired,
-    top: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    rotatable: PropTypes.bool,
-    rotateAngle: PropTypes.number,
-    parentRotateAngle: PropTypes.number,
-    zoomable: PropTypes.string,
-    minWidth: PropTypes.number,
-    minHeight: PropTypes.number,
-    aspectRatio: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-    onRotateStart: PropTypes.func,
-    onRotate: PropTypes.func,
-    onRotateEnd: PropTypes.func,
-    onResizeStart: PropTypes.func,
-    onResize: PropTypes.func,
-    onResizeEnd: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDrag: PropTypes.func,
-    onDragEnd: PropTypes.func,
-    child:PropTypes.object,
-  };
   static defaultProps = {
     parentRotateAngle: 0,
     rotateAngle: 0,
