@@ -14,7 +14,7 @@ import {
   Col,
 } from 'antd';
 import style from './img_lazy_choose.module.scss';
-import UploadImgForm from './_img_form.upload';
+import { UploadImgForm } from '../../../routes/web.route';
 import 'nprogress/nprogress.css';
 import { redux_action } from '../../../database/redux/action';
 import { upload_api } from '../../../api/upload.api';

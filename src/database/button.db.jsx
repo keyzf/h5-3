@@ -52,7 +52,7 @@ const $$btn_re_1 = fromJS(
     68,
     'white',
     'transparent',
-    'https://pimg.xiuzan.com/market/2017/03/20170324134822_BTQtNP?x-oss-process=image/resize,w_750',
+    'http://src.e7wei.com/0.8354811946651384.png',
     true
   )
 );
@@ -64,7 +64,7 @@ const $$btn_re_2 = fromJS(
     68,
     'white',
     'transparent',
-    'https://pimg.xiuzan.com/market/2017/03/20170324134828_MpFC3c?x-oss-process=image/resize,w_750',
+    'http://src.e7wei.com/0.9500721818014961.png',
     true
   )
 );
@@ -76,7 +76,7 @@ const $$btn_re_3 = fromJS(
     68,
     'white',
     'transparent',
-    'https://pimg.xiuzan.com/market/2017/03/20170324134833_TjSKBd?x-oss-process=image/resize,w_750',
+    'http://src.e7wei.com/0.43407455115975724.png',
     true
   )
 );
@@ -88,7 +88,7 @@ const $$btn_re_4 = fromJS(
     86,
     'white',
     'transparent',
-    'https://pimg.xiuzan.com/market/2017/03/20170324134838_ZTRPTA?x-oss-process=image/resize,w_750',
+    'http://src.e7wei.com/0.5672539925791829.png',
     true
   )
 );

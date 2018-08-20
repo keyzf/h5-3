@@ -24,9 +24,7 @@ class BtnSave extends PureComponent {
         NProgress.done();
         if (!this.props.save) {
           message.success('发布成功');
-          console.log(this.props.release_value.data.get('url'));
           window.location.href = `${this.props.release_value.data.get('url')}`;
-          this.props.history.push('/release');
         } else {
           message.success('保存成功');
         }

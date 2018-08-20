@@ -2,7 +2,6 @@ import axios from 'axios';
 
 // 测试成功✅
 export const save_ajax = data => {
-  console.log(data);
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append('sid', data.sid);

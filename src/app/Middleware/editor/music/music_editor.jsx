@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tabs, Icon, Button, List, message, Tag, Divider } from 'antd';
 import { user_api } from '../../../../api/user.api';
 import { delete_api } from '../../../../api/delete.api';
-import MusicForm from '../../upload/_music_form';
+import { MusicForm } from '../../../../routes/web.route';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { upload_api } from '../../../../api/upload.api';

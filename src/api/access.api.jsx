@@ -2,12 +2,10 @@ import axios from 'axios';
 
 export const access_api = (data, up_func) => {
   return new Promise((resolve, reject) => {
-    // console.log(window.location.host)
     // 开发环境
-
     resolve('visual');
-    // 生产环境
 
+    // 生产环境
     if (data.state && data.sid) {
       let params = new URLSearchParams();
       params.append('sid', data.sid);
