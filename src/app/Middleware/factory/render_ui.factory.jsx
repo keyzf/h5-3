@@ -1,10 +1,8 @@
 import React from 'react';
-import ProMusicUi from '../../../resources/music/core/music_ui';
 import { VTextUi } from '../../../resources/text/core/vertical_ui';
 import { HTextUi } from '../../../resources/text/core/horizontal_ui';
 import { UpImgUi } from '../../../resources/img/core/img_component';
 import { CarouselImgUI } from '../../../resources/img/core/carousel_component';
-import { MusicUi } from '../../../resources/music/core/music_ui';
 import { VideoUi } from '../../../resources/video/core/video_ui';
 import { ButtonUi } from '../../../resources/button/core/button';
 import { FormUi } from '../../../routes/web.route';
@@ -76,7 +74,7 @@ import { Text_Re_52_Ui } from '../../../resources/text/recommend/text_re_52';
  * @param data 数据
  * @returns {*}
  */
-export const render_ui = (data, name) => {
+export const render_ui = data => {
   // 获取组件名称，通过组件名称进行匹配
   switch (data.getIn(['customize', 'name'])) {
     //文本类
@@ -225,13 +223,6 @@ export const render_ui = (data, name) => {
     // 媒体类
     case 'video':
       return <VideoUi data={data} />;
-    //  音乐类
-    case 'music':
-      if (name === 'show') {
-        return <ProMusicUi data={data} />;
-      } else {
-        return <MusicUi data={data} />;
-      }
     //  默认输出
     default:
       return '';

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import ResizableRect from '../../../untils/resizable/ResizableRect';
+import ResizableRect from '../../../utils/resizable/ResizableRect';
 import ComponentLocation from './component-location';
 import { NoChoose, UIChoose } from './ui_choose_style';
 import { redux_action } from '../../../database/redux/action';

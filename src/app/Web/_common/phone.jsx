@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import H5RenderCommon from '../../Middleware/render/h5_show';
 import style from './_common.module.scss';
-import MusicRenderCommon from '../../Middleware/render/music_render';
+import { connect } from 'react-redux';
+import MusicUi from '../../../resources/music/core/music_ui';
 
 class PhoneCommonView extends PureComponent {
   render() {
@@ -13,25 +14,38 @@ class PhoneCommonView extends PureComponent {
             <div
               style={{ position: 'relative', width: '100%', height: '100%' }}
             >
-              <MusicRenderCommon />
+              {this.props.music_ui_value.data.get('music_url') ? (
+                <div
+                  style={{
+                    position: 'absolute',
+                    zIndex: '999',
+                    top: '28px',
+                    left: '8px',
+                  }}
+                >
+                  <MusicUi />
+                </div>
+              ) : (
+                ''
+              )}
               <div
                 style={{
                   position: 'absolute',
                   zIndex: '999',
-                  lineHeight: '30px',
-                  top: '40px',
+                  lineHeight: '25px',
+                  top: '28px',
                   right: '0',
                 }}
               >
                 <div
                   style={{
-                    borderTopLeftRadius: '50px',
-                    borderBottomLeftRadius: '50px',
+                    borderRadius: '10px',
                     background: 'rgba(0,0,0,0.4)',
                     color: 'white',
+                    marginRight:'5px'
                   }}
                 >
-                  &nbsp; &nbsp;投诉 &nbsp;
+                  &nbsp; <a href={'#'} target="view_window" style={{color:"white",fontSize:"12px"}}>投诉</a> &nbsp;
                 </div>
               </div>
               <div className={style.s}>
@@ -46,4 +60,11 @@ class PhoneCommonView extends PureComponent {
   }
 }
 
-export default PhoneCommonView;
+const mapStateToProps = state => {
+  return {
+    // 音乐
+    music_ui_value: state.musicUi_rdc,
+  };
+};
+
+export default connect(mapStateToProps)(PhoneCommonView);

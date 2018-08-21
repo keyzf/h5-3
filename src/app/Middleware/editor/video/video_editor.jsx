@@ -69,13 +69,15 @@ class EditorVideo extends PureComponent {
                   <div>
                     将视频通用代码粘贴至框内即可。<a
                       href={'http://www.e7wei.com/help-article-id-442.html'}
+                      target="view_window"
                     >
                       查看帮助
                     </a>
                   </div>
                   <div>
-                    支持的视频：<a href={'https://v.qq.com/'}>腾讯视频</a>、<a
+                    支持的视频：<a href={'https://v.qq.com/'} target="view_window">腾讯视频</a>、<a
                       href={'https://www.youku.com/'}
+                      target="view_window"
                     >
                       优酷
                     </a>

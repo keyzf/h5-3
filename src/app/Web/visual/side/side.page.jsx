@@ -182,11 +182,7 @@ class SiderVisualView extends PureComponent {
           return (
             <div className={style.queueAnim}>
               <div style={{ overflow: 'auto' }}>
-                <EditorMusic
-                  data={this.props.h5_data_value.data.get(
-                    this.state.music_number
-                  )}
-                />
+                <EditorMusic />
               </div>
             </div>
           );

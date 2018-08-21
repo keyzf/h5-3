@@ -44,9 +44,7 @@ class H5RenderCommon extends PureComponent {
           };
           return (
             <ItemAtom {...advanced_settings} key={index}>
-              {ui_data.getIn(['customize', 'type']) === 'music'
-                ? ''
-                : render_ui(ui_data, 'show')}
+              {render_ui(ui_data)}
             </ItemAtom>
           );
         })}
@@ -55,13 +53,13 @@ class H5RenderCommon extends PureComponent {
           style={{
             position: 'absolute',
             bottom: 0,
-            lineHeight: '30px',
+            lineHeight: '20px',
           }}
         >
-          <div style={{ borderRadius: '50px', background: 'rgba(0,0,0,0.4)' }}>
-            <a href={'http://m.e7wei.com'} style={{ color: 'white' }}>
-              &nbsp;&nbsp;&nbsp;&nbsp; 技术支持 >>
-              易企微&nbsp;&nbsp;&nbsp;&nbsp;
+          <div style={{ borderRadius: '50px', background: 'rgba(0,0,0,0.4)' ,marginBottom:"5px"}}>
+            <a href={'http://m.e7wei.com'} style={{ color: 'white',fontSize:"12px" }}>
+              &nbsp;&nbsp;&nbsp; 技术支持 >>
+              易企微&nbsp;&nbsp;&nbsp;
             </a>
           </div>
         </div>

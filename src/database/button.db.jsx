@@ -48,11 +48,11 @@ const $$button_database = fromJS(
 const $$btn_re_1 = fromJS(
   $$button(
     'btn_re_1',
-    155,
-    68,
+    186,
+    49,
     'white',
     'transparent',
-    'http://src.e7wei.com/0.8354811946651384.png',
+    'http://src.e7wei.com/0.21214677242156488.png',
     true
   )
 );
@@ -60,11 +60,11 @@ const $$btn_re_1 = fromJS(
 const $$btn_re_2 = fromJS(
   $$button(
     'btn_re_2',
-    155,
-    68,
+    186,
+    49,
     'white',
     'transparent',
-    'http://src.e7wei.com/0.9500721818014961.png',
+    'http://src.e7wei.com/0.2228652186281075.png',
     true
   )
 );
@@ -72,11 +72,11 @@ const $$btn_re_2 = fromJS(
 const $$btn_re_3 = fromJS(
   $$button(
     'btn_re_3',
-    155,
-    68,
+    186,
+    49,
     'white',
     'transparent',
-    'http://src.e7wei.com/0.43407455115975724.png',
+    'http://src.e7wei.com/0.2812003343951739.png',
     true
   )
 );
@@ -84,11 +84,11 @@ const $$btn_re_3 = fromJS(
 const $$btn_re_4 = fromJS(
   $$button(
     'btn_re_4',
-    163,
-    86,
+    186,
+    49,
     'white',
     'transparent',
-    'http://src.e7wei.com/0.5672539925791829.png',
+    'http://src.e7wei.com/0.3811889973393192.png',
     true
   )
 );
@@ -100,7 +100,7 @@ const $$btn_re_5 = fromJS(
     49,
     'white',
     'transparent',
-    'https://pimg.xiuzan.com/market/2017/03/20170324134843_PC8stN?x-oss-process=image/resize,w_750',
+    'http://src.e7wei.com/0.36788814909137724.png',
     true
   )
 );

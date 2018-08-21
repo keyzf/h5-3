@@ -17,6 +17,7 @@ class BtnSave extends PureComponent {
       cover: this.props.shareMsg_value.data.get('cover'),
       desc: this.props.shareMsg_value.data.get('desc'),
       title: this.props.shareMsg_value.data.get('title'),
+      music: this.props.music_ui_value.data.toJS(),
     };
     // ajax
     save_ajax(data)
@@ -75,6 +76,7 @@ const mapStateToProps = state => {
     // 解析url,获取用户id
     sid_value: state.sid_rdc,
     release_value: state.release_rdc,
+    music_ui_value:state.musicUi_rdc,
   };
 };
 
