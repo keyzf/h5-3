@@ -76,7 +76,7 @@ const mapStateToProps = state => {
     // 解析url,获取用户id
     sid_value: state.sid_rdc,
     release_value: state.release_rdc,
-    music_ui_value:state.musicUi_rdc,
+    music_ui_value: state.musicUi_rdc,
   };
 };
 

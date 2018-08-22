@@ -37,13 +37,14 @@ class EditorReleaseView extends PureComponent {
           >
             微信扫码 预览效果
           </div>
-          <div className={'flex_center'}
+          <div
+            className={'flex_center'}
             style={{
               padding: '10px',
               border: '1px solid #e2e2e2',
             }}
           >
-            <QRCode value={$$url}/>
+            <QRCode value={$$url} />
           </div>
         </div>
         {this.props.release_value.data.get('self') ? (

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { redux_action } from '../../../database/redux/action';
 import connect from 'react-redux/es/connect/connect';
 import { RotateAtom } from './rotat_animation';
-import axios from "axios";
-import wx from "weixin-js-sdk";
+import axios from 'axios';
+import wx from 'weixin-js-sdk';
 
 /**
  * 音乐组件
@@ -12,8 +12,6 @@ class MusicUi extends PureComponent {
   state = {
     onClickStop: false,
   };
-
-
 
   onClickStop = name => {
     if (name === 'open') {
@@ -48,10 +46,15 @@ class MusicUi extends PureComponent {
               padding: '6px',
             }}
           >
-              <i
-                style={{ padding: 0, margin: '0', color: 'white',fontSize:'18px' }}
-                className={'iconfont icon-yinfu'}
-              />
+            <i
+              style={{
+                padding: 0,
+                margin: '0',
+                color: 'white',
+                fontSize: '18px',
+              }}
+              className={'iconfont icon-yinfu'}
+            />
           </div>
         ) : (
           <div
@@ -65,13 +68,18 @@ class MusicUi extends PureComponent {
               padding: '6px',
             }}
           >
-              <RotateAtom>
-                <i
-                  style={{ padding: 0, margin: 0, color: 'white',fontSize:'18px' }}
-                  className={'iconfont icon-yinfu'}
-                />
-              </RotateAtom>
-            </div>
+            <RotateAtom>
+              <i
+                style={{
+                  padding: 0,
+                  margin: 0,
+                  color: 'white',
+                  fontSize: '18px',
+                }}
+                className={'iconfont icon-yinfu'}
+              />
+            </RotateAtom>
+          </div>
         )}
       </React.Fragment>
     );

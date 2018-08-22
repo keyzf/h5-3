@@ -42,10 +42,18 @@ class PhoneCommonView extends PureComponent {
                     borderRadius: '10px',
                     background: 'rgba(0,0,0,0.4)',
                     color: 'white',
-                    marginRight:'5px'
+                    marginRight: '5px',
                   }}
                 >
-                  &nbsp; <a href={'#'} target="view_window" style={{color:"white",fontSize:"12px"}}>投诉</a> &nbsp;
+                  &nbsp;{' '}
+                  <a
+                    href={'#'}
+                    target="view_window"
+                    style={{ color: 'white', fontSize: '12px' }}
+                  >
+                    投诉
+                  </a>{' '}
+                  &nbsp;
                 </div>
               </div>
               <div className={style.s}>
