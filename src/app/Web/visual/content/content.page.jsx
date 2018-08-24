@@ -34,6 +34,16 @@ class ContentVisualView extends PureComponent {
           <Resizable
             maxWidth={320}
             minHeight={600}
+            enable={{
+              top: false,
+              right: false,
+              bottom: true,
+              left: false,
+              topRight: false,
+              bottomRight: true,
+              bottomLeft: true,
+              topLeft: false,
+            }}
             size={{ height: bg_config.height }}
             onResizeStop={this.changeHeight}
           >

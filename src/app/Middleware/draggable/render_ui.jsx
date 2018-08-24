@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import DynamicCommon from './dynamic_common';
 import { render_ui } from '../factory/render_ui.factory';
-import { NoChoose, UIChoose } from './ui_choose_style';
+import { NoChoose } from './ui_choose_style';
 import { redux_action } from '../../../database/redux/action';
 import connect from 'react-redux/es/connect/connect';
-import ResizableRect from '../../../untils/resizable/ResizableRect';
-import ComponentLocation from './component-location';
 
 class RenderUI extends PureComponent {
   sendAction = up_data => {
@@ -30,7 +28,7 @@ class RenderUI extends PureComponent {
     // 接收的数据
     const advance = this.props.data.get('advance');
     const $_content = document.getElementById('content');
-    if (!advance.get('left')) {
+    if (!advance.get('move')) {
       let t = '';
       let h = '';
       let top = '';
@@ -48,8 +46,9 @@ class RenderUI extends PureComponent {
         (320 - advance.get('width')) / 2
       );
       const $$change_top = $$change_left.setIn(['advance', 'top'], top);
+      const $$change_move = $$change_top.setIn(['advance', 'move'], true);
       // new data
-      this.sendAction($$change_top);
+      this.sendAction($$change_move);
     }
 
     // 拆解所有组件的高级设置

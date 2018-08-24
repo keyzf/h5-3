@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import RenderBg from './bg_component';
-import { render_switch_ui } from './switch_ui';
+import { render_ui } from '../factory/render_ui.factory';
 import { ItemAtom } from './item_atom';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../database/redux/action';
@@ -41,7 +40,7 @@ class MusicRenderCommon extends PureComponent {
                   {...advanced_settings}
                   key={index}
                 >
-                  {render_switch_ui(ui_data)}
+                  {render_ui(ui_data, 'show')}
                 </ItemAtom>
               ) : (
                 ''

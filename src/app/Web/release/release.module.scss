@@ -131,9 +131,11 @@
 }
 
 .s {
-  width: 320px;
+  position: relative;
+  width: 100%;
   height: 100%;
   overflow: auto;
+  margin: auto;
   scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
   scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
   scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/

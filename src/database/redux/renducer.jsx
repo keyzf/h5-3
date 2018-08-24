@@ -5,6 +5,7 @@ import { release_rdc } from './renducer_list/release.rdc';
 import { sid_rdc } from './renducer_list/sid.rdc';
 import { editorUi_rdc } from './renducer_list/editorUi.rdc';
 import { bgUi_rdc } from './renducer_list/bgUi.rdc';
+import { musicUi_rdc } from './renducer_list/musicUi.rdc';
 
 export const renducer = combineReducers({
   sid_rdc,
@@ -13,4 +14,5 @@ export const renducer = combineReducers({
   release_rdc,
   editorUi_rdc,
   bgUi_rdc,
+  musicUi_rdc,
 });

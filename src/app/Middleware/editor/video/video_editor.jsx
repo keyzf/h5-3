@@ -39,51 +39,32 @@ class EditorVideo extends PureComponent {
     return (
       <Tabs defaultActiveKey="1" style={{ height: '100%' }}>
         <Tabs.TabPane tab="视频设置" key="1">
-          <div
-            style={{
-              height: 'calc(100vh -  55px)',
-              overflow: 'hidden',
-              marginTop: '-18px',
-            }}
-          >
-            <Collapse
-              bordered={false}
-              defaultActiveKey={['2']}
-              style={{ background: 'transparent' }}
-            >
-              <Collapse.Panel header="插入视频通用代码" key="2">
-                <div
-                  style={{
-                    color: '#19a0fa',
-                    cursor: 'pointer',
-                    marginTop: '-20px',
-                    fontSize: '13.5px',
-                  }}
+          <Collapse bordered={false} defaultActiveKey={['1']}>
+            <Collapse.Panel header="插入视频通用代码" key="1">
+              <div>
+                将视频通用代码粘贴至框内即可。<a
+                  href={'http://www.e7wei.com/help-article-id-442.html'}
+                  target="view_window"
                 >
-                  第三方分享<span style={{ fontSize: '13.5px', color: 'grey' }}>
-                    请将分享代码复制至下方
-                  </span>
+                  查看帮助
+                </a>
+              </div>
+              <br />
+              <TextArea rows={4} onChange={this.shareChange} />
+              <div style={{ marginTop: '5px' }}>
+                <div>
+                  支持的视频：<a
+                    href={'https://v.qq.com/'}
+                    target="view_window"
+                  >
+                    腾讯视频
+                  </a>、<a href={'https://www.youku.com/'} target="view_window">
+                    优酷
+                  </a>
                 </div>
-                <TextArea rows={4} onChange={this.shareChange} />
-                <div style={{ marginTop: '5px' }}>
-                  <div>
-                    将视频通用代码粘贴至框内即可。<a
-                      href={'http://www.e7wei.com/help-article-id-442.html'}
-                    >
-                      查看帮助
-                    </a>
-                  </div>
-                  <div>
-                    支持的视频：<a href={'https://v.qq.com/'}>腾讯视频</a>、<a
-                      href={'https://www.youku.com/'}
-                    >
-                      优酷
-                    </a>
-                  </div>
-                </div>
-              </Collapse.Panel>
-            </Collapse>
-          </div>
+              </div>
+            </Collapse.Panel>
+          </Collapse>
         </Tabs.TabPane>
       </Tabs>
     );

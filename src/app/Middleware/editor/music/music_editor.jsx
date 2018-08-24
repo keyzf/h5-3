@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Tabs, Icon, Button, List, message, Tag, Divider } from 'antd';
 import { user_api } from '../../../../api/user.api';
 import { delete_api } from '../../../../api/delete.api';
-import MusicForm from '../../upload/_music_form';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+import { MusicForm } from '../../../../routes/web.route';
 import { upload_api } from '../../../../api/upload.api';
 import { redux_action } from '../../../../database/redux/action';
 import { system_api } from '../../../../api/system.api';
 import { system_list_api } from '../../../../api/system_list.api';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 class EditorMusic extends PureComponent {
   state = {
@@ -18,6 +18,7 @@ class EditorMusic extends PureComponent {
     public_current: 1,
     music_library: [],
     number: 0,
+
     // music_library: [
     //   {
     //     url: 'http://s.e7wei.com/811285359523452.mp3',
@@ -40,7 +41,34 @@ class EditorMusic extends PureComponent {
     audio: 'play',
   };
 
+  componentWillMount() {
+    user_api(4, 0).then(data => {
+      this.setState({
+        number: data.sum,
+        music_library: data.list,
+      });
+    });
+    //  公共音乐库
+    system_api(1, 1, 10).then(data => {
+      this.setState({
+        public_number: data.sum,
+        public_music: data.list,
+      });
+    });
+    //  获取音频的分类
+    system_list_api().then(data => {
+      this.setState({
+        public_list: data.list,
+      });
+    });
+  }
+
   oncliMusic_table = (name, tid) => {
+    if (name === 'now') {
+      this.setState({
+        music_tab: 'now',
+      });
+    }
     if (name === 'me') {
       this.setState({
         music_tab: name,
@@ -79,28 +107,6 @@ class EditorMusic extends PureComponent {
     }
   };
 
-  componentWillMount() {
-    user_api(4, 0).then(data => {
-      this.setState({
-        number: data.sum,
-        music_library: data.list,
-      });
-    });
-    //  公共音乐库
-    system_api(1, 1, 10).then(data => {
-      this.setState({
-        public_number: data.sum,
-        public_music: data.list,
-      });
-    });
-    //  获取音频的分类
-    system_list_api().then(data => {
-      this.setState({
-        public_list: data.list,
-      });
-    });
-  }
-
   del = (number, mid) => {
     NProgress.start();
     delete_api(mid)
@@ -128,17 +134,13 @@ class EditorMusic extends PureComponent {
       });
   };
 
-  onChange = e => {
-    this.props.h5_data_value.data.map((map_data, index) => {
-      if (map_data.getIn(['customize', 'type']) === 'music') {
-        this.sendAction(
-          this.props.h5_data_value.data
-            .get(index)
-            .setIn(['customize', 'music'], e),
-          index
-        );
-      }
-    });
+  now_del = () => {
+    this.props.upData('MUSIC_UI', { music_url: '', desc: '' });
+    message.success('删除成功');
+  };
+
+  onChange = (e, desc) => {
+    this.props.upData('MUSIC_UI', { music_url: e, desc: desc });
     this.setState({
       audio: 'play',
     });
@@ -203,19 +205,8 @@ class EditorMusic extends PureComponent {
     }
   };
 
-  sendAction = (up_data, index) => {
-    // data source
-    const $$select_data = this.props.h5_data_value.data;
-    // create new data
-    const $$new_select_data = $$select_data.set(index, up_data);
-
-    // send action
-    this.props.upData('H5_DATA', $$new_select_data);
-  };
-
   render() {
-    const $$customize = this.props.data.get('customize');
-    const $$url = this.props.data.getIn(['customize', 'music']);
+    const $$music_url = this.props.music_ui_value.data.get('music_url');
     const TabPane = Tabs.TabPane;
     const { CheckableTag } = Tag;
     return (
@@ -238,7 +229,7 @@ class EditorMusic extends PureComponent {
         }
       >
         <TabPane tab="音乐素材" key="3242">
-          <audio id={'audio'} autoPlay={true} src={$$customize.get('music')} />
+          <audio id={'audio'} autoPlay={true} src={$$music_url} />
           <div>
             <CheckableTag
               checked={this.state.music_tab === 'me'}
@@ -264,6 +255,67 @@ class EditorMusic extends PureComponent {
             })}
           </div>
           <br />
+          {this.state.music_tab === 'me' ? (
+            $$music_url ? (
+              <Divider>当前使用</Divider>
+            ) : (
+              ''
+            )
+          ) : (
+            ''
+          )}
+          {this.state.music_tab === 'me' ? (
+            $$music_url ? (
+              <List
+                itemLayout="horizontal"
+                dataSource={[
+                  {
+                    music_url: $$music_url,
+                    desc: this.props.music_ui_value.data.get('desc'),
+                  },
+                ]}
+                renderItem={item => (
+                  <List.Item
+                    actions={[
+                      <a>
+                        {this.state.audio === 'play' ? (
+                          <Icon
+                            type="pause-circle-o"
+                            onClick={this.audio.bind(this, 'play')}
+                          />
+                        ) : (
+                          <Icon
+                            type="play-circle-o"
+                            onClick={this.audio.bind(this, 'pause')}
+                          />
+                        )}
+                      </a>,
+                      <a>
+                        <Icon
+                          onClick={this.now_del.bind(this)}
+                          className="dynamic-delete-button"
+                          type="minus-circle-o"
+                        />
+                      </a>,
+                    ]}
+                  >
+                    <i
+                      className="iconfont icon-yinle"
+                      style={{
+                        marginRight: '5px',
+                        transform: 'translate(3px,-3px)',
+                      }}
+                    />
+                    {item.desc}
+                  </List.Item>
+                )}
+              />
+            ) : (
+              ''
+            )
+          ) : (
+            ''
+          )}
           <Divider>
             {this.state.music_tab === 'me'
               ? this.state.music_library.length
@@ -271,7 +323,60 @@ class EditorMusic extends PureComponent {
                 : '暂无音乐'
               : this.state.music_tab}
           </Divider>
-          {this.state.music_tab === 'me' ? (
+          {this.state.music_tab === 'now' ? (
+            $$music_url ? (
+              <List
+                itemLayout="horizontal"
+                dataSource={[
+                  {
+                    music_url: $$music_url,
+                    desc: this.props.music_ui_value.data.get('desc'),
+                  },
+                ]}
+                renderItem={item => (
+                  <List.Item
+                    actions={[
+                      <a>
+                        {$$music_url === item.url ? (
+                          this.state.audio === 'play' ? (
+                            <Icon
+                              type="pause-circle-o"
+                              onClick={this.audio.bind(this, 'play')}
+                            />
+                          ) : (
+                            <Icon
+                              type="play-circle-o"
+                              onClick={this.audio.bind(this, 'pause')}
+                            />
+                          )
+                        ) : (
+                          <Icon type="play-circle-o" />
+                        )}
+                      </a>,
+                      <a>
+                        <Icon
+                          onClick={this.now_del.bind(this)}
+                          className="dynamic-delete-button"
+                          type="minus-circle-o"
+                        />
+                      </a>,
+                    ]}
+                  >
+                    <i
+                      className="iconfont icon-yinle"
+                      style={{
+                        marginRight: '5px',
+                        transform: 'translate(3px,-3px)',
+                      }}
+                    />
+                    {item.desc}
+                  </List.Item>
+                )}
+              />
+            ) : (
+              ''
+            )
+          ) : this.state.music_tab === 'me' ? (
             <div>
               {this.state.music_library.length ? (
                 <List
@@ -288,20 +393,24 @@ class EditorMusic extends PureComponent {
                     <List.Item
                       actions={[
                         <a>
-                          {$$url === item.url ? (
+                          {$$music_url === item.url ? (
                             <Icon
                               type="check"
-                              onClick={this.onChange.bind(this, '')}
+                              onClick={this.onChange.bind(this, '', '')}
                             />
                           ) : (
                             <i
                               className=" iconfont icon-xuanxiangkuang"
-                              onClick={this.onChange.bind(this, item.url)}
+                              onClick={this.onChange.bind(
+                                this,
+                                item.url,
+                                item.desc
+                              )}
                             />
                           )}
                         </a>,
                         <a>
-                          {$$url === item.url ? (
+                          {$$music_url === item.url ? (
                             this.state.audio === 'play' ? (
                               <Icon
                                 type="pause-circle-o"
@@ -384,7 +493,7 @@ class EditorMusic extends PureComponent {
                   <List.Item
                     actions={[
                       <a>
-                        {$$url === item.url ? (
+                        {$$music_url === item.url ? (
                           <Icon
                             type="check"
                             onClick={this.onChange.bind(this, '')}
@@ -392,25 +501,29 @@ class EditorMusic extends PureComponent {
                         ) : (
                           <i
                             className=" iconfont icon-xuanxiangkuang"
-                            onClick={this.onChange.bind(this, item.url)}
+                            onClick={this.onChange.bind(
+                              this,
+                              item.url,
+                              item.name
+                            )}
                           />
                         )}
                       </a>,
                       <a>
-                        {$$url === item.url ? (
+                        {$$music_url === item.url ? (
                           this.state.audio === 'play' ? (
                             <Icon
-                              type="play-circle-o"
+                              type="pause-circle-o"
                               onClick={this.audio.bind(this, 'play')}
                             />
                           ) : (
                             <Icon
-                              type="pause-circle-o"
+                              type="play-circle-o"
                               onClick={this.audio.bind(this, 'pause')}
                             />
                           )
                         ) : (
-                          <Icon type="pause-circle-o" />
+                          <Icon type="play-circle-o" />
                         )}
                       </a>,
                     ]}
@@ -436,10 +549,8 @@ class EditorMusic extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    // 核心组件
-    h5_data_value: state.h5Data_rdc,
-    // 当前选择编辑的组件
-    editor_ui_value: state.editorUi_rdc,
+    // 音乐
+    music_ui_value: state.musicUi_rdc,
   };
 };
 

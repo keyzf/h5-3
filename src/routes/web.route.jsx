@@ -42,8 +42,19 @@ export const ReleaseLoadable = Loadable({
   loading: Loading, // 加载时显示的组件
   timeout: 6000, // 超时时间
 });
-export const H5ViewLoadable = Loadable({
-  loader: () => import('../app/Web/h5view/h5view'), // 文件路径
+
+export const MusicForm = Loadable({
+  loader: () => import('../app/Middleware/upload/_music_form'), // 文件路径
+  loading: Loading, // 加载时显示的组件
+  timeout: 6000, // 超时时间
+});
+export const UploadImgForm = Loadable({
+  loader: () => import('../app/Middleware/upload/_img_form.upload'), // 文件路径
+  loading: Loading, // 加载时显示的组件
+  timeout: 6000, // 超时时间
+});
+export const FormUi = Loadable({
+  loader: () => import('../resources/form/recommend/form_ui_render'), // 文件路径
   loading: Loading, // 加载时显示的组件
   timeout: 6000, // 超时时间
 });

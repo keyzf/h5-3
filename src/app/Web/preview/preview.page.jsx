@@ -9,6 +9,13 @@ class PreviewView extends PureComponent {
   componentWillMount() {
     document.title = '易企微 | 一站式微信营销平台';
   }
+  componentDidMount() {
+    try {
+      document.getElementById('h5_audio').play();
+    } catch (error) {
+      return '';
+    }
+  }
   render() {
     const { Header, Sider, Content } = Layout;
     return (

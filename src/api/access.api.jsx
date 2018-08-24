@@ -2,12 +2,10 @@ import axios from 'axios';
 
 export const access_api = (data, up_func) => {
   return new Promise((resolve, reject) => {
-    // console.log(window.location.host)
     // 开发环境
+    // resolve('visual');
 
-    // resolve("release");
     // 生产环境
-
     if (data.state && data.sid) {
       let params = new URLSearchParams();
       params.append('sid', data.sid);
@@ -31,6 +29,12 @@ export const access_api = (data, up_func) => {
                 self: response.data.self,
               });
               up_func('SID', { sid: data.sid });
+              if (response.data.info.music) {
+                up_func('MUSIC_UI', {
+                  music_url: JSON.parse(response.data.info.music).music_url,
+                  desc: JSON.parse(response.data.info.music).desc,
+                });
+              }
               if (response.data.info.ui) {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));
                 up_func('BG_UI', JSON.parse(response.data.info.bg));
@@ -52,6 +56,12 @@ export const access_api = (data, up_func) => {
               };
               up_func('SHARE_MSG', share);
               up_func('RELEASE', { url: response.data.url });
+              if (response.data.info.music) {
+                up_func('MUSIC_UI', {
+                  music_url: JSON.parse(response.data.info.music).music_url,
+                  desc: JSON.parse(response.data.info.music).desc,
+                });
+              }
               up_func('SID', { sid: data.sid });
               if (response.data.info.ui) {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));

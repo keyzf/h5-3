@@ -10,10 +10,8 @@
     "braft-editor": "^1.9.8",
     "immutable": "^3.8.2",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.6.2",
     "qiniu": "^7.2.1",
     "qrcode.react": "^0.8.0",
-    "rc-queue-anim": "^1.6.5",
     "re-resizable": "^4.7.1",
     "react": "^16.4.1",
     "react-color": "^2.14.1",
@@ -30,7 +28,7 @@
     "weixin-js-sdk": "^1.3.3"
   },
   "scripts": {
-    "start": "concurrently 'react-app-rewired start' 'json-server --watch ./api_server/db.js -p 3001'",
+    "start": "react-app-rewired start",
     "beaut": "prettier --single-quote --trailing-comma es5 --write 'src/**/*.jsx'",
     "build": "react-app-rewired build",
     "doc": "jsdoc src -r -d doc",
@@ -39,9 +37,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.8.0",
-    "concurrently": "^3.6.0",
     "jsdoc": "^3.5.5",
-    "json-server": "^0.14.0",
     "node-sass": "^4.9.2",
     "prettier": "^1.13.7",
     "react-app-rewire-css-modules": "codebandits/react-app-rewire-css-modules",

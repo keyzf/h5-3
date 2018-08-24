@@ -97,9 +97,7 @@ class EditorPreviewView extends PureComponent {
             <Col span={24}>
               <img
                 alt={'img'}
-                src={
-                  'https://e7wei-img.oss-cn-beijing.aliyuncs.com/WechatIMG3.png'
-                }
+                src={'http://src.e7wei.com/0.7433291021513337.png'}
                 width={'100%'}
                 height={'100%'}
               />

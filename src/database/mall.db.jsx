@@ -32,6 +32,7 @@ const $$mall_func_database = (
         tiling: { value: '' },
       },
       width: width,
+      move: false,
       height: height,
       left: 0,
       top: 0,

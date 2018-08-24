@@ -3,7 +3,6 @@ import { Row, Button, message } from 'antd';
 import QRCode from 'qrcode.react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class EditorReleaseView extends PureComponent {
   static outMessage() {
@@ -39,15 +38,13 @@ class EditorReleaseView extends PureComponent {
             微信扫码 预览效果
           </div>
           <div
+            className={'flex_center'}
             style={{
               padding: '10px',
               border: '1px solid #e2e2e2',
             }}
           >
-            <QRCode
-              size={this.props.release_value.data.get('self') ? '144' : '125'}
-              value={$$url}
-            />
+            <QRCode value={$$url} />
           </div>
         </div>
         {this.props.release_value.data.get('self') ? (

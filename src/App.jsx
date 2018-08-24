@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { GetUrlPara } from './app/Middleware/tool/parse_url.tool';
 import {
-  H5ViewLoadable,
   PreviewLoadable,
   ReleaseLoadable,
   VisualLoadable,
@@ -16,7 +15,6 @@ class App extends PureComponent {
   state = { router: '' };
 
   componentWillMount() {
-    // console.log(GetUrlPara("guide"), GetUrlPara("sid"), GetUrlPara("state"));
     const parseUrlData = {
       sid: GetUrlPara('sid'),
       state: GetUrlPara('state'),

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import RenderBg from './bg_component';
-import { render_switch_ui } from './switch_ui';
+import { render_ui } from '../factory/render_ui.factory';
 import { ItemAtom } from './item_atom';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../database/redux/action';
@@ -32,6 +32,7 @@ class H5RenderCommon extends PureComponent {
             //背景
             img: ui_data.getIn(['advance', 'crop_img']),
             rotate: ui_data.getIn(['advance', 'rotate']),
+            zIndex: ui_data.getIn(['advance', 'zIndex']),
             //拉伸
             stretching: ui_data.getIn([
               'advance',
@@ -44,9 +45,7 @@ class H5RenderCommon extends PureComponent {
           };
           return (
             <ItemAtom {...advanced_settings} key={index}>
-              {ui_data.getIn(['customize', 'type']) === 'music'
-                ? ''
-                : render_switch_ui(ui_data)}
+              {render_ui(ui_data)}
             </ItemAtom>
           );
         })}
@@ -55,13 +54,21 @@ class H5RenderCommon extends PureComponent {
           style={{
             position: 'absolute',
             bottom: 0,
-            lineHeight: '30px',
+            lineHeight: '20px',
           }}
         >
-          <div style={{ borderRadius: '50px', background: 'rgba(0,0,0,0.4)' }}>
-            <a href={'http://m.e7wei.com'} style={{ color: 'white' }}>
-              &nbsp;&nbsp;&nbsp;&nbsp; 技术支持 >>
-              易企微&nbsp;&nbsp;&nbsp;&nbsp;
+          <div
+            style={{
+              borderRadius: '50px',
+              background: 'rgba(0,0,0,0.4)',
+              marginBottom: '5px',
+            }}
+          >
+            <a
+              href={'http://m.e7wei.com'}
+              style={{ color: 'white', fontSize: '12px', zIndex: '9999' }}
+            >
+              &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
             </a>
           </div>
         </div>
