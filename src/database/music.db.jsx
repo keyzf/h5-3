@@ -20,6 +20,7 @@ export const $$music_database = (name, url) => {
         stretching: { value: '' },
         tiling: { value: '' },
       },
+      move: false,
       width: 50,
       height: 50,
       left: 10,

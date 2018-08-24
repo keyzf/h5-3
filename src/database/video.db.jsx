@@ -17,6 +17,7 @@ export const $$video_database = (name, url) => {
         stretching: { value: '' },
         tiling: { value: '' },
       },
+      move: false,
       width: 300,
       height: 170,
       left: 0,

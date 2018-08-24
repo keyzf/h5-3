@@ -30,6 +30,7 @@ const $$button = (
         stretching: { value: '' },
         tiling: { value: tiling },
       },
+      move: false,
       live: false,
       width: width,
       height: height,

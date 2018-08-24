@@ -66,7 +66,7 @@ class H5RenderCommon extends PureComponent {
           >
             <a
               href={'http://m.e7wei.com'}
-              style={{ color: 'white', fontSize: '12px' }}
+              style={{ color: 'white', fontSize: '12px', zIndex: '9999' }}
             >
               &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
             </a>

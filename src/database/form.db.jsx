@@ -19,6 +19,7 @@ const $$form = (item_data, height, width, types) => {
       img: '',
       crop_img: '',
       live: false,
+      move: false,
       img_config: {
         stretching: { value: '' },
         tiling: { value: '' },

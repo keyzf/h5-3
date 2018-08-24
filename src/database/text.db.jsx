@@ -83,6 +83,7 @@ export const $$text_database = (
       },
       width: width,
       height: height,
+      move: false,
       left: 0,
       top: 0,
       rotate: 0,

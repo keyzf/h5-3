@@ -28,7 +28,7 @@ class RenderUI extends PureComponent {
     // 接收的数据
     const advance = this.props.data.get('advance');
     const $_content = document.getElementById('content');
-    if (!advance.get('left')) {
+    if (!advance.get('move')) {
       let t = '';
       let h = '';
       let top = '';
@@ -46,8 +46,9 @@ class RenderUI extends PureComponent {
         (320 - advance.get('width')) / 2
       );
       const $$change_top = $$change_left.setIn(['advance', 'top'], top);
+      const $$change_move = $$change_top.setIn(['advance', 'move'], true);
       // new data
-      this.sendAction($$change_top);
+      this.sendAction($$change_move);
     }
 
     // 拆解所有组件的高级设置

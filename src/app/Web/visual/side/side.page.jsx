@@ -81,34 +81,6 @@ class SiderVisualView extends PureComponent {
     }
   };
 
-  changeTab = key => {
-    if (key === '音乐') {
-      if (this.props.h5_data_value.data.size > 0) {
-        let exist = true;
-        this.props.h5_data_value.data.map(map_data => {
-          if (map_data.getIn(['customize', 'type']) === 'music') {
-            exist = false;
-          }
-        });
-        if (exist) {
-          let push_data = $$music_database('music', '');
-          const select_up_data = this.props.h5_data_value.data.push(push_data);
-          this.props.upData('H5_DATA', select_up_data);
-          this.setState({
-            music_number: select_up_data.size - 1,
-          });
-        }
-      } else {
-        let push_data = $$music_database('music', '');
-        const select_up_data = this.props.h5_data_value.data.push(push_data);
-        this.props.upData('H5_DATA', select_up_data);
-        this.setState({
-          music_number: select_up_data.size - 1,
-        });
-      }
-    }
-  };
-
   render() {
     const $$visual_sider_database = List([
       {
@@ -123,12 +95,6 @@ class SiderVisualView extends PureComponent {
         name: 'img',
         content: template_img_data,
       },
-      // {
-      //   icon: "icon iconfont icon-anniu",
-      //   title: "按钮",
-      //   name: "button",
-      //   content: template_button_data
-      // },
       {
         icon: 'icon iconfont icon-beijing',
         title: '背景',
@@ -139,12 +105,6 @@ class SiderVisualView extends PureComponent {
         title: '音乐',
         name: 'music',
       },
-      // {
-      //   icon: "icon iconfont icon-biaodan",
-      //   title: "表单",
-      //   name: "form",
-      //   content: template_form_data
-      // },
       {
         icon: 'icon iconfont icon-yingyong',
         title: '更多',
@@ -234,7 +194,7 @@ class SiderVisualView extends PureComponent {
     };
 
     return (
-      <Tabs {...Tab} onChange={this.changeTab}>
+      <Tabs {...Tab}>
         {$$visual_sider_database.map(data => {
           return (
             <Tabs.TabPane {...tabPan(data.icon, data.title)}>
