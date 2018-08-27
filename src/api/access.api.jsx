@@ -52,13 +52,13 @@ export const access_api = (sid, state, up_func) => {
               };
               up_func('SHARE_MSG', share);
               up_func('RELEASE', { url: response.data.url });
+              up_func('SID', { sid: sid });
               if (response.data.info.music) {
                 up_func('MUSIC_UI', {
                   music_url: JSON.parse(response.data.info.music).music_url,
                   desc: JSON.parse(response.data.info.music).desc,
                 });
               }
-              up_func('SID', { sid: sid });
               if (response.data.info.ui) {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));
                 up_func('BG_UI', JSON.parse(response.data.info.bg));

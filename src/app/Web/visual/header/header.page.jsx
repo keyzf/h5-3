@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
 import { Col, Menu, Row, Button, Icon } from 'antd';
 import BtnSave from '../../../Middleware/factory/btn_save.factory';
 import style from './header.module.scss';
@@ -99,15 +98,7 @@ class HeaderVisualView extends PureComponent {
               <BtnSave save={true} />
             </Menu.Item>
             <Menu.Item key={'preview'}>
-              <Link to={'./preview'}>
-                <div key={'1'}>
-                  <i
-                    className={'icon iconfont icon-yulan'}
-                    style={{ marginRight: '10px' }}
-                  />
-                  预览/设置
-                </div>
-              </Link>
+              <BtnSave name={'preview'} />
             </Menu.Item>
             <Menu.Item key={'release'}>
               <BtnSave />

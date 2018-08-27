@@ -40,27 +40,65 @@ class BtnSave extends PureComponent {
       });
   };
 
+  onSaveByPreview = () => {
+    // 上传进度动画
+    NProgress.start();
+    const data = {
+      sid: this.props.sid_value.data.get('sid'),
+      bg: this.props.bg_ui_value.data.toJS(),
+      ui: this.props.h5_data_value.data.toJS(),
+      cover: this.props.shareMsg_value.data.get('cover'),
+      desc: this.props.shareMsg_value.data.get('desc'),
+      title: this.props.shareMsg_value.data.get('title'),
+      music: this.props.music_ui_value.data.toJS(),
+    };
+    // ajax
+    save_ajax(data)
+      .then(() => {
+        NProgress.done();
+        window.location.href = `http://${
+          window.location.host
+        }/Create/index.html?state=shareMsg&sid=${data.sid}&#/`;
+      })
+      .catch(() => {
+        NProgress.done();
+        message.error('预览失败');
+      });
+  };
+
   render() {
     return (
-      <div onClick={this.onSave} key={'1'}>
-        {this.props.save ? (
-          <React.Fragment>
+      <React.Fragment>
+        {this.props.name === 'preview' ? (
+          <div onClick={this.onSaveByPreview}>
             <i
-              className={'icon iconfont icon-baocun'}
+              className={'icon iconfont icon-yulan'}
               style={{ marginRight: '10px' }}
             />
-            保存
-          </React.Fragment>
+            预览/设置
+          </div>
         ) : (
-          <React.Fragment>
-            <i
-              className={'icon iconfont icon-fabu'}
-              style={{ marginRight: '10px' }}
-            />
-            发布
-          </React.Fragment>
+          <div onClick={this.onSave} key={'1'}>
+            {this.props.save ? (
+              <React.Fragment>
+                <i
+                  className={'icon iconfont icon-baocun'}
+                  style={{ marginRight: '10px' }}
+                />
+                保存
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <i
+                  className={'icon iconfont icon-fabu'}
+                  style={{ marginRight: '10px' }}
+                />
+                发布
+              </React.Fragment>
+            )}
+          </div>
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }

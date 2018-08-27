@@ -6,29 +6,10 @@ import { redux_action } from '../../../database/redux/action';
 import connect from 'react-redux/es/connect/connect';
 
 class RenderUI extends PureComponent {
-  sendAction = up_data => {
-    // data source
-    const $$select_data = this.props.h5_data_value.data;
-    const $$choose_data = this.props.editor_ui_value.data;
-    // create new data
-    const $$new_select_data = $$select_data.set(
-      $$choose_data.get('number'),
-      up_data
-    );
-    const $$new_choose_data = $$choose_data.set('data', up_data);
-    // send action
-    this.props.upData('H5_DATA', $$new_select_data);
-    this.props.upData('EDITOR_UI', $$new_choose_data, {
-      content: true,
-      choose: true,
-    });
-  };
-
   render() {
-    // 接收的数据
     const advance = this.props.data.get('advance');
     const $_content = document.getElementById('content');
-    if (!advance.get('move')) {
+    if (advance.get('move') === false) {
       let t = '';
       let h = '';
       let top = '';
@@ -47,11 +28,24 @@ class RenderUI extends PureComponent {
       );
       const $$change_top = $$change_left.setIn(['advance', 'top'], top);
       const $$change_move = $$change_top.setIn(['advance', 'move'], true);
-      // new data
-      this.sendAction($$change_move);
+
+      // data source
+      const $$select_data = this.props.h5_data_value.data;
+      const $$choose_data = this.props.editor_ui_value.data;
+      // create new data
+      const $$new_select_data = $$select_data.set(
+        $$choose_data.get('number'),
+        $$change_move
+      );
+      const $$new_choose_data = $$choose_data.set('data', $$change_move);
+      // send action
+      this.props.upData('H5_DATA', $$new_select_data);
+      this.props.upData('EDITOR_UI', $$new_choose_data, {
+        content: true,
+        choose: true,
+      });
     }
 
-    // 拆解所有组件的高级设置
     const advanced_settings = {
       // 动画移动
       top: advance.get('top'),
@@ -72,14 +66,6 @@ class RenderUI extends PureComponent {
     };
 
     return (
-      /**
-       * 传递下去的数据包括：
-       * 1. 布局组件样式 layout
-       * 2. 当前组件号 index
-       * 3. 接收的数据  data
-       * 4. 组件 component
-       * 5. 当前是否选中 choose
-       */
       <React.Fragment>
         {this.props.data.getIn(['customize', 'type']) === 'music' ? (
           <NoChoose {...advanced_settings}>

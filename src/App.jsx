@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { GetUrlPara } from './app/Middleware/tool/parse_url.tool';
 import {
@@ -9,7 +8,7 @@ import {
 } from './routes/web.route';
 
 export default class App extends PureComponent {
-  state = { router: '' };
+  state = { router: 'visual' };
 
   componentWillMount() {
     switch (GetUrlPara('state')) {
