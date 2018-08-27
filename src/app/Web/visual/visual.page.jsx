@@ -5,16 +5,18 @@ import SiderVisualView from './side/side.page';
 import ContentVisualView from './content/content.page';
 import EditorVisualView from './editor/editor.page';
 import style from './visual.module.scss';
+import { access_api } from '../../../api/access.api';
+import { redux_action } from '../../../database/redux/action';
+import connect from 'react-redux/es/connect/connect';
 
-/**
- * 实现功能
- * 1、调用子组件，拼装页面
- * 2. 通过父组件传递的guide 控制引导界面的显示
- *
- */
-export default class VisualView extends PureComponent {
+class VisualView extends PureComponent {
   componentWillMount() {
     document.title = '易企微 | 一站式微信营销平台';
+    access_api(this.props.sid, this.props.state, this.props.upData)
+      .then()
+      .catch(error => {
+        window.location.href = error;
+      });
   }
 
   componentDidMount = () => {
@@ -60,3 +62,14 @@ export default class VisualView extends PureComponent {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(VisualView);
