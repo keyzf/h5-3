@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { GetUrlPara } from './app/Middleware/tool/parse_url.tool';
 import {
@@ -7,27 +7,30 @@ import {
   ReleaseLoadable,
   VisualLoadable,
 } from './routes/web.route';
-import { access_api } from './api/access.api';
 
-import { redux_action } from './database/redux/action';
-
-class App extends PureComponent {
+export default class App extends PureComponent {
   state = { router: '' };
 
   componentWillMount() {
-    const parseUrlData = {
-      sid: GetUrlPara('sid'),
-      state: GetUrlPara('state'),
-    };
-    access_api({ ...parseUrlData }, this.props.upData)
-      .then(data => {
+    switch (GetUrlPara('state')) {
+      case 'h5View':
         this.setState({
-          router: data,
+          router: 'release',
         });
-      })
-      .catch(error => {
-        window.location.href = error;
-      });
+        return '';
+      case 'editorH5':
+        this.setState({
+          router: 'visual',
+        });
+        return '';
+      case 'shareMsg':
+        this.setState({
+          router: 'preview',
+        });
+        return '';
+      default:
+        return (window.location.href = 'http://my.e7wei.com/404.html');
+    }
   }
 
   render() {
@@ -37,22 +40,35 @@ class App extends PureComponent {
           <Route exact={true} path={'/'}>
             <Redirect to={this.state.router} />
           </Route>
-          <Route path={'/visual'} component={VisualLoadable} />
-          <Route path={'/preview'} component={PreviewLoadable} />
-          <Route path={'/release'} component={ReleaseLoadable} />
+          <Route
+            path={'/visual'}
+            component={() => (
+              <VisualLoadable
+                sid={GetUrlPara('sid')}
+                state={GetUrlPara('state')}
+              />
+            )}
+          />
+          <Route
+            path={'/preview'}
+            component={() => (
+              <PreviewLoadable
+                sid={GetUrlPara('sid')}
+                state={GetUrlPara('state')}
+              />
+            )}
+          />
+          <Route
+            path={'/release'}
+            component={() => (
+              <ReleaseLoadable
+                sid={GetUrlPara('sid')}
+                state={GetUrlPara('state')}
+              />
+            )}
+          />
         </Switch>
       </HashRouter>
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
-  };
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);

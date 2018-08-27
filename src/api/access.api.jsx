@@ -1,15 +1,11 @@
 import axios from 'axios';
 
-export const access_api = (data, up_func) => {
+export const access_api = (sid, state, up_func) => {
   return new Promise((resolve, reject) => {
-    // 开发环境
-    // resolve('visual');
-
-    // 生产环境
-    if (data.state && data.sid) {
-      let params = new URLSearchParams();
-      params.append('sid', data.sid);
-      if (data.state === 'h5View') {
+    let params = new URLSearchParams();
+    params.append('sid', sid);
+    switch (state) {
+      case 'h5View':
         axios
           .post(`http://${window.location.host}/view/getData`, params)
           .then(response => {
@@ -28,7 +24,7 @@ export const access_api = (data, up_func) => {
                 url: response.data.url,
                 self: response.data.self,
               });
-              up_func('SID', { sid: data.sid });
+              up_func('SID', { sid: sid });
               if (response.data.info.music) {
                 up_func('MUSIC_UI', {
                   music_url: JSON.parse(response.data.info.music).music_url,
@@ -39,10 +35,10 @@ export const access_api = (data, up_func) => {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));
                 up_func('BG_UI', JSON.parse(response.data.info.bg));
               }
-              resolve('release');
             }
           });
-      } else {
+        return '';
+      default:
         axios
           .post(`http://h5.e7wei.com/Index/getData`, params)
           .then(response => {
@@ -62,24 +58,14 @@ export const access_api = (data, up_func) => {
                   desc: JSON.parse(response.data.info.music).desc,
                 });
               }
-              up_func('SID', { sid: data.sid });
+              up_func('SID', { sid: sid });
               if (response.data.info.ui) {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));
                 up_func('BG_UI', JSON.parse(response.data.info.bg));
               }
-              switch (data.state) {
-                case 'editorH5':
-                  return resolve('visual');
-                case 'shareMsg':
-                  return resolve('preview');
-                default:
-                  return reject('http://my.e7wei.com/404.html');
-              }
             }
           });
-      }
-    } else {
-      reject('http://my.e7wei.com/404.html');
+        return '';
     }
   });
 };
