@@ -6,7 +6,7 @@ const form_api = (data, sid) => {
     params.append('sid', sid);
     params.append('form', JSON.stringify(data));
     axios
-      .post(`http://${window.location.host}/view/postData`, params)
+      .post(`${window.location.origin}/view/postData`, params)
       .then(response => {
         if (response.data.error) {
           reject('上传失败，请重新尝试');

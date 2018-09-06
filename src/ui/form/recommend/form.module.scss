@@ -1,0 +1,46 @@
+.form_fontSize {
+  @media (min-width: 0) and(max-width: 575px) {
+    font-size: calc(14 / 320 * 100vw);
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    font-size: calc(14 / 320 * 100vw);
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    font-size: calc(14 / 320 * 100vw);
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    font-size: 14px;
+
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 14px;
+  }
+}
+
+.form_item {
+
+  @media (min-width: 0) and(max-width: 575px) {
+    padding-bottom: calc(8 / 320 * 100vw) !important;
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    padding-bottom: calc(8 / 320 * 100vw) !important;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    padding-bottom: calc(8 / 320 * 100vw) !important;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    padding-bottom: 8px !important;
+
+  }
+
+  @media (min-width: 1200px) {
+    padding-bottom: 8px !important;
+  }
+}

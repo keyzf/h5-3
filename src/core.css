@@ -1,3 +1,7 @@
+
+
+
+
 /**
  * 富文本编辑栏中的文字样式重置
  */
@@ -445,6 +449,7 @@ h6 {
 
 /*组件移动*/
 .react-draggable,
+
 .cursor {
     cursor: move;
 }
