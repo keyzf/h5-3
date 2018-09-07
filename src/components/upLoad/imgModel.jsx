@@ -13,13 +13,12 @@ import {
   Row,
   Col,
 } from 'antd';
-import style from './img_lazy_choose.module.scss';
-import { UploadImgForm } from '../../../routes/components';
+import style from './imgModel.module.scss';
+import { UploadImgForm } from '../../routes/components';
 import 'nprogress/nprogress.css';
-import { redux_action } from '../../../redux/action';
-import { upload_api } from '../../../api/upload.api';
-import { user_api } from '../../../api/user.api';
-import { delete_api } from '../../../api/delete.api';
+import { redux_action } from '../../redux/action';
+import { user_api } from '../../api/user.api';
+import { delete_api } from '../../api/delete.api';
 
 /**
  * 逻辑
@@ -28,9 +27,9 @@ import { delete_api } from '../../../api/delete.api';
  *  3. 添加删除功能
  *  4. 添加选择功能，设置选择样式
  */
-class UploadImg extends PureComponent {
+class ImgModel extends PureComponent {
   state = {
-    visible: this.props.model ? this.props.model : false,
+    visible: false, // 控制柜Model 展示
     current: 1,
     upload: {
       upload: {
@@ -41,65 +40,69 @@ class UploadImg extends PureComponent {
     img_library: [],
   };
 
-  componentWillMount() {
+  /**
+   *  获取用户存储在数据库中的图片信息
+   */
+  componentDidMount() {
     user_api(this.props.type, 1).then(response => {
       this.setState({
-        number: JSON.parse(response.sum),
+        number: response.sum,
         img_library: response.list,
       });
     });
   }
 
+  /**
+   * 展示Model
+   */
   showModal = () => {
     this.setState({
       visible: true,
     });
   };
+
+  /**
+   * 关闭Model
+   * 查询props,调用父级函数修改数据
+   */
   closeModal = () => {
     this.setState({
       visible: false,
     });
+    // eslint-disable-next-line
+    this.props.model ? this.props.closeModel() : '';
   };
+
+  /**
+   * 数据上传
+   * @param field
+   */
   uploadChange = field => {
-    const file = field.upload.value.file;
     NProgress.start();
-    if (file.status === 'done') {
-      upload_api(
-        this.props.type,
-        file.response.key,
-        `http://src.e7wei.com/${file.response.key}`
-      )
-        .then(() => {
-          NProgress.done();
-          message.success('上传成功');
-          user_api(this.props.type, 0)
-            .then(response => {
-              this.setState({
-                img_library: response.list,
-                current: 1,
-                number: response.sum,
-              });
-              // 图片
-              if (this.props.type === 1) {
-                this.props.func(`http://src.e7wei.com/${file.response.key}`);
-              }
-              if (this.props.type === 3) {
-                this.props.func(`http://src.e7wei.com/${file.response.key}`);
-              }
-              if (this.props.type === 2) {
-                this.props.func(`http://src.e7wei.com/${file.response.key}`);
-              }
-            })
-            .catch(response => {
-              message.error(response);
-            });
+    // 如果数据上传成功
+    if (field.error) {
+      message.error('上传失败');
+    } else {
+      NProgress.done();
+
+      user_api(this.props.type, 0)
+        .then(response => {
+          this.setState({
+            img_library: response.list,
+            current: 1,
+            number: response.sum,
+          });
         })
-        .catch(() => {
-          NProgress.done();
-          message.error('上传失败，请重新尝试');
+        .catch(response => {
+          message.error(response);
         });
     }
   };
+
+  /**
+   * 翻页
+   * @param page
+   */
   onChange = page => {
     user_api(this.props.type, page)
       .then(response => {
@@ -113,19 +116,11 @@ class UploadImg extends PureComponent {
         message.error(response);
       });
   };
-  choose_img = url => {
-    NProgress.done();
-    // 图片
-    if (this.props.type === 1) {
-      this.props.func(url);
-    }
-    if (this.props.type === 3) {
-      this.props.func(url);
-    }
-    if (this.props.type === 2) {
-      this.props.func(url);
-    }
-  };
+
+  /**
+   * 删除用户图片
+   * @param mid
+   */
   delete = mid => {
     NProgress.start();
     delete_api(mid)
@@ -153,7 +148,23 @@ class UploadImg extends PureComponent {
       });
   };
 
+  choose_img = url => {
+    NProgress.done();
+    // 图片
+    if (this.props.type === 1) {
+      this.props.func(url);
+    }
+    if (this.props.type === 3) {
+      this.props.func(url);
+    }
+    if (this.props.type === 2) {
+      this.props.func(url);
+    }
+  };
+
   render() {
+    // eslint-disable-next-line
+    this.props.model ? this.showModal() : '';
     // model 默认内容
     const default_model = (
       <div style={{ textAlign: 'center', padding: '0 80px' }}>
@@ -226,6 +237,7 @@ class UploadImg extends PureComponent {
             取消
           </Button>
           <Button
+            type="primary"
             onClick={this.closeModal}
             style={{ width: '100px', marginRight: '10px' }}
           >
@@ -384,4 +396,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UploadImg);
+)(ImgModel);

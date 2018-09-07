@@ -9,9 +9,9 @@ const form_api = (data, sid) => {
       .post(`${window.location.origin}/view/postData`, params)
       .then(response => {
         if (response.data.error) {
-          reject('上传失败，请重新尝试');
+          reject('表单提交失败，请重新尝试');
         } else {
-          resolve('上传成功');
+          resolve('表单提交成功');
         }
       });
   });

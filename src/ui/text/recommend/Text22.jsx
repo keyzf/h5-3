@@ -10,7 +10,7 @@ class Text22 extends PureComponent {
       <section className={style.text_22_1}>
         <section className={style.text_22_2}>
           <section className={style.text_22_3}>
-            <p
+            <div
               style={{
                 color: ` ${
                   advance.get('style_color')
@@ -20,8 +20,8 @@ class Text22 extends PureComponent {
               }}
             >
               <span className={style.text_22_4}>﹁</span>
-            </p>
-            <p>
+            </div>
+            <div>
               <span className={style.text_22_5}>
                 <Row>
                   <Col
@@ -31,7 +31,8 @@ class Text22 extends PureComponent {
                     lg={{ span: 0 }}
                     xl={{ span: 0 }}
                   >
-                    <div
+                    <span
+                      style={{ whiteSpace: 'pre-wrap' }}
                       dangerouslySetInnerHTML={{
                         __html: `<p style="font-size: 14px">${customize.get(
                           'html_content'
@@ -49,7 +50,8 @@ class Text22 extends PureComponent {
                     lg={{ span: 24 }}
                     xl={{ span: 24 }}
                   >
-                    <div
+                    <span
+                      style={{ whiteSpace: 'pre-wrap' }}
                       dangerouslySetInnerHTML={{
                         __html: customize.get('html_content'),
                       }}
@@ -57,8 +59,8 @@ class Text22 extends PureComponent {
                   </Col>
                 </Row>
               </span>
-            </p>
-            <p
+            </div>
+            <div
               style={{
                 color: ` ${
                   advance.get('style_color')
@@ -68,7 +70,7 @@ class Text22 extends PureComponent {
               }}
             >
               <span className={style.text_22_4}>﹂</span>
-            </p>
+            </div>
           </section>
         </section>
       </section>

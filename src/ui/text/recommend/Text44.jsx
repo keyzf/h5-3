@@ -23,7 +23,8 @@ class Text44 extends PureComponent {
             lg={{ span: 0 }}
             xl={{ span: 0 }}
           >
-            <div
+            <span
+              style={{ whiteSpace: 'pre-wrap' }}
               dangerouslySetInnerHTML={{
                 __html: `<p style="font-size: 14px">${customize.get(
                   'html_content'
@@ -41,7 +42,8 @@ class Text44 extends PureComponent {
             lg={{ span: 24 }}
             xl={{ span: 24 }}
           >
-            <div
+            <span
+              style={{ whiteSpace: 'pre-wrap' }}
               dangerouslySetInnerHTML={{
                 __html: customize.get('html_content'),
               }}

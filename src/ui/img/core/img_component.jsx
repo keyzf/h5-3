@@ -25,8 +25,9 @@ class UpImgUi extends PureComponent {
             }}
           />
         ) : (
-          <div
-            className={'flex-center'}
+          <span
+            className={'flex_center'}
+            style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
               __html: customize.getIn(['item', 0, 'content', 'value']),
             }}

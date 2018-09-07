@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
 import {
   Button,
@@ -11,12 +12,11 @@ import {
   Divider,
   Popconfirm,
 } from 'antd';
-import ImgItemForm from './img_item_form';
-import { ImgCropFactory } from '../../components/Middleware/factory/img_cropfactory';
-import UploadImg from '../../components/Middleware/upload/upload_img.upload';
-import { $$img_addItem_database } from './img.db';
-import { connect } from 'react-redux';
-import { redux_action } from '../../redux/action';
+import ImgItemForm from '../img_item_form';
+import { $$img_addItem_database } from '../img.db';
+import { redux_action } from '../../../redux/action';
+import { ImgCropFactory } from '../../../components/imgCrop';
+import UploadImg from '../../../components/upLoad/imgModel';
 
 class EditorImg extends PureComponent {
   state = {
@@ -36,6 +36,11 @@ class EditorImg extends PureComponent {
       data
     );
     const $$model = $$crop_img.setIn(['customize', 'model'], false);
+    this.sendAction($$model);
+  };
+  closeModel = () => {
+    const $$props_data = this.props.data.get('data');
+    const $$model = $$props_data.setIn(['customize', 'model'], false);
     this.sendAction($$model);
   };
   cropImgToChild = data => {
@@ -177,6 +182,7 @@ class EditorImg extends PureComponent {
   render() {
     const $$data = this.props.data.get('data');
     const $$customize = $$data.get('customize');
+    const $$name = $$data.getIn(['customize', 'name']);
     const Panel = Collapse.Panel;
     /**
      *  列表展示
@@ -232,14 +238,50 @@ class EditorImg extends PureComponent {
         </Col>
       </Row>
     );
-
-    return (
-      <div>
-        {$$data.getIn(['customize', 'name']) !== 'carousel_img' ? (
-          $$data.getIn(['customize', 'name']) === 'single_img' ? (
-            <Card style={{ background: 'transparent' }} title="图片设置">
-              <Row gutter={16}>
-                <Col span={9}>
+    /**
+     * 展示组件
+     * @type {string}
+     */
+    let show_component = '';
+    /**
+     * 如果用户当前选择的是单图
+     */
+    if ($$name === 'single_img') {
+      show_component = (
+        <Card title="图片设置">
+          <Row gutter={16}>
+            <Col span={9}>
+              <UploadImg
+                type={1}
+                func={this.changImgToChild.bind(this)}
+                img_url={$$customize.getIn(['item', this.state.number, 'img'])}
+                model={$$customize.get('model')}
+                closeModel={this.closeModel.bind(this)}
+              >
+                <div className={'img_show'}>
+                  {$$customize.getIn([
+                    'item',
+                    this.state.number,
+                    'crop_img',
+                  ]) ? (
+                    <img
+                      className={'img'}
+                      src={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'crop_img',
+                      ])}
+                      alt={'img'}
+                    />
+                  ) : (
+                    '待上传'
+                  )}
+                </div>
+              </UploadImg>
+            </Col>
+            <Col span={15}>
+              <Button.Group>
+                <Button>
                   <UploadImg
                     type={1}
                     func={this.changImgToChild}
@@ -248,154 +290,39 @@ class EditorImg extends PureComponent {
                       this.state.number,
                       'img',
                     ])}
-                    model={$$customize.get('model')}
-                    children={
-                      <div className={'img_show'}>
-                        {$$customize.getIn([
-                          'item',
-                          this.state.number,
-                          'crop_img',
-                        ]) ? (
-                          <img
-                            className={'img'}
-                            src={$$customize.getIn([
-                              'item',
-                              this.state.number,
-                              'crop_img',
-                            ])}
-                            alt={'img'}
-                          />
-                        ) : (
-                          '待上传'
-                        )}
-                      </div>
-                    }
+                    children={<div> 更换</div>}
                   />
-                </Col>
-                <Col span={15}>
-                  <Button.Group>
-                    <UploadImg
-                      type={1}
-                      func={this.changImgToChild}
-                      img_url={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                      children={<Button>更换</Button>}
-                    />
-                    <ImgCropFactory
-                      func={this.cropImgToChild}
-                      children={<Button>裁剪</Button>}
-                      img_src={$$customize.getIn([
-                        'item',
-                        this.state.number,
-                        'img',
-                      ])}
-                    />
-                  </Button.Group>
-                  <br />
-                  <br />
-                  <div>格式：*.jpg / *.png</div>
-                  <div>大小不超过2M</div>
-                </Col>
-              </Row>
-              <Divider />
-              <ImgItemForm
-                name={$$customize.get('name')}
-                onChange={this.editorFeatures.bind(this, 'item_change')}
-                {...$$data.getIn(['customize', 'item']).toJS()[0]}
-              />
-            </Card>
-          ) : (
-            <Card style={{ background: 'transparent' }} title="图片设置">
-              <Row gutter={16}>
-                <Col
-                  span={9}
-                  style={{
-                    width: '120px',
-                    height: '100px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <UploadImg
-                    type={1}
-                    func={this.changImgToChild}
-                    img_url={$$customize.getIn([
+                </Button>
+                <Button>
+                  <ImgCropFactory
+                    func={this.cropImgToChild}
+                    children={<div>裁剪</div>}
+                    img_src={$$customize.getIn([
                       'item',
                       this.state.number,
                       'img',
                     ])}
-                    children={
-                      <div className={'img_show'}>
-                        {$$customize.getIn([
-                          'item',
-                          this.state.number,
-                          'crop_img',
-                        ]) ? (
-                          <img
-                            className={'img'}
-                            src={$$customize.getIn([
-                              'item',
-                              this.state.number,
-                              'crop_img',
-                            ])}
-                            alt={'img'}
-                          />
-                        ) : (
-                          '待上传'
-                        )}
-                      </div>
-                    }
                   />
-                </Col>
-                <Col span={15}>
-                  <Button.Group>
-                    <Button>
-                      <UploadImg
-                        type={1}
-                        func={this.changImgToChild}
-                        img_url={$$customize.getIn([
-                          'item',
-                          this.state.number,
-                          'img',
-                        ])}
-                      >
-                        更换
-                      </UploadImg>
-                    </Button>
-                    <Button>
-                      <ImgCropFactory
-                        func={this.cropImgToChild}
-                        img_src={$$customize.getIn([
-                          'item',
-                          this.state.number,
-                          'img',
-                        ])}
-                      >
-                        裁剪
-                      </ImgCropFactory>
-                    </Button>
-                  </Button.Group>
-                  <br />
-                  <br />
-                  <div>格式：*.jpg / *.png</div>
-                  <div>大小不超过2M</div>
-                </Col>
-              </Row>
-              <Divider />
-              <ImgItemForm
-                name={$$customize.get('name')}
-                onChange={this.editorFeatures.bind(this, 'item_change')}
-                {...$$data.getIn(['customize', 'item']).toJS()[
-                  this.state.number
-                ]}
-              />
-            </Card>
-          )
-        ) : this.state.item ? (
+                </Button>
+              </Button.Group>
+              <br />
+              <br />
+              <div>格式：*.jpg / *.png</div>
+              <div>大小不超过2M</div>
+            </Col>
+          </Row>
+          <Divider />
+          <ImgItemForm
+            name={$$customize.get('name')}
+            onChange={this.editorFeatures.bind(this, 'item_change')}
+            {...$$data.getIn(['customize', 'item']).toJS()[0]}
+          />
+        </Card>
+      );
+    } else {
+      if (this.state.item) {
+        show_component = (
           <Card
-            style={{ background: 'transparent' }}
             title="编辑图集数据"
             extra={<div onClick={this.backItem}>返回</div>}
           >
@@ -434,25 +361,29 @@ class EditorImg extends PureComponent {
               </Col>
               <Col span={15}>
                 <Button.Group>
-                  <UploadImg
-                    type={1}
-                    func={this.changImgToChild}
-                    img_url={$$customize.getIn([
-                      'item',
-                      this.state.number,
-                      'img',
-                    ])}
-                    children={<Button>更换</Button>}
-                  />
-                  <ImgCropFactory
-                    func={this.cropImgToChild}
-                    children={<Button>裁剪</Button>}
-                    img_src={$$customize.getIn([
-                      'item',
-                      this.state.number,
-                      'img',
-                    ])}
-                  />
+                  <Button>
+                    <UploadImg
+                      type={1}
+                      func={this.changImgToChild}
+                      img_url={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'img',
+                      ])}
+                      children={<div>更换</div>}
+                    />
+                  </Button>
+                  <Button>
+                    <ImgCropFactory
+                      func={this.cropImgToChild}
+                      children={<div>裁剪</div>}
+                      img_src={$$customize.getIn([
+                        'item',
+                        this.state.number,
+                        'img',
+                      ])}
+                    />
+                  </Button>
                 </Button.Group>
                 <br />
                 <br />
@@ -467,12 +398,10 @@ class EditorImg extends PureComponent {
               {...$$data.getIn(['customize', 'item']).toJS()[this.state.number]}
             />
           </Card>
-        ) : (
-          <Collapse
-            bordered={false}
-            defaultActiveKey={['1']}
-            style={{ background: 'transparent' }}
-          >
+        );
+      } else {
+        show_component = (
+          <Collapse bordered={false} defaultActiveKey={['1']}>
             <Panel header="列表" key="1">
               {$$customize.get('item').map((data, index) => {
                 return (
@@ -501,9 +430,11 @@ class EditorImg extends PureComponent {
               )}
             </Panel>
           </Collapse>
-        )}
-      </div>
-    );
+        );
+      }
+    }
+
+    return <Fragment>{show_component}</Fragment>;
   }
 }
 

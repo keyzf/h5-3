@@ -40,6 +40,7 @@ class Text1 extends PureComponent {
                         xl={{ span: 0 }}
                       >
                         <div
+                          style={{ whiteSpace: 'pre-wrap' }}
                           dangerouslySetInnerHTML={{
                             __html: `<p style="font-size: 14px">${this.props.data.getIn(
                               ['customize', 'html_content']
@@ -58,6 +59,7 @@ class Text1 extends PureComponent {
                         xl={{ span: 24 }}
                       >
                         <div
+                          style={{ whiteSpace: 'pre-wrap' }}
                           dangerouslySetInnerHTML={{
                             __html: this.props.data.getIn([
                               'customize',

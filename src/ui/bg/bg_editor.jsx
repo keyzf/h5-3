@@ -3,7 +3,7 @@ import { SketchPicker } from 'react-color';
 import { connect } from 'react-redux';
 import { Card, Icon, Popover } from 'antd';
 import { redux_action } from '../../redux/action';
-import UploadImg from '../../components/Middleware/upload/upload_img.upload';
+import UploadImg from '../../components/upLoad/imgModel';
 import style from './bg_editor.module.scss';
 
 class BgEditor extends PureComponent {

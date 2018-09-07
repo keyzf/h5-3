@@ -8,35 +8,47 @@ import 'cropperjs/dist/cropper.css';
  *  1. 需要传到下去的运行函数
  *  2. 图片路径
  */
-class ImgCropFactory extends PureComponent {
+export class ImgCropFactory extends PureComponent {
   state = {
-    visual: false,
-    new_crop: {
-      x: '',
-      y: '',
-      width: '',
-      height: '',
-    },
+    visual: false, // 展示裁剪Model
+    crop: {
+      x: null,
+      y: null,
+      width: null,
+      height: null,
+    }, // 裁剪后的图片数据
   };
+  /**
+   * 展示裁剪Model
+   */
   showModel = () => {
     this.setState({
       visual: true,
     });
   };
+  /**
+   * 关闭裁剪Model
+   * 将裁剪后的数据提交给父级函数处理
+   */
   closeModel = () => {
-    this.props.func(this.state.new_crop);
     this.setState({
       visual: false,
     });
+    this.props.func(this.state.crop);
   };
+  /**
+   * 图片裁剪数据变更
+   * @param event
+   */
   onCropChange = event => {
-    const size = {
-      x: event.detail.x >= 0 ? event.detail.x : 0,
-      y: event.detail.y >= 0 ? event.detail.y : 0,
-      width: event.detail.width,
-      height: event.detail.height,
-    };
-    this.setState({ new_crop: size });
+    this.setState({
+      crop: {
+        x: event.detail.x >= 0 ? event.detail.x : 0,
+        y: event.detail.y >= 0 ? event.detail.y : 0,
+        width: event.detail.width,
+        height: event.detail.height,
+      },
+    });
   };
 
   render() {
@@ -63,5 +75,3 @@ class ImgCropFactory extends PureComponent {
     );
   }
 }
-
-export { ImgCropFactory };

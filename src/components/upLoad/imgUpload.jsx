@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Form, Upload, message } from 'antd';
-import { uploadToken } from '../../../utils/qiniu';
 
 class UploadImgForm extends PureComponent {
   beforeUpload = file => {
@@ -17,14 +16,14 @@ class UploadImgForm extends PureComponent {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    console.log('七牛云', 'UploadImgForm组件');
     const upload_props = {
-      name: 'file',
-      action: 'http://upload.qiniup.com',
-      showUploadList: false,
-      data: { token: uploadToken, key: Math.random() + '.png' },
       accept: 'image/*',
+      name: 'file',
+      action: `${window.location.origin}/material/uploadify`,
+      data: { type: 1 },
+      showUploadList: false,
       beforeUpload: this.beforeUpload,
+      multiple: true,
     };
     return (
       <Form hideRequiredMark>

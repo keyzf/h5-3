@@ -15,7 +15,7 @@ class Text34 extends PureComponent {
           } `,
         }}
       >
-        <p className={style.text_34_2}>
+        <div className={style.text_34_2}>
           <Row>
             <Col
               xs={{ span: 24 }}
@@ -25,6 +25,7 @@ class Text34 extends PureComponent {
               xl={{ span: 0 }}
             >
               <div
+                style={{ whiteSpace: 'pre-wrap' }}
                 dangerouslySetInnerHTML={{
                   __html: `<p style="font-size: 14px">${customize.get(
                     'html_content'
@@ -43,13 +44,14 @@ class Text34 extends PureComponent {
               xl={{ span: 24 }}
             >
               <div
+                style={{ whiteSpace: 'pre-wrap' }}
                 dangerouslySetInnerHTML={{
                   __html: customize.get('html_content'),
                 }}
               />
             </Col>
           </Row>
-        </p>
+        </div>
       </section>
     );
   }

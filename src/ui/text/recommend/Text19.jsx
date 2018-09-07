@@ -16,7 +16,7 @@ class Text19 extends PureComponent {
         }}
       >
         <section className={style.text_19_2}>
-          <p className={style.text_19_3}>
+          <div className={style.text_19_3}>
             <span>
               <Row>
                 <Col
@@ -26,7 +26,8 @@ class Text19 extends PureComponent {
                   lg={{ span: 0 }}
                   xl={{ span: 0 }}
                 >
-                  <div
+                  <span
+                    style={{ whiteSpace: 'pre-wrap' }}
                     dangerouslySetInnerHTML={{
                       __html: `<p style="font-size: 14px">${customize.get(
                         'html_content'
@@ -44,7 +45,8 @@ class Text19 extends PureComponent {
                   lg={{ span: 24 }}
                   xl={{ span: 24 }}
                 >
-                  <div
+                  <span
+                    style={{ whiteSpace: 'pre-wrap' }}
                     dangerouslySetInnerHTML={{
                       __html: customize.get('html_content'),
                     }}
@@ -52,7 +54,7 @@ class Text19 extends PureComponent {
                 </Col>
               </Row>
             </span>
-          </p>
+          </div>
         </section>
       </section>
     );

@@ -13,7 +13,6 @@ import {
   Select,
   message,
 } from 'antd';
-import { uploadToken } from '../../../utils/qiniu';
 import { fromJS, List } from 'immutable';
 import { form_api } from '../../../api/form.api';
 import { ImgAtom } from '../../img/img_atom';
@@ -109,12 +108,7 @@ class CoreForm extends PureComponent {
       message.error(`${info.file.name} 上传失败.`);
     }
   };
-  beforeUpload = file => {
-    this.setState({
-      index: file,
-    });
-    return true;
-  };
+
   onRemove = index => {
     let array = this.state.upload_array;
     array[index] = undefined;
@@ -123,10 +117,23 @@ class CoreForm extends PureComponent {
     });
     return true;
   };
-
+  beforeUpload = file => {
+    const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJPG) {
+      message.error('图片格式只能为png或jpg');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('上传图片过大，不超过2M');
+    }
+    this.setState({
+      index: file,
+    });
+    return isJPG && isLt2M;
+  };
   render() {
     const FormItem = Form.Item;
-    const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator, getFieldsError } = this.props.form;
     const customize = this.props.data.get('customize');
     const btn_color = customize.get('btn_color');
     const btn_bg_color = customize.get('btn_bg_color');
@@ -146,11 +153,13 @@ class CoreForm extends PureComponent {
       };
     };
     const upload_props = {
-      name: 'file',
-      listType: 'picture-card',
-      action: 'http://upload.qiniup.com',
-      data: { token: uploadToken, key: Math.random() + '.png' },
       accept: 'image/*',
+      name: 'file',
+      action: `${window.location.origin}/material/uploadify`,
+      data: { type: 1 },
+      showUploadList: false,
+      beforeUpload: this.beforeUpload,
+      multiple: true,
     };
     const advance = this.props.data.get('advance');
     const advanced_settings = {
@@ -190,7 +199,12 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [
+                            { required: true, message: '需上传相应材料' },
+                          ],
+                        }
                       )(
                         <Upload
                           {...upload_props}
@@ -226,7 +240,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '请选择' }],
+                        }
                       )(
                         <Radio.Group>
                           {data.get('option').map((data, index) => {
@@ -265,7 +282,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Input
                           size="large"
@@ -295,7 +315,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Input
                           size="large"
@@ -332,6 +355,7 @@ class CoreForm extends PureComponent {
                               pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
                               message: '邮箱格式错误',
                             },
+                            { required: true, message: '此项不能为空' },
                           ],
                         }
                       )(
@@ -363,7 +387,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Input
                           size="large"
@@ -400,6 +427,7 @@ class CoreForm extends PureComponent {
                               pattern: /^((1[3-8][0-9])+\d{8})$/,
                               message: '手机号格式错误',
                             },
+                            { required: true, message: '此项不能为空' },
                           ],
                         }
                       )(
@@ -431,7 +459,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Select
                           size="large"
@@ -473,7 +504,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Input.TextArea
                           size="large"
@@ -504,7 +538,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(<Rate />)}
                     </FormItem>
                   </div>
@@ -529,7 +566,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <Checkbox.Group
                           style={{ color: opt_color }}
@@ -559,7 +599,10 @@ class CoreForm extends PureComponent {
                           data.getIn(['title', 'value'])
                             ? data.getIn(['title', 'value'])
                             : '请输入标题'
-                        }`
+                        }`,
+                        {
+                          rules: [{ required: true, message: '此项不能为空' }],
+                        }
                       )(
                         <DatePicker
                           style={{ width: '100%' }}
@@ -581,6 +624,9 @@ class CoreForm extends PureComponent {
             <Button
               type="primary"
               htmlType="submit"
+              disabled={Object.keys(getFieldsError()).some(
+                field => getFieldsError()[field]
+              )}
               style={{
                 width: '100%',
                 border: 'none',

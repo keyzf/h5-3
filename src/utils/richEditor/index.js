@@ -1689,7 +1689,7 @@ function (_React$Component) {
         onMouseLeave: this.hideToolbar
       }, external_react_default.a.createElement(StaticContainer_default, null, external_react_default.a.createElement("div", {
         className: "bf-embed-player",
-        dangerouslySetInnerHTML: {
+        style={{ whiteSpace: "pre-wrap" }}   dangerouslySetInnerHTML: {
           __html: src || url
         }
       })), toolbarVisible ? external_react_default.a.createElement("div", {
@@ -2137,7 +2137,7 @@ function (_React$Component) {
         className: "dropdown-handler",
         "data-title": title,
         "data-braft-component-id": this.componentId,
-        dangerouslySetInnerHTML: htmlCaption ? {
+        style={{ whiteSpace: "pre-wrap" }}   dangerouslySetInnerHTML: htmlCaption ? {
           __html: htmlCaption
         } : null,
         ref: function ref(instance) {
@@ -3646,7 +3646,7 @@ function (_React$Component) {
             key: index,
             "data-title": controlItem.title,
             className: 'control-item extend-control-item button ' + controlItem.className,
-            dangerouslySetInnerHTML: controlItem.html ? {
+            style={{ whiteSpace: "pre-wrap" }}   dangerouslySetInnerHTML: controlItem.html ? {
               __html: controlItem.html
             } : null,
             onClick: function onClick(event) {
@@ -3679,7 +3679,7 @@ function (_React$Component) {
             key: index,
             "data-title": controlItem.title,
             className: 'control-item button ' + controlItem.className,
-            dangerouslySetInnerHTML: controlItem.html ? {
+            style={{ whiteSpace: "pre-wrap" }}   dangerouslySetInnerHTML: controlItem.html ? {
               __html: controlItem.html
             } : null,
             onClick: function onClick(event) {

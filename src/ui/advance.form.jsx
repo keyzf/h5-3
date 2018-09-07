@@ -11,8 +11,8 @@ import {
   Popconfirm,
   Collapse,
 } from 'antd';
-import { ImgCropFactory } from '../components/Middleware/factory/img_cropfactory';
-import UploadImg from '../components/Middleware/upload/upload_img.upload';
+import { ImgCropFactory } from '../components/imgCrop';
+import UploadImg from '../components/upLoad/imgModel';
 import { redux_action } from '../redux/action';
 
 class AdvanceForm extends PureComponent {

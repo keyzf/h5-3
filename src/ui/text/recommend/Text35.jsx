@@ -22,7 +22,7 @@ class Text35 extends PureComponent {
             <section className={style.text_35_4} />
             <section className={style.text_35_5} />
             <section className={style.text_35_6}>
-              <p className={style.text_35_7}>
+              <div className={style.text_35_7}>
                 <Row>
                   <Col
                     xs={{ span: 24 }}
@@ -31,7 +31,8 @@ class Text35 extends PureComponent {
                     lg={{ span: 0 }}
                     xl={{ span: 0 }}
                   >
-                    <div
+                    <span
+                      style={{ whiteSpace: 'pre-wrap' }}
                       dangerouslySetInnerHTML={{
                         __html: `<p style="font-size: 14px">${customize.get(
                           'html_content'
@@ -49,14 +50,15 @@ class Text35 extends PureComponent {
                     lg={{ span: 24 }}
                     xl={{ span: 24 }}
                   >
-                    <div
+                    <span
+                      style={{ whiteSpace: 'pre-wrap' }}
                       dangerouslySetInnerHTML={{
                         __html: customize.get('html_content'),
                       }}
                     />
                   </Col>
                 </Row>
-              </p>
+              </div>
             </section>
             <section className={style.text_35_8} />
             <section className={style.text_35_9} />

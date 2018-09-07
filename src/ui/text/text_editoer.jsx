@@ -54,10 +54,13 @@ class EditorText extends PureComponent {
     return (
       <Collapse
         className={style.textEditor}
+        style={{
+          backgroundImage: 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)',
+        }}
         bordered={false}
-        defaultActiveKey={['1']}
+        defaultActiveKey={['123']}
       >
-        <Panel header="边框配色" key="1">
+        <Panel header="边框配色" key={'123'} style={{ background: '#fff' }}>
           <Form>
             <Form.Item {...form_item_style('当前颜色')}>
               <Popover
@@ -95,6 +98,7 @@ class EditorText extends PureComponent {
             </Form.Item>
           </Form>
         </Panel>
+
         <RichTextEditor
           data={$$data.get('customize')}
           func={this.richTextEditor}

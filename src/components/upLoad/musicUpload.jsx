@@ -1,21 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Form, Upload } from 'antd';
-import { uploadToken } from '../../../utils/qiniu';
 
 class MusicForm extends PureComponent {
-  /**
-   * 内存泄漏
-   * @returns {*}
-   */
   render() {
     const { getFieldDecorator } = this.props.form;
-    console.log('七牛云', 'MusicForm 组件');
     const upload_props = {
       name: 'file',
-      action: 'http://upload.qiniup.com',
+      action: `${window.location.origin}/material/uploadify`,
+      data: { type: 4 },
       showUploadList: false,
-      data: { token: uploadToken },
       accept: 'audio/*',
+      multiple: true,
     };
     return (
       <Form hideRequiredMark>

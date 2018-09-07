@@ -13,6 +13,7 @@ class HTextUi extends PureComponent {
           xl={{ span: 0 }}
         >
           <div
+            style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
               __html: `<p style="font-size: 14px">${
                 this.props.html
@@ -28,6 +29,7 @@ class HTextUi extends PureComponent {
           xl={{ span: 24 }}
         >
           <div
+            style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
               __html: this.props.html,
             }}

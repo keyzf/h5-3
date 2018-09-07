@@ -86,6 +86,7 @@ class Text50 extends PureComponent {
                   xl={{ span: 0 }}
                 >
                   <div
+                    style={{ whiteSpace: 'pre-wrap' }}
                     dangerouslySetInnerHTML={{
                       __html: `<p style="font-size: 14px">${customize.get(
                         'html_content'
@@ -103,7 +104,8 @@ class Text50 extends PureComponent {
                   lg={{ span: 24 }}
                   xl={{ span: 24 }}
                 >
-                  <div
+                  <span
+                    style={{ whiteSpace: 'pre-wrap' }}
                     dangerouslySetInnerHTML={{
                       __html: customize.get('html_content'),
                     }}

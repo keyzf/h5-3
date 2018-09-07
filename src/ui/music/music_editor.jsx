@@ -4,7 +4,6 @@ import { Tabs, Icon, Button, List, message, Tag, Divider } from 'antd';
 import { user_api } from '../../api/user.api';
 import { delete_api } from '../../api/delete.api';
 import { MusicForm } from '../../routes/components';
-import { upload_api } from '../../api/upload.api';
 import { redux_action } from '../../redux/action';
 import { system_api } from '../../api/system.api';
 import { system_list_api } from '../../api/system_list.api';
@@ -176,33 +175,19 @@ class EditorMusic extends PureComponent {
 
   ImgPartChange = field => {
     NProgress.start();
-    if (field.upload.value.file.status === 'done') {
-      upload_api(
-        4,
-        field.upload.value.file.name,
-        `http://src.e7wei.com/${field.upload.value.file.response.key}`
-      )
-        .then(() => {
-          NProgress.done();
-          message.success('上传成功');
-          user_api(4, 0)
-            .then(response => {
-              this.setState({
-                music_library: response.list,
-                current: 1,
-                number: response.sum,
-                music_tab: 'me',
-              });
-            })
-            .catch(response => {
-              message.error(response);
-            });
-        })
-        .catch(() => {
-          NProgress.done();
-          message.error('上传失败，请重新尝试');
+    user_api(4, 0)
+      .then(response => {
+        NProgress.done();
+        this.setState({
+          music_library: response.list,
+          current: 1,
+          number: response.sum,
+          music_tab: 'me',
         });
-    }
+      })
+      .catch(response => {
+        message.error(response);
+      });
   };
 
   render() {
@@ -214,6 +199,7 @@ class EditorMusic extends PureComponent {
         tabBarExtraContent={
           <div className={'flex_center'}>
             <MusicForm
+              sid={this.props.sid_value.data.get('sid')}
               upload={{ value: '' }}
               onChange={this.ImgPartChange}
               child={
@@ -451,6 +437,7 @@ class EditorMusic extends PureComponent {
                 <div style={{ width: '100%', height: '100%' }}>
                   <div className={'flex_center'}>
                     <MusicForm
+                      sid={this.props.sid_value.data.get('sid')}
                       upload={{ value: '' }}
                       onChange={this.ImgPartChange}
                       child={
@@ -551,6 +538,8 @@ const mapStateToProps = state => {
   return {
     // 音乐
     music_ui_value: state.musicUi_rdc,
+    // sid
+    sid_value: state.sid_rdc,
   };
 };
 

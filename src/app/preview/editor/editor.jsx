@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Card, Col, Row } from 'antd';
 import { connect } from 'react-redux';
 import FormPreviewView from './_form';
-import UploadImg from '../../../components/Middleware/upload/upload_img.upload';
+import UploadImg from '../../../components/upLoad/imgModel';
 import { redux_action } from '../../../redux/action';
 
 class EditorPreviewView extends PureComponent {

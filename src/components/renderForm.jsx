@@ -1,6 +1,6 @@
 import React from 'react';
 import EditorText from '../ui/text/text_editoer';
-import EditorImg from '../ui/img/img_editoer';
+import EditorImg from '../ui/img/editor/imgEditoer';
 import EditorVideo from '../ui/video/video_editor';
 import EditorButton from '../ui/button/button_editor';
 import EditorForm from '../ui/form/form_editor';

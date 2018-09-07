@@ -7,7 +7,8 @@ class VideoUi extends React.Component {
     return (
       <span>
         {$$customize.get('share') !== '' ? (
-          <div
+          <span
+            style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
               __html: $$customize.get('share'),
             }}

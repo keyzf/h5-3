@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Tooltip, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { redux_action } from '../../../redux/action';
+import { random } from '../../../utils/random/random';
 
 class ComponentLocation extends PureComponent {
   position = type => {
@@ -37,11 +38,20 @@ class ComponentLocation extends PureComponent {
     }
     if (type === 'copy') {
       const copy_data = select_value.get(choose_value.get('number'));
-      let $$select_data = select_value.insert(
-        choose_value.get('number'),
-        copy_data
-      );
-      this.props.upData('H5_DATA', $$select_data);
+
+      if (copy_data.getIn(['customize', 'type']) === 'text') {
+        const $$select_data = select_value.insert(
+          choose_value.get('number'),
+          copy_data.setIn(['customize', 'index_number'], random())
+        );
+        this.props.upData('H5_DATA', $$select_data);
+      } else {
+        const $$select_data = select_value.insert(
+          choose_value.get('number'),
+          copy_data
+        );
+        this.props.upData('H5_DATA', $$select_data);
+      }
     }
   };
 

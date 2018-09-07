@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * 富文本编辑栏中的文字样式重置
  */
@@ -14,6 +10,10 @@ h5,
 h6 {
     padding: 0;
     margin: 0;
+}
+
+body {
+    height: 100vh;
 }
 
 .h5view {
@@ -449,7 +449,6 @@ h6 {
 
 /*组件移动*/
 .react-draggable,
-
 .cursor {
     cursor: move;
 }

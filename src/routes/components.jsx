@@ -2,12 +2,12 @@ import Loadable from 'react-loadable';
 import { LoadingAnimation } from './loadingAnimation';
 
 const MusicForm = Loadable({
-  loader: () => import('../components/Middleware/upload/_music_form'), // 文件路径
+  loader: () => import('../components/upLoad/musicUpload'), // 文件路径
   loading: LoadingAnimation, // 加载时显示的组件
   timeout: 6000, // 超时时间
 });
 const UploadImgForm = Loadable({
-  loader: () => import('../components/Middleware/upload/_img_form.upload'), // 文件路径
+  loader: () => import('../components/upLoad/imgUpload'), // 文件路径
   loading: LoadingAnimation, // 加载时显示的组件
   timeout: 6000, // 超时时间
 });

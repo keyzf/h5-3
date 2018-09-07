@@ -8,7 +8,10 @@ class RichTextEditor extends PureComponent {
       contentFormat: 'html',
       contentId: this.props.data.get('index_number'),
       initialContent: this.props.data.get('html_content'),
-      onHTMLChange: content => this.props.func(content),
+      onHTMLChange: content => {
+        console.log(content);
+        this.props.func(content);
+      },
       height: 0,
       controls: [
         'undo',
@@ -22,7 +25,6 @@ class RichTextEditor extends PureComponent {
         'underline',
         'link',
       ],
-      allowSetTextBackgroundColor: false,
       colors: [
         '#000000',
         '#333333',
@@ -53,6 +55,7 @@ class RichTextEditor extends PureComponent {
         'strike-through',
         'indent',
       ],
+      allowSetTextBackgroundColor: false,
     };
     return <BraftEditor {...editorProps} />;
   }
