@@ -11,7 +11,10 @@ import { textData } from '../../ui/text/textData';
 import { imgData } from '../../ui/img/imgData';
 
 class VisualSideModel extends PureComponent {
-  state = { visible: false };
+  state = {
+    visible: false,
+    data: '',
+  };
   showModal = () => {
     this.setState({
       visible: true,
@@ -22,6 +25,8 @@ class VisualSideModel extends PureComponent {
     this.setState({
       visible: false,
     });
+
+    this.props.upData('H5_DATA', this.state.data);
   };
 
   handleCancel = () => {
@@ -39,7 +44,10 @@ class VisualSideModel extends PureComponent {
     const { data } = this.props.h5_data_value;
     const push_data = name === 'text' ? ui_data(random()) : ui_data;
     const select_up_data = data.push(push_data);
-    this.props.upData('H5_DATA', select_up_data);
+    this.setState({
+      data: select_up_data,
+    });
+    // this.props.upData('H5_DATA', select_up_data);
     this.props.upData('EDITOR_UI', {
       number: select_up_data.size - 1,
       data: push_data,

@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Carousel } from 'antd';
-import { ImgAtom } from '../img_atom';
+import { CarouselAtom } from '../img_atom';
 
 export class CarouselImgUI extends PureComponent {
   toUrl = url => {
-    window.location.href = url;
+    // eslint-disable-next-line
+    url ? (window.location.href = url) : '';
   };
 
   render() {
@@ -14,28 +15,24 @@ export class CarouselImgUI extends PureComponent {
       width: advance.get('width'),
       height: advance.get('height'),
       // img:'http://src.e7wei.com/0.3450422325195559.png',
-      radius: customize.getIn(['item', 0, 'radius', 'value']),
     };
 
     return (
       <Carousel autoplay>
         {customize.get('item').map((data, index) => {
+          const carousel = {
+            radius: data.getIn(['radius', 'value']),
+            img: data.get('crop_img'),
+          };
+
+          console.log({ ...carousel }, { ...advanced_settings });
           return (
-            <ImgAtom
+            <CarouselAtom
+              {...carousel}
               {...advanced_settings}
               onClick={this.toUrl.bind(this, data.getIn(['link', 'value']))}
-              className={'flex_center'}
               key={index}
-            >
-              <img
-                src={data.get('crop_img')}
-                alt={'图片'}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
-            </ImgAtom>
+            />
           );
         })}
       </Carousel>

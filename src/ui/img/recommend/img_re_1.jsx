@@ -4,7 +4,8 @@ import style from './img_ui.module.scss';
 
 export class Img1UI extends PureComponent {
   toUrl = url => {
-    window.location.href = url;
+    // eslint-disable-next-line
+    url ? (window.location.href = url) : '';
   };
 
   render() {

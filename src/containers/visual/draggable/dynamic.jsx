@@ -55,11 +55,11 @@ class DynamicCommon extends PureComponent {
     // 更新width 与 height 的值
     const $$change_width = this.props.data.setIn(
       ['advance', 'width'],
-      ref.style.width
+      ref.style.width.replace('px', '')
     );
     const $$change_height = $$change_width.setIn(
       ['advance', 'height'],
-      ref.style.height
+      ref.style.height.replace('px', '')
     );
     // // 更新width 与 height 的值
     const $$change_left = $$change_height.setIn(['advance', 'left'], x);

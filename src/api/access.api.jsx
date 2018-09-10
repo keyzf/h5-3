@@ -24,6 +24,7 @@ export const access_api = (sid, state, up_func) => {
               up_func('RELEASE', {
                 url: response.data.url,
                 self: response.data.self,
+                pv: response.data.info.pv,
               });
               up_func('SID', { sid: sid });
               if (response.data.info.music) {
@@ -52,7 +53,11 @@ export const access_api = (sid, state, up_func) => {
                 desc: response.data.info.desc,
               };
               up_func('SHARE_MSG', share);
-              up_func('RELEASE', { url: response.data.url });
+              up_func('RELEASE', {
+                url: response.data.url,
+                self: response.data.self,
+                pv: response.data.info.pv,
+              });
               up_func('SID', { sid: sid });
               if (response.data.info.music) {
                 up_func('MUSIC_UI', {

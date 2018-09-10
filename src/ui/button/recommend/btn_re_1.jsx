@@ -3,7 +3,8 @@ import { ButtonAtom } from '../button_atom';
 
 class Btn1Ui extends React.Component {
   toUrl = url => {
-    window.location.href = url;
+    // eslint-disable-next-line
+    url ? (window.location.href = url) : '';
   };
 
   render() {

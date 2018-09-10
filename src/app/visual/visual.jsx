@@ -5,11 +5,12 @@ import { HeaderVisualPC } from './header/headerPC';
 import { HeaderVisualMobile } from './header/headerMobile';
 import SiderVisualPC from './side/sidePC';
 import ContentVisual from './content/content';
-import CanvasUiOpt from '../../containers/visual/canvasUiOpt';
+
 import EditorVisual from './editor/editorPC';
 import { access_api } from '../../api/access.api';
 import { redux_action } from '../../redux/action';
 import style from './visual.module.scss';
+import { Menu } from 'antd/lib/menu';
 
 /**
  * 创建，编辑页面
@@ -48,10 +49,19 @@ class VisualView extends PureComponent {
             <SiderVisualPC />
           </Layout.Sider>
           <Layout.Content id={'content'} className={style.content_view}>
-            {/*移动端可选操作按钮，上移一层，下移一层，复制……*/}
-            <CanvasUiOpt />
+            <div className={style.content_hidden}>
+              提示：添加组件后，可在画布中进行拖拽，缩放
+            </div>
+            <div className={style.content_hidden}>
+              <a
+                href={'http://www.e7wei.com/help-article-id-436.html'}
+                target={'view_window'}
+              >
+                使用帮助
+              </a>
+            </div>
             {/*bug 修复托动画版至底部时，画板抖动问题*/}
-            <div style={{ height: '10000px' }}>
+            <div className={style.content_mobile}>
               {/*画布*/}
               <ContentVisual />
             </div>

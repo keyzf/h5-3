@@ -12,7 +12,7 @@
   height: 48px;
   padding: 0;
   margin: 0;
-  background: rgb(0, 167, 255)
+  background: rgb(0, 167, 255);
 }
 
 .content {
@@ -25,9 +25,64 @@
   overflow: hidden;
 }
 
-.side {
+.content_hidden {
+  @media (min-width: 0) and (max-width: 575px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 
-  @media (min-width: 0) and(max-width: 575px) {
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    display: none;
+  }
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.content_mobile {
+  @media (min-width: 0) and (max-width: 575px) {
+    margin-top: -45px;
+    height: 10000px;
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    margin-top: -45px;
+    height: 10000px;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    margin-top: -45px;
+    height: 10000px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    height: 10000px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 10000px;
+  }
+}
+
+.side {
+  @media (min-width: 0) and (max-width: 575px) {
     display: none;
   }
 
@@ -45,7 +100,7 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    width:100%;
+    width: 100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
     scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
     scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
@@ -62,24 +117,23 @@
       background-color: transparent;
     }
     &::-webkit-scrollbar-button {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-track {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-track-piece {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-thumb {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-corner {
-      display: none
+      display: none;
     }
     &::-webkit-resizer {
-      display: none
+      display: none;
     }
-
   }
 
   @media (min-width: 1200px) {
@@ -88,7 +142,7 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    width:100%;
+    width: 100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
     scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
     scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
@@ -105,22 +159,22 @@
       background-color: transparent;
     }
     &::-webkit-scrollbar-button {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-track {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-track-piece {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-thumb {
-      display: none
+      display: none;
     }
     &::-webkit-scrollbar-corner {
-      display: none
+      display: none;
     }
     &::-webkit-resizer {
-      display: none
+      display: none;
     }
   }
 }
@@ -147,23 +201,21 @@
     background-color: transparent;
   }
   &::-webkit-scrollbar-button {
-    display: none
+    display: none;
   }
   &::-webkit-scrollbar-track {
-    display: none
+    display: none;
   }
   &::-webkit-scrollbar-track-piece {
-    display: none
+    display: none;
   }
   &::-webkit-scrollbar-thumb {
-    display: none
+    display: none;
   }
   &::-webkit-scrollbar-corner {
-    display: none
+    display: none;
   }
   &::-webkit-resizer {
-    display: none
+    display: none;
   }
-
 }
-

@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Button } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { connect } from 'react-redux';
 import { redux_action } from '../../redux/action';
 import EditorMobile from '../../app/visual/editor/editorMobile';
-import style from './visual.module.scss';
 
 /**
  * 画板中，ui在移动端的可选项
@@ -51,16 +50,30 @@ class CanvasUiOpt extends PureComponent {
   };
 
   render() {
+    const menu = (
+      <Menu>
+        <Menu.Item>
+          <div onClick={this.position.bind(this, 'up')}>上移一层</div>
+        </Menu.Item>
+        <Menu.Item>
+          <div onClick={this.position.bind(this, 'down')}>下移一层</div>
+        </Menu.Item>
+        <Menu.Item>
+          <div onClick={this.position.bind(this, 'copy')}>复制</div>
+        </Menu.Item>
+        <Menu.Item>
+          <div onClick={this.position.bind(this, 'delete')}>删除</div>
+        </Menu.Item>
+        <Menu.Item>
+          <EditorMobile child={<span>属性设置</span>} />
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
-      <Button.Group className={style.uiOpt}>
-        <Button onClick={this.position.bind(this, 'up')}>上移一层</Button>
-        <Button onClick={this.position.bind(this, 'down')}>下移一层</Button>
-        <Button onClick={this.position.bind(this, 'copy')}>复制</Button>
-        <Button onClick={this.position.bind(this, 'delete')}>删除</Button>
-        <Button>
-          <EditorMobile child={<span>设置</span>} />
-        </Button>
-      </Button.Group>
+      <Dropdown overlay={menu}>
+        <div>设置</div>
+      </Dropdown>
     );
   }
 }

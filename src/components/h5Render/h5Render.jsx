@@ -51,7 +51,9 @@ class H5Render extends PureComponent {
           >
             &nbsp;
             <a
-              href={'www.e7wei.com'}
+              href={`${
+                window.location.origin
+              }/View/reports/sid/${this.props.sid_value.data.get('sid')}.html`}
               target="view_window"
               style={{ color: 'white', fontSize: '12px' }}
             >
@@ -114,6 +116,7 @@ const mapStateToProps = state => {
     // 背景组件样式
     bg_ui_value: state.bgUi_rdc,
     music_ui_value: state.musicUi_rdc,
+    sid_value: state.sid_rdc,
   };
 };
 

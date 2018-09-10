@@ -21,11 +21,11 @@ class SiderVisualPC extends PureComponent {
     const { data } = this.props.h5_data_value;
     const push_data = name === 'text' ? ui_data(random()) : ui_data;
     const select_up_data = data.push(push_data);
-    this.props.upData('H5_DATA', select_up_data);
     this.props.upData('EDITOR_UI', {
       number: select_up_data.size - 1,
       data: push_data,
     });
+    this.props.upData('H5_DATA', select_up_data);
   };
 
   render() {

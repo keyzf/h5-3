@@ -75,7 +75,6 @@ class CoreForm extends PureComponent {
           };
           return '';
         });
-
         form_api(form_value, sid)
           .then(response => {
             message.success(response);
@@ -117,6 +116,7 @@ class CoreForm extends PureComponent {
     });
     return true;
   };
+
   beforeUpload = file => {
     const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJPG) {
@@ -131,6 +131,7 @@ class CoreForm extends PureComponent {
     });
     return isJPG && isLt2M;
   };
+
   render() {
     const FormItem = Form.Item;
     const { getFieldDecorator, getFieldsError } = this.props.form;
@@ -141,16 +142,6 @@ class CoreForm extends PureComponent {
       onSubmit: this.handleSubmit.bind(this),
       layout: 'vertical',
       hideRequiredMark: true,
-    };
-    const form_item_style = (label_name, color) => {
-      return {
-        label: (
-          <div className={style.form_fontSize} style={{ color: color }}>
-            {label_name}
-          </div>
-        ),
-        wrapperCol: { lg: { span: 24 } },
-      };
     };
     const upload_props = {
       accept: 'image/*',
@@ -172,7 +163,16 @@ class CoreForm extends PureComponent {
         <div className="ant-upload-text">点击上传文件</div>
       </div>
     );
-
+    const form_item_style = (label_name, color) => {
+      return {
+        label: (
+          <div className={style.form_fontSize} style={{ color: color }}>
+            {label_name}
+          </div>
+        ),
+        wrapperCol: { lg: { span: 24 } },
+      };
+    };
     return (
       <ImgAtom {...advanced_settings}>
         <Form {...form_config}>
@@ -195,11 +195,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [
                             { required: true, message: '需上传相应材料' },
@@ -236,11 +232,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '请选择' }],
                         }
@@ -278,11 +270,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -311,11 +299,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -344,11 +328,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [
                             {
@@ -383,11 +363,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -416,11 +392,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [
                             {
@@ -455,11 +427,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -500,11 +468,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -534,11 +498,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -562,11 +522,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }
@@ -595,11 +551,7 @@ class CoreForm extends PureComponent {
                       )}
                     >
                       {getFieldDecorator(
-                        `${
-                          data.getIn(['title', 'value'])
-                            ? data.getIn(['title', 'value'])
-                            : '请输入标题'
-                        }`,
+                        `${data.get('form_id') ? data.get('form_id') : ''}`,
                         {
                           rules: [{ required: true, message: '此项不能为空' }],
                         }

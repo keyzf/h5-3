@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Menu } from 'antd';
 import { DropMobileDown } from '../side/sideMobile';
+import CanvasUiOpt from '../../../containers/visual/canvasUiOpt';
 import SaveBtn from '../../../components/saveBtn';
 import style from './header.module.scss';
 
@@ -22,23 +23,14 @@ export class HeaderVisualMobile extends PureComponent {
           <Menu.Item key={'0'}>
             <DropMobileDown />
           </Menu.Item>
+          <Menu.Item key={'5'}>
+            <CanvasUiOpt />
+          </Menu.Item>
           <Menu.Item key={'1'}>
-            <SaveBtn name={'save'}>
-              <i
-                className={'icon iconfont icon-baocun'}
-                style={{ marginRight: '10px' }}
-              />
-              保存
-            </SaveBtn>
+            <SaveBtn name={'save'}>保存</SaveBtn>
           </Menu.Item>
           <Menu.Item key={'2'}>
-            <SaveBtn name={'preview'}>
-              <i
-                className={'icon iconfont icon-yulan'}
-                style={{ marginRight: '10px' }}
-              />
-              发布设置
-            </SaveBtn>
+            <SaveBtn name={'preview'}>发布</SaveBtn>
           </Menu.Item>
         </Menu>
       </div>

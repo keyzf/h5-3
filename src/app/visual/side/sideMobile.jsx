@@ -21,9 +21,7 @@ export class DropMobileDown extends PureComponent {
   render() {
     return (
       <div className={style.mobileSider}>
-        <div onClick={this.showDrawer}>
-          <Icon type="bars" />列表
-        </div>
+        <div onClick={this.showDrawer}>添加</div>
         <Drawer
           title="插入组件选择"
           placement="left"
