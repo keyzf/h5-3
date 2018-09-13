@@ -33,7 +33,6 @@ class EditorPreviewView extends PureComponent {
         <Card
           title="微信分享设置"
           style={{
-            borderLeft: 'none',
             borderRight: 'none',
             borderBottom: 'none',
           }}
@@ -92,7 +91,7 @@ class EditorPreviewView extends PureComponent {
             </Col>
           </Row>
         </Card>
-        <Card title="微信显示效果" style={{ border: 'none' }}>
+        <Card title="微信显示效果">
           <Row gutter={16}>
             <Col span={24}>
               <img
@@ -103,6 +102,9 @@ class EditorPreviewView extends PureComponent {
               />
             </Col>
           </Row>
+          <br />
+          <br />
+          <br /> <br />
         </Card>
       </React.Fragment>
     );

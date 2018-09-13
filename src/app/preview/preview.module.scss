@@ -117,7 +117,6 @@
   @media (min-width: 0) and(max-width: 575px) {
    box-sizing: border-box;
     height: 100%;
-    overflow-x: hidden;
     overflow-y: auto;
     width:100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
@@ -158,7 +157,6 @@
   @media (min-width: 576px) and (max-width: 767.98px) {
    box-sizing: border-box;
     height: 100%;
-    overflow-x: hidden;
     overflow-y: auto;
     width:100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
@@ -199,7 +197,6 @@
   @media (min-width: 768px) and (max-width: 991.98px) {
    box-sizing: border-box;
     height: 100%;
-    overflow-x: hidden;
     overflow-y: auto;
     width:100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
@@ -266,8 +263,7 @@
     box-sizing: border-box;
     background:white;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     width:100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
     scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
@@ -307,10 +303,9 @@
 
   @media (min-width: 1200px) {
     box-sizing: border-box;
-   background:white;
+    background:white;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     width:100%;
     scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
     scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/

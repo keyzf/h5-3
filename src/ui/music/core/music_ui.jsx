@@ -10,6 +10,12 @@ class MusicUi extends PureComponent {
     onClickStop: false,
   };
 
+  componentDidMount() {
+    this.props.music_ui_value.data.get('music_url')
+      ? this.onClickStop('stop')
+      : '';
+  }
+
   onClickStop = name => {
     if (name === 'open') {
       document.getElementById('h5_audio').pause();
@@ -28,9 +34,11 @@ class MusicUi extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <audio id={'h5_audio'}>
-          <source src={this.props.music_ui_value.data.get('music_url')} />
-        </audio>
+        <audio
+          id={'h5_audio'}
+          loop={'loop'}
+          src={this.props.music_ui_value.data.get('music_url')}
+        />
         {this.state.onClickStop ? (
           <div
             onClick={this.onClickStop.bind(this, 'stop')}

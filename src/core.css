@@ -1,19 +1,9 @@
 /**
  * 富文本编辑栏中的文字样式重置
  */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+p {
     padding: 0;
     margin: 0;
-}
-
-body {
-    height: 100vh;
 }
 
 .h5view {
@@ -90,20 +80,23 @@ body {
     width: 100%;
 }
 
-.ant-upload-select-picture-card i {
-    font-size: 32px;
-    color: #999;
-}
-
 .avatar-uploader > .ant-upload {
     width: 128px;
     height: 128px;
+}
+
+/*文件上传样式*/
+.ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
 }
 
 .ant-upload-select-picture-card .ant-upload-text {
     margin-top: 8px;
     color: #666;
 }
+
+
 
 /*居中*/
 .flex_center {

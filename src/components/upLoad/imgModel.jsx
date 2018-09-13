@@ -30,28 +30,7 @@ import { delete_api } from '../../api/delete.api';
 class ImgModel extends PureComponent {
   state = {
     visible: false, // 控制柜Model 展示
-    current: 1,
-    upload: {
-      upload: {
-        value: '',
-      },
-    },
-    number: 0,
-    img_library: [],
   };
-
-  /**
-   *  获取用户存储在数据库中的图片信息
-   */
-  componentDidMount() {
-    user_api(this.props.type, 1).then(response => {
-      this.setState({
-        number: response.sum,
-        img_library: response.list,
-      });
-    });
-  }
-
   /**
    * 展示Model
    */
@@ -74,6 +53,21 @@ class ImgModel extends PureComponent {
   };
 
   /**
+   *  获取用户存储在数据库中的图片信息
+   */
+  componentWillMount() {
+    const { data } = this.props.imgModel_value;
+    user_api(this.props.type, 1).then(response => {
+      this.props.upData('IMGMODEL', {
+        number: response.sum,
+        img_library: response.list,
+        current: data.get('current'),
+        img_url: data.get('img_url'),
+      });
+    });
+  }
+
+  /**
    * 数据上传
    * @param field
    */
@@ -84,13 +78,13 @@ class ImgModel extends PureComponent {
       message.error('上传失败');
     } else {
       NProgress.done();
-
       user_api(this.props.type, 0)
         .then(response => {
-          this.setState({
+          this.props.upData('IMGMODEL', {
             img_library: response.list,
             current: 1,
             number: response.sum,
+            img_url: response.list[0].url,
           });
         })
         .catch(response => {
@@ -104,12 +98,14 @@ class ImgModel extends PureComponent {
    * @param page
    */
   onChange = page => {
+    const data = this.props.imgModel_value.data;
     user_api(this.props.type, page)
       .then(response => {
-        this.setState({
+        this.props.upData('IMGMODEL', {
           img_library: response.list,
           current: page,
           number: response.sum,
+          img_url: data.get('img_url'),
         });
       })
       .catch(response => {
@@ -126,21 +122,16 @@ class ImgModel extends PureComponent {
     delete_api(mid)
       .then(() => {
         NProgress.done();
-        user_api(this.props.type, this.state.current)
-          .then(response => {
-            this.setState({
-              number: JSON.parse(response.sum),
-              img_library: response.list,
-            });
-            message.success('删除成功');
-          })
-          .catch(() => {
-            this.setState({
-              number: 0,
-              img_library: [],
-            });
-            message.success('删除成功');
+        const { data } = this.props.imgModel_value;
+        user_api(this.props.type, data.get('current')).then(response => {
+          this.props.upData('IMGMODEL', {
+            current: data.get('current'),
+            number: response.sum,
+            img_library: response.list,
+            img_url: data.get('img_url'),
           });
+          message.success('删除成功');
+        });
       })
       .catch(() => {
         NProgress.done();
@@ -163,6 +154,7 @@ class ImgModel extends PureComponent {
   };
 
   render() {
+    const imgMode_data = this.props.imgModel_value.data;
     // eslint-disable-next-line
     this.props.model ? this.showModal() : '';
     // model 默认内容
@@ -178,7 +170,9 @@ class ImgModel extends PureComponent {
               添加素材
             </Button>
           }
-          {...this.state.upload}
+          upload={{
+            value: '',
+          }}
         />
       </div>
     );
@@ -186,6 +180,7 @@ class ImgModel extends PureComponent {
     const show_data = (
       <React.Fragment>
         <div
+          className={'response_flex'}
           style={{
             width: '100%',
             minHeight: '300px',
@@ -193,40 +188,42 @@ class ImgModel extends PureComponent {
             overflow: 'auto',
           }}
         >
-          <div className={'response_flex'}>
-            {this.state.img_library.map((data, index) => {
-              return (
-                <div
-                  className={'flex_model_1'}
-                  key={index}
-                  onClick={this.choose_img.bind(this, data.url)}
+          {imgMode_data.get('img_library').map((data, index) => {
+            return (
+              <div
+                className={'flex_model_1'}
+                key={index}
+                onClick={this.choose_img.bind(this, data.get('url'))}
+              >
+                <Tooltip
+                  title={
+                    <div
+                      style={{ cursor: 'pointer' }}
+                      onClick={this.delete.bind(this, data.get('mid'), index)}
+                    >
+                      删除
+                    </div>
+                  }
                 >
-                  <Tooltip
-                    title={
-                      <div
-                        style={{ cursor: ' pointer' }}
-                        onClick={this.delete.bind(this, data.mid, index)}
-                      >
-                        删除
-                      </div>
+                  <div
+                    className={
+                      data.get('url') === this.props.img_url
+                        ? `${style.part_active}`
+                        : `${style.part_choose}`
                     }
                   >
-                    <div
-                      className={
-                        data.url === this.props.img_url
-                          ? `${style.part_active}`
-                          : `${style.part_choose}`
-                      }
-                    >
-                      <div className={style.img_show}>
-                        <img className={style.img} src={data.url} alt={'img'} />
-                      </div>
+                    <div className={style.img_show}>
+                      <img
+                        className={style.img}
+                        src={data.get('url')}
+                        alt={'img'}
+                      />
                     </div>
-                  </Tooltip>
-                </div>
-              );
-            })}
-          </div>
+                  </div>
+                </Tooltip>
+              </div>
+            );
+          })}
         </div>
         <Divider />
         <div style={{ padding: '0 35%', width: '100%' }}>
@@ -295,8 +292,8 @@ class ImgModel extends PureComponent {
                           <Pagination
                             simple
                             pageSize={24}
-                            total={this.state.number}
-                            current={this.state.current}
+                            total={imgMode_data.get('number')}
+                            current={imgMode_data.get('current')}
                             onChange={this.onChange}
                           />
                         </Col>
@@ -305,7 +302,7 @@ class ImgModel extends PureComponent {
                   }
                 >
                   <Tabs.TabPane tab="我的素材" key="1">
-                    {this.state.img_library.length === 0
+                    {imgMode_data.get('img_library').size === 0
                       ? default_model
                       : show_data}
                   </Tabs.TabPane>
@@ -355,8 +352,8 @@ class ImgModel extends PureComponent {
                         <Pagination
                           simple
                           pageSize={24}
-                          total={this.state.number}
-                          current={this.state.current}
+                          total={imgMode_data.get('number')}
+                          current={imgMode_data.get('current')}
                           onChange={this.onChange}
                         />
                       </Col>
@@ -365,7 +362,7 @@ class ImgModel extends PureComponent {
                 }
               >
                 <Tabs.TabPane tab="我的素材" key="1">
-                  {this.state.img_library.length === 0
+                  {imgMode_data.get('img_library').size === 0
                     ? default_model
                     : show_data}
                 </Tabs.TabPane>
@@ -384,6 +381,8 @@ const mapStateToProps = state => {
     h5_data_value: state.h5Data_rdc,
     // 背景组件样式
     bg_ui_value: state.bgUi_rdc,
+    // 图片模块数据
+    imgModel_value: state.imgModel_rdc,
   };
 };
 

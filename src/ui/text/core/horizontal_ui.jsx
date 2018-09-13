@@ -15,9 +15,9 @@ class HTextUi extends PureComponent {
           <div
             style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
-              __html: `<p style="font-size: 14px">${
-                this.props.html
-              }</p>`.replace(new RegExp('(\\d+)px', 'g'), 'calc($1/320*100vw)'),
+              __html: `<p style="font-size: 14px">${this.props.html}</p>`
+                .replace(new RegExp('(\\d+)px', 'g'), 'calc($1/320*100vw)')
+                .replace(new RegExp('<p></p>', 'g'), '<br/>'),
             }}
           />
         </Col>
@@ -31,7 +31,10 @@ class HTextUi extends PureComponent {
           <div
             style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
-              __html: this.props.html,
+              __html: this.props.html.replace(
+                new RegExp('<p></p>', 'g'),
+                '<br/>'
+              ),
             }}
           />
         </Col>

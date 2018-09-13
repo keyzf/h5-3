@@ -15,9 +15,11 @@ class VTextUi extends PureComponent {
           <span
             style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
-              __html: `<p style="font-size: 14px">${
+              __html: `<div style=" writing-mode:vertical-rl"><p style="font-size: 14px">${
                 this.props.html
-              }</p>`.replace(new RegExp('(\\d+)px', 'g'), 'calc($1/320*100vw)'),
+              }</p></div>`
+                .replace(new RegExp('(\\d+)px', 'g'), 'calc($1/320*100vw)')
+                .replace(new RegExp('<p></p>', 'g'), '<br/>'),
             }}
           />
         </Col>
@@ -31,7 +33,9 @@ class VTextUi extends PureComponent {
           <span
             style={{ whiteSpace: 'pre-wrap' }}
             dangerouslySetInnerHTML={{
-              __html: this.props.html,
+              __html: `<div style=" writing-mode:vertical-rl">${
+                this.props.html
+              }</div>`.replace(new RegExp('<p></p>', 'g'), '<br/>'),
             }}
           />
         </Col>

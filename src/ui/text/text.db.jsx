@@ -92,13 +92,12 @@ export const $$text_database = (
 
 export const $$horizontal_text = index => {
   return fromJS(
-    $$text_database('horizontal_text', h_html_text, 85, 300, index)
+    $$text_database('horizontal_text', h_html_text, 206, 300, index)
   );
 };
 export const $$vertical_text = index => {
   return fromJS($$text_database('vertical_text', v_html_text, 148, 300, index));
 };
-
 export const $$text_re_1 = index => {
   return fromJS(
     $$text_database('text1', text1, 50, 240, index, 'rgb(51,241,123)')

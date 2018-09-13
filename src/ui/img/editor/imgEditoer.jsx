@@ -290,19 +290,21 @@ class EditorImg extends PureComponent {
                       this.state.number,
                       'img',
                     ])}
-                    children={<div> 更换</div>}
-                  />
+                  >
+                    <div> 更换</div>
+                  </UploadImg>
                 </Button>
                 <Button>
                   <ImgCropFactory
                     func={this.cropImgToChild}
-                    children={<div>裁剪</div>}
                     img_src={$$customize.getIn([
                       'item',
                       this.state.number,
                       'img',
                     ])}
-                  />
+                  >
+                    <div>裁剪</div>
+                  </ImgCropFactory>
                 </Button>
               </Button.Group>
               <br />

@@ -52,7 +52,7 @@ class SaveBtn extends PureComponent {
         if (this.props.name === 'preview') {
           window.location.href = `${
             window.location.origin
-          }/Create/index.html?state=preview&sid=${data.sid}&`;
+          }/Create/index.html?state=preview&vid=${data.sid}&`;
           return '';
         } else {
           message.success('保存成功');

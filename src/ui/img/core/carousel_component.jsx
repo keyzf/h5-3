@@ -24,8 +24,6 @@ export class CarouselImgUI extends PureComponent {
             radius: data.getIn(['radius', 'value']),
             img: data.get('crop_img'),
           };
-
-          console.log({ ...carousel }, { ...advanced_settings });
           return (
             <CarouselAtom
               {...carousel}

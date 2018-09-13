@@ -12,7 +12,7 @@ class EditorReleaseView extends PureComponent {
   toEditor = () => {
     window.location.href = `${
       window.location.origin
-    }/Create/index.html?state=visual&sid=${this.props.sid_value.data.get(
+    }/Create/index.html?state=visual&vid=${this.props.sid_value.data.get(
       'sid'
     )}`;
   };

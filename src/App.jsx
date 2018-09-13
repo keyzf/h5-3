@@ -40,7 +40,7 @@ class App extends PureComponent {
 
     return (
       <Provider store={store}>
-        <Router sid={GetUrlPara('sid')} state={GetUrlPara('state')} />
+        <Router sid={GetUrlPara('vid')} state={GetUrlPara('state')} />
       </Provider>
     );
   }

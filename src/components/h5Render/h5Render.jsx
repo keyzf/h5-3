@@ -53,7 +53,7 @@ class H5Render extends PureComponent {
             <a
               href={`${
                 window.location.origin
-              }/View/reports/sid/${this.props.sid_value.data.get('sid')}.html`}
+              }/View/reports/vid/${this.props.sid_value.data.get('sid')}.html`}
               target="view_window"
               style={{ color: 'white', fontSize: '12px' }}
             >

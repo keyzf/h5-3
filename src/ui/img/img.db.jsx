@@ -88,8 +88,8 @@ const $$carousel_img_database = $$img_func_database(
   'carousel_img',
   [
     {
-      img: 'http://src.e7wei.com/0.3078424418116057.png',
-      crop_img: 'http://src.e7wei.com/0.3078424418116057.png',
+      img: 'http://src.e7wei.com/90911S36843MURM.png',
+      crop_img: 'http://src.e7wei.com/90911S36843MURM.png',
       title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -102,8 +102,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'http://src.e7wei.com/0.9703241613472722.png',
-      crop_img: 'http://src.e7wei.com/0.9703241613472722.png',
+      img: 'http://src.e7wei.com/9091138WT5P2SJR.png',
+      crop_img: 'http://src.e7wei.com/9091138WT5P2SJR.png',
       title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -116,8 +116,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'http://src.e7wei.com/0.5336862457968479.png',
-      crop_img: 'http://src.e7wei.com/0.5336862457968479.png',
+      img: 'http://src.e7wei.com/90911SC6849G845.png',
+      crop_img: 'http://src.e7wei.com/90911SC6849G845.png',
       title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
@@ -130,8 +130,8 @@ const $$carousel_img_database = $$img_func_database(
       },
     },
     {
-      img: 'http://src.e7wei.com/0.7599642934946711.png',
-      crop_img: 'http://src.e7wei.com/0.7599642934946711.png',
+      img: 'http://src.e7wei.com/90911H26UD946U8.png',
+      crop_img: 'http://src.e7wei.com/90911H26UD946U8.png',
       title: { value: '轮播图' },
       content: {
         value: '这里是图片描述，这里是图片描述，这里是图片描述，这里是图片描',
