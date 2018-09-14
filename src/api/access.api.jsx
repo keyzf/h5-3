@@ -6,7 +6,7 @@ export const access_api = (sid, state, up_func) => {
     let params = new URLSearchParams();
     params.append('sid', sid);
     switch (state) {
-      case 'release':
+      case 'r':
         axios
           .post(`${window.location.origin}/view/getData`, params)
           .then(response => {

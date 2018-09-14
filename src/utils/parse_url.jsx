@@ -1,13 +1,22 @@
-const GetUrlPara = search_string => {
+const GetUrlPara = () => {
   let url = document.location.toString();
-  let arr = url.substring(url.indexOf('?') + 1, url.length).split('&');
-  let search_data = '';
-  arr.map(data => {
-    if (data.substring(0, data.indexOf('=')) === search_string)
-      search_data = data.substring(data.indexOf('=') + 1, data.length);
-    return search_data;
-  });
-  return search_data;
+  let vid = "";
+  let state = "";
+  let count = 1;
+  for (let index = 1; index <= url.length; index++) {
+    if (url.charAt(url.length - index) !== "/" && count === 1) {
+      vid = url.charAt(url.length - index) + vid;
+    }
+    if (url.charAt(url.length - index) !== "/" && count === 2) {
+      state = url.charAt(url.length - index);
+    }
+    if (url.charAt(url.length - index) === "/") {
+      count++;
+    }
+
+  }
+  return { vid: vid, state: state };
 };
+
 
 export { GetUrlPara };

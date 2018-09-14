@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Menu, Icon, Drawer } from 'antd';
+import { Menu,  Drawer } from 'antd';
 import VisualSideModel from '../../../containers/visual/sideModel';
 import style from './side.module.scss';
 

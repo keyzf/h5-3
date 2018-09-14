@@ -11,7 +11,7 @@ class HeaderPreviewView extends PureComponent {
   backUrl = () => {
     window.location.href = `${
       window.location.origin
-    }/Create/index.html?state=visual&vid=${this.props.sid_value.data.get(
+    }/v/${this.props.sid_value.data.get(
       'sid'
     )}`;
   };

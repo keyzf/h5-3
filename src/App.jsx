@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
-import { GetUrlPara } from './utils/parse_url';
-import { VisualRouter, PreviewRouter, ReleaseRouter } from './routes/web';
-import './core.css';
+import React, { PureComponent } from "react";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { GetUrlPara } from "./utils/parse_url";
+import { VisualRouter, PreviewRouter, ReleaseRouter } from "./routes/web";
+import "./core.css";
 
 /**
  * 控制页面跳转
@@ -24,23 +24,29 @@ class App extends PureComponent {
     const Router = props => {
       switch (props.state) {
         // 创建/修改
-        case 'visual':
-          return <VisualRouter sid={props.sid} state={props.state} />;
+        case "v":
+          return <VisualRouter sid={props.sid} state={props.state}/>;
         //  预览/设置分享信息
-        case 'preview':
-          return <PreviewRouter sid={props.sid} state={props.state} />;
+        case "p":
+          return <PreviewRouter sid={props.sid} state={props.state}/>;
         //  发布
-        case 'release':
-          return <ReleaseRouter sid={props.sid} state={props.state} />;
+        case "r":
+          return <ReleaseRouter sid={props.sid} state={props.state}/>;
         //  默认返回
         default:
-          return (window.location.href = 'http://my.e7wei.com/404.html');
+          return (window.location.href = "http://my.e7wei.com/404.html");
       }
     };
 
+    /**
+     * 获取url中的数值
+     * @type {{vid, state}}
+     */
+    const UrlPara = GetUrlPara();
+
     return (
       <Provider store={store}>
-        <Router sid={GetUrlPara('vid')} state={GetUrlPara('state')} />
+        <Router sid={UrlPara.vid} state={UrlPara.state}/>
       </Provider>
     );
   }
