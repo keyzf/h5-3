@@ -12,7 +12,7 @@ export const upload_api = (type, desc, url) => {
     params.append('desc', desc);
     params.append('url', url);
     axios
-      .post('http://h5.e7wei.com/Material/addUser', params)
+      .post(`${window.location.origin}/Material/addUser`, params)
       .then(response => {
         if (response.data.error) {
           reject('上传失败');

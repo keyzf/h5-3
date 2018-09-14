@@ -1,74 +1,55 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { GetUrlPara } from "./utils/parse_url";
+import { VisualRouter, PreviewRouter, ReleaseRouter } from "./routes/web";
+import "./core.css";
 
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { GetUrlPara } from './app/Middleware/tool/parse_url.tool';
-import {
-  PreviewLoadable,
-  ReleaseLoadable,
-  VisualLoadable,
-} from './routes/web.route';
-
-export default class App extends PureComponent {
-  state = { router: '' };
-
-  componentWillMount() {
-    switch (GetUrlPara('state')) {
-      case 'h5View':
-        this.setState({
-          router: 'release',
-        });
-        return '';
-      case 'editorH5':
-        this.setState({
-          router: 'visual',
-        });
-        return '';
-      case 'shareMsg':
-        this.setState({
-          router: 'preview',
-        });
-        return '';
-      default:
-        return (window.location.href = 'http://my.e7wei.com/404.html');
-    }
-  }
-
+/**
+ * 控制页面跳转
+ */
+class App extends PureComponent {
   render() {
+    /**
+     * 辨识 props 中的 state
+     * 通过 props 中的 state 判断需要跳转的页面
+     * @param props
+     *  sid: 用户 id
+     *  state: 需要跳转的页面
+     * @returns {*}
+     *  state 存在 跳转指定页面
+     *  state 不存在 跳转至404页面
+     * @constructor
+     */
+    const Router = props => {
+      switch (props.state) {
+        // 创建/修改
+        case "v":
+          return <VisualRouter sid={props.sid} state={props.state}/>;
+        //  预览/设置分享信息
+        case "p":
+          return <PreviewRouter sid={props.sid} state={props.state}/>;
+        //  发布
+        case "r":
+          return <ReleaseRouter sid={props.sid} state={props.state}/>;
+        //  默认返回
+        default:
+          return (window.location.href = "http://my.e7wei.com/404.html");
+      }
+    };
+
+    /**
+     * 获取url中的数值
+     * @type {{vid, state}}
+     */
+    const UrlPara = GetUrlPara();
+
     return (
-      <HashRouter>
-        <Switch>
-          <Route exact={true} path={'/'}>
-            <Redirect to={this.state.router} />
-          </Route>
-          <Route
-            path={'/visual'}
-            component={() => (
-              <VisualLoadable
-                sid={GetUrlPara('sid')}
-                state={GetUrlPara('state')}
-              />
-            )}
-          />
-          <Route
-            path={'/preview'}
-            component={() => (
-              <PreviewLoadable
-                sid={GetUrlPara('sid')}
-                state={GetUrlPara('state')}
-              />
-            )}
-          />
-          <Route
-            path={'/release'}
-            component={() => (
-              <ReleaseLoadable
-                sid={GetUrlPara('sid')}
-                state={GetUrlPara('state')}
-              />
-            )}
-          />
-        </Switch>
-      </HashRouter>
+      <Provider store={store}>
+        <Router sid={UrlPara.vid} state={UrlPara.state}/>
+      </Provider>
     );
   }
 }
+
+export default App;

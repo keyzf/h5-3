@@ -5,7 +5,7 @@ export const delete_api = mid => {
     let params = new URLSearchParams();
     params.append('mid', mid);
     axios
-      .post('http://h5.e7wei.com/Material/delUser', params)
+      .post(`${window.location.origin}/Material/delUser`, params)
       .then(response => {
         if (response.data.error) {
           reject('删除失败');

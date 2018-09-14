@@ -7,7 +7,7 @@ export const user_api = (type, page) => {
     params.append('page', page);
     params.append('type', type);
     axios
-      .post('http://h5.e7wei.com/Material/getUser', params)
+      .post(`${window.location.origin}/Material/getUser`, params)
       .then(response => {
         if (response.data.error) {
           reject('获取上传失败，请重试');

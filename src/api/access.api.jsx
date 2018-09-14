@@ -1,13 +1,14 @@
 import axios from 'axios';
+import { fromJS } from 'immutable';
 
 export const access_api = (sid, state, up_func) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append('sid', sid);
     switch (state) {
-      case 'h5View':
+      case 'r':
         axios
-          .post(`http://${window.location.host}/view/getData`, params)
+          .post(`${window.location.origin}/view/getData`, params)
           .then(response => {
             if (response.data.error) {
               reject(response.data.url);
@@ -23,6 +24,7 @@ export const access_api = (sid, state, up_func) => {
               up_func('RELEASE', {
                 url: response.data.url,
                 self: response.data.self,
+                pv: response.data.info.pv,
               });
               up_func('SID', { sid: sid });
               if (response.data.info.music) {
@@ -40,7 +42,7 @@ export const access_api = (sid, state, up_func) => {
         return '';
       default:
         axios
-          .post(`http://h5.e7wei.com/Index/getData`, params)
+          .post(`${window.location.origin}/Create/getData`, params)
           .then(response => {
             if (response.data.error) {
               reject(response.data.url);
@@ -51,17 +53,58 @@ export const access_api = (sid, state, up_func) => {
                 desc: response.data.info.desc,
               };
               up_func('SHARE_MSG', share);
-              up_func('RELEASE', { url: response.data.url });
+              up_func('RELEASE', {
+                url: response.data.url,
+                self: response.data.self,
+                pv: response.data.info.pv,
+              });
+              up_func('SID', { sid: sid });
               if (response.data.info.music) {
                 up_func('MUSIC_UI', {
                   music_url: JSON.parse(response.data.info.music).music_url,
                   desc: JSON.parse(response.data.info.music).desc,
                 });
               }
-              up_func('SID', { sid: sid });
               if (response.data.info.ui) {
                 up_func('H5_DATA', JSON.parse(response.data.info.ui));
                 up_func('BG_UI', JSON.parse(response.data.info.bg));
+              } else {
+                up_func(
+                  'H5_DATA',
+                  fromJS([
+                    {
+                      customize: {
+                        type: 'text',
+                        index_number: 0.3493262826073513,
+                        name: 'horizontal_text',
+                        html_content:
+                          '<h2 style="text-align:center;">横排文本示例</h2><br/><h4 style="text-align:center;font-size: 16px">教程</h4><br/><p style="text-align:center;">点左侧组件可以添加新内容</p><br/><p style="text-align:center;">点一下可以进行删除等操作</p>',
+                      },
+                      advance: {
+                        color: '',
+                        img: '',
+                        width: 300,
+                        left: 12,
+                        move: true,
+                        height: 200,
+                        live: false,
+                        crop_img: '',
+                        top: 32,
+                        style_color: '',
+                        zIndex: 100,
+                        rotate: 0,
+                        img_config: {
+                          stretching: {
+                            value: '',
+                          },
+                          tiling: {
+                            value: '',
+                          },
+                        },
+                      },
+                    },
+                  ])
+                );
               }
             }
           });

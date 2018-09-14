@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from "react";
 import { getLength, getAngle, getCursor } from "../../utils";
 import StyledRect from "./StyledRect";
@@ -35,12 +34,14 @@ export default class Rect extends PureComponent {
     };
     const onUp = () => {
       document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("touchmove", onMove);
       document.removeEventListener("mouseup", onUp);
       if (!this._isMouseDown) return;
       this._isMouseDown = false;
       this.props.onDragEnd && this.props.onDragEnd();
     };
     document.addEventListener("mousemove", onMove);
+    document.addEventListener("touchmove", onMove);
     document.addEventListener("mouseup", onUp);
   };
 
@@ -77,12 +78,14 @@ export default class Rect extends PureComponent {
     };
     const onUp = () => {
       document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("touchmove", onMove);
       document.removeEventListener("mouseup", onUp);
       if (!this._isMouseDown) return;
       this._isMouseDown = false;
       this.props.onRotateEnd && this.props.onRotateEnd();
     };
     document.addEventListener("mousemove", onMove);
+    document.addEventListener("touchmove", onMove);
     document.addEventListener("mouseup", onUp);
   };
 
@@ -143,7 +146,7 @@ export default class Rect extends PureComponent {
       transform: `rotate(${rotateAngle}deg)`,
       left: centerX - Math.abs(width) / 2,
       top: centerY - Math.abs(height) / 2,
-      zIndex:this.props.zIndex,
+      zIndex: this.props.zIndex
     };
     const direction = zoomable
       .split(",")
@@ -158,7 +161,7 @@ export default class Rect extends PureComponent {
       >
         {rotatable && (
           <div className="rotate" onMouseDown={this.startRotate}>
-            <i />
+            <i/>
           </div>
         )}
         {direction.map(d => {
@@ -176,9 +179,9 @@ export default class Rect extends PureComponent {
           );
         })}
         {direction.map(d => {
-          return <div key={d} className={`${zoomableMap[d]} square`} />;
+          return <div key={d} className={`${zoomableMap[d]} square`}/>;
         })}
-        {this.props.child}
+       {this.props.child}
       </StyledRect>
     );
   }

@@ -7,12 +7,14 @@ export const system_api = (page, tid, pagecount = 24) => {
     params.append('pagecount', pagecount);
     params.append('page', page);
     params.append('tid', tid);
-    axios.post('http://h5.e7wei.com/Material/getSys', params).then(response => {
-      if (response.data.error) {
-        reject('获取上传失败，请重试');
-      } else {
-        resolve(response.data);
-      }
-    });
+    axios
+      .post(`${window.location.origin}/Material/getSys`, params)
+      .then(response => {
+        if (response.data.error) {
+          reject('获取上传失败，请重试');
+        } else {
+          resolve(response.data);
+        }
+      });
   });
 };
