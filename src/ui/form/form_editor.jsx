@@ -16,11 +16,13 @@ import {
 } from "antd";
 
 import {
+  $$from__opt_select,
   $$from_opt_address,
   $$from_opt_checkbox,
   $$from_opt_datepicker,
   $$from_opt_email,
-  $$from_opt_input, $$from_opt_mobile,
+  $$from_opt_input,
+  $$from_opt_mobile,
   $$from_opt_name,
   $$from_opt_phone,
   $$from_opt_radio,
@@ -91,6 +93,11 @@ class EditorForm extends PureComponent {
     if (opt_name === "radio") {
       const $$item = $$data.get("customize").get("item");
       const $$new_item = $$item.push($$from_opt_radio(random()));
+      this.sendAction($$data.setIn(["customize", "item"], $$new_item));
+    }
+    if (opt_name === "select") {
+      const $$item = $$data.get("customize").get("item");
+      const $$new_item = $$item.push($$from__opt_select(random()));
       this.sendAction($$data.setIn(["customize", "item"], $$new_item));
     }
     if (opt_name === "checkbox") {
@@ -303,19 +310,22 @@ class EditorForm extends PureComponent {
             <Col span={6} onClick={this.add_opt.bind(this, "email")}>
               邮箱
             </Col>
-             <Col span={6} onClick={this.add_opt.bind(this, "mobile")}>
+            <Col span={6} onClick={this.add_opt.bind(this, "mobile")}>
               电话
             </Col>
           </Row>
         </span>
-        <Divider />
+        <Divider/>
         <span>
           <Row gutter={16} style={{ width: "250px", cursor: "pointer" }}>
-            <Col span={6} onClick={this.add_opt.bind(this, "radio")}>
-              单选框
-            </Col>
             <Col span={6} onClick={this.add_opt.bind(this, "input")}>
               输入框
+            </Col>
+            <Col span={6} onClick={this.add_opt.bind(this, "radio")}>
+              单选
+            </Col>
+            <Col span={6} onClick={this.add_opt.bind(this, "select")}>
+              选择器
             </Col>
             <Col span={6} onClick={this.add_opt.bind(this, "rate")}>
               评分
@@ -1576,7 +1586,7 @@ class EditorForm extends PureComponent {
               })}
               <Popover content={content} title="类型选择" trigger="click">
                 <Button type="dashed" style={{ width: "100%" }}>
-                  <Icon type="plus" />添加
+                  <Icon type="plus"/>添加
                 </Button>
               </Popover>
             </Collapse.Panel>

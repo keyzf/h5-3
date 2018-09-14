@@ -152,6 +152,13 @@ class CoreForm extends PureComponent {
               }
             });
           }
+          if (h5_data.get("type") === "rate") {
+            data.map((data) => {
+              if (data[0] === h5_data.get("form_id")) {
+                from.push({ form_id: data[0], value: data[1] });
+              }
+            });
+          }
           if (h5_data.get("type") === "upload") {
             data.map((data, index) => {
               if (data[0] === h5_data.get("form_id")) {
@@ -178,16 +185,9 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "select") {
-            let i = "";
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
-                if (data[1]) {
-                  console.log("select", data[1]);
-                  data[1].map((data) => {
-                    i = i + data + ",";
-                  });
-                }
-                from.push({ form_id: data[0], value: data[1] ? i : "" });
+                from.push({ form_id: data[0], value: data[1] });
               }
             });
           }

@@ -172,6 +172,18 @@ export const $$from_opt_radio = form_id => {
     option: ["选项一", "选项二", "选项三"]
   });
 };
+export const $$from__opt_select = form_id => {
+  return fromJS({
+    type: "select",
+    title_color: "#000",
+    opt_color: "#000",
+    form_id: form_id,
+    title: { value: "选择器" },
+    decorator: "选项一",
+    choose: false,
+    option: ["选项一", "选项二", "选项三"]
+  });
+};
 
 /**
  * 推荐组件
