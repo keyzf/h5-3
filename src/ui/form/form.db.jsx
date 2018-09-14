@@ -121,7 +121,7 @@ export const $$from_opt_phone = form_id => {
     title: { value: "手机" },
     decorator: "手机",
     choose: false,
-    option: { value: "请输入电话" }
+    option: { value: "请输入手机号" }
   });
 };
 export const $$from_opt_mobile = form_id => {

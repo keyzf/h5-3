@@ -53,14 +53,14 @@ class CoreForm extends PureComponent {
     if (!isJPG) {
       message.error("图片格式只能为png或jpg");
     }
-    const isLt2M = file.size / 1024 / 1024 < 5;
-    if (!isLt2M) {
-      message.error("上传图片过大，不超过5M");
+    const isLt10M = file.size / 1024 / 1024 < 10;
+    if (!isLt10M) {
+      message.error("上传图片过大，不超过10M");
     }
     this.setState({
       index: file
     });
-    return isJPG && isLt2M;
+    return isJPG && isLt10M;
   };
 
   /**
@@ -70,10 +70,10 @@ class CoreForm extends PureComponent {
    */
   handleChange = (index, info) => {
     if (info.file.status === "done") {
-      message.success(`${info.file.name} 文件上传成功.`);
       if (info.file.response.error) {
         message.error(info.file.response.msg);
       } else {
+        message.success(`${info.file.name} 文件上传成功.`);
         // 添加项目内容
         const add = {
           url: info.file.response.url
@@ -192,42 +192,35 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "radio") {
-            let i = "";
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
-                console.log("radio", data[1]);
-                if (data[1]) {
-                  data[1].map((data) => {
-                    i = i + data + ",";
-                  });
-                }
-                from.push({ form_id: data[0], value: data[1] ? i : "" });
+                from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "datePicker") {
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] ? data[1].format("LL") : "" });
               }
             });
           }
           if (h5_data.get("type") === "name") {
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "phone") {
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "mobile") {
-            data.map((data, index) => {
+            data.map((data) => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
@@ -254,9 +247,7 @@ class CoreForm extends PureComponent {
               }
             });
           }
-
         });
-
 
         form_api(from, sid)
           .then(response => {
@@ -343,7 +334,7 @@ class CoreForm extends PureComponent {
                           onChange={this.handleChange.bind(this, index)}
                         >
                           {data.getIn(["option", "value"]).toJS().length >=
-                          data.get("imgNumber") ? null : (
+                          1 ? null : (
                             <div>
                               <Icon type="plus"/>
                               <div className="ant-upload-text">
