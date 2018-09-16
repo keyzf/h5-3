@@ -9,9 +9,11 @@
 # production
 /build
 /material
+/dist
 
 # misc
 .idea
+.cache
 .DS_Store
 .env.local
 .env.development.local
