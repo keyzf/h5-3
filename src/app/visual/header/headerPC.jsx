@@ -50,7 +50,7 @@ export class HeaderVisualPC extends PureComponent {
           </Menu.Item>
           <Menu.Item className={style.menuBorder} key={'2'}>
             <a
-              href={'http://www.e7wei.com/help-article-id-436.html'}
+              href={'http://www.e7wei.com/help-article-id-463.html'}
               target={'view_window'}
             >
               <Icon type="question-circle-o" />
