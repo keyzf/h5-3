@@ -1,5 +1,4 @@
 import * as React from "react";
-import GetParaUrl from "./utils/parseUrl";
 
 interface AppProps {
   vid: string;
