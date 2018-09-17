@@ -154,6 +154,8 @@ p {
     flex: 0 0 calc(1 / 6 * 100%);
     box-sizing: border-box;
     padding: 3px;
+    height:90px;
+
 }
 
 .flex_list_1 {

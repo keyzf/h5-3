@@ -11,7 +11,7 @@ export const system_api = (page, tid, pagecount = 24) => {
       .post(`${window.location.origin}/Material/getSys`, params)
       .then(response => {
         if (response.data.error) {
-          reject('获取上传失败，请重试');
+
         } else {
           resolve(response.data);
         }

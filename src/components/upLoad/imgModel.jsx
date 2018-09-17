@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import NProgress from 'nprogress';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import NProgress from "nprogress";
 import {
   Modal,
   Tabs,
@@ -11,14 +11,14 @@ import {
   Button,
   Pagination,
   Row,
-  Col,
-} from 'antd';
-import style from './imgModel.module.scss';
-import { UploadImgForm } from '../../routes/components';
-import 'nprogress/nprogress.css';
-import { redux_action } from '../../redux/action';
-import { user_api } from '../../api/user.api';
-import { delete_api } from '../../api/delete.api';
+  Col
+} from "antd";
+import style from "./imgModel.module.scss";
+import { UploadImgForm } from "../../routes/components";
+import "nprogress/nprogress.css";
+import { redux_action } from "../../redux/action";
+import { user_api } from "../../api/user.api";
+import { delete_api } from "../../api/delete.api";
 
 /**
  * 逻辑
@@ -29,14 +29,14 @@ import { delete_api } from '../../api/delete.api';
  */
 class ImgModel extends PureComponent {
   state = {
-    visible: false, // 控制柜Model 展示
+    visible: false // 控制柜Model 展示
   };
   /**
    * 展示Model
    */
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
 
@@ -46,10 +46,10 @@ class ImgModel extends PureComponent {
    */
   closeModal = () => {
     this.setState({
-      visible: false,
+      visible: false
     });
     // eslint-disable-next-line
-    this.props.model ? this.props.closeModel() : '';
+    this.props.model ? this.props.closeModel() : "";
   };
 
   /**
@@ -58,11 +58,11 @@ class ImgModel extends PureComponent {
   componentWillMount() {
     const { data } = this.props.imgModel_value;
     user_api(this.props.type, 1).then(response => {
-      this.props.upData('IMGMODEL', {
+      this.props.upData("IMGMODEL", {
         number: response.sum,
         img_library: response.list,
-        current: data.get('current'),
-        img_url: data.get('img_url'),
+        current: data.get("current"),
+        img_url: data.get("img_url")
       });
     });
   }
@@ -75,16 +75,17 @@ class ImgModel extends PureComponent {
     NProgress.start();
     // 如果数据上传成功
     if (field.error) {
-      message.error('上传失败');
+      message.error("网络异常，上传失败");
     } else {
       NProgress.done();
       user_api(this.props.type, 0)
         .then(response => {
-          this.props.upData('IMGMODEL', {
+          message.success("图片添加成功");
+          this.props.upData("IMGMODEL", {
             img_library: response.list,
             current: 1,
             number: response.sum,
-            img_url: response.list[0].url,
+            img_url: response.list[0].url
           });
         })
         .catch(response => {
@@ -101,11 +102,11 @@ class ImgModel extends PureComponent {
     const data = this.props.imgModel_value.data;
     user_api(this.props.type, page)
       .then(response => {
-        this.props.upData('IMGMODEL', {
+        this.props.upData("IMGMODEL", {
           img_library: response.list,
           current: page,
           number: response.sum,
-          img_url: data.get('img_url'),
+          img_url: data.get("img_url")
         });
       })
       .catch(response => {
@@ -120,22 +121,29 @@ class ImgModel extends PureComponent {
   delete = mid => {
     NProgress.start();
     delete_api(mid)
-      .then(() => {
-        NProgress.done();
-        const { data } = this.props.imgModel_value;
-        user_api(this.props.type, data.get('current')).then(response => {
-          this.props.upData('IMGMODEL', {
-            current: data.get('current'),
-            number: response.sum,
-            img_library: response.list,
-            img_url: data.get('img_url'),
+      .then((response) => {
+        if (response) {
+          NProgress.done();
+          message.success("项目已清空");
+          this.props.upData("IMGMODEL", {
+            current: 1,
+            number: 0,
+            img_library: [],
+            img_url: ""
           });
-          message.success('删除成功');
-        });
-      })
-      .catch(() => {
-        NProgress.done();
-        message.error('删除失败');
+        } else {
+          NProgress.done();
+          const { data } = this.props.imgModel_value;
+          user_api(this.props.type, data.get("current")).then(response => {
+            this.props.upData("IMGMODEL", {
+              current: data.get("current"),
+              number: response.sum,
+              img_library: response.list,
+              img_url: data.get("img_url")
+            });
+            message.success("删除成功");
+          });
+        }
       });
   };
 
@@ -156,22 +164,22 @@ class ImgModel extends PureComponent {
   render() {
     const imgMode_data = this.props.imgModel_value.data;
     // eslint-disable-next-line
-    this.props.model ? this.showModal() : '';
+    this.props.model ? this.showModal() : "";
     // model 默认内容
     const default_model = (
-      <div style={{ textAlign: 'center', padding: '0 80px' }}>
-        <img src={'http://src.e7wei.com/0.2823198691104869.png'} alt={'img'} />
-        <br />
+      <div style={{ textAlign: "center", padding: "0 80px" }}>
+        <img src={"http://src.e7wei.com/0.2823198691104869.png"} alt={"img"}/>
+        <br/>
         <UploadImgForm
           type={2}
           onChange={this.uploadChange}
           child={
-            <Button type="dashed" style={{ width: '150px' }}>
-              添加素材
+            <Button type="dashed" style={{ width: "150px" }}>
+              添加图片
             </Button>
           }
           upload={{
-            value: '',
+            value: ""
           }}
         />
       </div>
@@ -180,26 +188,26 @@ class ImgModel extends PureComponent {
     const show_data = (
       <React.Fragment>
         <div
-          className={'response_flex'}
+          className={"response_flex"}
           style={{
-            width: '100%',
-            minHeight: '300px',
-            maxHeight: '300px',
-            overflow: 'auto',
+            width: "100%",
+            minHeight: "300px",
+            maxHeight: "300px",
+            overflow: "hidden"
           }}
         >
-          {imgMode_data.get('img_library').map((data, index) => {
+          {imgMode_data.get("img_library").map((data, index) => {
             return (
               <div
-                className={'flex_model_1'}
+                className={"flex_model_1"}
                 key={index}
-                onClick={this.choose_img.bind(this, data.get('url'))}
+                onClick={this.choose_img.bind(this, data.get("url"))}
               >
                 <Tooltip
                   title={
                     <div
-                      style={{ cursor: 'pointer' }}
-                      onClick={this.delete.bind(this, data.get('mid'), index)}
+                      style={{ cursor: "pointer" }}
+                      onClick={this.delete.bind(this, data.get("mid"), index)}
                     >
                       删除
                     </div>
@@ -207,7 +215,7 @@ class ImgModel extends PureComponent {
                 >
                   <div
                     className={
-                      data.get('url') === this.props.img_url
+                      data.get("url") === this.props.img_url
                         ? `${style.part_active}`
                         : `${style.part_choose}`
                     }
@@ -215,8 +223,8 @@ class ImgModel extends PureComponent {
                     <div className={style.img_show}>
                       <img
                         className={style.img}
-                        src={data.get('url')}
-                        alt={'img'}
+                        src={data.get("url")}
+                        alt={"img"}
                       />
                     </div>
                   </div>
@@ -225,18 +233,18 @@ class ImgModel extends PureComponent {
             );
           })}
         </div>
-        <Divider />
-        <div style={{ padding: '0 35%', width: '100%' }}>
+        <Divider/>
+        <div style={{ padding: "0 35%", width: "100%" }}>
           <Button
             onClick={this.closeModal}
-            style={{ width: '100px', marginRight: '10px' }}
+            style={{ width: "100px", marginRight: "10px" }}
           >
             取消
           </Button>
           <Button
             type="primary"
             onClick={this.closeModal}
-            style={{ width: '100px', marginRight: '10px' }}
+            style={{ width: "100px", marginRight: "10px" }}
           >
             确定
           </Button>
@@ -260,26 +268,26 @@ class ImgModel extends PureComponent {
               onCancel={this.closeModal}
               footer={null}
             >
-              <div style={{ height: '300px' }}>
+              <div style={{ height: "300px" }}>
                 <Tabs
                   tabBarExtraContent={
                     <span>
-                      <Row gutter={16} style={{ width: '350px' }}>
-                        <Col span={7} style={{ transform: 'translate(0,4px)' }}>
+                      <Row gutter={16} style={{ width: "350px" }}>
+                        <Col span={7} style={{ transform: "translate(0,4px)" }}>
                           <UploadImgForm
                             upload={{
-                              value: '',
+                              value: ""
                             }}
                             onChange={this.uploadChange}
                             child={
                               <div
                                 style={{
-                                  color: '#19a0fa',
-                                  cursor: 'pointer',
-                                  marginRight: '10px',
+                                  color: "#19a0fa",
+                                  cursor: "pointer",
+                                  marginRight: "10px"
                                 }}
                               >
-                                <Icon type="plus" />
+                                <Icon type="plus"/>
                                 &nbsp;添加素材
                               </div>
                             }
@@ -287,13 +295,13 @@ class ImgModel extends PureComponent {
                         </Col>
                         <Col
                           span={17}
-                          style={{ transform: 'translate(0,11px)' }}
+                          style={{ transform: "translate(0,11px)" }}
                         >
                           <Pagination
                             simple
                             pageSize={24}
-                            total={imgMode_data.get('number')}
-                            current={imgMode_data.get('current')}
+                            total={imgMode_data.get("number")}
+                            current={imgMode_data.get("current")}
                             onChange={this.onChange}
                           />
                         </Col>
@@ -302,7 +310,7 @@ class ImgModel extends PureComponent {
                   }
                 >
                   <Tabs.TabPane tab="我的素材" key="1">
-                    {imgMode_data.get('img_library').size === 0
+                    {imgMode_data.get("img_library").size === 0
                       ? default_model
                       : show_data}
                   </Tabs.TabPane>
@@ -327,33 +335,33 @@ class ImgModel extends PureComponent {
               <Tabs
                 tabBarExtraContent={
                   <span>
-                    <Row gutter={16} style={{ width: '350px' }}>
-                      <Col span={7} style={{ transform: 'translate(0,4px)' }}>
+                    <Row gutter={16} style={{ width: "350px" }}>
+                      <Col span={7} style={{ transform: "translate(0,4px)" }}>
                         <UploadImgForm
                           upload={{
-                            value: '',
+                            value: ""
                           }}
                           onChange={this.uploadChange}
                           child={
                             <div
                               style={{
-                                color: '#19a0fa',
-                                cursor: 'pointer',
-                                marginRight: '10px',
+                                color: "#19a0fa",
+                                cursor: "pointer",
+                                marginRight: "10px"
                               }}
                             >
-                              <Icon type="plus" />
-                              &nbsp;添加素材
+                              <Icon type="plus"/>
+                              &nbsp;添加图片
                             </div>
                           }
                         />
                       </Col>
-                      <Col span={17} style={{ transform: 'translate(0,11px)' }}>
+                      <Col span={17} style={{ transform: "translate(0,11px)" }}>
                         <Pagination
                           simple
                           pageSize={24}
-                          total={imgMode_data.get('number')}
-                          current={imgMode_data.get('current')}
+                          total={imgMode_data.get("number")}
+                          current={imgMode_data.get("current")}
                           onChange={this.onChange}
                         />
                       </Col>
@@ -362,7 +370,7 @@ class ImgModel extends PureComponent {
                 }
               >
                 <Tabs.TabPane tab="我的素材" key="1">
-                  {imgMode_data.get('img_library').size === 0
+                  {imgMode_data.get("img_library").size === 0
                     ? default_model
                     : show_data}
                 </Tabs.TabPane>
@@ -382,13 +390,13 @@ const mapStateToProps = state => {
     // 背景组件样式
     bg_ui_value: state.bgUi_rdc,
     // 图片模块数据
-    imgModel_value: state.imgModel_rdc,
+    imgModel_value: state.imgModel_rdc
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
+    upData: (name, data, meta) => dispatch(redux_action(name, data, meta))
   };
 };
 
