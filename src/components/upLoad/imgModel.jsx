@@ -74,23 +74,25 @@ class ImgModel extends PureComponent {
   uploadChange = field => {
     NProgress.start();
     // 如果数据上传成功
-    if (field.error) {
-      message.error("网络异常，上传失败");
-    } else {
-      NProgress.done();
-      user_api(this.props.type, 0)
-        .then(response => {
-          message.success("图片添加成功");
-          this.props.upData("IMGMODEL", {
-            img_library: response.list,
-            current: 1,
-            number: response.sum,
-            img_url: response.list[0].url
+    if (field.upload.value.file.status === "done") {
+      if (field.error) {
+        message.error("网络异常，上传失败");
+      } else {
+        NProgress.done();
+        user_api(this.props.type, 0)
+          .then(response => {
+            message.success("图片添加成功");
+            this.props.upData("IMGMODEL", {
+              img_library: response.list,
+              current: 1,
+              number: response.sum,
+              img_url: response.list[0].url
+            });
+          })
+          .catch(response => {
+            message.error(response);
           });
-        })
-        .catch(response => {
-          message.error(response);
-        });
+      }
     }
   };
 
@@ -121,29 +123,26 @@ class ImgModel extends PureComponent {
   delete = mid => {
     NProgress.start();
     delete_api(mid)
-      .then((response) => {
-        if (response) {
-          NProgress.done();
-          message.success("项目已清空");
+      .then(() => {
+        NProgress.done();
+        const { data } = this.props.imgModel_value;
+        user_api(this.props.type, data.get("current")).then(response => {
+          this.props.upData("IMGMODEL", {
+            current: data.get("current"),
+            number: response.sum,
+            img_library: response.list,
+            img_url: data.get("img_url")
+          });
+          message.success("图片删除成功");
+        }).catch(response => {
           this.props.upData("IMGMODEL", {
             current: 1,
             number: 0,
             img_library: [],
             img_url: ""
           });
-        } else {
-          NProgress.done();
-          const { data } = this.props.imgModel_value;
-          user_api(this.props.type, data.get("current")).then(response => {
-            this.props.upData("IMGMODEL", {
-              current: data.get("current"),
-              number: response.sum,
-              img_library: response.list,
-              img_url: data.get("img_url")
-            });
-            message.success("删除成功");
-          });
-        }
+          message.success("图片删除成功");
+        });
       });
   };
 

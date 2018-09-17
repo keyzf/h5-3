@@ -10,7 +10,7 @@ export const user_api = (type, page) => {
       .post(`${window.location.origin}/Material/getUser`, params)
       .then(response => {
         if (response.data.error) {
-
+          reject(response.data)
         } else {
           resolve(response.data);
         }
