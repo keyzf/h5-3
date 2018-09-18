@@ -1,6 +1,8 @@
 import * as React from "react";
 import Layout from "antd/lib/layout";
-import "../pageStyles.scss";
+import VisualHeader from "../../components/visual/header";
+import VisualSider from "../../components/visual/sider";
+import VisualContent from "../../components/visual/content";
 
 interface Props {
   vid: string;
@@ -13,16 +15,20 @@ class Visual extends React.PureComponent<Props, any> {
 
     return (
       <Layout className={"layout"}>
-        <Header className={"header"}>头部</Header>
+        <Header className={"header"}>
+          <VisualHeader/>
+        </Header>
         <Layout>
           <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
-            侧边栏
+            <VisualSider/>
           </Sider>
 
-          <Content>内容区域</Content>
+          <Content className={"content"}>
+            <VisualContent/>
+          </Content>
 
           <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
-            侧边栏
+
           </Sider>
         </Layout>
       </Layout>

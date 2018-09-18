@@ -5,13 +5,7 @@ import Spin from "antd/lib/spin";
 const VisualRouter = Loadable({
   loader: () => import("../../pages/visual/visual"),
   loading: () => {
-    return <div style={{
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      alignContent: "center"
-    }}>
+    return <div className={'pageLoading'}>
       <Spin tip={"玩命加载中......"} size="large"/>
     </div>;
   },

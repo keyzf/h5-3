@@ -6,11 +6,7 @@ import Spin from "antd/lib/spin";
 const ReleaseRouter = Loadable({
   loader: () => import("../../pages/release/release"),
   loading: () => {
-    return <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
+    return <div className={'pageLoading'}>
       <Spin tip={"玩命加载中......"} size="large"/>
     </div>;
   }

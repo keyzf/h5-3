@@ -1,0 +1,171 @@
+/**
+ visual 头部导航样式,左对齐
+ */
+.header_left {
+  background: transparent;
+  line-height: 48px;
+  position: absolute;
+  left: 14px;
+}
+
+/**
+ visual 头部导航样式,右对齐
+ */
+.header_right {
+  background: transparent;
+  line-height: 48px;
+  position: absolute;
+  right: 14px;
+}
+
+/**
+ 右侧边框
+ */
+.v_header_border {
+  border-right: 1px solid rgb(0, 187, 255)
+}
+
+/**
+ 画布
+ */
+.v_content {
+  width: 320px;
+  height: auto;
+  overflow: hidden;
+  margin: 55px auto 50px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  word-wrap: break-word;
+}
+
+/**
+ 文字居中
+ */
+.font_center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+/**
+logo 样式
+ */
+.logo{
+  font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, "pingfang sc", "Hiragino Sans GB", "Microsoft YaHei", STHeiti, SimSun, sans-serif;;
+  font-style: oblique;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 23px;
+}
+
+
+
+/*
+ preview 手机模拟
+ */
+.p_phone {
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  z-index: 11;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .65);
+}
+
+.p_phone_content {
+  flex: 1;
+  position: relative;
+  height: 86%;
+  width: 100%;
+  overflow: auto;
+  background: rgb(229, 229, 229);
+  border-top: 1px rgb(229, 229, 229) solid;
+  border-bottom: 1px rgb(229, 229, 229) solid;
+
+  scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
+  scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+  scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+  scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+  scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
+  scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+  scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
+  scrollbar-base-color: transparent; /*滚动条的基色*/
+
+  &::-webkit-scrollbar {
+    border: none;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    display: none
+  }
+  &::-webkit-scrollbar-track {
+    display: none
+  }
+  &::-webkit-scrollbar-track-piece {
+    display: none
+  }
+  &::-webkit-scrollbar-thumb {
+    display: none
+  }
+  &::-webkit-scrollbar-corner {
+    display: none
+  }
+  &::-webkit-resizer {
+    display: none
+  }
+}
+
+.p_phone_footer {
+  position: relative;
+  flex: 1;
+  height: 7%;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 40px;
+    background: rgb(229, 229, 229);
+    z-index: 100;
+    bottom: 10%;
+    right: 44%;
+  }
+}
+
+.p_phone_header {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 7%;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: rgb(229, 229, 229);
+    transform: translateX(-50px);
+    z-index: 100;
+    top: 40%;
+    right: 50%;
+  }
+  &:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 8px;
+    background: rgb(229, 229, 229);
+    border-radius: 10px;
+    z-index: 100;
+    top: 40%;
+    right: 38%;
+  }
+}
+
