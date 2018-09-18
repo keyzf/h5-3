@@ -1,4 +1,6 @@
 import * as React from "react";
+import ReleaseMobile from "../../components/release/mobile";
+import ReleasePc from "../../components/release/pc";
 
 interface Props {
   vid: string;
@@ -8,7 +10,10 @@ interface Props {
 class Release extends React.PureComponent<Props, any> {
   render() {
     return (
-      <div>release</div>
+      <React.Fragment>
+        <ReleaseMobile/>
+        <ReleasePc/>
+      </React.Fragment>
     );
   }
 }
