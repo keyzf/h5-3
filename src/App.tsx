@@ -3,12 +3,14 @@ import VisualRouter from "./routes/page/visual";
 import PreviewRouter from "./routes/page/preview";
 import ReleaseRouter from "./routes/page/release";
 
+
 interface AppProps {
   vid: string;
   state: string;
 }
 
 class App extends React.PureComponent<AppProps, any> {
+
   render() {
 
     /**
@@ -34,7 +36,7 @@ class App extends React.PureComponent<AppProps, any> {
     /**
      * 组件渲染
      */
-    return <React.Fragment>{Redirect}</React.Fragment>;
+    return <div>{Redirect}</div>
   }
 }
 
