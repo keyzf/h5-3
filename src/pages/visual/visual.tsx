@@ -5,13 +5,33 @@ import VisualSider from "../../components/visual/sider";
 import VisualContent from "../../components/visual/content";
 import { Provider } from "../../context/context";
 
-
 interface Props {
   vid: string;
   state: string;
 }
 
-class Visual extends React.PureComponent<Props, any> {
+interface State {
+  version: string, // 使用数据的版本号
+  pv: string, // pv数
+
+  ui: object[], // ui组件数据源
+  bg: { img: string, color: string }, //背景组件
+  music: string, //音乐组件
+
+  editor: { data: string, number: string }, //当前编辑的组件数据
+
+  cover: string, //分享图片
+  desc: string, // 分享描述
+  title: string, // 分享标题
+
+  url: string, //发布链接
+
+  post: object, // ajax函数更新数据
+  add: object, // 向ui中添加数据
+  delete: object // 删除ui中的数据
+}
+
+class Visual extends React.PureComponent<Props, State> {
 
   state = {
     version: "1", // 使用数据的版本号
@@ -63,24 +83,24 @@ class Visual extends React.PureComponent<Props, any> {
 
     return (
       <Provider value={this.state}>
-      <Layout className={"layout"}>
-        <Header className={"header"}>
-          <VisualHeader/>
-        </Header>
-        <Layout>
-          <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
-            <VisualSider/>
-          </Sider>
+        <Layout className={"layout"}>
+          <Header className={"header"}>
+            <VisualHeader/>
+          </Header>
+          <Layout>
+            <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
+              <VisualSider/>
+            </Sider>
 
-          <Content className={"content"}>
-            <VisualContent/>
-          </Content>
+            <Content className={"content"}>
+              <VisualContent/>
+            </Content>
 
-          <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
+            <Sider theme={"light"} width={360} breakpoint={"md"} trigger={null}>
 
-          </Sider>
+            </Sider>
+          </Layout>
         </Layout>
-      </Layout>
       </Provider>
     );
   }

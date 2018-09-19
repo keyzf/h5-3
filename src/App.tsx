@@ -3,21 +3,25 @@ import VisualRouter from "./routes/page/visual";
 import PreviewRouter from "./routes/page/preview";
 import ReleaseRouter from "./routes/page/release";
 
-
-interface AppProps {
+interface Props {
+  /**
+   * 用户id
+   */
   vid: string;
+  /**
+   * 即将跳转的页面
+   */
   state: string;
 }
 
-class App extends React.PureComponent<AppProps, any> {
-
+class App extends React.PureComponent<Props, void> {
   render() {
+    const { vid, state } = this.props;
 
     /**
-     * 数据处理与判断
+     * 判断需要跳转的页面
      */
-    const { vid, state } = this.props;
-    let Redirect: object | boolean;
+    let Redirect: object ;
     switch (state) {
       case "v":
         return (Redirect = <VisualRouter vid={vid} state={state}/>);
@@ -36,7 +40,7 @@ class App extends React.PureComponent<AppProps, any> {
     /**
      * 组件渲染
      */
-    return <div>{Redirect}</div>
+    return <React.Fragment>{Redirect}</React.Fragment>;
   }
 }
 
