@@ -54,7 +54,7 @@ class VisualView extends PureComponent {
             </div>
             <div className={style.content_hidden}>
               <a
-                href={'http://www.e7wei.com/help-article-id-436.html'}
+                href={'http://www.e7wei.com/help/article/id/436.html'}
                 target={'view_window'}
               >
                 使用帮助

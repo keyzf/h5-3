@@ -76,7 +76,7 @@ class EditorReleaseView extends PureComponent {
               <p style={{ color: 'rgb(160,160,160)', marginBottom: '5px' }}>
                 2.参照教程发布到公众号，<a
                   target={'view_window'}
-                  href={'http://www.e7wei.com/help-article-id-436.html'}
+                  href={'http://www.e7wei.com/help/article/id/436.html'}
                 >
                   进入教程
                 </a>

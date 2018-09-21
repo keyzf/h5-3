@@ -99,7 +99,13 @@ class CoreForm extends PureComponent {
    * @returns {boolean}
    */
   onRemove = (props_index, file) => {
-    const fileList = this.props.data.getIn(["customize", "item", props_index, "option", "value"]);
+    const fileList = this.props.data.getIn([
+      "customize",
+      "item",
+      props_index,
+      "option",
+      "value"
+    ]);
     fileList.toJS().map((data, index) => {
       if (data.url === file.response.url) {
         // 内容添加至数据中
@@ -136,7 +142,7 @@ class CoreForm extends PureComponent {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       const sid = this.props.sid_value.data.get("sid");
@@ -144,7 +150,7 @@ class CoreForm extends PureComponent {
         let from = [];
         const data = List(fromJS(values));
 
-        this.props.data.getIn(["customize", "item"]).map((h5_data) => {
+        this.props.data.getIn(["customize", "item"]).map(h5_data => {
           if (h5_data.get("type") === "input") {
             data.map((data, index) => {
               if (data[0] === h5_data.get("form_id")) {
@@ -153,7 +159,7 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "rate") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
@@ -176,7 +182,7 @@ class CoreForm extends PureComponent {
             data.map((data, index) => {
               if (data[0] === h5_data.get("form_id")) {
                 if (data[1]) {
-                  data[1].map((data) => {
+                  data[1].map(data => {
                     i = i + data + ",";
                   });
                 }
@@ -185,42 +191,45 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "select") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "radio") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "datePicker") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
-                from.push({ form_id: data[0], value: data[1] ? data[1].format("LL") : "" });
+                from.push({
+                  form_id: data[0],
+                  value: data[1] ? data[1].format("LL") : ""
+                });
               }
             });
           }
           if (h5_data.get("type") === "name") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "phone") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "mobile") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
@@ -251,7 +260,15 @@ class CoreForm extends PureComponent {
 
         form_api(from, sid)
           .then(response => {
-            message.success(response);
+            Modal.success({
+              title: `${response}`,
+              content: (
+                <div className={"flex_center"}>
+                  <p>谢谢您的参与</p>
+                </div>
+              ),
+              onOk() {}
+            });
           })
           .catch(response => {
             message.error(response);
@@ -336,7 +353,7 @@ class CoreForm extends PureComponent {
                           {data.getIn(["option", "value"]).toJS().length >=
                           1 ? null : (
                             <div>
-                              <Icon type="plus"/>
+                              <Icon type="plus" />
                               <div className="ant-upload-text">
                                 点击上传图片
                               </div>
@@ -670,7 +687,7 @@ class CoreForm extends PureComponent {
                         {
                           rules: [{ required: choose, message: "此项不能为空" }]
                         }
-                      )(<Rate style={{ color: opt_color }}/>)}
+                      )(<Rate style={{ color: opt_color }} />)}
                     </FormItem>
                   </div>
                 );
@@ -780,7 +797,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Form.create()(CoreForm));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  Form.create()(CoreForm)
+);
