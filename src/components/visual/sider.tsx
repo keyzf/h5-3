@@ -1,5 +1,6 @@
 import * as React from "react";
 import Tabs from "antd/lib/tabs";
+import ChooseSideUi from "../../containers/choosSideUi";
 
 class VisualSider extends React.Component<any, any> {
   render() {
@@ -20,12 +21,12 @@ class VisualSider extends React.Component<any, any> {
                 className={"iconfont icon-wenzixiaoguo"}
                 style={{ fontSize: 24, marginRight: 3 }}
               />
-              <br />
+              <br/>
               文字
             </span>
           }
         >
-          1
+          <ChooseSideUi name={"text"}/>
         </Tabs.TabPane>
         <Tabs.TabPane
           style={{
@@ -38,7 +39,7 @@ class VisualSider extends React.Component<any, any> {
                 className={"iconfont icon-tupian"}
                 style={{ fontSize: 24, marginRight: 3 }}
               />
-              <br />
+              <br/>
               图片
             </span>
           }
@@ -56,7 +57,7 @@ class VisualSider extends React.Component<any, any> {
                 className={"icon iconfont icon-beijing"}
                 style={{ fontSize: 24, marginRight: 3 }}
               />
-              <br />
+              <br/>
               背景
             </span>
           }
@@ -74,7 +75,7 @@ class VisualSider extends React.Component<any, any> {
                 className={"iconfont icon-yinlemusic214"}
                 style={{ fontSize: 24, marginRight: 3 }}
               />
-              <br />
+              <br/>
               音乐
             </span>
           }
@@ -92,7 +93,7 @@ class VisualSider extends React.Component<any, any> {
                 className={"icon iconfont icon-yingyong"}
                 style={{ fontSize: 24, marginRight: 3 }}
               />
-              <br />
+              <br/>
               更多
             </span>
           }

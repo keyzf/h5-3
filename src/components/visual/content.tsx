@@ -1,12 +1,13 @@
 import * as React from "react";
+import Canvas from "../../containers/canvas";
 
 
-class VisualContent extends React.PureComponent {
+class VisualContent extends React.Component {
   render() {
     return (
       <div style={{ height: "5000px" }}>
         <div className={"v_content"}>
-          画布
+          <Canvas/>
         </div>
         <div className={"font_center"}>
           提示：添加组件后，可在画布中进行拖拽，缩放

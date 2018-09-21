@@ -11,11 +11,10 @@
     "jsx": "react",
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",

@@ -1,26 +1,14 @@
-.layout {
-  box-sizing: border-box;
-  clear: both;
-  border: none;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
 
-.header {
+/**
+ 选择组件超出样式
+ */
+.chooseUi_over{
   box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  height: 48px;
-  padding: 0;
-  margin: 0;
-  background: rgb(0, 167, 255);
-}
-
-.content {
   height: calc(100vh - 48px);
   width: 100%;
-  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
   scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
@@ -57,48 +45,19 @@
   }
 }
 
-.mobile {
-  @media (min-width: 0) and (max-width: 575px) {
+/**
+ 侧边栏 具体ui选择时显示样式
+ */
+.chooseUi_hover{
+  padding: 5px 6px;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+  background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+  -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+  will-change: box-shadow, transform;
+  cursor: pointer;
+  &:hover {
+    padding: 5px 6px;
+    background: rgba(221, 221, 221, 0.21);
+    cursor: pointer;
   }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    display: none;
-  }
-
-  @media (min-width: 1200px) {
-    display: none;
-  }
-}
-
-.pc {
-  @media (min-width: 0) and (max-width: 575px) {
-    display: none;
-  }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    display: none;
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    display: none;
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-  }
-
-  @media (min-width: 1200px) {
-  }
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
 }

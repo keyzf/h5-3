@@ -7,18 +7,22 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel public/index.html --no-cache -p 3001",
-    "build": "parcel build public/index.html --no-minify  --public-url https://e7wei-h5long.oss-cn-beijing.aliyuncs.com/"
+    "build": "NODE_ENV=production parcel build public/index.html --no-minify  --public-url https://e7wei-h5long.oss-cn-beijing.aliyuncs.com/"
   },
   "dependencies": {
     "antd": "^3.9.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-loadable": "^5.5.0"
+    "react-hot-keys": "^1.2.2",
+    "react-keydown": "^1.9.7",
+    "react-loadable": "^5.5.0",
+    "styled-components": "^3.4.9"
   },
   "devDependencies": {
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
     "@types/react-loadable": "^5.4.1",
+    "@types/styled-components": "^3.0.1",
     "autoprefixer": "^9.1.5",
     "less": "2.7.3",
     "node-sass": "^4.9.3",
