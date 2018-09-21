@@ -20,11 +20,13 @@ import { form_api } from "../../../api/form.api";
 import { ImgAtom } from "../../img/img_atom";
 import style from "./form.module.scss";
 import { redux_action } from "../../../redux/action";
+import { FormModel } from "../model";
 
 class CoreForm extends PureComponent {
   state = {
     previewVisible: false, // 图片预览控制
-    previewImage: "" // 预览图片
+    previewImage: "", // 预览图片
+    show: false
   };
 
   /**
@@ -258,17 +260,10 @@ class CoreForm extends PureComponent {
           }
         });
 
+
         form_api(from, sid)
           .then(response => {
-            Modal.success({
-              title: `${response}`,
-              content: (
-                <div className={"flex_center"}>
-                  <p>谢谢您的参与</p>
-                </div>
-              ),
-              onOk() {}
-            });
+            this.props.upData("FORMMODEL", { show: true });
           })
           .catch(response => {
             message.error(response);
@@ -307,475 +302,477 @@ class CoreForm extends PureComponent {
     };
     const { previewVisible, previewImage } = this.state;
     return (
-      <ImgAtom {...advanced_settings}>
-        <Form {...form_config}>
-          {customize.get("item").map((data, index) => {
-            const opt_color = data.get("opt_color");
-            const choose = data.get("choose");
-            switch (data.get("type")) {
-              case "upload":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
+      <React.Fragment>
+        <ImgAtom {...advanced_settings}>
+          <Form {...form_config}>
+            {customize.get("item").map((data, index) => {
+              const opt_color = data.get("opt_color");
+              const choose = data.get("choose");
+              switch (data.get("type")) {
+                case "upload":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
                     >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [
-                            {
-                              required: choose,
-                              message: "请上传图片"
-                            }
-                          ]
-                        }
-                      )(
-                        <Upload
-                          accept={"image/*"}
-                          name={"file"}
-                          action={`${window.location.origin}/View/uploadify`}
-                          listType="picture-card"
-                          data={{ type: 1 }}
-                          beforeUpload={this.beforeUpload}
-                          onPreview={this.handlePreview}
-                          onRemove={this.onRemove.bind(this, index)}
-                          onChange={this.handleChange.bind(this, index)}
-                        >
-                          {data.getIn(["option", "value"]).toJS().length >=
-                          1 ? null : (
-                            <div>
-                              <Icon type="plus" />
-                              <div className="ant-upload-text">
-                                点击上传图片
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [
+                              {
+                                required: choose,
+                                message: "请上传图片"
+                              }
+                            ]
+                          }
+                        )(
+                          <Upload
+                            accept={"image/*"}
+                            name={"file"}
+                            action={`${window.location.origin}/View/uploadify`}
+                            listType="picture-card"
+                            data={{ type: 1 }}
+                            beforeUpload={this.beforeUpload}
+                            onPreview={this.handlePreview}
+                            onRemove={this.onRemove.bind(this, index)}
+                            onChange={this.handleChange.bind(this, index)}
+                          >
+                            {data.getIn(["option", "value"]).toJS().length >=
+                            1 ? null : (
+                              <div>
+                                <Icon type="plus"/>
+                                <div className="ant-upload-text">
+                                  点击上传图片
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </Upload>
-                      )}
-                    </FormItem>
-                    <Modal
-                      visible={previewVisible}
-                      footer={null}
-                      onCancel={this.handleCancel}
-                    >
-                      <img
-                        alt="UpImgByUser"
-                        style={{ width: "100%" }}
-                        src={previewImage}
-                      />
-                    </Modal>
-                  </div>
-                );
-              case "radio":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "请选择" }]
-                        }
-                      )(
-                        <Radio.Group>
-                          {data.get("option").map((data, index) => {
-                            return (
-                              <Radio
-                                value={data}
-                                key={index}
-                                style={{ color: opt_color }}
-                              >
-                                {data}
-                              </Radio>
-                            );
-                          })}
-                        </Radio.Group>
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "input":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "name":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "email":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [
-                            {
-                              pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
-                              message: "邮箱格式错误"
-                            },
-                            { required: choose, message: "此项不能为空" }
-                          ]
-                        }
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "address":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "phone":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [
-                            {
-                              pattern: /^((1[3-8][0-9])+\d{8})$/,
-                              message: "手机号格式错误"
-                            },
-                            { required: choose, message: "此项不能为空" }
-                          ]
-                        }
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "mobile":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`
-                      )(
-                        <Input
-                          size="large"
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "select":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Select
-                          size="large"
-                          placeholder={`${data.getIn(["option", 0])}`}
-                        >
-                          {data.get("option").map((data, index) => {
-                            return (
-                              <Select.Option
-                                value={data}
-                                key={index}
-                                style={{ color: opt_color }}
-                              >
-                                {data}
-                              </Select.Option>
-                            );
-                          })}
-                        </Select>
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "textarea":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Input.TextArea
-                          size="large"
-                          rows={4}
-                          placeholder={data.getIn(["option", "value"])}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "rate":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(<Rate style={{ color: opt_color }} />)}
-                    </FormItem>
-                  </div>
-                );
-              case "checkbox":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <Checkbox.Group
-                          style={{ color: opt_color }}
-                          options={data.get("option").toJS()}
-                        />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              case "datePicker":
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      pointerEvents: `${this.props.pointer ? "none" : ""}`
-                    }}
-                  >
-                    <FormItem
-                      className={style.form_item}
-                      {...form_item_style(
-                        `${data.getIn(["title", "value"])}`,
-                        data.get("title_color")
-                      )}
-                    >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <DatePicker
+                            )}
+                          </Upload>
+                        )}
+                      </FormItem>
+                      <Modal
+                        visible={previewVisible}
+                        footer={null}
+                        onCancel={this.handleCancel}
+                      >
+                        <img
+                          alt="UpImgByUser"
                           style={{ width: "100%" }}
-                          size="large"
-                          placeholder="选择日期"
+                          src={previewImage}
                         />
-                      )}
-                    </FormItem>
-                  </div>
-                );
-              default:
-                return "";
-            }
-          })}
-          <FormItem
-            key={"asfdasdf"}
-            style={{ pointerEvents: `${this.props.pointer ? "none" : ""}` }}
-          >
-            <Button
-              type="primary"
-              htmlType="submit"
-              disabled={Object.keys(getFieldsError()).some(
-                field => getFieldsError()[field]
-              )}
-              style={{
-                width: "100%",
-                border: "none",
-                color: btn_color,
-                background: btn_bg_color
-              }}
+                      </Modal>
+                    </div>
+                  );
+                case "radio":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "请选择" }]
+                          }
+                        )(
+                          <Radio.Group>
+                            {data.get("option").map((data, index) => {
+                              return (
+                                <Radio
+                                  value={data}
+                                  key={index}
+                                  style={{ color: opt_color }}
+                                >
+                                  {data}
+                                </Radio>
+                              );
+                            })}
+                          </Radio.Group>
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "input":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "name":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "email":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [
+                              {
+                                pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
+                                message: "邮箱格式错误"
+                              },
+                              { required: choose, message: "此项不能为空" }
+                            ]
+                          }
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "address":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "phone":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [
+                              {
+                                pattern: /^((1[3-8][0-9])+\d{8})$/,
+                                message: "手机号格式错误"
+                              },
+                              { required: choose, message: "此项不能为空" }
+                            ]
+                          }
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "mobile":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`
+                        )(
+                          <Input
+                            size="large"
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "select":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Select
+                            size="large"
+                            placeholder={`${data.getIn(["option", 0])}`}
+                          >
+                            {data.get("option").map((data, index) => {
+                              return (
+                                <Select.Option
+                                  value={data}
+                                  key={index}
+                                  style={{ color: opt_color }}
+                                >
+                                  {data}
+                                </Select.Option>
+                              );
+                            })}
+                          </Select>
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "textarea":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Input.TextArea
+                            size="large"
+                            rows={4}
+                            placeholder={data.getIn(["option", "value"])}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "rate":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(<Rate style={{ color: opt_color }}/>)}
+                      </FormItem>
+                    </div>
+                  );
+                case "checkbox":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <Checkbox.Group
+                            style={{ color: opt_color }}
+                            options={data.get("option").toJS()}
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                case "datePicker":
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        pointerEvents: `${this.props.pointer ? "none" : ""}`
+                      }}
+                    >
+                      <FormItem
+                        className={style.form_item}
+                        {...form_item_style(
+                          `${data.getIn(["title", "value"])}`,
+                          data.get("title_color")
+                        )}
+                      >
+                        {getFieldDecorator(
+                          `${data.get("form_id") ? data.get("form_id") : ""}`,
+                          {
+                            rules: [{ required: choose, message: "此项不能为空" }]
+                          }
+                        )(
+                          <DatePicker
+                            style={{ width: "100%" }}
+                            size="large"
+                            placeholder="选择日期"
+                          />
+                        )}
+                      </FormItem>
+                    </div>
+                  );
+                default:
+                  return "";
+              }
+            })}
+            <FormItem
+              key={"asfdasdf"}
+              style={{ pointerEvents: `${this.props.pointer ? "none" : ""}` }}
             >
-              {customize.getIn(["btn_content", "value"])}
-            </Button>
-          </FormItem>
-        </Form>
-      </ImgAtom>
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={Object.keys(getFieldsError()).some(
+                  field => getFieldsError()[field]
+                )}
+                style={{
+                  width: "100%",
+                  border: "none",
+                  color: btn_color,
+                  background: btn_bg_color
+                }}
+              >
+                {customize.getIn(["btn_content", "value"])}
+              </Button>
+            </FormItem>
+          </Form>
+        </ImgAtom>
+      </React.Fragment>
     );
   }
 }

@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react';
-import { Layout } from 'antd';
-import { connect } from 'react-redux';
-import HeaderPreviewView from './header/header';
-import PhoneCommonView from './content/phone';
-import EditorPreviewView from './editor/editor';
-import { access_api } from '../../api/access.api';
-import { redux_action } from '../../redux/action';
-import style from './preview.module.scss';
+import React, { PureComponent } from "react";
+import { Layout } from "antd";
+import { connect } from "react-redux";
+import HeaderPreviewView from "./header/header";
+import PhoneCommonView from "./content/phone";
+import EditorPreviewView from "./editor/editor";
+import { access_api } from "../../api/access.api";
+import { redux_action } from "../../redux/action";
+import FormModel from "../../ui/form/model";
+
+import style from "./preview.module.scss";
 
 class PreviewView extends PureComponent {
   /**
@@ -16,7 +18,7 @@ class PreviewView extends PureComponent {
   componentWillMount() {
     access_api(this.props.sid, this.props.state, this.props.upData)
       .then(() => {
-        return '';
+        return "";
       })
       .catch(error => {
         window.location.href = error;
@@ -29,30 +31,31 @@ class PreviewView extends PureComponent {
    */
   componentDidMount() {
     try {
-      document.getElementById('h5_audio').play();
+      document.getElementById("h5_audio").play();
     } catch (error) {
-      return '';
+      return "";
     }
   }
 
   render() {
     return (
       <div className={style.layout}>
+        <FormModel/>
         <Layout.Header className={style.header}>
-          <HeaderPreviewView />
+          <HeaderPreviewView/>
         </Layout.Header>
-        <Layout style={{ height: 'calc(100% - 48px)' }}>
+        <Layout style={{ height: "calc(100% - 48px)" }}>
           <Layout.Content className={style.side}>
-            <PhoneCommonView />
+            <PhoneCommonView/>
           </Layout.Content>
           <Layout.Sider className={style.side} width={450}>
             <div className={style.scrollbar}>
-              <EditorPreviewView />
+              <EditorPreviewView/>
             </div>
           </Layout.Sider>
           <Layout.Content className={style.content_mobile}>
             <div className={style.scrollbar}>
-              <EditorPreviewView />
+              <EditorPreviewView/>
             </div>
           </Layout.Content>
         </Layout>
@@ -61,13 +64,23 @@ class PreviewView extends PureComponent {
   }
 }
 
+
+const mapStateToProps = state => {
+  return {
+
+    // 当前操作组件
+    formModel_value: state.formModle_rdc
+  };
+};
+
+
 const mapDispatchToProps = dispatch => {
   return {
-    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
+    upData: (name, data, meta) => dispatch(redux_action(name, data, meta))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PreviewView);
