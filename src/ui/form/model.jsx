@@ -16,7 +16,7 @@ class FormModel extends React.PureComponent {
         <div className="modal-content">
           <div style={{ padding: "10px" }}>
             <div className={"flex_center"} style={{ marginTop: "20px" }}>
-              <Icon style={{ color: "#51d4b2", fontSize: "30px" }} type="check-circle"/>
+              <Icon style={{ color: "#51d4b2", fontSize: "35px" }} type="check-circle"/>
             </div>
           </div>
           <div className={"flex_center"} style={{ marginBottom: "20px" }}>
