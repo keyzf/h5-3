@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URLSearchParams from 'url-search-params';
 
 // 测试成功✅
 export const system_api = (page, tid, pagecount = 24) => {

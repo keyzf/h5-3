@@ -1,4 +1,5 @@
 import axios from "axios";
+import URLSearchParams from 'url-search-params';
 
 export const user_api = (type, page) => {
   return new Promise((resolve, reject) => {

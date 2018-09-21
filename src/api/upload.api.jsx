@@ -1,4 +1,5 @@
 import axios from 'axios/index';
+import URLSearchParams from 'url-search-params';
 
 /**
  * 将用户操作的数据提交给后台

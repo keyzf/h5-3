@@ -10,10 +10,10 @@ class EditorVideo extends PureComponent {
     length: 0,
   };
   shareChange = e => {
-    const newstr = e.target.value.replace('width=', "width='100%'");
-    const newstrs = newstr.replace('height=', "height='100%'");
+    const ifram = e.target.value.replace("iframe", "iframe width=100% height=100%");
+    const newstr = ifram.replace('width=', "width=100%").replace('height=', "height=100%");
     this.sendAction(
-      this.props.data.get('data').setIn(['customize', 'share'], newstrs)
+      this.props.data.get('data').setIn(['customize', 'share'], newstr)
     );
   };
   sendAction = up_data => {
@@ -50,7 +50,7 @@ class EditorVideo extends PureComponent {
                 </a>
               </div>
               <br />
-              <TextArea rows={4} onChange={this.shareChange} />
+              <TextArea rows={4} onChange={this.shareChange}  value={ this.props.data.getIn(['data','customize', 'share'])}/>
               <div style={{ marginTop: '5px' }}>
                 <div>
                   支持的视频：<a

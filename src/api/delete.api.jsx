@@ -1,4 +1,5 @@
 import axios from 'axios/index';
+import URLSearchParams from 'url-search-params';
 
 export const delete_api = mid => {
   return new Promise((resolve) => {
