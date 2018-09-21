@@ -1,0 +1,8 @@
+{
+  "name": "e7wei-company",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AntoninSorrento/e7wei-company.git",
+  "author": "antoninsorrento <antonin.chenying@gmail.com>",
+  "license": "MIT"
+}
