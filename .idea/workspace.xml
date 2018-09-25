@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbbcf517-4826-4476-bccd-6417f471530f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ant_theme.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/global.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/layout.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/preview/preview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/release/release.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/visual/visual.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/web/preview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/web/release.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/parseUrl.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/random.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/rnd/ResizableRect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/rnd/components/StyledRect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/rnd/components/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/rnd/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/web/visual.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antGlobal.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/global.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobx/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/store.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -88,7 +55,7 @@
           <entry key="prettierignore" value="1" />
           <entry key="prettierrc" value="1" />
           <entry key="scss" value="98" />
-          <entry key="ts" value="89" />
+          <entry key="ts" value="90" />
           <entry key="tsx" value="984" />
           <entry key="yml" value="2" />
         </counts>
@@ -105,7 +72,7 @@
           <entry key="PLAIN_TEXT" value="29" />
           <entry key="SCSS" value="98" />
           <entry key="Scratch" value="3" />
-          <entry key="TypeScript" value="88" />
+          <entry key="TypeScript" value="89" />
           <entry key="TypeScript JSX" value="982" />
           <entry key="YAML" value="2" />
           <entry key="tsconfig" value="61" />
@@ -124,7 +91,7 @@
           <entry key="less" value="374" />
           <entry key="lessrc" value="1" />
           <entry key="scss" value="791" />
-          <entry key="ts" value="2442" />
+          <entry key="ts" value="2448" />
           <entry key="tsx" value="13793" />
         </counts>
       </usages-collector>
@@ -138,7 +105,7 @@
           <entry key="Less" value="377" />
           <entry key="PLAIN_TEXT" value="55" />
           <entry key="SCSS" value="791" />
-          <entry key="TypeScript" value="2442" />
+          <entry key="TypeScript" value="2448" />
           <entry key="TypeScript JSX" value="13790" />
           <entry key="tsconfig" value="75" />
         </counts>
@@ -154,10 +121,19 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="418">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="e#72#91#0" />
+                <element signature="e#146#165#0" />
+                <element signature="e#348#367#0" />
+                <element signature="e#424#445#0" />
+                <element signature="e#486#745#0" />
+                <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
+                <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,8 +227,8 @@
         <option value="$PROJECT_DIR$/src/layout/preview/preview.tsx" />
         <option value="$PROJECT_DIR$/index.tsx" />
         <option value="$PROJECT_DIR$/src/layout/visual/visual.tsx" />
-        <option value="$PROJECT_DIR$/src/mobx/store.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/mobx/store.ts" />
       </list>
     </option>
   </component>
@@ -293,6 +269,17 @@
             <path>
               <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
               <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mobx" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -382,12 +369,12 @@
       <workItem from="1537403647107" duration="33024000" />
       <workItem from="1537497192613" duration="1477000" />
       <workItem from="1537836935498" duration="112000" />
-      <workItem from="1537859491843" duration="5899000" />
+      <workItem from="1537859491843" duration="6081000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130478000" />
+    <option name="totallyTimeSpent" value="130660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -771,26 +758,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding>
-            <element signature="e#52#71#0" />
-            <element signature="e#122#141#0" />
-            <element signature="e#250#269#0" />
-            <element signature="e#396#417#0" />
-            <element signature="e#442#466#0" />
-            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
-            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#72#91#0" />
+            <element signature="e#146#165#0" />
+            <element signature="e#348#367#0" />
+            <element signature="e#424#445#0" />
+            <element signature="e#486#745#0" />
+            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
+            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+          </folding>
         </state>
       </provider>
     </entry>

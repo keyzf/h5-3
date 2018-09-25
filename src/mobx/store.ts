@@ -1,6 +1,5 @@
 import { observable, computed, action } from 'mobx';
 
-
 class Store {
 
   /**
@@ -22,10 +21,10 @@ class Store {
    * 全部数据更新
    */
   @action globalUpData = (info, url) => {
-    this.common = { version: info.version, ui: info.ui };
+    this.common = { version: info.version, ui: JSON.parse(info.ui) };
     this.release = { url: url, sid: info.sid, pv: info.pv };
     this.preview = { cover: info.cover, desc: info.desc, title: info.title };
-    this.component = { bg: info.bg, music: info.music };
+    this.component = { bg: JSON.parse(info.bg), music: JSON.parse(info.music) };
   };
 
   /**
@@ -34,7 +33,6 @@ class Store {
   @computed get unfinishedTodoCount() {
     return '';
   }
-
 }
 
 export default Store;
