@@ -2,13 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbbcf517-4826-4476-bccd-6417f471530f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/antGlobal.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/global.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ant_theme.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/layout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/preview/preview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/release/release.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/visual/visual.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/web/preview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/web/release.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/parseUrl.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/random.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/rnd/ResizableRect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/rnd/components/StyledRect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/rnd/components/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/rnd/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/antGlobal.334266f2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/web/visual.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/global.ec1d3f5b.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.postcssrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antGlobal.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,6 +52,7 @@
         <counts>
           <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -33,7 +60,7 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -45,42 +72,43 @@
         <counts>
           <entry key="babelrc" value="2" />
           <entry key="browserslistrc" value="9" />
-          <entry key="css" value="18" />
+          <entry key="css" value="21" />
           <entry key="editorconfig" value="1" />
           <entry key="env" value="2" />
           <entry key="eslintrc" value="1" />
-          <entry key="gitignore" value="12" />
-          <entry key="html" value="40" />
-          <entry key="js" value="90" />
-          <entry key="json" value="120" />
+          <entry key="gitignore" value="16" />
+          <entry key="html" value="55" />
+          <entry key="js" value="93" />
+          <entry key="json" value="129" />
           <entry key="jsx" value="115" />
-          <entry key="less" value="43" />
+          <entry key="less" value="65" />
+          <entry key="lessrc" value="2" />
           <entry key="lock" value="6" />
           <entry key="postcssrc" value="1" />
           <entry key="prettierignore" value="1" />
           <entry key="prettierrc" value="1" />
-          <entry key="scss" value="79" />
-          <entry key="ts" value="84" />
-          <entry key="tsx" value="932" />
+          <entry key="scss" value="98" />
+          <entry key="ts" value="89" />
+          <entry key="tsx" value="984" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
-          <entry key="CSS" value="18" />
-          <entry key="HTML" value="40" />
-          <entry key="JSON" value="65" />
+          <entry key="CSS" value="21" />
+          <entry key="HTML" value="55" />
+          <entry key="JSON" value="74" />
           <entry key="JSX Harmony" value="115" />
-          <entry key="JavaScript" value="90" />
-          <entry key="Less" value="43" />
-          <entry key="PLAIN_TEXT" value="25" />
-          <entry key="SCSS" value="79" />
+          <entry key="JavaScript" value="93" />
+          <entry key="Less" value="65" />
+          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="SCSS" value="98" />
           <entry key="Scratch" value="3" />
-          <entry key="TypeScript" value="83" />
-          <entry key="TypeScript JSX" value="930" />
+          <entry key="TypeScript" value="88" />
+          <entry key="TypeScript JSX" value="982" />
           <entry key="YAML" value="2" />
-          <entry key="tsconfig" value="59" />
+          <entry key="tsconfig" value="61" />
           <entry key="yarn.lock" value="6" />
         </counts>
       </usages-collector>
@@ -88,36 +116,37 @@
         <counts>
           <entry key="babelrc" value="18" />
           <entry key="css" value="24" />
-          <entry key="gitignore" value="47" />
-          <entry key="html" value="262" />
+          <entry key="gitignore" value="55" />
+          <entry key="html" value="275" />
           <entry key="js" value="288" />
-          <entry key="json" value="223" />
+          <entry key="json" value="234" />
           <entry key="jsx" value="440" />
-          <entry key="less" value="362" />
-          <entry key="scss" value="710" />
-          <entry key="ts" value="1965" />
-          <entry key="tsx" value="13387" />
+          <entry key="less" value="374" />
+          <entry key="lessrc" value="1" />
+          <entry key="scss" value="791" />
+          <entry key="ts" value="2442" />
+          <entry key="tsx" value="13793" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="24" />
-          <entry key="HTML" value="262" />
-          <entry key="JSON" value="166" />
+          <entry key="HTML" value="275" />
+          <entry key="JSON" value="178" />
           <entry key="JSX Harmony" value="440" />
           <entry key="JavaScript" value="288" />
-          <entry key="Less" value="365" />
-          <entry key="PLAIN_TEXT" value="47" />
-          <entry key="SCSS" value="710" />
-          <entry key="TypeScript" value="1965" />
-          <entry key="TypeScript JSX" value="13384" />
+          <entry key="Less" value="377" />
+          <entry key="PLAIN_TEXT" value="55" />
+          <entry key="SCSS" value="791" />
+          <entry key="TypeScript" value="2442" />
+          <entry key="TypeScript JSX" value="13790" />
           <entry key="tsconfig" value="75" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="PrettierLanguageServiceImpl" value="4" />
-          <entry key="TypeScriptServerServiceImpl" value="9" />
+          <entry key="PrettierLanguageServiceImpl" value="5" />
+          <entry key="TypeScriptServerServiceImpl" value="10" />
         </counts>
       </usages-collector>
     </session>
@@ -125,13 +154,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/index.tsx">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="264">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -143,9 +169,9 @@
       <list>
         <option value="HTML File" />
         <option value="Less File" />
-        <option value="TypeScript File" />
         <option value="SCSS File" />
         <option value="tsconfig.json" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -176,21 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/bg/bgUi.tsx" />
-        <option value="$PROJECT_DIR$/src/resources/bg/bgAtom.tsx" />
-        <option value="$PROJECT_DIR$/src/components/renderUi.jsx" />
-        <option value="$PROJECT_DIR$/src/components/renderUi.tsx" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/utils.js" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/ResizableRect.js" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/components/Rect/index.js" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/ResizableRect.ts" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/ResizableRect.tsx" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/components/Rect/StyledRect.js" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/src/components/Rect/index.tsx" />
-        <option value="$PROJECT_DIR$/src/utils/rnd/components/Rect/StyledRect.js" />
-        <option value="$PROJECT_DIR$/src/containers/canvasDraggable.tsx" />
-        <option value="$PROJECT_DIR$/src/context/add.ts" />
-        <option value="$PROJECT_DIR$/src/containers/draggable.tsx" />
         <option value="$PROJECT_DIR$/src/components/visual/content.tsx" />
         <option value="$PROJECT_DIR$/src/components/uiPosition.tsx" />
         <option value="$PROJECT_DIR$/src/resources/text/text.db.tsx" />
@@ -217,16 +228,31 @@
         <option value="$PROJECT_DIR$/.umirc.js" />
         <option value="$PROJECT_DIR$/src/dva.js" />
         <option value="$PROJECT_DIR$/src/pages/index.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.browserslistrc" />
         <option value="$PROJECT_DIR$/.postcssrc.js" />
         <option value="$PROJECT_DIR$/src/antGlobe.scss" />
-        <option value="$PROJECT_DIR$/src/global.scss" />
         <option value="$PROJECT_DIR$/src/index.ts" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/src/ant_global.less" />
+        <option value="$PROJECT_DIR$/src/layout/layout.scss" />
+        <option value="$PROJECT_DIR$/src/global.scss" />
+        <option value="$PROJECT_DIR$/src/antGlobal.less" />
+        <option value="$PROJECT_DIR$/antGlobal.less" />
+        <option value="$PROJECT_DIR$/.lessrc" />
+        <option value="$PROJECT_DIR$/public/ant_theme.less" />
+        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/routes/web/preview.tsx" />
+        <option value="$PROJECT_DIR$/src/routes/web/release.tsx" />
+        <option value="$PROJECT_DIR$/src/routes/web/visual.tsx" />
+        <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/index.tsx" />
+        <option value="$PROJECT_DIR$/src/layout/release/release.tsx" />
+        <option value="$PROJECT_DIR$/src/layout/preview/preview.tsx" />
+        <option value="$PROJECT_DIR$/index.tsx" />
+        <option value="$PROJECT_DIR$/src/layout/visual/visual.tsx" />
+        <option value="$PROJECT_DIR$/src/mobx/store.ts" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -244,7 +270,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -260,6 +286,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,7 +299,6 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,23 +312,23 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/routes/web" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/layout/release" />
+      <recent name="$PROJECT_DIR$/src/layout/preview" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/utils/rnd/components" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/uiPosition" />
-      <recent name="$PROJECT_DIR$/src/components/visual" />
-      <recent name="$PROJECT_DIR$/src/utils/rnd" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/containers" />
-      <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/resources/bg" />
-      <recent name="$PROJECT_DIR$/src/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -356,11 +382,12 @@
       <workItem from="1537403647107" duration="33024000" />
       <workItem from="1537497192613" duration="1477000" />
       <workItem from="1537836935498" duration="112000" />
+      <workItem from="1537859491843" duration="5899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124579000" />
+    <option name="totallyTimeSpent" value="130478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -369,7 +396,7 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" x="1074" y="34" width="274" height="782" id="Project" order="3" visible="true" weight="0.19375" />
+      <window_info active="true" content_ui="combo" x="1074" y="34" width="274" height="782" id="Project" order="3" visible="true" weight="0.19375" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32908458" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3487833" />
@@ -381,7 +408,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32908458" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50069445" side_tool="true" weight="0.36152956" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49930555" visible="true" weight="0.46002316" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49930555" weight="0.48783314" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -394,38 +421,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/text/exportData.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/containers/choosSideUi.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/pages/preview/preview.tsx" />
-    <entry file="file://$USER_HOME$/Desktop/react-resizable-rotatable-draggable-master/src/components/Rect/StyledRect.js" />
-    <entry file="file://$USER_HOME$/Desktop/src/utils/resizable/ResizableRect.js" />
-    <entry file="file://$USER_HOME$/Desktop/src/utils/resizable/components/Rect/StyledRect.js" />
-    <entry file="file://$PROJECT_DIR$/src/utils/rnd/components/StyledRect.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/resources/text/text.db.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/utils/rnd/ResizableRect.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/utils/rnd/components/index.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/components/visual/content.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/containers/draggable/dynamic.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/containers/saveBtn.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/context/context.ts" />
-    <entry file="file://$PROJECT_DIR$/src/containers/draggable/component-location.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/components/visual/draggable.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/containers/canvas.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/pages/visual/visual.tsx" />
-    <entry file="file://$PROJECT_DIR$/node_modules/url-search-params/build/url-search-params.node.js" />
-    <entry file="file://$PROJECT_DIR$/src/api/delete.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/form.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/save.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/system.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/system_list.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/upload.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/user.api.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/api/access.api.jsx" />
     <entry file="file://$PROJECT_DIR$/src/ui/video/video_editor.jsx" />
     <entry file="file://$PROJECT_DIR$/.editorconfig" />
     <entry file="file://$PROJECT_DIR$/src/pages/.umi/umi.js" />
     <entry file="file://$PROJECT_DIR$/src/pages/index.css" />
-    <entry file="file://$PROJECT_DIR$/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/.env" />
     <entry file="file://$PROJECT_DIR$/.eslintrc" />
     <entry file="file://$PROJECT_DIR$/.prettierignore" />
@@ -435,13 +434,6 @@
     <entry file="file://$PROJECT_DIR$/src/dva.js" />
     <entry file="file://$PROJECT_DIR$/.umirc.js" />
     <entry file="file://$PROJECT_DIR$/src/pages/index.js" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/yarn.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -449,54 +441,356 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.browserslistrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.browserslistrc" />
     <entry file="file://$PROJECT_DIR$/.postcssrc.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/antGlobal.less">
+    <entry file="file://$PROJECT_DIR$/src/ant_global.less">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/global.scss">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant_global.less">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/global.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <folding>
+            <element signature="e#33#47#0" />
+            <element signature="e#56#370#0" />
+            <element signature="e#105#110#0" />
+            <element signature="e#166#171#0" />
+            <element signature="e#227#232#0" />
+            <element signature="e#289#313#0" />
+            <element signature="e#344#368#0" />
+            <element signature="e#372#386#0" />
+            <element signature="e#391#724#0" />
+            <element signature="e#440#464#0" />
+            <element signature="e#520#544#0" />
+            <element signature="e#600#624#0" />
+            <element signature="e#681#686#0" />
+            <element signature="e#717#722#0" />
+            <element signature="e#726#738#0" />
+            <element signature="e#747#833#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/dist/antd.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/style/components.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/style/mixins/clearfix.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/style/mixins/iconfont.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/style/mixins/index.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/style/mixins/motion.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/dist/antd.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86149" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.lessrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/ant_theme.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/layout.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#8#121#0" />
+            <element signature="e#131#277#0" />
+            <element signature="e#288#1253#0" />
+            <element signature="e#840#927#0" />
+            <element signature="e#958#982#0" />
+            <element signature="e#1012#1036#0" />
+            <element signature="e#1072#1096#0" />
+            <element signature="e#1126#1150#0" />
+            <element signature="e#1181#1205#0" />
+            <element signature="e#1227#1251#0" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="176">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/ant_theme.25e14a85.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35594">
+          <folding>
+            <element signature="e#25749#28000#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/global.d4fddbfa.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/src.79dc3b9f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5520" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/visual.3d94c5a5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1381" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        <state relative-caret-position="110">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/routes/web/release.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+        <state relative-caret-position="242">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.tsx">
+    <entry file="file://$PROJECT_DIR$/src/routes/web/preview.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#236#398#0" />
+            <element signature="e#274#388#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/web/visual.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#236#386#0" />
+            <element signature="e#270#379#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/rnd/utils.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="43" column="11" lean-forward="true" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
+          <folding>
+            <element signature="e#126#279#0" />
+            <element signature="e#488#688#0" />
+            <element signature="e#562#594#0" />
+            <element signature="e#600#658#0" />
+            <element signature="e#749#960#0" />
+            <element signature="e#827#861#0" />
+            <element signature="e#867#929#0" />
+            <element signature="e#1066#6373#0" />
+            <element signature="e#1271#6218#0" />
+            <element signature="e#1291#1892#0" />
+            <element signature="e#1467#1742#0" />
+            <element signature="e#1748#1873#0" />
+            <element signature="e#1897#2506#0" />
+            <element signature="e#2253#2327#0" />
+            <element signature="e#2511#3096#0" />
+            <element signature="e#2843#2917#0" />
+            <element signature="e#3101#3710#0" />
+            <element signature="e#3285#3560#0" />
+            <element signature="e#3566#3691#0" />
+            <element signature="e#3715#4324#0" />
+            <element signature="e#4071#4145#0" />
+            <element signature="e#4329#4954#0" />
+            <element signature="e#4529#4804#0" />
+            <element signature="e#4810#4935#0" />
+            <element signature="e#4959#5592#0" />
+            <element signature="e#5339#5413#0" />
+            <element signature="e#5597#6214#0" />
+            <element signature="e#5805#6080#0" />
+            <element signature="e#6086#6195#0" />
+            <element signature="e#6229#6370#0" />
+            <element signature="e#6245#6281#0" />
+            <element signature="e#6293#6366#0" />
+            <element signature="e#6421#6875#0" />
+            <element signature="e#6583#6709#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="n#!!block;n#Props#0" />
+            <element signature="n#!!doc;n#vid#0;n#!!block;n#Props#0" />
+            <element signature="n#!!doc;n#state#0;n#!!block;n#Props#0" />
+            <element signature="n#App#0" />
+            <element signature="n#!!block;n#render#0;n#App#0" />
+            <element signature="e#382#410#0" />
+            <element signature="e#441#889#0" />
+            <element signature="e#464#539#0" />
+            <element signature="e#546#622#0" />
+            <element signature="e#629#705#0" />
+            <element signature="e#712#883#0" />
+            <element signature="e#752#872#0" />
+            <element signature="e#895#918#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/release/release.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="n#Release#0" />
+            <element signature="n#!!block;n#render#0;n#Release#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/preview/preview.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="n#!!block;n#Props#0" />
+            <element signature="n#Preview#0" />
+            <element signature="n#!!block;n#render#0;n#Preview#0" />
+            <element signature="e#296#885#0" />
+            <element signature="e#373#869#0" />
+            <element signature="e#435#851#0" />
+            <element signature="e#516#832#0" />
+            <element signature="e#552#732#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/parseUrl.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc;n#TypeInterFace#0" />
+            <element signature="n#!!block;n#TypeInterFace#0" />
+            <element signature="e#105#267#0" />
+            <element signature="e#545#602#0" />
+            <element signature="e#666#719#0" />
+            <element signature="e#768#790#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/visual/visual.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="n#!!block;n#Props#0" />
+            <element signature="n#Visual#0" />
+            <element signature="n#!!doc;n#componentDidMount#0;n#Visual#0" />
+            <element signature="n#!!block;n#componentDidMount#0;n#Visual#0" />
+            <element signature="n#!!block;n#render#0;n#Visual#0" />
+            <element signature="e#309#652#0" />
+            <element signature="e#387#636#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding>
+            <element signature="e#52#71#0" />
+            <element signature="e#122#141#0" />
+            <element signature="e#250#269#0" />
+            <element signature="e#396#417#0" />
+            <element signature="e#442#466#0" />
+            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
+            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>

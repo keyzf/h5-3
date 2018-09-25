@@ -7,20 +7,24 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel ./public/index.html  --no-cache",
-    "build": "parcel build ./src/index.tsx --no-source-maps"
+    "build": "parcel build ./public/index.html --no-source-maps"
   },
   "dependencies": {
     "antd": "^3.9.3",
+    "loadable-components": "^2.2.3",
+    "mobx": "^5.1.2",
+    "mobx-react": "^5.2.8",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-loadable-visibility": "^2.5.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
     "autoprefixer": "^9.1.5",
-    "less": "^3.8.1",
+    "less": "2.7.3",
+    "node-sass": "^4.9.3",
     "parcel-bundler": "^1.9.7",
-    "sass": "^1.14.0",
     "typescript": "^3.0.3"
   },
   "browserslist": [
