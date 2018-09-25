@@ -5,8 +5,29 @@
   "repository": "https://github.com/AntoninSorrento/e7wei-company.git",
   "author": "antoninsorrento <antonin.chenying@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel ./public/index.html  --no-cache",
+    "build": "parcel build ./src/index.tsx --no-source-maps"
+  },
+  "dependencies": {
+    "antd": "^3.9.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
   "devDependencies": {
-    "parcel": "^1.9.7",
-    "parcel-bundler": "^1.9.7"
-  }
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "autoprefixer": "^9.1.5",
+    "less": "^3.8.1",
+    "parcel-bundler": "^1.9.7",
+    "sass": "^1.14.0",
+    "typescript": "^3.0.3"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "Android >= 3.2",
+    "Firefox >= 20",
+    "iOS 7"
+  ]
 }
