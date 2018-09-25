@@ -22,13 +22,13 @@ import style from "./form.module.scss";
 import { redux_action } from "../../../redux/action";
 import { FormModel } from "../model";
 
-class CoreForm extends React.Component {
+class CoreForm extends React.PureComponent {
   state = {
     previewVisible: false, // 图片预览控制
     previewImage: "", // 预览图片
     show: false,
-    date: "",
-    img: ""
+    img: [],
+    date: []
   };
 
   /**
@@ -70,15 +70,18 @@ class CoreForm extends React.Component {
   /**
    * 文件上传变更
    * @param info
+   * @param form_id
    */
-  handleChange = info => {
+  handleChange = (form_id, info) => {
     if (info.file.status === "done") {
       if (info.file.response.error) {
         message.error(info.file.response.msg);
       } else {
         message.success(`${info.file.name} 文件上传成功.`);
+        let img = this.state.img;
+        img.push({ form_id: form_id, url: info.file.response.url });
         this.setState({
-          img: info.file.response.url
+          img: img
         });
       }
     }
@@ -86,9 +89,30 @@ class CoreForm extends React.Component {
 
   /**
    * 图片删除
+   * @param form_id
+   * @returns {boolean}
    */
-  onRemove = () => {
-    this.setState({ img: "" });
+  onRemove = form_id => {
+    let img_data = this.state.img;
+    let count = "";
+    img_data.map((data, index) => {
+      if (data.form_id === form_id) {
+        count = index;
+      }
+    });
+    img_data.splice(count, 1);
+    this.setState({
+      img: img_data
+    });
+  };
+
+  //修改日期数据
+  date = (form_id, info) => {
+    let date = this.state.date;
+    date.push({ form_id: form_id, date: info.format("LL") });
+    this.setState({
+      date: date
+    });
   };
 
   handleSubmit = e => {
@@ -114,10 +138,24 @@ class CoreForm extends React.Component {
               }
             });
           }
+          if (h5_data.get("type") === "datePicker") {
+            this.state.date.map(data => {
+              if (data.form_id === h5_data.get("form_id")) {
+                from.push({
+                  form_id: h5_data.get("form_id"),
+                  value: data.date
+                });
+              }
+            });
+          }
           if (h5_data.get("type") === "upload") {
-            from.push({
-              form_id: h5_data.get("form_id"),
-              value: this.state.img ? this.state.img : ""
+            this.state.img.map(data => {
+              if (data.form_id === h5_data.get("form_id")) {
+                from.push({
+                  form_id: h5_data.get("form_id"),
+                  value: data.url
+                });
+              }
             });
           }
           if (h5_data.get("type") === "checkbox") {
@@ -147,12 +185,7 @@ class CoreForm extends React.Component {
               }
             });
           }
-          if (h5_data.get("type") === "datePicker") {
-            from.push({
-              form_id: h5_data.get("form_id"),
-              value: this.state.date ? this.state.date.format("LL") : ""
-            });
-          }
+
           if (h5_data.get("type") === "name") {
             data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
@@ -212,6 +245,7 @@ class CoreForm extends React.Component {
 
   render() {
     const FormItem = Form.Item;
+    const { previewVisible, previewImage } = this.state;
     const { getFieldDecorator, getFieldsError } = this.props.form;
     const advance = this.props.data.get("advance");
     const customize = this.props.data.get("customize");
@@ -236,7 +270,18 @@ class CoreForm extends React.Component {
         wrapperCol: { lg: { span: 24 } }
       };
     };
-    const { previewVisible, previewImage } = this.state;
+
+    // 检索是否存在上传
+    const isUplaod = form_id => {
+      let show = false;
+      this.state.img.map(img_data => {
+        if (img_data.form_id === form_id) {
+          show = true;
+        }
+      });
+      return show;
+    };
+
 
     return (
       <ImgAtom {...advanced_settings}>
@@ -277,14 +322,20 @@ class CoreForm extends React.Component {
                           action={`${window.location.origin}/View/uploadify`}
                           listType="picture-card"
                           data={{ type: 1 }}
-                          beforeUpload={this.beforeUpload.bind(this)}
+                          beforeUpload={this.beforeUpload}
                           onPreview={this.handlePreview}
-                          onRemove={this.onRemove}
-                          onChange={this.handleChange}
+                          onRemove={this.onRemove.bind(
+                            this,
+                            data.get("form_id")
+                          )}
+                          onChange={this.handleChange.bind(
+                            this,
+                            data.get("form_id")
+                          )}
                         >
-                          {this.state.img ? null : (
+                          {isUplaod(data.get("form_id")) ? null : (
                             <div>
-                              <Icon type="plus" />
+                              <Icon type="plus"/>
                               <div className="ant-upload-text">
                                 点击上传图片
                               </div>
@@ -293,6 +344,17 @@ class CoreForm extends React.Component {
                         </Upload>
                       )}
                     </FormItem>
+                    <Modal
+                      visible={previewVisible}
+                      footer={null}
+                      onCancel={this.handleCancel}
+                    >
+                      <img
+                        alt="UpImgByUser"
+                        style={{ width: "100%" }}
+                        src={previewImage}
+                      />
+                    </Modal>
                   </div>
                 );
               case "radio":
@@ -607,7 +669,7 @@ class CoreForm extends React.Component {
                         {
                           rules: [{ required: choose, message: "此项不能为空" }]
                         }
-                      )(<Rate style={{ color: opt_color }} />)}
+                      )(<Rate style={{ color: opt_color }}/>)}
                     </FormItem>
                   </div>
                 );
@@ -656,12 +718,10 @@ class CoreForm extends React.Component {
                       )}
                     >
                       <DatePicker
+                        onChange={this.date.bind(this, data.get("form_id"))}
                         style={{ width: "100%" }}
-                        onChange={data => {
-                          this.setState({ date: data });
-                        }}
                         size="large"
-                        placeholder="请选择日期"
+                        placeholder="选择日期"
                       />
                     </FormItem>
                   </div>
@@ -689,13 +749,6 @@ class CoreForm extends React.Component {
             </Button>
           </FormItem>
         </Form>
-        <Modal
-          visible={previewVisible}
-          footer={null}
-          onCancel={this.handleCancel}
-        >
-          <img alt="UpImgByUser" style={{ width: "100%" }} src={previewImage} />
-        </Modal>
       </ImgAtom>
     );
   }
