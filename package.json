@@ -2,7 +2,7 @@
   "name": "e7wei-company",
   "version": "0.8x.0",
   "private": true,
-  "homepage": "/Public/Long/",
+  "homepage": "/Apps/Test/View/Create/",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "antd": "^3.7.1",
