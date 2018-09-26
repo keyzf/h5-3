@@ -11,7 +11,7 @@ class Store {
    */
   @observable release = { url: null, sid: null, pv: null };
   @observable preview = { cover: null, desc: null, title: null };
-  @observable visual = { editor: '', choose_ui: '' };
+  @observable visual = { editor: '', choose: '', img: {} };
   /**
    * 组件数据
    */

@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbbcf517-4826-4476-bccd-6417f471530f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src.c0949e97.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mobx/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/store.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -56,7 +60,7 @@
           <entry key="prettierrc" value="1" />
           <entry key="scss" value="98" />
           <entry key="ts" value="90" />
-          <entry key="tsx" value="984" />
+          <entry key="tsx" value="988" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
@@ -73,7 +77,7 @@
           <entry key="SCSS" value="98" />
           <entry key="Scratch" value="3" />
           <entry key="TypeScript" value="89" />
-          <entry key="TypeScript JSX" value="982" />
+          <entry key="TypeScript JSX" value="986" />
           <entry key="YAML" value="2" />
           <entry key="tsconfig" value="61" />
           <entry key="yarn.lock" value="6" />
@@ -91,7 +95,7 @@
           <entry key="less" value="374" />
           <entry key="lessrc" value="1" />
           <entry key="scss" value="791" />
-          <entry key="ts" value="2448" />
+          <entry key="ts" value="2461" />
           <entry key="tsx" value="13793" />
         </counts>
       </usages-collector>
@@ -105,7 +109,7 @@
           <entry key="Less" value="377" />
           <entry key="PLAIN_TEXT" value="55" />
           <entry key="SCSS" value="791" />
-          <entry key="TypeScript" value="2448" />
+          <entry key="TypeScript" value="2461" />
           <entry key="TypeScript JSX" value="13790" />
           <entry key="tsconfig" value="75" />
         </counts>
@@ -121,18 +125,15 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
+        <entry file="file://$PROJECT_DIR$/src/layout/release/release.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="132">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#72#91#0" />
-                <element signature="e#146#165#0" />
-                <element signature="e#348#367#0" />
-                <element signature="e#424#445#0" />
-                <element signature="e#486#745#0" />
-                <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
-                <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+                <element signature="n#!!block;n#Props#0" />
+                <element signature="n#Release#0" />
+                <element signature="n#!!block;n#render#0;n#Release#0" />
+                <element signature="e#176#217#0" />
               </folding>
             </state>
           </provider>
@@ -246,7 +247,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -279,7 +280,28 @@
               <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
               <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="mobx" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="preview" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="release" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="visual" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -369,12 +391,12 @@
       <workItem from="1537403647107" duration="33024000" />
       <workItem from="1537497192613" duration="1477000" />
       <workItem from="1537836935498" duration="112000" />
-      <workItem from="1537859491843" duration="6081000" />
+      <workItem from="1537859491843" duration="6622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130660000" />
+    <option name="totallyTimeSpent" value="131201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -689,34 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/layout/release/release.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <element signature="n#Release#0" />
-            <element signature="n#!!block;n#render#0;n#Release#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/layout/preview/preview.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="n#!!block;n#Props#0" />
-            <element signature="n#Preview#0" />
-            <element signature="n#!!block;n#render#0;n#Preview#0" />
-            <element signature="e#296#885#0" />
-            <element signature="e#373#869#0" />
-            <element signature="e#435#851#0" />
-            <element signature="e#516#832#0" />
-            <element signature="e#552#732#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/parseUrl.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -742,6 +736,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <element signature="e#72#91#0" />
+            <element signature="e#146#165#0" />
+            <element signature="e#348#367#0" />
+            <element signature="e#424#445#0" />
+            <element signature="e#486#745#0" />
+            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
+            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/preview/preview.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="n#!!block;n#Props#0" />
+            <element signature="n#Preview#0" />
+            <element signature="n#!!block;n#render#0;n#Preview#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/layout/visual/visual.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -752,31 +781,19 @@
             <element signature="n#!!doc;n#componentDidMount#0;n#Visual#0" />
             <element signature="n#!!block;n#componentDidMount#0;n#Visual#0" />
             <element signature="n#!!block;n#render#0;n#Visual#0" />
-            <element signature="e#309#652#0" />
-            <element signature="e#387#636#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/layout/release/release.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="132">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
-            <element signature="e#72#91#0" />
-            <element signature="e#146#165#0" />
-            <element signature="e#348#367#0" />
-            <element signature="e#424#445#0" />
-            <element signature="e#486#745#0" />
-            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
-            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+            <element signature="n#!!block;n#Props#0" />
+            <element signature="n#Release#0" />
+            <element signature="n#!!block;n#render#0;n#Release#0" />
+            <element signature="e#176#217#0" />
           </folding>
         </state>
       </provider>
