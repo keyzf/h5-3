@@ -1,20 +1,26 @@
 import * as React from 'react';
 import Layout from 'antd/lib/layout';
 import Card from 'antd/lib/card';
+import PreviewHeader from '../../components/preview/header';
+import PreviewContent from '../../components/preview/content';
 
 interface Props {
   vid: string;
   state: string;
 }
 
-class Preview extends React.PureComponent<Props, null> {
+class Preview extends React.Component<Props, null> {
   render() {
     const { Header, Sider, Content } = Layout;
     return (
       <Layout className={'layout'}>
-        <Header className={'header'}/>
+        <Header className={'header'}>
+          <PreviewHeader vid={this.props.vid}/>
+        </Header>
         <Layout>
-          <Content className={'content'}/>
+          <Content className={'content'}>
+            <PreviewContent/>
+          </Content>
           <Sider theme={'light'} width={360} breakpoint={'md'} trigger={null}>
             <Card title="微信显示效果">
               <img

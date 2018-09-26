@@ -13,7 +13,7 @@ const zoomableMap = {
   sw: "bl"
 };
 
-export default class Rect extends React.PureComponent<any, any> {
+export default class Rect extends React.Component<any, any> {
   private $element: any;
 
   private _isMouseDown: boolean;

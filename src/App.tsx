@@ -14,7 +14,7 @@ interface Props {
   state: string;
 }
 
-class App extends React.PureComponent<Props, null> {
+class App extends React.Component<Props, null> {
   render() {
     const { vid, state } = this.props;
 
