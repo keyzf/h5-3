@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import MxStore from '../../mobx/store';
-import BgUi from '../../resources/bg/bgUi';
 import RenderUiLoadable from '../../routes/components/renderUi';
+import BgUi from '../../resources/bg/bgUi';
+import UiPosition from '../common/uiPosition';
+import Draggable from './draggable';
 
 
 @observer
@@ -23,7 +25,21 @@ class Canvas extends React.Component<any, any> {
             };
             base: { html };
           }, index: number) => {
-            return <RenderUiLoadable {...data}/>;
+            return MxStore.visual.choose === index ? (
+              <Draggable{...data.position} index={index} key={index} uiData={{ ...data }}>
+                <RenderUiLoadable {...data}/>
+              </Draggable>
+            ) : (
+              <UiPosition
+                key={index}
+                onClick={() => MxStore.chooseUi(data, index)}
+                {...data.position}
+              >
+                <div style={{ pointerEvents: 'none', userSelect: 'none' }}>
+                  <RenderUiLoadable {...data}/>
+                </div>
+              </UiPosition>
+            );
           },
         )}
       </BgUi>

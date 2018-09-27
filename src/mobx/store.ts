@@ -1,5 +1,5 @@
-import { observable, computed, action } from "mobx";
-import $$bg_db from "../resources/bg/bg.db";
+import { observable, computed, action } from 'mobx';
+import $$bg_db from '../resources/bg/bg.db';
 
 class Store {
   /**
@@ -32,16 +32,60 @@ class Store {
    */
   @action addUi = data => {
     let new_ui = this.common.ui;
+    console.log(new_ui);
     new_ui.push(data);
     this.visual = {
       editor: data,
       choose: this.common.ui.length - 1,
-      img: this.visual.img
+      img: this.visual.img,
     };
     this.common = {
       version: this.common.version,
-      ui: new_ui
+      ui: new_ui,
     };
+  };
+  /**
+   * 修改editor与choose的值
+   * @param data
+   * @param index
+   */
+  @action chooseUi = (data, index) => {
+    this.visual = {
+      editor: data,
+      choose: index,
+      img: this.visual.img,
+    };
+  };
+  /**
+   * 修改ui中某一项的值
+   * @param data
+   * @param index
+   */
+  @action editorUiItem = (data, index) => {
+    let new_ui = this.common.ui;
+    new_ui[index] = data;
+    this.common.ui = new_ui;
+  };
+  /**
+   * 修改ui组件位置与删除
+   * @param name
+   * @param index
+   */
+  @action optUi = (name: string, index) => {
+    // let new_ui = this.common.ui;
+    this.common = { version: null, ui: [] };
+    this.visual = { editor: {}, choose: 0, img: {} };
+    console.log(this.common.ui);
+    console.log(name, index);
+    // switch (name) {
+    //   case 'delete':
+    //     let new_ui = this.common.ui;
+    //     console.log(new_ui);
+    //     new_ui.splice(index + 1, 1);
+    //     console.log(new_ui);
+    //     return this.common.ui = new_ui;
+    // }
+
   };
 
   /**
@@ -49,7 +93,7 @@ class Store {
    */
   @computed
   get unfinishedTodoCount() {
-    return "";
+    return '';
   }
 }
 
