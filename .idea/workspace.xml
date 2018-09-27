@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbbcf517-4826-4476-bccd-6417f471530f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/uiPosition.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/visual/draggable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/visual/canvas.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/visual/canvas.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mobx/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/text/chooseText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/text/chooseText.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -63,8 +59,8 @@
           <entry key="prettierignore" value="1" />
           <entry key="prettierrc" value="1" />
           <entry key="scss" value="126" />
-          <entry key="ts" value="146" />
-          <entry key="tsx" value="1484" />
+          <entry key="ts" value="149" />
+          <entry key="tsx" value="1498" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
@@ -80,8 +76,8 @@
           <entry key="PLAIN_TEXT" value="29" />
           <entry key="SCSS" value="126" />
           <entry key="Scratch" value="3" />
-          <entry key="TypeScript" value="145" />
-          <entry key="TypeScript JSX" value="1482" />
+          <entry key="TypeScript" value="148" />
+          <entry key="TypeScript JSX" value="1496" />
           <entry key="YAML" value="2" />
           <entry key="tsconfig" value="61" />
           <entry key="yarn.lock" value="6" />
@@ -99,8 +95,8 @@
           <entry key="less" value="417" />
           <entry key="lessrc" value="1" />
           <entry key="scss" value="911" />
-          <entry key="ts" value="3697" />
-          <entry key="tsx" value="18169" />
+          <entry key="ts" value="3877" />
+          <entry key="tsx" value="18172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -113,15 +109,15 @@
           <entry key="Less" value="420" />
           <entry key="PLAIN_TEXT" value="55" />
           <entry key="SCSS" value="911" />
-          <entry key="TypeScript" value="3697" />
-          <entry key="TypeScript JSX" value="18166" />
+          <entry key="TypeScript" value="3877" />
+          <entry key="TypeScript JSX" value="18169" />
           <entry key="tsconfig" value="75" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
           <entry key="PrettierLanguageServiceImpl" value="7" />
-          <entry key="TypeScriptServerServiceImpl" value="12" />
+          <entry key="TypeScriptServerServiceImpl" value="13" />
         </counts>
       </usages-collector>
     </session>
@@ -131,25 +127,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
+            <state relative-caret-position="154">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
               <folding>
+                <element signature="n#Store#0" />
                 <element signature="e#115#134#0" />
                 <element signature="e#187#206#0" />
                 <element signature="e#394#413#0" />
-                <element signature="e#480#501#0" />
-                <element signature="e#542#837#0" />
-                <element signature="e#841#900#0" />
-                <element signature="e#1003#1099#0" />
-                <element signature="e#1119#1180#0" />
-                <element signature="e#1189#1256#0" />
-                <element signature="e#1295#1396#0" />
-                <element signature="e#1315#1391#0" />
-                <element signature="e#1400#1460#0" />
-                <element signature="e#1503#1596#0" />
-                <element signature="e#1600#1661#0" />
-                <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
-                <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+                <element signature="e#482#503#0" />
+                <element signature="e#544#839#0" />
+                <element signature="e#843#902#0" />
+                <element signature="e#929#1048#0" />
+                <element signature="e#1052#1119#0" />
+                <element signature="e#1158#1259#0" />
+                <element signature="e#1178#1254#0" />
+                <element signature="e#1263#1323#0" />
+                <element signature="e#1366#1459#0" />
+                <element signature="e#1463#1524#0" />
+                <element signature="e#1568#1963#0" />
+                <element signature="e#1573#1787#0" />
+                <element signature="e#1595#1666#0" />
+                <element signature="n#!!doc;n#ui#0;n#Store#0" />
+                <element signature="n#!!block;n#ui#0;n#Store#0" />
+                <element signature="n#!!doc;n#choose#0;n#Store#0" />
+                <element signature="n#!!block;n#choose#0;n#Store#0" />
               </folding>
             </state>
           </provider>
@@ -233,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/resources/text/ui/paragraph/paragraph_17.text.tsx" />
         <option value="$PROJECT_DIR$/src/resources/text/ui/paragraph/pargaraph_18.text.tsx" />
         <option value="$PROJECT_DIR$/src/routes/ui/text/paragraph.tsx" />
-        <option value="$PROJECT_DIR$/src/resources/text/chooseText.tsx" />
         <option value="$PROJECT_DIR$/src/components/preview/header.tsx" />
         <option value="$PROJECT_DIR$/src/layout/preview/preview.tsx" />
         <option value="$PROJECT_DIR$/src/components/preview/content.tsx" />
@@ -250,8 +250,9 @@
         <option value="$PROJECT_DIR$/src/resources/text/ui/paragraph/_ParagraphText.tsx" />
         <option value="$PROJECT_DIR$/src/components/common/uiPosition.tsx" />
         <option value="$PROJECT_DIR$/src/components/canvas.tsx" />
-        <option value="$PROJECT_DIR$/src/components/visual/canvas.tsx" />
         <option value="$PROJECT_DIR$/src/components/visual/draggable.tsx" />
+        <option value="$PROJECT_DIR$/src/resources/text/chooseText.tsx" />
+        <option value="$PROJECT_DIR$/src/components/visual/canvas.tsx" />
         <option value="$PROJECT_DIR$/src/mobx/store.ts" />
       </list>
     </option>
@@ -296,6 +297,17 @@
             <path>
               <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
               <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="e7wei-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="e7wei-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mobx" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -394,7 +406,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155477000" />
+    <option name="totallyTimeSpent" value="157728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -428,13 +440,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/text/ui/title/title_6.text.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/text/text.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -648,13 +653,6 @@
     <entry file="file://$PROJECT_DIR$/src/mobx/adapter/bgAdapter.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visual/content.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/bg/bg.db.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -681,13 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/text/chooseText.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -744,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/text/ui/paragraph/_ParagraphText.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mobx/adapter/textAdapter.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -768,73 +752,168 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/canvas.tsx">
+    <entry file="file://$PROJECT_DIR$/src/components/canvas.tsx" />
+    <entry file="file://$PROJECT_DIR$/src/components/visual/content.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        <state relative-caret-position="176">
+          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visual/canvas.tsx">
+    <entry file="file://$PROJECT_DIR$/src/components/visual/sider.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="14" />
+        <state relative-caret-position="110">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
           <folding>
-            <element signature="n#Canvas#0" />
-            <element signature="n#!!block;n#render#0;n#Canvas#0" />
-            <element signature="e#479#763#0" />
-            <element signature="e#533#722#0" />
+            <element signature="n#VisualSider#0" />
+            <element signature="n#!!block;n#render#0;n#VisualSider#0" />
+            <element signature="e#211#2371#0" />
+            <element signature="e#328#737#0" />
+            <element signature="e#359#406#0" />
+            <element signature="e#456#667#0" />
+            <element signature="e#477#610#0" />
+            <element signature="e#746#1137#0" />
+            <element signature="e#777#824#0" />
+            <element signature="e#874#1079#0" />
+            <element signature="e#895#1022#0" />
+            <element signature="e#1146#1543#0" />
+            <element signature="e#1177#1224#0" />
+            <element signature="e#1274#1485#0" />
+            <element signature="e#1295#1428#0" />
+            <element signature="e#1552#1950#0" />
+            <element signature="e#1583#1630#0" />
+            <element signature="e#1680#1892#0" />
+            <element signature="e#1701#1835#0" />
+            <element signature="e#1959#2357#0" />
+            <element signature="e#1990#2037#0" />
+            <element signature="e#2087#2299#0" />
+            <element signature="e#2108#2242#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/text/chooseText.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!block;n#State#0" />
+            <element signature="e#411#435#0" />
+            <element signature="e#440#490#0" />
+            <element signature="e#529#636#0" />
+            <element signature="e#551#588#0" />
+            <element signature="e#595#630#0" />
+            <element signature="e#750#916#0" />
+            <element signature="e#758#910#0" />
+            <element signature="e#793#839#0" />
+            <element signature="e#848#902#0" />
+            <element signature="e#937#1872#0" />
+            <element signature="e#973#1136#0" />
+            <element signature="e#1145#1304#0" />
+            <element signature="e#1332#1807#0" />
+            <element signature="e#1377#1575#0" />
+            <element signature="e#1419#1482#0" />
+            <element signature="e#1586#1792#0" />
+            <element signature="e#1628#1695#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/text/ui/paragraph/_ParagraphText.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="62" column="14" lean-forward="true" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+          <folding>
+            <element signature="e#1809#1993#0" />
+            <element signature="e#2002#2186#0" />
+            <element signature="e#2195#2379#0" />
+            <element signature="e#2388#2572#0" />
+            <element signature="e#2581#2765#0" />
+            <element signature="e#2774#2958#0" />
+            <element signature="e#2967#3151#0" />
+            <element signature="e#3160#3344#0" />
+            <element signature="e#3353#3540#0" />
+            <element signature="e#3549#3736#0" />
+            <element signature="e#3745#3932#0" />
+            <element signature="e#3941#4128#0" />
+            <element signature="e#4137#4324#0" />
+            <element signature="e#4333#4520#0" />
+            <element signature="e#4529#4716#0" />
+            <element signature="e#4725#4912#0" />
+            <element signature="e#4921#5108#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/visual/draggable.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="62" column="47" lean-forward="true" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+        <state relative-caret-position="374">
+          <caret line="88" column="6" lean-forward="true" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
           <folding>
             <element signature="n#!!block;n#Props#0" />
             <element signature="n#!!block;n#uiData#0;n#!!block;n#Props#0" />
             <element signature="n#!!block;n#position#0;n#!!block;n#uiData#0;n#!!block;n#Props#0" />
             <element signature="n#!!doc;n#onKeyDown#0;n#Draggable#0" />
             <element signature="n#!!block;n#onKeyDown#0;n#Draggable#0" />
-            <element signature="e#776#1209#0" />
-            <element signature="e#805#867#0" />
-            <element signature="e#874#952#0" />
-            <element signature="e#959#1035#0" />
-            <element signature="e#1042#1120#0" />
-            <element signature="e#1127#1203#0" />
-            <element signature="e#1651#1788#0" />
-            <element signature="e#1826#2014#0" />
-            <element signature="n#!!block;n#render#0;n#Draggable#0" />
-            <element signature="e#2119#2760#0" />
-            <element signature="e#2440#2737#0" />
-            <element signature="e#2462#2679#0" />
+            <element signature="e#772#1205#0" />
+            <element signature="e#801#863#0" />
+            <element signature="e#870#948#0" />
+            <element signature="e#955#1031#0" />
+            <element signature="e#1038#1116#0" />
+            <element signature="e#1123#1199#0" />
+            <element signature="e#1285#1612#0" />
+            <element signature="e#1647#1784#0" />
+            <element signature="e#1822#2010#0" />
+            <element signature="e#2436#2733#0" />
+            <element signature="e#2458#2675#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/visual/canvas.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="n#Canvas#0" />
+            <element signature="n#!!block;n#render#0;n#Canvas#0" />
+            <element signature="e#397#1409#0" />
+            <element signature="e#472#756#0" />
+            <element signature="e#526#715#0" />
+            <element signature="e#776#1383#0" />
+            <element signature="e#847#996#0" />
+            <element signature="e#1029#1356#0" />
+            <element signature="e#1198#1328#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mobx/store.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
+        <state relative-caret-position="154">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
           <folding>
+            <element signature="n#Store#0" />
             <element signature="e#115#134#0" />
             <element signature="e#187#206#0" />
             <element signature="e#394#413#0" />
-            <element signature="e#480#501#0" />
-            <element signature="e#542#837#0" />
-            <element signature="e#841#900#0" />
-            <element signature="e#1003#1099#0" />
-            <element signature="e#1119#1180#0" />
-            <element signature="e#1189#1256#0" />
-            <element signature="e#1295#1396#0" />
-            <element signature="e#1315#1391#0" />
-            <element signature="e#1400#1460#0" />
-            <element signature="e#1503#1596#0" />
-            <element signature="e#1600#1661#0" />
-            <element signature="n#!!doc;n#unfinishedTodoCount#0;n#Store#0" />
-            <element signature="n#!!block;n#unfinishedTodoCount#0;n#Store#0" />
+            <element signature="e#482#503#0" />
+            <element signature="e#544#839#0" />
+            <element signature="e#843#902#0" />
+            <element signature="e#929#1048#0" />
+            <element signature="e#1052#1119#0" />
+            <element signature="e#1158#1259#0" />
+            <element signature="e#1178#1254#0" />
+            <element signature="e#1263#1323#0" />
+            <element signature="e#1366#1459#0" />
+            <element signature="e#1463#1524#0" />
+            <element signature="e#1568#1963#0" />
+            <element signature="e#1573#1787#0" />
+            <element signature="e#1595#1666#0" />
+            <element signature="n#!!doc;n#ui#0;n#Store#0" />
+            <element signature="n#!!block;n#ui#0;n#Store#0" />
+            <element signature="n#!!doc;n#choose#0;n#Store#0" />
+            <element signature="n#!!block;n#choose#0;n#Store#0" />
           </folding>
         </state>
       </provider>

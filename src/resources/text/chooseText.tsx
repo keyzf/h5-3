@@ -12,7 +12,7 @@ interface State {
   type: string;
 }
 
-class ChooseText extends React.Component<null, State> {
+class ChooseText extends React.Component<any, State> {
   state = {
     type: 'title',
   };

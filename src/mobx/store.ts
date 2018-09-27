@@ -17,6 +17,7 @@ class Store {
    */
   @observable component = { bg: { ...$$bg_db }, music: null };
 
+
   /**
    * 全部数据更新
    */
@@ -31,18 +32,9 @@ class Store {
    * @param data
    */
   @action addUi = data => {
-    let new_ui = this.common.ui;
-    console.log(new_ui);
-    new_ui.push(data);
-    this.visual = {
-      editor: data,
-      choose: this.common.ui.length - 1,
-      img: this.visual.img,
-    };
-    this.common = {
-      version: this.common.version,
-      ui: new_ui,
-    };
+    this.common.ui.push(data);
+    this.visual.choose = this.common.ui.length - 1;
+    this.visual.editor = data;
   };
   /**
    * 修改editor与choose的值
@@ -72,28 +64,26 @@ class Store {
    * @param index
    */
   @action optUi = (name: string, index) => {
-    // let new_ui = this.common.ui;
-    this.common = { version: null, ui: [] };
-    this.visual = { editor: {}, choose: 0, img: {} };
-    console.log(this.common.ui);
-    console.log(name, index);
-    // switch (name) {
-    //   case 'delete':
-    //     let new_ui = this.common.ui;
-    //     console.log(new_ui);
-    //     new_ui.splice(index + 1, 1);
-    //     console.log(new_ui);
-    //     return this.common.ui = new_ui;
-    // }
+    switch (name) {
+      case 'delete':
+        return this.common.ui.splice(index, 1);
+    }
 
   };
 
+
   /**
-   * 检测数据，自动更新
+   * 检测数据，自动更新ui
    */
-  @computed
-  get unfinishedTodoCount() {
-    return '';
+  @computed get ui() {
+    return this.common.ui;
+  }
+
+  /**
+   * 检测数据，自动更新choose
+   */
+  @computed get choose() {
+    return this.visual.choose;
   }
 }
 

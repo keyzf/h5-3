@@ -12,7 +12,7 @@ class Canvas extends React.Component<any, any> {
   render() {
     return (
       <BgUi {...MxStore.component.bg}>
-        {MxStore.common.ui.map(
+        {MxStore.ui.map(
           (data: {
             common: { name };
             position: {
@@ -25,7 +25,7 @@ class Canvas extends React.Component<any, any> {
             };
             base: { html };
           }, index: number) => {
-            return MxStore.visual.choose === index ? (
+            return MxStore.choose === index ? (
               <Draggable{...data.position} index={index} key={index} uiData={{ ...data }}>
                 <RenderUiLoadable {...data}/>
               </Draggable>
