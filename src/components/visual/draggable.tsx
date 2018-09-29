@@ -1,8 +1,6 @@
-import * as React from 'react';
-import { observer } from 'mobx-react';
-import keydown, { ALL_KEYS } from 'react-keydown';
-import ResizableRect from '../../utils/rnd/ResizableRect';
-import MxStore from '../../mobx/store';
+import * as React from "react";
+import ResizableRect from "../../utils/rnd/ResizableRect";
+import connect from "../../redux/connect";
 
 interface Props {
   // position
@@ -13,78 +11,103 @@ interface Props {
   rotate: number;
   index: number;
   zIndex: number;
-
-  // 整个数据集
-  uiData: {
-    common: { name };
-    position: {
-      zIndex: number;
-      width: number;
-      height: number;
-      left: number;
-      top: number;
-      rotate: number;
-    };
-    base: { html };
-  },
-
+  RxAction?: any;
+  RxEditor?: any;
+  RxUi?: any;
+  ui?: any;
 }
 
-@observer
+@connect
 class Draggable extends React.Component<Props, any> {
-
-  /**
-   * 绑定键盘
-   */
-  @keydown(ALL_KEYS)
-  onKeyDown(event) {
-    const { uiData, index } = this.props;
-    switch (event.which) {
-      case 8:
-        MxStore.optUi('delete', index);
-        break;
-      case 37:
-        uiData.position.left = --uiData.position.left;
-        break;
-      case 38:
-        uiData.position.top = --uiData.position.top;
-        break;
-      case 39:
-        uiData.position.left = ++uiData.position.left;
-        break;
-      case 40:
-        uiData.position.top = ++uiData.position.top;
-        break;
-    }
-    MxStore.editorUiItem({ ...uiData }, index);
-  }
-
   handleResize = style => {
     const { top, left, width, height } = style;
-    const { uiData, index } = this.props;
-    uiData.position.top = Math.round(top);
-    uiData.position.left = Math.round(left);
-    uiData.position.width = Math.round(width);
-    uiData.position.height = Math.round(height);
-    MxStore.editorUiItem({ ...uiData }, index);
+    const { RxAction, index } = this.props;
+    RxAction("RxUi_Resize", {
+      index: index,
+      data: {
+        top: Math.round(top),
+        left: Math.round(left),
+        width: Math.round(width),
+        height: Math.round(height)
+      }
+    });
   };
 
   handleRotate = rotateAngle => {
-    const { uiData, index } = this.props;
-    uiData.position.rotate = rotateAngle;
-    MxStore.editorUiItem({ ...uiData }, index);
+    const { RxAction, index } = this.props;
+    RxAction("RxUi_Rotate", {
+      index: index,
+      data: rotateAngle
+    });
   };
 
   handleDrag = (deltaX, deltaY) => {
-    const { uiData, top, left, index } = this.props;
-    uiData.position.top = top + deltaY;
-    uiData.position.left = left + deltaX;
-    MxStore.editorUiItem({ ...uiData }, index);
+    const { RxAction, index } = this.props;
+    RxAction("RxUi_Drag", {
+      index: index,
+      data: { top: deltaY, left: deltaX }
+    });
+  };
+
+  componentDidMount = () => {
+
+    window.addEventListener(
+      "keydown",
+      event => {
+        event.preventDefault();
+        const { RxAction, RxUi,  index } = this.props;
+        switch (event.key) {
+          case "ArrowDown":
+            RxAction("RxUi_Down", index);
+            break;
+          case "ArrowUp":
+            RxAction("RxUi_Up", index);
+            break;
+          case "ArrowLeft":
+            RxAction("RxUi_Left", index);
+            break;
+          case "ArrowRight":
+            RxAction("RxUi_Right", index);
+            break;
+          case "Backspace":
+            RxAction("RxUi_Delete", index);
+            break;
+          case "v":
+            // let new_ui = {common:{},base:{},position:{}};
+            // new_ui.common = RxEditor.data.common;
+            // new_ui.base = RxEditor.data.base;
+            // new_ui.position = RxEditor.data.position;
+            // const id: any = document.getElementById("content");
+            //
+            // if (new_ui.common.type === "text") {
+            //   new_ui.base.index = random();
+            // }
+            // // 添加组件时附加定位
+            // try {
+            //   const t = id.scrollTop || id.body.scrollTop;
+            //   const h = id.clientHeight;
+            //   new_ui.position.top = h / 2 + t - new_ui.position.height / 2;
+            //   new_ui.position.left = (320 - new_ui.position.width) / 2;
+            // } catch (error) {
+            //   new_ui.position.top = new_ui.position.height / 2;
+            //   new_ui.position.left = (320 - new_ui.position.width) / 2;
+            // }
+
+            RxAction("RxUi_Copy", RxUi.ui);
+
+            break;
+
+          default:
+            return;
+        }
+        event.preventDefault();
+      },
+      true
+    );
   };
 
   render() {
     const { width, top, left, height, rotate, zIndex } = this.props;
-
     return (
       <ResizableRect
         left={left}
@@ -100,12 +123,12 @@ class Draggable extends React.Component<Props, any> {
       >
         <div
           style={{
-            boxSizing: 'border-box',
-            overflow: 'hidden',
-            pointerEvents: 'none',
-            userSelect: 'none',
+            boxSizing: "border-box",
+            overflow: "hidden",
+            pointerEvents: "none",
+            userSelect: "none",
             width: `${width}px`,
-            height: `${height}px`,
+            height: `${height}px`
           }}
         >
           {this.props.children}
