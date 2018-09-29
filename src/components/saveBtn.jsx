@@ -10,7 +10,6 @@ import "nprogress/nprogress.css";
  */
 class SaveBtn extends PureComponent {
 
-
   /**
    * 数据提交给后台
    */
@@ -26,16 +25,13 @@ class SaveBtn extends PureComponent {
             form_id: data.get("form_id"),
             name: data.getIn(["title", "value"])
           };
-          return "";
         });
-        return "";
       }
-      return "";
     });
-    const data = {
+    const datas = {
+      ui: this.props.h5_data_value.data.toJS(),
       sid: this.props.sid_value.data.get("sid"),
       bg: this.props.bg_ui_value.data.toJS(),
-      ui: this.props.h5_data_value.data.toJS(),
       cover: this.props.shareMsg_value.data.get("cover"),
       desc: this.props.shareMsg_value.data.get("desc") ? this.props.shareMsg_value.data.get("desc") : "我的分享",
       title: this.props.shareMsg_value.data.get("title") ? this.props.shareMsg_value.data.get("title") : "我的页面",
@@ -44,7 +40,7 @@ class SaveBtn extends PureComponent {
     };
 
     // ajax 提交操作
-    save_ajax(data)
+    save_ajax(datas)
       .then(() => {
         NProgress.done();
         if (this.props.name === "release") {
