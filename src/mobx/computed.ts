@@ -22,8 +22,10 @@ class Computed {
 
   @computed
   get editor() {
-    console.log('computed_editor');
-    return this.store.visual.editor;
+    const fun = data => {
+      return data;
+    };
+    return fun(this.store.common.ui[this.store.visual.choose]);
   }
 
   @computed

@@ -1,6 +1,7 @@
-import * as React from "react";
-import ResizableRect from "../../utils/rnd/ResizableRect";
-import connect from "../../redux/connect";
+import * as React from 'react';
+import { observer, inject } from 'mobx-react';
+import keydown, { ALL_KEYS } from 'react-keydown';
+import ResizableRect from '../../utils/rnd/ResizableRect';
 
 interface Props {
   // position
@@ -11,103 +12,69 @@ interface Props {
   rotate: number;
   index: number;
   zIndex: number;
-  RxAction?: any;
-  RxEditor?: any;
-  RxUi?: any;
-  ui?: any;
+  actions?: any;
+  computes?: any;
 }
 
-@connect
+@inject('actions', 'computes')
+@observer
 class Draggable extends React.Component<Props, any> {
+  /**
+   * 绑定键盘
+   */
+  @keydown(ALL_KEYS)
+  onKeyDown(event) {
+    const { actions, index } = this.props;
+    switch (event.which) {
+      case 8:
+        actions.editorUiItem('delete', '', index);
+        break;
+      case 86:
+        actions.editorUiItem('copy', '', index);
+        break;
+      case 37:
+        actions.editorUiItem('move_left', '', index);
+        break;
+      case 38:
+        actions.editorUiItem('move_up', '', index);
+        break;
+      case 39:
+        actions.editorUiItem('move_right', '', index);
+        break;
+      case 40:
+        actions.editorUiItem('move_down', '', index);
+        break;
+    }
+  }
+
   handleResize = style => {
     const { top, left, width, height } = style;
-    const { RxAction, index } = this.props;
-    RxAction("RxUi_Resize", {
-      index: index,
-      data: {
+    const { actions, index } = this.props;
+    actions.editorUiItem(
+      'resize',
+      {
         top: Math.round(top),
         left: Math.round(left),
         width: Math.round(width),
-        height: Math.round(height)
-      }
-    });
+        height: Math.round(height),
+      },
+      index,
+    );
   };
 
   handleRotate = rotateAngle => {
-    const { RxAction, index } = this.props;
-    RxAction("RxUi_Rotate", {
-      index: index,
-      data: rotateAngle
-    });
+    const { actions, index } = this.props;
+    actions.editorUiItem('rotate', rotateAngle, index);
   };
 
   handleDrag = (deltaX, deltaY) => {
-    const { RxAction, index } = this.props;
-    RxAction("RxUi_Drag", {
-      index: index,
-      data: { top: deltaY, left: deltaX }
-    });
-  };
-
-  componentDidMount = () => {
-
-    window.addEventListener(
-      "keydown",
-      event => {
-        event.preventDefault();
-        const { RxAction, RxUi,  index } = this.props;
-        switch (event.key) {
-          case "ArrowDown":
-            RxAction("RxUi_Down", index);
-            break;
-          case "ArrowUp":
-            RxAction("RxUi_Up", index);
-            break;
-          case "ArrowLeft":
-            RxAction("RxUi_Left", index);
-            break;
-          case "ArrowRight":
-            RxAction("RxUi_Right", index);
-            break;
-          case "Backspace":
-            RxAction("RxUi_Delete", index);
-            break;
-          case "v":
-            // let new_ui = {common:{},base:{},position:{}};
-            // new_ui.common = RxEditor.data.common;
-            // new_ui.base = RxEditor.data.base;
-            // new_ui.position = RxEditor.data.position;
-            // const id: any = document.getElementById("content");
-            //
-            // if (new_ui.common.type === "text") {
-            //   new_ui.base.index = random();
-            // }
-            // // 添加组件时附加定位
-            // try {
-            //   const t = id.scrollTop || id.body.scrollTop;
-            //   const h = id.clientHeight;
-            //   new_ui.position.top = h / 2 + t - new_ui.position.height / 2;
-            //   new_ui.position.left = (320 - new_ui.position.width) / 2;
-            // } catch (error) {
-            //   new_ui.position.top = new_ui.position.height / 2;
-            //   new_ui.position.left = (320 - new_ui.position.width) / 2;
-            // }
-
-            RxAction("RxUi_Copy", RxUi.ui);
-
-            break;
-
-          default:
-            return;
-        }
-        event.preventDefault();
-      },
-      true
-    );
+    const { actions } = this.props;
+    actions.editorUiItem('drag', { top: deltaY, left: deltaX });
   };
 
   render() {
     const { width, top, left, height, rotate, zIndex } = this.props;
+
     return (
       <ResizableRect
         left={left}
@@ -123,12 +90,12 @@ class Draggable extends React.Component<Props, any> {
       >
         <div
           style={{
-            boxSizing: "border-box",
-            overflow: "hidden",
-            pointerEvents: "none",
-            userSelect: "none",
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            userSelect: 'none',
             width: `${width}px`,
-            height: `${height}px`
+            height: `${height}px`,
           }}
         >
           {this.props.children}

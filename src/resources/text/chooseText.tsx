@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Divider from 'antd/lib/divider';
 import Tag from 'antd/lib/tag';
-import ExampleText from './ui/example/_ExampleText';
+import {
+  HorizontalTextExample,
+  VerticalTextExample,
+} from './ui/example/example';
 import TitleTextUi from '../../routes/ui/text/title';
 import ParagraphTextUi from '../../routes/ui/text/paragraph';
 
@@ -9,11 +12,23 @@ interface State {
   type: string;
 }
 
-export default class ChooseText extends React.Component<any, State> {
+class ChooseText extends React.PureComponent<null, State> {
   state = {
     type: 'title',
   };
 
+  /**
+   * 向ui 数据源中添加ui 数据
+   * @param name 名称
+   */
+  addUiData = (name: string) => {
+    switch (name) {
+      case 'horizontal':
+        return '';
+      case 'vertical':
+        return '';
+    }
+  };
 
   render() {
     const { CheckableTag } = Tag;
@@ -28,7 +43,18 @@ export default class ChooseText extends React.Component<any, State> {
     };
     return (
       <div className={'content'}>
-        <ExampleText/>
+        <div
+          className={'chooseUi_hover'}
+          onClick={this.addUiData.bind(this, 'horizontal')}
+        >
+          <HorizontalTextExample/>
+        </div>
+        <div
+          className={'chooseUi_hover'}
+          onClick={this.addUiData.bind(this, 'vertical')}
+        >
+          <VerticalTextExample/>
+        </div>
         <Divider/>
         <div style={{ padding: '0 3px' }}>
           <CheckableTag
@@ -48,10 +74,11 @@ export default class ChooseText extends React.Component<any, State> {
             段落
           </CheckableTag>
         </div>
-        <Divider>选择组件</Divider>
+        <Divider>分类</Divider>
         <ShowType/>
       </div>
     );
   }
 }
 
+export default ChooseText;

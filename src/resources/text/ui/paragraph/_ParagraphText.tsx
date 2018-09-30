@@ -38,17 +38,18 @@ import {
   $$paragraph_17_text,
   $$paragraph_18_text
 } from "../../text.db";
-import connect from "../../../../redux/connect";
+import { inject, observer } from "mobx-react";
 
-@connect
+@inject("actions")
+@observer
 class ParagraphText extends React.Component<any, any> {
   render() {
-    const { RxAction } = this.props;
+    const { actions } = this.props;
     return (
       <React.Fragment>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_1_text(random())
           })}
         >
@@ -56,7 +57,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_2_text(random())
           })}
         >
@@ -64,7 +65,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_3_text(random())
           })}
         >
@@ -72,7 +73,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_4_text(random())
           })}
         >
@@ -80,7 +81,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_5_text(random())
           })}
         >
@@ -88,7 +89,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_6_text(random())
           })}
         >
@@ -96,7 +97,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_7_text(random())
           })}
         >
@@ -104,7 +105,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_8_text(random())
           })}
         >
@@ -112,7 +113,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_9_text(random())
           })}
         >
@@ -120,7 +121,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_10_text(random())
           })}
         >
@@ -128,7 +129,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_11_text(random())
           })}
         >
@@ -136,7 +137,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_12_text(random())
           })}
         >
@@ -144,7 +145,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_13_text(random())
           })}
         >
@@ -152,7 +153,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_14_text(random())
           })}
         >
@@ -160,7 +161,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_15_text(random())
           })}
         >
@@ -168,7 +169,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_16_text(random())
           })}
         >
@@ -176,7 +177,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_17_text(random())
           })}
         >
@@ -184,7 +185,7 @@ class ParagraphText extends React.Component<any, any> {
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={RxAction.bind(this,"RxUi_Add", {
+          onClick={actions.addUi.bind(this, {
             ...$$paragraph_18_text(random())
           })}
         >

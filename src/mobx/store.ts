@@ -16,6 +16,7 @@ class Store {
   @observable preview = { cover: null, desc: null, title: null };
   @observable visual = { editor: {}, choose: 0, img: {} };
   @observable component = { bg: { ...$$bg_db }, music: null };
+  @observable test = { ui: [] };
 }
 
 const store = new Store();

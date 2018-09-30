@@ -38,124 +38,73 @@ import {
   $$title_17_text,
   $$title_18_text,
 } from '../../text.db';
-import connect from '../../../../redux/connect';
+import { inject, observer } from 'mobx-react';
 
-@connect
+@inject('actions')
+@observer
 class TitleText extends React.Component<any, any> {
-  rxUpdata = data => {
-    this.props.RxAction('RxUi_Add', { ...data });
-    this.props.RxAction('RxEditor_UpData', { data: { ...data }, index: this.props.RxUi.ui.length - 1 });
+
+  addUi = (data_fun) => {
+    const data = data_fun(random());
+    this.props.actions.addUi({ ...data });
   };
 
   render() {
+    const { actions } = this.props;
     return (
       <React.Fragment>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_1_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={this.addUi.bind(this, $$title_1_text)}>
           <Title1Text {...$$title_1_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_2_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={this.addUi.bind(this, $$title_2_text)}>
           <Title2Text {...$$title_2_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_3_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_3_text(random()) })}>
           <Title3Text {...$$title_3_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_4_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_4_text(random()) })}>
           <Title4Text {...$$title_4_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_5_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_5_text(random()) })}>
           <Title5Text {...$$title_5_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_6_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_6_text(random()) })}>
           <Title6Text {...$$title_6_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_7_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_7_text(random()) })}>
           <Title7Text {...$$title_7_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_8_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_8_text(random()) })}>
           <Title8Text {...$$title_8_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_9_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_9_text(random()) })}>
           <Title9Text {...$$title_9_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_10_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_10_text(random()) })}>
           <Title10Text {...$$title_10_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_11_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_11_text(random()) })}>
           <Title11Text {...$$title_11_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_12_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_12_text(random()) })}>
           <Title12Text {...$$title_12_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_13_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_13_text(random()) })}>
           <Title13Text {...$$title_13_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_14_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_14_text(random()) })}>
           <Title14Text {...$$title_14_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_15_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_15_text(random()) })}>
           <Title15Text {...$$title_15_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_16_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_16_text(random()) })}>
           <Title16Text {...$$title_16_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_17_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_17_text(random()) })}>
           <Title17Text {...$$title_17_text(random())} />
         </div>
-        <div
-          className={'chooseUi_hover'}
-          onClick={this.rxUpdata.bind(this, $$title_18_text(random()))}
-        >
+        <div className={'chooseUi_hover'} onClick={actions.addUi.bind(this, { ...$$title_18_text(random()) })}>
           <Title18Text {...$$title_18_text(random())} />
         </div>
       </React.Fragment>
