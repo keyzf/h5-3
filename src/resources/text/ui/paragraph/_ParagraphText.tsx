@@ -38,9 +38,8 @@ import {
   $$paragraph_17_text,
   $$paragraph_18_text
 } from "../../text.db";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 
-@inject("actions")
 @observer
 class ParagraphText extends React.Component<any, any> {
   render() {

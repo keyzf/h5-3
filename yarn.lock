@@ -4726,7 +4726,14 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^16.5.2:
+react-contextmenu@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/react-contextmenu/-/react-contextmenu-2.9.3.tgz#f6de2e0770445c60ed14f4b37af3419e32866ba1"
+  dependencies:
+    classnames "^2.2.5"
+    object-assign "^4.1.0"
+
+"react-dom@>= 0.14.0":
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
   dependencies:
@@ -4738,6 +4745,12 @@ react-dom@^16.5.2:
 react-is@^16.3.1, react-is@^16.3.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
+
+react-keydown@^1.9.7:
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/react-keydown/-/react-keydown-1.9.7.tgz#cd168d4b0194b6ef71bca47e5c1cbc5d24ab5498"
+  dependencies:
+    core-js "^2.5.0"
 
 react-lazy-load@^3.0.12:
   version "3.0.13"
@@ -4766,7 +4779,7 @@ react-slick@~0.23.1:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react@^16.5.2:
+"react@>= 0.14.0":
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
   dependencies:

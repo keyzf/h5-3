@@ -14,7 +14,6 @@ class Visual extends React.Component<Props, null> {
   render() {
     const { Header, Sider, Content } = Layout;
     return (
-
         <Layout className={'layout'}>
           <Header className={'header'}>
             <VisualHeader/>
@@ -28,7 +27,7 @@ class Visual extends React.Component<Props, null> {
               <VisualContent/>
             </Content>
 
-            <Sider theme={'light'} width={343} breakpoint={'md'} trigger={null}/>
+            <Sider theme={'light'} width={331} breakpoint={'md'} trigger={null}/>
           </Layout>
         </Layout>
     );

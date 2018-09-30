@@ -3,6 +3,7 @@ import Menu from 'antd/lib/menu';
 import Button from 'antd/lib/button';
 import Icon from 'antd/lib/icon';
 import SaveAllData from '../common/saveAllData';
+import Log from './log';
 
 class VisualHeader extends React.Component<any, any> {
   /**
@@ -61,6 +62,10 @@ class VisualHeader extends React.Component<any, any> {
           </Menu.Item>
         </Menu>
         <Menu className={'header_right'} selectable={false} mode={'horizontal'}>
+          <Menu.Item className={'v_header_border'} key={3}>
+            <Log/>
+
+          </Menu.Item>
           <Menu.Item key={0}>
             <SaveAllData name={'save'}>
               <i

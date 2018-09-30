@@ -1,4 +1,4 @@
-import styled from "../../../styled-components";
+import styled from "../../../styled_c";
 
 const BgAtom = styled<{ img: string, color: string, height: number },"div">("div")`
   position: relative;
