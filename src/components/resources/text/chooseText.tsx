@@ -2,10 +2,10 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import Divider from "antd/lib/divider";
 import Tag from "antd/lib/tag";
-import TitleTextUi from "../../routes/ui/text/title";
-import ParagraphTextUi from "../../routes/ui/text/paragraph";
+import TitleTextUi from "../../../routes/ui/text/title";
+import ParagraphTextUi from "../../../routes/ui/text/paragraph";
 import store from "../../mobx/store";
-import random from "../../utils/random";
+import random from "../../../utils/random";
 import { $$horizontal_text, $$vertical_text } from "./text.db";
 import {
   HorizontalTextExample,

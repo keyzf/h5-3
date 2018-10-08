@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import RenderUiLoadable from "../../routes/components/renderUi";
-import BgUi from "../../resources/bg/bgUi";
+import BgUi from "../resources/bg/bgUi";
 import UiPosition from "../common/uiPosition";
 import Draggable from "./draggable";
 import store from "../../mobx/store";

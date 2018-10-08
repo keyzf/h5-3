@@ -25,7 +25,7 @@ interface oldData {
   };
 }
 
-const textAdapter = (oldData: oldData): object => {
+const text = (oldData: oldData): object => {
   const common = {
     type: oldData.customize.type,
     name: nameAdapter(oldData.customize.name)
@@ -131,4 +131,4 @@ const nameAdapter = (var_name: string): string => {
   }
 };
 
-export default textAdapter;
+export default text;

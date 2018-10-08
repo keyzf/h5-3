@@ -3,7 +3,7 @@ import Spin from "antd/lib/spin";
 import loadableVisibility from "react-loadable-visibility/loadable-components";
 
 const PreviewWeb = loadableVisibility(
-  () => import("../../layout/preview/preview"),
+  () => import("../../app/preview"),
   {
     LoadingComponent: () => (
       <div style={{ height: "100vh" }} className={"center"}>

@@ -13,7 +13,7 @@ interface oldData {
   },
 }
 
-const bgAdapter = (oldData: oldData): object => {
+const bg = (oldData: oldData): object => {
   const common = {
     type: oldData.type,
     name: oldData.name
@@ -27,4 +27,4 @@ const bgAdapter = (oldData: oldData): object => {
   return { common, base };
 };
 
-export default bgAdapter;
+export default bg;

@@ -1,4 +1,4 @@
-import styled from "../../../../styled_c";
+import styled from "../../styled_c";
 
 export default styled("div")`
   position: absolute;

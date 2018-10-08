@@ -2,7 +2,7 @@
  *  GetParaUrl 接口
  */
 interface TypeInterFace {
-  (url?: string): { vid: string, state: string };
+  (url?: string): { id: string; state: string };
 }
 
 /**
@@ -16,13 +16,15 @@ interface TypeInterFace {
  * vid 获取到的用户id
  * state 用户即将跳转的页面代码
  */
-const GetParaUrl: TypeInterFace = (url: string): { vid: string, state: string } => {
-  let vid: string = "";
+const GetParaUrl: TypeInterFace = (
+  url: string
+): { id: string; state: string } => {
+  let id: string = "";
   let state: string = "";
   let count: number = 1;
   for (let index = 1; index <= url.length; index++) {
     if (url.charAt(url.length - index) !== "/" && count === 1) {
-      vid = url.charAt(url.length - index) + vid;
+      id = url.charAt(url.length - index) + id;
     }
     if (url.charAt(url.length - index) !== "/" && count === 2) {
       state = url.charAt(url.length - index);
@@ -31,7 +33,7 @@ const GetParaUrl: TypeInterFace = (url: string): { vid: string, state: string } 
       count++;
     }
   }
-  return { vid: vid, state: state };
+  return { id: id, state: state };
 };
 
 export default GetParaUrl;

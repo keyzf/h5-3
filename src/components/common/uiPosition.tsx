@@ -1,4 +1,4 @@
-import styled from '../../../styled_c';
+import styled from '../../utils/styled_c';
 
 const UiPosition = styled<{
   width: number;
