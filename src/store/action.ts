@@ -5,17 +5,22 @@ import random from "../utils/random";
 /**
  * @description 后台返回的数据 （getData 接口） 处理后传递来的参数
  */
-interface I_info {
-  bg: any;
-  cover: string;
-  desc: string;
-  form: any;
-  music: any;
-  pv: number;
-  sid: number;
-  title: string;
-  ui: any;
-  version: number;
+interface I_gUpData {
+  error: number;
+  url: string;
+  self: number;
+  info: {
+    id: number;
+    state: string;
+    version: number;
+    bg: any;
+    music: any;
+    cover: string;
+    desc: string;
+    title: string;
+    pv: number;
+    ui: any;
+  };
 }
 
 /**
@@ -42,29 +47,24 @@ export default class Action {
    * 公共action
    */
   @action("全局更新数据源数据")
-  globalUpData = (info: I_info, url: string) => {
+  globalUpData = (data: I_gUpData) => {
     this.store.common = {
-      version: info.version,
-      ui: JSON.parse(info.ui),
-      id: this.store.common.id,
-      state: this.store.common.state
+      version: data.info.version,
+      ui: data.info.ui,
+      id: data.info.id,
+      state: data.info.state,
+      self: data.self
     };
-    this.store.release = { url: url, pv: info.pv };
+    this.store.release = { url: data.url, pv: data.info.pv };
     this.store.preview = {
-      cover: info.cover,
-      desc: info.desc,
-      title: info.title
+      cover: data.info.cover,
+      desc: data.info.desc,
+      title: data.info.title
     };
     this.store.component = {
-      bg: JSON.parse(info.bg),
-      music: JSON.parse(info.music)
+      bg: data.info.bg,
+      music: data.info.music
     };
-  };
-
-  @action("将id与state添加至公共数据")
-  addIdState = (id: number, state: string) => {
-    this.store.common.id = id;
-    this.store.common.state = state;
   };
 
   /**

@@ -1,5 +1,5 @@
 import * as React from "react";
-import random from "../../../../../utils/random";
+import random from "../../../../utils/random";
 import Paragraph1Text from "./paragraph_1.text";
 import Paragraph2Text from "./paragraph_2.text";
 import Paragraph3Text from "./paragraph_3.text";

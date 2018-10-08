@@ -6,7 +6,7 @@ import Computes from "./computed";
  * @description 数据源接口
  */
 export interface IStore {
-  common: { version: number; ui: any; id: number; state: string };
+  common: { version: number; ui: any; id: number; state: string ,self:number };
   release: { url: string; pv: number };
   preview: { cover: string; desc: string; title: string };
   visual: { choose: number; img: object };
@@ -18,7 +18,7 @@ export interface IStore {
  */
 class rootStore {
   // 数据源
-  @observable common = { version: null, ui: [], state: null, id: null };
+  @observable common = { version: null, ui: [], state: null, id: null ,self:null};
   @observable release = { url: null, pv: null };
   @observable preview = { cover: null, desc: null, title: null };
   @observable visual = { choose: 0, img: {} };

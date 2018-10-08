@@ -2,7 +2,7 @@
  *  GetParaUrl 接口
  */
 interface TypeInterFace {
-  (url?: string): { id: string; state: string };
+  (url?: string): { id: number; state: string };
 }
 
 /**
@@ -18,7 +18,7 @@ interface TypeInterFace {
  */
 const GetParaUrl: TypeInterFace = (
   url: string
-): { id: string; state: string } => {
+): { id: number; state: string } => {
   let id: string = "";
   let state: string = "";
   let count: number = 1;
@@ -33,7 +33,7 @@ const GetParaUrl: TypeInterFace = (
       count++;
     }
   }
-  return { id: id, state: state };
+  return { id: parseInt(id), state: state };
 };
 
 export default GetParaUrl;

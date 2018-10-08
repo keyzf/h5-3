@@ -11,16 +11,16 @@ interface VarBg {
 
 }
 
-const $$bg_db: VarBg = {
+const $$BG_DB: VarBg = {
   common: {
-    type: "background",
-    name: "background"
+    type: 'background',
+    name: 'background',
   },
   base: {
-    img: "",
-    color: "white",
-    height: 600
-  }
+    img: '',
+    color: 'white',
+    height: 600,
+  },
 };
 
-export default $$bg_db;
+export default $$BG_DB;

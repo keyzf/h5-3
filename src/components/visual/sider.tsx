@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Tabs from 'antd/lib/tabs';
-import ChooseText from '../resources/text/chooseText';
+import ChooseText from '../../resources/text/chooseText';
 
 class VisualSider extends React.Component<any, any> {
   render() {

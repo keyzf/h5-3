@@ -1,3 +1,8 @@
+/**
+ * @description:visual页面导航栏
+ * @author:陈迎2018年10月08日13:49:35
+ * @version:0.9x
+ */
 import * as React from 'react';
 import Menu from 'antd/lib/menu';
 import Button from 'antd/lib/button';
@@ -5,7 +10,7 @@ import Icon from 'antd/lib/icon';
 import SaveAllData from '../common/saveAllData';
 import Log from './log';
 
-class VisualHeader extends React.Component<any, any> {
+class VisualNav extends React.PureComponent {
   /**
    * 返回指定连接
    */
@@ -64,7 +69,6 @@ class VisualHeader extends React.Component<any, any> {
         <Menu className={'header_right'} selectable={false} mode={'horizontal'}>
           <Menu.Item className={'v_header_border'} key={3}>
             <Log/>
-
           </Menu.Item>
           <Menu.Item key={0}>
             <SaveAllData name={'save'}>
@@ -99,4 +103,4 @@ class VisualHeader extends React.Component<any, any> {
   }
 }
 
-export default VisualHeader;
+export default VisualNav;
