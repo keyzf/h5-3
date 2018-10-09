@@ -1,7 +1,7 @@
 {
   "name": "e7wei-company",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.9x",
+  "main": "index.tsx",
   "repository": "https://github.com/AntoninSorrento/e7wei-company.git",
   "author": "antoninsorrento <antonin.chenying@gmail.com>",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "autoprefixer": "^9.1.5",
     "less": "2.7.3",
     "mobx-react-devtools": "^6.0.3",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.3",
     "parcel-bundler": "^1.9.7",
     "redux-devtools-extension": "^2.13.5",

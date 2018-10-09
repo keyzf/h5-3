@@ -1,10 +1,9 @@
+// 固定引入
 import { computed } from 'mobx';
+// IStore接口
 import { IStore } from './store';
 
-
-/**
- * @description 监听数据变化
- */
+// 监听数据变化
 export default class Computes {
   private store: IStore;
 

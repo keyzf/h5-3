@@ -1,11 +1,12 @@
+// 固定导入
 import { action } from "mobx";
+// IStore 接口
 import { IStore } from "./store";
-import random from "../utils/random";
+// 工具类（生成随机串）
+import random from "../../utils/random";
 
-/**
- * @description 后台返回的数据 （getData 接口） 处理后传递来的参数
- */
-interface I_gUpData {
+// 全局数据调整接口
+interface IGUpData {
   error: number;
   url: string;
   self: number;
@@ -22,20 +23,15 @@ interface I_gUpData {
     ui: any;
   };
 }
-
-/**
- * ui组件调整宽高时的接口
- */
-interface I_resize {
+//  ui尺寸调整接口
+interface IResize {
   top: number;
   left: number;
   width: number;
   height: number;
 }
 
-/**
- * @description 修改数据源中的数据
- */
+// 修改数据源中的数据
 export default class Action {
   private store: IStore;
 
@@ -47,7 +43,7 @@ export default class Action {
    * 公共action
    */
   @action("全局更新数据源数据")
-  globalUpData = (data: I_gUpData) => {
+  globalUpData = (data: IGUpData) => {
     this.store.common = {
       version: data.info.version,
       ui: data.info.ui,
@@ -162,7 +158,7 @@ export default class Action {
   };
 
   @action("ui组件大小拖选")
-  resize = (data: I_resize) => {
+  resize = (data: IResize) => {
     const index = this.store.visual.choose;
     this.store.common.ui[index].position.top = data.top;
     this.store.common.ui[index].position.left = data.left;

@@ -1,37 +1,43 @@
-import * as React from 'react';
+import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
-import GetParaUrl from './utils/parseUrl';
+import DevTools from 'mobx-react-devtools';
 import VisualWeb from './routes/web/visual';
 import PreviewWeb from './routes/web/preview';
 import ReleaseWeb from './routes/web/release';
-import DevTools from 'mobx-react-devtools';
-import getDataApi from './service/getData'; // 生产环境下删除（实际还是保留，便于debug）
+import getDataApi from './service/getData';
+import allData from './store/adapter/allData';
 
-interface IAppProps {
-  action?: { globalUpData };
+interface IProps {
+  action?: {
+    // 更新全局数据
+    globalUpData;
+  };
+  id: number,
+  state: string,
+}
+
+interface IState {
 }
 
 @inject('action')
 @observer
-export default class App extends React.Component<IAppProps, null> {
-  /**
-   * ajax请求
-   * */
-  static getDerivedStateFromProps = (props: any): any => {
-    const { action } = props;
-    const { id, state } = GetParaUrl(window.location.href);
-    //发送请求，获取必要的信息,更新数据源
+export default class App extends Component<IProps, IState> {
+
+  componentDidMount = () => {
+    const { action,id, state } = this.props;
     getDataApi(id, state)
-      .then((response: any) => {
-        action.globalUpData(response);
+      .then(response => {
+        // 更新数据源
+        action.globalUpData(allData(response, id, state));
       })
-      .catch((error: string) => {
+      .catch(error => {
+        // 跳转至错误页面
         window.location.href = error;
       });
   };
 
   render() {
-    const { state } = GetParaUrl(window.location.href);
+    const {  state } = this.props;
     /**
      * 判断需要跳转的页面
      */
@@ -55,10 +61,10 @@ export default class App extends React.Component<IAppProps, null> {
      * 组件渲染
      */
     return (
-      <React.Fragment>
+      <Fragment>
         {Redirect}
         <DevTools/>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

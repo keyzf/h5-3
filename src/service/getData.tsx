@@ -1,25 +1,49 @@
-/**
- * @description:加载页面时第一个请求用于获取页面必要信息
- * @author:陈迎2018年10月08日13:49:35
- * @version:0.9x
- * @param: id: 用户辨识码，
- * @param: state: 用户操作码，用于辨识网页
- * @param: action: 更新数据源，此action为（globalUpData）
- */
 import axios from 'axios';
-import allData from '../store/adapter/allData';
+import Mock from 'mockjs';
 
 const getDataApi = (id: number, state: string) => {
   const params: any = new URLSearchParams();
-  const ajaxUrl: string = `${state === 'r' ? '/view/getData' : '/Create/getData'}`;
+  const ajaxUrl: string = `${
+    state === 'r' ? '/view/getData' : '/Create/getData'
+    }`;
+
+  /**
+   * 模拟数据
+   */
+  Mock.setup({
+    timeout: '200-600',
+  });
+  Mock.mock(
+    `${window.location.origin}${ajaxUrl}`,
+    'post',
+    JSON.stringify({
+      error: 0,
+      info: {
+        bg: '',
+        cover: 'http://src.e7wei.com/0.644043773965004.png',
+        desc: '',
+        form: null,
+        music: null,
+        pv: '0',
+        sid: '10775',
+        title: '我的页面',
+        ui: '',
+        version: '1',
+      },
+      url: 'http://h5.e7wei.com/r/10775',
+    }),
+  );
+
   params.append('id', `${id}`);
   return new Promise((resolve: any, reject: any) => {
-    axios.post(`${window.location.origin}${ajaxUrl}`, params)
+    axios
+      .post(`${window.location.origin}${ajaxUrl}`, params)
       .then(response => {
-        if (response.data.error) {
+        if (parseInt(response.data.error)) {
           reject(response.data.url);
         } else {
-          resolve(allData(response.data, id, state));
+          // 调用函数，调整数据源数据
+          resolve(response.data);
         }
       })
       .catch(() => {
