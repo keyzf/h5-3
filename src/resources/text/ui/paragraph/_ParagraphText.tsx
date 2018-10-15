@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Component } from "react";
 import random from "../../../../utils/random";
 import Paragraph1Text from "./paragraph_1.text";
 import Paragraph2Text from "./paragraph_2.text";
@@ -36,157 +36,134 @@ import {
   $$paragraph_15_text,
   $$paragraph_16_text,
   $$paragraph_17_text,
-  $$paragraph_18_text
+  $$paragraph_18_text,
 } from "../../text.db";
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 
+interface IProps {
+  action?: {
+    addUi;
+  };
+}
+
+interface IState {}
+
+@inject("action")
 @observer
-class ParagraphText extends React.Component<any, any> {
+class ParagraphText extends Component<IProps, IState> {
+  addUi = data_fun => {
+    const data = data_fun(random());
+    this.props.action.addUi({ ...data });
+  };
+
   render() {
-    const { actions } = this.props;
     return (
       <React.Fragment>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_1_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_1_text)}
         >
           <Paragraph1Text {...$$paragraph_1_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_2_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_2_text)}
         >
           <Paragraph2Text {...$$paragraph_2_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_3_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_3_text)}
         >
           <Paragraph3Text {...$$paragraph_3_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_4_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_4_text)}
         >
           <Paragraph4Text {...$$paragraph_4_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_5_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_5_text)}
         >
           <Paragraph5Text {...$$paragraph_5_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_6_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_6_text)}
         >
           <Paragraph6Text {...$$paragraph_6_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_7_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_7_text)}
         >
           <Paragraph7Text {...$$paragraph_7_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_8_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_8_text)}
         >
           <Paragraph8Text {...$$paragraph_8_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_9_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_9_text)}
         >
           <Paragraph9Text {...$$paragraph_9_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_10_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_10_text)}
         >
           <Paragraph10Text {...$$paragraph_10_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_11_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_11_text)}
         >
           <Paragraph11Text {...$$paragraph_11_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_12_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_12_text)}
         >
           <Paragraph12Text {...$$paragraph_12_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_13_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_13_text)}
         >
           <Paragraph13Text {...$$paragraph_13_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_14_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_14_text)}
         >
           <Paragraph14Text {...$$paragraph_14_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_15_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_15_text)}
         >
           <Paragraph15Text {...$$paragraph_15_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_16_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_16_text)}
         >
           <Paragraph16Text {...$$paragraph_16_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_17_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_17_text)}
         >
           <Paragraph17Text {...$$paragraph_17_text(random())} />
         </div>
         <div
           className={"chooseUi_hover"}
-          onClick={actions.addUi.bind(this, {
-            ...$$paragraph_18_text(random())
-          })}
+          onClick={this.addUi.bind(this, $$paragraph_18_text)}
         >
           <Paragraph18Text {...$$paragraph_18_text(random())} />
         </div>

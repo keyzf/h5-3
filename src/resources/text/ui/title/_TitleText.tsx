@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Component } from "react";
 import random from "../../../../utils/random";
 import Title1Text from "./title_1.text";
 import Title2Text from "./title_2.text";
@@ -38,14 +38,22 @@ import {
   $$title_17_text,
   $$title_18_text
 } from "../../text.db";
-import { observer } from "mobx-react";
-import store from '../../../../mobx/store';
+import { inject, observer } from "mobx-react";
 
+interface IProps {
+  action?: {
+    addUi;
+  };
+}
+
+interface IState {}
+
+@inject("action")
 @observer
-class TitleText extends React.Component<any, any> {
+class TitleText extends Component<IProps, IState> {
   addUi = data_fun => {
     const data = data_fun(random());
-    store.addUi({ ...data });
+    this.props.action.addUi({ ...data });
   };
 
   render() {
