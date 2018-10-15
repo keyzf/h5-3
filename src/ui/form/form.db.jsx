@@ -95,7 +95,7 @@ export const $$from_opt_datepicker = form_id => {
     opt_color: "#000",
     form_id: form_id,
     title: { value: "日期选择" },
-    decorator: "datePicker",
+    decorator: "日期选择",
     choose: false,
     option: { value: "" }
   });

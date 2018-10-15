@@ -20,11 +20,15 @@ import { form_api } from "../../../api/form.api";
 import { ImgAtom } from "../../img/img_atom";
 import style from "./form.module.scss";
 import { redux_action } from "../../../redux/action";
+import { FormModel } from "../model";
 
-class CoreForm extends PureComponent {
+class CoreForm extends React.PureComponent {
   state = {
     previewVisible: false, // 图片预览控制
-    previewImage: "" // 预览图片
+    previewImage: "", // 预览图片
+    show: false,
+    img: [],
+    date: []
   };
 
   /**
@@ -66,77 +70,52 @@ class CoreForm extends PureComponent {
   /**
    * 文件上传变更
    * @param info
-   * @param index
+   * @param form_id
    */
-  handleChange = (index, info) => {
+  handleChange = (form_id, info) => {
     if (info.file.status === "done") {
       if (info.file.response.error) {
         message.error(info.file.response.msg);
       } else {
         message.success(`${info.file.name} 文件上传成功.`);
-        // 添加项目内容
-        const add = {
-          url: info.file.response.url
-        };
-        // 内容添加至数据中
-        const add_content = this.props.data
-          .getIn(["customize", "item", index, "option", "value"])
-          .push(add);
-        const data = this.props.data.setIn(
-          ["customize", "item", index, "option", "value"],
-          add_content
-        );
-        // 调用函数，更新数据源
-        this.sendAction(data);
+        let img = this.state.img;
+        img.push({ form_id: form_id, url: info.file.response.url });
+        this.setState({
+          img: img
+        });
       }
     }
   };
 
   /**
    * 图片删除
-   * @param file
-   * @param props_index
+   * @param form_id
    * @returns {boolean}
    */
-  onRemove = (props_index, file) => {
-    const fileList = this.props.data.getIn(["customize", "item", props_index, "option", "value"]);
-    fileList.toJS().map((data, index) => {
-      if (data.url === file.response.url) {
-        // 内容添加至数据中
-        const delete_content = fileList.delete(index);
-        const data = this.props.data.setIn(
-          ["customize", "item", props_index, "option", "value"],
-          delete_content
-        );
-        // 调用函数，更新数据源
-        this.sendAction(data);
+  onRemove = form_id => {
+    let img_data = this.state.img;
+    let count = "";
+    img_data.map((data, index) => {
+      if (data.form_id === form_id) {
+        count = index;
       }
     });
-  };
-
-  /**
-   * 更新数据源
-   * @param up_data
-   */
-  sendAction = up_data => {
-    // data source
-    const $$select_data = this.props.h5_data_value.data;
-    const $$choose_data = this.props.editor_ui_value.data;
-    // create new data
-    const $$new_select_data = $$select_data.set(
-      $$choose_data.get("number"),
-      up_data
-    );
-    const $$new_choose_data = $$choose_data.set("data", up_data);
-    // send action
-    this.props.upData("H5_DATA", $$new_select_data);
-    this.props.upData("EDITOR_UI", $$new_choose_data, {
-      content: true,
-      choose: true
+    img_data.splice(count, 1);
+    this.setState({
+      img: img_data
     });
   };
 
-  handleSubmit = (e) => {
+  //修改日期数据
+  date = (form_id, info) => {
+    let date = this.state.date;
+    date.push({ form_id: form_id, date: info.format("LL") });
+    this.setState({
+      date: date
+    });
+  };
+
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       const sid = this.props.sid_value.data.get("sid");
@@ -144,7 +123,7 @@ class CoreForm extends PureComponent {
         let from = [];
         const data = List(fromJS(values));
 
-        this.props.data.getIn(["customize", "item"]).map((h5_data) => {
+        this.props.data.getIn(["customize", "item"]).map(h5_data => {
           if (h5_data.get("type") === "input") {
             data.map((data, index) => {
               if (data[0] === h5_data.get("form_id")) {
@@ -153,20 +132,28 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "rate") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
-          if (h5_data.get("type") === "upload") {
-            data.map((data, index) => {
-              if (data[0] === h5_data.get("form_id")) {
+          if (h5_data.get("type") === "datePicker") {
+            this.state.date.map(data => {
+              if (data.form_id === h5_data.get("form_id")) {
                 from.push({
-                  form_id: data[0],
-                  value: h5_data.getIn(["option", "value", 0])
-                    ? h5_data.getIn(["option", "value", 0]).url
-                    : ""
+                  form_id: h5_data.get("form_id"),
+                  value: data.date
+                });
+              }
+            });
+          }
+          if (h5_data.get("type") === "upload") {
+            this.state.img.map(data => {
+              if (data.form_id === h5_data.get("form_id")) {
+                from.push({
+                  form_id: h5_data.get("form_id"),
+                  value: data.url
                 });
               }
             });
@@ -176,7 +163,7 @@ class CoreForm extends PureComponent {
             data.map((data, index) => {
               if (data[0] === h5_data.get("form_id")) {
                 if (data[1]) {
-                  data[1].map((data) => {
+                  data[1].map(data => {
                     i = i + data + ",";
                   });
                 }
@@ -185,42 +172,36 @@ class CoreForm extends PureComponent {
             });
           }
           if (h5_data.get("type") === "select") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "radio") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
-          if (h5_data.get("type") === "datePicker") {
-            data.map((data) => {
-              if (data[0] === h5_data.get("form_id")) {
-                from.push({ form_id: data[0], value: data[1] ? data[1].format("LL") : "" });
-              }
-            });
-          }
+
           if (h5_data.get("type") === "name") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "phone") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
             });
           }
           if (h5_data.get("type") === "mobile") {
-            data.map((data) => {
+            data.map(data => {
               if (data[0] === h5_data.get("form_id")) {
                 from.push({ form_id: data[0], value: data[1] });
               }
@@ -251,7 +232,7 @@ class CoreForm extends PureComponent {
 
         form_api(from, sid)
           .then(response => {
-            message.success(response);
+            this.props.upData("FORMMODEL", { show: true });
           })
           .catch(response => {
             message.error(response);
@@ -264,6 +245,7 @@ class CoreForm extends PureComponent {
 
   render() {
     const FormItem = Form.Item;
+    const { previewVisible, previewImage } = this.state;
     const { getFieldDecorator, getFieldsError } = this.props.form;
     const advance = this.props.data.get("advance");
     const customize = this.props.data.get("customize");
@@ -288,7 +270,19 @@ class CoreForm extends PureComponent {
         wrapperCol: { lg: { span: 24 } }
       };
     };
-    const { previewVisible, previewImage } = this.state;
+
+    // 检索是否存在上传
+    const isUplaod = form_id => {
+      let show = false;
+      this.state.img.map(img_data => {
+        if (img_data.form_id === form_id) {
+          show = true;
+        }
+      });
+      return show;
+    };
+
+
     return (
       <ImgAtom {...advanced_settings}>
         <Form {...form_config}>
@@ -330,11 +324,16 @@ class CoreForm extends PureComponent {
                           data={{ type: 1 }}
                           beforeUpload={this.beforeUpload}
                           onPreview={this.handlePreview}
-                          onRemove={this.onRemove.bind(this, index)}
-                          onChange={this.handleChange.bind(this, index)}
+                          onRemove={this.onRemove.bind(
+                            this,
+                            data.get("form_id")
+                          )}
+                          onChange={this.handleChange.bind(
+                            this,
+                            data.get("form_id")
+                          )}
                         >
-                          {data.getIn(["option", "value"]).toJS().length >=
-                          1 ? null : (
+                          {isUplaod(data.get("form_id")) ? null : (
                             <div>
                               <Icon type="plus"/>
                               <div className="ant-upload-text">
@@ -718,23 +717,15 @@ class CoreForm extends PureComponent {
                         data.get("title_color")
                       )}
                     >
-                      {getFieldDecorator(
-                        `${data.get("form_id") ? data.get("form_id") : ""}`,
-                        {
-                          rules: [{ required: choose, message: "此项不能为空" }]
-                        }
-                      )(
-                        <DatePicker
-                          style={{ width: "100%" }}
-                          size="large"
-                          placeholder="选择日期"
-                        />
-                      )}
+                      <DatePicker
+                        onChange={this.date.bind(this, data.get("form_id"))}
+                        style={{ width: "100%" }}
+                        size="large"
+                        placeholder="选择日期"
+                      />
                     </FormItem>
                   </div>
                 );
-              default:
-                return "";
             }
           })}
           <FormItem

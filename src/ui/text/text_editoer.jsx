@@ -1,22 +1,26 @@
-import React, { PureComponent } from 'react';
-import { Form, Popover, Collapse } from 'antd';
-import RichTextEditor from './rich_editor';
-import { connect } from 'react-redux';
-import { redux_action } from '../../redux/action';
-import { SketchPicker } from 'react-color';
-import style from './text.module.scss';
+import React, { PureComponent } from "react";
+import { Form, Popover, Collapse } from "antd";
+import RichTextEditor from "./rich_editor";
+import { connect } from "react-redux";
+import { redux_action } from "../../redux/action";
+import { SketchPicker } from "react-color";
+import style from "./text.module.scss";
 
 class EditorText extends PureComponent {
   richTextEditor = html_callback => {
-    const $$new_h5_data = this.props.data
-      .get('data')
-      .setIn(['customize', 'html_content'], html_callback);
-    this.sendAction($$new_h5_data);
+    if (this.props.data.getIn(["data", "customize", "type"]) === "text") {
+      const $$new_h5_data = this.props.data
+        .get("data")
+        .setIn(["customize", "html_content"], html_callback);
+      this.sendAction($$new_h5_data);
+    } else {
+
+    }
   };
   editorFeatures = (opt_name, data) => {
-    if (opt_name === 'style_color') {
+    if (opt_name === "style_color") {
       this.sendAction(
-        this.props.data.get('data').setIn(['advance', 'style_color'], data.hex)
+        this.props.data.get("data").setIn(["advance", "style_color"], data.hex)
       );
     }
   };
@@ -25,21 +29,21 @@ class EditorText extends PureComponent {
     const $$choose_data = this.props.editor_ui_value.data;
 
     const $$new_select_data = $$select_data.set(
-      $$choose_data.get('number'),
+      $$choose_data.get("number"),
       up_data
     );
-    const $$new_choose_data = $$choose_data.set('data', up_data);
+    const $$new_choose_data = $$choose_data.set("data", up_data);
 
-    this.props.upData('H5_DATA', $$new_select_data);
-    this.props.upData('EDITOR_UI', $$new_choose_data, {
+    this.props.upData("H5_DATA", $$new_select_data);
+    this.props.upData("EDITOR_UI", $$new_choose_data, {
       content: true,
-      choose: true,
+      choose: true
     });
   };
 
   render() {
-    const $$data = this.props.data.get('data');
-    const $$advance = $$data.get('advance');
+    const $$data = this.props.data.get("data");
+    const $$advance = $$data.get("advance");
     const Panel = Collapse.Panel;
     const form_item_style = label_name => {
       return {
@@ -47,50 +51,50 @@ class EditorText extends PureComponent {
         labelCol: { xl: { span: 5, offset: 1 }, lg: { span: 5, offset: 1 } },
         wrapperCol: {
           xl: { span: 17, offset: 1 },
-          lg: { span: 18, offset: 1 },
-        },
+          lg: { span: 18, offset: 1 }
+        }
       };
     };
     return (
       <Collapse
         className={style.textEditor}
         style={{
-          backgroundImage: 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)',
+          backgroundImage: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)"
         }}
         bordered={false}
-        defaultActiveKey={['123']}
+        defaultActiveKey={["123"]}
       >
-        <Panel header="边框配色" key={'123'} style={{ background: '#fff' }}>
+        <Panel header="边框配色" key={"123"} style={{ background: "#fff" }}>
           <Form>
-            <Form.Item {...form_item_style('当前颜色')}>
+            <Form.Item {...form_item_style("当前颜色")}>
               <Popover
                 content={
                   <SketchPicker
-                    color={$$advance.get('style_color')}
+                    color={$$advance.get("style_color")}
                     onChangeComplete={this.editorFeatures.bind(
                       this,
-                      'style_color'
+                      "style_color"
                     )}
                   />
                 }
                 trigger="click"
               >
-                {$$advance.get('style_color') !== '' ? (
+                {$$advance.get("style_color") !== "" ? (
                   <div
                     style={{
-                      marginTop: '6px',
-                      height: '25px',
-                      width: '100%',
-                      background: $$advance.get('style_color'),
+                      marginTop: "6px",
+                      height: "25px",
+                      width: "100%",
+                      background: $$advance.get("style_color")
                     }}
                   />
                 ) : (
                   <div
-                    className={'bg_transparent'}
+                    className={"bg_transparent"}
                     style={{
-                      marginTop: '6px',
-                      height: '25px',
-                      width: '100%',
+                      marginTop: "6px",
+                      height: "25px",
+                      width: "100%"
                     }}
                   />
                 )}
@@ -100,7 +104,7 @@ class EditorText extends PureComponent {
         </Panel>
 
         <RichTextEditor
-          data={$$data.get('customize')}
+          data={$$data.get("customize")}
           func={this.richTextEditor}
         />
       </Collapse>
@@ -113,13 +117,13 @@ const mapStateToProps = state => {
     // 核心组件
     h5_data_value: state.h5Data_rdc,
     // 当前选择编辑的组件
-    editor_ui_value: state.editorUi_rdc,
+    editor_ui_value: state.editorUi_rdc
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    upData: (name, data, meta) => dispatch(redux_action(name, data, meta)),
+    upData: (name, data, meta) => dispatch(redux_action(name, data, meta))
   };
 };
 

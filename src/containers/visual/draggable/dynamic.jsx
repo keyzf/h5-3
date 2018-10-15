@@ -20,8 +20,7 @@ class DynamicCommon extends PureComponent {
   choose = (number, data) => {
     this.props.upData(
       'EDITOR_UI',
-      { number: number, data: data, com: true },
-      {
+      { number: number, data: data, com: true }, {
         content: true,
         choose: true,
       }

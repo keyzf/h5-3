@@ -9,6 +9,7 @@
 # production
 /build
 /material
+/dist
 
 # misc
 .idea

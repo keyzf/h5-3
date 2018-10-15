@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URLSearchParams from 'url-search-params';
 
 const form_api = (data, sid) => {
   return new Promise((resolve, reject) => {
@@ -9,9 +10,9 @@ const form_api = (data, sid) => {
       .post(`${window.location.origin}/view/postData`, params)
       .then(response => {
         if (response.data.error) {
-          reject('表单提交失败，请重新尝试');
+          reject(response.data.msg);
         } else {
-          resolve('表单提交成功');
+          resolve(response.data.msg);
         }
       });
   });

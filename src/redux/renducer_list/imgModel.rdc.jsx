@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS } from "immutable";
 
 export const imgModel_rdc = (
   state = {
@@ -6,15 +6,15 @@ export const imgModel_rdc = (
       current: 1,
       number: 0,
       img_library: [],
-      img_url: '',
-    }),
+      img_url: ""
+    })
   },
   action
 ) => {
   switch (action.type) {
-    case 'IMGMODEL':
+    case "IMGMODEL":
       return {
-        data: action.payload,
+        data: action.payload
       };
     default:
       return state;

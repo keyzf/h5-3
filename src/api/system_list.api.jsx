@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URLSearchParams from 'url-search-params';
 
 // 测试成功✅
 export const system_list_api = () => {
@@ -9,7 +10,7 @@ export const system_list_api = () => {
       .post(`${window.location.origin}/Material/getSysType`, params)
       .then(response => {
         if (response.data.error) {
-          reject('获取上传失败，请重试');
+
         } else {
           resolve(response.data);
         }
