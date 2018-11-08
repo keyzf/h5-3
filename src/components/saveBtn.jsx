@@ -52,7 +52,7 @@ class SaveBtn extends PureComponent {
           message.success("保存成功");
           window.location.href = `${
             window.location.origin
-            }/p/${data.sid}`;
+            }/p/${datas.sid}`;
           return "";
         }
         else {
