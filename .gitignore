@@ -10,8 +10,11 @@
 /build
 /material
 /dist
+/public/assets
+
 
 # misc
+.cache
 .idea
 .DS_Store
 .env.local
