@@ -3,7 +3,7 @@ import styled from "react-emotion";
 
 export default styled("div")`
   position: absolute;
-  border: 1px solid rgb(0, 153, 248);
+  outline: 1px solid rgb(0, 153, 248);
 
   .square {
     position: absolute;

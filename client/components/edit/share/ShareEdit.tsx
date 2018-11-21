@@ -3,6 +3,7 @@ import { Form, Input, Divider } from "antd";
 import { useCallback } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import Store from "../../../typing/store";
+import ImgModel from "../../common/imgModel";
 
 const ShareEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -23,22 +24,24 @@ const ShareEdit = React.memo(() => {
     <div style={{ padding: "20px 10px 0" }}>
       <Form>
         <FormItem label={"分享图片"} {...formLayout}>
-          <div
-            style={{
-              height: "120px",
-              width: "100%",
-              border: "1px solid black"
-            }}
-          >
-            <img
-              src={`${
-                cover ? cover : "http://src.e7wei.com/0.2823198691104869.png"
-                }`}
-              width={"100%"}
-              height={"100%"}
-              alt={"img"}
-            />
-          </div>
+          <ImgModel>
+            <div
+              style={{
+                height: "120px",
+                width: "100%",
+                border: "1px solid black"
+              }}
+            >
+              <img
+                src={`${
+                  cover ? cover : "http://src.e7wei.com/0.2823198691104869.png"
+                  }`}
+                width={"100%"}
+                height={"100%"}
+                alt={"img"}
+              />
+            </div>
+          </ImgModel>
           🌲最佳尺寸:200*200像素
         </FormItem>
         <FormItem label={"分享标题"} {...formLayout}>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import ToolBarGrid from "../../components/toolbar/grid";
 import ToolBarShare from "../../components/toolbar/share";
 import ToolBarKey from "../../components/toolbar/hot-key";
+import ToolBarPreview from "../../components/toolbar/preview";
 
 
 const MakeToolBar = React.memo(() => {
@@ -46,6 +47,7 @@ const MakeToolBar = React.memo(() => {
   };
   return (
     <React.Fragment>
+      <ToolBarPreview/>
       <ToolBarKey/>
       <ToolBarShare/>
       <ToolBarGrid/>

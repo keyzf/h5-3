@@ -3,10 +3,8 @@ import RenderText from "../../resource/text/render";
 
 interface Props {
   data: {
-    common: {
-      type:string
-    },
-    base:any
+    common: any,
+    base: any
   }
 }
 
