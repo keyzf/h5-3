@@ -5,6 +5,7 @@ import Store from "../../typing/store";
 import ShareEdit from "../../components/edit/share/ShareEdit";
 import EditKeyHelp from "../../components/edit/key-help";
 import { useCallback } from "react";
+import TextEdit from "../../components/edit/text/text-edit";
 
 
 const MakeEdit = React.memo(() => {
@@ -17,6 +18,8 @@ const MakeEdit = React.memo(() => {
    */
   const renderEditor = (type: string): object => {
     switch (type) {
+      case "text":
+        return <TextEdit/>;
       case"hot-key":
         return <EditKeyHelp/>;
       default:

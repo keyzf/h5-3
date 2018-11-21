@@ -25,6 +25,7 @@ const ContentChoose = React.memo(() => {
     } else {
       uiChoose([number]);
     }
+    dispatch({ type: "EDIT_VALUE", payload: { type: ui[number].common.type } });
   };
 
   return (

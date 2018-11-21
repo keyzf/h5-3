@@ -86,7 +86,11 @@ class ContentHotKey extends React.Component<Props, ""> {
         init = false;
       }
     });
-    init ? this.props.fun({ type: "UI_CHOOSE", payload: [] }) : "";
+    if (init) {
+      this.props.fun({ type: "UI_CHOOSE", payload: [] });
+      this.props.fun({ type: "EDIT_VALUE", payload: { type: "share" } });
+    }
+
   };
 
   render() {

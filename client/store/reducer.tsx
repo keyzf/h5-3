@@ -1,5 +1,6 @@
 import produce from "immer";
 import BgData from "../resource/background/database";
+import random from "../tools/random";
 
 const store = {
   bg: BgData,
@@ -14,18 +15,12 @@ const reducer = (state = store, action) => {
   const { type, payload } = action;
   switch (type) {
     /**
-     * @desc 参考线设置
+     * @desc 文本组件数据变更
      */
-    case "BASELINE_ADD":
+    case "TEXT_VALUE":
       return produce(state, draftState => {
-        payload === "v"
-          ? draftState.baseline.v.push(0)
-          : draftState.baseline.h.push(0);
-      });
-    case "BASELINE_VALUE":
-      return produce(state, draftState => {
-        draftState.baseline = {
-          ...draftState.baseline,
+        draftState.ui[draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -46,6 +41,23 @@ const reducer = (state = store, action) => {
       return produce(state, draftState => {
         draftState.share = {
           ...draftState.share,
+          ...payload
+        };
+      });
+
+    /**
+     * @desc 参考线设置
+     */
+    case "BASELINE_ADD":
+      return produce(state, draftState => {
+        payload === "v"
+          ? draftState.baseline.v.push(0)
+          : draftState.baseline.h.push(0);
+      });
+    case "BASELINE_VALUE":
+      return produce(state, draftState => {
+        draftState.baseline = {
+          ...draftState.baseline,
           ...payload
         };
       });
@@ -217,6 +229,9 @@ const reducer = (state = store, action) => {
       const id: any = document.getElementById("content");
       // 处理提交来的数据
       const data = produce(payload, draftState => {
+        if (payload.common.type === "text") {
+          draftState.base.index = random();
+        }
         try {
           const t = id.scrollTop || id.body.scrollTop;
           const h = id.clientHeight;
@@ -230,6 +245,7 @@ const reducer = (state = store, action) => {
       // 修改数据源数据
       return produce(state, draftState => {
         draftState.ui.push(data);
+        draftState.edit.type = draftState.ui[draftState.ui.length - 1].common.type;
         draftState.edit.number = [draftState.ui.length - 1];
       });
     default:
