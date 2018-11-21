@@ -20,6 +20,7 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-draggable": "^3.0.5",
     "react-emotion": "^9.2.12",
+    "react-keydown": "^1.9.7",
     "redux": "^4.0.1",
     "redux-react-hook": "^2.0.0"
   },

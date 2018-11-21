@@ -2,11 +2,11 @@ import * as React from "react";
 import { mediaPC, mediaMobile } from "./style";
 
 interface Props {
-  html: string | object;
+  html: any;
 }
 
 const TextUi_1 = React.memo((props: Props) => {
-  const html = `string` === typeof this.props.html ? this.props.html : this.props.html.toHTML();
+  const html = `string` === typeof props.html ? props.html : props.html.toHTML();
   /**
    * 手机端转换
    */

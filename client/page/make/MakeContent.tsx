@@ -1,22 +1,41 @@
 import * as React from "react";
 import { css } from "emotion";
+import { useCallback } from "react";
+import { useDispatch, useMappedState } from "redux-react-hook";
 import BackgroundUI from "../../resource/background/BackgroundUI";
 import ContentHeight from "../../components/content/height";
 import BaselineH from "../../components/toolbar/baseline-h";
 import BaselineV from "../../components/toolbar/baseline-v";
+import ContentDrag from "../../components/content/drag";
+import ContentChoose from "../../components/content/choose";
+import ContentLock from "../../components/content/lock";
+import ContentHotKey from "../../components/content/hot-key";
+import Store from "../../typing/store";
+
 
 const MakeContent = React.memo(() => {
+  const dispatch = useDispatch();
+  const { ui } = useMappedState(
+    useCallback(
+      (state: Store) => ({
+        ui: state.ui
+      }),
+      []
+    )
+  );
   return (
     <div className={style.scrollbar} id={"content"}>
       <div className={style.layout}>
         <BaselineH/>
         <BaselineV/>
         <ContentHeight/>
-        <div className={style.sketchpad}>
+        < ContentHotKey fun={dispatch} ui={ui}>
           <BackgroundUI>
-            <p>背景</p>
+            <ContentLock/>
+            <ContentChoose/>
+            <ContentDrag/>
           </BackgroundUI>
-        </div>
+        </ ContentHotKey>
       </div>
     </div>
   );

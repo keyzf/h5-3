@@ -3,26 +3,29 @@ import Text0 from "./components/text_0";
 import Text1 from "./components/text_1";
 
 interface Props {
-  base: {
-    html: string;
-    index: string;
-    color: string;
-    wordArt: string;
-    link: string;
-  };
+  data: {
+    common: any;
+    base: {
+      html: string;
+      index: string;
+      color: string;
+      wordArt: string;
+      link: string;
+    }
+  }
 }
 
 const RenderText = React.memo((props: Props) => {
-  const { index, html } = props.base;
+  console.log(props);
   const showTextUi = name => {
     switch (name) {
       case 1:
-        return <Text0 html={html}/>;
+        return <Text0 html={props.data.base.html}/>;
       case 2:
-        return <Text1 html={html}/>;
+        return <Text1 html={props.data.base.html}/>;
     }
   };
-  return showTextUi(index);
+  return showTextUi(props.data.common.id);
 });
 
 export default RenderText;
