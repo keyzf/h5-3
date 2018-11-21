@@ -4,21 +4,48 @@ import { useDispatch } from "redux-react-hook";
 import { Col, Divider, Icon, Row, Tag } from "antd";
 import { css } from "emotion";
 import TextData from "./database";
+import RenderText from "./render";
 
 const TextList = React.memo(() => {
   const dispatch = useDispatch();
-  const pushDate = (data) => dispatch({ type: "UI_PUSHDATA", payload: data });
-  const [state, setState] = useState({ type: "composing", name: "排版", show: [] });
+  const pushDate = data => dispatch({ type: "UI_PUSHDATA", payload: data });
+  const [state, setState] = useState({
+    type: "composing",
+    name: "排版",
+    show: []
+  });
   // 切换标签
   const changeTab = (type: string, name: string): void => {
+    let show: number[] = [];
+    switch (type) {
+      case "recruitment":
+        show = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+        break;
+      case "promotion":
+        show = [15, 16, 17, 18, 19, 20, 21, 22];
+        break;
+      case "festival":
+        show = [23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+        break;
+      case "business":
+        show = [33, 34, 35, 36];
+        break;
+      case "invitation":
+        show = [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
+        break;
+      case "enrollment":
+        show = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
+        break;
+    }
+
     setState({
       type: type,
       name: name,
-      show: state.show
+      show: show
     });
   };
 
-  const pushData = (data) => {
+  const pushData = data => {
     pushDate(data);
   };
   // 选项
@@ -87,6 +114,20 @@ const TextList = React.memo(() => {
         })}
       </div>
       <Divider>{name}</Divider>
+      <div className={style.scrollbar}>
+        {state.show.map((data, index: number) => {
+          return (
+            <div className={style.uiHover}
+                 key={index}
+                 onClick={() => pushData(TextData[data])}
+            >
+              <div className={style.center}>
+                <RenderText data={TextData[data]}/>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </React.Fragment>
   );
 });
@@ -132,6 +173,45 @@ const style = {
         background: rgba(221, 221, 221, 0.21);
         cursor: pointer;
       }
+    }
+  `,
+  scrollbar: css`
+    width: 100%;
+    height: calc(100vh - 320px);
+    overflow-x: auto;
+    overflow-y: auto;
+    scrollbar-arrow-color: transparent;
+    scrollbar-face-color: transparent;
+    scrollbar-3dlight-color: transparent;
+    scrollbar-highlight-color: transparent;
+    scrollbar-shadow-color: transparent;
+    scrollbar-darkshadow-color: transparent;
+    scrollbar-track-color: transparent;
+    scrollbar-base-color: transparent;
+
+    &::-webkit-scrollbar {
+      border: none;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+    &::-webkit-scrollbar-track-piece {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+    &::-webkit-resizer {
+      display: none;
     }
   `
 };

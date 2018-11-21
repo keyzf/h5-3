@@ -1,10 +1,14 @@
 import * as React from "react";
 import Text0 from "./components/text_0";
 import Text1 from "./components/text_1";
+import Text3 from "./components/text_3";
 
 interface Props {
   data: {
-    common: any;
+    common: {
+      type: string,
+      id: string | number
+    };
     base: {
       html: string;
       index: string;
@@ -16,13 +20,15 @@ interface Props {
 }
 
 const RenderText = React.memo((props: Props) => {
-  console.log(props);
+  console.log(props)
   const showTextUi = name => {
     switch (name) {
-      case 1:
+      case 0:
         return <Text0 html={props.data.base.html}/>;
-      case 2:
+      case 1:
         return <Text1 html={props.data.base.html}/>;
+      default:
+        return <Text3 base={props.data.base}/>;
     }
   };
   return showTextUi(props.data.common.id);
