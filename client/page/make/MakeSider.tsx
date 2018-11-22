@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Tabs } from "antd";
 import TextList from "../../resource/text/TextList";
-import BgEdit from "../../resource/background/edit/bg-edit";
+import BgEdit from "../../components/edit/bg/bg-edit";
+import PictureList from "../../resource/picture/PictureList";
+import MusicEdit from "../../components/edit/musicEdit";
+import InterActive from "../../components/sider/inter-active";
 
 /**
  *  @desc  渲染各组件列表
@@ -51,10 +54,10 @@ const tabList = [
     title: "文字",
     content: <TextList/>
   },
-  { icon: `iconfont icon-tupian`, title: "图片", content: "" },
+  { icon: `iconfont icon-tupian`, title: "图片", content: <PictureList/> },
   { icon: `iconfont icon-beijing`, title: "背景", content: <BgEdit/> },
-  { icon: `iconfont icon-yinlemusic214`, title: "音乐", content: "" },
-  { icon: `iconfont icon-yingyong`, title: "更多", content: "" }
+  { icon: `iconfont icon-yinlemusic214`, title: "音乐", content: <MusicEdit/> },
+  { icon: `iconfont icon-yingyong`, title: "更多", content: <InterActive/> }
 ];
 
 export default MakeSider;

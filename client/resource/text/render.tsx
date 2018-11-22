@@ -20,7 +20,6 @@ interface Props {
 }
 
 const RenderText = React.memo((props: Props) => {
-  console.log(props)
   const showTextUi = name => {
     switch (name) {
       case 0:

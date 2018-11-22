@@ -1,6 +1,7 @@
 import produce from "immer";
 import BgData from "../resource/background/database";
 import random from "../tools/random";
+import { PictureDataAdd } from "../resource/picture/database";
 
 const store = {
   bg: BgData,
@@ -14,6 +15,76 @@ const store = {
 const reducer = (state = store, action) => {
   const { type, payload } = action;
   switch (type) {
+    /**
+     * @desc 表单设置
+     */
+    case "FORM_ADD":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base.item.push(payload);
+      });
+    case "FORM_DEL":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base.item.splice(payload, 1);
+      });
+    case "FORM_BASE":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.edit.number[0]].base,
+          ...payload
+        };
+      });
+    /**
+     * @desc 按钮组件数据变更
+     */
+    case "BUTTON_VALUE":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.edit.number[0]].base,
+          ...payload
+        };
+      });
+    /**
+     * @desc 视频组件数据变更
+     */
+    case "VIDEO_VALUE":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.edit.number[0]].base,
+          ...payload
+        };
+      });
+    /**
+     * @desc 图片组件数据变更
+     */
+    case "PICTURE_BASE_ADD":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base.push(payload);
+      });
+    case "PICTURE_BASE_ITEM":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base[payload.index] = {
+          ...draftState.ui[draftState.edit.number[0]].base[payload.index],
+          ...payload.data
+        };
+      });
+    case "PICTURE_BASE_DEL":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base.splice(payload, 1);
+      });
+    case "PICTURE_BASE":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]] = {
+          ...draftState.ui[draftState.edit.number[0]],
+          ...payload
+        };
+      });
+    case "PICTURE_VALUE":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.edit.number[0]].base,
+          ...payload
+        };
+      });
     /**
      * @desc 文本组件数据变更
      */
@@ -138,8 +209,10 @@ const reducer = (state = store, action) => {
             );
           });
         case "del":
+
           const cmp = (a, b) => a - b;
           return produce(state, draftState => {
+            draftState.edit.type = "";
             // 删除ui 数组中的数据
             draftState.edit.number
               .sort(cmp)
@@ -160,6 +233,7 @@ const reducer = (state = store, action) => {
                 }
               );
             draftState.edit.number.length = 0;
+
           });
         case "layout_up":
           return produce(state, draftState => {
@@ -222,6 +296,7 @@ const reducer = (state = store, action) => {
             draftState.edit.number.map(data => {
               draftState.edit.lock.push(data);
             });
+            draftState.edit.type = "";
           });
       }
       break;

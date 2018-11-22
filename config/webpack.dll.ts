@@ -19,7 +19,8 @@ module.exports = {
       "react-dom",
       "redux",
       "immer",
-      "redux-react-hook"
+      "redux-react-hook",
+      "react-qmap"
     ]
   },
   /**

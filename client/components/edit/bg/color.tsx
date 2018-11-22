@@ -9,7 +9,7 @@ const BgEditColor = React.memo(() => {
   const dispatch = useDispatch();
   const { color } = useMappedState(useCallback(state, []));
   const changeColor = useCallback(color => {
-    dispatch({ type: "BG_VALUE", payload: { color: color.hex } });
+    dispatch({ type: "BG_VALUE", payload: { color: color.hex, img: "" } });
   }, []);
 
 

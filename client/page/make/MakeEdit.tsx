@@ -1,12 +1,15 @@
 import * as React from "react";
 import { css } from "emotion";
+import { useCallback } from "react";
 import { useMappedState } from "redux-react-hook";
 import Store from "../../typing/store";
 import ShareEdit from "../../components/edit/share/ShareEdit";
 import EditKeyHelp from "../../components/edit/key-help";
-import { useCallback } from "react";
 import TextEdit from "../../components/edit/text/text-edit";
-
+import PictureEdit from "../../components/edit/pitcure/PictureEdit";
+import VideoEditor from "../../components/edit/videoEdit";
+import ButtonEdit from "../../components/edit/button/button-edit";
+import FormEdit from "../../components/edit/form/FormEdit";
 
 const MakeEdit = React.memo(() => {
   const { type } = useMappedState(useCallback((state: Store) => ({
@@ -18,9 +21,17 @@ const MakeEdit = React.memo(() => {
    */
   const renderEditor = (type: string): object => {
     switch (type) {
+      case "form":
+        return <FormEdit/>;
+      case "button":
+        return <ButtonEdit/>;
+      case "video":
+        return <VideoEditor/>;
+      case "picture":
+        return <PictureEdit/>;
       case "text":
         return <TextEdit/>;
-      case"hot-key":
+      case "hot-key":
         return <EditKeyHelp/>;
       default:
         return <ShareEdit/>;
