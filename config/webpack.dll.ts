@@ -20,9 +20,11 @@ module.exports = {
       "redux",
       "immer",
       "redux-react-hook",
+      "react-emotion",
       "react-qmap"
     ]
   },
+
   /**
    * @desc 输出文件
    */
