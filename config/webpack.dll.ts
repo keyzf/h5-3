@@ -21,7 +21,10 @@ module.exports = {
       "immer",
       "redux-react-hook",
       "react-emotion",
-      "react-qmap"
+      "react-qmap",
+      "axios",
+      'emotion',
+      'react-color'
     ]
   },
 

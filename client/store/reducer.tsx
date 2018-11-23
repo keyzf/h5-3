@@ -18,6 +18,13 @@ const reducer = (state = store, action) => {
     /**
      * @desc 表单设置
      */
+    case "FORM_ITEM":
+      return produce(state, draftState => {
+        draftState.ui[draftState.edit.number[0]].base.item[payload.index] = {
+          ...draftState.ui[draftState.edit.number[0]].base.item[payload.index],
+          ...payload.data
+        };
+      });
     case "FORM_ADD":
       return produce(state, draftState => {
         draftState.ui[draftState.edit.number[0]].base.item.push(payload);

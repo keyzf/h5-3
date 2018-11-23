@@ -13,7 +13,23 @@ interface Props {
   };
 }
 
-class FormOptSelect extends React.PureComponent<Props, ""> {
+class FormOptSelect extends React.PureComponent<Props, any> {
+  state = {
+    value: []
+  };
+
+  change = (checkedValues) => {
+    this.setState({
+      value: checkedValues
+    });
+
+    this.props.change(this.props.index, {
+      isLegal: true,
+      legalMsg: "",
+      data: checkedValues
+    });
+  };
+
   render() {
     const FormItem = Form.Item;
     const Option = Select.Option;
@@ -24,7 +40,7 @@ class FormOptSelect extends React.PureComponent<Props, ""> {
         <Select
           defaultValue={option[0]}
           style={{ width: "100%" }}
-          onChange={this.props.change.bind(this, this.props.index)}
+          onChange={this.change}
         >
           {option.map((data, index) => {
             return (

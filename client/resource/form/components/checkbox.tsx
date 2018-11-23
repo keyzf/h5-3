@@ -13,7 +13,23 @@ interface Props {
   };
 }
 
-class FormOptCheckBox extends React.PureComponent<Props, ""> {
+class FormOptCheckBox extends React.PureComponent<Props, any> {
+  state = {
+    value: []
+  };
+
+  change = (checkedValues) => {
+    this.setState({
+      value: checkedValues
+    });
+
+    this.props.change(this.props.index, {
+      isLegal: true,
+      legalMsg: "",
+      data: checkedValues
+    });
+  };
+
   render() {
     const FormItem = Form.Item;
     const { option, title, title_color, option_color } = this.props.data;
@@ -22,7 +38,7 @@ class FormOptCheckBox extends React.PureComponent<Props, ""> {
       <FormItem label={<div style={{ color: `${title_color}` }}>{title}</div>}>
         <Checkbox.Group
           style={{ width: "100%" }}
-          onChange={this.props.change.bind(this, this.props.index)}
+          onChange={this.change}
         >
           <Row>
             {option.map((data, index) => {

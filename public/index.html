@@ -11,6 +11,52 @@
             margin: 0;
             padding: 0;
         }
+        /*居中*/
+        .flex_center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+        }
+
+
+        /*模态框*/
+        .modal {
+            position: fixed; /* 根据浏览器定位 */
+            left: 0;
+            top: 0;
+            display: flex; /* 默认隐藏 */
+            justify-content: center;
+            align-items: center;
+            z-index: 100000; /* 放在顶部 */
+            width: 100%; /* 全宽 */
+            height: 100%; /* 全高 */
+            overflow: auto; /* 允许滚动 */
+            transform: translate(0,0);
+            background-color: rgba(0, 0, 0, 0.4); /* 背景色 */
+        }
+
+        /*模态框内容*/
+        .modal-content {
+            background-color: #fefefe;
+            border-radius: 10px;
+            z-index: 100001; /* 放在顶部 */
+            width: 80%;
+            max-width: 400px;
+            animation: topDown 0.4s; /*自定义动画，从模态框内容上到下出现*/
+        }
+
+        @keyframes topDown {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
     </style>
 <body>
 <div id="root"></div>

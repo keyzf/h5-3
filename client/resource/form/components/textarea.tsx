@@ -13,17 +13,35 @@ interface Props {
   };
 }
 
-class FormOptTextArea extends React.PureComponent<Props, ""> {
+class FormOptTextArea extends React.PureComponent<Props, any> {
+
+  state = {
+    value: ""
+  };
+
+  change = (e) => {
+    this.setState({
+      value: e.target.value
+    });
+
+    this.props.change(this.props.index, {
+      isLegal: true,
+      legalMsg: "",
+      data: e.target.value
+    });
+  };
+
   render() {
     const FormItem = Form.Item;
     const { option, title, title_color, option_color } = this.props.data;
     return (
       <FormItem label={<div style={{ color: `${title_color}` }}>{title}</div>}>
         <Input.TextArea
-          value={option}
+          value={this.state.value}
           rows={4}
+          placeholder={option}
           style={{ color: `${option_color}`, borderColor: title_color }}
-          onChange={this.props.change.bind(this, this.props.index)}
+          onChange={this.change}
         />
       </FormItem>
     );

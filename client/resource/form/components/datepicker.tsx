@@ -18,7 +18,23 @@ interface Props {
   };
 }
 
-class FormOptDatePicker extends React.PureComponent<Props, ""> {
+class FormOptDatePicker extends React.PureComponent<Props, any> {
+  state = {
+    value: moment("2019-01-01", "YYYY-MM-DD")
+  };
+
+  change = (e) => {
+    this.setState({
+      value: e
+    });
+
+    this.props.change(this.props.index, {
+      isLegal: true,
+      legalMsg: "",
+      data: e
+    });
+  };
+
   render() {
     const FormItem = Form.Item;
     const { option, title, title_color, option_color } = this.props.data;
@@ -28,8 +44,8 @@ class FormOptDatePicker extends React.PureComponent<Props, ""> {
         <DatePicker
           locale={locale}
           style={{ color: `${option_color}`, borderColor: title_color }}
-          value={option ? option : moment("2015-01-01", "YYYY-MM-DD")}
-          onChange={this.props.change.bind(this, this.props.index)}
+          value={this.state.value}
+          onChange={this.change}
         />
       </FormItem>
     );

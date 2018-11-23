@@ -6,6 +6,7 @@ import { useMappedState } from "redux-react-hook";
 import FormItemList from "./item-list";
 import { useDispatch } from "redux-react-hook";
 import SubmitForm from "./submit";
+import FormEditItem from "./item";
 
 const FormEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -41,7 +42,8 @@ const FormEdit = React.memo(() => {
         >
 
           <TabPane tab={items.title} key="1">
-            {/*<FormEditItem data={items} index={state}/>*/}
+            <FormEditItem fun={(data) => dispatch({ type: "FORM_ITEM", payload: { index: state, data: data } })}
+                          data={items}/>
           </TabPane>
         </Tabs>
       ) : (

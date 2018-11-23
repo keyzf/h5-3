@@ -2,16 +2,7 @@ import * as React from "react";
 import Button0 from "./components/button-0";
 
 interface Props {
-    data: {
-        base: {
-            font_color: string;
-            bg_color: string;
-            bg_img: { url: string; crop: string };
-            radius: number;
-            desc: string;
-            link: { type: ""; url: "" };
-        };
-    };
+    data: any;
 }
 
 class RenderButton extends React.PureComponent<Props, ""> {

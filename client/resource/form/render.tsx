@@ -9,60 +9,22 @@ import FormOptRate from "./components/rate";
 import FormOptRadio from "./components/radio";
 import FormOptSelect from "./components/select";
 import { useState } from "react";
+import FormSubmitMode from "./model";
 
+const value = [];
 const RenderForm = React.memo((props: any) => {
-  const [state, setState] = useState({
-    valueList: [],
-    isLegal: { index: "", msg: "" }
-  });
+  const [state, setState] = useState(false);
 
+  const change = (id, data) => {
+    value[id] = data;
+  };
 
-  const onChange= (id, event) => {
-    /**
-     * @desc 判断值
-     */
-    // if (this.props.data.base.item[id].type === "phone") {
-    //   const pattern = /^((1[3-9][0-9])+\d{8})$/;
-    //   if (!pattern.test(event.target.value)) {
-    //     this.setState({
-    //       isLegal: {
-    //         index: id,
-    //         msg: "手机格式不正确"
-    //       }
-    //     });
-    //   } else {
-    //     this.setState({
-    //       isLegal: {
-    //         index: "",
-    //         msg: ""
-    //       }
-    //     });
-    //   }
-    // }
-    // if (this.props.data.base.item[id].type === "email") {
-    //   const pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
-    //   if (!pattern.test(event.target.value)) {
-    //     this.setState({
-    //       isLegal: {
-    //         index: id,
-    //         msg: "邮箱格式不正确"
-    //       }
-    //     });
-    //   }
-    // }
+  const submit = () => {
+    setState(true);
+  };
 
-    // const value = state.valueList;
-    // try {
-    //   value[id] = event.target.value;
-    // } catch (e) {
-    //   value[id] = event;
-    // }
-    // /**
-    //  * @desc 记录修改值
-    //  */
-    // this.setState({
-    //   valueList: value
-    // });
+  const onclose = () => {
+    setState(false);
   };
 
   const { item, desc, font_color, bg_color } = props.data.base;
@@ -72,8 +34,7 @@ const RenderForm = React.memo((props: any) => {
         const option = {
           input: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -81,8 +42,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           name: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -90,8 +50,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           phone: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -99,8 +58,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           email: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -108,8 +66,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           mobile: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -117,8 +74,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           address: () => (
             <FormOptInput
-              isLegal={state.isLegal}
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -126,7 +82,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           textarea: () => (
             <FormOptTextArea
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -134,7 +90,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           checkbox: () => (
             <FormOptCheckBox
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -142,7 +98,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           upload: () => (
             <FormOptUpLoad
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -150,7 +106,7 @@ const RenderForm = React.memo((props: any) => {
           ),
           rate: () => (
             <FormOptRate
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               key={index}
               index={index}
@@ -158,16 +114,16 @@ const RenderForm = React.memo((props: any) => {
           ),
           datePicker: () => (
             <FormOptDatePicker
-              change={(e)=>onChange(index,e)}
+              change={change}
               data={data}
               index={index}
             />
           ),
           radio: () => (
-            <FormOptRadio change={(e)=>onChange(index,e)} data={data} index={index}/>
+            <FormOptRadio change={change} data={data} index={index}/>
           ),
           select: () => (
-            <FormOptSelect change={(e)=>onChange(index,e)} data={data} index={index}/>
+            <FormOptSelect change={change} data={data} index={index}/>
           )
         };
         const FormUiRender = option[data.type];
@@ -175,6 +131,7 @@ const RenderForm = React.memo((props: any) => {
       })}
       <Form.Item>
         <Button
+          onClick={submit}
           type="primary"
           htmlType="submit"
           style={{
@@ -186,7 +143,9 @@ const RenderForm = React.memo((props: any) => {
         >
           {desc}
         </Button>
+        <FormSubmitMode  mode={state} onclose={onclose}/>
       </Form.Item>
+
     </Form>
   );
 });
