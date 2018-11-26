@@ -33,7 +33,7 @@ const PictureRadius = React.memo(() => {
   const radius = ui[editList[0]].base.radius;
 
   return (
-    <FormItem label={"边框配色"} {...formItemLayout}>
+    <FormItem label={"圆角"} {...formItemLayout}>
       <Slider value={radius} onChange={changeRadius}/>
     </FormItem>
   );

@@ -5,7 +5,7 @@ import { PictureDataAdd } from "../resource/picture/database";
 
 const store = {
   bg: BgData,
-  music: "",
+  music: { desc: "", url: "" },
   ui: [],
   log: [],
   share: { title: "测试标题", desc: "测试内容", cover: "" },

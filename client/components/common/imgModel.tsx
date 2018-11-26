@@ -7,10 +7,10 @@ import {
   Row,
   Col,
   Pagination,
-  Icon,
   Tooltip,
   message
 } from "antd";
+import UpLoadImg from "./imgUpload";
 import userAssets_api from "../../api/userasset_api";
 import delete_api from "../../api/delete_api";
 
@@ -26,7 +26,8 @@ const ImgModel = React.memo(
         .then((resp: any) => {
           setImgApi(JSON.parse(resp));
         })
-        .catch(() => {});
+        .catch(() => {
+        });
     });
 
     const del = mid => {
@@ -37,12 +38,14 @@ const ImgModel = React.memo(
         .then((resp: any) => {
           setImgApi(JSON.parse(resp));
         })
-        .catch(() => {});
+        .catch(() => {
+        });
     };
 
     const delAll = () => {
       imgApi.list.map(data => {
-        delete_api(data.mid).then(resp => {});
+        delete_api(data.mid).then(resp => {
+        });
       });
 
       message.success("清空成功");
@@ -51,7 +54,8 @@ const ImgModel = React.memo(
         .then((resp: any) => {
           setImgApi(JSON.parse(resp));
         })
-        .catch(() => {});
+        .catch(() => {
+        });
     };
 
     const pageChange = current => {
@@ -60,7 +64,8 @@ const ImgModel = React.memo(
           setImgApi(JSON.parse(resp));
           setPage(current);
         })
-        .catch(error => {});
+        .catch(error => {
+        });
     };
 
     const onChoose = src => {
@@ -80,11 +85,33 @@ const ImgModel = React.memo(
       setState(false);
     };
 
+    const uploadChange = (field) => {
+      if (field.upload.value.file.status === "done") {
+        if (field.error) {
+          message.error("网络异常，上传失败");
+        } else {
+          message.success("图片添加成功");
+          userAssets_api(24, choose)
+            .then((resp: any) => {
+              setImgApi(JSON.parse(resp));
+            })
+            .catch(() => {
+            });
+        }
+      }
+    };
+
+
     const TabPane = Tabs.TabPane;
     const operations = (
       <Button.Group>
-        <Button>上传</Button>
-        <Button onClick={() => delAll()}>清空</Button>
+        <Button htmlType={"button"} style={{ top: "-20px" }}>
+          <UpLoadImg upload={{ value: "" }} onChange={uploadChange}>
+            <div style={{ position: "relative", top: "-5px" }}>图片上传</div>
+          </UpLoadImg>
+        </Button>
+        <Button htmlType={"button"}
+                onClick={() => delAll()}>清空</Button>
       </Button.Group>
     );
 

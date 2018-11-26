@@ -2,17 +2,29 @@ import * as React from "react";
 import { Col, Icon, Row } from "antd";
 import { useDispatch } from "redux-react-hook";
 import { useCallback } from "react";
+import { useMappedState } from "redux-react-hook";
+import ImgModel from "../../common/imgModel";
+import Store from "../../../typing/store";
+
 
 const BgEditImg = React.memo(() => {
-  /**
-   * @desc 发送更新数据
-   */
   const dispatch = useDispatch();
+  const { bg } = useMappedState(
+    useCallback(
+      (state: Store) => ({
+        bg: state.bg
+      }),
+      []
+    )
+  );
   const changeImg = useCallback((url: string) => dispatch({ type: "BG_VALUE", payload: { img: url } }), []);
+
+
   return (
     <Row gutter={16}>
       <Col span={8} style={{ marginBottom: "5px" }}>
-        <div style={{
+        <ImgModel choose={bg.base.img} imgChange={changeImg}>
+          <div style={{
             height: "60px",
             border: "1px solid black",
             borderRadius: "3px",
@@ -21,8 +33,9 @@ const BgEditImg = React.memo(() => {
             alignContent: "center",
             alignItems: "center"
           }}>
-          <Icon type="upload" theme="outlined"/>
-        </div>
+            <Icon type="upload" theme="outlined"/>
+          </div>
+        </ImgModel>
       </Col>
       {imgList.map((data: string, index: number) => {
         return (

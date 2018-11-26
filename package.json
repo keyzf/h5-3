@@ -19,6 +19,7 @@
     "immer": "^1.7.4",
     "react": "^16.7.0-alpha.2",
     "react-color": "^2.14.1",
+    "react-cropper": "^1.0.1",
     "react-dom": "^16.7.0-alpha.2",
     "react-draggable": "^3.0.5",
     "react-emotion": "^9.2.12",

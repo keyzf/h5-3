@@ -13,6 +13,9 @@ import PictureItemColor from "./item-color";
 import PictureItemLink from "./item-link";
 import PictureItemRadius from "./item-radius";
 import { PictureDataAdd } from "../../../resource/picture/database";
+import ImgModel from "../../common/imgModel";
+import UpLoadImg from "../../common/imgUpload";
+import ImgCrop from "../../common/imgCrop";
 
 const PictureEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -41,6 +44,42 @@ const PictureEdit = React.memo(() => {
     dispatch({ type: "PICTURE_BASE_ADD", payload: PictureDataAdd });
   };
 
+  const changeImg = url => {
+    dispatch({ type: "PICTURE_VALUE", payload: { img: url, crop: url } });
+  };
+
+  const itemChangeImg = url => {
+    dispatch({
+      type: "PICTURE_BASE_ITEM",
+      payload: { data: { img: url, crop: url }, index: state }
+    });
+  };
+
+  const itemCropImg = data => {
+    dispatch({
+      type: "PICTURE_BASE_ITEM",
+      payload: {
+        index: state,
+        data: {
+          crop: `${uiData.base.img}?imageMogr2/crop/!${data.width}x${
+            data.height
+          }a${data.x}a${data.y}`
+        }
+      }
+    });
+  };
+
+  const cropImg = data => {
+    dispatch({
+      type: "PICTURE_VALUE",
+      payload: {
+        crop: `${uiData.base.img}?imageMogr2/crop/!${data.width}x${
+          data.height
+        }a${data.x}a${data.y}`
+      }
+    });
+  };
+
   return (
     <React.Fragment>
       {uiData.common.id === 0 ? (
@@ -50,29 +89,45 @@ const PictureEdit = React.memo(() => {
               <Form>
                 <Row gutter={16} type={"flex"}>
                   <Col span={10}>
-                    <div style={style.img}>
-                      <img
-                        style={{ maxHeight: "100%", maxWidth: "100%" }}
-                        src="http://7xv429.com1.z0.glb.clouddn.com/mao1.jpg"
-                        alt="img"
-                      />
-                    </div>
+                    <ImgModel choose={uiData.base.img} imgChange={changeImg}>
+                      <div style={style.img}>
+                        <img
+                          style={{ maxHeight: "100%", maxWidth: "100%" }}
+                          src={uiData.base.crop}
+                          alt="img"
+                        />
+                      </div>
+                    </ImgModel>
                   </Col>
                   <Col span={14}>
                     <Button.Group>
-                      <Button>更换</Button>
-                      <Button>裁剪</Button>
+                      <Button style={{ top: "-5px" }}>
+                        {" "}
+                        <ImgModel
+                          choose={uiData.base.img}
+                          imgChange={changeImg}
+                        >
+                          <div style={{ position: "relative", top: "-15px" }}>
+                            更换
+                          </div>
+                        </ImgModel>
+                      </Button>
+                      <Button>
+                        <ImgCrop src={uiData.base.img} cropImg={cropImg}>
+                          裁剪
+                        </ImgCrop>
+                      </Button>
                     </Button.Group>
                     <p style={{ marginTop: "15px" }}>
                       格式：*.jpg / *.png
-                      <br/>
+                      <br />
                       大小不超过2M
                     </p>
                   </Col>
                 </Row>
-                <Divider dashed/>
-                <PictureRadius/>
-                <PictureLink/>
+                <Divider dashed />
+                <PictureRadius />
+                <PictureLink />
               </Form>
             </div>
           </TabPane>
@@ -89,30 +144,49 @@ const PictureEdit = React.memo(() => {
                   <div style={{ padding: "0 10px" }}>
                     <Row gutter={16} type={"flex"}>
                       <Col span={10}>
-                        <div style={style.img}>
-                          <img
-                            style={{ maxHeight: "100%", maxWidth: "100%" }}
-                            src="http://7xv429.com1.z0.glb.clouddn.com/mao1.jpg"
-                            alt="img"
-                          />
-                        </div>
+                        <ImgModel
+                          choose={ui[editList[0]].base[state].crop}
+                          imgChange={itemChangeImg}
+                        >
+                          <div style={style.img}>
+                            <img
+                              style={{ maxHeight: "100%", maxWidth: "100%" }}
+                              src={ui[editList[0]].base[state].crop}
+                              alt="img"
+                            />
+                          </div>
+                        </ImgModel>
                       </Col>
                       <Col span={14}>
                         <Button.Group>
-                          <Button>更换</Button>
-                          <Button>裁剪</Button>
+                          <Button>
+                            <ImgModel
+                              choose={ui[editList[0]].base[state].crop}
+                              imgChange={itemChangeImg}
+                            >
+                              <div style={{ position: "relative" }}>更换</div>
+                            </ImgModel>
+                          </Button>
+                          <Button>
+                            <ImgCrop
+                              src={ui[editList[0]].base[state].img}
+                              cropImg={itemCropImg}
+                            >
+                              裁剪
+                            </ImgCrop>
+                          </Button>
                         </Button.Group>
                         <p style={{ marginTop: "15px" }}>
                           格式：*.jpg / *.png
-                          <br/>
+                          <br />
                           大小不超过2M
                         </p>
                       </Col>
                     </Row>
-                    <Divider dashed/>
-                    <PictureItemRadius index={state}/>
-                    <PictureItemColor index={state}/>
-                    <PictureItemLink index={state}/>
+                    <Divider dashed />
+                    <PictureItemRadius index={state} />
+                    <PictureItemColor index={state} />
+                    <PictureItemLink index={state} />
                   </div>
                 </Form>
               </TabPane>
@@ -128,9 +202,13 @@ const PictureEdit = React.memo(() => {
                     choose={choose}
                   />
                   <Col span={24}>
-                    <Divider dashed/>
-                    <Button type="dashed" style={{ width: "100%" }} onClick={add}>
-                      <Icon type="add" theme="outlined"/>
+                    <Divider dashed />
+                    <Button
+                      type="dashed"
+                      style={{ width: "100%" }}
+                      onClick={add}
+                    >
+                      <Icon type="add" theme="outlined" />
                       添加
                     </Button>
                   </Col>
@@ -144,8 +222,8 @@ const PictureEdit = React.memo(() => {
           <TabPane tab="属性设置" key="2">
             <div style={{ padding: "0 10px" }}>
               <Form>
-                <PictureColor/>
-                <PictureLink/>
+                <PictureColor />
+                <PictureLink />
               </Form>
             </div>
           </TabPane>
