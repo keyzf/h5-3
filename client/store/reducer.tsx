@@ -7,6 +7,7 @@ const store = {
   bg: BgData,
   music: "",
   ui: [],
+  log: [],
   share: { title: "测试标题", desc: "测试内容", cover: "" },
   baseline: { h: [], v: [], color: "#ff5722" },
   edit: { type: "share", number: [], lock: [] }
@@ -15,6 +16,61 @@ const store = {
 const reducer = (state = store, action) => {
   const { type, payload } = action;
   switch (type) {
+    /**
+     * @desc 历史记录
+     */
+    case "LOG_CHANGE":
+      console.log(payload);
+      return produce(state, draftState => {
+        draftState.ui = this.log[payload].ui;
+        draftState.bg = this.log[payload].bg;
+        draftState.music = this.log[payload].music;
+      });
+    case "LOG_CREAT":
+      return produce(state, draftState => {
+        const data: any = {
+          time: new Date(),
+          bg: state.bg,
+          music: state.music,
+          ui: state.ui
+        };
+        if (state.log.length) {
+          if (
+            new Date(data.time).getMinutes() -
+            new Date(state.log[0].time).getMinutes() >=
+            5
+          ) {
+            produce(state, draftState => {
+              draftState.log.unshift(data);
+            });
+
+            if (state.log.length > 10) {
+              produce(state, draftState => {
+                draftState.log.length = 10;
+              });
+            }
+            localStorage.setItem(
+              `e7wei-log-${payload}`,
+              JSON.stringify(draftState.log)
+            );
+          }
+        } else {
+          draftState.log.unshift(data);
+          console.log(data);
+          localStorage.setItem(
+            `e7wei-log-${payload}`,
+            JSON.stringify(draftState.log)
+          );
+        }
+      });
+    case "LOG_INIT":
+      return produce(state, draftState => {
+        if (localStorage.getItem(`e7wei-log-${payload}`)) {
+          draftState.log = JSON.parse(localStorage.getItem(`e7wei-log-${payload}`));
+        } else {
+          localStorage.setItem(`e7wei-log-${payload}`, JSON.stringify([]));
+        }
+      });
     /**
      * @desc 表单设置
      */

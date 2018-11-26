@@ -30,8 +30,6 @@ const App = React.memo(() => {
   );
   return (
     <React.Suspense fallback={loading}>
-
-
       {web === "v" ? <Make id={id}/> : <Release id={id}/>}
     </React.Suspense>
   );

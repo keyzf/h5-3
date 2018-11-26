@@ -1,19 +1,37 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "redux-react-hook";
 import { css } from "react-emotion";
 import { Layout } from "antd";
 import MakeSider from "./MakeSider";
 import MakeEdit from "./MakeEdit";
 import MakeContent from "./MakeContent";
 import MakeToolBar from "./MakeToolBar";
+import MakeNav from "./MakeNav";
 
 
 /**
  * @desc Template
  */
 export default React.memo((props: { id: number }) => {
+  const [state, setState] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "LOG_INIT", payload: props.id });
+
+    setTimeout(() => {
+      setState(state + 1);
+      dispatch({ type: "LOG_CREAT", payload: props.id });
+    }, 5 * 60 * 1000);
+  });
+
+
   return (
     <Layout className={style.layout}>
-      <Header className={style.header}/>
+      <Header className={style.header}>
+        < MakeNav/>
+      </Header>
       <Layout className={style.content}>
         <Sider {...siderConfig(334)} >
           <MakeSider/>

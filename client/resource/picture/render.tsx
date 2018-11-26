@@ -2,18 +2,9 @@ import * as React from "react";
 import Picture0 from "./components/base/picture_0";
 import Picture1 from "./components/base/picture_1";
 import Picture36 from "./components/icon/picture_36";
-import Text0 from "../text/components/text_0";
-import Text1 from "../text/components/text_1";
-import Text3 from "../text/components/text_3";
 
 interface Props {
-  data: {
-    common: {
-      type: string,
-      id: string | number
-    };
-    base: any
-  }
+  data: any
 }
 
 

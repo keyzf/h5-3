@@ -15,6 +15,7 @@ const config: webpack.Configuration = merge(common, {
     mode: 'production',
 
     plugins: [
+
         /**
          * @desc  dll插件
          */
@@ -32,6 +33,8 @@ const config: webpack.Configuration = merge(common, {
         filename: '[name].js', // 输出文件名
         path: path.resolve('public/assets'), //输出路径
     },
+
+
 });
 
 /**
