@@ -17,6 +17,11 @@ const ShareEdit = React.memo(() => {
       []
     )
   );
+  const changeCover = (url) => {
+    dispatch({ type: "SHARE_VALUE", payload: { cover: url } });
+  };
+
+
   const shareValueChange = e =>
     dispatch({ type: "SHARE_VALUE", payload: { [e.target.name]: e.target.value } });
 
@@ -24,7 +29,7 @@ const ShareEdit = React.memo(() => {
     <div style={{ padding: "20px 10px 0" }}>
       <Form>
         <FormItem label={"分享图片"} {...formLayout}>
-          <ImgModel>
+          <ImgModel choose={cover} imgChange={changeCover}>
             <div
               style={{
                 height: "120px",

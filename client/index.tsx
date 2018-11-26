@@ -5,6 +5,7 @@ import { css } from "react-emotion";
 import { StoreProvider } from "redux-react-hook";
 import store from "./store/store";
 import analyzeUrl from "./tools/analyze-url";
+import "./api/mock";
 
 /**
  * @desc  解析路由，导入相应页面
