@@ -159,6 +159,16 @@ const reducer = (state = store, action) => {
         };
       });
     /**
+     * @desc 音乐组件
+     */
+    case "MUSIC_VALUE":
+      return produce(state, draftState => {
+        draftState.music = {
+          ...draftState.music,
+          ...payload
+        };
+      });
+    /**
      * @desc 背景组件数据变更
      */
     case "BG_VALUE":

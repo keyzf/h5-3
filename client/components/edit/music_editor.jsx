@@ -99,7 +99,6 @@ class EditorMusic extends PureComponent {
     }
     if (name === 'play') {
       document.getElementById('audio').pause();
-
       this.setState({
         audio: 'pause',
       });

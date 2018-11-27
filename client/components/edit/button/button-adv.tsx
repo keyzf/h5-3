@@ -4,6 +4,7 @@ import ButtonColor from "./color";
 import Store from "../../../typing/store";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { useCallback } from "react";
+import ImgModel from "../../common/imgModel";
 
 const ButtonAdv = React.memo(() => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const ButtonAdv = React.memo(() => {
       []
     )
   );
+  const changeImg = (url: string) => dispatch({ type: "BUTTON_VALUE", payload: { bg_img: { url: url, crop: url } } });
+
   return (
     <div style={{ padding: "10px" }}>
       <p>背景色</p>
@@ -39,29 +42,31 @@ const ButtonAdv = React.memo(() => {
                 background: ui[editList[0]].base.bg_color
               }}
             >
-              <Icon type="bg-colors" theme="outlined" />
+              <Icon type="bg-colors" theme="outlined"/>
             </div>
           </Col>
         </Row>
       </ButtonColor>
-      <br />
+      <br/>
 
       <p>背景图</p>
       <Row gutter={16}>
         <Col span={8} style={{ marginBottom: "5px" }}>
-          <div
-            style={{
-              height: "60px",
-              border: "1px solid black",
-              borderRadius: "3px",
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Icon type="upload" theme="outlined" />
-          </div>
+          <ImgModel choose={ui[editList[0]].base.bg_img.url} imgChange={changeImg}>
+            <div
+              style={{
+                height: "60px",
+                border: "1px solid black",
+                borderRadius: "3px",
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Icon type="upload" theme="outlined"/>
+            </div>
+          </ImgModel>
         </Col>
       </Row>
     </div>

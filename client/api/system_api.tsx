@@ -1,16 +1,16 @@
 import axios from "axios";
 
-const userAssets_api = (type, page) => {
+const system_api = (page, tid, pagecount = `24`) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
-    params.append("pagecount", "24");
+    params.append("pagecount", pagecount);
     params.append("page", page);
-    params.append("type", type);
+    params.append("tid", tid);
     axios
-      .post(`${window.location.origin}/Material/getUser`, params)
+      .post(`${window.location.origin}/Material/getSys`, params)
       .then(response => {
         if (response.data.error) {
-          reject(response.data.error);
+
         } else {
           resolve(response.data);
         }
@@ -18,4 +18,5 @@ const userAssets_api = (type, page) => {
   });
 };
 
-export default userAssets_api;
+
+export default system_api;
