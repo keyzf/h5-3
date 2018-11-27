@@ -1,4 +1,5 @@
 import * as React from "react";
+// @ts-ignore
 import ReactQMap from "react-qmap";
 import { useCallback, useState } from "react";
 import { Select, Input, Form, Modal, Row, Col } from "antd";
@@ -17,7 +18,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
     )
   );
 
-  let maps, wMaps;
+  let maps:any, wMaps:any;
 
   const [state, setState] = useState({
     map: false,
@@ -46,7 +47,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
    * @desc  记录链接数据的更改
    * @param e
    */
-  const onChangeValue = e => {
+  const onChangeValue = (e:any) => {
     dispatch({
       type: "PICTURE_BASE_ITEM", payload: {
         index: props.index, data: {
@@ -95,7 +96,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
    * @param map
    * @param wMap
    */
-  const getMap = (map, wMap) => {
+  const getMap = (map:any, wMap:any) => {
     maps = map;
     wMaps = wMap;
     // 点选地图坐标
@@ -103,7 +104,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       position: map.getCenter(),
       map: map
     });
-    wMap.event.addListener(map, "click", event => {
+    wMap.event.addListener(map, "click", (event:any) => {
       marker.setPosition(event.latLng);
       setState({
         map: state.map,
@@ -125,7 +126,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       //设置动扩大检索区域。默认值true，会自动检索指定城市以外区域。
       autoExtend: true,
       //检索成功的回调函数
-      complete: results => {
+      complete: (results:any) => {
         //设置回调函数参数
         let pois = results.detail.pois;
         for (let i = 0, l = pois.length; i < l; i++) {
@@ -247,7 +248,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
           <Col span={16}>
             <ReactQMap
               center={{ latitude: url ? url.lat : "32.05838", longitude: url ? url.lng : "118.79647" }}
-              getMap={(map, wMap) => getMap(map, wMap)}
+              getMap={(map:any, wMap:any) => getMap(map, wMap)}
               initialOptions={{ zoomControl: true, mapTypeControl: true }}
               apiKey="xxxxxx-xxxxx-xxxxx-xxxxxx"
               style={{ height: 300 }}

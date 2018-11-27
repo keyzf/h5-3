@@ -1,18 +1,18 @@
-export const getLength = (x, y) => Math.sqrt(x * x + y * y);
+export const getLength = (x:any, y:any) => Math.sqrt(x * x + y * y);
 
-export const getAngle = ({ x: x1, y: y1 }, { x: x2, y: y2 }) => {
+export const getAngle = ({ x: x1, y: y1 }:any, { x: x2, y: y2 }:any) => {
   const dot = x1 * x2 + y1 * y2;
   const det = x1 * y2 - y1 * x2;
   const angle = Math.atan2(det, dot) / Math.PI * 180;
   return (angle + 360) % 360;
 };
 
-export const degToRadian = deg => deg * Math.PI / 180;
+export const degToRadian = (deg:any) => deg * Math.PI / 180;
 
-const cos = deg => Math.cos(degToRadian(deg));
-const sin = deg => Math.sin(degToRadian(deg));
+const cos = (deg:any) => Math.cos(degToRadian(deg));
+const sin = (deg:any) => Math.sin(degToRadian(deg));
 
-const setWidthAndDeltaW = (width, deltaW, minWidth) => {
+const setWidthAndDeltaW = (width:any, deltaW:any, minWidth:any) => {
   const expectedWidth = width + deltaW;
   if (expectedWidth > minWidth) {
     width = expectedWidth;
@@ -23,7 +23,7 @@ const setWidthAndDeltaW = (width, deltaW, minWidth) => {
   return { width, deltaW };
 };
 
-const setHeightAndDeltaH = (height, deltaH, minHeight) => {
+const setHeightAndDeltaH = (height:any, deltaH:any, minHeight:any) => {
   const expectedHeight = height + deltaH;
   if (expectedHeight > minHeight) {
     height = expectedHeight;
@@ -34,14 +34,14 @@ const setHeightAndDeltaH = (height, deltaH, minHeight) => {
   return { height, deltaH };
 };
 
-export const getNewStyle = (
-  type,
-  rect,
-  deltaW,
-  deltaH,
-  ratio,
-  minWidth,
-  minHeight
+export const getNewStyle:any = (
+  type:any,
+  rect:any,
+  deltaW:any,
+  deltaH:any,
+  ratio:any,
+  minWidth:any,
+  minHeight:any
 ) => {
   let { width, height, centerX, centerY, rotateAngle } = rect;
   const widthFlag = width < 0 ? -1 : 1;
@@ -204,10 +204,10 @@ export const getNewStyle = (
   };
 };
 
-export const getCursor = (rotateAngle, d) => {
-  const startMap = { n: 0, ne: 1, e: 2, se: 3, s: 4, sw: 5, w: 6, nw: 7 };
+export const getCursor = (rotateAngle:any, d:any) => {
+  const startMap:any = { n: 0, ne: 1, e: 2, se: 3, s: 4, sw: 5, w: 6, nw: 7 };
   const directionArray = ["n", "ne", "e", "se", "s", "sw", "w", "nw"];
-  const map = {
+  const map:any = {
     0: 0,
     1: 1,
     2: 2,
@@ -221,8 +221,8 @@ export const getCursor = (rotateAngle, d) => {
     10: 7,
     11: 8
   };
-  const increment = map[Math.floor(rotateAngle / 30)];
-  const index = startMap[d];
+  const increment:any = map[Math.floor(rotateAngle / 30)];
+  const index:any = startMap[d];
   const newIndex = (index + increment) % 8;
   return directionArray[newIndex];
 };

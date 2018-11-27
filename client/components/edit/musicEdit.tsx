@@ -27,14 +27,15 @@ const MusicEdit = React.memo(() => {
   const [play, setPlay] = useState(false);
   const [sum, setSum] = useState(0);
 
+
   useEffect(() => {
     /**
      * 音乐分类
      */
     userAsset_list_api()
       .then((resp: any) => {
-        setState({ tip: JSON.parse(resp).list, nowTip: state.nowTip });
-        setSum(JSON.parse(resp).sum);
+        setState({ tip: resp.list, nowTip: state.nowTip });
+        setSum(resp.sum);
       })
       .catch(() => {
       });
@@ -44,17 +45,18 @@ const MusicEdit = React.memo(() => {
      */
     userAssets_api(4, 0)
       .then((resp: any) => {
-        setList({ list: JSON.parse(resp).list, count: 0 });
+        setList({ list: resp.list, count: 0 });
       })
       .catch();
   }, []);
 
-  const del = (mid) => {
+
+  const del = (mid: any) => {
     delete_api(mid)
       .then(() => {
         userAssets_api(4, list.count)
           .then((resp: any) => {
-            setList({ list: JSON.parse(resp).list, count: 0 });
+            setList({ list: resp.list, count: 0 });
             setSum(JSON.parse(resp).sum);
             message.success("删除成功");
           })
@@ -73,11 +75,11 @@ const MusicEdit = React.memo(() => {
     document.getElementById("audio").pause();
   };
 
-  const onChoose = (url, desc) => {
+  const onChoose = (url: any, desc: any) => {
     dispatch({ type: "MUSIC_VALUE", payload: { url: url, desc: desc } });
   };
 
-  const audio = (name, url, desc) => {
+  const audio = (name: any, url: any, desc: any) => {
     if (name === "pause") {
       // @ts-ignore
       document.getElementById("audio").pause();
@@ -91,18 +93,18 @@ const MusicEdit = React.memo(() => {
     }
   };
 
-  const chooseTip = tip => {
+  const chooseTip = (tip: any) => {
     if (tip === "user") {
       userAssets_api(4, 0)
         .then((resp: any) => {
-          setList({ list: JSON.parse(resp).list, count: 0 });
-          setSum(JSON.parse(resp).sum);
+          setList({ list: resp.list, count: 0 });
+          setSum(resp.sum);
         })
         .catch();
     } else {
       system_api(0, tip, `10`).then((resp: any) => {
-        setList({ list: JSON.parse(resp).list, count: 0 });
-        setSum(JSON.parse(resp).sum);
+        setList({ list: resp.list, count: 0 });
+        setSum(resp.sum);
       });
     }
 
@@ -116,8 +118,8 @@ const MusicEdit = React.memo(() => {
   const upMusic = () => {
     userAssets_api(4, list.count)
       .then((resp: any) => {
-        setList({ list: JSON.parse(resp).list, count: 0 });
-        setSum(JSON.parse(resp).sum);
+        setList({ list: resp.list, count: 0 });
+        setSum(resp.sum);
         message.success("删除成功");
       })
       .catch(() => {
@@ -125,17 +127,17 @@ const MusicEdit = React.memo(() => {
       });
   };
 
-  const onChangePage = (page) => {
+  const onChangePage = (page: any) => {
     if (state.nowTip === "user") {
       userAssets_api(4, page)
         .then((resp: any) => {
-          setList({ list: JSON.parse(resp).list, count: page });
-          setSum(JSON.parse(resp).sum);
+          setList({ list: resp.list, count: page });
+          setSum(resp.sum);
         })
         .catch();
     } else {
       system_api(page, state.nowTip, `10`).then((resp: any) => {
-        setList({ list: JSON.parse(resp).list, count: page });
+        setList({ list: resp.list, count: page });
         setSum(JSON.parse(resp).sum);
       });
     }
@@ -167,7 +169,7 @@ const MusicEdit = React.memo(() => {
           >
             我的
           </CheckableTag>
-          {state.tip.map((data, index) => {
+          {state.tip.map((data: any, index: any) => {
             return (
               <CheckableTag
                 onChange={() => chooseTip(data.tid)}
@@ -185,7 +187,7 @@ const MusicEdit = React.memo(() => {
               <List
                 itemLayout="horizontal"
                 dataSource={[{ url: music.url, desc: music.desc }]}
-                renderItem={item => (
+                renderItem={(item: any) => (
                   <List.Item
                     actions={[
                       <a>
@@ -243,7 +245,7 @@ const MusicEdit = React.memo(() => {
                     current: list.count,
                     onChange: (e) => onChangePage(e)
                   }}
-                  renderItem={item => (
+                  renderItem={(item: any) => (
                     <List.Item
                       actions={[
                         <a>
@@ -347,7 +349,7 @@ const MusicEdit = React.memo(() => {
                     current: list.count,
                     onChange: (e) => onChangePage(e)
                   }}
-                  renderItem={item => (
+                  renderItem={(item: any) => (
                     <List.Item
                       actions={[
                         <a>

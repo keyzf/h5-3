@@ -1,6 +1,6 @@
-import axios from "axios/index";
+import axios from "axios";
 
-const delete_api = mid => {
+const delete_api = (mid:any) => {
   return new Promise((resolve) => {
     let params = new URLSearchParams();
     params.append("mid", mid);

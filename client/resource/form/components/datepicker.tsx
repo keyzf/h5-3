@@ -23,7 +23,7 @@ class FormOptDatePicker extends React.PureComponent<Props, any> {
     value: moment("2019-01-01", "YYYY-MM-DD")
   };
 
-  change = (e) => {
+  change = (e:any) => {
     this.setState({
       value: e
     });

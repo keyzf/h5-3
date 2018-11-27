@@ -2,7 +2,7 @@ import * as React from "react";
 import { getLength, getAngle, getCursor } from "../utils";
 import StyledRect from "./StyledRect";
 
-const zoomableMap = {
+const zoomableMap:any = {
   n: "t",
   s: "b",
   e: "r",
@@ -16,16 +16,16 @@ const zoomableMap = {
 export default class Rect extends React.Component<any, any> {
   private $element: any;
 
-  private _isMouseDown: boolean;
+  private _isMouseDown: any;
 
   setElementRef = (ref: any) => (this.$element = ref);
 
   // Drag
-  startDrag = e => {
+  startDrag = (e:any) => {
     let { clientX: startX, clientY: startY } = e;
     this.props.onDragStart && this.props.onDragStart();
     this._isMouseDown = true;
-    const onMove = e => {
+    const onMove = (e:any) => {
       if (!this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
       e.stopImmediatePropagation();
       const { clientX, clientY } = e;
@@ -47,7 +47,7 @@ export default class Rect extends React.Component<any, any> {
   };
 
   // Rotate
-  startRotate = e => {
+  startRotate = (e:any) => {
     if (e.button !== 0) return;
     const { clientX, clientY } = e;
     const {
@@ -66,7 +66,7 @@ export default class Rect extends React.Component<any, any> {
     };
     this.props.onRotateStart && this.props.onRotateStart();
     this._isMouseDown = true;
-    const onMove = e => {
+    const onMove = (e:any) => {
       if (!this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
       e.stopImmediatePropagation();
       const { clientX, clientY } = e;
@@ -89,7 +89,7 @@ export default class Rect extends React.Component<any, any> {
   };
 
   // Resize
-  startResize = (e, cursor) => {
+  startResize = (e:any, cursor:any) => {
     if (e.button !== 0) return;
     document.body.style.cursor = cursor;
     const {
@@ -104,7 +104,7 @@ export default class Rect extends React.Component<any, any> {
     const type = e.target.getAttribute("class").split(" ")[0];
     this.props.onResizeStart && this.props.onResizeStart();
     this._isMouseDown = true;
-    const onMove = e => {
+    const onMove = (e:any) => {
       if (!this._isMouseDown) return; // patch: fix windows press win key during mouseup issue
       e.stopImmediatePropagation();
       const { clientX, clientY } = e;
@@ -151,8 +151,8 @@ export default class Rect extends React.Component<any, any> {
     };
     const direction = zoomable
       .split(",")
-      .map(d => d.trim())
-      .filter(d => d);
+      .map((d:any) => d.trim())
+      .filter((d:any) => d);
 
     return (
       <StyledRect
@@ -167,7 +167,7 @@ export default class Rect extends React.Component<any, any> {
             <i/>
           </div>
         )}
-        {direction.map(d => {
+        {direction.map((d:any) => {
           const cursor = `${getCursor(
             rotateAngle + parentRotateAngle,
             d
@@ -181,7 +181,7 @@ export default class Rect extends React.Component<any, any> {
             />
           );
         })}
-        {direction.map(d => {
+        {direction.map((d:any) => {
           return <div key={d} className={`${zoomableMap[d]} square`}/>;
         })}
 

@@ -8,7 +8,7 @@ import RenderText from "./render";
 
 const TextList = React.memo(() => {
   const dispatch = useDispatch();
-  const pushDate = data => dispatch({ type: "UI_PUSHDATA", payload: data });
+  const pushDate = (data:any) => dispatch({ type: "UI_PUSHDATA", payload: data });
   const [state, setState] = useState({
     type: "composing",
     name: "排版",
@@ -38,14 +38,15 @@ const TextList = React.memo(() => {
         break;
     }
 
-    setState({
+    // @ts-ignore
+      setState({
       type: type,
       name: name,
       show: show
     });
   };
 
-  const pushData = data => {
+  const pushData = (data:any) => {
     pushDate(data);
   };
   // 选项
@@ -219,7 +220,7 @@ const style = {
 /**
  * @desc row 配置
  */
-const rowConfig: { type; gutter; style } = {
+const rowConfig: { type:any; gutter:any; style:any } = {
   type: "flex",
   gutter: 16,
   style: { padding: "0 8px" }

@@ -8,7 +8,7 @@ import RenderButton from "./render";
 const ButtonList = React.memo(() => {
   const [state, setState] = useState([0, 1, 2, 3, 4, 5]);
   const dispatch = useDispatch();
-  const addToUi = data => {
+  const addToUi = (data:any) => {
     dispatch({ type: "UI_PUSHDATA", payload: data });
   };
 
@@ -27,7 +27,7 @@ const ButtonList = React.memo(() => {
     }
   `;
   // 样式
-  const style: { center; imgBorder } = {
+  const style: { center:any; imgBorder:any } = {
     center: {
       height: "65px",
       display: "flex",
@@ -49,7 +49,7 @@ const ButtonList = React.memo(() => {
   };
   return (
     <div>
-      {state.map((data, index) => {
+      {state.map((data:any, index:any) => {
         return (
           <UIHover key={index} onClick={() => addToUi(ButtonData[data])}>
             <div style={style.center}>

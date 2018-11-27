@@ -20,7 +20,7 @@ interface Props {
 }
 
 const RenderText = React.memo((props: Props) => {
-  const showTextUi = name => {
+  const showTextUi = (name:any) => {
     switch (name) {
       case 0:
         return <Text0 html={props.data.base.html}/>;

@@ -12,7 +12,7 @@ const ToolBarKey = React.memo(() => {
   /**
    * 组件样式
    */
-  const style: { center } = {
+  const style: { center:any } = {
     center: {
       display: "flex",
       justifyContent: "center",

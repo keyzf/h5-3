@@ -1,4 +1,4 @@
-const TextData = [];
+const TextData:any = [];
 
 /**
  * @desc  text 核心组件数据

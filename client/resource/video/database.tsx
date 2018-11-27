@@ -1,4 +1,4 @@
-let VideoData = [];
+let VideoData:any = [];
 
 const data = [
   {

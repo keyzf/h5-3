@@ -1,4 +1,4 @@
-const ButtonData = [];
+const ButtonData:any = [];
 
 const data = [
   {

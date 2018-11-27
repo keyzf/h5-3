@@ -1,4 +1,5 @@
 import * as React from "react";
+// @ts-ignore
 import keydown, { ALL_KEYS } from "react-keydown";
 
 interface Props {
@@ -18,7 +19,7 @@ interface Props {
  */
 class ContentHotKey extends React.Component<Props, ""> {
   @keydown(ALL_KEYS)
-  submit(event) {
+  submit(event:any) {
     switch (event.keyCode) {
       case 8:
         return this.props.fun({
@@ -63,20 +64,21 @@ class ContentHotKey extends React.Component<Props, ""> {
   /**
    * @desc 判断用户是否在点选组件
    */
-  choose = event => {
+  choose = (event:any) => {
     const e = event || window.event;
     // 获得当前鼠标坐标
-    const mouseLeft =
-      e.clientX - document.getElementById("caves").offsetLeft - 334;
+      // @ts-ignore
+      const mouseLeft = e.clientX - document.getElementById("caves").offsetLeft - 334;
     const mouseTop =
-      e.clientY -
-      document.getElementById("caves").offsetTop -
+        // @ts-ignore
+      e.clientY - document.getElementById("caves").offsetTop -
       48 +
+        // @ts-ignore
       document.getElementById("content").scrollTop;
 
     // 判断用户是否点击空白
     let init = true;
-    this.props.ui.map(data => {
+    this.props.ui.map((data:any) => {
       if (
         data.position.top < mouseTop &&
         data.position.top + data.position.height > mouseTop &&

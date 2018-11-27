@@ -15,7 +15,7 @@ interface Props {
 class RenderUi extends React.Component<Props, ""> {
   render() {
     const { data } = this.props;
-    const ui = {
+    const ui:any = {
       form: () => <RenderForm data={data}/>,
       button: () => <RenderButton data={data}/>,
       video: () => <RenderVideo data={data}/>,

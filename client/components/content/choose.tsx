@@ -17,7 +17,7 @@ const ContentChoose = React.memo(() => {
   const uiChoose = useCallback((data: number[]) =>
     dispatch({ type: "UI_CHOOSE", payload: data }), []);
 
-  const choice = (number: number, event) => {
+  const choice = (number: number, event:any) => {
     if (event.shiftKey) {
       const editorList = [...editList];
       editorList.push(number);

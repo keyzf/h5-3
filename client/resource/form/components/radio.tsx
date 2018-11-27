@@ -18,7 +18,7 @@ class FormOptRadio extends React.PureComponent<Props, any> {
     value: []
   };
 
-  change = (checkedValues) => {
+  change = (checkedValues:any) => {
     this.setState({
       value: checkedValues.target.value
     });

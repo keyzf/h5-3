@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// 测试成功✅
 export const userAsset_list_api = () => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
@@ -8,12 +7,9 @@ export const userAsset_list_api = () => {
     axios
       .post(`${window.location.origin}/Material/getSysType`, params)
       .then(response => {
-        if (response.data.error) {
+        return response.data.error ? "" : resolve(response.data);
+      })
 
-        } else {
-          resolve(response.data);
-        }
-      });
   });
 };
 

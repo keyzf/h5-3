@@ -1,30 +1,44 @@
+import Koa from "koa";
+import Webpack from "webpack";
+import path from "path";
 import webpack from "webpack";
 import merge from "webpack-merge";
+import koaWebpack from "koa-webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import common from "./webpack.common";
 
-import * as path from "path";
+const app = new Koa();
 
-/**
- * @desc webpack 开发模式下配置
- */
 const config: webpack.Configuration = merge(common, {
-  /**
-   * @desc  开发模式：开发版
-   */
-  mode: "development",
+    mode: "development",
 
-  /**
-   * @desc 开发服务器配置
-   */
-  devServer: {
-    stats: "minimal",
-    contentBase: path.join(__dirname, "../public/assets"),
-    port: 3000
-  }
 
+    devServer: {
+        stats: "minimal",
+        contentBase: path.join(__dirname, "../public/assets")
+    },
+
+    output: {
+        publicPath: "/", //共公路径，可用于cdn
+        filename: "[name].js", // 输出文件名
+        path: path.resolve("public/assets") //输出路径
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "../public/index.html")
+        })
+    ]
 });
 
-/**
- * @desc 导出模块
- */
-export default config;
+const compiler = Webpack(config);
+
+koaWebpack({compiler})
+    .then(middleware => {
+        app.use(middleware);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+app.listen(3000);

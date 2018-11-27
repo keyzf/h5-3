@@ -40,7 +40,7 @@ class ImgCrop extends PureComponent<any, any> {
    * 图片裁剪数据变更
    * @param event
    */
-  onCropChange = event => {
+  onCropChange = (event:any) => {
     this.setState({
       crop: {
         x: event.detail.x >= 0 ? event.detail.x : 0,

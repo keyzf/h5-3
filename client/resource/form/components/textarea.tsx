@@ -19,7 +19,7 @@ class FormOptTextArea extends React.PureComponent<Props, any> {
     value: ""
   };
 
-  change = (e) => {
+  change = (e:any) => {
     this.setState({
       value: e.target.value
     });

@@ -31,7 +31,7 @@ const ButtonForm = React.memo(() => {
             onChange={(e) => dispatch({ type: "BUTTON_VALUE", payload: { desc: e.target.value } })}
           />
         </FormItem>
-        <ButtonColor fun={(color) => dispatch({ type: "BUTTON_VALUE", payload: { font_color: color.hex } })}
+        <ButtonColor fun={(color:any) => dispatch({ type: "BUTTON_VALUE", payload: { font_color: color.hex } })}
                      name={"文字配色"}>
           <div style={{ width: "100%", height: "30px", background: ui[editList[0]].base.font_color }}/>
         </ButtonColor>

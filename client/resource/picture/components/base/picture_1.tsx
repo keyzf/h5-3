@@ -10,7 +10,7 @@ const Picture1 = React.memo((props: { data: { base: any, position: any } }) => {
       height: `${props.data.position.height}px`
     }}>
       <Carousel autoplay>
-        {props.data.base.map((data, index) => {
+        {props.data.base.map((data:any, index:any) => {
           return (
             <img
               style={{ borderRadius: `${data.radius}px` }}

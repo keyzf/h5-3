@@ -6,7 +6,7 @@ import { useDispatch } from "redux-react-hook";
 
 const VideoList = React.memo(() => {
   const dispatch = useDispatch();
-  const addToUi = data => {
+  const addToUi = (data:any) => {
     dispatch({ type: "UI_PUSHDATA", payload: data });
   };
 
@@ -25,7 +25,7 @@ const VideoList = React.memo(() => {
     }
   `;
   // 样式
-  const style: { center; imgBorder } = {
+  const style: { center:any; imgBorder:any } = {
     center: {
       display: "flex",
       justifyContent: "center",

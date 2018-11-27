@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Form, Popover, Slider } from "antd";
-import { TwitterPicker } from "react-color";
+import { Form,  Slider } from "antd";
 import Store from "../../../typing/store";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { useCallback } from "react";
@@ -18,7 +17,7 @@ const PictureItemRadius = React.memo((props: { index: number }) => {
     )
   );
 
-  const changeRadius = e => {
+  const changeRadius = (e:any) => {
     dispatch({ type: "PICTURE_BASE_ITEM", payload: { index: props.index, data: { radius: e } } });
   };
 

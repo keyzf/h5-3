@@ -18,7 +18,7 @@ const PictureColor = React.memo(() => {
     )
   );
 
-  const changeColor = color => {
+  const changeColor = (color:any) => {
     dispatch({ type: "PICTURE_VALUE", payload: { color: color.hex } });
   };
 

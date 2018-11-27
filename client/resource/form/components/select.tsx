@@ -18,7 +18,7 @@ class FormOptSelect extends React.PureComponent<Props, any> {
     value: []
   };
 
-  change = (checkedValues) => {
+  change = (checkedValues:any) => {
     this.setState({
       value: checkedValues
     });
@@ -42,7 +42,7 @@ class FormOptSelect extends React.PureComponent<Props, any> {
           style={{ width: "100%" }}
           onChange={this.change}
         >
-          {option.map((data, index) => {
+          {option.map((data:any, index:any) => {
             return (
               <Option
                 key={index}

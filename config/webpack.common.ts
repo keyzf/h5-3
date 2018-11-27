@@ -1,30 +1,21 @@
 import webpack from "webpack";
-import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import WebpackBar from "webpackbar";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import tsImportPluginFactory from "ts-import-plugin";
+import env from "../env";
 
-/**
- * @desc webpack 基础配置
- */
 const config: webpack.Configuration = {
-  /**
-   * @desc 入口
-   */
   entry: ["./client/index"],
+
+  stats: "errors-only",
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"] // 配置简写，配置过后，书写该文件路径的时候可以省略文件后缀
   },
 
-  /**
-   * @desc 模块处理
-   * 🌟当前包含：
-   * 🧪 css 文件处理
-   * 🧪 ts 转换
-   */
   module: {
     rules: [
+      // tsx
       {
         test: /\.tsx?$/,
         use: [
@@ -33,13 +24,13 @@ const config: webpack.Configuration = {
             options: {
               transpileOnly: true,
               getCustomTransformers: () => ({
-                before: [tsImportPluginFactory(
-                  {
+                before: [
+                  tsImportPluginFactory({
                     libraryName: "antd",
                     libraryDirectory: "lib",
                     style: true
-                  }
-                )]
+                  })
+                ]
               }),
               happyPackMode: true,
               experimentalWatchApi: true,
@@ -51,6 +42,7 @@ const config: webpack.Configuration = {
         ],
         exclude: /node_modules/
       },
+      // css
       {
         test: /\.(sa|sc|c|le)ss$/,
         use: [
@@ -64,50 +56,27 @@ const config: webpack.Configuration = {
           {
             loader: "less-loader",
             options: {
-              modifyVars: {},
+              modifyVars: env.antTheme,
               javascriptEnabled: true
             }
           }
-
         ]
       },
+      // file
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          "file-loader"
-        ]
+        use: ["file-loader"]
       }
     ]
   },
 
-  /**
-   * @desc 拓展
-   */
   plugins: [
+    new WebpackBar(),
 
-    /**
-     * @desc 自动生成HTML
-     */
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../public/index.html")
-    }),
-
-    /**
-     * @desc 提取css 文件
-     */
     new MiniCssExtractPlugin({
       filename: "[name].css"
     })
-
-
   ]
-
-
 };
 
-/**
- * @desc 导出配置
- */
 export default config;
-
-

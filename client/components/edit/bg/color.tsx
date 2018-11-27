@@ -8,7 +8,7 @@ import Store from "../../../typing/store";
 const BgEditColor = React.memo(() => {
   const dispatch = useDispatch();
   const { color } = useMappedState(useCallback(state, []));
-  const changeColor = useCallback(color => {
+  const changeColor = useCallback((color:any) => {
     dispatch({ type: "BG_VALUE", payload: { color: color.hex, img: "" } });
   }, []);
 

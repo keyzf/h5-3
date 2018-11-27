@@ -9,7 +9,7 @@ import { useDispatch } from "redux-react-hook";
 
 const FormList = React.memo(() => {
   const dispatch = useDispatch();
-  const pushDate = data => dispatch({ type: "UI_PUSHDATA", payload: data });
+  const pushDate = (data:any) => dispatch({ type: "UI_PUSHDATA", payload: data });
   const [state, setState] = useState({
     type: "apply",
     name: "报名",
@@ -94,7 +94,7 @@ const UIHover = styled("div")`
       }
     `;
 // 样式
-const style: { center; imgBorder } = {
+const style: { center:any; imgBorder:any } = {
   center: {
     display: "flex",
     justifyContent: "center",

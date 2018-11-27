@@ -14,13 +14,13 @@ const ContentLock = React.memo(() => {
     lockList: state.edit.lock
   });
   const { ui, lockList } = useMappedState(useCallback(state, []));
-  const uiAction = useCallback((type, data) =>
+  const uiAction = useCallback((type:any, data:any) =>
     dispatch({ type: "UI_ACTION", payload: { type: type, data: data } }), []);
 
   const unLock = (index: number) => {
     uiAction("unlock", index);
   };
-  const unlockUI = data => (
+  const unlockUI = (data:any) => (
     <div onClick={() => unLock(data)} style={{ cursor: "pointer" }}>
       <Icon
         type="unlock"

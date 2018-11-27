@@ -19,7 +19,7 @@ const TextEdit = React.memo(() => {
       []
     )
   );
-  const valueChange = html =>
+  const valueChange = (html:any) =>
     dispatch({ type: "TEXT_VALUE", payload: { html: html } });
 
 

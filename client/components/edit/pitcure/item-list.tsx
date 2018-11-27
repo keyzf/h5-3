@@ -10,7 +10,7 @@ interface State {
   originalPosOfLastPressed: number,
 }
 
-function reinsert(arr, from, to) {
+function reinsert(arr:any, from:any, to:any) {
   const _arr = arr.slice(0);
   const val = _arr[from];
   _arr.splice(from, 1);
@@ -18,7 +18,7 @@ function reinsert(arr, from, to) {
   return _arr;
 }
 
-function clamp(n, min, max) {
+function clamp(n:any, min:any, max:any) {
   return Math.max(Math.min(n, max), min);
 }
 
@@ -38,16 +38,16 @@ class ItemList extends React.PureComponent<any, State> {
     window.addEventListener("mouseup", this.handleMouseUp);
   };
 
-  handleTouchStart = (key, pressLocation, e) => {
+  handleTouchStart = (key:any, pressLocation:any, e:any) => {
     this.handleMouseDown(key, pressLocation, e.touches[0]);
   };
 
-  handleTouchMove = (e) => {
+  handleTouchMove = (e:any) => {
     e.preventDefault();
     this.handleMouseMove(e.touches[0]);
   };
 
-  handleMouseDown = (pos, pressY, { pageY }) => {
+  handleMouseDown = (pos:any, pressY:any, { pageY }:any) => {
     this.setState({
       topDeltaY: pageY - pressY,
       mouseY: pressY,
@@ -56,7 +56,7 @@ class ItemList extends React.PureComponent<any, State> {
     });
   };
 
-  handleMouseMove = ({ pageY }) => {
+  handleMouseMove = ({ pageY }:any) => {
     const { isPressed, topDeltaY, originalPosOfLastPressed } = this.state;
     const order = this.props.order;
     if (isPressed) {
@@ -76,7 +76,7 @@ class ItemList extends React.PureComponent<any, State> {
     this.setState({ isPressed: false, topDeltaY: 0 });
   };
 
-  delete = (index) => {
+  delete = (index:any) => {
     this.props.changeFun({ type: "PICTURE_BASE_DEL", payload: index });
   };
 
@@ -89,7 +89,7 @@ class ItemList extends React.PureComponent<any, State> {
     return (
       <React.Fragment>
         <Row gutter={16} style={{ padding: "10px" }}>
-          {order.map((i, index) => {
+          {order.map((i:any, index:any) => {
             const style = originalPosOfLastPressed === i && isPressed
               ? {
                 scale: spring(1.1, springConfig),

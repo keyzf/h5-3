@@ -1,4 +1,4 @@
-import axios from "axios/index";
+import axios from "axios";
 
 
 /**
@@ -6,7 +6,7 @@ import axios from "axios/index";
  * @returns {Promise<any>}
  */
 // 测试成功✅
-const upload_api = (type, desc, url) => {
+const upload_api = (type:any, desc:any, url:any) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append("type", type);

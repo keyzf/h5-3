@@ -17,12 +17,12 @@ const ShareEdit = React.memo(() => {
       []
     )
   );
-  const changeCover = (url) => {
+  const changeCover = (url:any) => {
     dispatch({ type: "SHARE_VALUE", payload: { cover: url } });
   };
 
 
-  const shareValueChange = e =>
+  const shareValueChange = (e:any) =>
     dispatch({ type: "SHARE_VALUE", payload: { [e.target.name]: e.target.value } });
 
   return (

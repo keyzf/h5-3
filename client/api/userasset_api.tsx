@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const userAssets_api = (type, page) => {
+const userAssets_api = (type:any, page:any) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append("pagecount", "24");
-    params.append("page", page);
+    params.append("app", page);
     params.append("type", type);
     axios
       .post(`${window.location.origin}/Material/getUser`, params)

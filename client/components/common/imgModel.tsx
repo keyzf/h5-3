@@ -24,26 +24,26 @@ const ImgModel = React.memo(
     useEffect(() => {
       userAssets_api(24, 0)
         .then((resp: any) => {
-          setImgApi(JSON.parse(resp));
+          setImgApi(resp);
         })
         .catch(() => {
         });
-    });
+    }, []);
 
-    const del = mid => {
+    const del = (mid: any) => {
       delete_api(mid).then(resp => {
         resp ? message.error("删除失败") : message.success("删除成功");
       });
       userAssets_api(24, choose)
         .then((resp: any) => {
-          setImgApi(JSON.parse(resp));
+          setImgApi(resp);
         })
         .catch(() => {
         });
     };
 
     const delAll = () => {
-      imgApi.list.map(data => {
+      imgApi.list.map((data: any) => {
         delete_api(data.mid).then(resp => {
         });
       });
@@ -52,23 +52,23 @@ const ImgModel = React.memo(
 
       userAssets_api(24, choose)
         .then((resp: any) => {
-          setImgApi(JSON.parse(resp));
+          setImgApi(resp);
         })
         .catch(() => {
         });
     };
 
-    const pageChange = current => {
+    const pageChange = (current: any) => {
       userAssets_api(24, current - 1)
         .then((resp: any) => {
-          setImgApi(JSON.parse(resp));
+          setImgApi(resp);
           setPage(current);
         })
         .catch(error => {
         });
     };
 
-    const onChoose = src => {
+    const onChoose = (src: any) => {
       setChoose(src);
     };
 
@@ -85,7 +85,7 @@ const ImgModel = React.memo(
       setState(false);
     };
 
-    const uploadChange = (field) => {
+    const uploadChange = (field: any) => {
       if (field.upload.value.file.status === "done") {
         if (field.error) {
           message.error("网络异常，上传失败");
@@ -93,7 +93,7 @@ const ImgModel = React.memo(
           message.success("图片添加成功");
           userAssets_api(24, choose)
             .then((resp: any) => {
-              setImgApi(JSON.parse(resp));
+              setImgApi(resp);
             })
             .catch(() => {
             });
@@ -132,7 +132,7 @@ const ImgModel = React.memo(
               <Row gutter={8} style={{ height: "400px" }}>
                 {imgApi.list.length ? (
                   <React.Fragment>
-                    {imgApi.list.map((data, index) => {
+                    {imgApi.list.map((data: any, index: any) => {
                       return (
                         <React.Fragment key={index}>
                           {index < page * 24 && index >= page * 24 - 24 ? (

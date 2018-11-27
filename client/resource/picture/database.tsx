@@ -55,7 +55,7 @@ const base: object[] = [
     index: 1
   }
 ];
-base.map((data: { data: object, index: number }) => {
+base.map((data: any) => {
   PictureData.push({
     common: {
       type: "picture",
@@ -435,7 +435,7 @@ const icon: object[] = [
     ], index: 31
   }
 ];
-icon.map((data: { data: object, index: number }) => {
+icon.map((data:any) => {
   PictureData.push({
     common: {
       type: "picture",

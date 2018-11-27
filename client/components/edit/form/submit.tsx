@@ -20,10 +20,10 @@ const SubmitForm = React.memo(() => {
   );
 
   const baseData = ui[editList[0]].base;
-  const change = (e) => {
+  const change = (e:any) => {
     dispatch({ type: "FORM_BASE", payload: { desc: e.target.value } });
   };
-  const changeColor = (type, color) => {
+  const changeColor = (type:any, color:any) => {
     type === "bg" ?
       dispatch({ type: "FORM_BASE", payload: { bg_color: color.hex } }) :
       dispatch({ type: "FORM_BASE", payload: { font_color: color.hex } });

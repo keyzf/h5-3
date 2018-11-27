@@ -1,6 +1,6 @@
 import random from "../../tools/random";
 
-const FormUIData = [];
+const FormUIData:any = [];
 
 export const $$form_opt_upload = (form_id: string) => {
   return {

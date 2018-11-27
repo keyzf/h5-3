@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useMappedState } from "redux-react-hook";
 import { useCallback, useState } from "react";
-import { Motion, spring } from "react-motion";
 import { useDispatch } from "redux-react-hook";
 import { Button, Col, Divider, Form, Icon, Row, Tabs } from "antd";
 import PictureColor from "./color";
@@ -14,7 +13,6 @@ import PictureItemLink from "./item-link";
 import PictureItemRadius from "./item-radius";
 import { PictureDataAdd } from "../../../resource/picture/database";
 import ImgModel from "../../common/imgModel";
-import UpLoadImg from "../../common/imgUpload";
 import ImgCrop from "../../common/imgCrop";
 
 const PictureEdit = React.memo(() => {
@@ -32,7 +30,7 @@ const PictureEdit = React.memo(() => {
   // 当前项目数据
   const uiData = ui[editList[0]];
 
-  const choose = index => {
+  const choose = (index:any) => {
     setState(index);
   };
 
@@ -44,18 +42,18 @@ const PictureEdit = React.memo(() => {
     dispatch({ type: "PICTURE_BASE_ADD", payload: PictureDataAdd });
   };
 
-  const changeImg = url => {
+  const changeImg = (url:any) => {
     dispatch({ type: "PICTURE_VALUE", payload: { img: url, crop: url } });
   };
 
-  const itemChangeImg = url => {
+  const itemChangeImg = (url:any) => {
     dispatch({
       type: "PICTURE_BASE_ITEM",
       payload: { data: { img: url, crop: url }, index: state }
     });
   };
 
-  const itemCropImg = data => {
+  const itemCropImg = (data:any) => {
     dispatch({
       type: "PICTURE_BASE_ITEM",
       payload: {
@@ -69,7 +67,7 @@ const PictureEdit = React.memo(() => {
     });
   };
 
-  const cropImg = data => {
+  const cropImg = (data:any) => {
     dispatch({
       type: "PICTURE_VALUE",
       payload: {
@@ -235,7 +233,7 @@ const PictureEdit = React.memo(() => {
 
 const TabPane = Tabs.TabPane;
 
-const style: { center; img } = {
+const style: { center:any; img:any } = {
   center: {
     display: "flex",
     justifyContent: "center",

@@ -17,18 +17,18 @@ const NavLog = React.memo(() => {
   );
 
 
-  const onChange = ({ key }) => {
+  const onChange = ({ key }:any) => {
     if (key !== "-1") {
       dispatch({ type: "LOG_CHANGE", payload: key });
     }
   };
 
   const day = new Date().getDay();
-  let todayData = [];
-  let earlyDate = [];
+  let todayData:any = [];
+  let earlyDate:any = [];
 
   if (log.length) {
-    log.map((data: { time }, index) => {
+    log.map((data: { time:any }, index:any) => {
       if (day === new Date(data.time).getDay()) {
         todayData.push({ time: data.time, key: index });
       } else {
@@ -41,7 +41,7 @@ const NavLog = React.memo(() => {
   const menu = (
     <Menu onClick={onChange}>
       {todayData.length ? (
-        todayData.map((data: { time; key: number }, index) => {
+        todayData.map((data: { time:any; key: number }, index:any) => {
           return index < 5 ? (
             <Menu.Item key={data.key}>
               {new Date(data.time).toLocaleTimeString()}
@@ -54,7 +54,7 @@ const NavLog = React.memo(() => {
         <Menu.Item key={-1}>今日无记录</Menu.Item>
       )}
       <Menu.SubMenu title="更多记录" disabled={!earlyDate.length}>
-        {earlyDate.map((data: { time; key: number }) => {
+        {earlyDate.map((data: { time:any; key: number }) => {
           return (
             <Menu.Item key={data.key}>
               {new Date(data.time).toLocaleString()}

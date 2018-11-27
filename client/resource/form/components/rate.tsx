@@ -18,7 +18,7 @@ class FormOptRate extends React.PureComponent<Props, any> {
     value: 5
   };
 
-  change = (e) => {
+  change = (e:any) => {
     this.setState({
       value: e
     });

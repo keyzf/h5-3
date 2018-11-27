@@ -11,27 +11,6 @@ import NavRelease from "../../components/header/release";
 
 const MakeNav = React.memo(() => {
 
-  /**
-   * @desc 组件样式
-   */
-  const style: { nav: object; border: object } = {
-    nav: {
-      display: "flex",
-      justifyContent: "space-between"
-    },
-    border: {
-      borderRight: "1px solid rgb(0, 187, 255)"
-    }
-  };
-  /**
-   * @desc menu 组件配置
-   */
-  const menu_config: { selectable; mode; style } = {
-    selectable: false,
-    mode: "horizontal",
-    style: { background: "transparent" }
-  };
-
   return (
     <div style={style.nav}>
       <Menu {...menu_config}>
@@ -63,5 +42,26 @@ const MakeNav = React.memo(() => {
   );
 });
 
+
+/**
+ * @desc 组件样式
+ */
+const style: { nav: object; border: object } = {
+  nav: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  border: {
+    borderRight: "1px solid rgb(0, 187, 255)"
+  }
+};
+/**
+ * @desc menu 组件配置
+ */
+const menu_config: { selectable: any; mode: any; style: any } = {
+  selectable: false,
+  mode: "horizontal",
+  style: { background: "transparent" }
+};
 
 export default MakeNav;

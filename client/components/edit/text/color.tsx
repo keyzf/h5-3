@@ -18,7 +18,7 @@ const TextColor = React.memo(() => {
     )
   );
 
-  const changeColor = color => {
+  const changeColor = (color:any) => {
     dispatch({ type: "TEXT_VALUE", payload: { color: color.hex } });
   };
 

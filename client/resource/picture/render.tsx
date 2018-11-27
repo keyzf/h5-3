@@ -3,13 +3,9 @@ import Picture0 from "./components/base/picture_0";
 import Picture1 from "./components/base/picture_1";
 import Picture36 from "./components/icon/picture_36";
 
-interface Props {
-  data: any
-}
 
-
-const RenderPicture = React.memo((props: Props) => {
-  const showPictureUi = name => {
+const RenderPicture = React.memo((props:any) => {
+  const showPictureUi:any = (name:any) => {
     switch (name) {
       // 基础
       case 0:

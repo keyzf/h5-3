@@ -19,7 +19,7 @@ const ContentHeight = React.memo(() => {
     dispatch({ type: "BG_VALUE", payload: { height: height } });
 
 
-  const handleDrag = (e, ui) => {
+  const handleDrag = (e:any, ui:any) => {
     changeHeight(ui.deltaY + height);
 
   };

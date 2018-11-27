@@ -24,13 +24,15 @@ const MusicUi = React.memo((props: { src: string }) => {
       : "";
   });
 
-  const onClickStop = name => {
+  const onClickStop = (name:any) => {
     if (name === "open") {
-      document.getElementById("h5_audio").onpause;
+      // @ts-ignore
+        document.getElementById("h5_audio").onpause;
       setState(true);
     }
     if (name === "stop") {
-      document.getElementById("h5_audio").onplay;
+      // @ts-ignore
+        document.getElementById("h5_audio").onplay;
       setState(false);
     }
   };
@@ -42,9 +44,9 @@ const MusicUi = React.memo((props: { src: string }) => {
         loop={true}
         src={props.src}
       />
-      {this.state.onClickStop ? (
+      {state ? (
         <div
-          onClick={this.onClickStop.bind(this, "stop")}
+          onClick={()=>onClickStop('stop')}
           className={"flex_center"}
           style={{
             borderRadius: "50px",
@@ -66,7 +68,7 @@ const MusicUi = React.memo((props: { src: string }) => {
         </div>
       ) : (
         <div
-          onClick={this.onClickStop.bind(this, "open")}
+            onClick={()=>onClickStop('open')}
           className={"flex_center"}
           style={{
             borderRadius: "50px",

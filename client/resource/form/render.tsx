@@ -11,11 +11,11 @@ import FormOptSelect from "./components/select";
 import { useState } from "react";
 import FormSubmitMode from "./model";
 
-const value = [];
+const value:any = [];
 const RenderForm = React.memo((props: any) => {
   const [state, setState] = useState(false);
 
-  const change = (id, data) => {
+  const change = (id:any, data:any) => {
     value[id] = data;
   };
 
@@ -30,8 +30,8 @@ const RenderForm = React.memo((props: any) => {
   const { item, desc, font_color, bg_color } = props.data.base;
   return (
     <Form layout={"vertical"} hideRequiredMark={true}>
-      {item.map((data, index) => {
-        const option = {
+      {item.map((data:any, index:any) => {
+        const option:any = {
           input: () => (
             <FormOptInput
               change={change}
@@ -126,7 +126,7 @@ const RenderForm = React.memo((props: any) => {
             <FormOptSelect change={change} data={data} index={index}/>
           )
         };
-        const FormUiRender = option[data.type];
+        const FormUiRender:any = option[data.type];
         return <FormUiRender key={index}/>;
       })}
       <Form.Item>

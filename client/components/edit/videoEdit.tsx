@@ -5,7 +5,7 @@ import { useDispatch } from "redux-react-hook";
 
 const VideoEditor = React.memo(() => {
   const dispatch = useDispatch();
-  const shareChange = e => {
+  const shareChange = (e:any) => {
     dispatch({ type: "VIDEO_VALUE", payload: {
       url: e.target.value.replace("width=", ``)
         .replace("height=", ``)

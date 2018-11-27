@@ -11,7 +11,8 @@ const MakeToolBar = React.memo(() => {
   const [state, setState] = useState(100);
 
   const zoomIn = () => {
-    document.getElementById("content").style.zoom = `${state + 10}%`;
+    // @ts-ignore
+      document.getElementById("content").style.zoom = `${state + 10}%`;
     setState(
       state + 10
     );
@@ -19,7 +20,8 @@ const MakeToolBar = React.memo(() => {
 
   const zoomOut = () => {
     if (state > 100) {
-      document.getElementById("content").style.zoom = `${state - 10}%`;
+      // @ts-ignore
+        document.getElementById("content").style.zoom = `${state - 10}%`;
       setState(
         state - 10
       );
@@ -27,7 +29,7 @@ const MakeToolBar = React.memo(() => {
 
   };
 
-  const style: { zoomFont, center } = {
+  const style: { zoomFont:any, center:any } = {
     center: {
       display: "flex",
       justifyContent: "center",

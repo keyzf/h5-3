@@ -14,7 +14,7 @@ const ContentDrag = React.memo(() => {
   });
   const { editList, ui } = useMappedState(useCallback(state, []));
   const uiAction = useCallback(
-    (type, data) =>
+    (type:any, data:any) =>
       dispatch({ type: "UI_ACTION", payload: { type: type, data: data } }),
     []
   );
@@ -24,7 +24,7 @@ const ContentDrag = React.memo(() => {
   );
 
   // 多选设置
-  const choice = (index: number, event) => {
+  const choice = (index: number, event:any) => {
     event.persist();
     if (event.shiftKey) {
       const editorList: number[] = [...editList];
@@ -39,7 +39,7 @@ const ContentDrag = React.memo(() => {
   };
 
   // 调整组件尺寸
-  const handleResize = (style: { top; left; width; height }): void => {
+  const handleResize = (style: { top:any; left:any; width:any; height:any }): void => {
     const { top, left, width, height } = style;
     uiAction("resize", { top, left, width, height });
   };
@@ -50,7 +50,7 @@ const ContentDrag = React.memo(() => {
   };
 
   // 右键事件
-  const contextMenu = (e: { key }): void => {
+  const contextMenu = (e: { key:any }): void => {
     switch (e.key) {
       case `1`:
         uiAction("copy", "");
@@ -103,7 +103,7 @@ const ContentDrag = React.memo(() => {
           <Dropdown overlay={menu} trigger={["contextMenu"]} key={index}>
             <span>
               <ResizableRect
-                onMouseDown={e => choice(index, e)}
+                onMouseDown={(e:any) => choice(index, e)}
                 left={ui[data].position.left}
                 top={ui[data].position.top}
                 width={ui[data].position.width}

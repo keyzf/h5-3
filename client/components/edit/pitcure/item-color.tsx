@@ -18,7 +18,7 @@ const PictureItemColor = React.memo((props: { index: number }) => {
     )
   );
 
-  const changeColor = color => {
+  const changeColor = (color:any) => {
     dispatch({ type: "PICTURE_BASE_ITEM", payload: { index: props.index, data: { color: color.hex } } });
   };
 

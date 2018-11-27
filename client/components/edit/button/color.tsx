@@ -16,7 +16,7 @@ const ButtonColor = React.memo((props: any) => {
     )
   );
 
-  const changeColor = color => {
+  const changeColor = (color:any) => {
     props.fun(color);
   };
 

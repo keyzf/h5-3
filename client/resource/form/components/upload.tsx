@@ -26,14 +26,14 @@ class FormOptUpLoad extends React.Component<Props, State> {
 
   handleCancel = () => this.setState({ previewVisible: false });
 
-  handlePreview = file => {
+  handlePreview = (file:any) => {
     this.setState({
       previewImage: file.url || file.thumbUrl,
       previewVisible: true
     });
   };
 
-  handleChange = data => {
+  handleChange = (data:any) => {
     console.log(data);
   };
 
@@ -47,7 +47,7 @@ class FormOptUpLoad extends React.Component<Props, State> {
         <div className="ant-upload-text">上传</div>
       </div>
     );
-    const fileList = [];
+    const fileList:any = [];
     if (option) {
       option.map((data, index) => {
         fileList.push({

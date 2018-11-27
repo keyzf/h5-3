@@ -2,7 +2,7 @@ import * as React from "react";
 import Rect from "./components/index";
 import { getNewStyle, degToRadian } from "./utils";
 
-const centerToTL = state => {
+const centerToTL = (state:any) => {
   const {
     position: { centerX, centerY },
     size: { width, height },
@@ -13,7 +13,7 @@ const centerToTL = state => {
   return { top, left, width, height, rotateAngle };
 };
 
-const tLToCenter = props => {
+const tLToCenter = (props:any) => {
   const { width, height, top, left, rotateAngle } = props;
   return {
     position: {
@@ -40,7 +40,7 @@ class ResizableRect extends React.Component<any, any> {
     minHeight: 10
   };
 
-  handleRotate = (angle, startAngle) => {
+  handleRotate = (angle:any, startAngle:any) => {
     if (!this.props.onRotate) return;
     let rotateAngle = Math.round(startAngle + angle);
     if (rotateAngle >= 360) {
@@ -60,11 +60,11 @@ class ResizableRect extends React.Component<any, any> {
     this.props.onRotate(rotateAngle);
   };
 
-  handleDrag = (deltaX, deltaY) => {
+  handleDrag = (deltaX:any, deltaY:any) => {
     this.props.onDrag && this.props.onDrag(deltaX, deltaY);
   };
 
-  handleResize = (length, alpha, rect, type, isShiftKey) => {
+  handleResize = (length:any, alpha:any, rect:any, type:any, isShiftKey:any) => {
     if (!this.props.onResize) return;
     const {
       rotateAngle,
