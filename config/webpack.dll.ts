@@ -1,7 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import WebpackBar from "webpackbar";
-import env from "../env";
+import env from "./env";
 
 module.exports = {
     mode: "production",

@@ -3,7 +3,7 @@ import webpack from "webpack";
 import merge from "webpack-merge";
 import common from "./webpack.common";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import env from "../env";
+import env from "./env";
 import * as fs from "fs";
 
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;

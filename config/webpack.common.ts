@@ -2,7 +2,7 @@ import webpack from "webpack";
 import WebpackBar from "webpackbar";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import tsImportPluginFactory from "ts-import-plugin";
-import env from "../env";
+import env from "./env";
 
 const config: webpack.Configuration = {
   entry: ["./client/index"],
