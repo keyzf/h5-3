@@ -11,7 +11,7 @@ module.exports = {
     output: {
         filename: "[name].js", // 文件名
         library: "[name]", // 暴露的对象名
-        path: path.join(__dirname, "../dist/assets") // 路径
+        path: path.join(__dirname, "../public/assets") // 路径
     },
     plugins: [
         new WebpackBar(),
@@ -19,7 +19,7 @@ module.exports = {
         new webpack.DllPlugin({
             name: "[name]", // 暴露的对象名
             context: __dirname,
-            path: path.join(__dirname, "../dist/assets/manifest.json") // 路径
+            path: path.join(__dirname, "../public/assets/manifest.json") // 路径
         })
     ]
 };

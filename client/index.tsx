@@ -19,14 +19,18 @@ import analyzeUrl from "./tools/analyze-url";
 
 
 /**
- * 解析路由
+ * 组件函数
  */
-const {id, web} = analyzeUrl();
+const App = React.memo(() => {
+    /**
+     * 解析路由
+     */
+    const {id, web} = analyzeUrl();
 
-/**
- * 样式
- */
-const style = css`
+    /**
+     * 样式
+     */
+    const style = css`
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -34,27 +38,20 @@ const style = css`
     margin: auto;
   `;
 
+    /**
+     * 拆分路由
+     */
+    const Make = React.lazy(() => import("./app/make/Make"));
+    const Release = React.lazy(() => import("./app/release/Release"));
 
-/**
- * 拆分路由
- */
-const Make = React.lazy(() => import("./app/make/Make"));
-const Release = React.lazy(() => import("./app/release/Release"));
-
-
-/**
- * loading 样式
- */
-const loading = (
-    <div className={style}>
-        <Spin delay={300} size="large" tip="拼命加载中..."/>
-    </div>
-);
-
-/**
- * 组件函数
- */
-const App = React.memo(() => {
+    /**
+     * loading 样式
+     */
+    const loading = (
+        <div className={style}>
+            <Spin delay={300} size="large" tip="拼命加载中..."/>
+        </div>
+    );
     return (
         <React.Suspense fallback={loading}>
             {web === "v" ? <Make id={id}/> : <Release id={id}/>}

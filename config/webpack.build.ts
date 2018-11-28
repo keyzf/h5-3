@@ -20,14 +20,14 @@ const config: webpack.Configuration = merge(common, {
 
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: path.resolve(__dirname, "../dist/assets/manifest.json") // 路径
+            manifest: path.resolve(__dirname, "../public/assets/manifest.json") // 路径
         })
     ],
 
     output: {
         publicPath: env.publicUrl, //共公路径，可用于cdn
         filename: "[name].js", // 输出文件名
-        path: path.resolve("dist/assets") //输出路径
+        path: path.resolve("public/assets") //输出路径
     }
 });
 

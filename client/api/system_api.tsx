@@ -4,7 +4,7 @@ const system_api = (page:any, tid:any, pagecount:any = `24`) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append("pagecount", pagecount);
-    params.append("app", page);
+    params.append("page", page);
     params.append("tid", tid);
     axios
       .post(`${window.location.origin}/Material/getSys`, params)

@@ -1,16 +1,13 @@
 import * as React from "react";
 import { Spin, Tabs } from "antd";
-import { css } from "emotion";
+import { css } from "glamor";
 
-/**
- * 样式
- */
-const style = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-`;
+const styleLoading = css({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "auto"
+});
 
 /**
  * 路由拆分
@@ -29,7 +26,7 @@ const InterActive = React.lazy(() =>
  * loading 样式
  */
 const loading = (
-  <div className={style}>
+  <div {...styleLoading}>
     <Spin delay={300} size="large" tip="拼命加载中..." />
   </div>
 );

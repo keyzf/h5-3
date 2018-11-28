@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
   stats: "errors-only",
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"] // 配置简写，配置过后，书写该文件路径的时候可以省略文件后缀
+    extensions: [".ts", ".tsx", ".js", ".json", "scss", "less"] // 配置简写，配置过后，书写该文件路径的时候可以省略文件后缀
   },
 
   module: {
@@ -47,12 +47,14 @@ const config: webpack.Configuration = {
         test: /\.(sa|sc|c|le)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: ""
-            }
+            loader: MiniCssExtractPlugin.loader
           },
-          "css-loader",
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader"
+          },
           {
             loader: "less-loader",
             options: {

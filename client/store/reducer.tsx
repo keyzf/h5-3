@@ -4,6 +4,8 @@ import random from "../tools/random";
 import Store from "../typing/store";
 
 const store = {
+
+    global: {sid: 0, pv: 0},
     bg: BgData,
     music: {desc: "", url: ""},
     ui: [],
@@ -16,6 +18,16 @@ const store = {
 const reducer: any = (state = store, action: any) => {
     const {type, payload} = action;
     switch (type) {
+        /**
+         * 记录必要值
+         */
+        case "GLOBAL":
+            return produce(state, (draftState: Store) => {
+                draftState.global = {
+                    ...draftState.global,
+                    ...payload
+                };
+            });
         /**
          * @desc 历史记录
          */
