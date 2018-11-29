@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, Upload, Icon, Modal } from "antd";
+import { Form, Upload, Icon, Modal, message } from "antd";
 
 interface Props {
   change: any;
@@ -13,59 +13,74 @@ interface Props {
   };
 }
 
-interface State {
-  previewVisible: boolean;
-  previewImage: string;
-}
-
-class FormOptUpLoad extends React.Component<Props, State> {
+class FormOptUpLoad extends React.Component<Props, any> {
   state = {
     previewVisible: false,
-    previewImage: ""
+    previewImage: "",
+    fileList: []
+  };
+
+  /**
+   * 上传前审核
+   * @param file
+   * @returns {boolean}
+   */
+  beforeUpload = file => {
+    const isJPG = file.type === "image/jpeg" || file.type === "image/png";
+    if (!isJPG) {
+      message.error("图片格式只能为png或jpg");
+    }
+    const isLt10M = file.size / 1024 / 1024 < 10;
+    if (!isLt10M) {
+      message.error("上传图片过大，不超过10M");
+    }
+
+    return isJPG && isLt10M;
   };
 
   handleCancel = () => this.setState({ previewVisible: false });
 
-  handlePreview = (file:any) => {
+  handlePreview = file => {
     this.setState({
       previewImage: file.url || file.thumbUrl,
       previewVisible: true
     });
   };
 
-  handleChange = (data:any) => {
-    console.log(data);
+  handleChange = ({ file, fileList }) => {
+    this.setState({ fileList });
+    if (file.status === "done") {
+      if (file.response.error) {
+        message.error(file.response.msg);
+      } else {
+        message.success(`${file.name} 文件上传成功.`);
+
+        this.props.change(this.props.index, {
+          isLegal: true,
+          legalMsg: "",
+          data: file.response.url
+        });
+      }
+    }
   };
 
   render() {
-    const FormItem = Form.Item;
-    const { previewVisible, previewImage } = this.state;
-    const { option, title, title_color } = this.props.data;
+    const { previewVisible, previewImage, fileList } = this.state;
+    const { title, title_color } = this.props.data;
     const uploadButton = (
       <div>
         <Icon type="plus" />
         <div className="ant-upload-text">上传</div>
       </div>
     );
-    const fileList:any = [];
-    if (option) {
-      option.map((data, index) => {
-        fileList.push({
-          uid: index,
-          name: `图片${index}`,
-          status: "done",
-          url: data
-        });
-      });
-    }
-
     return (
-      <FormItem label={<div style={{ color: `${title_color}` }}>{title}</div>}>
+      <Form.Item label={<div style={{ color: `${title_color}` }}>{title}</div>}>
         <div className="clearfix">
           <Upload
-            action=""
+            action={`${window.location.origin}/material/uploadify`}
             listType="picture-card"
             fileList={fileList}
+            beforeUpload={this.beforeUpload}
             onPreview={this.handlePreview}
             onChange={this.handleChange}
           >
@@ -79,7 +94,7 @@ class FormOptUpLoad extends React.Component<Props, State> {
             <img alt="example" style={{ width: "100%" }} src={previewImage} />
           </Modal>
         </div>
-      </FormItem>
+      </Form.Item>
     );
   }
 }

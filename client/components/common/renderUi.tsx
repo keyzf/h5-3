@@ -7,26 +7,24 @@ import RenderForm from "../../resource/form/render";
 
 interface Props {
   data: {
-    common: any,
-    base: any
-  }
+    common: any;
+    base: any;
+  };
 }
 
 class RenderUi extends React.Component<Props, ""> {
   render() {
     const { data } = this.props;
-    const ui:any = {
-      form: () => <RenderForm data={data}/>,
-      button: () => <RenderButton data={data}/>,
-      video: () => <RenderVideo data={data}/>,
-      text: () => <RenderText data={data}/>,
-      picture: () => <RenderPicture data={data}/>
+    const ui: any = {
+      form: () => <RenderForm data={data} />,
+      button: () => <RenderButton data={data} />,
+      video: () => <RenderVideo data={data} />,
+      text: () => <RenderText data={data} />,
+      picture: () => <RenderPicture data={data} />
     };
 
     const UI = ui[data.common.type];
-    return (
-      <UI/>
-    );
+    return <UI />;
   }
 }
 

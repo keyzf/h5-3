@@ -17,8 +17,7 @@ import {
 } from "../../../resource/form/database";
 import { useDispatch } from "redux-react-hook";
 
-
-const FormItemAdd = React.memo(() => {
+const FormItemAdd = React.memo((props: any) => {
   const dispatch = useDispatch();
   const addOpt = (name: string) => {
     switch (name) {
@@ -55,67 +54,71 @@ const FormItemAdd = React.memo(() => {
         dispatch({ type: "FORM_ADD", payload: $$from_opt_checkbox(random()) });
         break;
       case "datePicker":
-        dispatch({ type: "FORM_ADD", payload: $$from_opt_datepicker(random()) });
+        dispatch({
+          type: "FORM_ADD",
+          payload: $$from_opt_datepicker(random())
+        });
         break;
       case "upload":
         dispatch({ type: "FORM_ADD", payload: $$form_opt_upload(random()) });
         break;
     }
+    props.choose(props.number.length);
   };
 
   const content = (
     <div>
-        <span>
-          <Row gutter={16} style={{ width: "250px", cursor: "pointer" }}>
-            <Col span={6} onClick={() => addOpt("name")}>
-              姓名
-            </Col>
-            <Col span={6} onClick={() => addOpt("phone")}>
-              手机
-            </Col>
-            <Col span={6} onClick={() => addOpt("address")}>
-              地址
-            </Col>
-            <Col span={6} onClick={() => addOpt("email")}>
-              邮箱
-            </Col>
-            <Col span={6} onClick={() => addOpt("mobile")}>
-              电话
-            </Col>
-          </Row>
-        </span>
-      <Divider/>
       <span>
-          <Row gutter={16} style={{ width: "250px", cursor: "pointer" }}>
-            <Col span={6} onClick={() => addOpt("input")}>
-              输入框
-            </Col>
-            <Col span={6} onClick={() => addOpt("radio")}>
-              单选
-            </Col>
-            <Col span={6} onClick={() => addOpt("select")}>
-              选择器
-            </Col>
-            <Col span={6} onClick={() => addOpt("rate")}>
-              评分
-            </Col>
-            <Col span={6} onClick={() => addOpt("checkbox")}>
-              多选框
-            </Col>
-            <Col span={6} onClick={() => addOpt("datePicker")}>
-              日期
-            </Col>
-            <Col span={6} onClick={() => addOpt("upload")}>
-              上传
-            </Col>
-          </Row>
-        </span>
+        <Row gutter={16} style={{ width: "250px", cursor: "pointer" }}>
+          <Col span={6} onClick={() => addOpt("name")}>
+            姓名
+          </Col>
+          <Col span={6} onClick={() => addOpt("phone")}>
+            手机
+          </Col>
+          <Col span={6} onClick={() => addOpt("address")}>
+            地址
+          </Col>
+          <Col span={6} onClick={() => addOpt("email")}>
+            邮箱
+          </Col>
+          <Col span={6} onClick={() => addOpt("mobile")}>
+            电话
+          </Col>
+        </Row>
+      </span>
+      <Divider />
+      <span>
+        <Row gutter={16} style={{ width: "250px", cursor: "pointer" }}>
+          <Col span={6} onClick={() => addOpt("input")}>
+            输入框
+          </Col>
+          <Col span={6} onClick={() => addOpt("radio")}>
+            单选
+          </Col>
+          <Col span={6} onClick={() => addOpt("select")}>
+            选择器
+          </Col>
+          <Col span={6} onClick={() => addOpt("rate")}>
+            评分
+          </Col>
+          <Col span={6} onClick={() => addOpt("checkbox")}>
+            多选框
+          </Col>
+          <Col span={6} onClick={() => addOpt("datePicker")}>
+            日期
+          </Col>
+          <Col span={6} onClick={() => addOpt("upload")}>
+            上传
+          </Col>
+        </Row>
+      </span>
     </div>
   );
 
   return (
     <React.Fragment>
-      <Divider dashed/>
+      <Divider dashed />
       <Popover
         placement="bottom"
         title={"添加"}
@@ -123,13 +126,12 @@ const FormItemAdd = React.memo(() => {
         trigger="click"
       >
         <Button type="dashed" style={{ width: "100%" }}>
-          <Icon type="add" theme="outlined"/>
+          <Icon type="add" theme="outlined" />
           添加
         </Button>
       </Popover>
     </React.Fragment>
   );
 });
-
 
 export default FormItemAdd;

@@ -23,7 +23,6 @@ const FormEdit = React.memo(() => {
 
   const onChoose = (index:any) => {
     setState(index);
-
   };
 
   const back = () => {
@@ -42,7 +41,7 @@ const FormEdit = React.memo(() => {
         >
 
           <TabPane tab={items.title} key="1">
-            <FormEditItem fun={(data:any) => dispatch({ type: "FORM_ITEM", payload: { index: state, data: data } })}
+            <FormEditItem  fun={(data:any) => dispatch({ type: "FORM_ITEM", payload: { index: state, data: data } })}
                           data={items}/>
           </TabPane>
         </Tabs>

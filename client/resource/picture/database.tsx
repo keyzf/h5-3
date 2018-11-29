@@ -5,16 +5,14 @@ let PictureData: any = [];
  */
 const base: object[] = [
   {
-    data:
-      {
-        img: "http://src.e7wei.com/0.2823198691104869.png",
-        crop: "http://src.e7wei.com/0.2823198691104869.png",
-        link: { type: "choose", url: "" },
-        openness: 0,
-        radius: 0,
-        color: ""
-      }
-    ,
+    data: {
+      img: "http://src.e7wei.com/0.2823198691104869.png",
+      crop: "http://src.e7wei.com/0.2823198691104869.png",
+      link: { type: "choose", url: "" },
+      openness: 0,
+      radius: 0,
+      color: ""
+    },
     index: 0
   },
   {
@@ -84,7 +82,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 2
+    ],
+    index: 2
   },
   {
     data: [
@@ -96,7 +95,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 3
+    ],
+    index: 3
   },
   {
     data: [
@@ -108,7 +108,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 4
+    ],
+    index: 4
   },
   {
     data: [
@@ -120,7 +121,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 5
+    ],
+    index: 5
   },
   {
     data: [
@@ -132,7 +134,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 6
+    ],
+    index: 6
   },
   {
     data: [
@@ -144,7 +147,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 7
+    ],
+    index: 7
   },
   {
     data: [
@@ -156,7 +160,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 8
+    ],
+    index: 8
   },
   {
     data: [
@@ -168,7 +173,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 9
+    ],
+    index: 9
   },
   {
     data: [
@@ -180,7 +186,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 10
+    ],
+    index: 10
   },
   {
     data: [
@@ -192,7 +199,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 11
+    ],
+    index: 11
   },
   {
     data: [
@@ -204,7 +212,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 12
+    ],
+    index: 12
   },
   {
     data: [
@@ -216,7 +225,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 13
+    ],
+    index: 13
   },
   {
     data: [
@@ -228,7 +238,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 14
+    ],
+    index: 14
   },
   {
     data: [
@@ -240,7 +251,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 15
+    ],
+    index: 15
   },
   {
     data: [
@@ -252,7 +264,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 16
+    ],
+    index: 16
   },
   {
     data: [
@@ -264,7 +277,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 17
+    ],
+    index: 17
   },
   {
     data: [
@@ -276,7 +290,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 18
+    ],
+    index: 18
   },
   {
     data: [
@@ -288,7 +303,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 19
+    ],
+    index: 19
   },
   {
     data: [
@@ -300,7 +316,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 20
+    ],
+    index: 20
   },
   {
     data: [
@@ -312,7 +329,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 21
+    ],
+    index: 21
   },
   {
     data: [
@@ -324,7 +342,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 22
+    ],
+    index: 22
   },
   {
     data: [
@@ -336,7 +355,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 23
+    ],
+    index: 23
   },
   {
     data: [
@@ -348,7 +368,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 24
+    ],
+    index: 24
   },
   {
     data: [
@@ -360,7 +381,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 25
+    ],
+    index: 25
   },
   {
     data: [
@@ -372,7 +394,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 26
+    ],
+    index: 26
   },
   {
     data: [
@@ -384,7 +407,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 27
+    ],
+    index: 27
   },
   {
     data: [
@@ -396,7 +420,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 28
+    ],
+    index: 28
   },
   {
     data: [
@@ -408,7 +433,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 29
+    ],
+    index: 29
   },
   {
     data: [
@@ -420,7 +446,8 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 30
+    ],
+    index: 30
   },
   {
     data: [
@@ -432,10 +459,11 @@ const icon: object[] = [
         radius: 0,
         color: "#000"
       }
-    ], index: 31
+    ],
+    index: 31
   }
 ];
-icon.map((data:any) => {
+icon.map((data: any) => {
   PictureData.push({
     common: {
       type: "picture",
@@ -453,6 +481,103 @@ icon.map((data:any) => {
   });
 });
 
+const line: object[] = [
+  {
+    data: [
+      {
+        img: "icon-Desktop",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 32
+  },
+  {
+    data: [
+      {
+        img: "icon-hengxian2",
+        crop: "icon-e7wei-1",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 33
+  },
+  {
+    data: [
+      {
+        img: "icon-hengxiandianzuo",
+        crop: "icon-e7wei-1",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 34
+  },
+  {
+    data: [
+      {
+        img: "icon-hengxiandianyou",
+        crop: "icon-e7wei-1",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 35
+  },
+  {
+    data: [
+      {
+        img: "icon-hengxian1-copy",
+        crop: "icon-e7wei-1",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 36
+  },
+  {
+    data: [
+      {
+        img: "icon-hengxian",
+        crop: "icon-e7wei-1",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 37
+  }
+];
+line.map((data: any) => {
+  PictureData.push({
+    common: {
+      type: "picture",
+      id: data.index
+    },
+    base: data.data[0],
+    position: {
+      width: 100,
+      height: 40,
+      left: 0,
+      top: 0,
+      rotate: 0,
+      zIndex: 100
+    }
+  });
+});
 
 // 添加 img 组件 item 时的数据
 export const PictureDataAdd = {

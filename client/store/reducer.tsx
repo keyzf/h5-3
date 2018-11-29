@@ -4,7 +4,6 @@ import random from "../tools/random";
 import Store from "../typing/store";
 
 const store = {
-
     global: {sid: 0, pv: 0},
     bg: BgData,
     music: {desc: "", url: ""},
@@ -34,7 +33,9 @@ const reducer: any = (state = store, action: any) => {
         case "LOG_INIT":
             return produce(state, (draftState: Store) => {
                 if (localStorage.getItem(`e7wei-log-${payload}`)) {
-                    draftState.log = JSON.parse(localStorage.getItem(`e7wei-log-${payload}`) as string);
+                    draftState.log = JSON.parse(localStorage.getItem(
+                        `e7wei-log-${payload}`
+                    ) as string);
                 } else {
                     localStorage.setItem(`e7wei-log-${payload}`, JSON.stringify([]));
                 }
@@ -59,7 +60,6 @@ const reducer: any = (state = store, action: any) => {
                     );
                 } else {
                     draftState.log.unshift(data);
-                    console.log(data);
                     localStorage.setItem(
                         `e7wei-log-${payload}`,
                         JSON.stringify(draftState.log)
@@ -71,6 +71,7 @@ const reducer: any = (state = store, action: any) => {
                 draftState.ui = draftState.log[payload].ui;
                 draftState.bg = draftState.log[payload].bg;
                 draftState.music = draftState.log[payload].music;
+                draftState.edit = {type: "share", number: [], lock: []};
             });
         /**
          * @desc 表单设置

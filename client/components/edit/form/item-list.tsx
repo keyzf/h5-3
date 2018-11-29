@@ -141,7 +141,7 @@ class FormItemList extends React.PureComponent<any, State> {
             );
           })}
         </Row>
-        <FormItemAdd/>
+        <FormItemAdd choose={this.props.choose} number={this.props.order}/>
       </React.Fragment>
     );
   }

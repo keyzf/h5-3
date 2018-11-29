@@ -31,7 +31,7 @@ class FormOptDatePicker extends React.PureComponent<Props, any> {
     this.props.change(this.props.index, {
       isLegal: true,
       legalMsg: "",
-      data: e
+      data: e.format("LL")
     });
   };
 
