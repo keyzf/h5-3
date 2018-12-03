@@ -15,7 +15,7 @@ const PictureList = React.memo(() => {
     const [state, setState] = useState({
         type: "shape",
         name: "形状",
-        showArray: []
+        showArray: [39]
     });
 
     const chooseTab = (type: string, name: string) => {

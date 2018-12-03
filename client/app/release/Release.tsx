@@ -10,6 +10,7 @@ import Store from "../../typing/store";
 import {useMappedState} from "redux-react-hook";
 import {useCallback} from "react";
 import ReleaseEdit from "./editor.page";
+import axios from "axios";
 
 export default React.memo((props: { id: number, web: string }) => {
     const {ui, sid, title} = useMappedState(
@@ -22,6 +23,107 @@ export default React.memo((props: { id: number, web: string }) => {
             []
         )
     );
+    // let params = new URLSearchParams();
+    // params.append("url", `${window.location.href}`);
+    // axios
+    //     .post(`${window.location.origin}/view/getSignPackage`, params)
+    //     .then(response => {
+    //         wx.config({
+    //             debug: false,
+    //             appId: response.data.appId,
+    //             timestamp: response.data.timestamp,
+    //             nonceStr: response.data.nonceStr,
+    //             signature: response.data.signature,
+    //             jsApiList: [
+    //                 "onMenuShareTimeline",
+    //                 "onMenuShareAppMessage",
+    //                 "onMenuShareQQ",
+    //                 "onMenuShareWeibo",
+    //                 "hideMenuItems"
+    //             ]
+    //         });
+    //         wx.ready(() => {
+    //             if (
+    //                 response.data.limitPv <= this.props.release_value.data.get("pv")
+    //             ) {
+    //                 wx.hideMenuItems({
+    //                     menuList: ["menuItem:share:timeline"]
+    //                 });
+    //             }
+    //             wx.onMenuShareTimeline({
+    //                 title: this.props.shareMsg_value.data.get("title")
+    //                     ? this.props.shareMsg_value.data.get("title")
+    //                     : "我的页面", // 分享标题
+    //
+    //                 desc: this.props.shareMsg_value.data.get("desc")
+    //                     ? this.props.shareMsg_value.data.get("desc")
+    //                     : "我用易企微做了一个H5页面，你来看看吧！", // 分享描述
+    //
+    //                 link: `${window.location.href}`, //
+    //                 imgUrl: this.props.shareMsg_value.data.get("cover"), // 分享图标
+    //                 success: () => {
+    //                     let params = new URLSearchParams();
+    //                     params.append("sid", this.props.sid);
+    //                     axios.post(`${window.location.origin}/view/addShare`, params);
+    //                 }
+    //             });
+    //             wx.onMenuShareAppMessage({
+    //                 title: this.props.shareMsg_value.data.get("title")
+    //                     ? this.props.shareMsg_value.data.get("title")
+    //                     : "我的页面", // 分享标题
+    //
+    //                 desc: this.props.shareMsg_value.data.get("desc")
+    //                     ? this.props.shareMsg_value.data.get("desc")
+    //                     : "我用易企微做了一个H5页面，你来看看吧！", // 分享描述
+    //
+    //                 link: `${window.location.href}`, //
+    //                 imgUrl: this.props.shareMsg_value.data.get("cover"), // 分享图标
+    //                 success: () => {
+    //                     let params = new URLSearchParams();
+    //                     params.append("sid", this.props.sid);
+    //                     axios.post(`${window.location.origin}/view/addShare`, params);
+    //                 }
+    //             });
+    //             wx.onMenuShareQQ({
+    //                 title: this.props.shareMsg_value.data.get("title")
+    //                     ? this.props.shareMsg_value.data.get("title")
+    //                     : "我的页面", // 分享标题
+    //
+    //                 desc: this.props.shareMsg_value.data.get("desc")
+    //                     ? this.props.shareMsg_value.data.get("desc")
+    //                     : "我用易企微做了一个H5页面，你来看看吧！", // 分享描述
+    //
+    //                 link: `${window.location.href}`, //
+    //                 imgUrl: this.props.shareMsg_value.data.get("cover"), // 分享图标
+    //                 success: () => {
+    //                     let params = new URLSearchParams();
+    //                     params.append("sid", this.props.sid);
+    //                     axios.post(`${window.location.origin}/view/addShare`, params);
+    //                 }
+    //             });
+    //             wx.onMenuShareWeibo({
+    //                 title: this.props.shareMsg_value.data.get("title")
+    //                     ? this.props.shareMsg_value.data.get("title")
+    //                     : "我的页面", // 分享标题
+    //
+    //                 desc: this.props.shareMsg_value.data.get("desc")
+    //                     ? this.props.shareMsg_value.data.get("desc")
+    //                     : "我用易企微做了一个H5页面，你来看看吧！", // 分享描述
+    //
+    //                 link: `${window.location.href}`, //
+    //                 imgUrl: this.props.shareMsg_value.data.get("cover"), // 分享图标
+    //                 success: () => {
+    //                     let params = new URLSearchParams();
+    //                     params.append("sid", this.props.sid);
+    //                     axios.post(`${window.location.origin}/view/addShare`, params);
+    //                 }
+    //             });
+    //             try {
+    //                 document.getElementById("h5_audio").play();
+    //             } catch (error) {
+    //             }
+    //         });
+    //     });
     return (
         <React.Fragment>
             <div className={mediaMobile}>
