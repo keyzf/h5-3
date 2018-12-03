@@ -24,7 +24,7 @@ const PictureList = React.memo(() => {
                 return setState({
                     type: type,
                     name: name,
-                    showArray: []
+                    showArray: [39]
                 });
             case "line":
                 return setState({
@@ -36,7 +36,7 @@ const PictureList = React.memo(() => {
                 return setState({
                     type: type,
                     name: name,
-                    showArray: []
+                    showArray: [38]
                 });
             case "icon":
                 // @ts-ignore
@@ -165,6 +165,8 @@ const PictureList = React.memo(() => {
             display: "none"
         }
     });
+
+
     return (
         <React.Fragment>
             <ImgModel choose={''} imgChange={changeImg}>
@@ -245,6 +247,44 @@ const PictureList = React.memo(() => {
                     ""
                 )}
                 {state.type === "line" ? (
+                    <Row gutter={8} style={{padding: "0 5px"}}>
+                        {state.showArray.map((data, index) => (
+                            <Col
+                                span={24}
+                                key={index}
+                                onClick={() => pushData(PictureData[data])}
+                            >
+                                <div {...uiHover}>
+                                    <div {...center}>
+                                        <FontIcon key={index} data={PictureData[data]}/>
+                                    </div>
+                                </div>
+                            </Col>
+                        ))}
+                    </Row>
+                ) : (
+                    ""
+                )}
+                {state.type === "banner" ? (
+                    <Row gutter={8} style={{padding: "0 5px"}}>
+                        {state.showArray.map((data, index) => (
+                            <Col
+                                span={24}
+                                key={index}
+                                onClick={() => pushData(PictureData[data])}
+                            >
+                                <div {...uiHover}>
+                                    <div {...center}>
+                                        <FontIcon key={index} data={PictureData[data]}/>
+                                    </div>
+                                </div>
+                            </Col>
+                        ))}
+                    </Row>
+                ) : (
+                    ""
+                )}
+                {state.type === "shape" ? (
                     <Row gutter={8} style={{padding: "0 5px"}}>
                         {state.showArray.map((data, index) => (
                             <Col

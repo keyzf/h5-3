@@ -4,6 +4,7 @@ import ButtonData from "./database";
 import styled from "react-emotion";
 import { useDispatch } from "redux-react-hook";
 import RenderButton from "./render";
+import {css} from "glamor";
 
 const ButtonList = React.memo(() => {
   const [state, setState] = useState([0, 1, 2, 3, 4, 5]);
@@ -47,8 +48,47 @@ const ButtonList = React.memo(() => {
       width: "50px"
     }
   };
+    const scrollbar = css({
+        width: "100%",
+        height: "calc(100vh - 90px)",
+        overflowX: "auto",
+        overflowY: "auto",
+        scrollbarArrowColor: "transparent",
+        scrollbarFaceColor: "transparent",
+        scrollbarHighlightColor: "transparent",
+        scrollbarShadowColor: "transparent",
+        scrollbarDarkshadowColor: "transparent",
+        scrollbarTrackColor: "transparent",
+        scrollbarBaseColor: "transparent",
+
+        "&::-webkit-scrollbar": {
+            border: "none",
+            width: 0,
+            height: 0,
+            backgroundColor: "transparent"
+        },
+        "&::-webkit-scrollbar-button": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track-piece": {
+            display: "none"
+        },
+
+        "&::-webkit-scrollbar-thumb": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-corner": {
+            display: "none"
+        },
+        "&::-webkit-resizer": {
+            display: "none"
+        }
+    });
   return (
-    <div>
+    <div {...scrollbar}>
       {state.map((data:any, index:any) => {
         return (
           <UIHover key={index} onClick={() => addToUi(ButtonData[data])}>

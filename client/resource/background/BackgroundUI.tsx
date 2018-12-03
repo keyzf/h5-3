@@ -27,6 +27,8 @@ const BgAtom = styled("div")<ImageProps>`
   
   box-sizing: border-box;
   
+  min-width: 320px;
+  
   background-color: ${props => props.color};
   
   background-image: ${props => (props.img ? "url(" + props.img + ")" : null)};

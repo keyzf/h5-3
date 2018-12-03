@@ -9,6 +9,7 @@ import Store from "../../typing/store";
 import {useDispatch} from "redux-react-hook";
 import delete_api from "../../api/delete_api";
 import system_api from "../../api/system_api";
+import {css} from "glamor";
 
 const TabPane = Tabs.TabPane;
 const {CheckableTag} = Tag;
@@ -163,93 +164,76 @@ const MusicEdit = React.memo(() => {
             </UpLoadMusic>
         </Button>
     );
+    const scrollbar = css({
+        width: "100%",
+        height: "calc(100vh - 190px)",
+        overflowX: "auto",
+        overflowY: "auto",
+        scrollbarArrowColor: "transparent",
+        scrollbarFaceColor: "transparent",
+        scrollbarHighlightColor: "transparent",
+        scrollbarShadowColor: "transparent",
+        scrollbarDarkshadowColor: "transparent",
+        scrollbarTrackColor: "transparent",
+        scrollbarBaseColor: "transparent",
+
+        "&::-webkit-scrollbar": {
+            border: "none",
+            width: 0,
+            height: 0,
+            backgroundColor: "transparent"
+        },
+        "&::-webkit-scrollbar-button": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track-piece": {
+            display: "none"
+        },
+
+        "&::-webkit-scrollbar-thumb": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-corner": {
+            display: "none"
+        },
+        "&::-webkit-resizer": {
+            display: "none"
+        }
+    });
 
     return (
         <React.Fragment>
             <audio id={"audio"} autoPlay={true} src={music.url}/>
             <Tabs tabBarExtraContent={operations}>
                 <TabPane tab="音乐设置" key="1" style={{padding: "0 5px"}}>
-                    <CheckableTag
-                        checked={"user" === state.nowTip}
-                        onChange={() => chooseTip("user")}
-                    >
-                        我的
-                    </CheckableTag>
-                    {state.tip.map((data: any, index: any) => {
-                        return (
-                            <CheckableTag
-                                onChange={() => chooseTip(data.tid)}
-                                checked={data.tid === state.nowTip}
-                                key={index}
-                            >
-                                {data.typename}
-                            </CheckableTag>
-                        );
-                    })}
+                    <div {...scrollbar}>
+                        <CheckableTag
+                            checked={"user" === state.nowTip}
+                            onChange={() => chooseTip("user")}
+                        >
+                            我的
+                        </CheckableTag>
+                        {state.tip.map((data: any, index: any) => {
+                            return (
+                                <CheckableTag
+                                    onChange={() => chooseTip(data.tid)}
+                                    checked={data.tid === state.nowTip}
+                                    key={index}
+                                >
+                                    {data.typename}
+                                </CheckableTag>
+                            );
+                        })}
 
-                    {music.url ? (
-                        <React.Fragment>
-                            <Divider>当前使用</Divider>
-                            <List
-                                itemLayout="horizontal"
-                                dataSource={[{url: music.url, desc: music.desc}]}
-                                renderItem={(item: any) => (
-                                    <List.Item
-                                        actions={[
-                                            <a>
-                                                {play ? (
-                                                    <Icon
-                                                        type="pause-circle-o"
-                                                        onClick={() => audio("pause", item.url, item.desc)}
-                                                    />
-                                                ) : (
-                                                    <Icon
-                                                        type="play-circle-o"
-                                                        onClick={() => audio("play", item.url, item.desc)}
-                                                    />
-                                                )}
-                                            </a>,
-                                            <a>
-                                                <Icon
-                                                    onClick={delUse}
-                                                    className="dynamic-delete-button"
-                                                    type="minus-circle-o"
-                                                />
-                                            </a>
-                                        ]}
-                                    >
-                                        <i
-                                            className="iconfont icon-yinle"
-                                            style={{
-                                                marginRight: "5px",
-                                                transform: "translate(3px,-3px)"
-                                            }}
-                                        />
-                                        {item.desc}
-                                    </List.Item>
-                                )}
-                            />
-                        </React.Fragment>
-                    ) : (
-                        ""
-                    )}
-
-                    {/*用户数据界面*/}
-                    {state.nowTip === "user" ? (
-                        list.list.length ? (
+                        {music.url ? (
                             <React.Fragment>
-                                <Divider>历史上传</Divider>
+                                <Divider>当前使用</Divider>
                                 <List
                                     itemLayout="horizontal"
-                                    dataSource={list.list}
-                                    pagination={{
-                                        simple: true,
-                                        total: sum,
-                                        pageSize: 10,
-                                        current: list.count,
-
-                                        onChange: e => onChangePage(e)
-                                    }}
+                                    dataSource={[{url: music.url, desc: music.desc}]}
                                     renderItem={(item: any) => (
                                         <List.Item
                                             actions={[
@@ -257,9 +241,7 @@ const MusicEdit = React.memo(() => {
                                                     {play ? (
                                                         <Icon
                                                             type="pause-circle-o"
-                                                            onClick={() =>
-                                                                audio("pause", item.url, item.desc)
-                                                            }
+                                                            onClick={() => audio("pause", item.url, item.desc)}
                                                         />
                                                     ) : (
                                                         <Icon
@@ -270,7 +252,7 @@ const MusicEdit = React.memo(() => {
                                                 </a>,
                                                 <a>
                                                     <Icon
-                                                        onClick={() => del(item.mid)}
+                                                        onClick={delUse}
                                                         className="dynamic-delete-button"
                                                         type="minus-circle-o"
                                                     />
@@ -284,103 +266,181 @@ const MusicEdit = React.memo(() => {
                                                     transform: "translate(3px,-3px)"
                                                 }}
                                             />
-                                            {item.desc}
+                                            <div
+                                                style={{
+                                                    width: "120px",
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    whiteSpace: "nowrap"
+                                                }}
+                                            >
+                                                {item.desc}
+                                            </div>
                                         </List.Item>
                                     )}
                                 />
                             </React.Fragment>
                         ) : (
+                            ""
+                        )}
+
+                        {/*用户数据界面*/}
+                        {state.nowTip === "user" ? (
+                            list.list.length ? (
+                                <React.Fragment>
+                                    <Divider>历史上传</Divider>
+                                    <List
+                                        itemLayout="horizontal"
+                                        dataSource={list.list}
+                                        pagination={{
+                                            simple: true,
+                                            total: sum,
+                                            pageSize: 10,
+                                            current: list.count,
+
+                                            onChange: e => onChangePage(e)
+                                        }}
+                                        renderItem={(item: any) => (
+                                            <List.Item
+                                                actions={[
+                                                    <a>
+                                                        {play ? (
+                                                            <Icon
+                                                                type="pause-circle-o"
+                                                                onClick={() =>
+                                                                    audio("pause", item.url, item.desc)
+                                                                }
+                                                            />
+                                                        ) : (
+                                                            <Icon
+                                                                type="play-circle-o"
+                                                                onClick={() => audio("play", item.url, item.desc)}
+                                                            />
+                                                        )}
+                                                    </a>,
+                                                    <a>
+                                                        <Icon
+                                                            onClick={() => del(item.mid)}
+                                                            className="dynamic-delete-button"
+                                                            type="minus-circle-o"
+                                                        />
+                                                    </a>
+                                                ]}
+                                            >
+                                                <i
+                                                    className="iconfont icon-yinle"
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        transform: "translate(3px,-3px)"
+                                                    }}
+                                                />
+                                                <div
+                                                    style={{
+                                                        width: "120px",
+                                                        overflow: "hidden",
+                                                        textOverflow: "ellipsis",
+                                                        whiteSpace: "nowrap"
+                                                    }}
+                                                >
+                                                    {item.desc}
+                                                </div>
+                                            </List.Item>
+                                        )}
+                                    />
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    <Divider>暂无音乐</Divider>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center"
+                                        }}
+                                    >
+                                        <UpLoadMusic upload={{value: ""}} onChange={upMusic}>
+                                            <Button type="dashed" htmlType={"button"}>
+                                                <Icon type="upload" theme="outlined"/>
+                                                上传音乐
+                                            </Button>
+                                        </UpLoadMusic>
+                                    </div>
+                                    <br/>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center"
+                                        }}
+                                    >
+                                        <p>MP3音乐2M以内</p>
+                                    </div>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center"
+                                        }}
+                                    >
+                                        <p>
+                                            <a href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
+                                                下载音乐压缩工具
+                                            </a>
+                                        </p>
+                                    </div>
+                                </React.Fragment>
+                            )
+                        ) : (
+                            ""
+                        )}
+
+                        {/*分类*/}
+                        {state.nowTip !== "user" ? (
                             <React.Fragment>
-                                <Divider>暂无音乐</Divider>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center"
-                                    }}
-                                >
-                                    <UpLoadMusic upload={{value: ""}} onChange={upMusic}>
-                                        <Button type="dashed" htmlType={"button"}>
-                                            <Icon type="upload" theme="outlined"/>
-                                            上传音乐
-                                        </Button>
-                                    </UpLoadMusic>
-                                </div>
-                                <br/>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center"
-                                    }}
-                                >
-                                    <p>MP3音乐2M以内</p>
-                                </div>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center"
-                                    }}
-                                >
-                                    <p>
-                                        <a href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
-                                            下载音乐压缩工具
-                                        </a>
-                                    </p>
+                                <Divider/>
+                                <div style={{marginBottom: "10px"}}>
+                                    <List
+                                        itemLayout="horizontal"
+                                        dataSource={list.list}
+                                        pagination={{
+                                            simple: true,
+                                            total: sum,
+                                            pageSize: 10,
+                                            current: list.count,
+                                            onChange: e => onChangePage(e)
+                                        }}
+                                        renderItem={(item: any) => (
+                                            <List.Item
+                                                actions={[
+                                                    <a>
+                                                        {music.url === item.url ? (
+                                                            <Icon type="check" onClick={delUse}/>
+                                                        ) : (
+                                                            <i
+                                                                className=" iconfont icon-xuanxiangkuang"
+                                                                onClick={() => onChoose(item.url, item.name)}
+                                                            />
+                                                        )}
+                                                    </a>
+                                                ]}
+                                            >
+                                                <i
+                                                    className="iconfont icon-yinle"
+                                                    style={{
+                                                        marginRight: "5px",
+                                                        transform: "translate(3px,-3px)"
+                                                    }}
+                                                />
+                                                {item.name}
+                                            </List.Item>
+                                        )}
+                                    />
                                 </div>
                             </React.Fragment>
-                        )
-                    ) : (
-                        ""
-                    )}
-
-                    {/*分类*/}
-                    {state.nowTip !== "user" ? (
-                        <React.Fragment>
-                            <Divider/>
-                            <div style={{marginBottom: "10px"}}>
-                                <List
-                                    itemLayout="horizontal"
-                                    dataSource={list.list}
-                                    pagination={{
-                                        simple: true,
-                                        total: sum,
-                                        pageSize: 10,
-                                        current: list.count,
-                                        onChange: e => onChangePage(e)
-                                    }}
-                                    renderItem={(item: any) => (
-                                        <List.Item
-                                            actions={[
-                                                <a>
-                                                    {music.url === item.url ? (
-                                                        <Icon type="check" onClick={delUse}/>
-                                                    ) : (
-                                                        <i
-                                                            className=" iconfont icon-xuanxiangkuang"
-                                                            onClick={() => onChoose(item.url, item.name)}
-                                                        />
-                                                    )}
-                                                </a>
-                                            ]}
-                                        >
-                                            <i
-                                                className="iconfont icon-yinle"
-                                                style={{
-                                                    marginRight: "5px",
-                                                    transform: "translate(3px,-3px)"
-                                                }}
-                                            />
-                                            {item.name}
-                                        </List.Item>
-                                    )}
-                                />
-                            </div>
-                        </React.Fragment>
-                    ) : (
-                        ""
-                    )}
+                        ) : (
+                            ""
+                        )}
+                    </div>
                 </TabPane>
             </Tabs>
         </React.Fragment>

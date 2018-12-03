@@ -13,7 +13,7 @@ Mock.mock(`${window.location.origin}/Material/getUser`, "post", {
         {
             mid: Random.id(),
             url: Random.dataImage("200x100"),
-            desc: "图片/音乐描述"
+            desc: "图片/音乐描述wfwqefwqefqwefqwfeweqffqw"
         },
         {
             mid: Random.id(),

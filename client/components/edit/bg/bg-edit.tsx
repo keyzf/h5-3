@@ -1,29 +1,70 @@
 import * as React from "react";
-import { Tabs, Button, Icon } from "antd";
+import {Tabs, Button, Icon} from "antd";
 import BgEditColor from "./color";
 import BgEditImg from "./img";
+import {css} from "glamor";
 
 const BgEdit = React.memo(() => {
-  const TabPane = Tabs.TabPane;
-  const operations = (
-    <Button htmlType={"button"} style={{ marginRight: "5px" }} type="dashed">
-      <Icon type="upload" theme="outlined"/>
-      上传背景
-    </Button>
-  );
+    const TabPane = Tabs.TabPane;
+    const operations = (
+        <Button htmlType={"button"} style={{marginRight: "5px"}} type="dashed">
+            <Icon type="upload" theme="outlined"/>
+            上传背景
+        </Button>
+    );
+    const scrollbar = css({
+        width: "100%",
+        height: "calc(100vh - 107px)",
+        overflowX: "auto",
+        overflowY: "auto",
+        scrollbarArrowColor: "transparent",
+        scrollbarFaceColor: "transparent",
+        scrollbarHighlightColor: "transparent",
+        scrollbarShadowColor: "transparent",
+        scrollbarDarkshadowColor: "transparent",
+        scrollbarTrackColor: "transparent",
+        scrollbarBaseColor: "transparent",
 
-  return (
-    <Tabs tabBarExtraContent={operations}>
-      <TabPane tab="背景设置" key="1" style={{ padding: "0 5px" }}>
-        <p>背景色</p>
-        <BgEditColor/>
-        <br/>
+        "&::-webkit-scrollbar": {
+            border: "none",
+            width: 0,
+            height: 0,
+            backgroundColor: "transparent"
+        },
+        "&::-webkit-scrollbar-button": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track-piece": {
+            display: "none"
+        },
 
-        <p>背景图</p>
-        <BgEditImg/>
-      </TabPane>
-    </Tabs>
-  );
+        "&::-webkit-scrollbar-thumb": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-corner": {
+            display: "none"
+        },
+        "&::-webkit-resizer": {
+            display: "none"
+        }
+    });
+    return (
+        <Tabs tabBarExtraContent={operations}>
+            <TabPane tab="背景设置" key="1" style={{padding: "0 5px"}}>
+                <div {...scrollbar}>
+                    <p>背景色</p>
+                    <BgEditColor/>
+                    <br/>
+
+                    <p>背景图</p>
+                    <BgEditImg/>
+                </div>
+            </TabPane>
+        </Tabs>
+    );
 });
 
 export default BgEdit;

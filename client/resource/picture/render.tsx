@@ -104,6 +104,8 @@ const RenderPicture = React.memo((props: any) => {
 
       case 31:
         return <Picture36 data={props.data} />;
+
+
       default:
         return <FontIcon data={props.data} />;
     }

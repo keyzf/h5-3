@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import Store from "../../../typing/store";
 import ImgModel from "../../common/imgModel";
+import {css} from "glamor";
 
 const ShareEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -25,8 +26,48 @@ const ShareEdit = React.memo(() => {
   const shareValueChange = (e:any) =>
     dispatch({ type: "SHARE_VALUE", payload: { [e.target.name]: e.target.value } });
 
+
+    const scrollbar = css({
+        width: "100%",
+        height: "calc(100vh - 90px)",
+        overflowX: "auto",
+        overflowY: "auto",
+        scrollbarArrowColor: "transparent",
+        scrollbarFaceColor: "transparent",
+        scrollbarHighlightColor: "transparent",
+        scrollbarShadowColor: "transparent",
+        scrollbarDarkshadowColor: "transparent",
+        scrollbarTrackColor: "transparent",
+        scrollbarBaseColor: "transparent",
+
+        "&::-webkit-scrollbar": {
+            border: "none",
+            width: 0,
+            height: 0,
+            backgroundColor: "transparent"
+        },
+        "&::-webkit-scrollbar-button": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-track-piece": {
+            display: "none"
+        },
+
+        "&::-webkit-scrollbar-thumb": {
+            display: "none"
+        },
+        "&::-webkit-scrollbar-corner": {
+            display: "none"
+        },
+        "&::-webkit-resizer": {
+            display: "none"
+        }
+    });
   return (
-    <div style={{ padding: "20px 10px 0" }}>
+    <div style={{ padding: "20px 10px 0" }} {...scrollbar}>
       <Form>
         <FormItem label={"分享图片"} {...formLayout}>
           <ImgModel choose={cover} imgChange={changeCover}>

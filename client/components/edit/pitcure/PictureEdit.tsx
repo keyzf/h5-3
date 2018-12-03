@@ -14,6 +14,7 @@ import PictureItemRadius from "./item-radius";
 import { PictureDataAdd } from "../../../resource/picture/database";
 import ImgModel from "../../common/imgModel";
 import ImgCrop from "../../common/imgCrop";
+import { css } from "glamor";
 
 const PictureEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const PictureEdit = React.memo(() => {
   // 当前项目数据
   const uiData = ui[editList[0]];
 
-  const choose = (index:any) => {
+  const choose = (index: any) => {
     setState(index);
   };
 
@@ -42,18 +43,18 @@ const PictureEdit = React.memo(() => {
     dispatch({ type: "PICTURE_BASE_ADD", payload: PictureDataAdd });
   };
 
-  const changeImg = (url:any) => {
+  const changeImg = (url: any) => {
     dispatch({ type: "PICTURE_VALUE", payload: { img: url, crop: url } });
   };
 
-  const itemChangeImg = (url:any) => {
+  const itemChangeImg = (url: any) => {
     dispatch({
       type: "PICTURE_BASE_ITEM",
       payload: { data: { img: url, crop: url }, index: state }
     });
   };
 
-  const itemCropImg = (data:any) => {
+  const itemCropImg = (data: any) => {
     dispatch({
       type: "PICTURE_BASE_ITEM",
       payload: {
@@ -67,7 +68,7 @@ const PictureEdit = React.memo(() => {
     });
   };
 
-  const cropImg = (data:any) => {
+  const cropImg = (data: any) => {
     dispatch({
       type: "PICTURE_VALUE",
       payload: {
@@ -78,8 +79,47 @@ const PictureEdit = React.memo(() => {
     });
   };
 
+  const scrollbar = css({
+    width: "100%",
+    height: "calc(100vh - 135px)",
+    overflowX: "auto",
+    overflowY: "auto",
+    scrollbarArrowColor: "transparent",
+    scrollbarFaceColor: "transparent",
+    scrollbarHighlightColor: "transparent",
+    scrollbarShadowColor: "transparent",
+    scrollbarDarkshadowColor: "transparent",
+    scrollbarTrackColor: "transparent",
+    scrollbarBaseColor: "transparent",
+
+    "&::-webkit-scrollbar": {
+      border: "none",
+      width: 0,
+      height: 0,
+      backgroundColor: "transparent"
+    },
+    "&::-webkit-scrollbar-button": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-track": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-track-piece": {
+      display: "none"
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-corner": {
+      display: "none"
+    },
+    "&::-webkit-resizer": {
+      display: "none"
+    }
+  });
   return (
-    <React.Fragment>
+    <div {...scrollbar}>
       {uiData.common.id === 0 ? (
         <Tabs defaultActiveKey="2">
           <TabPane tab="属性设置" key="2">
@@ -227,13 +267,13 @@ const PictureEdit = React.memo(() => {
           </TabPane>
         </Tabs>
       )}
-    </React.Fragment>
+    </div>
   );
 });
 
 const TabPane = Tabs.TabPane;
 
-const style: { center:any; img:any } = {
+const style: { center: any; img: any } = {
   center: {
     display: "flex",
     justifyContent: "center",

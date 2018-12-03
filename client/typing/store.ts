@@ -2,7 +2,7 @@ import bg from "./bg";
 
 export default interface Store {
     bg: bg,
-    global: { sid: number, pv: number },
+    global: { sid: number, pv: number ,url:string,self:string},
     music: { desc: string, url: string },
     ui: any,
     log: any,

@@ -1,8 +1,8 @@
 {
-  "name": "e7wei-h5",
+  "name": "makeh5",
   "version": "0.9x",
   "main": "index.tsx",
-  "repository": "https://github.com/AntoninSorrento/e7wei-company.git",
+  "repository": "https://github.com/AntoninSorrento/makeH5.git",
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
@@ -19,6 +19,7 @@
     "emotion": "^9.2.12",
     "glamor": "^2.20.40",
     "immer": "^1.7.4",
+    "qrcode.react": "^0.8.0",
     "react": "^16.7.0-alpha.2",
     "react-color": "^2.14.1",
     "react-cropper": "^1.0.1",

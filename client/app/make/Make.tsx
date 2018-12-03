@@ -7,7 +7,7 @@
  * 2. 创建历史记录
  */
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch} from "redux-react-hook";
 import {Layout} from "antd";
 import MakeSider from "./MakeSider";
@@ -16,12 +16,14 @@ import MakeContent from "./MakeContent";
 import MakeToolBar from "./MakeToolBar";
 import MakeNav from "./MakeNav";
 import {css} from "glamor";
+import entrance_api from "../../api/entrance";
 
 /**
  * @desc 组件函数
  */
 interface Props {
     id: number;
+    web: string
 }
 
 export default React.memo((props: Props) => {
@@ -36,6 +38,11 @@ export default React.memo((props: Props) => {
         dispatch({type: "LOG_CREAT", payload: props.id});
     }, 5 * 60 * 1000);
 
+    useEffect(() => {
+        entrance_api(props.id, props.web).then((resp) => {
+            dispatch({type: 'INIT', payload: resp});
+        })
+    }, []);
 
     const layout = css({
         height: "100vh"

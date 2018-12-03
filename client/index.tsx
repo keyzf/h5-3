@@ -15,7 +15,7 @@ import {StoreProvider} from "redux-react-hook";
 import store from "./store/store";
 import analyzeUrl from "./tools/analyze-url";
 // 生产环境下删除
-// import "./api/mock";
+import "./api/mock";
 
 
 /**
@@ -54,7 +54,8 @@ const App = React.memo(() => {
     );
     return (
         <React.Suspense fallback={loading}>
-            {web === "v" ? <Make id={id}/> : <Release id={id}/>}
+            {web === "v" ? <Make id={id} web={web}/> : ''}
+            {web === 'r' ? <Release id={id} web={web}/> : ''}
         </React.Suspense>
     );
 });
