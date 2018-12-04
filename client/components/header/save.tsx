@@ -26,7 +26,7 @@ const NavSave = React.memo(() => {
         ui.map((data) => {
             if (data.common.type === 'form') {
                 data.base.item.map((data) => {
-                    form.push({form_id: data.form_id, name: title})
+                    form.push({form_id: data.form_id, name: data.title})
                 })
             }
         });

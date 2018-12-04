@@ -12,7 +12,6 @@ const app = new Koa();
 const config: webpack.Configuration = merge(common, {
     mode: "development",
 
-
     devServer: {
         stats: "minimal",
         contentBase: path.join(__dirname, "../public/assets")
