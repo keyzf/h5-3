@@ -19,27 +19,40 @@ const TextEdit = React.memo(() => {
       []
     )
   );
-  const valueChange = (html:any) =>
+  const valueChange = (html: any) =>
     dispatch({ type: "TEXT_VALUE", payload: { html: html } });
-
 
   return (
     <Tabs defaultActiveKey="1">
-      <TabPane tab="富文本编辑" key="1">
-        <RichTextEditor
-          action={valueChange}
-          error={!!editList.length}
-          data={ui[editList[0]]}
-        />
-      </TabPane>
-      <TabPane tab="属性设置" key="2">
-        <div style={{ padding: "0 10px" }}>
-          <Form>
-            <TextColor/>
-            <TextLink/>
-          </Form>
-        </div>
-      </TabPane>
+      {ui[editList[0]].base.wordArt ? (
+        <TabPane tab="属性设置" key="1">
+          <div style={{ padding: "0 10px" }}>
+            <Form>
+              <TextLink />
+            </Form>
+          </div>
+        </TabPane>
+      ) : (
+        <TabPane tab="富文本编辑" key="1">
+          <RichTextEditor
+            action={valueChange}
+            error={!!editList.length}
+            data={ui[editList[0]]}
+          />
+        </TabPane>
+      )}
+      {ui[editList[0]].base.wordArt ? (
+        ""
+      ) : (
+        <TabPane tab="属性设置" key="2">
+          <div style={{ padding: "0 10px" }}>
+            <Form>
+              <TextColor />
+              <TextLink />
+            </Form>
+          </div>
+        </TabPane>
+      )}
     </Tabs>
   );
 });
