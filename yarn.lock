@@ -300,6 +300,11 @@
     "@types/uglify-js" "*"
     source-map "^0.6.0"
 
+"@ungap/url-search-params@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@ungap/url-search-params/-/url-search-params-0.1.1.tgz#828e3fcbbbf52ee0813986d3f62859177f26ad20"
+  integrity sha512-5bdEjTk/xrTtUKFx8sCMW01bUi+9PnokhvCWqAGRl8MtBpS2hUG1E0bdJv6OTbNb1LiEvgfzyUXmMMEKEOcSSg==
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"

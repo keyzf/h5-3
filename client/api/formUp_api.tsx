@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import URLSearchParams from '@ungap/url-search-params';
 const form_api = (data, sid) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();

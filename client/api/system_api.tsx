@@ -1,8 +1,9 @@
 import axios from "axios";
-
+import URLSearchParams from '@ungap/url-search-params';
 const system_api = (page:any, tid:any, pagecount:any = `24`) => {
   return new Promise((resolve, reject) => {
-    let params = new URLSearchParams();
+
+    let params =new URLSearchParams();
     params.append("pagecount", pagecount);
     params.append("page", page);
     params.append("tid", tid);

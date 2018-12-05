@@ -1,8 +1,9 @@
 import axios from "axios";
+import URLSearchParams from '@ungap/url-search-params';
 
 const userAssets_api = (type:any, page:any) => {
   return new Promise((resolve, reject) => {
-    let params = new URLSearchParams();
+    let params = new  URLSearchParams();
     params.append("pagecount", "24");
     params.append("app", page);
     params.append("type", type);

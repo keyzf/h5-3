@@ -1,6 +1,5 @@
 import axios from "axios";
-
-
+import URLSearchParams from '@ungap/url-search-params';
 /**
  * 将用户操作的数据提交给后台
  * @returns {Promise<any>}

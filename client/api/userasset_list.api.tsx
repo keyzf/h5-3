@@ -1,4 +1,5 @@
 import axios from "axios";
+import URLSearchParams from "@ungap/url-search-params";
 
 export const userAsset_list_api = () => {
   return new Promise((resolve, reject) => {
@@ -8,10 +9,8 @@ export const userAsset_list_api = () => {
       .post(`${window.location.origin}/Material/getSysType`, params)
       .then(response => {
         return response.data.error ? "" : resolve(response.data);
-      })
-
+      });
   });
 };
-
 
 export default userAsset_list_api;

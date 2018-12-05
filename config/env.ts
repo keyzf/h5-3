@@ -14,11 +14,12 @@ const env = {
      * @desc 组合打包的文件
      */
     dll: [
+        "@ungap/url-search-params",
         "react",
         "react-dom",
         "immer",
-        "redux",
         "axios",
+        "redux",
         "glamor",
         "react-keydown",
         "redux-react-hook"

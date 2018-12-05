@@ -1,4 +1,5 @@
 import axios from "axios";
+import URLSearchParams from '@ungap/url-search-params';
 
 /**
  * @desc 获取全体数据，对正确返回与错误返回作出处理
