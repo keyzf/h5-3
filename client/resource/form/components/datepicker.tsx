@@ -37,7 +37,7 @@ class FormOptDatePicker extends React.PureComponent<Props, any> {
 
   render() {
     const FormItem = Form.Item;
-    const { option, title, title_color, option_color } = this.props.data;
+    const {  title, title_color, option_color } = this.props.data;
 
     return (
       <FormItem label={<div style={{ color: `${title_color}` }}>{title}</div>}>

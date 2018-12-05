@@ -6,7 +6,6 @@ import { useMappedState } from "redux-react-hook";
 import ImgModel from "../../common/imgModel";
 import Store from "../../../typing/store";
 
-
 const BgEditImg = React.memo(() => {
   const dispatch = useDispatch();
   const { bg } = useMappedState(
@@ -17,23 +16,43 @@ const BgEditImg = React.memo(() => {
       []
     )
   );
-  const changeImg = useCallback((url: string) => dispatch({ type: "BG_VALUE", payload: { img: url } }), []);
-
+  const changeImg = useCallback(
+    (url: string) => dispatch({ type: "BG_VALUE", payload: { img: url } }),
+    []
+  );
 
   return (
     <Row gutter={16}>
       <Col span={8} style={{ marginBottom: "5px" }}>
         <ImgModel choose={bg.base.img} imgChange={changeImg}>
-          <div style={{
-            height: "60px",
-            border: "1px solid black",
-            borderRadius: "3px",
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center"
-          }}>
-            <Icon type="upload" theme="outlined"/>
+          <div
+            style={{
+              height: "60px",
+              border: "1px solid black",
+              borderRadius: "3px",
+                padding:"10px 3px "
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Icon type="upload" theme="outlined" />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center"
+              }}
+            >
+              图片上传
+            </div>
           </div>
         </ImgModel>
       </Col>

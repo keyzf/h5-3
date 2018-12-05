@@ -5,7 +5,7 @@ import FormEditColor from "./color";
 import Store from "../../../typing/store";
 import { useMappedState } from "redux-react-hook";
 import { useCallback } from "react";
-
+import FormEditDate from "./cutoff";
 
 const SubmitForm = React.memo(() => {
   const dispatch = useDispatch();
@@ -20,15 +20,17 @@ const SubmitForm = React.memo(() => {
   );
 
   const baseData = ui[editList[0]].base;
-  const change = (e:any) => {
+  const change = (e: any) => {
     dispatch({ type: "FORM_BASE", payload: { desc: e.target.value } });
   };
-  const changeColor = (type:any, color:any) => {
-    type === "bg" ?
-      dispatch({ type: "FORM_BASE", payload: { bg_color: color.hex } }) :
-      dispatch({ type: "FORM_BASE", payload: { font_color: color.hex } });
+  const changeDate = (e: any) => {
+    dispatch({ type: "FORM_BASE", payload: { date: e } });
   };
-
+  const changeColor = (type: any, color: any) => {
+    type === "bg"
+      ? dispatch({ type: "FORM_BASE", payload: { bg_color: color.hex } })
+      : dispatch({ type: "FORM_BASE", payload: { font_color: color.hex } });
+  };
 
   const FormItem = Form.Item;
   const formItemLayout = {
@@ -43,28 +45,46 @@ const SubmitForm = React.memo(() => {
     <div style={{ padding: "0 8px" }}>
       <Form>
         <FormItem label="按钮内容" {...formItemLayout}>
-          <Input placeholder="按钮文本" value={baseData.desc} onChange={change}/>
+          <Input
+            placeholder="按钮文本"
+            value={baseData.desc}
+            onChange={change}
+          />
         </FormItem>
         <FormItem label="字体颜色" {...formItemLayout}>
-          <FormEditColor fun={changeColor}
-                         type={"font"}
-                         color={baseData.font_color}>
+          <FormEditColor
+            fun={changeColor}
+            type={"font"}
+            color={baseData.font_color}
+          >
             <div
               style={{
                 height: "30px",
                 width: "100%",
                 background: `${baseData.font_color}`,
                 border: "1px solid black"
-              }}/>
+              }}
+            />
           </FormEditColor>
         </FormItem>
         <FormItem label="背景颜色" {...formItemLayout}>
-          <FormEditColor fun={changeColor}
-                         type={"bg"}
-                         color={baseData.bg_color}>
+          <FormEditColor
+            fun={changeColor}
+            type={"bg"}
+            color={baseData.bg_color}
+          >
             <div
-              style={{ height: "30px", width: "100%", background: `${baseData.bg_color}`, border: "1px solid black" }}/>
+              style={{
+                height: "30px",
+                width: "100%",
+                background: `${baseData.bg_color}`,
+                border: "1px solid black"
+              }}
+            />
           </FormEditColor>
+        </FormItem>
+        <FormItem label="截止日期" {...formItemLayout}>
+          <FormEditDate fun={changeDate} date={baseData.date} />
         </FormItem>
       </Form>
     </div>

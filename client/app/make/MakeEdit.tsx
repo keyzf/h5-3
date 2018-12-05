@@ -113,7 +113,7 @@ const name = (type: string): string => {
     case "hot-key":
       return "快捷键参考";
     default:
-      return "页面分享设置";
+      return "分享设置";
   }
 };
 

@@ -1,6 +1,6 @@
 import random from "../../tools/random";
 
-const FormUIData:any = [];
+const FormUIData: any = [];
 
 export const $$form_opt_upload = (form_id: string) => {
   return {
@@ -152,7 +152,7 @@ const data = [
         option: "请填写备注"
       }
     ],
-    desc: "提交数据"
+    desc: "提交"
   },
   {
     item: [
@@ -214,7 +214,7 @@ const data = [
         option_color: "#000"
       }
     ],
-    desc: "提交数据"
+    desc: "提交"
   },
   {
     item: [
@@ -254,7 +254,7 @@ const data = [
         option_color: "#000"
       }
     ],
-    desc: "提交数据"
+    desc: "提交"
   }
 ];
 
@@ -268,7 +268,8 @@ data.map((data, index) => {
       item: data.item,
       desc: data.desc,
       font_color: "white",
-      bg_color: ""
+      bg_color: "",
+      date: "3000-12-13"
     },
     position: {
       width: 300,

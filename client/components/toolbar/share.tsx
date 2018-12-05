@@ -1,10 +1,13 @@
 import * as React from "react";
 import { Icon, Tooltip } from "antd";
 import { useDispatch } from "redux-react-hook";
+import {useMappedState} from "redux-react-hook";
+
 
 
 const ToolBarShare = React.memo(() => {
   const dispatch = useDispatch();
+
   const changeShare = () =>
     dispatch({ type: "EDIT_VALUE", payload: { type:'share'} });
 
@@ -22,6 +25,7 @@ const ToolBarShare = React.memo(() => {
     }
   };
   return (
+
     <Tooltip title="分享设置" placement="left">
       <Icon style={style.center} type="share-alt" theme="outlined" onClick={changeShare}/>
     </Tooltip>

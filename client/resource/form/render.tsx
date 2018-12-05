@@ -46,15 +46,12 @@ const RenderForm = React.memo((props: any) => {
                 if (data.common.type === "form") {
                     data.base.item.map((data, index) => {
                         if (data.isNeed) {
-                            isleg =  value[index];
+                            isleg = value[index];
                         }
                         update.push({form_id: data.form_id, value: value[index] ? value[index].data : ''});
                     });
                 }
             });
-
-
-
             if (!isleg) {
                 message.error("表单必填项未填写");
             } else {
@@ -74,6 +71,14 @@ const RenderForm = React.memo((props: any) => {
     };
 
     const {item, desc, font_color, bg_color} = props.data.base;
+    let dates = '';
+    ui.map(data => {
+        if (data.common.type === "form") {
+            dates = data.base.date
+        }
+    });
+    const today = new Date().getTime();
+    const is = new Date(dates).getTime();
     return (
         <Form layout={"vertical"} hideRequiredMark={true}>
             {item.map((data: any, index: any) => {
@@ -183,7 +188,7 @@ const RenderForm = React.memo((props: any) => {
                         background: bg_color
                     }}
                 >
-                    {desc}
+                    {is > today ? desc : '已截止提交'}
                 </Button>
                 <FormSubmitMode mode={state} onclose={onclose}/>
             </Form.Item>
