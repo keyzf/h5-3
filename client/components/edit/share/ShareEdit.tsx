@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Form, Input, Divider } from "antd";
+import { Form, Input, Divider, Row, Col } from "antd";
 import { useCallback } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import Store from "../../../typing/store";
 import ImgModel from "../../common/imgModel";
-import {css} from "glamor";
+import { css } from "glamor";
 
 const ShareEdit = React.memo(() => {
   const dispatch = useDispatch();
@@ -18,59 +18,59 @@ const ShareEdit = React.memo(() => {
       []
     )
   );
-  const changeCover = (url:any) => {
+  const changeCover = (url: any) => {
     dispatch({ type: "SHARE_VALUE", payload: { cover: url } });
   };
 
-
-  const shareValueChange = (e:any) =>
-    dispatch({ type: "SHARE_VALUE", payload: { [e.target.name]: e.target.value } });
-
-
-    const scrollbar = css({
-        width: "100%",
-        height: "calc(100vh - 90px)",
-        overflowX: "auto",
-        overflowY: "auto",
-        scrollbarArrowColor: "transparent",
-        scrollbarFaceColor: "transparent",
-        scrollbarHighlightColor: "transparent",
-        scrollbarShadowColor: "transparent",
-        scrollbarDarkshadowColor: "transparent",
-        scrollbarTrackColor: "transparent",
-        scrollbarBaseColor: "transparent",
-
-        "&::-webkit-scrollbar": {
-            border: "none",
-            width: 0,
-            height: 0,
-            backgroundColor: "transparent"
-        },
-        "&::-webkit-scrollbar-button": {
-            display: "none"
-        },
-        "&::-webkit-scrollbar-track": {
-            display: "none"
-        },
-        "&::-webkit-scrollbar-track-piece": {
-            display: "none"
-        },
-
-        "&::-webkit-scrollbar-thumb": {
-            display: "none"
-        },
-        "&::-webkit-scrollbar-corner": {
-            display: "none"
-        },
-        "&::-webkit-resizer": {
-            display: "none"
-        }
+  const shareValueChange = (e: any) =>
+    dispatch({
+      type: "SHARE_VALUE",
+      payload: { [e.target.name]: e.target.value }
     });
+
+  const scrollbar = css({
+    width: "100%",
+    height: "calc(100vh - 90px)",
+    overflowX: "auto",
+    overflowY: "auto",
+    scrollbarArrowColor: "transparent",
+    scrollbarFaceColor: "transparent",
+    scrollbarHighlightColor: "transparent",
+    scrollbarShadowColor: "transparent",
+    scrollbarDarkshadowColor: "transparent",
+    scrollbarTrackColor: "transparent",
+    scrollbarBaseColor: "transparent",
+
+    "&::-webkit-scrollbar": {
+      border: "none",
+      width: 0,
+      height: 0,
+      backgroundColor: "transparent"
+    },
+    "&::-webkit-scrollbar-button": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-track": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-track-piece": {
+      display: "none"
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+      display: "none"
+    },
+    "&::-webkit-scrollbar-corner": {
+      display: "none"
+    },
+    "&::-webkit-resizer": {
+      display: "none"
+    }
+  });
   return (
     <div style={{ padding: "20px 10px 0" }} {...scrollbar}>
       <Form>
-
-        <FormItem label={"分享标题"} {...formLayout}>
+        <FormItem label={"标题"} {...formLayout}>
           <Input
             name={"title"}
             value={title}
@@ -78,7 +78,7 @@ const ShareEdit = React.memo(() => {
             onChange={e => shareValueChange(e)}
           />
         </FormItem>
-        <FormItem label={"分享描述"} {...formLayout}>
+        <FormItem label={"描述"} {...formLayout}>
           <Input.TextArea
             name={"desc"}
             value={desc}
@@ -87,27 +87,44 @@ const ShareEdit = React.memo(() => {
             onChange={e => shareValueChange(e)}
           />
         </FormItem>
-          <FormItem label={"分享图片"} {...formLayout}>
-              <ImgModel choose={cover} imgChange={changeCover}>
+        <FormItem label={"图片"} {...formLayout}>
+          <div
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              alignContent: "center"
+            }}
+          >
+            <Row>
+              <Col span={12}>
+                <ImgModel choose={cover} imgChange={changeCover}>
                   <div
-                      style={{
-                          height: "120px",
-                          width: "100%",
-                          border: "1px solid black"
-                      }}
+                    style={{
+                      height: "80px",
+                      width: "80px",
+                      border: "1px solid black"
+                    }}
                   >
-                      <img
-                          src={`${
-                              cover ? cover : "http://src.e7wei.com/0.2823198691104869.png"
-                              }`}
-                          width={"100%"}
-                          height={"100%"}
-                          alt={"img"}
-                      />
+                    <img
+                      src={`${
+                        cover
+                          ? cover
+                          : "http://src.e7wei.com/0.2823198691104869.png"
+                      }`}
+                      width={"100%"}
+                      height={"100%"}
+                      alt={"img"}
+                    />
                   </div>
-              </ImgModel>
-              🌲最佳尺寸:200*200像素
-          </FormItem>
+                </ImgModel>
+              </Col>
+              <Col span={12}>
+                <div>点击更换图片</div>
+                <div>200*200像素</div>
+              </Col>
+            </Row>
+          </div>
+        </FormItem>
       </Form>
       <Divider>示例</Divider>
       <img

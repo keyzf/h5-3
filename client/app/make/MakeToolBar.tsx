@@ -57,14 +57,12 @@ const MakeToolBar = React.memo(() => {
   };
   const hover = css({
     ":hover": {
-      background: "#1890ff",
-      color: "#fff"
+      color: "#1890ff"
     }
   });
 
   const choose = css({
-    background: "#1890ff",
-    color: "#fff"
+    color: "#1890ff"
   });
 
   const right = type === "share" ? choose : hover;
