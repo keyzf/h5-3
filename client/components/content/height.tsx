@@ -41,7 +41,7 @@ const ContentHeight = React.memo(() => {
     }
   };
   return (
-    <div style={{ cursor: "s-resize", position: "relative", top: "715px" }}>
+    <div style={{ cursor: "s-resize", position: "relative", top: "700px" }}>
       <Draggable
         axis="y"
         onDrag={(e, ui) => handleDrag(e, ui)}

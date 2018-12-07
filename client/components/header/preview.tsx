@@ -124,14 +124,7 @@ const NavPreview = React.memo(() => {
       right: "44%"
     }
   });
-  const center = css({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-    padding: "10px 0",
-    fontSize: "19px"
-  });
+
   const phone = css({
     boxSizing: "content-box",
     width: "320px",
@@ -146,7 +139,7 @@ const NavPreview = React.memo(() => {
     <React.Fragment>
       <div style={{ color: "white" }} onClick={onPreview}>
         <i className={"iconfont icon-yulan"} style={{ marginRight: "10px" }} />
-        预览/设置
+        预览
       </div>
       <Modal
         bodyStyle={{ backgroundColor: "rgba(0, 0, 0, 0.65)" }}

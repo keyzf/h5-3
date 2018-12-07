@@ -11,6 +11,7 @@ import ContentLock from "../../components/content/lock";
 import ContentHotKey from "../../components/content/hot-key";
 import Store from "../../typing/store";
 import {css} from "glamor";
+import MakePage from './MakePage'
 
 const MakeContent = React.memo(() => {
     const dispatch = useDispatch();
@@ -70,16 +71,18 @@ const MakeContent = React.memo(() => {
     return (
         <div {...scrollbar} id={"content"}>
             <div {...layout}>
-                <BaselineH/>
-                <BaselineV/>
-                <ContentHeight/>
-                <ContentHotKey fun={dispatch} ui={ui}>
-                    <BackgroundUI>
-                        <ContentLock/>
-                        <ContentChoose/>
-                        <ContentDrag/>
-                    </BackgroundUI>
-                </ContentHotKey>
+                <MakePage>
+                    <BaselineH/>
+                    <BaselineV/>
+                    <ContentHeight/>
+                    <ContentHotKey fun={dispatch} ui={ui}>
+                        <BackgroundUI>
+                            <ContentLock/>
+                            <ContentChoose/>
+                            <ContentDrag/>
+                        </BackgroundUI>
+                    </ContentHotKey>
+                </MakePage>
             </div>
         </div>
     );

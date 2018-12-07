@@ -8,6 +8,7 @@ import ui_legacy from "./legacy/ui-legacy";
 const store = {
   global: { sid: 0, pv: 0, url: "", self: "1" },
   bg: BgData,
+  page: { now: 0, motion: "" },
   music: { desc: "", url: "" },
   ui: [],
   log: [],
@@ -441,7 +442,3 @@ const reducer: any = (state = store, action: any) => {
 };
 
 export default reducer;
-
-
-
-
