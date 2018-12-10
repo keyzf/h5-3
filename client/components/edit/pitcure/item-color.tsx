@@ -12,7 +12,7 @@ const PictureItemColor = React.memo((props: { index: number }) => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui
+        ui: state.ui[state.page.now],
       }),
       []
     )

@@ -13,7 +13,7 @@ const NavRelease = React.memo(() => {
         desc: state.share.desc,
         cover: state.share.cover,
         sid: state.global.sid,
-        ui: state.ui,
+        ui: state.ui[state.page.now],
         bg: state.bg,
         music: state.music
       }),

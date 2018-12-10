@@ -1,16 +1,15 @@
 import produce from "immer";
 import BgData from "../resource/background/database";
 import random from "../tools/random";
-import Store from "../typing/store";
 import bgAdapter from "./legacy/bg-legacy";
 import ui_legacy from "./legacy/ui-legacy";
 
 const store = {
   global: { sid: 0, pv: 0, url: "", self: "1" },
-  bg: BgData,
-  page: { now: 0, motion: "" },
+  bg: [BgData],
+  page: { now: 0, motion: "none" },
   music: { desc: "", url: "" },
-  ui: [],
+  ui: [[]],
   log: [],
   share: { title: "", desc: "", cover: "" },
   baseline: { h: [], v: [], color: "#ff5722" },
@@ -24,7 +23,7 @@ const reducer: any = (state = store, action: any) => {
      * @desc 数据初始化
      */
     case "INIT":
-      return produce(state, (draftState: Store) => {
+      return produce(state, draftState => {
         draftState.global.url = draftState.global.url ? payload.info.url : "";
         draftState.global.pv = draftState.global.pv ? payload.info.pv : 0;
         draftState.global.self = draftState.global.self
@@ -46,31 +45,21 @@ const reducer: any = (state = store, action: any) => {
             ? payload.info.music
             : { desc: "", url: "" };
         } else {
-          draftState.bg = draftState.bg
+          draftState.bg[0] = draftState.bg
             ? { ...bgAdapter(payload.info.bg) }
             : BgData;
           draftState.music = {
             url: payload.info.music ? payload.info.music.music_url : "",
             desc: payload.info.music ? payload.info.music.desc : ""
           };
-          draftState.ui = draftState.ui ? ui_legacy(payload.info.ui) : [];
+          draftState.ui[0] = draftState.ui ? ui_legacy(payload.info.ui) : [[]];
         }
-      });
-    /**
-     * 记录必要值
-     */
-    case "GLOBAL":
-      return produce(state, (draftState: Store) => {
-        draftState.global = {
-          ...draftState.global,
-          ...payload
-        };
       });
     /**
      * @desc 历史记录
      */
     case "LOG_INIT":
-      return produce(state, (draftState: Store) => {
+      return produce(state, draftState => {
         if (localStorage.getItem(`e7wei-log-${payload}`)) {
           draftState.log = JSON.parse(localStorage.getItem(
             `e7wei-log-${payload}`
@@ -80,7 +69,7 @@ const reducer: any = (state = store, action: any) => {
         }
       });
     case "LOG_CREAT":
-      return produce(state, (draftState: Store) => {
+      return produce(state, draftState => {
         const data: any = {
           time: new Date(),
           bg: draftState.bg,
@@ -113,27 +102,72 @@ const reducer: any = (state = store, action: any) => {
         draftState.edit = { type: "share", number: [], lock: [] };
       });
     /**
+     * 添加页面
+     */
+    case "PAGE_MOTION":
+      return produce(state, (draftState: any) => {
+        draftState.page.motion = payload;
+      });
+    case "PAGE_ADD":
+      return produce(state, (draftState: any) => {
+        draftState.ui.push([]);
+        draftState.bg.push(BgData);
+        draftState.page.now = draftState.page.now + 1;
+        draftState.edit = { type: "share", number: [], lock: [] };
+      });
+    case "PAGE_CHANGE":
+      return produce(state, (draftState: any) => {
+        draftState.page.now = payload;
+        draftState.edit = { type: "share", number: [], lock: [] };
+      });
+    case "PAGE_REMOVE":
+      return produce(state, (draftState: any) => {
+        draftState.page.now = 0;
+        if (draftState.ui.length) {
+          draftState.ui.splice(payload, 1);
+        } else {
+          draftState.ui = [[]];
+        }
+      });
+    /**
+     * 记录必要值
+     */
+    case "GLOBAL":
+      return produce(state, draftState => {
+        draftState.global = {
+          ...draftState.global,
+          ...payload
+        };
+      });
+    /**
      * @desc 表单设置
      */
     case "FORM_ITEM":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base.item[payload.index] = {
-          ...draftState.ui[draftState.edit.number[0]].base.item[payload.index],
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base.item[
+          payload.index
+        ] = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base
+            .item[payload.index],
           ...payload.data
         };
       });
     case "FORM_ADD":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base.item.push(payload);
+        draftState.ui[draftState.edit.number[0]][
+          draftState.page.now
+        ].base.item.push(payload);
       });
     case "FORM_DEL":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base.item.splice(payload, 1);
+        draftState.ui[draftState.edit.number[0]][
+          draftState.page.now
+        ].base.item.splice(payload, 1);
       });
     case "FORM_BASE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base = {
-          ...draftState.ui[draftState.edit.number[0]].base,
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -142,8 +176,8 @@ const reducer: any = (state = store, action: any) => {
      */
     case "BUTTON_VALUE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base = {
-          ...draftState.ui[draftState.edit.number[0]].base,
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -152,8 +186,8 @@ const reducer: any = (state = store, action: any) => {
      */
     case "VIDEO_VALUE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base = {
-          ...draftState.ui[draftState.edit.number[0]].base,
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -162,30 +196,38 @@ const reducer: any = (state = store, action: any) => {
      */
     case "PICTURE_BASE_ADD":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base.push(payload);
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base.push(
+          payload
+        );
       });
     case "PICTURE_BASE_ITEM":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base[payload.index] = {
-          ...draftState.ui[draftState.edit.number[0]].base[payload.index],
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base[
+          payload.index
+        ] = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base[
+            payload.index
+          ],
           ...payload.data
         };
       });
     case "PICTURE_BASE_DEL":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base.splice(payload, 1);
+        draftState.ui[draftState.edit.number[0]][
+          draftState.page.now
+        ].base.splice(payload, 1);
       });
     case "PICTURE_BASE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]] = {
-          ...draftState.ui[draftState.edit.number[0]],
+        draftState.ui[draftState.page.now][draftState.edit.number[0]] = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]],
           ...payload
         };
       });
     case "PICTURE_VALUE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base = {
-          ...draftState.ui[draftState.edit.number[0]].base,
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -194,8 +236,8 @@ const reducer: any = (state = store, action: any) => {
      */
     case "TEXT_VALUE":
       return produce(state, (draftState: any) => {
-        draftState.ui[draftState.edit.number[0]].base = {
-          ...draftState.ui[draftState.edit.number[0]].base,
+        draftState.ui[draftState.page.now][draftState.edit.number[0]].base = {
+          ...draftState.ui[draftState.page.now][draftState.edit.number[0]].base,
           ...payload
         };
       });
@@ -214,8 +256,8 @@ const reducer: any = (state = store, action: any) => {
      */
     case "BG_VALUE":
       return produce(state, (draftState: any) => {
-        draftState.bg.base = {
-          ...draftState.bg.base,
+        draftState.bg[draftState.page.now].base = {
+          ...draftState.bg[draftState.page.now].base,
           ...payload
         };
       });
@@ -229,7 +271,6 @@ const reducer: any = (state = store, action: any) => {
           ...payload
         };
       });
-
     /**
      * @desc 参考线设置
      */
@@ -269,7 +310,8 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                draftState.ui[data].position.rotate = payload.data;
+                draftState.ui[draftState.page.now][data].position.rotate =
+                  payload.data;
               }
             );
           });
@@ -279,17 +321,23 @@ const reducer: any = (state = store, action: any) => {
               if (draftState.edit.number.length > 1) {
                 draftState.edit.number.map(
                   (data: number): void => {
-                    draftState.ui[data].position.width = payload.data.width;
-                    draftState.ui[data].position.height = payload.data.height;
+                    draftState.ui[draftState.page.now][data].position.width =
+                      payload.data.width;
+                    draftState.ui[draftState.page.now][data].position.height =
+                      payload.data.height;
                   }
                 );
               } else {
                 draftState.edit.number.map(
                   (data: number): void => {
-                    draftState.ui[data].position.top = payload.data.top;
-                    draftState.ui[data].position.left = payload.data.left;
-                    draftState.ui[data].position.width = payload.data.width;
-                    draftState.ui[data].position.height = payload.data.height;
+                    draftState.ui[draftState.page.now][data].position.top =
+                      payload.data.top;
+                    draftState.ui[draftState.page.now][data].position.left =
+                      payload.data.left;
+                    draftState.ui[draftState.page.now][data].position.width =
+                      payload.data.width;
+                    draftState.ui[draftState.page.now][data].position.height =
+                      payload.data.height;
                   }
                 );
               }
@@ -299,8 +347,10 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                draftState.ui[data].position.top += payload.data.deltaY;
-                draftState.ui[data].position.left += payload.data.deltaX;
+                draftState.ui[draftState.page.now][data].position.top +=
+                  payload.data.deltaY;
+                draftState.ui[draftState.page.now][data].position.left +=
+                  payload.data.deltaX;
               }
             );
           });
@@ -308,7 +358,7 @@ const reducer: any = (state = store, action: any) => {
           const new_state = produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                draftState.ui.push(draftState.ui[data]);
+                draftState.ui.push(draftState.ui[draftState.page.now][data]);
               }
             );
           });
@@ -332,7 +382,7 @@ const reducer: any = (state = store, action: any) => {
               .reverse()
               .map(
                 (number: number): void => {
-                  draftState.ui.splice(number, 1);
+                  draftState.ui[draftState.page.now].splice(number, 1);
                   // 控制 锁定组件
                   draftState.edit.lock
                     .sort(cmp)
@@ -351,7 +401,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                ++draftState.ui[data].position.zIndex;
+                ++draftState.ui[draftState.page.now][data].position.zIndex;
               }
             );
           });
@@ -359,7 +409,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                --draftState.ui[data].position.zIndex;
+                --draftState.ui[draftState.page.now][data].position.zIndex;
               }
             );
           });
@@ -367,7 +417,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                --draftState.ui[data].position.left;
+                --draftState.ui[draftState.page.now][data].position.left;
               }
             );
           });
@@ -375,7 +425,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                ++draftState.ui[data].position.left;
+                ++draftState.ui[draftState.page.now][data].position.left;
               }
             );
           });
@@ -383,7 +433,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                --draftState.ui[data].position.top;
+                --draftState.ui[draftState.page.now][data].position.top;
               }
             );
           });
@@ -391,7 +441,7 @@ const reducer: any = (state = store, action: any) => {
           return produce(state, (draftState: any) => {
             draftState.edit.number.map(
               (data: number): void => {
-                ++draftState.ui[data].position.top;
+                ++draftState.ui[draftState.page.now][data].position.top;
               }
             );
           });
@@ -431,10 +481,14 @@ const reducer: any = (state = store, action: any) => {
       });
       // 修改数据源数据
       return produce(state, (draftState: any) => {
-        draftState.ui.push(data);
+        draftState.ui[draftState.page.now].push(data);
         draftState.edit.type =
-          draftState.ui[draftState.ui.length - 1].common.type;
-        draftState.edit.number = [draftState.ui.length - 1];
+          draftState.ui[draftState.page.now][
+            draftState.ui[draftState.page.now].length - 1
+          ].common.type;
+        draftState.edit.number = [
+          draftState.ui[draftState.page.now].length - 1
+        ];
       });
     default:
       return state;

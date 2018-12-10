@@ -45,7 +45,7 @@ const BgEditColor = React.memo(() => {
 });
 
 const state = (state: Store) => ({
-  color: state.bg.base.color
+  color: state.bg[state.page.now].base.color
 });
 
 export default BgEditColor;

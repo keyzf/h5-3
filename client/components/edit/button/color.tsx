@@ -10,7 +10,7 @@ const ButtonColor = React.memo((props: any) => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui
+        ui: state.ui[state.page.now],
       }),
       []
     )

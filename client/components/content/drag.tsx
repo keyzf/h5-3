@@ -10,7 +10,7 @@ const ContentDrag = React.memo(() => {
   const dispatch = useDispatch();
   const state = (state: Store) => ({
     editList: state.edit.number,
-    ui: state.ui
+    ui: state.ui[state.page.now],
   });
   const { editList, ui } = useMappedState(useCallback(state, []));
   const uiAction = useCallback(

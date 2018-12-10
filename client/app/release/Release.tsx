@@ -16,7 +16,7 @@ export default React.memo((props: { id: number, web: string }) => {
     const {ui, sid, title} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui,
+                ui: state.ui[state.page.now],,
                 sid: state.global.sid,
                 title: state.share.title
             }),

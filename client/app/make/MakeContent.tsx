@@ -18,7 +18,7 @@ const MakeContent = React.memo(() => {
     const {ui} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui
+                ui: state.ui[state.page.now],
             }),
             []
         )

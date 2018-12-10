@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ungap/url-search-params": "^0.1.1",
+    "animate.css": "^3.7.0",
     "antd": "^3.10.7",
     "axios": "^0.18.0",
     "braft-editor": "^2.1.30",
@@ -21,6 +22,7 @@
     "glamor": "^2.20.40",
     "immer": "^1.7.4",
     "qrcode.react": "^0.8.0",
+    "rc-queue-anim": "^1.6.8",
     "react": "^16.7.0-alpha.2",
     "react-color": "^2.14.1",
     "react-cropper": "^1.0.1",

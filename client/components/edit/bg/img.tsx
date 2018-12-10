@@ -11,7 +11,7 @@ const BgEditImg = React.memo(() => {
   const { bg } = useMappedState(
     useCallback(
       (state: Store) => ({
-        bg: state.bg
+        bg: state.bg[state.page.now]
       }),
       []
     )

@@ -15,7 +15,7 @@ const FormEdit = React.memo(() => {
     const {ui, editList} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui,
+                ui: state.ui[state.page.now],,
                 editList: state.edit.number
             }),
             []

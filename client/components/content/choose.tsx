@@ -11,7 +11,7 @@ const ContentChoose = React.memo(() => {
   const state = (state: Store) => ({
     editList: state.edit.number,
     lockList: state.edit.lock,
-    ui: state.ui
+    ui: state.ui[state.page.now],
   });
   const { editList, ui, lockList } = useMappedState(useCallback(state, []));
   const uiChoose = useCallback((data: number[]) =>

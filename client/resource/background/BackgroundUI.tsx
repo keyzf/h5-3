@@ -1,25 +1,26 @@
-import React, { useCallback } from "react";
+import React, {useCallback} from "react";
 import styled from "react-emotion";
 import Store from "../../typing/store";
-import { useMappedState } from "redux-react-hook";
+import {useMappedState} from "redux-react-hook";
 
 
 const BackgroundUI = React.memo((props: { children: object }) => {
-  const { base } = useMappedState(useCallback((state: Store) => ({
-    base: state.bg.base
-  }), []));
-  return (
-    <BgAtom {...base}>
-      {props.children}
-    </BgAtom>
-  );
+    const {base} = useMappedState(useCallback((state: Store) => ({
+        base: state.bg[state.page.now].base
+    }), []));
+    console.log(base);
+    return (
+        <BgAtom {...base}>
+            {props.children}
+        </BgAtom>
+    );
 });
 
 
 type ImageProps = {
-  color: string,
-  img: string,
-  height: number;
+    color: string,
+    img: string,
+    height: number;
 }
 
 const BgAtom = styled("div")<ImageProps>`

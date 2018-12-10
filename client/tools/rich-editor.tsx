@@ -1,6 +1,5 @@
 import * as React from "react";
 import BraftEditor from "braft-editor";
-// @ts-ignore
 import ColorPicker from "braft-extensions/dist/color-picker";
 import "braft-editor/dist/index.css";
 import "braft-extensions/dist/color-picker.css";
