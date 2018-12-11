@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-ignore
 import ReactQMap from "react-qmap";
 import { useCallback, useState } from "react";
 import { Select, Input, Form, Modal, Row, Col } from "antd";
@@ -12,7 +11,7 @@ const ButtonLink = React.memo(() => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui[state.page.now],
+        ui: state.ui,
       }),
       []
     )
@@ -218,6 +217,7 @@ const ButtonLink = React.memo(() => {
       ) : (
         ""
       )}
+
       <Modal
         title="地图"
         width={800}
@@ -244,7 +244,7 @@ const ButtonLink = React.memo(() => {
               center={{ latitude: url ? url.lat : "32.05838", longitude: url ? url.lng : "118.79647" }}
               getMap={(map:any, wMap:any) => getMap(map, wMap)}
               initialOptions={{ zoomControl: true, mapTypeControl: true }}
-              apiKey="xxxxxx-xxxxx-xxxxx-xxxxxx"
+              apiKey="MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5"
               style={{ height: 300 }}
             />
           </Col>

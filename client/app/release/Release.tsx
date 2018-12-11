@@ -7,22 +7,35 @@ import RenderStyle from "../../components/common/renderStyle";
 import LinkMapOphoneOweb from "../../components/common/link";
 import RenderUi from "../../components/common/renderUi";
 import Store from "../../typing/store";
-import {useMappedState} from "redux-react-hook";
-import {useCallback} from "react";
+import {useMappedState,useDispatch} from "redux-react-hook";
+import {useCallback, useEffect} from "react";
 import ReleaseEdit from "./editor.page";
 import axios from "axios";
+import entrance_api from "../../api/entrance";
+
 
 export default React.memo((props: { id: number, web: string }) => {
     const {ui, sid, title} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui[state.page.now],,
+                ui: state.ui,
                 sid: state.global.sid,
                 title: state.share.title
             }),
             []
         )
     );
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch({ type: "GLOBAL", payload: { sid: props.id } });
+        entrance_api(props.id, props.web).then(resp => {
+            dispatch({ type: "INIT", payload: resp });
+        });
+    }, []);
+
+
     // let params = new URLSearchParams();
     // params.append("url", `${window.location.href}`);
     // axios

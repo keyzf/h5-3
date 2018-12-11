@@ -10,7 +10,7 @@ import { useCallback } from "react";
 const ContentLock = React.memo(() => {
   const dispatch = useDispatch();
   const state = (state: Store) => ({
-    ui: state.ui[state.page.now],
+    ui: state.ui,
     lockList: state.edit.lock
   });
   const { ui, lockList } = useMappedState(useCallback(state, []));

@@ -12,7 +12,7 @@ const entrance_api = (id: number, web: string) => {
         web === "r" ? "/view/getData" : "/Create/getData"
         }`;
 
-    params.append("id", `${id}`);
+    params.append("sid", `${id}`);
     return new Promise((resolve: any, reject: any) => {
         axios
             .post(`${window.location.origin}${ajaxUrl}`, params)

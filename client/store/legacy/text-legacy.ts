@@ -35,7 +35,7 @@ const textAdapter = (oldData: oldData): object => {
         index: oldData.customize.index_number,
         color: oldData.advance.style_color,
         wordArt: "",
-        link:{type:"",url:''},
+        link:{type:"choose",url:''},
     };
     const position = {
         width: oldData.advance.width,

@@ -3,20 +3,24 @@ import { Row, Button, message } from "antd";
 import QRCode from "qrcode.react";
 import copy from "copy-to-clipboard";
 import Store from "../../typing/store";
-import { useCallback } from "react";
-import { useMappedState } from "redux-react-hook";
+import { useCallback, useEffect } from "react";
+import { useMappedState, useDispatch } from "redux-react-hook";
+import entrance_api from "../../api/entrance";
 
 const ReleaseEdit = React.memo(() => {
-  const { url, sid, self } = useMappedState(
-    useCallback(
-      (state: Store) => ({
-        url: state.global.url,
-        sid: state.global.sid,
-        self: state.global.self
-      }),
-      []
-    )
-  );
+  // 发送log初始化及定时更新请求
+    const { url, sid, self } = useMappedState(
+        useCallback(
+            (state: Store) => ({
+                url: state.global.url,
+                sid: state.global.sid,
+                self: state.global.self
+            }),
+            []
+        )
+    );
+
+
 
   const outMessage = () => {
     copy(url);

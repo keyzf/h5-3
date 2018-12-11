@@ -6,9 +6,9 @@ import {useMappedState} from "redux-react-hook";
 
 const BackgroundUI = React.memo((props: { children: object }) => {
     const {base} = useMappedState(useCallback((state: Store) => ({
-        base: state.bg[state.page.now].base
+        base: state.bg.base
     }), []));
-    console.log(base);
+
     return (
         <BgAtom {...base}>
             {props.children}

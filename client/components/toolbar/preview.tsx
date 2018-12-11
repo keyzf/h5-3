@@ -15,7 +15,7 @@ const ToolBarPreview = React.memo(() => {
     const {ui, sid} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui[state.page.now],,
+                ui: state.ui,,
                 sid: state.global.sid
             }),
             []

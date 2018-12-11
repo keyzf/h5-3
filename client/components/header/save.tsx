@@ -14,7 +14,7 @@ const NavSave = React.memo(() => {
                 desc: state.share.desc,
                 cover: state.share.cover,
                 sid: state.global.sid,
-                ui: state.ui[state.page.now],
+                ui: state.ui,
                 bg: state.bg,
                 music: state.music
             }),

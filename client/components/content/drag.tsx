@@ -10,11 +10,11 @@ const ContentDrag = React.memo(() => {
   const dispatch = useDispatch();
   const state = (state: Store) => ({
     editList: state.edit.number,
-    ui: state.ui[state.page.now],
+    ui: state.ui
   });
   const { editList, ui } = useMappedState(useCallback(state, []));
   const uiAction = useCallback(
-    (type:any, data:any) =>
+    (type: any, data: any) =>
       dispatch({ type: "UI_ACTION", payload: { type: type, data: data } }),
     []
   );
@@ -24,7 +24,7 @@ const ContentDrag = React.memo(() => {
   );
 
   // 多选设置
-  const choice = (index: number, event:any) => {
+  const choice = (index: number, event: any) => {
     event.persist();
     if (event.shiftKey) {
       const editorList: number[] = [...editList];
@@ -39,7 +39,12 @@ const ContentDrag = React.memo(() => {
   };
 
   // 调整组件尺寸
-  const handleResize = (style: { top:any; left:any; width:any; height:any }): void => {
+  const handleResize = (style: {
+    top: any;
+    left: any;
+    width: any;
+    height: any;
+  }): void => {
     const { top, left, width, height } = style;
     uiAction("resize", { top, left, width, height });
   };
@@ -50,7 +55,7 @@ const ContentDrag = React.memo(() => {
   };
 
   // 右键事件
-  const contextMenu = (e: { key:any }): void => {
+  const contextMenu = (e: { key: any }): void => {
     switch (e.key) {
       case `1`:
         uiAction("copy", "");
@@ -74,23 +79,23 @@ const ContentDrag = React.memo(() => {
   const menu = (
     <Menu onClick={e => contextMenu(e)}>
       <Menu.Item key={1}>
-        <Icon type="copy" theme="outlined"/>
+        <Icon type="copy" theme="outlined" />
         复制 Ctrl+c
       </Menu.Item>
       <Menu.Item key={2}>
-        <Icon type="delete" theme="outlined"/>
+        <Icon type="delete" theme="outlined" />
         删除 Delete
       </Menu.Item>
       <Menu.Item key={3}>
-        <Icon type="lock" theme="outlined"/>
+        <Icon type="lock" theme="outlined" />
         锁定 Ctrl+L
       </Menu.Item>
       <Menu.Item key={4}>
-        <Icon type="arrow-up" theme="outlined"/>
+        <Icon type="arrow-up" theme="outlined" />
         图层上移
       </Menu.Item>
       <Menu.Item key={5}>
-        <Icon type="arrow-down" theme="outlined"/>
+        <Icon type="arrow-down" theme="outlined" />
         图层下移
       </Menu.Item>
     </Menu>
@@ -103,7 +108,7 @@ const ContentDrag = React.memo(() => {
           <Dropdown overlay={menu} trigger={["contextMenu"]} key={index}>
             <span>
               <ResizableRect
-                onMouseDown={(e:any) => choice(index, e)}
+                onMouseDown={(e: any) => choice(index, e)}
                 left={ui[data].position.left}
                 top={ui[data].position.top}
                 width={ui[data].position.width}
@@ -121,13 +126,10 @@ const ContentDrag = React.memo(() => {
                     height: "100%",
                     boxSizing: "border-box",
                     pointerEvents: "none",
-                    userSelect: "none",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
+                    userSelect: "none"
                   }}
                 >
-                  <RenderUi data={ui[data]}/>
+                  <RenderUi data={ui[data]} />
                 </span>
               </ResizableRect>
             </span>

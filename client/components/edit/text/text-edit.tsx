@@ -14,7 +14,7 @@ const TextEdit = React.memo(() => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui[state.page.now],
+        ui: state.ui,
       }),
       []
     )

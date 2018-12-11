@@ -12,7 +12,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui[state.page.now],
+        ui: state.ui,
       }),
       []
     )

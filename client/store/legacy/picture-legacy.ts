@@ -48,7 +48,7 @@ const baseAdapter = (item: any): object[] => {
     base.push({
       img: data.img,
       crop: data.crop_img,
-      link: { type: "", url: data.link.value },
+      link: { type: "web", url: data.link.value },
       openness: 0,
       radius: data.radius.value,
       color: ""

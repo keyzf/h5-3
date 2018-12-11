@@ -9,11 +9,9 @@ type style = {
   zIndex: number;
 };
 
-const RenderStyle = styled("span")<style>` 
+const RenderStyle = styled("span")<style>`
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   margin: auto;
   // 动画移动
   transform: rotate(${props => props.rotate + "deg"});

@@ -40,7 +40,7 @@ const buttonAdapter = (oldData: oldData): object => {
     bg_img: { url: oldData.advance.img, crop: oldData.advance.img },
     radius: 0,
     desc: oldData.customize.content,
-    link: { type: "", url: oldData.customize.btn_url.value }
+    link: { type: "web", url: oldData.customize.btn_url.value }
   };
   const position = {
     width: oldData.advance.width,

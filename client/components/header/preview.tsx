@@ -2,44 +2,26 @@ import * as React from "react";
 import { Icon, Modal } from "antd";
 import RenderStyle from "../common/renderStyle";
 import RenderUi from "../common/renderUi";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import BackgroundUI from "../../resource/background/BackgroundUI";
 import Store from "../../typing/store";
-import { useMappedState } from "redux-react-hook";
+import { useMappedState, useDispatch } from "redux-react-hook";
 import { css } from "glamor";
 import MusicUi from "../../resource/music/music_ui";
 import LinkMapOphoneOweb from "../common/link";
-import { useDispatch } from "redux-react-hook";
-import "animate.css";
-
 
 const NavPreview = React.memo(() => {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
-  const { ui, sid, now, motion, allUi } = useMappedState(
+  const { ui, sid, allUi } = useMappedState(
     useCallback(
       (state: Store) => ({
-        ui: state.ui[state.page.now],
+        ui: state.ui,
         sid: state.global.sid,
-        now: state.page.now,
-        motion: state.page.motion,
         allUi: state.ui
       }),
       []
     )
-  );
-
-  useEffect(
-    () => {
-      const element = document.getElementById("mots");
-      if (element !== null && motion !== "none") {
-        element.classList.remove(`animated`, `${motion}`);
-        setTimeout(() => {
-          element.classList.add(`animated`, `${motion}`);
-        }, 1);
-      }
-    },
-    [now]
   );
 
   const onPreview = () => {
@@ -52,13 +34,6 @@ const NavPreview = React.memo(() => {
 
   const onClose = () => {
     setState(false);
-  };
-
-  const change = () => {
-    dispatch({
-      type: "PAGE_CHANGE",
-      payload: allUi.length === now + 1 ? 0 : now + 1
-    });
   };
 
   const phoneHeader = css({
@@ -224,32 +199,27 @@ const NavPreview = React.memo(() => {
                   &nbsp;
                 </div>
               </div>
-              <div
-                id={"mots"}
-                className={`animated ${motion}`}
-                style={{ animationDuration: "2500ms" }}
-              >
-                {ui.map((data: any, index: number) => {
-                  return (
-                    <RenderStyle {...data.position} key={index}>
-                      {data.common.type === "text" ||
-                      (data.common.type === "picture" &&
-                        data.common.id !== 1) ||
-                      data.common.type === "button" ? (
-                        <LinkMapOphoneOweb
-                          key={index}
-                          type={data.base.link.type}
-                          link={data.base.link.url}
-                        >
-                          <RenderUi data={data} />
-                        </LinkMapOphoneOweb>
-                      ) : (
+
+              {ui.map((data: any, index: number) => {
+                return (
+                  <RenderStyle {...data.position} key={index}>
+                    {data.common.type === "text" ||
+                    (data.common.type === "picture" && data.common.id !== 1) ||
+                    data.common.type === "button" ? (
+                      <LinkMapOphoneOweb
+                        key={index}
+                        type={data.base.link.type}
+                        link={data.base.link.url}
+                      >
                         <RenderUi data={data} />
-                      )}
-                    </RenderStyle>
-                  );
-                })}
-              </div>
+                      </LinkMapOphoneOweb>
+                    ) : (
+                      <RenderUi data={data} />
+                    )}
+                  </RenderStyle>
+                );
+              })}
+
               <div
                 style={{
                   position: "absolute",
@@ -282,25 +252,6 @@ const NavPreview = React.memo(() => {
             </BackgroundUI>
           </div>
           <div {...phoneFooter} />
-          {allUi.length > 1 ? (
-            <div
-              onClick={change}
-              style={{
-                position: "absolute",
-                zIndex: 999,
-                right: 5,
-                top: 300
-              }}
-            >
-              <Icon
-                type="right"
-                style={{ fontSize: "20px" }}
-                className={"animated infinite fadeInLeft"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
         </div>
       </Modal>
     </React.Fragment>

@@ -4,21 +4,28 @@ import Store from "../../typing/store";
 import {useCallback} from "react";
 import {useDispatch, useMappedState} from "redux-react-hook";
 
+let count = 0;
 const ContentHeight = React.memo(() => {
     const dispatch = useDispatch();
-    const {height} = useMappedState(
+
+    const {height, bgHeight} = useMappedState(
         useCallback(
             (state: Store) => ({
-                height: state.bg[state.page.now].base.height
+                height: state.bg.base.height,
+                bgHeight: state.bgHeight,
             }),
             []
         )
     );
+    count = height;
     const changeHeight = (height: number) =>
         dispatch({type: "BG_VALUE", payload: {height: height}});
 
     const handleDrag = (e: any, ui: any) => {
-        changeHeight(ui.deltaY + height);
+        if (ui.deltaY + height >= 600) {
+            changeHeight(ui.deltaY + height);
+        }
+
     };
 
     const style = {
@@ -37,11 +44,11 @@ const ContentHeight = React.memo(() => {
         }
     };
     return (
-        <div style={{cursor: "s-resize", position: "relative", top: "700px"}}>
+        <div style={{cursor: "s-resize", position: "relative", top: `${bgHeight + 130}px`}}>
             <Draggable
                 axis="y"
                 onDrag={(e, ui) => handleDrag(e, ui)}
-                bounds={{top: 0, left: 0, right: 0, bottom: 10000}}
+                bounds={{left: 0, top: 600 - bgHeight, right: 0, bottom: 10000}}
             >
                 <div style={style.button}>
                     <div

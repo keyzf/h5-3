@@ -13,7 +13,7 @@ const ButtonForm = React.memo(() => {
   const { ui, editList } = useMappedState(
     useCallback(
       (state: Store) => ({
-        ui: state.ui[state.page.now],,
+        ui: state.ui,,
         editList: state.edit.number
       }),
       []
