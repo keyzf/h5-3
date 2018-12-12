@@ -42,27 +42,42 @@ const idAdapter = (var_name: string): number => {
   }
 };
 // 修正base
-const baseAdapter = (item: any): object[] => {
-  let base = [];
-  item.map(data => {
-    base.push({
-      img: data.img,
-      crop: data.crop_img,
-      link: { type: "web", url: data.link.value },
-      openness: 0,
-      radius: data.radius.value,
-      color: ""
+const baseAdapter = (item: any, name: string): object[] => {
+  let base;
+  if (name === "carousel_img") {
+    base = [];
+    item.map(data => {
+      base.push({
+        img: data.img,
+        crop: data.img,
+        link: { type: "web", url: data.link.value },
+        openness: 0,
+        radius: data.radius.value,
+        color: ""
+      });
     });
-  });
+  } else {
+    base = {};
+    item.map(data => {
+      base = {
+        img: data.img,
+        crop: data.img,
+        link: { type: "web", url: data.link.value },
+        openness: 0,
+        radius: data.radius.value,
+        color: ""
+      };
+    });
+  }
   return base;
 };
 // 修正图片数据
 const pictureAdapter = (oldData: oldData): object => {
   const common = {
-    type: 'picture',
+    type: "picture",
     id: idAdapter(oldData.customize.name)
   };
-  const base = baseAdapter(oldData.customize.item);
+  const base = baseAdapter(oldData.customize.item, oldData.customize.name);
   const position = {
     width: oldData.advance.width,
     height: oldData.advance.height,
