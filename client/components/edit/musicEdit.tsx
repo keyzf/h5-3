@@ -206,7 +206,7 @@ const MusicEdit = React.memo(() => {
 
     return (
         <React.Fragment>
-            <audio id={"audio"} autoPlay={true} src={music.url}/>
+            <audio id={"audio"} src={music.url}/>
             <Tabs tabBarExtraContent={operations}>
                 <TabPane tab="音乐设置" key="1" style={{padding: "0 5px"}}>
                     <div {...scrollbar}>

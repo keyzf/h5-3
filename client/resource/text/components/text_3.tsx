@@ -14,9 +14,7 @@ class Text3 extends React.PureComponent<Props, ""> {
     render() {
         const {base} = this.props;
         return (
-            <a href={base.link}>
-                <img src={base.wordArt} alt={'wordArt'} width={'100%'} height={'100%'}/>
-            </a>
+            <img src={base.wordArt} alt={'wordArt'} style={{width: '100%', height: '100%'}}/>
         );
     }
 }

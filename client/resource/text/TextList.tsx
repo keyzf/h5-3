@@ -288,7 +288,6 @@ const TextList = React.memo(() => {
       <Divider>{name}</Divider>
       <div className={style.scrollbar}>
         {state.show.map((data, index: number) => {
-
           return (
             <div
               className={style.uiHover}

@@ -22,7 +22,6 @@ const NavPreview = React.memo(() => {
             []
         )
     );
-    console.log(ui);
     const onPreview = () => {
         dispatch({
             type: "PAGE_CHANGE",
