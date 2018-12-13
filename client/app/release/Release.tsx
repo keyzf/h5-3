@@ -14,8 +14,161 @@ import Store from "../../typing/store";
 import ReleaseEdit from "./editor.page";
 import entrance_api from "../../api/entrance";
 
-export default React.memo((props: { id: number; web: string }) => {
+interface Props {
+  id: number;
+  web: string;
+}
+
+const phoneH5 = css`
+  @media (min-width: 0) and(max-width: 575px) {
+    display: none;
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    display: none;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    background-color: rgb(240, 242, 245);
+    width: 100vm;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
+    scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+    scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+    scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+    scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
+    scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+    scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
+    scrollbar-base-color: transparent; /*滚动条的基色*/
+
+    &::-webkit-scrollbar {
+      border: none;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+    &::-webkit-scrollbar-track-piece {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+    &::-webkit-resizer {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    background-color: rgb(240, 242, 245);
+    width: 100vm;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
+    scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+    scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+    scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+    scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
+    scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+    scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
+    scrollbar-base-color: transparent; /*滚动条的基色*/
+
+    &::-webkit-scrollbar {
+      border: none;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+    &::-webkit-scrollbar-track-piece {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+    &::-webkit-resizer {
+      display: none;
+    }
+  }
+`;
+const center = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const mediaPC = css`
+  @media (min-width: 0) and (max-width: 575px) {
+    display: none;
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    display: none;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+  }
+
+  @media (min-width: 1200px) {
+  }
+`;
+const mediaMobile = css`
+  @media (min-width: 0) and (max-width: 575px) {
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    display: none;
+  }
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
+export default React.memo((props: Props) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
+    entrance_api(props.id, props.web).then(resp => {
+      dispatch({ type: "INIT", payload: resp });
+    });
+  }, []);
+
+  return <Init />;
+});
+
+const Init = React.memo(() => {
   const { ui, sid, title, pv, cover, desc } = useMappedState(
     useCallback(
       (state: Store) => ({
@@ -30,227 +183,86 @@ export default React.memo((props: { id: number; web: string }) => {
     )
   );
 
-  useEffect(() => {
-    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
-    entrance_api(props.id, props.web).then(resp => {
-      dispatch({ type: "INIT", payload: resp });
+  let params = new URLSearchParams();
+  params.append("url", `${window.location.href}`);
+  axios
+    .post(`${window.location.origin}/view/getSignPackage`, params)
+    .then(response => {
+      wx.config({
+        debug: false,
+        appId: response.data.appId,
+        timestamp: response.data.timestamp,
+        nonceStr: response.data.nonceStr,
+        signature: response.data.signature,
+        jsApiList: [
+          "onMenuShareTimeline",
+          "onMenuShareAppMessage",
+          "onMenuShareQQ",
+          "onMenuShareWeibo",
+          "hideMenuItems"
+        ]
+      });
+      wx.ready(() => {
+        if (response.data.limitPv <= pv) {
+          wx.hideMenuItems({
+            menuList: ["menuItem:share:timeline"]
+          });
+        }
+        wx.onMenuShareTimeline({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareAppMessage({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareQQ({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareWeibo({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        setTimeout(() => {
+          try {
+            // @ts-ignore
+            document.getElementById("h5_audio").play();
+          } catch (error) {}
+        }, 800);
+      });
     });
-  }, []);
 
-  // let params = new URLSearchParams();
-  // params.append("url", `${window.location.href}`);
-  // axios
-  //     .post(`${window.location.origin}/view/getSignPackage`, params)
-  //     .then(response => {
-  //         wx.config({
-  //             debug: false,
-  //             appId: response.data.appId,
-  //             timestamp: response.data.timestamp,
-  //             nonceStr: response.data.nonceStr,
-  //             signature: response.data.signature,
-  //             jsApiList: [
-  //                 "onMenuShareTimeline",
-  //                 "onMenuShareAppMessage",
-  //                 "onMenuShareQQ",
-  //                 "onMenuShareWeibo",
-  //                 "hideMenuItems"
-  //             ]
-  //         });
-  //         wx.ready(() => {
-  //             if (response.data.limitPv <= pv) {
-  //                 wx.hideMenuItems({
-  //                     menuList: ["menuItem:share:timeline"]
-  //                 });
-  //             }
-  //             wx.onMenuShareTimeline({
-  //                 title: title, // 分享标题
-  //                 desc: desc, // 分享描述
-  //                 link: `${window.location.href}`, //
-  //                 imgUrl: cover, // 分享图标
-  //                 success: () => {
-  //                     let params = new URLSearchParams();
-  //                     params.append("sid", this.props.sid);
-  //                     axios.post(`${window.location.origin}/view/addShare`, params);
-  //                 }
-  //             });
-  //             wx.onMenuShareAppMessage({
-  //                 title: title, // 分享标题
-  //                 desc: desc, // 分享描述
-  //                 link: `${window.location.href}`, //
-  //                 imgUrl: cover, // 分享图标
-  //                 success: () => {
-  //                     let params = new URLSearchParams();
-  //                     params.append("sid", this.props.sid);
-  //                     axios.post(`${window.location.origin}/view/addShare`, params);
-  //                 }
-  //             });
-  //             wx.onMenuShareQQ({
-  //                 title: title, // 分享标题
-  //                 desc: desc, // 分享描述
-  //                 link: `${window.location.href}`, //
-  //                 imgUrl: cover, // 分享图标
-  //                 success: () => {
-  //                     let params = new URLSearchParams();
-  //                     params.append("sid", this.props.sid);
-  //                     axios.post(`${window.location.origin}/view/addShare`, params);
-  //                 }
-  //             });
-  //             wx.onMenuShareWeibo({
-  //                 title: title, // 分享标题
-  //                 desc: desc, // 分享描述
-  //                 link: `${window.location.href}`, //
-  //                 imgUrl: cover, // 分享图标
-  //                 success: () => {
-  //                     let params = new URLSearchParams();
-  //                     params.append("sid", this.props.sid);
-  //                     axios.post(`${window.location.origin}/view/addShare`, params);
-  //                 }
-  //             });
-  //             try {
-  //                 // @ts-ignore
-  //                 document.getElementById('h5_audio').play();
-  //             } catch (error) {
-  //             }
-  //         });
-  //     });
-
-  const phoneH5 = css`
-    @media (min-width: 0) and(max-width: 575px) {
-      display: none;
-    }
-
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      display: none;
-    }
-
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      display: none;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-      background-color: rgb(240, 242, 245);
-      width: 100vm;
-      height: 100vh;
-      overflow: auto;
-      scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
-      scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
-      scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
-      scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
-      scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
-      scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
-      scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
-      scrollbar-base-color: transparent; /*滚动条的基色*/
-
-      &::-webkit-scrollbar {
-        border: none;
-        width: 0;
-        height: 0;
-        background-color: transparent;
-      }
-      &::-webkit-scrollbar-button {
-        display: none;
-      }
-      &::-webkit-scrollbar-track {
-        display: none;
-      }
-      &::-webkit-scrollbar-track-piece {
-        display: none;
-      }
-      &::-webkit-scrollbar-thumb {
-        display: none;
-      }
-      &::-webkit-scrollbar-corner {
-        display: none;
-      }
-      &::-webkit-resizer {
-        display: none;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      background-color: rgb(240, 242, 245);
-      width: 100vm;
-      height: 100vh;
-      overflow: auto;
-      scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
-      scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
-      scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
-      scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
-      scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
-      scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
-      scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
-      scrollbar-base-color: transparent; /*滚动条的基色*/
-
-      &::-webkit-scrollbar {
-        border: none;
-        width: 0;
-        height: 0;
-        background-color: transparent;
-      }
-      &::-webkit-scrollbar-button {
-        display: none;
-      }
-      &::-webkit-scrollbar-track {
-        display: none;
-      }
-      &::-webkit-scrollbar-track-piece {
-        display: none;
-      }
-      &::-webkit-scrollbar-thumb {
-        display: none;
-      }
-      &::-webkit-scrollbar-corner {
-        display: none;
-      }
-      &::-webkit-resizer {
-        display: none;
-      }
-    }
-  `;
-  const center = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `;
-  const mediaPC = css`
-    @media (min-width: 0) and (max-width: 575px) {
-      display: none;
-    }
-
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      display: none;
-    }
-
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      display: none;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-    }
-
-    @media (min-width: 1200px) {
-    }
-  `;
-  const mediaMobile = css`
-    @media (min-width: 0) and (max-width: 575px) {
-    }
-
-    @media (min-width: 576px) and (max-width: 767.98px) {
-    }
-
-    @media (min-width: 768px) and (max-width: 991.98px) {
-    }
-
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-      display: none;
-    }
-
-    @media (min-width: 1200px) {
-      display: none;
-    }
-  `;
   return (
-    <React.Fragment>
+    <div>
       <div className={mediaMobile}>
         <BackgroundUI>
           <div
@@ -466,6 +478,6 @@ export default React.memo((props: { id: number; web: string }) => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 });

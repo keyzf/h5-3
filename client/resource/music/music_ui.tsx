@@ -18,6 +18,7 @@ const RotateAtom = styled("div")`
 
 const MusicUi = React.memo(() => {
   const [state, setState] = useState(false);
+
   const { music } = useMappedState(
     useCallback(
       (state: Store) => ({

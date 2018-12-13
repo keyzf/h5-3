@@ -3,9 +3,8 @@ import { Row, Button, message } from "antd";
 import QRCode from "qrcode.react";
 import copy from "copy-to-clipboard";
 import Store from "../../typing/store";
-import { useCallback, useEffect } from "react";
+import { useCallback} from "react";
 import { useMappedState, useDispatch } from "redux-react-hook";
-import entrance_api from "../../api/entrance";
 
 const ReleaseEdit = React.memo(() => {
   // 发送log初始化及定时更新请求
