@@ -40,16 +40,16 @@ class Text6 extends React.PureComponent<Props, ""> {
               marginRight: "5px"
             }}
           />
-          <span
-            className={style.mobile}
-            style={{ whiteSpace: "pre-wrap" }}
-            dangerouslySetInnerHTML={{
-              __html: `<p style="font-size: 14px">${base.html}</p>`.replace(
-                new RegExp("(\\d+)px", "g"),
-                "calc($1/320*100vw)"
-              )
-            }}
-          />
+            <span
+                className={style.mobile}
+                style={{ whiteSpace: "pre-wrap", fontSize: "calc(14/320*100vw)" }}
+                dangerouslySetInnerHTML={{
+                    __html: `${base.html}`.replace(
+                        new RegExp("(\\d+)px", "g"),
+                        "calc($1/320*100vw)"
+                    )
+                }}
+            />
           <span
             className={style.pc}
             style={{ whiteSpace: "pre-wrap" }}

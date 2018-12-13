@@ -369,239 +369,26 @@ Mock.mock(`${window.location.origin}/Material/getSys`, "post", {
 Mock.mock(`${window.location.origin}/view/getData`, "post", {
   error: 0,
   info: {
-    bg: {
-      type: "background",
-      name: "background",
-      customize: {
-        color: "white",
+    bg: JSON.stringify({
+      common: {
+        type: "background",
+        name: "background"
+      },
+      base: {
         img: "",
-        crop_img: "",
-        height: 871,
-        img_config: {}
+        color: "white",
+        height: 600
       }
-    },
-    cover: Random.dataImage("200x100"),
-    desc: "这里是描述",
-    form: null,
-    self: "1",
-    music: { music_url: Random.url(), desc: "13123qwer" },
-    pv: "0",
-    sid: "10775",
-    title: "我的页面",
-    ui: [
-      {
-        customize: {
-          type: "text",
-          index_number: "63cLlWM",
-          name: "thirty_one_text",
-          html_content: "请输入标题"
-        },
-        advance: {
-          color: "",
-          img: "",
-          width: 300,
-          left: 10,
-          height: 50,
-          live: false,
-          move: true,
-          crop_img: "",
-          top: 25,
-          style_color: "rgb(0,161,159)",
-          zIndex: 100,
-          rotate: 0,
-          img_config: {
-            stretching: {
-              value: ""
-            },
-            tiling: {
-              value: ""
-            }
-          }
-        }
-      },
-      {
-        customize: {
-          type: "text",
-          index_number: "ijcEzXx",
-          name: "thirty_text",
-          html_content: "你看到的是一个标题"
-        },
-        advance: {
-          color: "",
-          img: "",
-          width: 300,
-          left: 17,
-          height: 50,
-          live: false,
-          move: true,
-          crop_img: "",
-          top: 156,
-          style_color: "rgb(0,214,205)",
-          zIndex: 100,
-          rotate: 0,
-          img_config: {
-            stretching: {
-              value: ""
-            },
-            tiling: {
-              value: ""
-            }
-          }
-        }
-      },
-      {
-        customize: {
-          type: "text",
-          index_number: "I9cs8k4",
-          name: "twenty_eight_text",
-          html_content: "你看到的是一个标题"
-        },
-        advance: {
-          color: "",
-          img: "",
-          width: 300,
-          left: 6,
-          height: 50,
-          live: false,
-          move: true,
-          crop_img: "",
-          top: 104,
-          style_color: "rgb(0,220,255)",
-          zIndex: 100,
-          rotate: 0,
-          img_config: {
-            stretching: {
-              value: ""
-            },
-            tiling: {
-              value: ""
-            }
-          }
-        }
-      },
-      {
-        customize: {
-          type: "text",
-          index_number: "KfZ3c5W",
-          name: "twenty_nine_text",
-          html_content: "你看到的是一个标题"
-        },
-        advance: {
-          color: "",
-          img: "",
-          width: 300,
-          left: 5,
-          height: 50,
-          live: false,
-          move: true,
-          crop_img: "",
-          top: 242,
-          style_color: "rgb(0,214,205)",
-          zIndex: 100,
-          rotate: 0,
-          img_config: {
-            stretching: {
-              value: ""
-            },
-            tiling: {
-              value: ""
-            }
-          }
-        }
-      },
-      {
-        customize: {
-          type: "form",
-          types: "报名",
-          name: "form",
-          item: [
-            {
-              type: "name",
-              title_color: "#000",
-              opt_color: "#000",
-              form_id: "aGyw7U9",
-              title: {
-                value: "姓名"
-              },
-              decorator: "姓名",
-              choose: false,
-              option: {
-                value: "请输入姓名"
-              }
-            },
-            {
-              type: "phone",
-              title_color: "#000",
-              opt_color: "#000",
-              form_id: "dr16fhb",
-              title: {
-                value: "手机"
-              },
-              decorator: "手机",
-              choose: false,
-              option: {
-                value: "请输入手机号"
-              }
-            },
-            {
-              type: "textarea",
-              form_id: "9cm9YK4",
-              title_color: "#000",
-              opt_color: "#000",
-              title: {
-                value: "备注"
-              },
-              choose: false,
-              decorator: "备注",
-              option: {
-                value: "请填写备注"
-              }
-            }
-          ],
-          btn_content: {
-            value: "提交"
-          },
-          btn_color: "white",
-          btn_bg_color: ""
-        },
-        advance: {
-          color: "",
-          img: "",
-          width: 230,
-          left: 51,
-          height: 401,
-          live: false,
-          move: true,
-          crop_img: "",
-          top: 359,
-          zIndex: 100,
-          rotate: 0,
-          img_config: {
-            stretching: {
-              value: ""
-            },
-            tiling: {
-              value: ""
-            }
-          }
-        }
-      }
-    ],
-    version: "1"
-  },
-  url: Random.url()
-});
-
-Mock.mock(`${window.location.origin}/Create/getData`, "post", {
-  error: 0,
-  info: {
-    bg: "",
+    }),
     cover: "http://src.e7wei.com/0.644043773965004.png",
     desc: "",
     disable: "0",
     form: null,
     istemplate: "0",
-    music: JSON.stringify({ music_url: "http://s.e7wei.com/811286853R292E7.mp3", desc: "庆祝圣诞" }),
+    music: JSON.stringify({
+      url: "http://s.e7wei.com/811286853R292E7.mp3",
+      desc: "庆祝圣诞"
+    }),
     open: "1",
     pv: "0",
     share: "0",
@@ -612,40 +399,340 @@ Mock.mock(`${window.location.origin}/Create/getData`, "post", {
     type: "1",
     ui: JSON.stringify([
       {
-        customize: {
-          type: "img",
-          name: "img_re_1",
-          item: [
-            {
-              img: "http://7xv429.com1.z0.glb.clouddn.com/mao1.jpg",
-              title: { value: "——易企微" },
-              content: { value: "微信一站式解决方案" },
-              link: { value: "" },
-              radius: { value: 0 },
-              img_config: { stretching: { value: "" }, tiling: { value: "" } }
-            }
-          ],
-          model: true,
-          base: { show_element: {}, layout: { value: 0 }, font_color: "#000" }
+        common: {
+          type: "text",
+          id: 60
         },
-        advance: {
-          color: "",
-          img: "",
-          width: 280,
-          left: 20,
-          height: 300,
-          move: true,
-          crop_img: "",
-          top: 20,
-          zIndex: 100,
+        base: {
+          html: "<p>请输入标题</p>",
+          index: "qtHJEW7",
+          color: "rgb(0,161,159)",
+          wordArt: "",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 206,
+          height: 29.999999999999982,
+          left: 10,
+          top: 25,
           rotate: 0,
-          content_color: "",
-          img_config: { stretching: { value: "" }, tiling: { value: "" } }
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 63
+        },
+        base: {
+          html: "<p>请输入标题</p>",
+          index: "9peEhkA",
+          color: "rgb(0,214,205)",
+          wordArt: "",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 193,
+          height: 47.999999999999986,
+          left: 18,
+          top: 83,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 2
+        },
+        base: {
+          html: "",
+          index: "nBo5Rwp",
+          color: "",
+          wordArt: "http://src.e7wei.com/910164RJY4FH78H.png",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 198,
+          height: 82.99999999999997,
+          left: 17,
+          top: 161,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 16
+        },
+        base: {
+          html: "",
+          index: "NpUShkF",
+          color: "",
+          wordArt: "http://src.e7wei.com/9101685DFF6W4TJ.png",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 184,
+          height: 83.00000000000001,
+          left: 23,
+          top: 253,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "picture",
+          id: 40
+        },
+        base: {
+          img: "icon-icon-test34",
+          crop: "",
+          link: {
+            type: "choose",
+            url: ""
+          },
+          openness: 1,
+          radius: 0,
+          color: "#000"
+        },
+        position: {
+          width: 126,
+          height: 112,
+          left: 44,
+          top: 360,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "picture",
+          id: 1001
+        },
+        base: {
+          img: "http://src.e7wei.com/91212AC282C76P6.png",
+          crop: "",
+          link: {
+            type: "choose",
+            url: ""
+          },
+          openness: 1,
+          radius: 0,
+          color: "#000"
+        },
+        position: {
+          width: 74,
+          height: 77,
+          left: 52,
+          top: 497,
+          rotate: 0,
+          zIndex: 100
         }
       }
     ]),
     uid: "364533",
-    version: "1"
+    version: "2"
+  },
+  self: 1,
+  url: Random.url()
+});
+
+Mock.mock(`${window.location.origin}/Create/getData`, "post", {
+  error: 0,
+  info: {
+    bg: JSON.stringify({
+      common: {
+        type: "background",
+        name: "background"
+      },
+      base: {
+        img: "",
+        color: "white",
+        height: 600
+      }
+    }),
+    cover: "http://src.e7wei.com/0.644043773965004.png",
+    desc: "",
+    disable: "0",
+    form: null,
+    istemplate: "0",
+    music: JSON.stringify({
+      url: "http://s.e7wei.com/811286853R292E7.mp3",
+      desc: "庆祝圣诞"
+    }),
+    open: "1",
+    pv: "0",
+    share: "0",
+    sid: "47425",
+    state: "1",
+    time: "1544491641",
+    title: "我的页面",
+    type: "1",
+    ui: JSON.stringify([
+      {
+        common: {
+          type: "text",
+          id: 60
+        },
+        base: {
+          html: "<p>请输入标题</p>",
+          index: "qtHJEW7",
+          color: "rgb(0,161,159)",
+          wordArt: "",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 206,
+          height: 29.999999999999982,
+          left: 10,
+          top: 25,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 63
+        },
+        base: {
+          html: "<p>请输入标题</p>",
+          index: "9peEhkA",
+          color: "rgb(0,214,205)",
+          wordArt: "",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 193,
+          height: 47.999999999999986,
+          left: 18,
+          top: 83,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 2
+        },
+        base: {
+          html: "",
+          index: "nBo5Rwp",
+          color: "",
+          wordArt: "http://src.e7wei.com/910164RJY4FH78H.png",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 198,
+          height: 82.99999999999997,
+          left: 17,
+          top: 161,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "text",
+          id: 16
+        },
+        base: {
+          html: "",
+          index: "NpUShkF",
+          color: "",
+          wordArt: "http://src.e7wei.com/9101685DFF6W4TJ.png",
+          link: {
+            type: "choose",
+            url: ""
+          }
+        },
+        position: {
+          width: 184,
+          height: 83.00000000000001,
+          left: 23,
+          top: 253,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "picture",
+          id: 40
+        },
+        base: {
+          img: "icon-icon-test34",
+          crop: "",
+          link: {
+            type: "choose",
+            url: ""
+          },
+          openness: 1,
+          radius: 0,
+          color: "#000"
+        },
+        position: {
+          width: 126,
+          height: 112,
+          left: 44,
+          top: 360,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "picture",
+          id: 1001
+        },
+        base: {
+          img: "http://src.e7wei.com/91212AC282C76P6.png",
+          crop: "",
+          link: {
+            type: "choose",
+            url: ""
+          },
+          openness: 1,
+          radius: 0,
+          color: "#000"
+        },
+        position: {
+          width: 74,
+          height: 77,
+          left: 52,
+          top: 497,
+          rotate: 0,
+          zIndex: 100
+        }
+      }
+    ]),
+    uid: "364533",
+    version: "2"
   },
   url: Random.url()
 });

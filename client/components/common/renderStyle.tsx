@@ -16,14 +16,45 @@ const RenderStyle = styled("span")<style>`
   // 动画移动
   transform: rotate(${props => props.rotate + "deg"});
   // 定位
-  left: ${props => props.left + "px"};
-  top: ${props => props.top + "px"};
+
   z-index: ${props => props.zIndex};
-  // 长宽
-  width: ${props => props.width + "px"};
-  height: ${props => props.height + "px"};
 
   overflow: hidden;
+
+  @media (min-width: 10px) and (max-width: 575px) {
+    height: ${props => (props.height / 320) * 100 + "vw"};
+    width: ${props => (props.width / 320) * 100 + "vw"};
+    left: ${props => (props.left / 320) * 100 + "vw"};
+    top: ${props => (props.top / 320) * 100 + "vw"};
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    height: ${props => (props.height / 320) * 100 + "vw"};
+    width: ${props => (props.width / 320) * 100 + "vw"};
+    left: ${props => (props.left / 320) * 100 + "vw"};
+    top: ${props => (props.top / 320) * 100 + "vw"};
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    height: ${props => (props.height / 320) * 100 + "vw"};
+    width: ${props => (props.width / 320) * 100 + "vw"};
+    left: ${props => (props.left / 320) * 100 + "vw"};
+    top: ${props => (props.top / 320) * 100 + "vw"};
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    height: ${props => props.height + "px"};
+    width: ${props => props.width + "px"};
+    left: ${props => props.left + "px"};
+    top: ${props => props.top + "px"};
+  }
+
+  @media (min-width: 1200px) {
+    height: ${props => props.height + "px"};
+    width: ${props => props.width + "px"};
+    left: ${props => props.left + "px"};
+    top: ${props => props.top + "px"};
+  }
 `;
 
 export default RenderStyle;

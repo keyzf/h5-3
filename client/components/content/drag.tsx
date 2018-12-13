@@ -122,9 +122,6 @@ const ContentDrag = React.memo(() => {
               >
                 <span
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    boxSizing: "border-box",
                     pointerEvents: "none",
                     userSelect: "none"
                   }}

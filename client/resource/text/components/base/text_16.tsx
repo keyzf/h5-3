@@ -25,14 +25,14 @@ class Text16 extends React.PureComponent<Props, ""> {
           <section className={style.text14c4}>
             <section>
               <span
-                className={style.mobile}
-                style={{ whiteSpace: "pre-wrap" }}
-                dangerouslySetInnerHTML={{
-                  __html: `<p style="font-size: 14px">${base.html}</p>`.replace(
-                    new RegExp("(\\d+)px", "g"),
-                    "calc($1/320*100vw)"
-                  )
-                }}
+                  className={style.mobile}
+                  style={{ whiteSpace: "pre-wrap", fontSize: "calc(14/320*100vw)" }}
+                  dangerouslySetInnerHTML={{
+                    __html: `${base.html}`.replace(
+                        new RegExp("(\\d+)px", "g"),
+                        "calc($1/320*100vw)"
+                    )
+                  }}
               />
               <span
                 className={style.pc}

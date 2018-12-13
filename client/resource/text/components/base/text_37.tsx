@@ -28,11 +28,12 @@ class Text37 extends React.PureComponent<Props, ""> {
               <div className={style.text35c7}>
                 <span
                   className={style.mobile}
-                  style={{ whiteSpace: "pre-wrap" }}
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    fontSize: "calc(14/320*100vw)"
+                  }}
                   dangerouslySetInnerHTML={{
-                    __html: `<p style="font-size: 14px">${
-                      base.html
-                    }</p>`.replace(
+                    __html: `${base.html}`.replace(
                       new RegExp("(\\d+)px", "g"),
                       "calc($1/320*100vw)"
                     )

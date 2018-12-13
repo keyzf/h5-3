@@ -10,6 +10,7 @@ export default styled("div")`
     width: 10px;
     height: 10px;
     background: white;
+    
     border: 1px solid rgb(0, 153, 248);
     border-radius: 5px;
   }
