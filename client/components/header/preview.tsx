@@ -23,6 +23,11 @@ const NavPreview = React.memo(() => {
     )
   );
   const onPreview = () => {
+    try {
+      // @ts-ignore
+      document.getElementById("audio").pause();
+    } catch (e) {}
+
     dispatch({
       type: "PAGE_CHANGE",
       payload: 0

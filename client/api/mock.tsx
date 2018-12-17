@@ -386,7 +386,7 @@ Mock.mock(`${window.location.origin}/view/getData`, "post", {
     form: null,
     istemplate: "0",
     music: JSON.stringify({
-      url: "http://s.e7wei.com/811286853R292E7.mp3",
+      url: "http://prodect.oss-cn-beijing.aliyuncs.com/811286853R292E7.mp3",
       desc: "庆祝圣诞"
     }),
     open: "1",
@@ -572,7 +572,7 @@ Mock.mock(`${window.location.origin}/Create/getData`, "post", {
     form: null,
     istemplate: "0",
     music: JSON.stringify({
-      url: "http://s.e7wei.com/811286853R292E7.mp3",
+      url: "http://prodect.oss-cn-beijing.aliyuncs.com/811286853R292E7.mp3",
       desc: "庆祝圣诞"
     }),
     open: "1",

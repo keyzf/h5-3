@@ -1,8 +1,8 @@
 import * as React from "react";
-import { css, keyframes } from "emotion";
+import {css, keyframes} from "emotion";
 import styled from "react-emotion";
-import { useCallback, useState } from "react";
-import { useMappedState } from "redux-react-hook";
+import {useCallback, useState} from "react";
+import {useMappedState} from "redux-react-hook";
 import Store from "../../typing/store";
 
 // 设置动画
@@ -17,29 +17,29 @@ const RotateAtom = styled("div")`
 `;
 
 const MusicUi = React.memo(() => {
-  const [state, setState] = useState(false);
+    const [state, setState] = useState(false);
 
-  const { music } = useMappedState(
-    useCallback(
-      (state: Store) => ({
-        music: state.music
-      }),
-      []
-    )
-  );
-  const onClickStop = (name: any) => {
-    if (name === "open") {
-      // @ts-ignore
-      document.getElementById("h5_audio").pause();
-      setState(true);
-    }
-    if (name === "stop") {
-      // @ts-ignore
-      document.getElementById("h5_audio").play();
-      setState(false);
-    }
-  };
-  const mobileStyle = css`
+    const {music} = useMappedState(
+        useCallback(
+            (state: Store) => ({
+                music: state.music
+            }),
+            []
+        )
+    );
+    const onClickStop = (name: any) => {
+        if (name === "open") {
+            // @ts-ignore
+            document.getElementById("h5_audio").pause();
+            setState(true);
+        }
+        if (name === "stop") {
+            // @ts-ignore
+            document.getElementById("h5_audio").play();
+            setState(false);
+        }
+    };
+    const mobileStyle = css`
     @media (min-width: 0) and (max-width: 575px) {
       width: calc(20 / 320 * 100vw);
       height: calc(20 / 320 * 100vw);
@@ -65,7 +65,7 @@ const MusicUi = React.memo(() => {
       height: 25px;
     }
   `;
-  const mobileFont = css`
+    const mobileFont = css`
     @media (min-width: 0) and (max-width: 575px) {
       font-size: calc(18 / 320 * 100vw);
     }
@@ -87,59 +87,59 @@ const MusicUi = React.memo(() => {
     }
   `;
 
-  return (
-    <React.Fragment>
-      <audio id={"h5_audio"} loop={true} src={music.url} autoPlay={true} />
-      {state ? (
-        <div
-          className={mobileStyle}
-          onClick={() => onClickStop("stop")}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "50px",
-            background: "rgba(0,0,0,0.4)",
-            padding: "6px"
-          }}
-        >
-          <i
-            {...mobileFont}
-            style={{
-              padding: 0,
-              margin: "0",
-              color: "white"
-            }}
-            className={`${mobileFont} iconfont icon-yinfu`}
-          />
-        </div>
-      ) : (
-        <div
-          className={mobileStyle}
-          onClick={() => onClickStop("open")}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "50px",
-            background: "rgba(0,0,0,0.4)",
-            padding: "6px"
-          }}
-        >
-          <RotateAtom>
-            <i
-              style={{
-                padding: 0,
-                margin: 0,
-                color: "white"
-              }}
-              className={`${mobileFont} iconfont icon-yinfu`}
-            />
-          </RotateAtom>
-        </div>
-      )}
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <audio id={"h5_audio"} loop={true} src={music.url} autoPlay={true}/>
+            {state ? (
+                <div
+                    className={mobileStyle}
+                    onClick={() => onClickStop("stop")}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: "50px",
+                        background: "rgba(0,0,0,0.4)",
+                        padding: "6px"
+                    }}
+                >
+                    <i
+                        {...mobileFont}
+                        style={{
+                            padding: 0,
+                            margin: "0",
+                            color: "white"
+                        }}
+                        className={`${mobileFont} iconfont icon-yinfu`}
+                    />
+                </div>
+            ) : (
+                <div
+                    className={mobileStyle}
+                    onClick={() => onClickStop("open")}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: "50px",
+                        background: "rgba(0,0,0,0.4)",
+                        padding: "6px"
+                    }}
+                >
+                    <RotateAtom>
+                        <i
+                            style={{
+                                padding: 0,
+                                margin: 0,
+                                color: "white"
+                            }}
+                            className={`${mobileFont} iconfont icon-yinfu`}
+                        />
+                    </RotateAtom>
+                </div>
+            )}
+        </React.Fragment>
+    );
 });
 
 export default MusicUi;

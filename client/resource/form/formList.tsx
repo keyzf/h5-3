@@ -1,15 +1,38 @@
 import * as React from "react";
-import { Divider, Tag } from "antd";
+import { Divider, message, Tag } from "antd";
 import { useState } from "react";
 import styled from "react-emotion";
 import RenderForm from "./render";
 import FormUIData from "./database";
 import { useDispatch } from "redux-react-hook";
-
+import { useCallback } from "react";
+import Store from "../../typing/store";
+import { useMappedState } from "redux-react-hook";
 
 const FormList = React.memo(() => {
   const dispatch = useDispatch();
-  const pushDate = (data:any) => dispatch({ type: "UI_PUSHDATA", payload: data });
+  const { ui } = useMappedState(
+    useCallback(
+      (state: Store) => ({
+        ui: state.ui
+      }),
+      []
+    )
+  );
+
+  const pushDate = (data: any) => {
+    let isform = false;
+    ui.map(data => {
+      if (data.common.type === "form") {
+        isform = true;
+      }
+    });
+    if (isform) {
+      message.warning("只能存在一个表单");
+    } else {
+      dispatch({ type: "UI_PUSHDATA", payload: data });
+    }
+  };
   const [state, setState] = useState({
     type: "apply",
     name: "报名",
@@ -21,7 +44,6 @@ const FormList = React.memo(() => {
     { type: "recruitment", name: "招聘" },
     { type: "question", name: "问卷" }
   ];
-
 
   const chooseTab = (type: string, name: string) => {
     switch (type) {
@@ -67,7 +89,7 @@ const FormList = React.memo(() => {
           return (
             <UIHover key={index} onClick={() => pushDate(FormUIData[data])}>
               <div style={style.center}>
-                <RenderForm data={FormUIData[data]}/>
+                <RenderForm data={FormUIData[data]} />
               </div>
             </UIHover>
           );
@@ -81,20 +103,20 @@ const { CheckableTag } = Tag;
 
 // 样式组件
 const UIHover = styled("div")`
-      padding: 5px 6px;
-      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
-        background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-        -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
-      will-change: box-shadow, transform;
-      cursor: pointer;
-      &:hover {
-        padding: 5px 6px;
-        background: rgba(221, 221, 221, 0.21);
-        cursor: pointer;
-      }
-    `;
+  padding: 5px 6px;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+  will-change: box-shadow, transform;
+  cursor: pointer;
+  &:hover {
+    padding: 5px 6px;
+    background: rgba(221, 221, 221, 0.21);
+    cursor: pointer;
+  }
+`;
 // 样式
-const style: { center:any; imgBorder:any } = {
+const style: { center: any; imgBorder: any } = {
   center: {
     display: "flex",
     justifyContent: "center",

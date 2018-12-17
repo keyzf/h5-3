@@ -59,10 +59,10 @@ base.map((data: any) => {
       type: "picture",
       id: data.index
     },
-    base: data.data[0],
+    base: data.data,
     position: {
-      width: 39,
-      height: 30,
+      width: 100,
+      height: 100,
       left: 0,
       top: 0,
       rotate: 0,
@@ -1254,8 +1254,8 @@ banner.map((data: any) => {
     },
     base: data.data[0],
     position: {
-      width: 30,
-      height: 30,
+      width: 100,
+      height: 100,
       left: 0,
       top: 0,
       rotate: 0,

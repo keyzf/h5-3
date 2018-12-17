@@ -23,7 +23,7 @@ const PictureEdit = React.memo(() => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui,
+        ui: state.ui
       }),
       []
     )
@@ -260,8 +260,14 @@ const PictureEdit = React.memo(() => {
           <TabPane tab="属性设置" key="2">
             <div style={{ padding: "0 10px" }}>
               <Form>
-                <PictureColor />
-                <PictureLink />
+                {uiData.base.img.slice(0, 4) === "http" ? (
+                  <PictureLink />
+                ) : (
+                  <React.Fragment>
+                    <PictureColor />
+                    <PictureLink />
+                  </React.Fragment>
+                )}
               </Form>
             </div>
           </TabPane>

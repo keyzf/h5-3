@@ -1,23 +1,460 @@
 import * as React from "react";
 import { Col, Row } from "antd";
-import { css } from "emotion";
+import { css, keyframes } from "emotion";
 import axios from "axios";
 import wx from "weixin-js-sdk";
 import { useMappedState, useDispatch } from "redux-react-hook";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BackgroundUI from "../../resource/background/BackgroundUI";
-import MusicUi from "../../resource/music/music_ui";
 import RenderStyle from "../../components/common/renderStyle";
 import LinkMapOphoneOweb from "../../components/common/link";
 import RenderUi from "../../components/common/renderUi";
 import Store from "../../typing/store";
 import ReleaseEdit from "./editor.page";
 import entrance_api from "../../api/entrance";
+import styled from "react-emotion";
 
 interface Props {
   id: number;
   web: string;
 }
+
+export default React.memo((props: Props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
+    entrance_api(props.id, props.web).then(resp => {
+      dispatch({ type: "INIT", payload: resp });
+    });
+  }, []);
+
+  return <Init />;
+});
+
+let play = 0;
+const Init = React.memo(() => {
+  const [state, setState] = useState(false);
+  const { ui, sid, title, pv, cover, desc, music } = useMappedState(
+    useCallback(
+      (state: Store) => ({
+        ui: state.ui,
+        sid: state.global.sid,
+        title: state.share.title,
+        cover: state.share.cover,
+        desc: state.share.desc,
+        pv: state.global.pv,
+        music: state.music
+      }),
+      []
+    )
+  );
+  let params = new URLSearchParams();
+  params.append("url", `${window.location.href}`);
+  axios
+    .post(`${window.location.origin}/view/getSignPackage`, params)
+    .then(response => {
+      wx.config({
+        debug: false,
+        appId: response.data.appId,
+        timestamp: response.data.timestamp,
+        nonceStr: response.data.nonceStr,
+        signature: response.data.signature,
+        jsApiList: [
+          "onMenuShareTimeline",
+          "onMenuShareAppMessage",
+          "onMenuShareQQ",
+          "onMenuShareWeibo",
+          "hideMenuItems"
+        ]
+      });
+      wx.ready(() => {
+        if (response.data.limitPv <= pv) {
+          wx.hideMenuItems({
+            menuList: ["menuItem:share:timeline"]
+          });
+        }
+        wx.onMenuShareTimeline({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareAppMessage({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareQQ({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+        wx.onMenuShareWeibo({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: `${window.location.href}`, //
+          imgUrl: cover, // 分享图标
+          success: () => {
+            let params = new URLSearchParams();
+            params.append("sid", this.props.sid);
+            axios.post(`${window.location.origin}/view/addShare`, params);
+          }
+        });
+
+        if (play === 0) {
+          // @ts-ignore
+          setTimeout(document.getElementById("h5_audio").play(), 800);
+          play = 1;
+        }
+      });
+    });
+
+  const onClickStop = (name: any) => {
+    if (name === "open") {
+      // @ts-ignore
+      document.getElementById("h5_audio").pause();
+      setState(true);
+    }
+    if (name === "stop") {
+      // @ts-ignore
+      document.getElementById("h5_audio").play();
+      setState(false);
+    }
+  };
+
+  return (
+    <div>
+      <audio id={"h5_audio"} loop={true} src={music.url} />
+      <div className={mediaMobile}>
+        <BackgroundUI>
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 999,
+              top: "28px",
+              left: "8px"
+            }}
+          >
+            {state ? (
+              <div
+                className={mobileStyle}
+                onClick={() => onClickStop("stop")}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "50px",
+                  background: "rgba(0,0,0,0.4)",
+                  padding: "6px"
+                }}
+              >
+                <i
+                  {...mobileFont}
+                  style={{
+                    padding: 0,
+                    margin: "0",
+                    color: "white"
+                  }}
+                  className={`${mobileFont} iconfont icon-yinfu`}
+                />
+              </div>
+            ) : (
+              <div
+                className={mobileStyle}
+                onClick={() => onClickStop("open")}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "50px",
+                  background: "rgba(0,0,0,0.4)",
+                  padding: "6px"
+                }}
+              >
+                <RotateAtom>
+                  <i
+                    style={{
+                      padding: 0,
+                      margin: 0,
+                      color: "white"
+                    }}
+                    className={`${mobileFont} iconfont icon-yinfu`}
+                  />
+                </RotateAtom>
+              </div>
+            )}
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 999,
+              lineHeight: "calc(18/320*100vw)",
+              width: "calc(30/320*100vw)",
+              top: "30px",
+              right: "0"
+            }}
+          >
+            <div
+              style={{
+                padding: "3px",
+                display: "flex",
+                justifyContent: "center",
+                borderRadius: "35%",
+                alignItems: "center",
+                background: "rgba(0,0,0,0.4)",
+                color: "white",
+                marginRight: "5px"
+              }}
+            >
+              &nbsp;
+              <a
+                href={`${window.location.origin}/View/reports/vid/${sid}.html`}
+                target="view_window"
+                style={{ color: "white", fontSize: "calc(10/320*100vw)" }}
+              >
+                投诉
+              </a>
+              &nbsp;
+            </div>
+          </div>
+          {ui.map((data: any, index: number) => {
+            return (
+              <RenderStyle {...data.position} key={index}>
+                {data.common.type === "text" ||
+                (data.common.type === "picture" && data.common.id !== 1) ||
+                data.common.type === "button" ? (
+                  <LinkMapOphoneOweb
+                    type={data.base.link.type}
+                    link={data.base.link.url}
+                  >
+                    <RenderUi data={data} />
+                  </LinkMapOphoneOweb>
+                ) : (
+                  <RenderUi data={data} />
+                )}
+              </RenderStyle>
+            );
+          })}
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 999,
+              bottom: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              lineHeight: "calc(20/320*100vw)",
+              width: "100%",
+              margin: "auto",
+              alignContent: "center"
+            }}
+          >
+            <div
+              style={{
+                padding: "3px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "50px",
+                background: "rgba(0,0,0,0.4)",
+                marginBottom: "5px"
+              }}
+            >
+              <a
+                href={"http://m.e7wei.com"}
+                style={{ color: "white", fontSize: "calc(12/320*100vw)" }}
+              >
+                &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
+              </a>
+            </div>
+          </div>
+        </BackgroundUI>
+      </div>
+      <div className={mediaPC}>
+        <div className={phoneH5}>
+          <div className={center}>
+            <Row gutter={32} style={{ marginTop: "30px" }}>
+              <Col span={15} style={{ width: "320px", marginRight: "30px" }}>
+                <div
+                  className={center}
+                  style={{
+                    width: "320px",
+                    fontSize: "16px",
+                    color: "#616161",
+                    height: "55px",
+                    lineHeight: "54px",
+                    textAlign: "center",
+                    background: "white"
+                  }}
+                >
+                  {title ? title : "易企微 H5 页面设计"}
+                </div>
+                <BackgroundUI>
+                  <div
+                    style={{
+                      position: "absolute",
+                      zIndex: 999,
+                      top: "28px",
+                      left: "8px"
+                    }}
+                  >
+                    {state ? (
+                      <div
+                        className={mobileStyle}
+                        onClick={() => onClickStop("stop")}
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          borderRadius: "50px",
+                          background: "rgba(0,0,0,0.4)",
+                          padding: "6px"
+                        }}
+                      >
+                        <i
+                          {...mobileFont}
+                          style={{
+                            padding: 0,
+                            margin: "0",
+                            color: "white"
+                          }}
+                          className={`${mobileFont} iconfont icon-yinfu`}
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className={mobileStyle}
+                        onClick={() => onClickStop("open")}
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          borderRadius: "50px",
+                          background: "rgba(0,0,0,0.4)",
+                          padding: "6px"
+                        }}
+                      >
+                        <RotateAtom>
+                          <i
+                            style={{
+                              padding: 0,
+                              margin: 0,
+                              color: "white"
+                            }}
+                            className={`${mobileFont} iconfont icon-yinfu`}
+                          />
+                        </RotateAtom>
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      zIndex: 999,
+                      lineHeight: "25px",
+                      top: "28px",
+                      right: "0"
+                    }}
+                  >
+                    <div
+                      style={{
+                        borderRadius: "10px",
+                        background: "rgba(0,0,0,0.4)",
+                        color: "white",
+                        marginRight: "5px"
+                      }}
+                    >
+                      &nbsp;
+                      <a
+                        href={`${
+                          window.location.origin
+                        }/View/reports/vid/${sid}.html`}
+                        target="view_window"
+                        style={{ color: "white", fontSize: "12px" }}
+                      >
+                        投诉
+                      </a>
+                      &nbsp;
+                    </div>
+                  </div>
+                  {ui.map((data: any, index: number) => {
+                    return (
+                      <RenderStyle {...data.position} key={index}>
+                        {data.common.type === "text" ||
+                        (data.common.type === "picture" &&
+                          data.common.id !== 1) ||
+                        data.common.type === "button" ? (
+                          <LinkMapOphoneOweb
+                            type={data.base.link.type}
+                            link={data.base.link.url}
+                          >
+                            <RenderUi data={data} />
+                          </LinkMapOphoneOweb>
+                        ) : (
+                          <RenderUi data={data} />
+                        )}
+                      </RenderStyle>
+                    );
+                  })}
+                  <div
+                    style={{
+                      position: "absolute",
+                      zIndex: 999,
+                      bottom: 0,
+                      width: "100%",
+                      lineHeight: "20px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                      alignContent: "center"
+                    }}
+                  >
+                    <div
+                      style={{
+                        borderRadius: "50px",
+                        background: "rgba(0,0,0,0.4)",
+                        marginBottom: "5px"
+                      }}
+                    >
+                      <a
+                        href={"http://m.e7wei.com"}
+                        style={{ color: "white", fontSize: "12px" }}
+                      >
+                        &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
+                      </a>
+                    </div>
+                  </div>
+                </BackgroundUI>
+              </Col>
+              <Col span={9} className={center}>
+                <ReleaseEdit />
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 const phoneH5 = css`
   @media (min-width: 0) and(max-width: 575px) {
@@ -154,330 +591,60 @@ const mediaMobile = css`
     display: none;
   }
 `;
+const mobileStyle = css`
+  @media (min-width: 0) and (max-width: 575px) {
+    width: calc(20 / 320 * 100vw);
+    height: calc(20 / 320 * 100vw);
+  }
 
-export default React.memo((props: Props) => {
-  const dispatch = useDispatch();
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    width: calc(20 / 320 * 100vw);
+    height: calc(20 / 320 * 100vw);
+  }
 
-  useEffect(() => {
-    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
-    entrance_api(props.id, props.web).then(resp => {
-      dispatch({ type: "INIT", payload: resp });
-    });
-  }, []);
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: calc(20 / 320 * 100vw);
+    height: calc(20 / 320 * 100vw);
+  }
 
-  return <Init />;
-});
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    width: 25px;
+    height: 25px;
+  }
 
-const Init = React.memo(() => {
-  const { ui, sid, title, pv, cover, desc } = useMappedState(
-    useCallback(
-      (state: Store) => ({
-        ui: state.ui,
-        sid: state.global.sid,
-        title: state.share.title,
-        cover: state.share.cover,
-        desc: state.share.desc,
-        pv: state.global.pv
-      }),
-      []
-    )
-  );
+  @media (min-width: 1200px) {
+    width: 25px;
+    height: 25px;
+  }
+`;
+const mobileFont = css`
+  @media (min-width: 0) and (max-width: 575px) {
+    font-size: calc(18 / 320 * 100vw);
+  }
 
-  let params = new URLSearchParams();
-  params.append("url", `${window.location.href}`);
-  axios
-    .post(`${window.location.origin}/view/getSignPackage`, params)
-    .then(response => {
-      wx.config({
-        debug: false,
-        appId: response.data.appId,
-        timestamp: response.data.timestamp,
-        nonceStr: response.data.nonceStr,
-        signature: response.data.signature,
-        jsApiList: [
-          "onMenuShareTimeline",
-          "onMenuShareAppMessage",
-          "onMenuShareQQ",
-          "onMenuShareWeibo",
-          "hideMenuItems"
-        ]
-      });
-      wx.ready(() => {
-        if (response.data.limitPv <= pv) {
-          wx.hideMenuItems({
-            menuList: ["menuItem:share:timeline"]
-          });
-        }
-        wx.onMenuShareTimeline({
-          title: title, // 分享标题
-          desc: desc, // 分享描述
-          link: `${window.location.href}`, //
-          imgUrl: cover, // 分享图标
-          success: () => {
-            let params = new URLSearchParams();
-            params.append("sid", this.props.sid);
-            axios.post(`${window.location.origin}/view/addShare`, params);
-          }
-        });
-        wx.onMenuShareAppMessage({
-          title: title, // 分享标题
-          desc: desc, // 分享描述
-          link: `${window.location.href}`, //
-          imgUrl: cover, // 分享图标
-          success: () => {
-            let params = new URLSearchParams();
-            params.append("sid", this.props.sid);
-            axios.post(`${window.location.origin}/view/addShare`, params);
-          }
-        });
-        wx.onMenuShareQQ({
-          title: title, // 分享标题
-          desc: desc, // 分享描述
-          link: `${window.location.href}`, //
-          imgUrl: cover, // 分享图标
-          success: () => {
-            let params = new URLSearchParams();
-            params.append("sid", this.props.sid);
-            axios.post(`${window.location.origin}/view/addShare`, params);
-          }
-        });
-        wx.onMenuShareWeibo({
-          title: title, // 分享标题
-          desc: desc, // 分享描述
-          link: `${window.location.href}`, //
-          imgUrl: cover, // 分享图标
-          success: () => {
-            let params = new URLSearchParams();
-            params.append("sid", this.props.sid);
-            axios.post(`${window.location.origin}/view/addShare`, params);
-          }
-        });
-        setTimeout(() => {
-          try {
-            // @ts-ignore
-            document.getElementById("h5_audio").play();
-          } catch (error) {}
-        }, 800);
-      });
-    });
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    font-size: calc(18 / 320 * 100vw);
+  }
 
-  return (
-    <div>
-      <div className={mediaMobile}>
-        <BackgroundUI>
-          <div
-            style={{
-              position: "absolute",
-              zIndex: 999,
-              top: "28px",
-              left: "8px"
-            }}
-          >
-            <MusicUi />
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              zIndex: 999,
-              lineHeight: "calc(18/320*100vw)",
-              width: "calc(30/320*100vw)",
-              top: "30px",
-              right: "0"
-            }}
-          >
-            <div
-              style={{
-                padding: "3px",
-                display: "flex",
-                justifyContent: "center",
-                borderRadius: "35%",
-                alignItems: "center",
-                background: "rgba(0,0,0,0.4)",
-                color: "white",
-                marginRight: "5px"
-              }}
-            >
-              &nbsp;
-              <a
-                href={`${window.location.origin}/View/reports/vid/${sid}.html`}
-                target="view_window"
-                style={{ color: "white", fontSize: "calc(10/320*100vw)" }}
-              >
-                投诉
-              </a>
-              &nbsp;
-            </div>
-          </div>
-          {ui.map((data: any, index: number) => {
-            return (
-              <RenderStyle {...data.position} key={index}>
-                {data.common.type === "text" ||
-                (data.common.type === "picture" && data.common.id !== 1) ||
-                data.common.type === "button" ? (
-                  <LinkMapOphoneOweb
-                    type={data.base.link.type}
-                    link={data.base.link.url}
-                  >
-                    <RenderUi data={data} />
-                  </LinkMapOphoneOweb>
-                ) : (
-                  <RenderUi data={data} />
-                )}
-              </RenderStyle>
-            );
-          })}
-          <div
-            style={{
-              position: "absolute",
-              zIndex: 999,
-              bottom: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              lineHeight: "calc(20/320*100vw)",
-              width: "100%",
-              margin: "auto",
-              alignContent: "center"
-            }}
-          >
-            <div
-              style={{
-                padding: "3px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "50px",
-                background: "rgba(0,0,0,0.4)",
-                marginBottom: "5px"
-              }}
-            >
-              <a
-                href={"http://m.e7wei.com"}
-                style={{ color: "white", fontSize: "calc(12/320*100vw)" }}
-              >
-                &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
-              </a>
-            </div>
-          </div>
-        </BackgroundUI>
-      </div>
-      <div className={mediaPC}>
-        <div className={phoneH5}>
-          <div className={center}>
-            <Row gutter={32} style={{ marginTop: "30px" }}>
-              <Col span={15} style={{ width: "320px", marginRight: "30px" }}>
-                <div
-                  className={center}
-                  style={{
-                    width: "320px",
-                    fontSize: "16px",
-                    color: "#616161",
-                    height: "55px",
-                    lineHeight: "54px",
-                    textAlign: "center",
-                    background: "white"
-                  }}
-                >
-                  {title ? title : "易企微 H5 页面设计"}
-                </div>
-                <BackgroundUI>
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      top: "28px",
-                      left: "8px"
-                    }}
-                  >
-                    <MusicUi />
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      lineHeight: "25px",
-                      top: "28px",
-                      right: "0"
-                    }}
-                  >
-                    <div
-                      style={{
-                        borderRadius: "10px",
-                        background: "rgba(0,0,0,0.4)",
-                        color: "white",
-                        marginRight: "5px"
-                      }}
-                    >
-                      &nbsp;
-                      <a
-                        href={`${
-                          window.location.origin
-                        }/View/reports/vid/${sid}.html`}
-                        target="view_window"
-                        style={{ color: "white", fontSize: "12px" }}
-                      >
-                        投诉
-                      </a>
-                      &nbsp;
-                    </div>
-                  </div>
-                  {ui.map((data: any, index: number) => {
-                    return (
-                      <RenderStyle {...data.position} key={index}>
-                        {data.common.type === "text" ||
-                        (data.common.type === "picture" &&
-                          data.common.id !== 1) ||
-                        data.common.type === "button" ? (
-                          <LinkMapOphoneOweb
-                            type={data.base.link.type}
-                            link={data.base.link.url}
-                          >
-                            <RenderUi data={data} />
-                          </LinkMapOphoneOweb>
-                        ) : (
-                          <RenderUi data={data} />
-                        )}
-                      </RenderStyle>
-                    );
-                  })}
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      bottom: 0,
-                      width: "100%",
-                      lineHeight: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "auto",
-                      alignContent: "center"
-                    }}
-                  >
-                    <div
-                      style={{
-                        borderRadius: "50px",
-                        background: "rgba(0,0,0,0.4)",
-                        marginBottom: "5px"
-                      }}
-                    >
-                      <a
-                        href={"http://m.e7wei.com"}
-                        style={{ color: "white", fontSize: "12px" }}
-                      >
-                        &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
-                      </a>
-                    </div>
-                  </div>
-                </BackgroundUI>
-              </Col>
-              <Col span={9} className={center}>
-                <ReleaseEdit />
-              </Col>
-            </Row>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-});
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    font-size: calc(18 / 320 * 100vw);
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
+`;
+// 设置动画
+const rotate360 = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+// 设置组件
+const RotateAtom = styled("div")`
+  animation: ${rotate360} 2s linear infinite;
+`;
