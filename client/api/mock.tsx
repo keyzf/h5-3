@@ -448,98 +448,51 @@ Mock.mock(`${window.location.origin}/view/getData`, "post", {
       },
       {
         common: {
-          type: "text",
-          id: 2
+          type: "form",
+          id: 0
         },
         base: {
-          html: "",
-          index: "nBo5Rwp",
-          color: "",
-          wordArt: "http://src.e7wei.com/910164RJY4FH78H.png",
-          link: {
-            type: "choose",
-            url: ""
-          }
+          item: [
+            {
+              form_id: "BNO5ZEY",
+              isNeed: false,
+              type: "name",
+              title: "姓名",
+              title_color: "#000",
+              option: "请输入姓名",
+              option_color: "#000"
+            },
+            {
+              form_id: "995v0Oj",
+              isNeed: false,
+              type: "phone",
+              title: "手机",
+              title_color: "#000",
+              option: "请输入手机号",
+              option_color: "#000"
+            },
+            {
+              type: "textarea",
+              form_id: "zvU2VbK",
+              title_color: "#000",
+              option_color: "#000",
+              title: "备注",
+              isNeed: false,
+              choose: false,
+              decorator: "备注",
+              option: "请填写备注"
+            }
+          ],
+          desc: "提交",
+          font_color: "white",
+          bg_color: "",
+          date: "3000-12-13"
         },
         position: {
-          width: 198,
-          height: 82.99999999999997,
-          left: 17,
-          top: 161,
-          rotate: 0,
-          zIndex: 100
-        }
-      },
-      {
-        common: {
-          type: "text",
-          id: 16
-        },
-        base: {
-          html: "",
-          index: "NpUShkF",
-          color: "",
-          wordArt: "http://src.e7wei.com/9101685DFF6W4TJ.png",
-          link: {
-            type: "choose",
-            url: ""
-          }
-        },
-        position: {
-          width: 184,
-          height: 83.00000000000001,
-          left: 23,
-          top: 253,
-          rotate: 0,
-          zIndex: 100
-        }
-      },
-      {
-        common: {
-          type: "picture",
-          id: 40
-        },
-        base: {
-          img: "icon-icon-test34",
-          crop: "",
-          link: {
-            type: "choose",
-            url: ""
-          },
-          openness: 1,
-          radius: 0,
-          color: "#000"
-        },
-        position: {
-          width: 126,
-          height: 112,
-          left: 44,
-          top: 360,
-          rotate: 0,
-          zIndex: 100
-        }
-      },
-      {
-        common: {
-          type: "picture",
-          id: 1001
-        },
-        base: {
-          img: "http://src.e7wei.com/91212AC282C76P6.png",
-          crop: "",
-          link: {
-            type: "choose",
-            url: ""
-          },
-          openness: 1,
-          radius: 0,
-          color: "#000"
-        },
-        position: {
-          width: 74,
-          height: 77,
+          width: 212,
+          height: 415.00000000000006,
           left: 52,
-          top: 497,
+          top: 132.99999999999997,
           rotate: 0,
           zIndex: 100
         }
@@ -726,6 +679,57 @@ Mock.mock(`${window.location.origin}/Create/getData`, "post", {
           height: 77,
           left: 52,
           top: 497,
+          rotate: 0,
+          zIndex: 100
+        }
+      },
+      {
+        common: {
+          type: "form",
+          id: 0
+        },
+        base: {
+          item: [
+            {
+              form_id: "BNO5ZEY",
+              isNeed: false,
+              type: "name",
+              title: "姓名",
+              title_color: "#000",
+              option: "请输入姓名",
+              option_color: "#000"
+            },
+            {
+              form_id: "995v0Oj",
+              isNeed: false,
+              type: "phone",
+              title: "手机",
+              title_color: "#000",
+              option: "请输入手机号",
+              option_color: "#000"
+            },
+            {
+              type: "textarea",
+              form_id: "zvU2VbK",
+              title_color: "#000",
+              option_color: "#000",
+              title: "备注",
+              isNeed: false,
+              choose: false,
+              decorator: "备注",
+              option: "请填写备注"
+            }
+          ],
+          desc: "提交",
+          font_color: "white",
+          bg_color: "",
+          date: "3000-12-13"
+        },
+        position: {
+          width: 212,
+          height: 415.00000000000006,
+          left: 52,
+          top: 132.99999999999997,
           rotate: 0,
           zIndex: 100
         }

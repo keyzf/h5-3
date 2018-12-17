@@ -29,6 +29,7 @@
     "react-draggable": "^3.0.5",
     "react-emotion": "^9.2.12",
     "react-keydown": "^1.9.7",
+    "react-meta-tags": "^0.7.3",
     "react-motion": "^0.5.2",
     "react-qmap": "^0.1.5",
     "redux": "^4.0.1",

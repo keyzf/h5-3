@@ -49,7 +49,7 @@ const formAdapter = (oldData: oldData): object => {
 
     const common = {
         type: oldData.customize.type,
-        id: ""
+        id: 0
     };
     const base = {
         item: items,

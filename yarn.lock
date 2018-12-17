@@ -7690,6 +7690,13 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-meta-tags@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-0.7.3.tgz#fb5f4aa49846e06030a3d3850ea75ce697753d7e"
+  integrity sha512-+X28Q0gXb4I2xZZYGeiSfLCe8JpTAApxymcLb0zmf4uJx9vE2zPZ3NA8tpaRpYogUbXSUC45APzhscEkbGCZ0g==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-motion@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"

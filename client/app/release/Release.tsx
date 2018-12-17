@@ -13,24 +13,12 @@ import Store from "../../typing/store";
 import ReleaseEdit from "./editor.page";
 import entrance_api from "../../api/entrance";
 import styled from "react-emotion";
+import MetaTags from "react-meta-tags";
 
 interface Props {
   id: number;
   web: string;
 }
-
-export default React.memo((props: Props) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
-    entrance_api(props.id, props.web).then(resp => {
-      dispatch({ type: "INIT", payload: resp });
-    });
-  }, []);
-
-  return <Init />;
-});
 
 let play = 0;
 const Init = React.memo(() => {
@@ -140,6 +128,159 @@ const Init = React.memo(() => {
     }
   };
 
+  const phoneH5 = css`
+    @media (min-width: 0) and(max-width: 575px) {
+      display: none;
+    }
+
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      display: none;
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      display: none;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      background-color: rgb(240, 242, 245);
+      width: 100vm;
+      height: 100vh;
+      overflow: auto;
+      scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
+      scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+      scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+      scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+      scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
+      scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+      scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
+      scrollbar-base-color: transparent; /*滚动条的基色*/
+
+      &::-webkit-scrollbar {
+        border: none;
+        width: 0;
+        height: 0;
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar-button {
+        display: none;
+      }
+      &::-webkit-scrollbar-track {
+        display: none;
+      }
+      &::-webkit-scrollbar-track-piece {
+        display: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        display: none;
+      }
+      &::-webkit-scrollbar-corner {
+        display: none;
+      }
+      &::-webkit-resizer {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      background-color: rgb(240, 242, 245);
+      width: 100vm;
+      height: 100vh;
+      overflow: auto;
+      scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
+      scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+      scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+      scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+      scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
+      scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+      scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
+      scrollbar-base-color: transparent; /*滚动条的基色*/
+
+      &::-webkit-scrollbar {
+        border: none;
+        width: 0;
+        height: 0;
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar-button {
+        display: none;
+      }
+      &::-webkit-scrollbar-track {
+        display: none;
+      }
+      &::-webkit-scrollbar-track-piece {
+        display: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        display: none;
+      }
+      &::-webkit-scrollbar-corner {
+        display: none;
+      }
+      &::-webkit-resizer {
+        display: none;
+      }
+    }
+  `;
+  const center = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+  const mediaPC = css`
+    @media (min-width: 0) and (max-width: 575px) {
+      display: none;
+    }
+
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      display: none;
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      display: none;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+    }
+
+    @media (min-width: 1200px) {
+    }
+  `;
+  const mediaMobile = css`
+    @media (min-width: 0) and (max-width: 575px) {
+    }
+
+    @media (min-width: 576px) and (max-width: 767.98px) {
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+    }
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      display: none;
+    }
+
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  `;
+
+  const mobileStyle = css`
+    width: 25px;
+    height: 25px;
+  `;
+  const mobileFont = css`
+    font-size: 18px;
+  `;
+  // 设置动画
+  const rotate360 = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+  // 设置组件
+  const RotateAtom = styled("div")`
+    animation: ${rotate360} 2s linear infinite;
+  `;
   return (
     <div>
       <audio id={"h5_audio"} loop={true} src={music.url} />
@@ -206,19 +347,14 @@ const Init = React.memo(() => {
             style={{
               position: "absolute",
               zIndex: 999,
-              lineHeight: "calc(18/320*100vw)",
-              width: "calc(30/320*100vw)",
-              top: "30px",
+              lineHeight: "25px",
+              top: "28px",
               right: "0"
             }}
           >
             <div
               style={{
-                padding: "3px",
-                display: "flex",
-                justifyContent: "center",
-                borderRadius: "35%",
-                alignItems: "center",
+                borderRadius: "10px",
                 background: "rgba(0,0,0,0.4)",
                 color: "white",
                 marginRight: "5px"
@@ -228,7 +364,7 @@ const Init = React.memo(() => {
               <a
                 href={`${window.location.origin}/View/reports/vid/${sid}.html`}
                 target="view_window"
-                style={{ color: "white", fontSize: "calc(10/320*100vw)" }}
+                style={{ color: "white", fontSize: "12px" }}
               >
                 投诉
               </a>
@@ -456,195 +592,26 @@ const Init = React.memo(() => {
   );
 });
 
-const phoneH5 = css`
-  @media (min-width: 0) and(max-width: 575px) {
-    display: none;
-  }
+export default React.memo((props: Props) => {
+  const dispatch = useDispatch();
 
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    display: none;
-  }
+  useEffect(() => {
+    dispatch({ type: "GLOBAL", payload: { sid: props.id } });
+    entrance_api(props.id, props.web).then(resp => {
+      dispatch({ type: "INIT", payload: resp });
+    });
+  }, []);
 
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    display: none;
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    background-color: rgb(240, 242, 245);
-    width: 100vm;
-    height: 100vh;
-    overflow: auto;
-    scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
-    scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
-    scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
-    scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
-    scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
-    scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
-    scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
-    scrollbar-base-color: transparent; /*滚动条的基色*/
-
-    &::-webkit-scrollbar {
-      border: none;
-      width: 0;
-      height: 0;
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-button {
-      display: none;
-    }
-    &::-webkit-scrollbar-track {
-      display: none;
-    }
-    &::-webkit-scrollbar-track-piece {
-      display: none;
-    }
-    &::-webkit-scrollbar-thumb {
-      display: none;
-    }
-    &::-webkit-scrollbar-corner {
-      display: none;
-    }
-    &::-webkit-resizer {
-      display: none;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    background-color: rgb(240, 242, 245);
-    width: 100vm;
-    height: 100vh;
-    overflow: auto;
-    scrollbar-arrow-color: transparent; /*三角箭头的颜色*/
-    scrollbar-face-color: transparent; /*立体滚动条的颜色（包括箭头部分的背景色）*/
-    scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
-    scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
-    scrollbar-shadow-color: transparent; /*立体滚动条阴影的颜色*/
-    scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
-    scrollbar-track-color: transparent; /*立体滚动条背景颜色*/
-    scrollbar-base-color: transparent; /*滚动条的基色*/
-
-    &::-webkit-scrollbar {
-      border: none;
-      width: 0;
-      height: 0;
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-button {
-      display: none;
-    }
-    &::-webkit-scrollbar-track {
-      display: none;
-    }
-    &::-webkit-scrollbar-track-piece {
-      display: none;
-    }
-    &::-webkit-scrollbar-thumb {
-      display: none;
-    }
-    &::-webkit-scrollbar-corner {
-      display: none;
-    }
-    &::-webkit-resizer {
-      display: none;
-    }
-  }
-`;
-const center = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const mediaPC = css`
-  @media (min-width: 0) and (max-width: 575px) {
-    display: none;
-  }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    display: none;
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    display: none;
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-  }
-
-  @media (min-width: 1200px) {
-  }
-`;
-const mediaMobile = css`
-  @media (min-width: 0) and (max-width: 575px) {
-  }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    display: none;
-  }
-
-  @media (min-width: 1200px) {
-    display: none;
-  }
-`;
-const mobileStyle = css`
-  @media (min-width: 0) and (max-width: 575px) {
-    width: calc(20 / 320 * 100vw);
-    height: calc(20 / 320 * 100vw);
-  }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    width: calc(20 / 320 * 100vw);
-    height: calc(20 / 320 * 100vw);
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    width: calc(20 / 320 * 100vw);
-    height: calc(20 / 320 * 100vw);
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    width: 25px;
-    height: 25px;
-  }
-
-  @media (min-width: 1200px) {
-    width: 25px;
-    height: 25px;
-  }
-`;
-const mobileFont = css`
-  @media (min-width: 0) and (max-width: 575px) {
-    font-size: calc(18 / 320 * 100vw);
-  }
-
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    font-size: calc(18 / 320 * 100vw);
-  }
-
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    font-size: calc(18 / 320 * 100vw);
-  }
-
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 18px;
-  }
-`;
-// 设置动画
-const rotate360 = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
-
-// 设置组件
-const RotateAtom = styled("div")`
-  animation: ${rotate360} 2s linear infinite;
-`;
+  return (
+    <div>
+      {" "}
+      <MetaTags>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+      </MetaTags>
+      <Init />
+    </div>
+  );
+});

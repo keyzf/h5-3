@@ -7,6 +7,9 @@ import formAdapter from "./form-legacy";
 const ui_legacy = (data): any => {
     const new_data = [];
     data.map((data, index) => {
+        if (data.customize.type === "form") {
+            new_data[index] = formAdapter(data);
+        }
         if (data.customize.type === "text") {
             new_data[index] = textAdapter(data);
         }
@@ -19,9 +22,7 @@ const ui_legacy = (data): any => {
         if (data.customize.type === "button") {
             new_data[index] = buttonAdapter(data);
         }
-        if (data.customize.type === "form") {
-            new_data[index] = formAdapter(data);
-        }
+
     });
     return new_data;
 };
