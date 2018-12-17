@@ -135,8 +135,12 @@ export const $$from_opt_select = (form_id: string) => {
   };
 };
 
-const data = [
-  {
+FormUIData[0] = {
+  common: {
+    type: "form",
+    id: 0
+  },
+  base: {
     item: [
       $$from_opt_name(random()),
       $$from_opt_phone(random()),
@@ -152,9 +156,27 @@ const data = [
         option: "请填写备注"
       }
     ],
-    desc: "提交"
+    desc: "提交",
+    font_color: "white",
+    bg_color: "",
+    date: "3000-12-13"
   },
-  {
+  position: {
+    width: 300,
+    height: 400,
+    left: 0,
+    top: 0,
+    rotate: 0,
+    zIndex: 100
+  }
+};
+
+FormUIData[1] = {
+  common: {
+    type: "form",
+    id: 0
+  },
+  base: {
     item: [
       {
         form_id: random(),
@@ -214,9 +236,27 @@ const data = [
         option_color: "#000"
       }
     ],
-    desc: "提交"
+    desc: "提交",
+    font_color: "white",
+    bg_color: "",
+    date: "3000-12-13"
   },
-  {
+  position: {
+    width: 300,
+    height: 1000,
+    left: 0,
+    top: 0,
+    rotate: 0,
+    zIndex: 100
+  }
+};
+
+FormUIData[2] = {
+  common: {
+    type: "form",
+    id: 0
+  },
+  base: {
     item: [
       $$from_opt_name(random()),
       $$from_opt_phone(random()),
@@ -254,32 +294,19 @@ const data = [
         option_color: "#000"
       }
     ],
-    desc: "提交"
+    desc: "提交",
+    font_color: "white",
+    bg_color: "",
+    date: "3000-12-13"
+  },
+  position: {
+    width: 300,
+    height: 650,
+    left: 0,
+    top: 0,
+    rotate: 0,
+    zIndex: 100
   }
-];
-
-data.map((data, index) => {
-  FormUIData.push({
-    common: {
-      type: "form",
-      id: index
-    },
-    base: {
-      item: data.item,
-      desc: data.desc,
-      font_color: "white",
-      bg_color: "",
-      date: "3000-12-13"
-    },
-    position: {
-      width: 300,
-      height: 100,
-      left: 0,
-      top: 0,
-      rotate: 0,
-      zIndex: 100
-    }
-  });
-});
+};
 
 export default FormUIData;
