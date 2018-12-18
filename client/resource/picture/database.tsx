@@ -461,6 +461,474 @@ const icon: object[] = [
       }
     ],
     index: 31
+  },
+  {
+    data: [
+      {
+        img: "android",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 500
+  },
+  {
+    data: [
+      {
+        img: "dingding",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 501
+  },
+  {
+    data: [
+      {
+        img: "weibo",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 502
+  },
+  {
+    data: [
+      {
+        img: "wechat",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 503
+  },
+  {
+    data: [
+      {
+        img: "shopping-cart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 504
+  },
+  {
+    data: [
+      {
+        img: "home",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 505
+  },
+  {
+    data: [
+      {
+        img: "environment",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 506
+  },
+  {
+    data: [
+      {
+        img: "phone",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 507
+  },
+  {
+    data: [
+      {
+        img: "like",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 508
+  },
+  {
+    data: [
+      {
+        img: "taobao",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 509
+  },
+  {
+    data: [
+      {
+        img: "zhihu",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 510
+  },
+  {
+    data: [
+      {
+        img: "alipay",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 511
+  },
+  {
+    data: [
+      {
+        img: "cloud-download",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 512
+  },
+  {
+    data: [
+      {
+        img: "smile",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 513
+  },
+  {
+    data: [
+      {
+        img: "notification",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 514
+  },
+  {
+    data: [
+      {
+        img: "setting",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 515
+  },
+  {
+    data: [
+      {
+        img: "camera",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 516
+  },
+  {
+    data: [
+      {
+        img: "scan",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 517
+  },
+  {
+    data: [
+      {
+        img: "area-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 518
+  },
+  {
+    data: [
+      {
+        img: "pie-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 519
+  },
+  {
+    data: [
+      {
+        img: "bar-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 520
+  },
+  {
+    data: [
+      {
+        img: "dot-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 521
+  },
+  {
+    data: [
+      {
+        img: "line-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 522
+  },
+  {
+    data: [
+      {
+        img: "radar-chart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 523
+  },
+  {
+    data: [
+      {
+        img: "fall",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 524
+  },
+  {
+    data: [
+      {
+        img: "rise",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 524
+  },
+  {
+    data: [
+      {
+        img: "stock",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 525
+  },
+  {
+    data: [
+      {
+        img: "fund",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 526
+  },
+  {
+    data: [
+      {
+        img: "heart",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 527
+  },
+  {
+    data: [
+      {
+        img: "compass",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 528
+  },
+  {
+    data: [
+      {
+        img: "wifi",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 529
+  },
+  {
+    data: [
+      {
+        img: "shop",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 530
+  },
+  {
+    data: [
+      {
+        img: "gift",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 531
+  },
+  {
+    data: [
+      {
+        img: "trademark",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 532
+  },
+  {
+    data: [
+      {
+        img: "check-circle",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 533
+  },
+  {
+    data: [
+      {
+        img: "question-circle",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#000"
+      }
+    ],
+    index: 534
   }
 ];
 icon.map((data: any) => {
@@ -471,8 +939,8 @@ icon.map((data: any) => {
     },
     base: data.data[0],
     position: {
-      width: 80,
-      height: 80,
+      width: 50,
+      height: 50,
       left: 0,
       top: 0,
       rotate: 0,
@@ -818,8 +1286,8 @@ line.map((data: any) => {
     },
     base: data.data[0],
     position: {
-      width: 80,
-      height: 80,
+      width: 50,
+      height: 50,
       left: 0,
       top: 0,
       rotate: 0,
@@ -1703,8 +2171,8 @@ shape.map((data: any) => {
     },
     base: data.data[0],
     position: {
-      width: 80,
-      height: 80,
+      width: 50,
+      height: 50,
       left: 0,
       top: 0,
       rotate: 0,
