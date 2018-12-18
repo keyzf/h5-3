@@ -25,6 +25,7 @@ type ImageProps = {
 
 const BgAtom = styled("div")<ImageProps>`
   position: relative;
+  overflow: hidden;
   
   box-sizing: border-box;
   
