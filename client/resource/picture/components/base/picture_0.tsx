@@ -10,9 +10,7 @@ class Picture0 extends React.PureComponent<Props, ""> {
     render() {
         const {base} = this.props.data;
         return (
-            <a href={''}>
-                <img src={base.crop} alt={"wordArt"} width={"100%"}/>
-            </a>
+            <img src={base.crop} alt={""} style={{width: "100%"}}/>
         );
     }
 }

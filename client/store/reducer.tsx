@@ -20,6 +20,17 @@ const reducer: any = (state = store, action: any) => {
   const { type, payload } = action;
   switch (type) {
     /**
+     * 记录必要值
+     */
+    case "GLOBAL":
+      return produce(state, draftState => {
+        draftState.global = {
+          ...draftState.global,
+          ...payload
+        };
+      });
+
+    /**
      * @desc 数据初始化
      */
     case "INIT":
@@ -102,17 +113,6 @@ const reducer: any = (state = store, action: any) => {
         draftState.bg = draftState.log[payload].bg;
         draftState.music = draftState.log[payload].music;
         draftState.edit = { type: "share", number: [], lock: [] };
-      });
-
-    /**
-     * 记录必要值
-     */
-    case "GLOBAL":
-      return produce(state, draftState => {
-        draftState.global = {
-          ...draftState.global,
-          ...payload
-        };
       });
 
     /**

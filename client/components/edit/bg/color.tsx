@@ -2,26 +2,21 @@ import * as React from "react";
 import { useCallback } from "react";
 import { useMappedState, useDispatch } from "redux-react-hook";
 import { Icon, Popover } from "antd";
-import { TwitterPicker } from "react-color";
+import { ChromePicker } from "react-color";
 import Store from "../../../typing/store";
 
 const BgEditColor = React.memo(() => {
   const dispatch = useDispatch();
   const { color } = useMappedState(useCallback(state, []));
-  const changeColor = useCallback((color:any) => {
+  const changeColor = useCallback((color: any) => {
     dispatch({ type: "BG_VALUE", payload: { color: color.hex, img: "" } });
   }, []);
-
 
   return (
     <Popover
       placement="bottomLeft"
       content={
-        <TwitterPicker
-          triangle={"hide"}
-          color={color}
-          onChangeComplete={e => changeColor(e)}
-        />
+        <ChromePicker color={color} onChangeComplete={e => changeColor(e)} />
       }
       trigger="click"
     >
@@ -38,7 +33,7 @@ const BgEditColor = React.memo(() => {
           alignContent: "center"
         }}
       >
-        <Icon type="bg-colors" theme="outlined" style={{ fontSize: "18px" }}/>
+        <Icon type="bg-colors" theme="outlined" style={{ fontSize: "18px" }} />
       </div>
     </Popover>
   );

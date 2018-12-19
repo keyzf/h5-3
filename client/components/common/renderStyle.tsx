@@ -12,14 +12,18 @@ type style = {
 const RenderStyle = styled("span")<style>`
   position: absolute;
 
-  margin: auto;
   // 动画移动
   transform: rotate(${props => props.rotate + "deg"});
   // 定位
-
-  z-index: ${props => props.zIndex};
-
+  outline: none;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 0;
   overflow: hidden;
+  margin: auto;
+  z-index: ${props => props.zIndex};
 
   @media (min-width: 10px) and (max-width: 575px) {
     height: ${props => (props.height / 320) * 100 + "vw"};

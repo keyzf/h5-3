@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Popover } from "antd";
-import { TwitterPicker } from "react-color";
+import { ChromePicker } from "react-color";
 
 
 const FormEditColor = React.memo((props: { fun: any, color: any, children: any, type: any }) => {
@@ -10,7 +10,7 @@ const FormEditColor = React.memo((props: { fun: any, color: any, children: any, 
     <Popover
       placement="bottomLeft"
       content={
-        <TwitterPicker
+        <ChromePicker
           triangle={"hide"}
           color={props.color}
           onChangeComplete={(e) => props.fun(props.type, e)}

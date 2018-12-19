@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Icon, Popover, Row, Col, Tooltip} from "antd";
-import {CirclePicker} from "react-color";
+import {ChromePicker} from "react-color";
 import {css} from "emotion";
 import Store from "../../typing/store";
 import {useDispatch, useMappedState} from "redux-react-hook";
@@ -33,7 +33,7 @@ const ToolBarGrid = React.memo(() => {
     };
 
     const colorCard = (
-        <CirclePicker color={color} onChangeComplete={changeColor}/>
+        <ChromePicker color={color} onChangeComplete={changeColor}/>
     );
 
 
