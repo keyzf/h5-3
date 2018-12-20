@@ -4,44 +4,18 @@
 > 隶属公司：南京易企云软件科技有限公司  
 > 当前项目版本 0.9x
 
-## 使用
-
-默认系统以安装 node,yarn  
-🚚 项目下载至本地后，运行 node 命令进行依赖包的安装
-
-```npm
-   yarn install -y
-```
-
-📦 打包全局依赖
-
-```npm
-   yarn dll
-```
-
-😃 启动程序
-
-```npm
-   yarn dev
-```
-
-至此，通过 http://localhost:3000/#/v/2 链接即可在本地访问页面。  
-再次页面下可进行代码调试等操作
-
-☁️ 发布通过下面的命令行即可进行打包发布操作
-
-```npm
-   yarn build
-```
-
-引入 cdn 等问题，请参考打包环境包：[webpack-create-app](https://github.com/AntoninSorrento/webpack-create-app)
-
 ## 待办事项
 
 1. 富文本文本区长度问题
 2. img src 导向
 
 ## 更改日志
+
+
+- 2018 年 12 月 20 日 10:41:00
+
+1. 背景组件调整
+2. 全局组件链接调整
 
 - 2018 年 12 月 19 日 09:27:20
 

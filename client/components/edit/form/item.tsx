@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import { Button, Form, Icon, Input, Popover, Radio } from "antd";
 
 const FormEditItem = React.memo((props: { data: any; fun: any }) => {
@@ -57,7 +57,7 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
           <Popover
             placement="bottomLeft"
             content={
-              <ChromePicker
+              <SketchPicker
                 triangle={"hide"}
                 color={title_color}
                 onChangeComplete={e => props.fun({ title_color: e.hex })}
@@ -79,7 +79,7 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
           <Popover
             placement="bottomLeft"
             content={
-              <ChromePicker
+              <SketchPicker
                 triangle={"hide"}
                 color={option_color}
                 onChangeComplete={e => props.fun({ option_color: e.hex })}

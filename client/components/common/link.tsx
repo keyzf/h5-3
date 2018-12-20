@@ -1,44 +1,25 @@
-import * as React from "react";
+import React from "react";
 import copy from "copy-to-clipboard";
-import ReactQMap from "react-qmap";
-import { message, Modal } from "antd";
+
+import { Icon, Modal } from "antd";
 import { useState } from "react";
 
 const LinkMapOphoneOweb = React.memo((props: any) => {
+  const [visible, setVisible] = useState(false);
+
+  const handleOk = e => {
+    setVisible(false);
+  };
+
+  const handleCancel = e => {
+    setVisible(false);
+  };
+
   const copys = () => {
     copy(props.link);
-    message.success("淘口令复制成功，请打开淘宝APP/淘宝网使用");
+    setVisible(true);
   };
 
-  /**
-   * @desc 针对地图操作
-   * @param map
-   * @param wMap
-   */
-  const getMap = (map: any, wMap: any) => {
-    // 点选地图坐标
-    const marker = new wMap.Marker({
-      position: map.getCenter(),
-      map: map
-    });
-  };
-
-  const ok = (maps: any) => {
-    Modal.info({
-      title: "活动地址",
-      okText: "确认",
-      content: (
-        <ReactQMap
-          center={{ latitude: maps.lat, longitude: maps.lng }}
-          getMap={(map: any, wMap: any) => getMap(map, wMap)}
-          initialOptions={{ zoomControl: true, mapTypeControl: true }}
-          apiKey="MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5"
-          style={{ height: 300 }}
-        />
-      ),
-      onOk() {}
-    });
-  };
   return (
     <React.Fragment>
       {props.type === "phone" ? (
@@ -69,15 +50,109 @@ const LinkMapOphoneOweb = React.memo((props: any) => {
         ""
       )}
       {props.type === "map" ? (
-        <div onClick={() => ok(props.link)}>
+        <a
+          href={`https://apis.map.qq.com/tools/routeplan/eword=活动地址&epointx=${
+            props.link.lat
+          }&epointy=${
+            props.link.lng
+          }?referer=myapp&key=MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5`}
+          style={{ color: "black" }}
+        >
           <div style={{ pointerEvents: "none", userSelect: "none" }}>
             {props.children}
           </div>
-        </div>
+        </a>
       ) : (
         ""
       )}
       {props.type === "choose" ? props.children : ""}
+
+      <Modal
+        title={null}
+        width={380}
+        bodyStyle={{
+          padding: 0
+        }}
+        closable={false}
+        footer={null}
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div style={{ padding: "10px" }}>
+          <div
+            style={{
+              marginTop: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "auto",
+              width: "100%"
+            }}
+          >
+            <Icon
+              style={{ color: "#51d4b2", fontSize: "35px" }}
+              type="check-circle"
+            />
+          </div>
+        </div>
+        <div
+          style={{
+            marginBottom: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "auto",
+            width: "100%"
+          }}
+        >
+          <div style={{ fontSize: "18px", color: "rgb(135,145,146)" }}>
+            淘口令复制成功
+          </div>
+        </div>
+        <div
+          style={{
+            marginBottom: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "auto",
+            width: "100%"
+          }}
+        >
+          <div
+            style={{
+              fontSize: "14px",
+              color: "rgb(135,145,146)",
+              marginTop: "5px"
+            }}
+          >
+            打开手机淘宝购买
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: "rgb(35,199,255)",
+            color: "white"
+          }}
+        >
+          <div
+            onClick={handleOk}
+            style={{
+              padding: "10px",
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "5px",
+              width: "100%"
+            }}
+          >
+            <div style={{ fontSize: "15px" }}>关闭</div>
+          </div>
+        </div>
+      </Modal>
     </React.Fragment>
   );
 });

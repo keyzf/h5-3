@@ -3,48 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>加载中...</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="//at.alicdn.com/t/font_629831_uetvbdj244.css" rel="stylesheet">
     <script src="http://e7wei-h5long.oss-cn-beijing.aliyuncs.com/vendor.js"></script>
+    <title>加载中...</title>
     <script>
-        try {
-            if (new URLSearchParams('q=%2B').get('q') !== '+') throw {};
-        } catch (error) {
-            window.URLSearchParams = void 0;
-            document.write('<script src="https://unpkg.com/@ungap/url-search-params"><' + '/script>');
+      try {
+        if (new URLSearchParams("q=%2B").get("q") !== "+") {
         }
+      } catch (error) {
+        window.URLSearchParams = void 0;
+        document.write("<script src=\"https://unpkg.com/@ungap/url-search-params\"><" + "/script>");
+      }
     </script>
     <style>
         p {
             margin: 0;
             padding: 0;
         }
-
-        /*模态框*/
-        .modal {
-            position: fixed; /* 根据浏览器定位 */
-            left: 0;
-            top: 0;
-            display: flex; /* 默认隐藏 */
-            justify-content: center;
-            align-items: center;
-            z-index: 100000; /* 放在顶部 */
-            width: 100%; /* 全宽 */
-            height: 100%; /* 全高 */
-            overflow: auto; /* 允许滚动 */
-            transform: translate(0, 0);
-            background-color: rgba(0, 0, 0, 0.4); /* 背景色 */
-        }
-
-        /*模态框内容*/
-        .modal-content {
-            background-color: #fefefe;
-            border-radius: 10px;
-            z-index: 100001; /* 放在顶部 */
-            width: 80%;
-            max-width: 400px;
-            animation: topDown 0.4s; /*自定义动画，从模态框内容上到下出现*/
+        #__vconsole{
+            display: none;
         }
     </style>
 <body>

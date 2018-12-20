@@ -30,7 +30,7 @@ const BgEditImg = React.memo(() => {
               height: "60px",
               border: "1px solid black",
               borderRadius: "3px",
-                padding:"10px 3px "
+              padding: "10px 3px "
             }}
           >
             <div
@@ -51,7 +51,7 @@ const BgEditImg = React.memo(() => {
                 alignItems: "center"
               }}
             >
-              图片上传
+              上传图片
             </div>
           </div>
         </ImgModel>

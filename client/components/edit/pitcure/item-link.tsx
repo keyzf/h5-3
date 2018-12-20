@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-ignore
 import ReactQMap from "react-qmap";
 import { useCallback, useState } from "react";
 import { Select, Input, Form, Modal, Row, Col } from "antd";
@@ -12,13 +11,13 @@ const PictureItemLink = React.memo((props: { index: number }) => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui,
+        ui: state.ui
       }),
       []
     )
   );
 
-  let maps:any, wMaps:any;
+  let maps: any, wMaps: any;
 
   const [state, setState] = useState({
     map: false,
@@ -31,8 +30,10 @@ const PictureItemLink = React.memo((props: { index: number }) => {
    */
   const onSelect = (changeType: string) => {
     dispatch({
-      type: "PICTURE_BASE_ITEM", payload: {
-        index: props.index, data: {
+      type: "PICTURE_BASE_ITEM",
+      payload: {
+        index: props.index,
+        data: {
           link: {
             type: changeType,
             url: ""
@@ -40,17 +41,21 @@ const PictureItemLink = React.memo((props: { index: number }) => {
         }
       }
     });
-    changeType === "map" ? setState({ map: true, map_position: state.map_position }) : "";
+    changeType === "map"
+      ? setState({ map: true, map_position: state.map_position })
+      : "";
   };
 
   /**
    * @desc  记录链接数据的更改
    * @param e
    */
-  const onChangeValue = (e:any) => {
+  const onChangeValue = (e: any) => {
     dispatch({
-      type: "PICTURE_BASE_ITEM", payload: {
-        index: props.index, data: {
+      type: "PICTURE_BASE_ITEM",
+      payload: {
+        index: props.index,
+        data: {
           link: {
             type: ui[editList[0]].base[props.index].link.type,
             url: e.target.value
@@ -75,8 +80,10 @@ const PictureItemLink = React.memo((props: { index: number }) => {
    */
   const onOK = () => {
     dispatch({
-      type: "PICTURE_BASE_ITEM", payload: {
-        index: props.index, data: {
+      type: "PICTURE_BASE_ITEM",
+      payload: {
+        index: props.index,
+        data: {
           link: {
             type: ui[editList[0]].base[props.index].link.type,
             url: state.map_position
@@ -90,13 +97,12 @@ const PictureItemLink = React.memo((props: { index: number }) => {
     });
   };
 
-
   /**
    * @desc 针对地图操作
    * @param map
    * @param wMap
    */
-  const getMap = (map:any, wMap:any) => {
+  const getMap = (map: any, wMap: any) => {
     maps = map;
     wMaps = wMap;
     // 点选地图坐标
@@ -104,7 +110,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       position: map.getCenter(),
       map: map
     });
-    wMap.event.addListener(map, "click", (event:any) => {
+    wMap.event.addListener(map, "click", (event: any) => {
       marker.setPosition(event.latLng);
       setState({
         map: state.map,
@@ -126,7 +132,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       //设置动扩大检索区域。默认值true，会自动检索指定城市以外区域。
       autoExtend: true,
       //检索成功的回调函数
-      complete: (results:any) => {
+      complete: (results: any) => {
         //设置回调函数参数
         let pois = results.detail.pois;
         for (let i = 0, l = pois.length; i < l; i++) {
@@ -176,7 +182,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       </Form.Item>
       {type === "web" ? (
         <Form.Item label="网页" {...formItemLayout}>
-          <Input value={url} onChange={onChangeValue}/>
+          <Input value={url} onChange={onChangeValue} />
         </Form.Item>
       ) : (
         ""
@@ -238,19 +244,22 @@ const PictureItemLink = React.memo((props: { index: number }) => {
           onSearch={mapSearch}
           enterButton
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Row gutter={6}>
           <Col span={8} style={{ height: "300px", overflow: "auto" }}>
             <p>搜索结果显示：</p>
-            <div id="infoDiv"/>
+            <div id="infoDiv" />
           </Col>
           <Col span={16}>
             <ReactQMap
-              center={{ latitude: url ? url.lat : "32.05838", longitude: url ? url.lng : "118.79647" }}
-              getMap={(map:any, wMap:any) => getMap(map, wMap)}
+              center={{
+                latitude: url ? url.lat : "32.05838",
+                longitude: url ? url.lng : "118.79647"
+              }}
+              getMap={(map: any, wMap: any) => getMap(map, wMap)}
               initialOptions={{ zoomControl: true, mapTypeControl: true }}
-              apiKey="xxxxxx-xxxxx-xxxxx-xxxxxx"
+              apiKey="MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5"
               style={{ height: 300 }}
             />
           </Col>

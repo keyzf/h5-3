@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Popover } from "antd";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 
 
 const FormEditColor = React.memo((props: { fun: any, color: any, children: any, type: any }) => {
@@ -10,7 +10,7 @@ const FormEditColor = React.memo((props: { fun: any, color: any, children: any, 
     <Popover
       placement="bottomLeft"
       content={
-        <ChromePicker
+        <SketchPicker
           triangle={"hide"}
           color={props.color}
           onChangeComplete={(e) => props.fun(props.type, e)}

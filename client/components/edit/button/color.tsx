@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Form,  Popover } from "antd";
-import { ChromePicker } from "react-color";
+import { Form, Popover } from "antd";
+import { SketchPicker } from "react-color";
 import Store from "../../../typing/store";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { useCallback } from "react";
@@ -10,13 +10,13 @@ const ButtonColor = React.memo((props: any) => {
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui,
+        ui: state.ui
       }),
       []
     )
   );
 
-  const changeColor = (color:any) => {
+  const changeColor = (color: any) => {
     props.fun(color);
   };
 
@@ -32,41 +32,29 @@ const ButtonColor = React.memo((props: any) => {
 
   return (
     <React.Fragment>
-      {
-        props.name === "bg" ?
+      {props.name === "bg" ? (
+        <Popover
+          placement="bottomLeft"
+          content={
+            <SketchPicker color={color} onChangeComplete={changeColor} />
+          }
+          trigger="click"
+        >
+          {props.children}
+        </Popover>
+      ) : (
+        <FormItem label={props.name} {...formItemLayout}>
           <Popover
             placement="bottomLeft"
             content={
-              <ChromePicker
-                triangle={"hide"}
-                color={color}
-                onChangeComplete={changeColor}
-              />
+              <SketchPicker color={color} onChangeComplete={changeColor} />
             }
             trigger="click"
           >
-
             {props.children}
           </Popover>
-          :
-          <FormItem label={props.name} {...formItemLayout}>
-
-            <Popover
-              placement="bottomLeft"
-              content={
-                <ChromePicker
-                  triangle={"hide"}
-                  color={color}
-                  onChangeComplete={changeColor}
-                />
-              }
-              trigger="click"
-            >
-              {props.children}
-            </Popover>
-          </FormItem>
-      }
-
+        </FormItem>
+      )}
     </React.Fragment>
   );
 });

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Form, Popover } from "antd";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import Store from "../../../typing/store";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { useCallback } from "react";
@@ -37,7 +37,7 @@ const TextColor = React.memo(() => {
       <Popover
         placement="bottomLeft"
         content={
-          <ChromePicker
+          <SketchPicker
             triangle={"hide"}
             color={color}
             onChangeComplete={changeColor}

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useCallback } from "react";
 import { useMappedState, useDispatch } from "redux-react-hook";
 import { Icon, Popover } from "antd";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import Store from "../../../typing/store";
 
 const BgEditColor = React.memo(() => {
@@ -16,7 +16,7 @@ const BgEditColor = React.memo(() => {
     <Popover
       placement="bottomLeft"
       content={
-        <ChromePicker color={color} onChangeComplete={e => changeColor(e)} />
+        <SketchPicker color={color} onChangeComplete={e => changeColor(e)} />
       }
       trigger="click"
     >
