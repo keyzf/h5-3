@@ -24,10 +24,8 @@ const LinkMapOphoneOweb = React.memo((props: any) => {
     const ua = navigator.userAgent.toLowerCase();
     // @ts-ignore
     if (ua.match(/MicroMessenger/i) === "micromessenger") {
-      console.log("微信环境");
       props.func(props.link.lat, props.link.lng);
     } else {
-      console.log("非微信环境");
       window.location.href = `https://apis.map.qq.com/tools/routeplan/eword=活动地址&epointx=${
         props.link.lat
       }&epointy=${

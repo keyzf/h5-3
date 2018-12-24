@@ -19,8 +19,8 @@ const saveMsg_ajax = data => {
                 if (response.data.message) {
                     reject(false);
                 } else {
-                    resolve(true);
-                }
+                         resolve(true);
+                       }
             });
     });
 };

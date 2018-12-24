@@ -38,7 +38,6 @@ const TextColor = React.memo(() => {
         placement="bottomLeft"
         content={
           <SketchPicker
-            triangle={"hide"}
             color={color}
             onChangeComplete={changeColor}
           />
