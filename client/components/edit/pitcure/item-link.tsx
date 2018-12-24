@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { Select, Input, Form, Modal, Row, Col } from "antd";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import Store from "../../../typing/store";
-
+let maps: any, wMaps: any;
 const PictureItemLink = React.memo((props: { index: number }) => {
   const dispatch = useDispatch();
   const { editList, ui } = useMappedState(
@@ -16,8 +16,6 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       []
     )
   );
-
-  let maps: any, wMaps: any;
 
   const [state, setState] = useState({
     map: false,
@@ -124,6 +122,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
    * @param name
    */
   const mapSearch = (name: string) => {
+    document.getElementById("infoDiv").innerHTML = "";
     // 搜索
     let latlngBounds = new wMaps.LatLngBounds();
     const searchService = new wMaps.SearchService({
@@ -182,7 +181,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
       </Form.Item>
       {type === "web" ? (
         <Form.Item label="网页" {...formItemLayout}>
-          <Input value={url} onChange={onChangeValue} />
+          <Input value={url} onChange={onChangeValue}/>
         </Form.Item>
       ) : (
         ""
@@ -215,7 +214,7 @@ const PictureItemLink = React.memo((props: { index: number }) => {
           <Input.TextArea
             rows={3}
             placeholder="坐标（xxx,xxx)"
-            value={url}
+            value={`${url ? url.lat ? url.lat + "," + url.lng : url : ""}`}
             onChange={onChangeValue}
           />
           <p
@@ -244,12 +243,12 @@ const PictureItemLink = React.memo((props: { index: number }) => {
           onSearch={mapSearch}
           enterButton
         />
-        <br />
-        <br />
+        <br/>
+        <br/>
         <Row gutter={6}>
           <Col span={8} style={{ height: "300px", overflow: "auto" }}>
             <p>搜索结果显示：</p>
-            <div id="infoDiv" />
+            <div id="infoDiv"/>
           </Col>
           <Col span={16}>
             <ReactQMap

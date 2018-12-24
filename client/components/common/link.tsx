@@ -20,6 +20,22 @@ const LinkMapOphoneOweb = React.memo((props: any) => {
     setVisible(true);
   };
 
+  const maplink = () => {
+    const ua = navigator.userAgent.toLowerCase();
+    // @ts-ignore
+    if (ua.match(/MicroMessenger/i) === "micromessenger") {
+      console.log("微信环境");
+      props.func(props.link.lat, props.link.lng);
+    } else {
+      console.log("非微信环境");
+      window.location.href = `https://apis.map.qq.com/tools/routeplan/eword=活动地址&epointx=${
+        props.link.lat
+      }&epointy=${
+        props.link.lng
+      }?referer=myapp&key=MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5`;
+    }
+  };
+
   return (
     <React.Fragment>
       {props.type === "phone" ? (
@@ -50,14 +66,7 @@ const LinkMapOphoneOweb = React.memo((props: any) => {
         ""
       )}
       {props.type === "map" ? (
-        <a
-          href={`https://apis.map.qq.com/tools/routeplan/eword=活动地址&epointx=${
-            props.link.lat
-          }&epointy=${
-            props.link.lng
-          }?referer=myapp&key=MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5`}
-          style={{ color: "black" }}
-        >
+        <a onClick={maplink} style={{ color: "black" }}>
           <div style={{ pointerEvents: "none", userSelect: "none" }}>
             {props.children}
           </div>

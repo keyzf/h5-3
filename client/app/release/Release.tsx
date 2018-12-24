@@ -19,9 +19,5 @@ export default React.memo((props: Props) => {
     });
   }, []);
 
-  return (
-
-      <RenderH5 />
-
-  );
+  return <RenderH5 />;
 });

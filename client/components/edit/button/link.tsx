@@ -5,19 +5,18 @@ import { Select, Input, Form, Modal, Row, Col } from "antd";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import Store from "../../../typing/store";
 
+let maps: any, wMaps: any;
 const ButtonLink = React.memo(() => {
   const dispatch = useDispatch();
   const { editList, ui } = useMappedState(
     useCallback(
       (state: Store) => ({
         editList: state.edit.number,
-        ui: state.ui,
+        ui: state.ui
       }),
       []
     )
   );
-
-  let maps:any, wMaps:any;
 
   const [state, setState] = useState({
     map: false,
@@ -30,23 +29,27 @@ const ButtonLink = React.memo(() => {
    */
   const onSelect = (changeType: string) => {
     dispatch({
-      type: "BUTTON_VALUE", payload: {
+      type: "BUTTON_VALUE",
+      payload: {
         link: {
           type: changeType,
           url: ""
         }
       }
     });
-    changeType === "map" ? setState({ map: true, map_position: state.map_position }) : "";
+    changeType === "map"
+      ? setState({ map: true, map_position: state.map_position })
+      : "";
   };
 
   /**
    * @desc  记录链接数据的更改
    * @param e
    */
-  const onChangeValue = (e:any) => {
+  const onChangeValue = (e: any) => {
     dispatch({
-      type: "BUTTON_VALUE", payload: {
+      type: "BUTTON_VALUE",
+      payload: {
         link: {
           type: ui[editList[0]].base.link.type,
           url: e.target.value
@@ -70,7 +73,8 @@ const ButtonLink = React.memo(() => {
    */
   const onOK = () => {
     dispatch({
-      type: "BUTTON_VALUE", payload: {
+      type: "BUTTON_VALUE",
+      payload: {
         link: {
           type: ui[editList[0]].base.link.type,
           url: state.map_position
@@ -83,13 +87,12 @@ const ButtonLink = React.memo(() => {
     });
   };
 
-
   /**
    * @desc 针对地图操作
    * @param map
    * @param wMap
    */
-  const getMap = (map:any, wMap:any) => {
+  const getMap = (map: any, wMap: any) => {
     maps = map;
     wMaps = wMap;
     // 点选地图坐标
@@ -97,7 +100,7 @@ const ButtonLink = React.memo(() => {
       position: map.getCenter(),
       map: map
     });
-    wMap.event.addListener(map, "click", (event:any) => {
+    wMap.event.addListener(map, "click", (event: any) => {
       marker.setPosition(event.latLng);
       setState({
         map: state.map,
@@ -111,6 +114,7 @@ const ButtonLink = React.memo(() => {
    * @param name
    */
   const mapSearch = (name: string) => {
+    document.getElementById("infoDiv").innerHTML = "";
     // 搜索
     let latlngBounds = new wMaps.LatLngBounds();
     const searchService = new wMaps.SearchService({
@@ -119,7 +123,7 @@ const ButtonLink = React.memo(() => {
       //设置动扩大检索区域。默认值true，会自动检索指定城市以外区域。
       autoExtend: true,
       //检索成功的回调函数
-      complete: (results:any) => {
+      complete: (results: any) => {
         //设置回调函数参数
         let pois = results.detail.pois;
         for (let i = 0, l = pois.length; i < l; i++) {
@@ -202,7 +206,7 @@ const ButtonLink = React.memo(() => {
           <Input.TextArea
             rows={3}
             placeholder="坐标（xxx,xxx)"
-            value={url}
+            value={`${url ? url.lat ? url.lat + "," + url.lng : url : ""}`}
             onChange={onChangeValue}
           />
           <p
@@ -241,8 +245,11 @@ const ButtonLink = React.memo(() => {
           </Col>
           <Col span={16}>
             <ReactQMap
-              center={{ latitude: url ? url.lat : "32.05838", longitude: url ? url.lng : "118.79647" }}
-              getMap={(map:any, wMap:any) => getMap(map, wMap)}
+              center={{
+                latitude: url ? url.lat : "32.05838",
+                longitude: url ? url.lng : "118.79647"
+              }}
+              getMap={(map: any, wMap: any) => getMap(map, wMap)}
               initialOptions={{ zoomControl: true, mapTypeControl: true }}
               apiKey="MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5"
               style={{ height: 300 }}

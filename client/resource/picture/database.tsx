@@ -71,7 +71,6 @@ base.map((data: any) => {
   };
 });
 
-
 const banner: object[] = [
   {
     data: [
@@ -937,6 +936,45 @@ const shape: object[] = [
       }
     ],
     index: 71
+  },
+  {
+    data: [
+      {
+        img: "icon-Desktop",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#7BDCB5"
+      }
+    ],
+    index: 471
+  },
+  {
+    data: [
+      {
+        img: "icon-zhixian2",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#7BDCB5"
+      }
+    ],
+    index: 472
+  },
+  {
+    data: [
+      {
+        img: "icon-icon-test64",
+        crop: "",
+        link: { type: "choose", url: "" },
+        openness: 1,
+        radius: 0,
+        color: "#7BDCB5"
+      }
+    ],
+    index: 473
   }
 ];
 shape.map((data: any) => {
@@ -957,354 +995,352 @@ shape.map((data: any) => {
   };
 });
 
-
-const line: object[] = [
-  {
-    data: [
-      {
-        img: "icon-Desktop",
-        crop: "",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 32
-  },
-  {
-    data: [
-      {
-        img: "icon-hengxian2",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 33
-  },
-  {
-    data: [
-      {
-        img: "icon-hengxiandianzuo",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 34
-  },
-  {
-    data: [
-      {
-        img: "icon-hengxiandianyou",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 35
-  },
-  {
-    data: [
-      {
-        img: "icon-hengxian1-copy",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 36
-  },
-  {
-    data: [
-      {
-        img: "icon-hengxian",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 37
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test63",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 72
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test62",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 73
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test61",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 74
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test60",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 75
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test59",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 76
-  },
-
-  {
-    data: [
-      {
-        img: "icon-icon-test56",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 79
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test54",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 81
-  },
-
-  {
-    data: [
-      {
-        img: "icon-icon-test46",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 89
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test45",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 90
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test44",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 91
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test43",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 92
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test42",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 93
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test41",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 94
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test40",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 95
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test39",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 96
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test38",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 97
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test37",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 98
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test36",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 99
-  },
-  {
-    data: [
-      {
-        img: "icon-icon-test35",
-        crop: "icon-e7wei-1",
-        link: { type: "choose", url: "" },
-        openness: 1,
-        radius: 0,
-        color: "#FCB900"
-      }
-    ],
-    index: 100
-  }
-];
-line.map((data: any) => {
-  PictureData[data.index] = {
-    common: {
-      type: "picture",
-      id: data.index
-    },
-    base: data.data[0],
-    position: {
-      width: 180,
-      height: 100,
-      left: 0,
-      top: 0,
-      rotate: 0,
-      zIndex: 100
-    }
-  };
-});
-
+// const line: object[] = [
+//   {
+//     data: [
+//       {
+//         img: "icon-Desktop",
+//         crop: "",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 32
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-hengxian2",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 33
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-hengxiandianzuo",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 34
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-hengxiandianyou",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 35
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-hengxian1-copy",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 36
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-hengxian",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 37
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test63",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 72
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test62",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 73
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test61",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 74
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test60",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 75
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test59",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 76
+//   },
+//
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test56",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 79
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test54",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 81
+//   },
+//
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test46",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 89
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test45",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 90
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test44",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 91
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test43",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 92
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test42",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 93
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test41",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 94
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test40",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 95
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test39",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 96
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test38",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 97
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test37",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 98
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test36",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 99
+//   },
+//   {
+//     data: [
+//       {
+//         img: "icon-icon-test35",
+//         crop: "icon-e7wei-1",
+//         link: { type: "choose", url: "" },
+//         openness: 1,
+//         radius: 0,
+//         color: "#FCB900"
+//       }
+//     ],
+//     index: 100
+//   }
+// ];
+// line.map((data: any) => {
+//   PictureData[data.index] = {
+//     common: {
+//       type: "picture",
+//       id: data.index
+//     },
+//     base: data.data[0],
+//     position: {
+//       width: 180,
+//       height: 100,
+//       left: 0,
+//       top: 0,
+//       rotate: 0,
+//       zIndex: 100
+//     }
+//   };
+// });
 
 const icon: object[] = [
   {
