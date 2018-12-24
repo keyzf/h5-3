@@ -397,17 +397,17 @@ Mock.mock(`${window.location.origin}/view/getData?sid=3`, "get", {
     time: "1544491641",
     title: "我的页面",
     type: "1",
-    ui: JSON.stringify( [
+    ui: JSON.stringify([
       {
         common: {
-          type: 'picture',
+          type: "picture",
           id: 506
         },
         base: {
-          img: 'environment',
-          crop: '',
+          img: "environment",
+          crop: "",
           link: {
-            type: 'map',
+            type: "map",
             url: {
               lat: 32.05566311684202,
               lng: 118.79365056753159
@@ -415,7 +415,7 @@ Mock.mock(`${window.location.origin}/view/getData?sid=3`, "get", {
           },
           openness: 1,
           radius: 0,
-          color: '#8ED1FC'
+          color: "#8ED1FC"
         },
         position: {
           width: 50,
@@ -428,25 +428,25 @@ Mock.mock(`${window.location.origin}/view/getData?sid=3`, "get", {
       },
       {
         common: {
-          type: 'form',
+          type: "form",
           id: 0
         },
         base: {
           item: [
             {
-              form_id: 'ETQ0sPe',
+              form_id: "ETQ0sPe",
               isNeed: false,
-              type: 'name',
-              title: '姓名',
-              title_color: '#000',
-              option: '请输入姓名',
-              option_color: '#000'
+              type: "name",
+              title: "姓名",
+              title_color: "#000",
+              option: "请输入姓名",
+              option_color: "#000"
             }
           ],
-          desc: '提交',
-          font_color: 'white',
-          bg_color: '',
-          date: '3000-12-13'
+          desc: "提交",
+          font_color: "white",
+          bg_color: "",
+          date: "3000-12-13"
         },
         position: {
           width: 292,
@@ -459,19 +459,19 @@ Mock.mock(`${window.location.origin}/view/getData?sid=3`, "get", {
       },
       {
         common: {
-          type: 'picture',
+          type: "picture",
           id: 507
         },
         base: {
-          img: 'phone',
-          crop: '',
+          img: "phone",
+          crop: "",
           link: {
-            type: 'phone',
-            url: '15050580821'
+            type: "phone",
+            url: "15050580821"
           },
           openness: 1,
           radius: 0,
-          color: '#8ED1FC'
+          color: "#8ED1FC"
         },
         position: {
           width: 50,
@@ -484,19 +484,19 @@ Mock.mock(`${window.location.origin}/view/getData?sid=3`, "get", {
       },
       {
         common: {
-          type: 'picture',
+          type: "picture",
           id: 517
         },
         base: {
-          img: 'scan',
-          crop: '',
+          img: "scan",
+          crop: "",
           link: {
-            type: 'order',
-            url: '范围分为起飞前往'
+            type: "order",
+            url: "范围分为起飞前往"
           },
           openness: 1,
           radius: 0,
-          color: '#8ED1FC'
+          color: "#8ED1FC"
         },
         position: {
           width: 50,
@@ -539,7 +539,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           type: "text",
           index_number: "2u6imXA",
           name: "vertical_text",
-          html_content: "<p style=\"text-align:center;\"></p>"
+          html_content: '<p style="text-align:center;"></p>'
         },
         advance: {
           color: "",
@@ -642,7 +642,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "wzrMow5",
           name: "horizontal_text",
           html_content:
-            "<p style=\"text-align:center;\"></p><p><strong><span style=\"font-size:14px\">1.为什么毕业后3年还是菜鸟？</span></strong></p><p><strong><span style=\"font-size:14px\">2.为什么要做一名操机手？</span></strong></p><p><strong><span style=\"font-size:14px\">3.为什么学不到最一流的技术？</span></strong></p><p><strong><span style=\"font-size:14px\">4.为什么不能参与高规格的项目？</span></strong></p><p><strong><span style=\"font-size:14px\">5.带你的老板牛不牛？</span></strong></p><p> </p><p style=\"text-align:justify;\">      <span style=\"font-size:14px\"><span style=\"line-height:2\">Visov Design 广州市万象设计有限公司由广州著名设计师丁力学先生1997年于广州创办，历时二十年。Visov Design是一间具有优秀创作团队的专业设计公司，擅长营造视觉化的个性空间，有极强的概念方案能力及施工图深化设计能力。公司制定系统的施工图制图范，在行业中实属少见，长期深入研究材料及施工工艺，积累了从概念方案效果图到现场实景高还原度等丰富的项目执行经验。为客户提供了高水平的设计服务，获得业界充分肯定，并在设计行业领域屡获奖项。</span></span></p>"
+            '<p style="text-align:center;"></p><p><strong><span style="font-size:14px">1.为什么毕业后3年还是菜鸟？</span></strong></p><p><strong><span style="font-size:14px">2.为什么要做一名操机手？</span></strong></p><p><strong><span style="font-size:14px">3.为什么学不到最一流的技术？</span></strong></p><p><strong><span style="font-size:14px">4.为什么不能参与高规格的项目？</span></strong></p><p><strong><span style="font-size:14px">5.带你的老板牛不牛？</span></strong></p><p> </p><p style="text-align:justify;">      <span style="font-size:14px"><span style="line-height:2">Visov Design 广州市万象设计有限公司由广州著名设计师丁力学先生1997年于广州创办，历时二十年。Visov Design是一间具有优秀创作团队的专业设计公司，擅长营造视觉化的个性空间，有极强的概念方案能力及施工图深化设计能力。公司制定系统的施工图制图范，在行业中实属少见，长期深入研究材料及施工工艺，积累了从概念方案效果图到现场实景高还原度等丰富的项目执行经验。为客户提供了高水平的设计服务，获得业界充分肯定，并在设计行业领域屡获奖项。</span></span></p>'
         },
         advance: {
           color: "",
@@ -1334,7 +1334,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "gssUPL2",
           name: "text46",
           html_content:
-            "<p><span style=\"color:#000000\"><strong><span style=\"font-size:16px\">招聘：</span></strong></span></p><p><span style=\"color:#000000\"><strong>我们能为您提供</strong></span></p><p><span style=\"color:#000000\">＊高端人才及团队多元化合作机制</span><br/><span style=\"color:#000000\">＊每年加薪机会，高于同行业标准的薪酬体系</span><br/><span style=\"color:#000000\">＊室内设计行业知名设计公司的金牌履历</span><br/><span style=\"color:#000000\">＊大咖分享&amp;培训，优秀员工培训</span><br/><span style=\"color:#000000\">＊五险、商业保险、年度定期体检</span><br/><span style=\"color:#000000\">＊不定期的高端活动</span><br/><span style=\"color:#000000\">＊每年省内游、优秀员工国外游</span><br/><span style=\"color:#000000\">＊ 生日补贴、生日会、节假日补贴</span><br/><span style=\"color:#000000\">＊话费补贴、加班补贴、住房补贴</span></p><p></p><p><span style=\"color:#000000\"><strong>招聘岗位</strong></span></p><p><span style=\"color:#000000\">室内设计师助理</span></p><p><span style=\"color:#000000\">软装设计师助理</span></p><p><span style=\"color:#000000\">深化设计师助理</span></p><p><span style=\"color:#000000\">施工图设计师助理</span></p><p><span style=\"color:#000000\">商务文员</span></p><p><span style=\"color:#000000\">行政文员</span></p><p></p><p><span style=\"color:#000000\">地址：广州市天河北（五山）金颖路1号金颖大厦901－905</span><br/><span style=\"color:#000000\">手机：13922140688</span></p><p><span style=\"color:#000000\">固话：020-38319300</span><br/><span style=\"color:#000000\">EMAIL：1620101747@qq.com </span><br/><span style=\"color:#000000\">备注：应聘人员请编辑“姓名+应聘职位”为邮件主题， 发送PDF格式简历及个人作品到公司邮箱。</span></p><p></p>"
+            '<p><span style="color:#000000"><strong><span style="font-size:16px">招聘：</span></strong></span></p><p><span style="color:#000000"><strong>我们能为您提供</strong></span></p><p><span style="color:#000000">＊高端人才及团队多元化合作机制</span><br/><span style="color:#000000">＊每年加薪机会，高于同行业标准的薪酬体系</span><br/><span style="color:#000000">＊室内设计行业知名设计公司的金牌履历</span><br/><span style="color:#000000">＊大咖分享&amp;培训，优秀员工培训</span><br/><span style="color:#000000">＊五险、商业保险、年度定期体检</span><br/><span style="color:#000000">＊不定期的高端活动</span><br/><span style="color:#000000">＊每年省内游、优秀员工国外游</span><br/><span style="color:#000000">＊ 生日补贴、生日会、节假日补贴</span><br/><span style="color:#000000">＊话费补贴、加班补贴、住房补贴</span></p><p></p><p><span style="color:#000000"><strong>招聘岗位</strong></span></p><p><span style="color:#000000">室内设计师助理</span></p><p><span style="color:#000000">软装设计师助理</span></p><p><span style="color:#000000">深化设计师助理</span></p><p><span style="color:#000000">施工图设计师助理</span></p><p><span style="color:#000000">商务文员</span></p><p><span style="color:#000000">行政文员</span></p><p></p><p><span style="color:#000000">地址：广州市天河北（五山）金颖路1号金颖大厦901－905</span><br/><span style="color:#000000">手机：13922140688</span></p><p><span style="color:#000000">固话：020-38319300</span><br/><span style="color:#000000">EMAIL：1620101747@qq.com </span><br/><span style="color:#000000">备注：应聘人员请编辑“姓名+应聘职位”为邮件主题， 发送PDF格式简历及个人作品到公司邮箱。</span></p><p></p>'
         },
         advance: {
           color: "",
@@ -1365,7 +1365,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "YGOeAWy",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"font-size:14px\"><strong>丁力学</strong></span></span></p><p style=\"text-align:left;\"> <span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">Visov Design广州市万象设计有限公司</span></span></span></p><p><span style=\"font-size:14px\"><span style=\"line-height:2\">-- <span style=\"color:#000000\">总经理 设计总监；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">高级室内建筑师；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">贵州大学美术学院</span></span></span></p><p><span style=\"font-size:14px\"><span style=\"line-height:2\">-- <span style=\"color:#000000\">客座教授；</span></span></span></p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">《时代空间》杂志</span></span></span> </p><p><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">--杂志顾问；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">中国建筑学会室内设计分会广州专业委员会</span></span></span></p><p><span style=\"font-size:14px\"><span style=\"line-height:2\">-- <span style=\"color:#000000\">委员；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">卫浴间隔系统国家标准</span></span></span></p><p><span style=\"font-size:14px\"><span style=\"line-height:2\">-- <span style=\"color:#000000\">制定人之一；</span></span></span></p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">2014 inguangzhou</span></span></span> </p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">世界室内设计大会（中国）组织委员会</span></span></span> </p><p><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">--委员；</span></span></span></p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">2014年第九届金盘奖</span></span></span> </p><p><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">--总顾问及主评审；</span></span></span></p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">2013年第八届金盘奖</span></span></span> </p><p><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">--总顾问及主评审；</span></span></span></p><p style=\"text-align:left;\"><span style=\"font-size:14px\"><span style=\"line-height:2\"><span style=\"color:#000000\">2006、2007广州国际设计周</span></span></span> </p><p><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">--艺术设计总监；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">荣获“广州设计名片”殊荣；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">荣获赢在设计精英人物；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">羊城十大新锐设计师；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">中国室内设计年度封面人物（提名）；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">全国百名优秀室内建筑师；</span></span></span></p><p style=\"text-align:left;\"><span style=\"color:#000000\"><span style=\"font-size:14px\"><span style=\"line-height:2\">世界华人优秀设计师。</span></span></span></p><p> </p><p style=\"text-align:left;\"></p><p style=\"text-align:left;\"></p><p style=\"text-align:left;\"></p><p></p><p></p>"
+            '<p><span style="color:#000000"><span style="font-size:14px"><strong>丁力学</strong></span></span></p><p style="text-align:left;"> <span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">Visov Design广州市万象设计有限公司</span></span></span></p><p><span style="font-size:14px"><span style="line-height:2">-- <span style="color:#000000">总经理 设计总监；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">高级室内建筑师；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">贵州大学美术学院</span></span></span></p><p><span style="font-size:14px"><span style="line-height:2">-- <span style="color:#000000">客座教授；</span></span></span></p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">《时代空间》杂志</span></span></span> </p><p><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">--杂志顾问；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">中国建筑学会室内设计分会广州专业委员会</span></span></span></p><p><span style="font-size:14px"><span style="line-height:2">-- <span style="color:#000000">委员；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">卫浴间隔系统国家标准</span></span></span></p><p><span style="font-size:14px"><span style="line-height:2">-- <span style="color:#000000">制定人之一；</span></span></span></p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">2014 inguangzhou</span></span></span> </p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">世界室内设计大会（中国）组织委员会</span></span></span> </p><p><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">--委员；</span></span></span></p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">2014年第九届金盘奖</span></span></span> </p><p><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">--总顾问及主评审；</span></span></span></p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">2013年第八届金盘奖</span></span></span> </p><p><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">--总顾问及主评审；</span></span></span></p><p style="text-align:left;"><span style="font-size:14px"><span style="line-height:2"><span style="color:#000000">2006、2007广州国际设计周</span></span></span> </p><p><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">--艺术设计总监；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">荣获“广州设计名片”殊荣；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">荣获赢在设计精英人物；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">羊城十大新锐设计师；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">中国室内设计年度封面人物（提名）；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">全国百名优秀室内建筑师；</span></span></span></p><p style="text-align:left;"><span style="color:#000000"><span style="font-size:14px"><span style="line-height:2">世界华人优秀设计师。</span></span></span></p><p> </p><p style="text-align:left;"></p><p style="text-align:left;"></p><p style="text-align:left;"></p><p></p><p></p>'
         },
         advance: {
           color: "",
@@ -1698,7 +1698,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "HT05jxg",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:16px\"><strong> </strong>VISOV DESIGN<strong>  </strong></span><span style=\"font-size:14px\">万象设计</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:16px"><strong> </strong>VISOV DESIGN<strong>  </strong></span><span style="font-size:14px">万象设计</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1729,7 +1729,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "srhbaCA",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">广州文华东方酒店-荟珍阁</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">广州文华东方酒店-荟珍阁</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1760,7 +1760,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "zrbGvBQ",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">富力-杭州建德-售楼部</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">富力-杭州建德-售楼部</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1791,7 +1791,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "bqfeqwi",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">凯德中国-样板间</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">凯德中国-样板间</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1822,7 +1822,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "EcbYbA7",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">凯德中国-样板间</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">凯德中国-样板间</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1853,7 +1853,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "KSiXYz4",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">广州CBD成果展</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">广州CBD成果展</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1884,7 +1884,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "P2w7a3q",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">广州设计周</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">广州设计周</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1915,7 +1915,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "V63n790",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">美国富美家家具设计</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">美国富美家家具设计</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1946,7 +1946,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "zLyizm6",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">广州设计周组邀请丁力学先生出任主旨嘉宾出席活动</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">广州设计周组邀请丁力学先生出任主旨嘉宾出席活动</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -1977,7 +1977,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "Lvwpxcd",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">贵州大学邀请丁力学先生举行专题讲座</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">贵州大学邀请丁力学先生举行专题讲座</span></span></span></p>'
         },
         advance: {
           color: "",
@@ -2008,7 +2008,7 @@ Mock.mock(`${window.location.origin}/Create/getData?sid=3`, "get", {
           index_number: "4lpdW5Z",
           name: "horizontal_text",
           html_content:
-            "<p><span style=\"color:#000000\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12px\">美国富美家家具产品展示</span></span></span></p>"
+            '<p><span style="color:#000000"><span style="background-color:#ffffff"><span style="font-size:12px">美国富美家家具产品展示</span></span></span></p>'
         },
         advance: {
           color: "",
