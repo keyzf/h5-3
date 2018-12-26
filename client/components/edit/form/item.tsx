@@ -3,10 +3,10 @@ import { SketchPicker } from "react-color";
 import { Button, Form, Icon, Input, Popover, Radio } from "antd";
 
 const FormEditItem = React.memo((props: { data: any; fun: any }) => {
-  const changeOptionList = (index:any, e:any) => {
+  const changeOptionList = (index: any, e: any) => {
     const { option } = props.data;
-    let new_option:any = [];
-    option.map((data:any, index:any) => {
+    let new_option: any = [];
+    option.map((data: any, index: any) => {
       new_option[index] = data;
     });
     new_option[index] = e.target.value;
@@ -14,10 +14,10 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
     props.fun({ option: new_option });
   };
 
-  const delItem = (index:any) => {
+  const delItem = (index: any) => {
     const { option } = props.data;
-    let new_option:any = [];
-    option.map((data:any, index:any) => {
+    let new_option: any = [];
+    option.map((data: any, index: any) => {
       new_option[index] = data;
     });
     new_option.splice(index, 1);
@@ -25,8 +25,8 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
   };
   const addItem = () => {
     const { option } = props.data;
-    let new_option:any = [];
-    option.map((data:any, index:any) => {
+    let new_option: any = [];
+    option.map((data: any, index: any) => {
       new_option[index] = data;
     });
     new_option.push("添加项");
@@ -58,7 +58,6 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
             placement="bottomLeft"
             content={
               <SketchPicker
-                triangle={"hide"}
                 color={title_color}
                 onChangeComplete={e => props.fun({ title_color: e.hex })}
               />
@@ -80,7 +79,6 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
             placement="bottomLeft"
             content={
               <SketchPicker
-                triangle={"hide"}
                 color={option_color}
                 onChangeComplete={e => props.fun({ option_color: e.hex })}
               />
@@ -99,7 +97,7 @@ const FormEditItem = React.memo((props: { data: any; fun: any }) => {
         </FormItem>
         {type === "select" || type === "radio" || type === "checkbox" ? (
           <React.Fragment>
-            {option.map((data:any, index:any) => {
+            {option.map((data: any, index: any) => {
               return (
                 <FormItem label="选项" {...formItemLayout} key={index}>
                   <Input

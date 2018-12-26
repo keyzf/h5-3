@@ -169,7 +169,7 @@ const PictureLink = React.memo(() => {
           <Select.Option value="choose">请选择</Select.Option>
           <Select.Option value="web">网页</Select.Option>
           <Select.Option value="phone">电话</Select.Option>
-          <Select.Option value="order">淘口令</Select.Option>
+          {/*<Select.Option value="order">淘口令</Select.Option>*/}
           <Select.Option value="map">地图</Select.Option>
         </Select>
       </Form.Item>

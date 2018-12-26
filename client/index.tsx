@@ -15,7 +15,7 @@ import { StoreProvider } from "redux-react-hook";
 import store from "./store/store";
 import analyzeUrl from "./tools/analyze-url";
 // 生产环境下删除
-import "./api/mock";
+// import "./api/mock";
 
 /**e
  * 组件函数

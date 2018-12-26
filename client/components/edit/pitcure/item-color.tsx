@@ -38,7 +38,7 @@ const PictureItemColor = React.memo((props: { index: number }) => {
         placement="bottomLeft"
         content={
           <SketchPicker
-            triangle={"hide"}
+
             color={color}
             onChangeComplete={changeColor}
           />
