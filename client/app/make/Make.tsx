@@ -127,7 +127,7 @@ export default React.memo((props: Props) => {
               alignItems: "center"
             }}
           >
-            视窗过小，请调整视窗
+            操作界面过小，请调大界面
           </div>
         </div>
       </Col>

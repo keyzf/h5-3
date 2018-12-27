@@ -940,7 +940,7 @@ const shape: object[] = [
   {
     data: [
       {
-        img: "icon-Desktop",
+        img: "icon-xuxian",
         crop: "",
         link: { type: "choose", url: "" },
         openness: 1,
@@ -953,7 +953,7 @@ const shape: object[] = [
   {
     data: [
       {
-        img: "icon-zhixian2",
+        img: "icon-zhixian3",
         crop: "",
         link: { type: "choose", url: "" },
         openness: 1,
@@ -966,7 +966,7 @@ const shape: object[] = [
   {
     data: [
       {
-        img: "icon-icon-test64",
+        img: "icon-x",
         crop: "",
         link: { type: "choose", url: "" },
         openness: 1,

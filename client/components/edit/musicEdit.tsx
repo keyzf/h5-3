@@ -39,7 +39,8 @@ const MusicEdit = React.memo(() => {
         setState({ tip: resp.list, nowTip: state.nowTip });
         setSum(resp.sum);
       })
-      .catch(() => {});
+      .catch(() => {
+      });
 
     /**
      * 用户上传音乐
@@ -79,6 +80,7 @@ const MusicEdit = React.memo(() => {
   };
 
   const onChoose = (url: any, desc: any) => {
+    setPlay(false);
     dispatch({ type: "MUSIC_VALUE", payload: { url: url, desc: desc } });
   };
 
@@ -86,13 +88,14 @@ const MusicEdit = React.memo(() => {
     if (name === "pause") {
       // @ts-ignore
       document.getElementById("audio").pause();
-      setPlay(false);
+      setPlay(true);
     }
     if (name === "play") {
       dispatch({ type: "MUSIC_VALUE", payload: { url: url, desc: desc } });
       // @ts-ignore
       document.getElementById("audio").play();
-      setPlay(true);
+
+      setPlay(false);
     }
   };
 
@@ -121,18 +124,29 @@ const MusicEdit = React.memo(() => {
     });
   };
 
-  const upMusic = () => {
-    userAssets_api(4, list.count)
-      .then((resp: any) => {
-        setList({ list: resp.list, count: 0 });
-        setSum(resp.sum);
-      })
-      .catch(() => {
-        message.success("上传失败");
-      });
-    message.success("上传成功");
+  const upMusic = (field: any) => {
+    if (field.upload.value.file.status === "done") {
+      if (field.error) {
+        message.error("网络异常，上传失败");
+      } else {
+        userAssets_api(4, list.count)
+          .then((resp: any) => {
+            setList({ list: resp.list, count: 0 });
+            setSum(resp.sum);
+            dispatch({
+              type: "MUSIC_VALUE",
+              payload: {
+                url: resp.list[resp.list.length - 1].url,
+                desc: resp.list[resp.list.length - 1].desc
+              }
+            });
+          })
+          .catch(() => {
+          });
+        message.success("上传成功");
+      }
+    }
   };
-
   const onChangePage = (page: any) => {
     if (state.nowTip === "user") {
       userAssets_api(4, page)
@@ -157,12 +171,13 @@ const MusicEdit = React.memo(() => {
     >
       <UpLoadMusic upload={{ value: "" }} onChange={upMusic}>
         <span style={{ position: "relative", top: "-3px" }}>
-          <Icon type="upload" theme="outlined" />
+          <Icon type="upload" theme="outlined"/>
           上传音乐
         </span>
       </UpLoadMusic>
     </Button>
   );
+
   const scrollbar = css({
     width: "100%",
     height: "calc(100vh - 190px)",
@@ -205,7 +220,7 @@ const MusicEdit = React.memo(() => {
 
   return (
     <React.Fragment>
-      <audio id={"audio"} src={music.url} />
+      <audio id={"audio"} src={music.url} autoPlay={true}/>
       <Tabs tabBarExtraContent={operations}>
         <TabPane tab="音乐设置" key="1" style={{ padding: "0 5px" }}>
           <div {...scrollbar}>
@@ -239,15 +254,15 @@ const MusicEdit = React.memo(() => {
                         <a>
                           {play ? (
                             <Icon
+                              type="play-circle-o"
+                              onClick={() => audio("play", item.url, item.desc)}
+                            />
+                          ) : (
+                            <Icon
                               type="pause-circle-o"
                               onClick={() =>
                                 audio("pause", item.url, item.desc)
                               }
-                            />
-                          ) : (
-                            <Icon
-                              type="play-circle-o"
-                              onClick={() => audio("play", item.url, item.desc)}
                             />
                           )}
                         </a>,
@@ -298,26 +313,18 @@ const MusicEdit = React.memo(() => {
                       total: sum,
                       pageSize: 10,
                       current: list.count,
-
                       onChange: e => onChangePage(e)
                     }}
                     renderItem={(item: any) => (
                       <List.Item
                         actions={[
                           <a>
-                            {play ? (
-                              <Icon
-                                type="pause-circle-o"
-                                onClick={() =>
-                                  audio("pause", item.url, item.desc)
-                                }
-                              />
+                            {music.url === item.url ? (
+                              <Icon type="check" onClick={delUse}/>
                             ) : (
-                              <Icon
-                                type="play-circle-o"
-                                onClick={() =>
-                                  audio("play", item.url, item.desc)
-                                }
+                              <i
+                                className=" iconfont icon-xuanxiangkuang"
+                                onClick={() => onChoose(item.url, item.name)}
                               />
                             )}
                           </a>,
@@ -337,16 +344,7 @@ const MusicEdit = React.memo(() => {
                             transform: "translate(3px,-3px)"
                           }}
                         />
-                        <div
-                          style={{
-                            width: "120px",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap"
-                          }}
-                        >
-                          {item.desc}
-                        </div>
+                        {item.desc}
                       </List.Item>
                     )}
                   />
@@ -363,12 +361,12 @@ const MusicEdit = React.memo(() => {
                   >
                     <UpLoadMusic upload={{ value: "" }} onChange={upMusic}>
                       <Button type="dashed" htmlType={"button"}>
-                        <Icon type="upload" theme="outlined" />
+                        <Icon type="upload" theme="outlined"/>
                         上传音乐
                       </Button>
                     </UpLoadMusic>
                   </div>
-                  <br />
+                  <br/>
                   <div
                     style={{
                       display: "flex",
@@ -386,7 +384,8 @@ const MusicEdit = React.memo(() => {
                     }}
                   >
                     <p>
-                      <a href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
+                      <a
+                        href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
                         下载音乐压缩工具
                       </a>
                     </p>
@@ -400,7 +399,7 @@ const MusicEdit = React.memo(() => {
             {/*分类*/}
             {state.nowTip !== "user" ? (
               <React.Fragment>
-                <Divider />
+                <Divider/>
                 <div style={{ marginBottom: "10px" }}>
                   <List
                     itemLayout="horizontal"
@@ -417,7 +416,7 @@ const MusicEdit = React.memo(() => {
                         actions={[
                           <a>
                             {music.url === item.url ? (
-                              <Icon type="check" onClick={delUse} />
+                              <Icon type="check" onClick={delUse}/>
                             ) : (
                               <i
                                 className=" iconfont icon-xuanxiangkuang"

@@ -3,7 +3,7 @@ import {Icon} from "antd";
 import {css} from "glamor";
 
 const MyIcon = Icon.createFromIconfontCN({
-    scriptUrl: "//at.alicdn.com/t/font_629831_oa9qcw8na2.js" // 在 iconfont.cn 上生成
+    scriptUrl: "//at.alicdn.com/t/font_629831_ni6e83bqs5k.js" // 在 iconfont.cn 上生成
 });
 
 const FontIcon = React.memo((props: any) => {

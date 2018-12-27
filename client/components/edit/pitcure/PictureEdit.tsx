@@ -223,7 +223,7 @@ const PictureEdit = React.memo(() => {
                     </Row>
                     <Divider dashed />
                     <PictureItemRadius index={state} />
-                    <PictureItemColor index={state} />
+                    {/*<PictureItemColor index={state} />*/}
                     <PictureItemLink index={state} />
                   </div>
                 </Form>

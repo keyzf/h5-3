@@ -94,6 +94,7 @@ export default React.memo(() => {
       });
     });
 
+
   const handleCancel = e => {
     setVisible(false);
   };
@@ -578,203 +579,230 @@ export default React.memo(() => {
         <div className={phoneH5}>
           <div className={center}>
             <Row gutter={32} style={{ marginTop: "30px" }}>
-              <Col span={15} style={{ width: "320px", marginRight: "30px" }}>
+              <Col span={15} style={{ width: "340px", marginRight: "30px" }}>
                 <div
                   className={center}
                   style={{
-                    width: "320px",
+                    width: "340px",
                     fontSize: "16px",
                     color: "#616161",
                     height: "55px",
                     lineHeight: "54px",
                     textAlign: "center",
-                    background: "white"
+                    background: "white",
+                    padding: " 0 10px 10px 10px"
                   }}
                 >
                   {title ? title : "易企微 H5 页面设计"}
                 </div>
-                <BackgroundUI>
-                  {music.url ? (
-                    <div
-                      style={{
-                        position: "absolute",
-                        zIndex: 999,
-                        top: "28px",
-                        left: "8px"
-                      }}
-                    >
-                      {state ? (
-                        <div
-                          className={mobileStyle}
-                          onClick={() => onClickStop("stop")}
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            borderRadius: "50px",
-                            background: "rgba(0,0,0,0.4)",
-                            padding: "6px"
-                          }}
-                        >
-                          <i
-                            {...mobileFont}
+                <div
+                  style={{
+                    width: "340px",
+                    background: "white",
+                    padding: " 0 10px 10px 10px"
+                  }}
+                >
+                  <BackgroundUI>
+                    {music.url ? (
+                      <div
+                        style={{
+                          position: "absolute",
+                          zIndex: 999,
+                          top: "28px",
+                          left: "8px"
+                        }}
+                      >
+                        {state ? (
+                          <div
+                            className={mobileStyle}
+                            onClick={() => onClickStop("stop")}
                             style={{
-                              padding: 0,
-                              margin: "0",
-                              color: "white"
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              borderRadius: "50px",
+                              background: "rgba(0,0,0,0.4)",
+                              padding: "6px"
                             }}
-                            className={`${mobileFont} iconfont icon-yinfu`}
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={mobileStyle}
-                          onClick={() => onClickStop("open")}
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            borderRadius: "50px",
-                            background: "rgba(0,0,0,0.4)",
-                            padding: "6px"
-                          }}
-                        >
-                          <RotateAtom>
+                          >
                             <i
+                              {...mobileFont}
                               style={{
                                 padding: 0,
-                                margin: 0,
+                                margin: "0",
                                 color: "white"
                               }}
                               className={`${mobileFont} iconfont icon-yinfu`}
                             />
-                          </RotateAtom>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                          </div>
+                        ) : (
+                          <div
+                            className={mobileStyle}
+                            onClick={() => onClickStop("open")}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              borderRadius: "50px",
+                              background: "rgba(0,0,0,0.4)",
+                              padding: "6px"
+                            }}
+                          >
+                            <RotateAtom>
+                              <i
+                                style={{
+                                  padding: 0,
+                                  margin: 0,
+                                  color: "white"
+                                }}
+                                className={`${mobileFont} iconfont icon-yinfu`}
+                              />
+                            </RotateAtom>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      ""
+                    )}
 
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      lineHeight: "25px",
-                      top: "28px",
-                      right: "0"
-                    }}
-                  >
                     <div
                       style={{
-                        borderRadius: "10px",
-                        background: "rgba(0,0,0,0.4)",
-                        color: "white",
-                        marginRight: "5px"
+                        position: "absolute",
+                        zIndex: 999,
+                        lineHeight: "25px",
+                        top: "28px",
+                        right: "0"
                       }}
                     >
-                      &nbsp;
-                      <a
-                        href={`${
-                          window.location.origin
-                        }/View/reports/vid/${sid}.html`}
-                        target="view_window"
-                        style={{ color: "white", fontSize: "12px" }}
+                      <div
+                        style={{
+                          borderRadius: "10px",
+                          background: "rgba(0,0,0,0.4)",
+                          color: "white",
+                          marginRight: "5px"
+                        }}
                       >
-                        投诉
-                      </a>
-                      &nbsp;
+                        &nbsp;
+                        <a
+                          href={`${
+                            window.location.origin
+                          }/View/reports/vid/${sid}.html`}
+                          target="view_window"
+                          style={{ color: "white", fontSize: "12px" }}
+                        >
+                          投诉
+                        </a>
+                        &nbsp;
+                      </div>
                     </div>
-                  </div>
-                  {ui.map((data: any, index: number) => {
-                    return (
-                      <RenderStyle {...data.position} key={index}>
-                        {data.common.type === "text" ||
-                        (data.common.type === "picture" &&
-                          data.common.id !== 1) ||
-                        data.common.type === "button" ? (
-                          <React.Fragment>
-                            {data.base.link.type === "phone" ? (
-                              <a href={`tel:${data.base.link.url}`}>
-                                <div
-                                  style={{
-                                    pointerEvents: "none",
-                                    userSelect: "none"
-                                  }}
-                                >
-                                  <RenderUi data={data} />
+                    {ui.map((data: any, index: number) => {
+                      return (
+                        <RenderStyle {...data.position} key={index}>
+                          {data.common.type === "text" ||
+                          (data.common.type === "picture" &&
+                            data.common.id !== 1) ||
+                          data.common.type === "button" ? (
+                            <React.Fragment>
+                              {data.base.link.type === "phone" ? (
+                                <a href={`tel:${data.base.link.url}`}>
+                                  <div
+                                    style={{
+                                      pointerEvents: "none",
+                                      userSelect: "none"
+                                    }}
+                                  >
+                                    <RenderUi data={data} />
+                                  </div>
+                                </a>
+                              ) : (
+                                ""
+                              )}
+                              {data.base.link.type === "web" ? (
+                                <a href={`${data.base.link.url}`}>
+                                  <div
+                                    style={{
+                                      pointerEvents: "none",
+                                      userSelect: "none"
+                                    }}
+                                  >
+                                    <RenderUi data={data} />
+                                  </div>
+                                </a>
+                              ) : (
+                                ""
+                              )}
+                              {data.base.link.type === "order" ? (
+                                <div onClick={() => copys(data.base.link.url)}>
+                                  <div
+                                    style={{
+                                      pointerEvents: "none",
+                                      userSelect: "none"
+                                    }}
+                                  >
+                                    <RenderUi data={data} />
+                                  </div>
                                 </div>
-                              </a>
-                            ) : (
-                              ""
-                            )}
-                            {data.base.link.type === "web" ? (
-                              <a href={`${data.base.link.url}`}>
-                                <div
-                                  style={{
-                                    pointerEvents: "none",
-                                    userSelect: "none"
-                                  }}
+                              ) : (
+                                ""
+                              )}
+                              {data.base.link.type === "map" ? (
+                                <a
+                                  onClick={() => maplink(data.base.link.url)}
+                                  style={{ color: "black" }}
                                 >
-                                  <RenderUi data={data} />
-                                </div>
-                              </a>
-                            ) : (
-                              ""
-                            )}
-                            {data.base.link.type === "order" ? (
-                              <div onClick={() => copys(data.base.link.url)}>
-                                <div
-                                  style={{
-                                    pointerEvents: "none",
-                                    userSelect: "none"
-                                  }}
-                                >
-                                  <RenderUi data={data} />
-                                </div>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                            {data.base.link.type === "map" ? (
-                              <a
-                                onClick={() => maplink(data.base.link.url)}
-                                style={{ color: "black" }}
-                              >
-                                <div
-                                  style={{
-                                    pointerEvents: "none",
-                                    userSelect: "none"
-                                  }}
-                                >
-                                  <RenderUi data={data} />
-                                </div>
-                              </a>
-                            ) : (
-                              ""
-                            )}
-                            {data.base.link.type === "choose" ? (
-                              <RenderUi data={data} />
-                            ) : (
-                              ""
-                            )}
+                                  <div
+                                    style={{
+                                      pointerEvents: "none",
+                                      userSelect: "none"
+                                    }}
+                                  >
+                                    <RenderUi data={data} />
+                                  </div>
+                                </a>
+                              ) : (
+                                ""
+                              )}
+                              {data.base.link.type === "choose" ? (
+                                <RenderUi data={data} />
+                              ) : (
+                                ""
+                              )}
 
-                            <Modal
-                              title={null}
-                              width={380}
-                              bodyStyle={{
-                                padding: 0
-                              }}
-                              closable={false}
-                              footer={null}
-                              visible={visible}
-                              onOk={handleOk}
-                              onCancel={handleCancel}
-                            >
-                              <div style={{ padding: "10px" }}>
+                              <Modal
+                                title={null}
+                                width={380}
+                                bodyStyle={{
+                                  padding: 0
+                                }}
+                                closable={false}
+                                footer={null}
+                                visible={visible}
+                                onOk={handleOk}
+                                onCancel={handleCancel}
+                              >
+                                <div style={{ padding: "10px" }}>
+                                  <div
+                                    style={{
+                                      marginTop: "20px",
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      margin: "auto",
+                                      width: "100%"
+                                    }}
+                                  >
+                                    <Icon
+                                      style={{
+                                        color: "#51d4b2",
+                                        fontSize: "35px"
+                                      }}
+                                      type="check-circle"
+                                    />
+                                  </div>
+                                </div>
                                 <div
                                   style={{
-                                    marginTop: "20px",
+                                    marginBottom: "20px",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -782,114 +810,97 @@ export default React.memo(() => {
                                     width: "100%"
                                   }}
                                 >
-                                  <Icon
+                                  <div
                                     style={{
-                                      color: "#51d4b2",
-                                      fontSize: "35px"
+                                      fontSize: "18px",
+                                      color: "rgb(135,145,146)"
                                     }}
-                                    type="check-circle"
-                                  />
+                                  >
+                                    淘口令复制成功
+                                  </div>
                                 </div>
-                              </div>
-                              <div
-                                style={{
-                                  marginBottom: "20px",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                                  margin: "auto",
-                                  width: "100%"
-                                }}
-                              >
                                 <div
                                   style={{
-                                    fontSize: "18px",
-                                    color: "rgb(135,145,146)"
-                                  }}
-                                >
-                                  淘口令复制成功
-                                </div>
-                              </div>
-                              <div
-                                style={{
-                                  marginBottom: "20px",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                                  margin: "auto",
-                                  width: "100%"
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    fontSize: "14px",
-                                    color: "rgb(135,145,146)",
-                                    marginTop: "5px"
-                                  }}
-                                >
-                                  打开手机淘宝购买
-                                </div>
-                              </div>
-
-                              <div
-                                style={{
-                                  background: "rgb(35,199,255)",
-                                  color: "white"
-                                }}
-                              >
-                                <div
-                                  onClick={handleOk}
-                                  style={{
-                                    padding: "10px",
-                                    cursor: "pointer",
+                                    marginBottom: "20px",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
-                                    marginTop: "5px",
+                                    margin: "auto",
                                     width: "100%"
                                   }}
                                 >
-                                  <div style={{ fontSize: "15px" }}>关闭</div>
+                                  <div
+                                    style={{
+                                      fontSize: "14px",
+                                      color: "rgb(135,145,146)",
+                                      marginTop: "5px"
+                                    }}
+                                  >
+                                    打开手机淘宝购买
+                                  </div>
                                 </div>
-                              </div>
-                            </Modal>
-                          </React.Fragment>
-                        ) : (
-                          <RenderUi data={data} />
-                        )}
-                      </RenderStyle>
-                    );
-                  })}
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      bottom: 0,
-                      width: "100%",
-                      lineHeight: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "auto",
-                      alignContent: "center"
-                    }}
-                  >
+
+                                <div
+                                  style={{
+                                    background: "rgb(35,199,255)",
+                                    color: "white"
+                                  }}
+                                >
+                                  <div
+                                    onClick={handleOk}
+                                    style={{
+                                      padding: "10px",
+                                      cursor: "pointer",
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      marginTop: "5px",
+                                      width: "100%"
+                                    }}
+                                  >
+                                    <div style={{ fontSize: "15px" }}>关闭</div>
+                                  </div>
+                                </div>
+                              </Modal>
+                            </React.Fragment>
+                          ) : (
+                            <RenderUi data={data} />
+                          )}
+                        </RenderStyle>
+                      );
+                    })}
                     <div
                       style={{
-                        borderRadius: "50px",
-                        background: "rgba(0,0,0,0.4)",
-                        marginBottom: "5px"
+                        position: "absolute",
+                        zIndex: 999,
+                        bottom: 0,
+                        width: "100%",
+                        lineHeight: "20px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: "auto",
+                        alignContent: "center"
                       }}
                     >
-                      <a
-                        href={"http://m.e7wei.com"}
-                        style={{ color: "white", fontSize: "12px" }}
+                      <div
+                        style={{
+                          borderRadius: "50px",
+                          background: "rgba(0,0,0,0.4)",
+                          marginBottom: "5px"
+                        }}
                       >
-                        &nbsp;&nbsp;&nbsp; 技术支持 >> 易企微&nbsp;&nbsp;&nbsp;
-                      </a>
+                        <a
+                          href={"http://m.e7wei.com"}
+                          style={{ color: "white", fontSize: "12px" }}
+                        >
+                          &nbsp;&nbsp;&nbsp; 技术支持 >>
+                          易企微&nbsp;&nbsp;&nbsp;
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </BackgroundUI>
+                  </BackgroundUI>
+                </div>
               </Col>
               <Col span={9} className={center}>
                 <ReleaseEdit />

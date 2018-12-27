@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useMappedState, useDispatch } from "redux-react-hook";
 import entrance_api from "../../api/entrance";
 import RenderH5 from "./renderH5";
-import { Layout } from "antd";
 
 interface Props {
   id: number;

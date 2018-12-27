@@ -129,7 +129,7 @@ const ShareEdit = React.memo(() => {
       <Divider>示例</Divider>
       <img
         alt="img"
-        src="http://src.e7wei.com/0.6405794268218221.png"
+        src="http://src.e7wei.com/91227H86C89P88F.png"
         width="100%"
         height="90"
       />

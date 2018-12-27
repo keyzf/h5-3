@@ -3,7 +3,7 @@ import BraftEditor from "braft-editor";
 import ColorPicker from "braft-extensions/dist/color-picker";
 import "braft-editor/dist/index.css";
 import "braft-extensions/dist/color-picker.css";
-import { Card, notification } from "antd";
+import { Alert, Card, notification } from "antd";
 
 interface IProps {
   action: any;
@@ -151,17 +151,25 @@ class RichTextEditor extends React.PureComponent<IProps, IState> {
       ]
     };
 
+    // @ts-ignore
+
     return (
       <React.Fragment>
         <div>
           {this.state.isLegal ? (
             ""
           ) : (
-            <Card style={{}}>
-              关键词违规！
-              <br />
-              不得包含：盆友圈，好友圈，朋友圈，集赞，积赞，积攒，转发，返现
-            </Card>
+            <Alert
+              message={
+                <div>
+                  内容违规提示！<br/>
+                  不能出现：集赞，诱导分享朋友圈等内容<br/>
+                  详情查看 <a href={"http://www.e7wei.com/help/article/id/409.html"}>【内容规范】</a>
+
+                </div>
+              }
+              type="error"
+            />
           )}
         </div>
         <BraftEditor id={"editor-with-color-picker"} {...editorProps} />
