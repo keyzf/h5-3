@@ -11,7 +11,6 @@
     "dll": "webpack --config ./config/webpack.dll.ts"
   },
   "dependencies": {
-    "@ungap/url-search-params": "^0.1.1",
     "antd": "^3.10.7",
     "axios": "^0.18.0",
     "braft-editor": "^2.1.30",

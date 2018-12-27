@@ -10,10 +10,10 @@ const ButtonEdit = React.memo(() => {
   const TabPane = Tabs.TabPane;
   return (
     <Tabs defaultActiveKey="1">
-      <TabPane tab="属性设置" key="1">
+      <TabPane tab="设置" key="1">
         <ButtonForm/>
       </TabPane>
-      <TabPane tab="背景设置" key="2">
+      <TabPane tab="背景" key="2">
         <ButtonAdv/>
       </TabPane>
     </Tabs>

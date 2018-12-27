@@ -1,5 +1,5 @@
 import axios from "axios";
-import URLSearchParams from '@ungap/url-search-params';
+
 
 const delete_api = (mid: any) => {
     return new Promise((resolve) => {

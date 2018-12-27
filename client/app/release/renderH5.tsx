@@ -7,7 +7,6 @@ import axios from "axios";
 import wx from "weixin-js-sdk";
 import BackgroundUI from "../../resource/background/BackgroundUI";
 import RenderStyle from "../../components/common/renderStyle";
-import LinkMapOphoneOweb from "../../components/common/link";
 import RenderUi from "../../components/common/renderUi";
 import Store from "../../typing/store";
 import ReleaseEdit from "./editor.page";
@@ -292,63 +291,68 @@ export default React.memo(() => {
       <audio id={"h5_audio"} loop={true} src={music.url} />
       <div className={mediaMobile}>
         <BackgroundUI>
-          <div
-            style={{
-              position: "absolute",
-              zIndex: 999,
-              top: "28px",
-              left: "8px"
-            }}
-          >
-            {state ? (
-              <div
-                className={mobileStyle}
-                onClick={() => onClickStop("stop")}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "50px",
-                  background: "rgba(0,0,0,0.4)",
-                  padding: "6px"
-                }}
-              >
-                <i
-                  {...mobileFont}
+          {music.url ? (
+            <div
+              style={{
+                position: "absolute",
+                zIndex: 999,
+                top: "28px",
+                left: "8px"
+              }}
+            >
+              {state ? (
+                <div
+                  className={mobileStyle}
+                  onClick={() => onClickStop("stop")}
                   style={{
-                    padding: 0,
-                    margin: "0",
-                    color: "white"
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "50px",
+                    background: "rgba(0,0,0,0.4)",
+                    padding: "6px"
                   }}
-                  className={`${mobileFont} iconfont icon-yinfu`}
-                />
-              </div>
-            ) : (
-              <div
-                className={mobileStyle}
-                onClick={() => onClickStop("open")}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "50px",
-                  background: "rgba(0,0,0,0.4)",
-                  padding: "6px"
-                }}
-              >
-                <RotateAtom>
+                >
                   <i
+                    {...mobileFont}
                     style={{
                       padding: 0,
-                      margin: 0,
+                      margin: "0",
                       color: "white"
                     }}
                     className={`${mobileFont} iconfont icon-yinfu`}
                   />
-                </RotateAtom>
-              </div>
-            )}
-          </div>
+                </div>
+              ) : (
+                <div
+                  className={mobileStyle}
+                  onClick={() => onClickStop("open")}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "50px",
+                    background: "rgba(0,0,0,0.4)",
+                    padding: "6px"
+                  }}
+                >
+                  <RotateAtom>
+                    <i
+                      style={{
+                        padding: 0,
+                        margin: 0,
+                        color: "white"
+                      }}
+                      className={`${mobileFont} iconfont icon-yinfu`}
+                    />
+                  </RotateAtom>
+                </div>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+
           <div
             style={{
               position: "absolute",
@@ -590,63 +594,68 @@ export default React.memo(() => {
                   {title ? title : "易企微 H5 页面设计"}
                 </div>
                 <BackgroundUI>
-                  <div
-                    style={{
-                      position: "absolute",
-                      zIndex: 999,
-                      top: "28px",
-                      left: "8px"
-                    }}
-                  >
-                    {state ? (
-                      <div
-                        className={mobileStyle}
-                        onClick={() => onClickStop("stop")}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          borderRadius: "50px",
-                          background: "rgba(0,0,0,0.4)",
-                          padding: "6px"
-                        }}
-                      >
-                        <i
-                          {...mobileFont}
+                  {music.url ? (
+                    <div
+                      style={{
+                        position: "absolute",
+                        zIndex: 999,
+                        top: "28px",
+                        left: "8px"
+                      }}
+                    >
+                      {state ? (
+                        <div
+                          className={mobileStyle}
+                          onClick={() => onClickStop("stop")}
                           style={{
-                            padding: 0,
-                            margin: "0",
-                            color: "white"
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: "50px",
+                            background: "rgba(0,0,0,0.4)",
+                            padding: "6px"
                           }}
-                          className={`${mobileFont} iconfont icon-yinfu`}
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className={mobileStyle}
-                        onClick={() => onClickStop("open")}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          borderRadius: "50px",
-                          background: "rgba(0,0,0,0.4)",
-                          padding: "6px"
-                        }}
-                      >
-                        <RotateAtom>
+                        >
                           <i
+                            {...mobileFont}
                             style={{
                               padding: 0,
-                              margin: 0,
+                              margin: "0",
                               color: "white"
                             }}
                             className={`${mobileFont} iconfont icon-yinfu`}
                           />
-                        </RotateAtom>
-                      </div>
-                    )}
-                  </div>
+                        </div>
+                      ) : (
+                        <div
+                          className={mobileStyle}
+                          onClick={() => onClickStop("open")}
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: "50px",
+                            background: "rgba(0,0,0,0.4)",
+                            padding: "6px"
+                          }}
+                        >
+                          <RotateAtom>
+                            <i
+                              style={{
+                                padding: 0,
+                                margin: 0,
+                                color: "white"
+                              }}
+                              className={`${mobileFont} iconfont icon-yinfu`}
+                            />
+                          </RotateAtom>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
                   <div
                     style={{
                       position: "absolute",

@@ -14,7 +14,6 @@ const env = {
      * @desc 组合打包的文件
      */
     dll: [
-        "@ungap/url-search-params",
         "react",
         "react-dom",
         "immer",

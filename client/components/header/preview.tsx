@@ -2,7 +2,7 @@ import * as React from "react";
 import { Icon, Modal } from "antd";
 import RenderStyle from "../common/renderStyle";
 import RenderUi from "../common/renderUi";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import BackgroundUI from "../../resource/background/BackgroundUI";
 import Store from "../../typing/store";
 import { useMappedState, useDispatch } from "redux-react-hook";
@@ -13,11 +13,12 @@ import LinkMapOphoneOweb from "../common/link";
 const NavPreview = React.memo(() => {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
-  const { ui, sid } = useMappedState(
+  const { ui, sid, music } = useMappedState(
     useCallback(
       (state: Store) => ({
         ui: state.ui,
-        sid: state.global.sid
+        sid: state.global.sid,
+        music: state.music
       }),
       []
     )
@@ -26,7 +27,8 @@ const NavPreview = React.memo(() => {
     try {
       // @ts-ignore
       document.getElementById("audio").pause();
-    } catch (e) {}
+    } catch (e) {
+    }
 
     dispatch({
       type: "PAGE_CHANGE",
@@ -148,7 +150,7 @@ const NavPreview = React.memo(() => {
   return (
     <React.Fragment>
       <div style={{ color: "white" }} onClick={onPreview}>
-        <i className={"iconfont icon-yulan"} style={{ marginRight: "10px" }} />
+        <i className={"iconfont icon-yulan"} style={{ marginRight: "10px" }}/>
         预览
       </div>
       <Modal
@@ -163,16 +165,19 @@ const NavPreview = React.memo(() => {
           <div {...phoneHeader} />
           <div {...phoneContent}>
             <BackgroundUI>
-              <div
-                style={{
-                  position: "absolute",
-                  zIndex: 999,
-                  top: "28px",
-                  left: "8px"
-                }}
-              >
-                <MusicUi />
-              </div>
+              {
+                music.url ? <div
+                  style={{
+                    position: "absolute",
+                    zIndex: 999,
+                    top: "28px",
+                    left: "8px"
+                  }}
+                >
+                  <MusicUi/>
+                </div> : ""
+              }
+
               <div
                 style={{
                   position: "absolute",
@@ -194,7 +199,7 @@ const NavPreview = React.memo(() => {
                   <a
                     href={`${
                       window.location.origin
-                    }/View/reports/vid/${sid}.html`}
+                      }/View/reports/vid/${sid}.html`}
                     target="view_window"
                     style={{ color: "white", fontSize: "12px" }}
                   >
@@ -215,10 +220,10 @@ const NavPreview = React.memo(() => {
                         type={data.base.link.type}
                         link={data.base.link.url}
                       >
-                        <RenderUi data={data} />
+                        <RenderUi data={data}/>
                       </LinkMapOphoneOweb>
                     ) : (
-                      <RenderUi data={data} />
+                      <RenderUi data={data}/>
                     )}
                   </RenderStyle>
                 );

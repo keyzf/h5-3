@@ -26,7 +26,7 @@ class FormOptUpLoad extends React.Component<Props, any> {
    * @returns {boolean}
    */
   beforeUpload = file => {
-    const isJPG = file.type === "image/jpeg" || file.type === "image/png";
+    const isJPG = file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/gif";
     if (!isJPG) {
       message.error("图片格式只能为png或jpg");
     }

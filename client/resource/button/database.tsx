@@ -44,7 +44,7 @@ data.map((data, index) => {
       bg_color: data.bg_color,
       bg_img: { url: data.bg_img, crop: data.bg_img },
       radius: 0,
-      desc: "按钮组件",
+      desc: "确定",
       link: { type: "choose", url: "" }
     },
     position: {

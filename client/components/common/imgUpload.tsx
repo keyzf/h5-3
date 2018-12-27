@@ -4,7 +4,7 @@ import { Form, Upload, message } from "antd";
 
 const UpLoadImg = React.memo((props: any) => {
   const beforeUpload = (file:any) => {
-    const isJPG = file.type === "image/jpeg" || file.type === "image/png";
+    const isJPG = file.type === "image/jpeg" || file.type === "image/png"||file.type === "image/gif";
     if (!isJPG) {
       message.error("图片格式只能为png或jpg");
     }

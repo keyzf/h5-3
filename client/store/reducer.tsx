@@ -3,6 +3,8 @@ import BgData from "../resource/background/database";
 import random from "../tools/random";
 import bgAdapter from "./legacy/bg-legacy";
 import ui_legacy from "./legacy/ui-legacy";
+import saveMsg_ajax from "../api/saveMsg_api";
+import { message } from "antd";
 
 const store = {
   global: { sid: 0, pv: 0, url: "", self: "1" },
@@ -19,6 +21,32 @@ const store = {
 const reducer: any = (state = store, action: any) => {
   const { type, payload } = action;
   switch (type) {
+    case "SAVE":
+      let form = [];
+      state.ui.map(data => {
+        if (data.common.type === "form") {
+          data.base.item.map(data => {
+            form.push({ form_id: data.form_id, name: data.title });
+          });
+        }
+      });
+      const datas = {
+        title: state.share.title ? state.share.title : "标题",
+        desc: state.share.desc ? state.share.desc : "描述",
+        cover: state.share.cover,
+        sid: state.global.sid,
+        ui: state.ui,
+        bg: state.bg,
+        music: state.music
+      };
+      saveMsg_ajax({ ...datas, form })
+        .then(resp => {
+          message.success("保存成功");
+        })
+        .catch(error => {
+          message.error("保存失败");
+        });
+      return state;
     /**
      * 记录必要值
      */

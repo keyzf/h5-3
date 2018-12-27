@@ -101,19 +101,19 @@ const MakeEdit = React.memo(() => {
 const name = (type: string): string => {
   switch (type) {
     case "text":
-      return "文本组件";
+      return "文本";
     case "picture":
-      return "图片组件";
+      return "图片";
     case "video":
-      return "视频组件";
+      return "视频";
     case "button":
-      return "按钮组件";
+      return "按钮";
     case "form":
-      return "表单组件";
+      return "表单";
     case "hot-key":
-      return "快捷键参考";
+      return "快捷键";
     default:
-      return "分享设置";
+      return "分享";
   }
 };
 

@@ -33,7 +33,7 @@ const PictureColor = React.memo(() => {
   const color = ui[editList[0]].base.color;
 
   return (
-    <FormItem label={"边框配色"} {...formItemLayout}>
+    <FormItem label={"选择颜色"} {...formItemLayout}>
       <Popover
         placement="bottomLeft"
         content={

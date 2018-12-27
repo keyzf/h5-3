@@ -18,7 +18,7 @@ const core = [
     wordArt: "",
     html: `<p style="text-align:center;font-size: 25px">横排文本示例</p>
    <p style="text-align:center;font-size: 14px">点左侧组件可以添加新内容</p>
-   <p style="text-align:center;font-size: 14px">点一下可以进行删除等操作</p>
+   <p style="text-align:center;font-size: 14px">点右键可以进行删除等操作</p>
  `
   }
 ];

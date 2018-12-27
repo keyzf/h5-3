@@ -122,7 +122,7 @@ const PictureEdit = React.memo(() => {
     <div {...scrollbar}>
       {uiData.common.id === 0 ? (
         <Tabs defaultActiveKey="2">
-          <TabPane tab="属性设置" key="2">
+          <TabPane tab="设置" key="2">
             <div style={{ padding: "0 10px" }}>
               <Form>
                 <Row gutter={16} type={"flex"}>
@@ -177,7 +177,7 @@ const PictureEdit = React.memo(() => {
               defaultActiveKey="1"
               tabBarExtraContent={<Button onClick={back}>返回列表</Button>}
             >
-              <TabPane tab="属性设置" key="1">
+              <TabPane tab="设置" key="1">
                 <Form>
                   <div style={{ padding: "0 10px" }}>
                     <Row gutter={16} type={"flex"}>

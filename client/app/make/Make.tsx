@@ -9,7 +9,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "redux-react-hook";
-import { Col, Layout, Modal, Row } from "antd";
+import { Col, Layout, Row } from "antd";
 import MakeSider from "./MakeSider";
 import MakeEdit from "./MakeEdit";
 import MakeContent from "./MakeContent";
@@ -106,8 +106,29 @@ export default React.memo((props: Props) => {
         </Layout>
       </Col>
       <Col xxl={0} xl={0} lg={0} md={24} sm={24} xs={24}>
-        <div>
-          为了获得更好的操作体验，请至电脑端进行制作，推荐浏览器为：谷歌浏览器（Chrome）
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            background: "grey",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <div
+            style={{
+              width: "45vw",
+              background: "white",
+              padding: "10px",
+              borderRadius: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            视窗过小，请调整视窗
+          </div>
         </div>
       </Col>
     </Row>

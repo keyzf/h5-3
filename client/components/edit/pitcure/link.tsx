@@ -164,18 +164,18 @@ const PictureLink = React.memo(() => {
   const url = ui[editList[0]].base.link.url;
   return (
     <React.Fragment>
-      <Form.Item label="链接类型" {...formItemLayout}>
+      <Form.Item label="点击跳转" {...formItemLayout}>
         <Select value={type} onChange={onSelect}>
           <Select.Option value="choose">请选择</Select.Option>
-          <Select.Option value="web">网页</Select.Option>
+          <Select.Option value="web">链接</Select.Option>
           <Select.Option value="phone">电话</Select.Option>
           {/*<Select.Option value="order">淘口令</Select.Option>*/}
           <Select.Option value="map">地图</Select.Option>
         </Select>
       </Form.Item>
       {type === "web" ? (
-        <Form.Item label="网页" {...formItemLayout}>
-          <Input value={url} onChange={onChangeValue}/>
+        <Form.Item label="链接" {...formItemLayout}>
+          <Input value={url} onChange={onChangeValue} placeholder="http://www.e7wei.com"/>
         </Form.Item>
       ) : (
         ""

@@ -6,12 +6,7 @@ import {css} from "glamor";
 
 const BgEdit = React.memo(() => {
     const TabPane = Tabs.TabPane;
-    const operations = (
-        <Button htmlType={"button"} style={{marginRight: "5px"}} type="dashed">
-            <Icon type="upload" theme="outlined"/>
-            上传背景
-        </Button>
-    );
+
     const scrollbar = css({
         width: "100%",
         height: "calc(100vh - 107px)",
@@ -52,7 +47,7 @@ const BgEdit = React.memo(() => {
         }
     });
     return (
-        <Tabs tabBarExtraContent={operations}>
+        <Tabs>
             <TabPane tab="背景设置" key="1" style={{padding: "0 5px"}}>
                 <div {...scrollbar}>
                     <p>背景色</p>

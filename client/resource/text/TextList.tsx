@@ -233,25 +233,6 @@ const TextList = React.memo(() => {
 
   return (
     <React.Fragment>
-      <div className={style.uiHover} onClick={() => pushData(TextData[0])}>
-        <Row {...rowConfig}>
-          <Col span={5} className={style.imgBorder}>
-            <img
-              style={{ margin: "10px 3px" }}
-              src={"http://src.e7wei.com/0.33359334389678663.png"}
-              alt={"horizontal_text_img"}
-            />
-          </Col>
-          <Col span={16} className={style.center}>
-            纵向文本
-            <br />
-            内容纵向排版的文本
-          </Col>
-          <Col span={3} className={style.center}>
-            <Icon type="plus-circle-o" style={{ fontSize: "18px" }} />
-          </Col>
-        </Row>
-      </div>
       <div className={style.uiHover} onClick={() => pushData(TextData[1])}>
         <Row {...rowConfig}>
           <Col span={5} className={style.imgBorder}>
@@ -265,6 +246,25 @@ const TextList = React.memo(() => {
             横向文本
             <br />
             内容横向排版的文本
+          </Col>
+          <Col span={3} className={style.center}>
+            <Icon type="plus-circle-o" style={{ fontSize: "18px" }} />
+          </Col>
+        </Row>
+      </div>
+      <div className={style.uiHover} onClick={() => pushData(TextData[0])}>
+        <Row {...rowConfig}>
+          <Col span={5} className={style.imgBorder}>
+            <img
+              style={{ margin: "10px 3px" }}
+              src={"http://src.e7wei.com/0.33359334389678663.png"}
+              alt={"horizontal_text_img"}
+            />
+          </Col>
+          <Col span={16} className={style.center}>
+            纵向文本
+            <br />
+            内容纵向排版的文本
           </Col>
           <Col span={3} className={style.center}>
             <Icon type="plus-circle-o" style={{ fontSize: "18px" }} />
