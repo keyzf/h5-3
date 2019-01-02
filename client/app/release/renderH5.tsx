@@ -94,7 +94,6 @@ export default React.memo(() => {
       });
     });
 
-
   const handleCancel = e => {
     setVisible(false);
   };
@@ -115,9 +114,9 @@ export default React.memo(() => {
     } else {
       window.location.href = `https://apis.map.qq.com/tools/routeplan/eword=活动地址&epointx=${
         link.lat
-      }&epointy=${
+        }&epointy=${
         link.lng
-      }?referer=myapp&key=MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5`;
+        }?referer=myapp&key=MNIBZ-MEKRP-A6QDT-LMYIM-DTG3Q-ZABB5`;
     }
   };
 
@@ -289,7 +288,7 @@ export default React.memo(() => {
   `;
   return (
     <React.Fragment>
-      <audio id={"h5_audio"} loop={true} src={music.url} />
+      <audio id={"h5_audio"} loop={true} src={music.url} autoPlay={true}/>
       <div className={mediaMobile}>
         <BackgroundUI>
           {music.url ? (
@@ -394,7 +393,7 @@ export default React.memo(() => {
                         <div
                           style={{ pointerEvents: "none", userSelect: "none" }}
                         >
-                          <RenderUi data={data} />
+                          <RenderUi data={data}/>
                         </div>
                       </a>
                     ) : (
@@ -405,7 +404,7 @@ export default React.memo(() => {
                         <div
                           style={{ pointerEvents: "none", userSelect: "none" }}
                         >
-                          <RenderUi data={data} />
+                          <RenderUi data={data}/>
                         </div>
                       </a>
                     ) : (
@@ -416,7 +415,7 @@ export default React.memo(() => {
                         <div
                           style={{ pointerEvents: "none", userSelect: "none" }}
                         >
-                          <RenderUi data={data} />
+                          <RenderUi data={data}/>
                         </div>
                       </div>
                     ) : (
@@ -430,14 +429,14 @@ export default React.memo(() => {
                         <div
                           style={{ pointerEvents: "none", userSelect: "none" }}
                         >
-                          <RenderUi data={data} />
+                          <RenderUi data={data}/>
                         </div>
                       </a>
                     ) : (
                       ""
                     )}
                     {data.base.link.type === "choose" ? (
-                      <RenderUi data={data} />
+                      <RenderUi data={data}/>
                     ) : (
                       ""
                     )}
@@ -535,7 +534,7 @@ export default React.memo(() => {
                     </Modal>
                   </React.Fragment>
                 ) : (
-                  <RenderUi data={data} />
+                  <RenderUi data={data}/>
                 )}
               </RenderStyle>
             );
@@ -579,27 +578,37 @@ export default React.memo(() => {
         <div className={phoneH5}>
           <div className={center}>
             <Row gutter={32} style={{ marginTop: "30px" }}>
-              <Col span={15} style={{ width: "340px", marginRight: "30px" }}>
+              <Col span={15} style={{ width: "360px", marginRight: "30px" }}>
                 <div
                   className={center}
                   style={{
-                    width: "340px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "360px",
                     fontSize: "16px",
                     color: "#616161",
                     height: "55px",
                     lineHeight: "54px",
                     textAlign: "center",
-                    background: "white",
-                    padding: " 0 10px 10px 10px"
+                    background: "white"
+
                   }}
                 >
-                  {title ? title : "易企微 H5 页面设计"}
+                  <div style={{
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    width: "150px"
+                  }}>
+                    {title ? title : "易企微 H5 页面设计"}
+                  </div>
                 </div>
                 <div
                   style={{
-                    width: "340px",
+                    width: "360px",
                     background: "white",
-                    padding: " 0 10px 10px 10px"
+                    padding: " 0 20px 20px 20px"
                   }}
                 >
                   <BackgroundUI>
@@ -686,7 +695,7 @@ export default React.memo(() => {
                         <a
                           href={`${
                             window.location.origin
-                          }/View/reports/vid/${sid}.html`}
+                            }/View/reports/vid/${sid}.html`}
                           target="view_window"
                           style={{ color: "white", fontSize: "12px" }}
                         >
@@ -711,7 +720,7 @@ export default React.memo(() => {
                                       userSelect: "none"
                                     }}
                                   >
-                                    <RenderUi data={data} />
+                                    <RenderUi data={data}/>
                                   </div>
                                 </a>
                               ) : (
@@ -725,7 +734,7 @@ export default React.memo(() => {
                                       userSelect: "none"
                                     }}
                                   >
-                                    <RenderUi data={data} />
+                                    <RenderUi data={data}/>
                                   </div>
                                 </a>
                               ) : (
@@ -739,7 +748,7 @@ export default React.memo(() => {
                                       userSelect: "none"
                                     }}
                                   >
-                                    <RenderUi data={data} />
+                                    <RenderUi data={data}/>
                                   </div>
                                 </div>
                               ) : (
@@ -756,14 +765,14 @@ export default React.memo(() => {
                                       userSelect: "none"
                                     }}
                                   >
-                                    <RenderUi data={data} />
+                                    <RenderUi data={data}/>
                                   </div>
                                 </a>
                               ) : (
                                 ""
                               )}
                               {data.base.link.type === "choose" ? (
-                                <RenderUi data={data} />
+                                <RenderUi data={data}/>
                               ) : (
                                 ""
                               )}
@@ -864,7 +873,7 @@ export default React.memo(() => {
                               </Modal>
                             </React.Fragment>
                           ) : (
-                            <RenderUi data={data} />
+                            <RenderUi data={data}/>
                           )}
                         </RenderStyle>
                       );
@@ -903,7 +912,7 @@ export default React.memo(() => {
                 </div>
               </Col>
               <Col span={9} className={center}>
-                <ReleaseEdit />
+                <ReleaseEdit/>
               </Col>
             </Row>
           </div>

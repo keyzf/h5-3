@@ -66,7 +66,8 @@ class RichTextEditor extends React.PureComponent<IProps, IState> {
         "积赞",
         "积攒",
         "转发",
-        "返现"
+        "返现",
+        "分享"
       ];
 
       // 显示的内容--showContent

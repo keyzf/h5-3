@@ -5,30 +5,30 @@ import common from "./webpack.common";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "./env";
 
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const config: webpack.Configuration = merge(common, {
-    mode: "production",
+  mode: "production",
 
-    plugins: [
-        new BundleAnalyzerPlugin(),
+  plugins: [
+    new BundleAnalyzerPlugin(),
 
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "../public/index.html")
-        }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "../public/index.html")
+    }),
 
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: path.resolve(__dirname, "../public/assets/manifest.json") // 路径
-        })
-    ],
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: path.resolve(__dirname, "../public/assets/manifest.json") // 路径
+    })
+  ],
 
-    output: {
-        publicPath: env.publicUrl, //共公路径，可用于cdn
-        filename: "[name].js", // 输出文件名
-        path: path.resolve("public/assets") //输出路径
-    }
+  output: {
+    publicPath: env.publicUrl, //共公路径，可用于cdn
+    filename: "[name].js", // 输出文件名
+    path: path.resolve("public/assets") //输出路径
+  }
 });
 
 export default config;
-
