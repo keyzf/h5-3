@@ -77,7 +77,7 @@ class FormOptUpLoad extends React.Component<Props, any> {
       <Form.Item label={<div style={{ color: `${title_color}` }}>{title}</div>}>
         <div className="clearfix">
           <Upload
-            action={`${window.location.origin}/material/uploadify`}
+            action={`${window.location.origin}/view/uploadify`}
             listType="picture-card"
             fileList={fileList}
             beforeUpload={this.beforeUpload}

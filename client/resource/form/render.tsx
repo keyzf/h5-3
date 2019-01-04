@@ -88,6 +88,7 @@ const RenderForm = React.memo((props: any) => {
         const option: any = {
           input: () => (
             <FormOptInput
+              name={"name"}
               change={change}
               data={data}
               key={index}
@@ -182,19 +183,34 @@ const RenderForm = React.memo((props: any) => {
         return <FormUiRender key={index} />;
       })}
       <Form.Item>
-        <Button
-          onClick={submit}
-          type="primary"
-          htmlType="submit"
-          style={{
-            width: "100%",
-            border: "none",
-            color: font_color,
-            background: bg_color
-          }}
-        >
-          {is > today ? desc : "已截止提交"}
-        </Button>
+        {is > today ? (
+          <Button
+            onClick={submit}
+            type="primary"
+            htmlType="submit"
+            style={{
+              width: "100%",
+              border: "none",
+              color: font_color,
+              background: bg_color
+            }}
+          >
+            {desc}
+          </Button>
+        ) : (
+          <Button
+            disabled={true}
+            type="primary"
+            htmlType="submit"
+            style={{
+              width: "100%",
+              border: "none"
+            }}
+          >
+            已截止提交
+          </Button>
+        )}
+
         <FormSubmitMode mode={state} onclose={onclose} />
       </Form.Item>
     </Form>

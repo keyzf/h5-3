@@ -185,19 +185,33 @@ const ImgModel = React.memo(
                     })}
                   </React.Fragment>
                 ) : (
-                  <div
-                    style={{
-                      height: "420px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center"
-                    }}
-                  >
-                    <img
-                      alt={"img"}
-                      src={"http://src.e7wei.com/0.2823198691104869.png"}
-                    />
-                  </div>
+                  <React.Fragment>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <img
+                        alt={"img"}
+                        src={"http://src.e7wei.com/0.2823198691104869.png"}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <UpLoadImg upload={{ value: "" }} onChange={uploadChange}>
+                        <Button htmlType={"button"} type="primary">
+                          图片上传
+                        </Button>
+                      </UpLoadImg>
+                    </div>
+                  </React.Fragment>
                 )}
               </Row>
               {imgApi.list.length ? (

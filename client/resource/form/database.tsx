@@ -16,7 +16,7 @@ export const $$form_opt_upload = (form_id: string) => {
 export const $$from_opt_input = (form_id: string) => {
   return {
     form_id: form_id,
-    type: "input",
+    type: "name",
     title: "输入框",
     isNeed: false,
     title_color: "#000",
