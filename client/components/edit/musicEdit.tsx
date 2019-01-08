@@ -39,8 +39,7 @@ const MusicEdit = React.memo(() => {
         setState({ tip: resp.list, nowTip: state.nowTip });
         setSum(resp.sum);
       })
-      .catch(() => {
-      });
+      .catch(() => {});
 
     /**
      * 用户上传音乐
@@ -141,12 +140,12 @@ const MusicEdit = React.memo(() => {
               }
             });
           })
-          .catch(() => {
-          });
+          .catch(() => {});
         message.success("上传成功");
       }
     }
   };
+
   const onChangePage = (page: any) => {
     if (state.nowTip === "user") {
       userAssets_api(4, page)
@@ -171,7 +170,7 @@ const MusicEdit = React.memo(() => {
     >
       <UpLoadMusic upload={{ value: "" }} onChange={upMusic}>
         <span style={{ position: "relative", top: "-3px" }}>
-          <Icon type="upload" theme="outlined"/>
+          <Icon type="upload" theme="outlined" />
           上传音乐
         </span>
       </UpLoadMusic>
@@ -220,7 +219,7 @@ const MusicEdit = React.memo(() => {
 
   return (
     <React.Fragment>
-      <audio id={"audio"} src={music.url} autoPlay={true}/>
+      <audio id={"audio"} src={music.url} autoPlay={true} />
       <Tabs tabBarExtraContent={operations}>
         <TabPane tab="音乐设置" key="1" style={{ padding: "0 5px" }}>
           <div {...scrollbar}>
@@ -320,11 +319,11 @@ const MusicEdit = React.memo(() => {
                         actions={[
                           <a>
                             {music.url === item.url ? (
-                              <Icon type="check" onClick={delUse}/>
+                              <Icon type="check" onClick={delUse} />
                             ) : (
                               <i
-                                className=" iconfont icon-xuanxiangkuang"
-                                onClick={() => onChoose(item.url, item.name)}
+                                className="iconfont icon-xuanxiangkuang"
+                                onClick={() => onChoose(item.url, item.desc)}
                               />
                             )}
                           </a>,
@@ -361,12 +360,12 @@ const MusicEdit = React.memo(() => {
                   >
                     <UpLoadMusic upload={{ value: "" }} onChange={upMusic}>
                       <Button type="dashed" htmlType={"button"}>
-                        <Icon type="upload" theme="outlined"/>
+                        <Icon type="upload" theme="outlined" />
                         上传音乐
                       </Button>
                     </UpLoadMusic>
                   </div>
-                  <br/>
+                  <br />
                   <div
                     style={{
                       display: "flex",
@@ -384,8 +383,7 @@ const MusicEdit = React.memo(() => {
                     }}
                   >
                     <p>
-                      <a
-                        href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
+                      <a href="https://fs.kf5.com/upload/6310/201702/a4f32d41ab531a691429bdcde5cc3444.rar?ufileattname=%E9%9F%B3%E4%B9%90%E5%89%AA%E8%BE%91%E5%B7%A5%E5%85%B7.rar">
                         下载音乐压缩工具
                       </a>
                     </p>
@@ -399,7 +397,7 @@ const MusicEdit = React.memo(() => {
             {/*分类*/}
             {state.nowTip !== "user" ? (
               <React.Fragment>
-                <Divider/>
+                <Divider />
                 <div style={{ marginBottom: "10px" }}>
                   <List
                     itemLayout="horizontal"
@@ -416,7 +414,7 @@ const MusicEdit = React.memo(() => {
                         actions={[
                           <a>
                             {music.url === item.url ? (
-                              <Icon type="check" onClick={delUse}/>
+                              <Icon type="check" onClick={delUse} />
                             ) : (
                               <i
                                 className=" iconfont icon-xuanxiangkuang"

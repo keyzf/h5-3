@@ -13,11 +13,6 @@ Mock.mock(`${window.location.origin}/Material/getUser`, "post", {
     {
       mid: Random.id(),
       url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述wfwqefwqefqwefqwfeweqffqw"
-    },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
       desc: "图片/音乐描述"
     },
     {
@@ -135,33 +130,8 @@ Mock.mock(`${window.location.origin}/Material/getUser`, "post", {
       url: Random.dataImage("200x100"),
       desc: "图片/音乐描述"
     },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述"
-    },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述"
-    },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述"
-    },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述"
-    },
-    {
-      mid: Random.id(),
-      url: Random.dataImage("200x100"),
-      desc: "图片/音乐描述"
-    }
   ],
-  sum: 30
+  sum: "350"
 });
 
 /**

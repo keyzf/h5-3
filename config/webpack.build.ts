@@ -12,7 +12,7 @@ const config: webpack.Configuration = merge(common, {
   mode: "production",
 
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
 
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../public/index.html")
