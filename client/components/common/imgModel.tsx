@@ -86,7 +86,7 @@ const ImgModel = React.memo(
           message.error("网络异常，上传失败");
         } else {
           message.success("图片添加成功");
-          userAssets_api(24, choose)
+          userAssets_api(24, 1)
             .then((resp: any) => {
               setImgApi(resp);
             })

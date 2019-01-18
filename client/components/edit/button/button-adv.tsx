@@ -11,7 +11,7 @@ const ButtonAdv = React.memo(() => {
     const {ui, editList} = useMappedState(
         useCallback(
             (state: Store) => ({
-                ui: state.ui,,
+                ui: state.ui,
                 editList: state.edit.number
             }),
             []
