@@ -8,7 +8,6 @@ import PictureLink from "./link";
 import Store from "../../../typing/store";
 import PictureRadius from "./radius";
 import ItemList from "./item-list";
-import PictureItemColor from "./item-color";
 import PictureItemLink from "./item-link";
 import PictureItemRadius from "./item-radius";
 import { PictureDataAdd } from "../../../resource/picture/database";

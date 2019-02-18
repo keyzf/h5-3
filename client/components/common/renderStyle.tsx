@@ -41,7 +41,7 @@ const RenderStyle = styled("span")<style>`
 
   @media (min-width: 768px) and (max-width: 991.98px) {
     height: ${props => (props.height / 320) * 100 + "vw"};
-    width: ${props => (props.width / 320) * 100 + "vw"};
+
     left: ${props => (props.left / 320) * 100 + "vw"};
     top: ${props => (props.top / 320) * 100 + "vw"};
   }
