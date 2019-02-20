@@ -22,7 +22,7 @@ const VideoEditor = React.memo(() => {
         <Tabs.TabPane tab="视频设置" key="1" style={{ padding: "0 6px" }}>
           <div>
             将视频通用代码粘贴至框内即可。<a
-            href={"http://www.e7wei.com/help-article-id-442.html"}
+            href={"http://www.e7wei.com/help/article/id/442.html"}
             target="view_window"
           >
             查看帮助

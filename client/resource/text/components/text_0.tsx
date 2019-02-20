@@ -6,17 +6,29 @@ interface Props {
 }
 
 const TextUi_0 = React.memo((props: Props) => {
-  const html = `string` === typeof props.html ? props.html : props.html.toHTML();
+  const html =
+    `string` === typeof props.html ? props.html : props.html.toHTML();
   /**
    * 手机端转换
    */
   const replaceByMobile = `<div style=" writing-mode:vertical-rl"><p style="font-size: 14px">${html}</p></div>`
     .replace(new RegExp("(\\d+)px", "g"), "calc($1/320*100vw)")
-    .replace(new RegExp("<p></p>", "g"), "<br/>");
+
+    .replace(
+      new RegExp("<p></p>", "g"),
+      "<br style='line-height:calc(14/320*100vw)'/>"
+    )
+    .replace(
+      new RegExp("<p>", "g"),
+      "<p style='font-size:calc(14/320*100vw)'>"
+    );
   /**
    * 电脑端转换
    */
-  const replaceByPc = `<div style=" writing-mode:vertical-rl">${html}</div>`.replace(new RegExp("<p></p>", "g"), "<br/>");
+  const replaceByPc = `<div style=" writing-mode:vertical-rl">${html}</div>`.replace(
+    new RegExp("<p></p>", "g"),
+    "<br/>"
+  );
   return (
     <React.Fragment>
       <div className={mediaMobile}>

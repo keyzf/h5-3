@@ -6,15 +6,18 @@ interface Props {
 }
 
 const TextUi_1 = React.memo((props: Props) => {
-  const html = `string` === typeof props.html ? props.html : props.html.toHTML();
+  const html =
+    `string` === typeof props.html ? props.html : props.html.toHTML();
   /**
    * 手机端转换
    */
-  const replaceByMobile = `<p style="font-size: 14px">${
-    html
-    }</p>`
+  const replaceByMobile = `<p style="font-size: 14px">${html}</p>`
     .replace(new RegExp("(\\d+)px", "g"), "calc($1/320*100vw)")
-    .replace(new RegExp("<p></p>", "g"), "<br/>");
+    .replace(
+      new RegExp("<p></p>", "g"),
+      "<br style='line-height:calc(14/320*100vw)'/>"
+    )
+    .replace(new RegExp("<p>", "g"), "<p style='font-size:calc(14/320*100vw)'>")
   /**
    * 电脑端转换
    */
