@@ -19,7 +19,6 @@ const TextLink = React.memo(() => {
     )
   );
 
-
   const [state, setState] = useState({
     map: false,
     map_position: ""
@@ -176,7 +175,11 @@ const TextLink = React.memo(() => {
       </Form.Item>
       {type === "web" ? (
         <Form.Item label="链接" {...formItemLayout}>
-          <Input value={url} onChange={onChangeValue} placeholder="http://www.e7wei.com"/>
+          <Input
+            value={url}
+            onChange={onChangeValue}
+            placeholder="http://www.e7wei.com"
+          />
         </Form.Item>
       ) : (
         ""
@@ -209,7 +212,7 @@ const TextLink = React.memo(() => {
           <Input.TextArea
             rows={3}
             placeholder="坐标（xxx,xxx)"
-            value={`${url ? url.lat ? url.lat + "," + url.lng : url : ""}`}
+            value={`${url ? (url.lat ? url.lat + "," + url.lng : url) : ""}`}
             onChange={onChangeValue}
           />
           <p
@@ -238,12 +241,12 @@ const TextLink = React.memo(() => {
           onSearch={mapSearch}
           enterButton
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Row gutter={6}>
           <Col span={8} style={{ height: "300px", overflow: "auto" }}>
             <p>搜索结果显示：</p>
-            <div id="infoDiv"/>
+            <div id="infoDiv" />
           </Col>
           <Col span={16}>
             <ReactQMap
