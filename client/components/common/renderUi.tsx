@@ -5,20 +5,19 @@ import RenderVideo from "../../resource/video/render";
 import RenderButton from "../../resource/button/render";
 import RenderForm from "../../resource/form/render";
 
-
-
 interface Props {
   data: {
     common: any;
     base: any;
   };
+  formStyle?: any;
 }
 
 class RenderUi extends React.Component<Props, ""> {
   render() {
-    const { data } = this.props;
+    const { data,formStyle } = this.props;
     const ui: any = {
-      form: () => <RenderForm data={data} />,
+      form: () => <RenderForm data={data} formStyle={formStyle}/>,
       button: () => <RenderButton data={data} />,
       video: () => <RenderVideo data={data} />,
       text: () => <RenderText data={data} />,

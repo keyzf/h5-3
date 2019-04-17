@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Form, Upload, message } from "antd";
 
-
 const UpLoadImg = React.memo((props: any) => {
-  const beforeUpload = (file:any) => {
-    const isJPG = file.type === "image/jpeg" || file.type === "image/png"||file.type === "image/gif";
+  const beforeUpload = (file: any) => {
+    const isJPG =
+      file.type === "image/jpeg" ||
+      file.type === "image/png" ||
+      file.type === "image/gif";
     if (!isJPG) {
       message.error("图片格式只能为png或jpg");
     }
@@ -28,16 +30,12 @@ const UpLoadImg = React.memo((props: any) => {
     <Form>
       <Form.Item>
         {getFieldDecorator("upload")(
-          <Upload {...upload_props}>
-            {props.children}
-          </Upload>
+          <Upload {...upload_props}>{props.children}</Upload>
         )}
       </Form.Item>
     </Form>
-
   );
 });
-
 
 export default Form.create({
   onFieldsChange(props: any, changedFields) {

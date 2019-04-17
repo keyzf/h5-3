@@ -300,11 +300,6 @@
     "@types/uglify-js" "*"
     source-map "^0.6.0"
 
-"@ungap/url-search-params@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ungap/url-search-params/-/url-search-params-0.1.1.tgz#828e3fcbbbf52ee0813986d3f62859177f26ad20"
-  integrity sha512-5bdEjTk/xrTtUKFx8sCMW01bUi+9PnokhvCWqAGRl8MtBpS2hUG1E0bdJv6OTbNb1LiEvgfzyUXmMMEKEOcSSg==
-
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
@@ -3407,13 +3402,12 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-event-stream@~3.3.0:
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/event-stream/-/event-stream-3.3.6.tgz#cac1230890e07e73ec9cacd038f60a5b66173eef"
-  integrity sha512-dGXNg4F/FgVzlApjzItL+7naHutA3fDqbV/zAZqDDlXTjiMnQmZKu+prImWKszeBM5UQeGvAl3u1wBiKeDh61g==
+event-stream@^4.0.1, event-stream@~3.3.0:
+  version "4.0.1"
+  resolved "http://registry.npm.taobao.org/event-stream/download/event-stream-4.0.1.tgz#4092808ec995d0dd75ea4580c1df6a74db2cde65"
+  integrity sha1-QJKAjsmV0N116kWAwd9qdNss3mU=
   dependencies:
     duplexer "^0.1.1"
-    flatmap-stream "^0.1.0"
     from "^0.1.7"
     map-stream "0.0.7"
     pause-stream "^0.0.11"
@@ -3737,11 +3731,6 @@ find-up@^3.0.0:
   integrity sha512-1yD6RmLI1XBfxugvORwlck6f75tYL+iR0jqwsOrOxMZyGYqUuDhJ0l4AXdO1iX/FTs9cBAMEk1gWSEx1kSbylg==
   dependencies:
     locate-path "^3.0.0"
-
-flatmap-stream@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/flatmap-stream/-/flatmap-stream-0.1.1.tgz#d34f39ef3b9aa5a2fc225016bd3adf28ac5ae6ea"
-  integrity sha512-lAq4tLbm3sidmdCN8G3ExaxH7cUCtP5mgDvrYowsx84dcYkJJ4I28N7gkxA6+YlSXzaGLJYIDEi9WGfXzMiXdw==
 
 flush-write-stream@^1.0.0:
   version "1.0.3"
@@ -7690,13 +7679,6 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-meta-tags@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-0.7.3.tgz#fb5f4aa49846e06030a3d3850ea75ce697753d7e"
-  integrity sha512-+X28Q0gXb4I2xZZYGeiSfLCe8JpTAApxymcLb0zmf4uJx9vE2zPZ3NA8tpaRpYogUbXSUC45APzhscEkbGCZ0g==
-  dependencies:
-    prop-types "^15.6.0"
-
 react-motion@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
@@ -9632,8 +9614,8 @@ websocket-extensions@>=0.1.1:
 
 weixin-js-sdk@^1.4.0-test:
   version "1.4.0-test"
-  resolved "https://registry.yarnpkg.com/weixin-js-sdk/-/weixin-js-sdk-1.4.0-test.tgz#612bbafcc97ad84f5afe6dc84701534cc59fc3ca"
-  integrity sha512-Dh/TwKhaQVAlyqEXdR65aJdexsynOhCEauexY93YZ+gXcV+ITTd/qvAHdwmkGP0nwAp314v0FD4AXUqCBQFm6Q==
+  resolved "http://registry.npm.taobao.org/weixin-js-sdk/download/weixin-js-sdk-1.4.0-test.tgz#612bbafcc97ad84f5afe6dc84701534cc59fc3ca"
+  integrity sha1-YSu6/Ml62E9a/m3IRwFTTMWfw8o=
 
 whatwg-fetch@>=0.10.0:
   version "3.0.0"

@@ -1,10 +1,13 @@
 {
   "name": "makeh5",
-  "version": "0.9x",
+  "version": "1.0",
   "main": "index.tsx",
   "repository": "https://github.com/AntoninSorrento/makeH5.git",
   "license": "MIT",
   "sideEffects": false,
+  "resolutions": {
+    "**/event-stream": "^4.0.1"
+  },
   "scripts": {
     "dev": "node -r ts-node/register ./config/webpack.dev.ts",
     "build": "webpack  --config ./config/webpack.build.ts",

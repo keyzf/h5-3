@@ -13,6 +13,7 @@ import FormSubmitMode from "./model";
 import Store from "../../typing/store";
 import { useMappedState } from "redux-react-hook";
 import form_api from "../../api/formUp_api";
+import FormStyle from "../../components/common/FormStyle";
 
 const value: any = [];
 const RenderForm = React.memo((props: any) => {
@@ -180,8 +181,13 @@ const RenderForm = React.memo((props: any) => {
           )
         };
         const FormUiRender: any = option[data.type];
-        return <FormUiRender key={index} />;
+        return (
+          <FormStyle {...props.formStyle} lenght={item.length}>
+            <FormUiRender key={index} />
+          </FormStyle>
+        );
       })}
+
       <Form.Item>
         {is > today ? (
           <Button

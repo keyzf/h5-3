@@ -5,7 +5,7 @@ import axios from "axios";
  * @returns {Promise<any>}
  */
 // 测试成功✅
-const upload_api = (type:any, desc:any, url:any) => {
+const upload_api = (type: any, desc: any, url: any) => {
   return new Promise((resolve, reject) => {
     let params = new URLSearchParams();
     params.append("type", type);
@@ -22,6 +22,5 @@ const upload_api = (type:any, desc:any, url:any) => {
       });
   });
 };
-
 
 export default upload_api;

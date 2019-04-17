@@ -70,24 +70,54 @@ const MakeContent = React.memo(() => {
   return (
     <div {...scrollbar} id={"content"}>
       <div {...layout}>
-        <BaselineH/>
-        <BaselineV/>
-        <ContentHeight/>
+        <BaselineH />
+        <BaselineV />
+        <ContentHeight />
         <ContentHotKey fun={dispatch} ui={ui}>
           <BackgroundUI>
             <div>
-              {
-                ui.length ? <React.Fragment> <ContentLock/>
-                    <ContentChoose/>
-                    <ContentDrag/></React.Fragment> :
-                  <div style={{ marginTop: "50px" }}>
-                    <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center",color:'rgb(160,160,160)' }}>教程</h3>
-                    <br/>
-                    <h4 style={{ display: "flex", justifyContent: "center", alignItems: "center",color:'rgb(160,160,160)' }}>点左侧组件可以添加新内容</h4>
-                    <br/>
-                    <h4 style={{ display: "flex", justifyContent: "center", alignItems: "center",color:'rgb(160,160,160)' }}>点右键可以进行删除等操作</h4>
-                  </div>
-              }
+              {ui.length ? (
+                <React.Fragment>
+                  <ContentLock />
+                  <ContentChoose />
+                  <ContentDrag />
+                </React.Fragment>
+              ) : (
+                <div style={{ marginTop: "50px" }}>
+                  <h3
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      color: "rgb(160,160,160)"
+                    }}
+                  >
+                    教程
+                  </h3>
+                  <br />
+                  <h4
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      color: "rgb(160,160,160)"
+                    }}
+                  >
+                    点左侧组件可以添加新内容
+                  </h4>
+                  <br />
+                  <h4
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      color: "rgb(160,160,160)"
+                    }}
+                  >
+                    点右键可以进行删除等操作
+                  </h4>
+                </div>
+              )}
             </div>
           </BackgroundUI>
         </ContentHotKey>

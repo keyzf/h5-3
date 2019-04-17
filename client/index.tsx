@@ -1,12 +1,3 @@
-/**
- * @author 陈迎
- * @date 2018年11月27日12:04:41
- * @desc 项目运行入口
- * 实现功能：
- * 1. 注入redux
- * 2. 解析访问路由，导入相应页面
- * 3. 渲染组件至dom
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Spin } from "antd";
