@@ -14,12 +14,11 @@ interface Props {
 }
 
 class FormOptTextArea extends React.PureComponent<Props, any> {
-
   state = {
     value: ""
   };
 
-  change = (e:any) => {
+  change = (e: any) => {
     this.setState({
       value: e.target.value
     });

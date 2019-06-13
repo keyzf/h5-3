@@ -15,7 +15,8 @@ import { useMappedState } from "redux-react-hook";
 import form_api from "../../api/formUp_api";
 import FormStyle from "../../components/common/FormStyle";
 
-const value: any = [];
+let value: any = [];
+
 const RenderForm = React.memo((props: any) => {
   const { ui, sid } = useMappedState(
     useCallback(
@@ -33,34 +34,62 @@ const RenderForm = React.memo((props: any) => {
   };
 
   const submit = () => {
-    const update = [];
-    let isleg = true;
-    value.map(data => {
-      if (!data.isLegal) {
-        isleg = false;
+    let update = []; // 数据 及 值，用以传递给后台
+
+    let isleg = true; // 判断数据是否合法
+    let isNeed = []; // 判断数据必填项是否已填写
+    let isNeedTitle = "必填项";
+
+    // 1. 遍历表单项
+    ui.map(data => {
+      if (data.common.type === "form") {
+        data.base.item.map((datas, index) => {
+          // 判断必填项是否已填写
+          if (datas.isNeed) {
+            // 1. 查询必填数据是否有数据录入
+            if (value[index]) {
+              // 2. 必填字段是否已填充
+              if (Boolean(value[index].data)) {
+              } else {
+                isNeedTitle = datas.title;
+                isNeed.push(false);
+              }
+            } else {
+              isNeedTitle = datas.title;
+              isNeed.push(false);
+            }
+          }
+          isleg = value[index] ? value[index] : { isLegal: true };
+          // 获取值
+          update.push({
+            form_id: datas.form_id,
+            value: value[index] ? value[index].data : ""
+          });
+        });
       }
     });
-    if (!isleg) {
-      message.error("表单输入内容不合法");
+
+    // 验证必填项是否已填写
+    if (isNeed.indexOf(false) !== -1) {
+      message.error(`${isNeedTitle}未填写`);
     } else {
-      ui.map(data => {
-        if (data.common.type === "form") {
-          data.base.item.map((data, index) => {
-            if (data.isNeed) {
-              isleg = value[index];
-            }
-            update.push({
-              form_id: data.form_id,
-              value: value[index] ? value[index].data : ""
-            });
-          });
+      // 验证输入项是否合法
+      value.map(data => {
+        if (!data.isLegal) {
+          isleg = false;
         }
       });
-      if (!isleg) {
-        message.error("表单必填项未填写");
-      } else {
+      // @ts-ignore
+      if (isleg !== "") {
+        if (!isleg) {
+          message.error("表单输入内容不合法");
+        }
+      }
+
+      if (isleg && isNeed) {
         form_api(update, sid)
           .then(() => {
+            value = []; // 重置
             setState(true);
           })
           .catch(() => {
@@ -224,3 +253,4 @@ const RenderForm = React.memo((props: any) => {
 });
 
 export default RenderForm;
+
