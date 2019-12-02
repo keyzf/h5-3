@@ -38,7 +38,7 @@ class FormOptSelect extends React.PureComponent<Props, any> {
     return (
       <FormItem label={<div style={{ color: `${title_color}` }}>{title}</div>}>
         <Select
-          defaultValue={option[0]}
+          placeholder={'请选择...'}
           style={{ width: "100%" }}
           onChange={this.change}
         >

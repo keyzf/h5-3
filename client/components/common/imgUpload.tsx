@@ -10,7 +10,7 @@ const UpLoadImg = React.memo((props: any) => {
     if (!isJPG) {
       message.error("图片格式只能为png或jpg");
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
+    const isLt2M = true;
     if (!isLt2M) {
       message.error("上传图片过大，不超过2M");
     }

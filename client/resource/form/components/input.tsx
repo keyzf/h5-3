@@ -14,16 +14,18 @@ interface Props {
   };
 }
 
-const pattern = /^[1]([3-9])[0-9]{9}$/;
+const pattern = /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-7|9])|(?:5[0-3|5-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[1|8|9]))\d{8}$/;
+
 let islegal = false;
-let i = 0
+
+let i = 0;
+
 class FormOptInput extends React.PureComponent<Props, any> {
   state = {
     value: ""
   };
 
   change = (e: any) => {
-
 
     this.setState({
       value: e.target.value
@@ -40,7 +42,6 @@ class FormOptInput extends React.PureComponent<Props, any> {
   render() {
     const FormItem = Form.Item;
     const { option, title, title_color, option_color } = this.props.data;
-
 
     if (!this.props.name) {
       islegal = !(pattern.test(this.state.value) && this.state.value !== "");
