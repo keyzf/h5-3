@@ -67,7 +67,10 @@ class RichTextEditor extends React.PureComponent<IProps, IState> {
         "积攒",
         "转发",
         "返现",
-        "分享"
+        "分享",
+        "习近平",
+        "李克强",
+        "王岐山"
       ];
 
       // 显示的内容--showContent

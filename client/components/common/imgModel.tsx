@@ -81,10 +81,11 @@ const ImgModel = React.memo(
     };
 
     const uploadChange = (field: any) => {
+
       if (field.upload.value.file.status === "done") {
-        if (field.error) {
-          message.error("网络异常，上传失败");
-        } else {
+       if(Number(field.upload.value.file.response.error)===1){
+           message.error(field.upload.value.file.response.msg);
+       } else {
           message.success("图片添加成功");
           userAssets_api(24, 1)
             .then((resp: any) => {

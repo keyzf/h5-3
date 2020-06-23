@@ -10,7 +10,8 @@ class UpLoadMusic extends PureComponent<any, any> {
       data: { type: 4 },
       showUploadList: false,
       accept: "audio/*",
-      multiple: true
+      multiple: true,
+
     };
     return (
       <Form hideRequiredMark>

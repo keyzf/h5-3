@@ -8,7 +8,7 @@ const env = {
      * @desc 公共链接
      * https://create-react-app.oss-cn-beijing.aliyuncs.com/
      */
-    publicUrl: "http://e7wei.oss-cn-hangzhou.aliyuncs.com/h5/",
+    publicUrl: "https://s.e7wei.com/202006220910/",
 
     /**
      * @desc 组合打包的文件

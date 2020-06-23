@@ -24,7 +24,8 @@ const UpLoadImg = React.memo((props: any) => {
     data: { type: 1 },
     showUploadList: false,
     beforeUpload: beforeUpload,
-    multiple: true
+    multiple: true,
+
   };
   return (
     <Form>

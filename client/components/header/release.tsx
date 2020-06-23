@@ -31,7 +31,14 @@ const NavRelease = React.memo(() => {
     });
     saveMsg_ajax({ title, desc, cover, sid, ui, bg, music, form })
       .then(resp => {
-        window.location.href = `${window.location.origin}/r/${sid}`;
+
+          message.success('发布成功',1500);
+
+          setTimeout(()=>{
+              window.location.href = `http://my.e7wei.com/long/index.html`;
+          }, 1500)
+
+
       })
       .catch(error => {
         message.error("保存失败");
