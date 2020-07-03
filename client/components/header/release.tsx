@@ -32,7 +32,7 @@ const NavRelease = React.memo(() => {
     saveMsg_ajax({ title, desc, cover, sid, ui, bg, music, form })
       .then(resp => {
 
-          message.success('发布成功',1500);
+          message.success('发布成功,可以分享了',1500);
 
           setTimeout(()=>{
               window.location.href = `http://my.e7wei.com/long/index.html`;
